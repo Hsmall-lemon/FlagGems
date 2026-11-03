@@ -1,0 +1,189 @@
+# isort: skip_file - preserve the archived provider import order
+# Copyright 2026 FlagOS Contributors
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+"""F06 round 2 candidate 1: cos full-tile bounds-mask elision only.
+
+Fresh baseline gate approved 2026-11-02 22:34 (Asia/Shanghai).
+Keep the selected 1024/4 launch, scalar math, tails and exact fallbacks.
+Sin and atan2 retain the selected implementation without changes.
+Load this physical module from a snapshot and explicitly call install().
+"""
+
+import triton
+import triton.language as tl
+
+from flag_gems.runtime import torch_device_fn
+from flag_gems.utils import tl_extra_shim
+
+_atan2 = tl_extra_shim.atan2
+_torch = None
+_installed_on = None
+_originals = None
+_BLOCK = 1024
+_WARPS = 4
+TRIAL = 1
+
+
+@triton.jit
+def _f06_unary_kernel(X, Y, N, OP: tl.constexpr, BLOCK: tl.constexpr):
+    offsets = tl.program_id(0) * BLOCK + tl.arange(0, BLOCK)
+    active = offsets < N
+    x = tl.load(X + offsets, mask=active, other=0.0)
+    if OP == 0:
+        result = tl.cos(x.to(tl.float32))
+    else:
+        result = tl.sin(x.to(tl.float32))
+    tl.store(Y + offsets, result, mask=active)
+
+
+@triton.jit
+def _f06_cos_fulltile_kernel(X, Y, N, FULL_TILES: tl.constexpr, BLOCK: tl.constexpr):
+    offsets = tl.program_id(0) * BLOCK + tl.arange(0, BLOCK)
+    if FULL_TILES:
+        # Host proved numel % BLOCK == 0; every launched lane is in bounds.
+        x = tl.load(X + offsets)
+    else:
+        active = offsets < N
+        x = tl.load(X + offsets, mask=active, other=0.0)
+    # Identical selected cos expression: no math or range specialization.
+    result = tl.cos(x.to(tl.float32))
+    if FULL_TILES:
+        tl.store(Y + offsets, result)
+    else:
+        tl.store(Y + offsets, result, mask=active)
+
+
+@triton.jit
+def _f06_atan2_kernel(Input, Other, Out, N, BLOCK: tl.constexpr):
+    offsets = tl.program_id(0) * BLOCK + tl.arange(0, BLOCK)
+    active = offsets < N
+    x = tl.load(Input + offsets, mask=active, other=0.0)
+    y = tl.load(Other + offsets, mask=active, other=1.0)
+    # Same order and same captured libdevice symbol as pinned ops/atan2.py.
+    result = _atan2(x.to(tl.float32), y.to(tl.float32))
+    tl.store(Out + offsets, result, mask=active)
+
+
+def _eligible(A):
+    # Exact Tensor excludes tensor subclasses and FakeTensor/proxy inputs.
+    return (
+        type(A) is _torch.Tensor
+        and A.layout == _torch.strided
+        and A.dtype == _torch.float32
+        and A.device.type == "flagos"
+        and not A.requires_grad
+        and not A.is_conj()
+        and not A.is_neg()
+        and A.is_contiguous()
+        and 0 < A.numel() <= 2147483647
+    )
+
+
+def _unary(A, op):
+    # Device context selects the caller's device, preserving stream semantics.
+    with torch_device_fn.device(A.device.index):
+        out = _torch.empty_like(A)
+        n = A.numel()
+        _f06_unary_kernel[(triton.cdiv(n, _BLOCK),)](
+            A,
+            out,
+            n,
+            OP=op,
+            BLOCK=_BLOCK,
+            num_warps=_WARPS,
+            num_stages=2,
+            waves_per_eu=1,
+            enable_fp_fusion=True,
+            allow_flush_denorm=False,
+        )
+    return out
+
+
+def cos(A):
+    if not _eligible(A):
+        return _originals["cos"](A)
+    with torch_device_fn.device(A.device.index):
+        out = _torch.empty_like(A)
+        n = A.numel()
+        _f06_cos_fulltile_kernel[(triton.cdiv(n, _BLOCK),)](
+            A,
+            out,
+            n,
+            FULL_TILES=(n % _BLOCK == 0),
+            BLOCK=_BLOCK,
+            num_warps=_WARPS,
+            num_stages=2,
+            waves_per_eu=1,
+            enable_fp_fusion=True,
+            allow_flush_denorm=False,
+        )
+    return out
+
+
+def sin(A):
+    if not _eligible(A):
+        return _originals["sin"](A)
+    return _unary(A, 1)
+
+
+def atan2(input, other):
+    if not (
+        _eligible(input)
+        and _eligible(other)
+        and input.device == other.device
+        and input.shape == other.shape
+    ):
+        return _originals["atan2"](input, other)
+    with torch_device_fn.device(input.device.index):
+        out = _torch.empty_like(input)
+        n = input.numel()
+        _f06_atan2_kernel[(triton.cdiv(n, _BLOCK),)](
+            input,
+            other,
+            out,
+            n,
+            BLOCK=_BLOCK,
+            num_warps=_WARPS,
+            num_stages=2,
+            waves_per_eu=1,
+            enable_fp_fusion=True,
+            allow_flush_denorm=False,
+        )
+    return out
+
+
+def install(torch, flag_gems):
+    """Replace only root atan2/cos/sin; retain exact original fallbacks."""
+    global _torch, _installed_on, _originals
+    if _installed_on is flag_gems:
+        if not all(
+            getattr(flag_gems, name) is fn
+            for name, fn in (("atan2", atan2), ("cos", cos), ("sin", sin))
+        ):
+            raise RuntimeError("F06 root bindings changed after installation")
+        return
+    if _installed_on is not None:
+        raise RuntimeError("F06 module already installed on another FlagGems object")
+    if flag_gems.runtime.device.vendor_name != "hygon":
+        raise RuntimeError("F06 approved launch targets pinned Hygon R6 only")
+    originals = {name: getattr(flag_gems, name) for name in ("atan2", "cos", "sin")}
+    if not all(callable(fn) for fn in originals.values()):
+        raise TypeError("F06 original root entries must be callable")
+    _torch = torch
+    _originals = originals
+    _installed_on = flag_gems
+    flag_gems.atan2 = atan2
+    flag_gems.cos = cos
+    flag_gems.sin = sin
