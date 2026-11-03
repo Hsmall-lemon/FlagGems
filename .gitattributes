@@ -14,3 +14,9 @@
 
 src/flag_gems/runtime/backend/_iluvatar/**/* diff=nodiff
 src/flag_gems/runtime/backend/_metax/**/* diff=nodiff
+
+# Keep Hygon source hashes stable across Windows/Linux checkouts.
+/src/flag_gems/runtime/backend/_hygon/experimental/** text eol=lf
+/docs/hygon-optimization/** text eol=lf
+/docs/hygon-optimization/history/sources/** -text whitespace=-blank-at-eof,-blank-at-eol
+/tests/test_hygon_optimization* text eol=lf

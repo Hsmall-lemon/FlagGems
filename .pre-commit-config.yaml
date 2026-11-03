@@ -12,6 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Archived source blobs are immutable; their hashes are checked by the inventory test.
+exclude: ^docs/hygon-optimization/history/sources/
+
 repos:
   # https://github.com/pre-commit/pre-commit-hooks
 - repo: https://gitcode.com/gh_mirrors/pr/pre-commit-hooks.git

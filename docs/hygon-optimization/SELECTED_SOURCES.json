@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "formatting": "Apache header, Black 26.5.1, lint-only comments and docstring wrapping. Executable AST equivalence verified excluding docstrings/comments; no import reordering or algorithm edits. Hardware qualification applies to the archived fixed-release source, not this new master-based branch.",
+  "sources": [
+    {
+      "path": "src/flag_gems/runtime/backend/_hygon/experimental/under90/f01.py",
+      "origin": "under90-apptainer-ai4perf-20261102-r2/selected/f01.py",
+      "source_sha256": "02bd4a661524bbba9a1b1f9cdcce89014f9b9689447c9202ccf7b61c9b15ec20",
+      "family": "all",
+      "status": "selected_in_fixed_release_not_retested_on_master",
+      "sha256": "44a85b777632e04739952de6c238cf9c6fae3b8aadc3d771bc745cae3336addd",
+      "archived_source": "docs/hygon-optimization/history/sources/02bd4a661524bbba9a1b1f9cdcce89014f9b9689447c9202ccf7b61c9b15ec20.py.txt",
+      "archive_origin_commit": "23a15d53d9badef115d89a0b779f59f974c63b55"
+    },
+    {
+      "path": "src/flag_gems/runtime/backend/_hygon/experimental/under90/f02.py",
+      "origin": "under90-apptainer-ai4perf-20261102-r2/selected/f02.py",
+      "source_sha256": "62523b730fa57ad4efdff428a11d02509eee1270032318dddc9d91b3e98a740e",
+      "family": "index_add",
+      "status": "selected_in_fixed_release_not_retested_on_master",
+      "sha256": "4b08f4082137af872a9c921711d2cfa8220952f43d8f8c6a6404f096ffc9ba50",
+      "archived_source": "docs/hygon-optimization/history/sources/62523b730fa57ad4efdff428a11d02509eee1270032318dddc9d91b3e98a740e.py.txt",
+      "archive_origin_commit": "23a15d53d9badef115d89a0b779f59f974c63b55"
+    },
+    {
+      "path": "src/flag_gems/runtime/backend/_hygon/experimental/under90/f03.py",
+      "origin": "under90-apptainer-ai4perf-20261102-r2/selected/f03.py",
+      "source_sha256": "3d0d1e35ae96e69dfb27cd15c7664564d3ec53efc90be945be72d5b3eaefd068",
+      "family": "nonzero_masked_select",
+      "status": "selected_in_fixed_release_not_retested_on_master",
+      "sha256": "61d1dfa6495a9c88e605218acecd46cb0001319350ad4f6187ace9d0f85087ea",
+      "archived_source": "docs/hygon-optimization/history/sources/3d0d1e35ae96e69dfb27cd15c7664564d3ec53efc90be945be72d5b3eaefd068.py.txt",
+      "archive_origin_commit": "23a15d53d9badef115d89a0b779f59f974c63b55"
+    },
+    {
+      "path": "src/flag_gems/runtime/backend/_hygon/experimental/under90/f04.py",
+      "origin": "under90-apptainer-ai4perf-20261102-r2/selected/f04.py",
+      "source_sha256": "fc9c2dbaecfa9d36dd218a62f05716db4933dd29170748da7929c3017e2ea417",
+      "family": "masked_fill",
+      "status": "selected_in_fixed_release_not_retested_on_master",
+      "sha256": "f762e160354ad7bbb5bfcb604097ece89d84e919d0c948a0909e302ef282d4ef",
+      "archived_source": "docs/hygon-optimization/history/sources/fc9c2dbaecfa9d36dd218a62f05716db4933dd29170748da7929c3017e2ea417.py.txt",
+      "archive_origin_commit": "23a15d53d9badef115d89a0b779f59f974c63b55"
+    },
+    {
+      "path": "src/flag_gems/runtime/backend/_hygon/experimental/under90/f05.py",
+      "origin": "under90-apptainer-ai4perf-20261102-r2/selected/f05.py",
+      "source_sha256": "3a35b5bf50262b65d0558e4ec1b7bdaf26a52461c2bf155d6265ea845481cb26",
+      "family": "factories_floor_nan_to_num",
+      "status": "selected_in_fixed_release_not_retested_on_master",
+      "sha256": "4076f4f1eac841698420faf9da7773a0b395c389bde57edd41cca67056f22083",
+      "archived_source": "docs/hygon-optimization/history/sources/3a35b5bf50262b65d0558e4ec1b7bdaf26a52461c2bf155d6265ea845481cb26.py.txt",
+      "archive_origin_commit": "ae3a6d66a6adef15c4b7feb9c71d24c99d56343b"
+    },
+    {
+      "path": "src/flag_gems/runtime/backend/_hygon/experimental/under90/f06.py",
+      "origin": "under90-apptainer-ai4perf-20261102-r2/selected/f06.py",
+      "source_sha256": "0fc9fe56af6eed465095c436703f5c34f6f5db3dd4ac9d378dbe37b697957358",
+      "family": "trigonometry",
+      "status": "selected_in_fixed_release_not_retested_on_master",
+      "sha256": "a414737888abea916ed502dfdef92975fd6bd5afa10640f8652dd310ebf89e4a",
+      "archived_source": "docs/hygon-optimization/history/sources/0fc9fe56af6eed465095c436703f5c34f6f5db3dd4ac9d378dbe37b697957358.py.txt",
+      "archive_origin_commit": "ae3a6d66a6adef15c4b7feb9c71d24c99d56343b"
+    },
+    {
+      "path": "src/flag_gems/runtime/backend/_hygon/experimental/under90/f07.py",
+      "origin": "under90-apptainer-ai4perf-20261102-r2/selected/f07.py",
+      "source_sha256": "48737da6e08c6b28720abc0a2c6dc5c4426a5a76f7e0972880495d0dab39ad66",
+      "family": "activations_neg",
+      "status": "selected_in_fixed_release_not_retested_on_master",
+      "sha256": "0c25a3fb18ad6b42bddd783af4aa60d6c2acb1a5e5883916fb6f72edc65b28ba",
+      "archived_source": "docs/hygon-optimization/history/sources/48737da6e08c6b28720abc0a2c6dc5c4426a5a76f7e0972880495d0dab39ad66.py.txt",
+      "archive_origin_commit": "ae3a6d66a6adef15c4b7feb9c71d24c99d56343b"
+    },
+    {
+      "path": "src/flag_gems/runtime/backend/_hygon/experimental/under90/f08.py",
+      "origin": "under90-apptainer-ai4perf-20261102-r2/selected/f08.py",
+      "source_sha256": "95e54f839d33fd5168a5e8c5959955ad58a0d5c66273e7240134cd18c92f46a1",
+      "family": "rsqrt",
+      "status": "selected_in_fixed_release_not_retested_on_master",
+      "sha256": "8ce127e9f990e699ceefd3848176f1e2867f8654de569941e4b34c4db02f605f",
+      "archived_source": "docs/hygon-optimization/history/sources/95e54f839d33fd5168a5e8c5959955ad58a0d5c66273e7240134cd18c92f46a1.py.txt",
+      "archive_origin_commit": "ae3a6d66a6adef15c4b7feb9c71d24c99d56343b"
+    },
+    {
+      "path": "src/flag_gems/runtime/backend/_hygon/experimental/under90/f09.py",
+      "origin": "under90-apptainer-ai4perf-20261102-r2/selected/f09.py",
+      "source_sha256": "435b55ffbdc0b949722c62f0e58cec04894d447608fe4e7d5120397afafb6cc8",
+      "family": "randperm",
+      "status": "selected_in_fixed_release_not_retested_on_master",
+      "sha256": "04bfaea5e6f9776ceab98e03fe63063bed1ef7158777eef9e295d8061da64377",
+      "archived_source": "docs/hygon-optimization/history/sources/435b55ffbdc0b949722c62f0e58cec04894d447608fe4e7d5120397afafb6cc8.py.txt",
+      "archive_origin_commit": "23a15d53d9badef115d89a0b779f59f974c63b55"
+    },
+    {
+      "path": "src/flag_gems/runtime/backend/_hygon/experimental/under90/variant.py",
+      "origin": "under90-apptainer-ai4perf-20261102-r2/selected/variant.py",
+      "source_sha256": "4ff2a042d24efbba31e5d7bc5f13c80be44166c71ee2d2f8e21a6cc6ce1471c4",
+      "family": "under90_loader",
+      "status": "selected_in_fixed_release_not_retested_on_master",
+      "sha256": "0960597e3956ed2d1a5afe006971619a8e95d90a30238a3e5e7fdb66f7b8c534",
+      "archived_source": "docs/hygon-optimization/history/sources/4ff2a042d24efbba31e5d7bc5f13c80be44166c71ee2d2f8e21a6cc6ce1471c4.py.txt",
+      "archive_origin_commit": "23a15d53d9badef115d89a0b779f59f974c63b55"
+    },
+    {
+      "path": "src/flag_gems/runtime/backend/_hygon/experimental/sort.py",
+      "origin": "sort-randperm-followup-20261029/deliverables/sort-selected.py",
+      "source_sha256": "3c93c3cb5f86887c5209b731e1cee815987fdd681cf610673953e725d267d75e",
+      "family": "sort",
+      "status": "selected_in_fixed_release_not_retested_on_master",
+      "sha256": "873234dd6a1d069cb4a525cc22080ff80d5740186b113b9a3df3d5e63834d978",
+      "archived_source": "docs/hygon-optimization/history/sources/3c93c3cb5f86887c5209b731e1cee815987fdd681cf610673953e725d267d75e.py.txt",
+      "archive_origin_commit": "09aee41c692b76f6117d2790884fc8eeb0bde7d1"
+    },
+    {
+      "path": "src/flag_gems/runtime/backend/_hygon/experimental/matrix.py",
+      "origin": "top20/matrix-family/candidate-2.py",
+      "source_sha256": "9b08074b410fab0dc990c384f6fb9fff99f02499a8ca9d7ff37fafbc29d426ae",
+      "family": "mm_bmm_addmm",
+      "status": "selected_in_fixed_release_24_of_33_device_targets",
+      "sha256": "40d4cbac663fd5520912b76b9789e99ae60618adffae4d028eef0a92e4b323ba",
+      "archived_source": "docs/hygon-optimization/history/sources/9b08074b410fab0dc990c384f6fb9fff99f02499a8ca9d7ff37fafbc29d426ae.py.txt",
+      "archive_origin_commit": "1ca582b4d17f935ba04706384da9a06d5a5bae6e"
+    },
+    {
+      "path": "src/flag_gems/runtime/backend/_hygon/experimental/index.py",
+      "origin": "top20/index-family/selected/index_impl.py",
+      "source_sha256": "5c5db9554d8dc9ac36a0ffdaf19f7edb612bb6693d0c0374eaee74fa8a37836a",
+      "family": "index_routing",
+      "status": "torch_fl_compatibility_only_existing_kernel",
+      "sha256": "8c206cfa8d75dcb611bd70721575aaf67241ab66df73f435659e3b233fea12bf",
+      "archived_source": "docs/hygon-optimization/history/sources/5c5db9554d8dc9ac36a0ffdaf19f7edb612bb6693d0c0374eaee74fa8a37836a.py.txt",
+      "archive_origin_commit": "5e9fa97ad475bb0f5a7a2a7ba643abc8c13d5db5"
+    }
+  ]
+}
