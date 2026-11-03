@@ -1,0 +1,40 @@
+# SOURCE PREPARATION ONLY. Not integrated, compiled, or hardware validated.
+# Hypothesis based on pinned upstream SumKernel.cpp, not an actual build proof.
+# Same ATen sum, FP32 input/accumulation/output; no model or cross-op fusion.
+from flag_gems.utils import libentry
+from flag_gems.utils import triton_lang_extension as ext
+import triton
+import triton.language as tl
+
+@libentry()
+@triton.jit
+def sum_short_rows_cpu_order_fp32(
+    inp, out, M, N: tl.constexpr,
+    BLOCK_M: tl.constexpr,
+    LANES: tl.constexpr,
+):
+    row = ext.program_id(0) * BLOCK_M + tl.arange(0, BLOCK_M)
+    lane = tl.arange(0, LANES)
+    accum = tl.full((BLOCK_M, LANES), 0.0, tl.float32)
+    if N >= 8:
+        # AVX2 float vector: accumulate full eight-element vectors lane-wise.
+        for chunk in tl.static_range(0, N // 8):
+            values = tl.load(inp + row[:, None] * N + chunk * 8 + lane[None, :],
+                             mask=row[:, None] < M, other=0.0)
+            accum = accum + values
+        tail = tl.full((BLOCK_M,), 0.0, tl.float32)
+        for j in tl.static_range((N // 8) * 8, N):
+            tail = tail + tl.load(inp + row * N + j, mask=row < M, other=0.0)
+    else:
+        # Upstream scalar short reduction has four interleaved accumulators.
+        for chunk in tl.static_range(0, tl.cdiv(N, 4)):
+            col = chunk * 4 + lane
+            values = tl.load(inp + row[:, None] * N + col[None, :],
+                             mask=(row[:, None] < M) & (col[None, :] < N), other=0.0)
+            accum = accum + values
+        tail = tl.full((BLOCK_M,), 0.0, tl.float32)
+    folded = tl.full((BLOCK_M, 1), 0.0, tl.float32)
+    for j in tl.static_range(0, LANES):
+        folded = folded + tl.gather(accum, tl.full((BLOCK_M, 1), j, tl.int32), axis=1)
+    result = tail + tl.reshape(folded, (BLOCK_M,))
+    tl.store(out + row, result, mask=row < M)

@@ -1,0 +1,297 @@
+"""F02 final trial 2: preserve trial-1 fast kernels; repair rank-2 FP32 semantics.
+
+Pinned gate: design-f02.json, snapshot 20261102-162036-adc63b87dd14.
+No identity/permutation assumption. No tensor-dependent state or autotuning.
+A stride-aware generic FP32 functional path handles dim/alpha variations.
+The original FlagGems callable handles metadata outside the declared domains.
+Device correctness and performance require main's R6 validation.
+"""
+
+import triton
+import triton.language as tl
+
+
+@triton.jit
+def _f02_copy_validate_kernel(
+    inp,
+    index,
+    out,
+    status,
+    OUT_NUMEL: tl.constexpr,
+    OUT_ROWS: tl.constexpr,
+    INDEX_NUMEL: tl.constexpr,
+    INDEX_BLOCK: tl.constexpr,
+    COPY_BLOCK: tl.constexpr,
+):
+    pid = tl.program_id(0)
+    offsets = pid * COPY_BLOCK + tl.arange(0, COPY_BLOCK)
+    values = tl.load(inp + offsets, mask=offsets < OUT_NUMEL, other=0.0)
+    tl.store(out + offsets, values, mask=offsets < OUT_NUMEL)
+
+    # One program writes status once. Checking the complete vector here avoids
+    # aminmax temporaries, vendor reduction, and a separate validation launch.
+    # The following scatter launch is ordered after the whole copy launch.
+    if pid == 0:
+        positions = tl.arange(0, INDEX_BLOCK)
+        active = positions < INDEX_NUMEL
+        destinations = tl.load(index + positions, mask=active, other=0).to(tl.int64)
+        invalid = active & ((destinations < 0) | (destinations >= OUT_ROWS))
+        any_invalid = tl.max(invalid.to(tl.int32), axis=0)
+        tl.store(status, any_invalid)
+
+
+@triton.jit
+def _f02_scatter_kernel(
+    index,
+    src,
+    out,
+    OUT_ROWS: tl.constexpr,
+    SOURCE_NUMEL: tl.constexpr,
+    COLS: tl.constexpr,
+    BLOCK: tl.constexpr,
+):
+    offsets = tl.program_id(0) * BLOCK + tl.arange(0, BLOCK)
+    active = offsets < SOURCE_NUMEL
+    rows = offsets // COLS
+    cols = offsets % COLS
+    destinations = tl.load(index + rows, mask=active, other=0).to(tl.int64)
+    valid = active & (destinations >= 0) & (destinations < OUT_ROWS)
+    # Clamp only the pointer for inactive/invalid lanes, never the semantics:
+    # status still raises for every invalid index before returning the result.
+    safe_destinations = tl.where(valid, destinations, 0)
+    values = tl.load(src + offsets, mask=active, other=0.0)
+    tl.atomic_add(
+        out + safe_destinations * COLS + cols,
+        values,
+        mask=valid,
+        sem="relaxed",
+    )
+
+
+def _eligible(torch, inp, dim, index, src, alpha):
+    # Every predicate uses scalar parameters or tensor metadata, never values.
+    # Source/index values may change between calls without changing this path.
+    if not all(isinstance(t, torch.Tensor) for t in (inp, index, src)):
+        return False
+    if type(dim) is not int or dim not in (0, -2):
+        return False
+    # alpha is a documented scalar parameter. Other scalar values/types retain
+    # the original FlagGems implementation, including its casting/error rules.
+    if type(alpha) is not int or alpha != 1:
+        return False
+    if inp.ndim != 2 or src.ndim != 2 or index.ndim != 1:
+        return False
+    if inp.dtype != torch.float32 or src.dtype != torch.float32:
+        return False
+    if index.dtype not in (torch.int32, torch.int64):
+        return False
+    if inp.device.type not in ("cuda", "flagos", "privateuseone"):
+        return False
+    if inp.device != src.device or inp.device != index.device:
+        return False
+    if inp.layout != torch.strided or src.layout != torch.strided:
+        return False
+    if index.layout != torch.strided:
+        return False
+    if inp.requires_grad or src.requires_grad:
+        return False
+    if not (inp.is_contiguous() and src.is_contiguous() and index.is_contiguous()):
+        return False
+    if inp.shape[1] != 16 or src.shape[1] != 16:
+        return False
+    if not (1 <= inp.shape[0] <= 1024 and 1 <= src.shape[0] <= 1024):
+        return False
+    return index.numel() == src.shape[0]
+
+
+@triton.jit
+def _f02_generic_copy_validate_kernel(
+    inp, index, out, status,
+    OUT_NUMEL: tl.constexpr,
+    OUT_DIM: tl.constexpr,
+    INDEX_NUMEL: tl.constexpr,
+    INDEX_STRIDE: tl.constexpr,
+    INDEX_BLOCK: tl.constexpr,
+    BLOCK: tl.constexpr,
+):
+    pid = tl.program_id(0)
+    offsets = (pid * BLOCK + tl.arange(0, BLOCK)).to(tl.int64)
+    values = tl.load(inp + offsets, mask=offsets < OUT_NUMEL, other=0.0)
+    tl.store(out + offsets, values, mask=offsets < OUT_NUMEL)
+    if pid == 0:
+        positions = tl.arange(0, INDEX_BLOCK).to(tl.int64)
+        active = positions < INDEX_NUMEL
+        destinations = tl.load(
+            index + positions * INDEX_STRIDE, mask=active, other=0
+        ).to(tl.int64)
+        bad = active & ((destinations < 0) | (destinations >= OUT_DIM))
+        tl.store(status, tl.max(bad.to(tl.int32), axis=0))
+
+
+@triton.jit
+def _f02_generic_scatter_kernel(
+    index, src, out, alpha,
+    DIM: tl.constexpr,
+    OUT_DIM: tl.constexpr,
+    OUT_COLS: tl.constexpr,
+    SOURCE_NUMEL: tl.constexpr,
+    SOURCE_COLS: tl.constexpr,
+    SOURCE_STRIDE_0: tl.constexpr,
+    SOURCE_STRIDE_1: tl.constexpr,
+    INDEX_STRIDE: tl.constexpr,
+    BLOCK: tl.constexpr,
+):
+    logical = (tl.program_id(0) * BLOCK + tl.arange(0, BLOCK)).to(tl.int64)
+    active = logical < SOURCE_NUMEL
+    rows = logical // SOURCE_COLS
+    cols = logical % SOURCE_COLS
+    if DIM == 0:
+        index_positions = rows
+    else:
+        index_positions = cols
+    destinations = tl.load(
+        index + index_positions * INDEX_STRIDE, mask=active, other=0
+    ).to(tl.int64)
+    valid = active & (destinations >= 0) & (destinations < OUT_DIM)
+    safe_destinations = tl.where(valid, destinations, 0)
+    if DIM == 0:
+        output_offsets = safe_destinations * OUT_COLS + cols
+    else:
+        output_offsets = rows * OUT_COLS + safe_destinations
+    # Use source strides, never source physical offsets to infer destination
+    # coordinates. This is essential for source[:, ::2] in the failed guard.
+    source_offsets = rows * SOURCE_STRIDE_0 + cols * SOURCE_STRIDE_1
+    values = tl.load(src + source_offsets, mask=active, other=0.0)
+    scaled = values * alpha
+    tl.atomic_add(out + output_offsets, scaled, mask=valid, sem="relaxed")
+
+
+def _generic_eligible(torch, inp, dim, index, src, alpha):
+    """Metadata domain, independent of any fixed shape, recipe or index value."""
+    if not all(isinstance(t, torch.Tensor) for t in (inp, index, src)):
+        return False
+    if type(dim) is not int or dim not in (0, 1, -1, -2):
+        return False
+    if type(alpha) not in (int, float):
+        return False
+    if type(alpha) is int and not (-2**63 <= alpha < 2**63):
+        return False
+    # Finite real alpha representable in FP32. This comparison also safely
+    # excludes oversized Python integers without first converting them.
+    if not (-3.4028234663852886e38 <= alpha <= 3.4028234663852886e38):
+        return False
+    if inp.ndim != 2 or src.ndim != 2 or index.ndim != 1:
+        return False
+    if inp.dtype != torch.float32 or src.dtype != torch.float32:
+        return False
+    if index.dtype not in (torch.int32, torch.int64):
+        return False
+    if inp.device.type not in ("cuda", "flagos", "privateuseone"):
+        return False
+    if inp.device != src.device or inp.device != index.device:
+        return False
+    if any(t.layout != torch.strided for t in (inp, index, src)):
+        return False
+    if inp.requires_grad or src.requires_grad or not inp.is_contiguous():
+        return False
+    if any(s < 0 for s in src.stride()) or index.stride(0) < 0:
+        return False
+    normalized_dim = dim % 2
+    if index.numel() != src.shape[normalized_dim]:
+        return False
+    if inp.shape[1 - normalized_dim] != src.shape[1 - normalized_dim]:
+        return False
+    # Bound validation-vector size and copy-grid arithmetic, not index values.
+    # Empty index is supported for positive-size destinations. Zero-size self
+    # and larger/rank/dtype/layout cases retain the original provider.
+    if not (0 < inp.numel() < 2**31 and 0 <= src.numel() < 2**31):
+        return False
+    return index.numel() <= 4096
+
+
+def _generic_index_add(torch, torch_device_fn, inp, dim, index, src, alpha):
+    normalized_dim = dim % 2
+    count = index.numel()
+    with torch_device_fn.device(inp.device):
+        out = torch.empty_like(inp)
+        status = torch.empty((), dtype=torch.int32, device=inp.device)
+        _f02_generic_copy_validate_kernel[(triton.cdiv(inp.numel(), 256),)](
+            inp, index, out, status,
+            inp.numel(), inp.shape[normalized_dim], count, index.stride(0),
+            triton.next_power_of_2(max(1, count)), 256,
+            num_warps=4, enable_fp_fusion=False,
+        )
+        if src.numel() != 0:
+            _f02_generic_scatter_kernel[(triton.cdiv(src.numel(), 256),)](
+                index, src, out, alpha,
+                normalized_dim, inp.shape[normalized_dim], inp.shape[1],
+                src.numel(), src.shape[1], src.stride(0), src.stride(1),
+                index.stride(0), 256,
+                num_warps=4, enable_fp_fusion=False,
+            )
+        # This scalar transfer only reports device-side bounds validation;
+        # input/source/index tensor values never participate in host arithmetic.
+        if status.item() != 0:
+            raise AssertionError("0 <= index < self.size(dim)")
+    return out
+
+
+def install(torch, flag_gems):
+    """Replace root index_add before main's ATen provider captures the entry."""
+    original = flag_gems.index_add
+    if getattr(original, "_under90_f02_trial", None) == "copy_validate_scatter_v2":
+        return
+    # If main installs on top of trial 1, retain the pre-trial provider directly.
+    if getattr(original, "_under90_f02_trial", None) == "copy_validate_scatter_v1":
+        original = original._under90_f02_original
+    # Resolve installed runtime dependency here; no benchmark/source mirror
+    # path is needed when this file is copied to snapshot/f02.py.
+    from flag_gems.runtime import torch_device_fn
+
+    def index_add(inp, dim, index, src, alpha=1):
+        if not _eligible(torch, inp, dim, index, src, alpha):
+            if _generic_eligible(torch, inp, dim, index, src, alpha):
+                return _generic_index_add(
+                    torch, torch_device_fn, inp, dim, index, src, alpha
+                )
+            return original(inp, dim, index, src, alpha=alpha)
+
+        rows, cols = inp.shape
+        count = index.numel()
+        with torch_device_fn.device(inp.device):
+            out = torch.empty_like(inp)
+            status = torch.empty((), dtype=torch.int32, device=inp.device)
+            _f02_copy_validate_kernel[(triton.cdiv(inp.numel(), 256),)](
+                inp,
+                index,
+                out,
+                status,
+                inp.numel(),
+                rows,
+                count,
+                triton.next_power_of_2(count),
+                256,
+                num_warps=4,
+                enable_fp_fusion=False,
+            )
+            _f02_scatter_kernel[(triton.cdiv(src.numel(), 256),)](
+                index,
+                src,
+                out,
+                rows,
+                src.numel(),
+                cols,
+                256,
+                num_warps=4,
+                enable_fp_fusion=False,
+            )
+            # Functional-only: inputs are never mutated, even for an invalid
+            # index. Checking after enqueueing scatter avoids an inter-kernel
+            # host synchronization. Unsafe destinations never receive stores.
+            if status.item() != 0:
+                raise AssertionError("0 <= index < self.size(dim)")
+        return out
+
+    index_add._under90_f02_trial = "copy_validate_scatter_v2"
+    index_add._under90_f02_original = original
+    flag_gems.index_add = index_add

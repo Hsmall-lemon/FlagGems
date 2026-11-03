@@ -1,0 +1,116 @@
+"""Same-ATen eager FP32 inference kernels. Ordinary JIT/LibEntry, never CompiledKernel caches."""
+import torch
+import triton
+import triton.language as tl
+from flag_gems.runtime import torch_device_fn
+from flag_gems.utils.libentry import libentry
+
+@triton.jit
+def _merge_moments_vec(na, ma, sa, nb, mb, sb):
+ n = na + nb
+ c = tl.where(n == 0, 0., tl.div_rn(nb.to(tl.float32), n.to(tl.float32)))
+ delta = mb - ma
+ tmp = sa + sb
+ cd = c * delta
+ nd = delta * na.to(tl.float32)
+ mean = ma + cd
+ m2 = tl.fma(nd, cd, tmp)
+ return n, mean, m2
+
+@libentry()
+@triton.jit(do_not_specialize=['eps'])
+def norm_kernel(X,Y,W,B,Mean,Rstd,N:tl.constexpr,Outer:tl.constexpr,S0:tl.constexpr,S1:tl.constexpr,eps,BLOCK:tl.constexpr,V:tl.constexpr):
+ # Hypothesis from installed CPU moments_utils.h, NOT established binary provenance.
+ # Only N320/1280 and V8/16; no scalar tail in these admitted domains.
+ row=tl.program_id(0);lane=tl.arange(0,V)
+ base=(row//Outer)*S0+(row%Outer)*S1
+ n0=tl.full((),0,tl.int32);n1=tl.full((),0,tl.int32);n2=tl.full((),0,tl.int32);n3=tl.full((),0,tl.int32)
+ m0=tl.full((V,),0.,tl.float32);m1=tl.full((V,),0.,tl.float32);m2=tl.full((V,),0.,tl.float32);m3=tl.full((V,),0.,tl.float32)
+ s0=tl.full((V,),0.,tl.float32);s1=tl.full((V,),0.,tl.float32);s2=tl.full((V,),0.,tl.float32);s3=tl.full((V,),0.,tl.float32)
+ CHUNKS:tl.constexpr=(N//V+15)//16
+ DEPTH:tl.constexpr=1 if CHUNKS<=2 else 2 if CHUNKS<=4 else 3 if CHUNKS<=8 else 4
+ for i in tl.static_range(0,CHUNKS):
+  cm=tl.full((V,),0.,tl.float32);cs=tl.full((V,),0.,tl.float32)
+  for j in tl.static_range(0,min(16,N//V-i*16)):
+   x=tl.load(X+base+(i*16+j)*V+lane).to(tl.float32)
+   delta=x-cm
+   coefficient=tl.full((),1.0/(j+1),tl.float32)
+   cm=tl.fma(coefficient,delta,cm)
+   cs=tl.fma(delta,x-cm,cs)
+  cn=tl.full((),min(16,N//V-i*16),tl.int32)
+  n0,m0,s0=_merge_moments_vec(n0,m0,s0,cn,cm,cs)
+  if DEPTH>1 and (i+1)%2==0:
+   n1,m1,s1=_merge_moments_vec(n1,m1,s1,n0,m0,s0)
+   n0=tl.full((),0,tl.int32);m0=tl.full((V,),0.,tl.float32);s0=tl.full((V,),0.,tl.float32)
+   if DEPTH>2 and (i+1)%4==0:
+    n2,m2,s2=_merge_moments_vec(n2,m2,s2,n1,m1,s1)
+    n1=tl.full((),0,tl.int32);m1=tl.full((V,),0.,tl.float32);s1=tl.full((V,),0.,tl.float32)
+    if DEPTH>3 and (i+1)%8==0:
+     n3,m3,s3=_merge_moments_vec(n3,m3,s3,n2,m2,s2)
+     n2=tl.full((),0,tl.int32);m2=tl.full((V,),0.,tl.float32);s2=tl.full((V,),0.,tl.float32)
+ if DEPTH>1:n0,m0,s0=_merge_moments_vec(n0,m0,s0,n1,m1,s1)
+ if DEPTH>2:n0,m0,s0=_merge_moments_vec(n0,m0,s0,n2,m2,s2)
+ if DEPTH>3:n0,m0,s0=_merge_moments_vec(n0,m0,s0,n3,m3,s3)
+ count=tl.full((),0,tl.int32);mean=tl.full((),0.,tl.float32);total_m2=tl.full((),0.,tl.float32)
+ for k in tl.static_range(0,V):
+  other_mean=tl.reshape(tl.gather(m0,tl.full((1,),k,tl.int32),axis=0),())
+  other_m2=tl.reshape(tl.gather(s0,tl.full((1,),k,tl.int32),axis=0),())
+  total=count+n0
+  c=tl.div_rn(n0.to(tl.float32),total.to(tl.float32))
+  delta=other_mean-mean
+  mean=mean+c*delta
+  total_m2=total_m2+(other_m2+delta*delta*c*count.to(tl.float32))
+  count=total
+ var=tl.div_rn(total_m2,tl.full((),N,tl.float32))
+ rstd=tl.div_rn(tl.full((),1.,tl.float32),tl.sqrt_rn(var+eps))
+ col=tl.arange(0,BLOCK);mask=col<N
+ x=tl.load(X+base+col,mask,other=0.).to(tl.float32)
+ # FP32 CPU LayerNormSecondPass uses bias=-mean (NOT reduced-type -mean*rstd).
+ gamma=tl.load(W+col,mask,other=1.) if W is not None else tl.full((BLOCK,),1.,tl.float32)
+ beta=tl.load(B+col,mask,other=0.) if B is not None else tl.full((BLOCK,),0.,tl.float32)
+ result=((x-mean)*rstd)*gamma+beta
+ tl.store(Y+row*N+col,result,mask);tl.store(Mean+row,mean);tl.store(Rstd+row,rstd)
+
+
+@triton.jit
+def unary_kernel(X,Y,N,D0:tl.constexpr,D1:tl.constexpr,D2:tl.constexpr,D3:tl.constexpr,S0:tl.constexpr,S1:tl.constexpr,S2:tl.constexpr,S3:tl.constexpr,OP:tl.constexpr,BLOCK:tl.constexpr):
+ i=tl.program_id(0)*BLOCK+tl.arange(0,BLOCK)
+ j=i.to(tl.int64)
+ off=(j%D3)*S3;j=j//D3
+ off+=(j%D2)*S2;j=j//D2
+ off+=(j%D1)*S1;j=j//D1
+ off+=(j%D0)*S0
+ x=tl.load(X+off,i<N,other=0.)
+ if OP==0:
+  # IEEE sign toggle, not arithmetic subtraction/fast-math fneg.
+  # This preserves signed zero and subnormal payloads for both supported types.
+  if x.dtype==tl.float64:
+   bits=x.to(tl.uint64,bitcast=True)
+   v=(bits ^ tl.full((),0x8000000000000000,tl.uint64)).to(tl.float64,bitcast=True)
+  else:
+   bits=x.to(tl.uint32,bitcast=True)
+   v=(bits ^ tl.full((),0x80000000,tl.uint32)).to(tl.float32,bitcast=True)
+ else:v=tl.math.erf(x)
+ tl.store(Y+i,v,i<N)
+
+def run_norm(x,weight,bias,eps):
+ n=x.shape[-1];rows=x.numel()//n;outer=x.shape[1]
+ capability=torch._C._get_cpu_capability()
+ if capability not in ("AVX512","AVX2"):raise RuntimeError("unqualified CPU norm reference capability")
+ # Fixed upstream REGISTER_DISPATCH does not register the AVX512 norm kernel.
+ # V8 is a source-derived hypothesis, not a loaded-binary attestation.
+ v=8
+ with torch_device_fn.device(x.device):
+  y=torch.empty(x.shape,dtype=x.dtype,device=x.device)
+  mean=torch.empty(x.shape[:-1]+(1,),dtype=torch.float32,device=x.device)
+  rstd=torch.empty_like(mean)
+  norm_kernel[(rows,)](x,y,weight,bias,mean,rstd,n,outer,x.stride(0),x.stride(1),eps,triton.next_power_of_2(n),v,num_warps=4,enable_fp_fusion=False)
+ return y,mean,rstd
+
+def run_unary(x,op):
+ n=x.numel();pad=4-x.ndim
+ shape=(1,)*pad+tuple(x.shape);stride=(0,)*pad+tuple(x.stride())
+ with torch_device_fn.device(x.device):
+  y=torch.empty(x.shape,dtype=x.dtype,device=x.device)
+  if n:unary_kernel[(triton.cdiv(n,1024),)](x,y,n,*shape,*stride,op,1024,num_warps=4,enable_fp_fusion=False)
+ return y

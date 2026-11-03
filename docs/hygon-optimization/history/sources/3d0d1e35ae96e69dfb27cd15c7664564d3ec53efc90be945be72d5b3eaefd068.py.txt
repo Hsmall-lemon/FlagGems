@@ -1,0 +1,180 @@
+"""F03 structural trial 2: unchanged nonzero plus legal empty masked_select repair.
+
+Eligible: contiguous strided FP32 accelerator input, 1 <= numel <= 2**22.
+The bound limits the single-CTA block-count scan to 4096 entries; it is not a
+workload shape/density guard. All other nonempty, nonscalar inputs retain the
+captured FlagGems baseline, explicitly outside candidate acceleration coverage.
+One exact-cardinality scalar synchronization is intentional and must be timed.
+"""
+import triton
+import triton.language as tl
+from flag_gems.runtime import torch_device_fn
+
+_BLOCK = 1024
+_MAX_BLOCKS = 4096
+_torch = None
+_baseline_nonzero = None
+_baseline_masked_select = None
+
+
+@triton.jit
+def _f03_count(inp, work, N: tl.constexpr, BLOCK: tl.constexpr):
+    pid = tl.program_id(0)
+    offsets = pid * BLOCK + tl.arange(0, BLOCK)
+    values = tl.load(inp + offsets, mask=offsets < N, other=0)
+    selected = (offsets < N) & (values != 0)
+    count = tl.sum(selected.to(tl.int32), axis=0)
+    tl.store(work + pid, count)
+
+
+@triton.jit
+def _f03_scan_counts(work, NB: tl.constexpr, SCAN: tl.constexpr):
+    offsets = tl.arange(0, SCAN)
+    counts = tl.load(work + offsets, mask=offsets < NB, other=0)
+    inclusive = tl.cumsum(counts, axis=0)
+    tl.store(work + NB + offsets, inclusive - counts, mask=offsets < NB)
+    tl.store(work + 2 * NB, tl.sum(counts, axis=0))
+
+
+@triton.jit
+def _f03_scatter(inp, work, out, N: tl.constexpr, NB: tl.constexpr,
+                 SHAPE: tl.constexpr, BLOCK: tl.constexpr):
+    pid = tl.program_id(0)
+    offsets = pid * BLOCK + tl.arange(0, BLOCK)
+    values = tl.load(inp + offsets, mask=offsets < N, other=0)
+    selected = (offsets < N) & (values != 0)
+    local = tl.cumsum(selected.to(tl.int32), axis=0) - 1
+    base = tl.load(work + NB + pid)
+    row = (base + local).to(tl.int64)
+    flat = offsets.to(tl.int64)
+    for dim in tl.static_range(len(SHAPE) - 1, -1, -1):
+        coordinate = flat % SHAPE[dim]
+        flat = flat // SHAPE[dim]
+        tl.store(out + row * len(SHAPE) + dim, coordinate, mask=selected)
+
+
+def eligible(inp):
+    """Explicit accelerated-path guard; dtype/layout/size, never input values."""
+    return (inp.device.type != 'cpu' and inp.dtype == _torch.float32
+            and inp.layout == _torch.strided and inp.is_contiguous()
+            and 0 < inp.numel() <= _BLOCK * _MAX_BLOCKS and inp.ndim > 0)
+
+
+def nonzero(inp, *, as_tuple=False):
+    torch = _torch
+    ndim = inp.ndim
+    n = inp.numel()
+    # No prefix[-1], zero-grid launch, or scalar zero-column unbind.
+    if n == 0:
+        if as_tuple:
+            return tuple(torch.empty((0,), dtype=torch.int64, device=inp.device)
+                         for _ in range(max(ndim, 1)))
+        return torch.empty((0, ndim), dtype=torch.int64, device=inp.device)
+    if ndim == 0:
+        # A scalar predicate is cardinality metadata, not a host payload copy.
+        z = int((inp != 0).item())
+        if as_tuple:
+            return (torch.zeros((z,), dtype=torch.int64, device=inp.device),)
+        return torch.empty((z, 0), dtype=torch.int64, device=inp.device)
+    if not eligible(inp):
+        # Explicit baseline routing, not claimed as an F03 optimized execution.
+        matrix = _baseline_nonzero(inp, as_tuple=False)
+        return tuple(matrix.unbind(dim=1)) if as_tuple else matrix
+    nb = triton.cdiv(n, _BLOCK)
+    with torch_device_fn.device(inp.device):
+        # Layout: NB block counts, NB exclusive bases, one exact total.
+        work = torch.empty((2 * nb + 1,), dtype=torch.int32, device=inp.device)
+        _f03_count[(nb,)](inp, work, N=n, BLOCK=_BLOCK, num_warps=4)
+        _f03_scan_counts[(1,)](work, NB=nb, SCAN=triton.next_power_of_2(nb), num_warps=4)
+        z = int(work[2 * nb].item())  # REQUIRED dynamic-shape synchronization.
+        matrix = torch.empty((z, ndim), dtype=torch.int64, device=inp.device)
+        if z:
+            _f03_scatter[(nb,)](inp, work, matrix, N=n, NB=nb,
+                               SHAPE=tuple(inp.shape), BLOCK=_BLOCK, num_warps=4)
+    return tuple(matrix.unbind(dim=1)) if as_tuple else matrix
+
+
+def nonzero_numpy(inp):
+    # ATen Tensor[] representation; scalar special case comes from tuple mode.
+    return list(nonzero(inp, as_tuple=True))
+
+
+
+def _empty_broadcast_shape(left, right):
+    """Metadata-only full validation, including zero-versus-nonsingleton errors."""
+    rank = max(len(left), len(right))
+    left = (1,) * (rank - len(left)) + tuple(left)
+    right = (1,) * (rank - len(right)) + tuple(right)
+    result = []
+    for dim, (a, b) in enumerate(zip(left, right)):
+        if a == b:
+            result.append(a)
+        elif a == 1:
+            result.append(b)
+        elif b == 1:
+            result.append(a)
+        else:
+            raise RuntimeError(
+                f'The size of tensor a ({a}) must match the size of tensor b '
+                f'({b}) at non-singleton dimension {dim}')
+    return tuple(result)
+
+
+def masked_select(inp, mask):
+    # Nonempty calls, their validation and their kernels remain the baseline.
+    if inp.numel() != 0 and mask.numel() != 0:
+        return _baseline_masked_select(inp, mask)
+    torch = _torch
+    # Do not widen support for sparse/quantized/experimental dtype backends.
+    if inp.layout != torch.strided or mask.layout != torch.strided:
+        return _baseline_masked_select(inp, mask)
+    if mask.dtype != torch.bool:
+        raise RuntimeError('masked_select: expected BoolTensor for mask')
+    if inp.device != mask.device:
+        raise RuntimeError('masked_select: input and mask must be on the same device')
+    supported = (torch.bool, torch.uint8, torch.int8, torch.int16, torch.int32,
+                 torch.int64, torch.float16, torch.bfloat16, torch.float32,
+                 torch.float64, torch.complex64, torch.complex128)
+    if inp.dtype not in supported:
+        return _baseline_masked_select(inp, mask)
+    common = _empty_broadcast_shape(tuple(inp.shape), tuple(mask.shape))
+    # Validate every dimension before deciding empty: (0,3) and (2,3) is illegal.
+    if 0 not in common:
+        return _baseline_masked_select(inp, mask)
+    # Fresh tensor object; empty tensors may legitimately share data_ptr()==0.
+    # No mask.sum(), tensor scalar shape, payload read, host copy or vendor call.
+    return torch.empty((0,), dtype=inp.dtype, device=inp.device)
+
+
+def install(torch, flag_gems):
+    """Install into this process' main-owned snapshot; preserve public names."""
+    global _torch, _baseline_nonzero, _baseline_masked_select
+    if (getattr(flag_gems.nonzero, '_f03_trial', None) == 2
+            and getattr(flag_gems.masked_select, '_f03_trial', None) == 2):
+        return
+    _torch = torch
+    _baseline_nonzero = getattr(flag_gems.nonzero, '_f03_baseline', flag_gems.nonzero)
+    _baseline_masked_select = getattr(flag_gems.masked_select, '_f03_baseline', flag_gems.masked_select)
+    nonzero._f03_trial = 2
+    masked_select._f03_trial = 2
+    masked_select._f03_baseline = _baseline_masked_select
+    nonzero._f03_baseline = _baseline_nonzero
+    nonzero._f03_guard = eligible
+    replacements = {'nonzero': nonzero, 'nonzero_numpy': nonzero_numpy,
+                    'masked_select': masked_select}
+    for name, function in replacements.items():
+        setattr(flag_gems, name, function)
+    # Registration tuples hold function objects, not late-bound root names.
+    # Replace only F03 entries, preserving every other family and extra fields.
+    if hasattr(flag_gems, '_FULL_CONFIG'):
+        flag_gems._FULL_CONFIG = tuple(
+            (item[0], replacements[item[0]], *item[2:])
+            if item and item[0] in replacements else item
+            for item in flag_gems._FULL_CONFIG)
+    if hasattr(flag_gems, 'FULL_CONFIG_BY_FUNC'):
+        for name in replacements:
+            flag_gems.FULL_CONFIG_BY_FUNC[name] = [
+                item for item in flag_gems._FULL_CONFIG if item and item[0] == name]
+    return {'family': 'f03', 'structural_trial': 2,
+            'accelerated_guard': 'contiguous strided FP32, rank>0, 0<N<=4194304',
+            'required_cardinality_sync': True, 'masked_select_changed': 'legal empty broadcast only; nonempty baseline unchanged'}

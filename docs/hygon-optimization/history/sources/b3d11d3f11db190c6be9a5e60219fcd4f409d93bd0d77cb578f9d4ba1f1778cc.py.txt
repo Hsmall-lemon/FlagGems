@@ -1,0 +1,107 @@
+"""Process-local replacements of existing ATen neg/erf/native_layer_norm only.
+No model graph changes, boxing reroute, data-dependent/reference/output cache.
+Install after Torch-FL before first routed call, in a fresh reviewed allocation.
+"""
+from collections import Counter
+from functools import wraps
+import hashlib,importlib,math
+from pathlib import Path
+from capture_guard import capture_state
+_STATE=None
+PINS={
+ 'neg':'4e03497e4dbcc8bf479eda69f6338a4f89308b7a4ef27ce4404333fbe478e689',
+ 'erf':'6068f99ce84e6bc2daae401653d567284da84cbbdc59684e09ff040d56e90bf6',
+ 'native_layer_norm':'7917832a4671a01df5902e112fd4556593c875a404412c2148b906eb0d067d10',
+}
+LIBENTRY_SHA='4c22919c3ec3a4a0ae652326fe36496e0a5db83c7a378a57a369438c5d6054ba'
+
+def _tensor_ok(t,x,*,affine=False):
+ types=(t.Tensor,t.nn.Parameter) if affine else (t.Tensor,)
+ if type(x) not in types or x.dtype!=t.float32 or x.layout!=t.strided:return False
+ if x.device.type!='flagos' or type(x.device.index) is not int or x.device.index<0:return False
+ if x.is_conj() or x.is_neg() or x.is_quantized or x.is_nested:return False
+ if any(n is not None for n in x.names):return False
+ if t.autograd.forward_ad.unpack_dual(x).tangent is not None:return False
+ if type(x.numel()) is not int or not 0<=x.numel()<=2**31-1024:return False
+ shape=tuple(x.shape);stride=tuple(x.stride())
+ if any(type(v) is not int or v<0 for v in shape+stride):return False
+ off=x.storage_offset()
+ if type(off) is not int or off<0:return False
+ return off+sum(max(d-1,0)*s for d,s in zip(shape,stride))<=2**63-1
+
+def _eligible(t,name,args,kw):
+ # Every optimization is inference-only; unsupported semantics delegate unchanged.
+ if t.is_grad_enabled() or t._C._are_functorch_transforms_active() or t._C._get_tracing_state() is not None:return False
+ if name in ('neg','erf'):
+  return not kw and len(args)==1 and _tensor_ok(t,args[0]) and args[0].ndim<=4
+ if kw or len(args)!=5:return False
+ x,ns,w,b,eps=args
+ if not _tensor_ok(t,x) or x.ndim!=3 or x.shape[-1]!=320 or x.stride(-1)!=1:return False
+ if type(ns) not in (tuple,list) or any(type(v) is not int for v in ns) or tuple(ns)!=(320,):return False
+ if type(eps) is not float or not math.isfinite(eps) or eps<=0:return False
+ for a in (w,b):
+  if a is not None and not (_tensor_ok(t,a,affine=True) and tuple(a.shape)==(320,) and a.is_contiguous() and a.device==x.device):return False
+ return x.shape[0]>0 and x.shape[1]>0
+
+def install():
+ global _STATE
+ if _STATE is not None:return describe_installation()
+ t=importlib.import_module('torch');fg=importlib.import_module('flag_gems');ops=importlib.import_module('flag_gems.ops');rt=importlib.import_module('flag_gems.runtime')
+ if rt.device.vendor_name!='hygon' or not t.version.hip:raise RuntimeError('reviewed Hygon/HIP only')
+ lib=importlib.import_module('flag_gems.utils.libentry')
+ if hashlib.sha256(Path(lib.__file__).read_bytes()).hexdigest()!=LIBENTRY_SHA:raise RuntimeError('unreviewed LibEntry')
+ config=fg._FULL_CONFIG; originals={}; plans=[]; wrappers={};counts=Counter();patches=[]
+ for name,pin in PINS.items():
+  fn=getattr(fg,name); owner=importlib.import_module(fn.__module__);canonical=importlib.import_module('flag_gems.ops.'+name)
+  if hashlib.sha256(Path(owner.__file__).read_bytes()).hexdigest()!=pin:raise RuntimeError('unreviewed '+name+' provider')
+  rows=[r for r in config if r[0]==name]
+  if len(rows)!=1 or rows[0][1] is not fn:raise RuntimeError('inconsistent '+name+' config provider')
+  if any(r[1] is fn and r[0]!=name for r in config):raise RuntimeError('multi-schema provider')
+  modules={id(m):m for m in (fg,ops,canonical,owner)}
+  for m in modules.values():
+   if getattr(m,name,None) is not fn:raise RuntimeError('ambiguous '+name+' alias')
+  originals[name]=fn;plans.append((name,list(modules.values())))
+ kernels=importlib.import_module(__package__+'.kernels')
+ def make(name,original):
+  @wraps(original)
+  def wrapped(*args,**kw):
+   counts[name+'.calls']+=1
+   if not _eligible(t,name,args,kw) or capture_state() is not False:
+    counts[name+'.fallback']+=1;return original(*args,**kw)
+   try:
+    out=kernels.run_norm(args[0],args[2],args[3],args[4]) if name=='native_layer_norm' else kernels.run_unary(args[0],0 if name=='neg' else 1)
+   except BaseException:
+    counts[name+'.errors']+=1;raise
+   counts[name+'.fast']+=1;return out
+  return wrapped
+ for name,mods in plans:
+  fn=make(name,originals[name]);wrappers[name]=fn
+  for m in mods:patches.append((m,name,originals[name],fn))
+ new=[]
+ for row in config:
+  if row[0] in wrappers:
+   v=list(row);v[1]=wrappers[row[0]];row=tuple(v) if isinstance(row,tuple) else v
+  new.append(row)
+ new=tuple(new) if isinstance(config,tuple) else new
+ try:
+  for m,name,old,fn in patches:setattr(m,name,fn)
+  fg._FULL_CONFIG=new
+ except BaseException:
+  for m,name,old,fn in reversed(patches):
+   if getattr(m,name,None) is fn:setattr(m,name,old)
+  raise
+ _STATE={'counts':counts,'patches':patches,'original_config':config,'new_config':new,'wrappers':wrappers,'fg':fg}
+ return describe_installation()
+
+def get_stats():return {} if _STATE is None else dict(_STATE['counts'])
+def describe_installation():
+ return {'installed':_STATE is not None,'schemas':['aten::'+n for n in PINS],'provider_pins':PINS,'no_model_rewrite':True,'no_compiledkernel_cache':True,'hardware_acceptance':False}
+def uninstall():
+ global _STATE
+ if _STATE is None:return
+ s=_STATE
+ if s['fg']._FULL_CONFIG is not s['new_config']:raise RuntimeError('config conflict')
+ for m,n,old,fn in s['patches']:
+  if getattr(m,n,None) is not fn:raise RuntimeError('alias conflict')
+ for m,n,old,fn in reversed(s['patches']):setattr(m,n,old)
+ s['fg']._FULL_CONFIG=s['original_config'];_STATE=None

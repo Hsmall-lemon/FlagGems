@@ -1,0 +1,321 @@
+"""Same-ATen pointwise candidates; next-stage hardware gates required.
+Load under a unique module name (e.g. gs_pointwise_candidate), after torch_fl.
+Install before first routed call; unsupported forms invoke saved original FG.
+"""
+import functools
+import importlib
+import math
+import hashlib
+import struct
+from pathlib import Path
+import sys
+from collections import Counter
+from capture_guard import capture_state
+import torch
+import triton
+import triton.language as tl
+from flag_gems import runtime
+from flag_gems.runtime import torch_device_fn
+from flag_gems.utils import tl_extra_shim
+
+SCHEMAS = {"aten::silu": "silu", "aten::clamp": "clamp",
+           "aten::exp": "exp", "aten::full_like": "full_like"}
+_OPS = {name: i for i, name in enumerate(SCHEMAS)}
+_originals, _wrappers, _counts = {}, {}, {}
+_patches = []
+_install_mapping = None
+_PROVIDER_PINS = {'aten::clamp': {'sha256': '116bc60b7b58b527c128687cf968df886e00a75adb15fd213439930b07e5680f', 'callable': 'flag_gems.ops.clamp.clamp'}, 'aten::exp': {'sha256': 'cfd9a17e847734f624e65c592cb5e8912220a32c8885de2d73e2b4655360cb12', 'callable': 'flag_gems.ops.exp.exp'}, 'aten::full_like': {'sha256': '46aa977dd9539e4eff604c0babf27e59202e047074508dbc612c30932f8e5ca6', 'callable': 'flag_gems.ops.full_like.full_like'}, 'aten::silu': {'sha256': '13676ba7d9df99a47c01007fd723bf2798765f097cb43cb5872c163b9a48c0df', 'callable': '_hygon.ops.silu.silu'}}
+HITS = Counter({schema: 0 for schema in SCHEMAS})
+_libexp = getattr(tl_extra_shim, "exp", None)
+# Never silently route FP64 through tl.exp/fp32. Unknown shim precision -> orig FG.
+_FP64_EXP = callable(_libexp) and "libdevice" in getattr(_libexp, "__module__", "")
+
+
+@triton.jit
+def _gs_kernel(X, Y, N, OP: tl.constexpr, DOUBLE: tl.constexpr,
+               LO: tl.constexpr, HI: tl.constexpr, FILL_BITS: tl.constexpr,
+               BLOCK: tl.constexpr):
+    i = tl.program_id(0) * BLOCK + tl.arange(0, BLOCK)
+    if OP == 3:
+        # Integer specialization distinguishes +0/-0 and preserves subnormal bits.
+        result = tl.full((BLOCK,), FILL_BITS, tl.uint32).to(tl.float32, bitcast=True)
+    else:
+        x = tl.load(X + i, i < N, other=0)
+        if OP == 0:
+            v = x.to(tl.float32)
+            result = tl.fdiv(v, 1.0 + tl.exp(-v))
+        elif OP == 1:
+            if DOUBLE:
+                v = x.to(tl.float64)
+                lower = tl.full((), LO, tl.float64)
+                upper = tl.full((), HI, tl.float64)
+            else:
+                v = x.to(tl.float32)
+                lower = tl.full((), LO, tl.float32)
+                upper = tl.full((), HI, tl.float32)
+            clipped = tl.minimum(upper, tl.maximum(lower, v))
+            result = tl.where(v != v, v, clipped)
+        else:
+            if DOUBLE:
+                result = _libexp(x.to(tl.float64))
+            else:
+                result = tl.exp(x.to(tl.float32))
+    tl.store(Y + i, result, i < N)
+
+
+def _bind(schema, args, kwargs):
+    if schema in ("aten::silu", "aten::exp"):
+        if len(args) == 1 and not kwargs:
+            return args[0], (0.0, 0.0, 0.0), None
+    elif schema == "aten::clamp":
+        # Actual capture is positional (tensor, -5.0, 5.0). Avoid guessing
+        # Python mini/maxi versus aten min/max names or Tensor clamp overloads.
+        if len(args) == 3 and not kwargs:
+            lo, hi = args[1:]
+            if (type(lo) is float and type(hi) is float and
+                math.isfinite(lo) and math.isfinite(hi) and
+                -3.4028234663852886e38 <= lo <= hi <= 3.4028234663852886e38):
+                return args[0], (lo, hi, 0.0), None
+            return None, None, "clamp_bounds"
+    elif schema == "aten::full_like":
+        # ATen capture may show pin_memory=False, but LikeFactory supplies all
+        # five keyword defaults to the actual Python callable. Validate below.
+        known = {"dtype", "layout", "device", "pin_memory", "memory_format"}
+        if len(args) == 2 and not (set(kwargs) - known):
+            fill = args[1]
+            if type(fill) is float and math.isfinite(fill) and abs(fill) <= 3.4028234663852886e38:
+                return args[0], (0.0, 0.0, fill), None
+            return None, None, "fill_scalar"
+    return None, None, "signature"
+
+
+def _full_like_options_guard(x, kwargs):
+    """Only default/equivalent options; never change output dtype/device/layout."""
+    if torch.is_grad_enabled():
+        return "full_like_requires_no_grad"
+    dtype = kwargs.get("dtype")
+    if dtype is not None and dtype is not x.dtype:
+        return "full_like_dtype_override"
+    layout = kwargs.get("layout")
+    if layout is not None and layout is not torch.strided:
+        return "full_like_layout_override"
+    device = kwargs.get("device")
+    if device is not None:
+        # Do not normalize strings, missing indices or different aliases/devices:
+        # only the exact concrete device emitted by LikeFactory is equivalent.
+        if (type(device) is not torch.device or device.type != x.device.type or
+            device.index is None or device.index != x.device.index):
+            return "full_like_device_override"
+    pin = kwargs.get("pin_memory")
+    if pin is not None and pin is not False:
+        return "full_like_pin_memory_override"
+    if kwargs.get("memory_format") is not None:
+        return "full_like_memory_format_override"
+    return None
+
+
+def _guard(schema, x):
+    if getattr(runtime.device, "vendor_name", None) != "hygon" or not getattr(torch.version, "hip", None):
+        return "vendor"
+    if type(x) is not torch.Tensor:
+        return "tensor_subclass_or_non_tensor"
+    if x.device.type not in (torch._C._get_privateuse1_backend_name(), "cuda") or x.device.index is None:
+        return "device"
+    if x.dtype != torch.float32:
+        if x.dtype != torch.float64 or not (schema == "aten::clamp" or schema == "aten::exp" and _FP64_EXP):
+            return "dtype_or_fp64_libdevice"
+    if x.layout != torch.strided or x.is_nested or x.is_quantized or not x.is_contiguous():
+        return "layout"
+    if x.is_conj() or x.is_neg() or any(name is not None for name in x.names):
+        return "view_bits_or_names"
+    if torch._C._are_functorch_transforms_active() or torch._C._get_tracing_state() is not None:
+        return "transform_or_trace"
+    if x.requires_grad and torch.is_grad_enabled():
+        return "reverse_autograd"
+    if torch.autograd.forward_ad.unpack_dual(x).tangent is not None:
+        return "forward_autograd"
+    if type(x.numel()) is not int or not 0 <= x.numel() <= 2**31 - 1:
+        return "index_range"
+    if not hasattr(torch_device_fn, "is_current_stream_capturing"):
+        return "capture_query_unavailable"
+    return None
+
+
+def _make_wrapper(schema, original):
+    @functools.wraps(original)
+    def wrapped(*args, **kwargs):
+        c = _counts[schema]
+        c["calls"] += 1
+        x, params, reason = _bind(schema, args, kwargs)
+        reason = reason or _guard(schema, x)
+        if reason is None and schema == "aten::full_like":
+            reason = _full_like_options_guard(x, kwargs)
+        if reason:
+            c["fallback"] += 1
+            c["fallback:" + reason] += 1
+            return original(*args, **kwargs)
+        try:
+            with torch_device_fn.device(x.device.index):
+                if capture_state() is not False:
+                    c["fallback"] += 1
+                    c["fallback:graph_capture"] += 1
+                    return original(*args, **kwargs)
+                out = torch.empty_like(x, memory_format=torch.contiguous_format)
+                n = x.numel()
+                if n:
+                    block = 256 if n <= 4096 else 4096
+                    lo, hi, fill = params
+                    fill_bits = struct.unpack("<I", struct.pack("<f", fill))[0] if schema == "aten::full_like" else 0
+                    _gs_kernel[((n + block - 1) // block,)](
+                        x, out, n, OP=_OPS[schema], DOUBLE=x.dtype == torch.float64,
+                        LO=lo, HI=hi, FILL_BITS=fill_bits, BLOCK=block,
+                        num_warps=4, num_stages=1, enable_fp_fusion=False)
+                    c["launches"] += 1
+                else:
+                    c["empty_outputs"] += 1
+            c["fast"] += 1
+            HITS[schema] += 1
+            return out
+        except Exception:
+            c["errors"] += 1
+            raise
+    wrapped.__pointwise_candidate_schema__ = schema
+    wrapped.__pointwise_original__ = original
+    return wrapped
+
+
+def install(enabled=None):
+    """Patch loaded aliases + _FULL_CONFIG; return {qualified_attribute: old_value}.
+
+    Call before model warmup/first routed op. Repeated installation is an error.
+    `enabled` is an iterable of exact schemas; None selects all four same-ATen candidates.
+    Never rewrites torch.library registrations, dispatcher tables, or route files.
+    """
+    global _install_mapping
+    if _install_mapping is not None:
+        raise RuntimeError("Already installed; call uninstall() before reinstalling")
+    selected = tuple(SCHEMAS if enabled is None else enabled)
+    if not selected or len(set(selected)) != len(selected) or set(selected) - set(SCHEMAS):
+        raise ValueError("enabled must contain unique supported exact schemas")
+    gems = importlib.import_module("flag_gems")
+    ops = importlib.import_module("flag_gems.ops")
+    config = gems._FULL_CONFIG
+    pending = {}
+    for schema in selected:
+        key = schema.removeprefix("aten::")
+        entries = [entry[1] for entry in config if entry[0] == key]
+        if not entries:
+            raise RuntimeError("Missing exact FlagGems registration: " + key)
+        if any(fn is not entries[0] for fn in entries):
+            raise RuntimeError("Ambiguous implementation for " + key)
+        original = entries[0]
+        expected = _PROVIDER_PINS[schema]
+        owner = importlib.import_module(original.__module__)
+        if (original.__module__ + "." + original.__name__ != expected["callable"]
+                or hashlib.sha256(Path(owner.__file__).read_bytes()).hexdigest() != expected["sha256"]):
+            raise RuntimeError("unreviewed actual FlagGems provider: " + schema)
+        if any(entry[1] is original and entry[0] != key for entry in config):
+            raise RuntimeError("selected callable shared by another ATen schema")
+        # Ensure defining modules exist before alias discovery, including vendor
+        # modules such as _hygon.ops.pow used by generic Torch-FL qualnames.
+        importlib.import_module(original.__module__)
+        if any(original is fn for fn in pending.values()):
+            raise RuntimeError("Different selected schemas share one callable")
+        pending[schema] = original
+    _counts.clear()
+    for schema in HITS:
+        HITS[schema] = 0
+    # All checks above run before mutation. Identity-based alias patching covers
+    # both bare flag_gems.ops names and dotted fn.__module__ + fn.__name__ lookups.
+    for schema, original in pending.items():
+        _originals[schema] = original
+        _counts[schema] = Counter()
+        _wrappers[schema] = _make_wrapper(schema, original)
+    replacements = {id(_originals[s]): _wrappers[s] for s in selected}
+    modules = {id(gems): gems, id(ops): ops}
+    for original in pending.values():
+        module = sys.modules[original.__module__]
+        modules[id(module)] = module
+    for name, module in list(sys.modules.items()):
+        if module is not None and (name.startswith("flag_gems.") or name.startswith("_hygon.")):
+            modules[id(module)] = module
+    mapping = {}
+    try:
+        for module in modules.values():
+            for attr, value in list(vars(module).items()):
+                replacement = replacements.get(id(value))
+                if replacement is not None:
+                    mapping[module.__name__ + "." + attr] = value
+                    _patches.append((module, attr, value, replacement))
+                    setattr(module, attr, replacement)
+        replaced_config = []
+        for entry in config:
+            replacement = replacements.get(id(entry[1])) if entry[0] in {
+                s.removeprefix("aten::") for s in selected} else None
+            if replacement is None:
+                replaced_config.append(entry)
+            else:
+                values = [entry[0], replacement, *entry[2:]]
+                replaced_config.append(tuple(values) if isinstance(entry, tuple) else values)
+        new_config = tuple(replaced_config) if isinstance(config, tuple) else replaced_config
+        mapping["flag_gems._FULL_CONFIG"] = config
+        _patches.append((gems, "_FULL_CONFIG", config, new_config))
+        gems._FULL_CONFIG = new_config
+        _install_mapping = mapping
+        return dict(mapping)
+    except Exception:
+        uninstall()
+        raise
+
+
+def uninstall():
+    """Restore only attributes still owned by this candidate; never clobber peers."""
+    global _install_mapping
+    conflicts = []
+    for module, attr, original, replacement in reversed(_patches):
+        if getattr(module, attr, None) is replacement:
+            setattr(module, attr, original)
+        else:
+            conflicts.append(module.__name__ + "." + attr)
+    _patches.clear()
+    _originals.clear()
+    _wrappers.clear()
+    _install_mapping = None
+    return conflicts
+
+
+def call(schema, *args, **kwargs):
+    """Direct Python candidate call for microbench controls, after install()."""
+    return _wrappers[schema](*args, **kwargs)
+
+
+def get_wrappers():
+    return dict(_wrappers)
+
+
+def get_stats(reset=False):
+    """Counters are Python-call witnesses, not proof of an executed GPU kernel."""
+    result = {schema: dict(counts) for schema, counts in _counts.items()}
+    result["HITS"] = dict(HITS)
+    if reset:
+        for counts in _counts.values():
+            counts.clear()
+        for schema in HITS:
+            HITS[schema] = 0
+    return result
+
+
+def describe_installation():
+    return {
+        "installed": _install_mapping is not None,
+        "schemas": list(_wrappers),
+        "patched_attributes": list(_install_mapping or {}),
+        "originals": {schema: fn.__module__ + "." + fn.__name__
+                      for schema, fn in _originals.items()},
+        "hardware_validation": "external gate/audit required; not determined by install",
+        "fp64_libdevice_available": _FP64_EXP,
+        "scope": "generic contiguous FP32 ATen; FP64 clamp with explicit NaN propagation, exp FP64 only with native libdevice; no model shapes",
+        "hits_contract": "HITS[exact_schema] == get_stats()[schema].get(fast, 0); empty included",
+        "fallback": "saved original FlagGems callable; no explicit boxing",
+        "required_order": "torch_fl import, install, first routed call, warmup, measurement",
+    }

@@ -1,0 +1,14 @@
+from pathlib import Path
+import hashlib,importlib.util,sys
+def install(torch,flag_gems):
+    root=Path(__file__).resolve().parent
+    for i in range(1,10):
+        p=root/f'f{i:02d}.py';name='_under90_f'+str(i)+'_'+hashlib.sha256(p.read_bytes()).hexdigest()[:16]
+        spec=importlib.util.spec_from_file_location(name,p);m=importlib.util.module_from_spec(spec);sys.modules[name]=m;spec.loader.exec_module(m);m.install(torch,flag_gems)
+
+def randperm_debug(*args,**kwargs):
+    import flag_gems
+    module=sys.modules.get(flag_gems.randperm.__module__)
+    hook=getattr(module,'randperm_debug',None)
+    if not callable(hook):raise NotImplementedError('Active randperm has no same-kernel debug hook')
+    return hook(*args,**kwargs)

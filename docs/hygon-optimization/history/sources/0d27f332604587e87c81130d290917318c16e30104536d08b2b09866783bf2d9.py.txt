@@ -1,0 +1,3 @@
+"""Baseline source: preserve the pinned active FlagGems index implementation."""
+def install(torch, flag_gems):
+    return None

@@ -1,0 +1,416 @@
+"""Isolated eager/inference addmm whole-call candidate; no Torch/FG import at import time.
+
+Reuses an authenticated installed FlagGems JITFunction, not boxing. No tensor,
+compiled-kernel, stream, pointer, or partial-specialization cache is introduced.
+"""
+from __future__ import annotations
+
+import ast
+import dis
+import hashlib
+import importlib
+import inspect
+import json
+import textwrap
+
+# M,N,K triples observed in ESM-2's official 3x101-token FP32 workload.
+SUPPORTED_CASES = frozenset(((303, 320, 320), (303, 1280, 320), (303, 320, 1280)))
+_KERNEL_HASHES = {
+    "1de71a36e3d7a9f4037599851cdf8d23f9685e48b13b47efeeb4c649f757b6d0": "common_v1",
+    "e718aa17f886325fb0e5e5e8979ac44cc602867c6708871ee337c2fc42cfb9c2": "common_v2",
+    "f69775935cf17e39408d132519413edf8958d298da3d690b3e365ff5c66af91e": "hygon",
+}
+_HELPER_HASH = "28bed0e910fef1dda8b684d7cd1cbcaabb52771570733a3b0b12cef6d57a507f"
+_STATE = None
+
+
+def _canonical_ast(node):
+    # Python 3.12 adds empty FunctionDef.type_params; the target Release is 3.10.
+    # A custom stable encoding avoids silently disabling all candidates there.
+    if isinstance(node, ast.AST):
+        fields = []
+        for key, value in ast.iter_fields(node):
+            if key == "type_params":
+                if value:
+                    raise RuntimeError("Generic type parameters are unaudited")
+                continue
+            fields.append([key, _canonical_ast(value)])
+        return [type(node).__name__, fields]
+    if isinstance(node, list):
+        return [_canonical_ast(value) for value in node]
+    return node
+
+
+def _function_hash(source):
+    """Ignore decorators/locations/comments, but authenticate the complete AST body."""
+    tree = ast.parse(textwrap.dedent(source))
+    functions = [n for n in tree.body if isinstance(n, ast.FunctionDef)]
+    if len(functions) != 1:
+        raise RuntimeError("Expected exactly one source function")
+    functions[0].decorator_list = []
+    return hashlib.sha256(json.dumps(_canonical_ast(functions[0]), separators=(",", ":")).encode()).hexdigest()
+
+
+def _source(obj):
+    # Triton stores dedented source without decorators; never compile copied source.
+    value = getattr(obj, "src", None)
+    return value if isinstance(value, str) else inspect.getsource(obj)
+
+
+# Source-authenticated methods of LibTuner.register_policy's default subclass.
+_TUNER_METHOD_HASHES = {'factory': 'cc5d66e6acfc7aa0bee23a822fe674378472dfdceda1ca9757af8ecf75639b58', 'init': '27ed292bb4e15a0ba64d650c3337ecc48996b40f6228fb94685aa3179244761e', 'policy': '3fc691de8ed10823634567aeaadab1ee2084a9fb6adecaeb1031dd2fdacffdb7', 'default_policy': 'ba5e547c7447c334f074bc6f0338a15e144616317c65ff54e5fd83d629f3bab5'}
+VERSION = "v2"
+
+
+def _is_noop_hook(hook):
+    """Prove Triton's default lambda has no effects, even if user flags lie.
+
+    Accept only closure-free plain functions returning literal 0/None. Cross-
+    Python disassembly normalizes RESUME/RETURN_CONST; no calls/globals allowed.
+    """
+    if hook is None:
+        return True
+    if not inspect.isfunction(hook) or hook.__closure__ or hook.__code__.co_names:
+        return False
+    instructions = [i for i in dis.get_instructions(hook)
+                    if i.opname not in {"RESUME", "CACHE", "NOP"}]
+    if len(instructions) == 1 and instructions[0].opname == "RETURN_CONST":
+        value = instructions[0].argval
+    elif (len(instructions) == 2 and instructions[0].opname == "LOAD_CONST"
+          and instructions[1].opname == "RETURN_VALUE"):
+        value = instructions[0].argval
+    else:
+        return False
+    return value is None or type(value) is int and value == 0
+
+
+def _audit_tuner_state(wrapper, *, required=False):
+    if required:
+        for key in ("reset_to_zero", "restore_value", "user_defined_pre_hook",
+                    "user_defined_post_hook", "pre_hook", "post_hook", "configs"):
+            if not hasattr(wrapper, key):
+                raise RuntimeError("Missing tuner state: " + key)
+    for key in ("reset_to_zero", "restore_value", "reset_idx", "restore_idx",
+                "restore_copies", "_flagtune_pre_hook", "shared_config_pre_hook",
+                "user_defined_pre_hook", "user_defined_post_hook"):
+        if getattr(wrapper, key, None):
+            raise RuntimeError("Cannot bypass stateful tuner: " + key)
+    for key in ("pre_hook", "post_hook"):
+        if not _is_noop_hook(getattr(wrapper, key, None)):
+            raise RuntimeError("Cannot bypass effective tuner hook: " + key)
+    mode = getattr(wrapper, "_run_mode", "normal")
+    if getattr(mode, "value", mode) != "normal":
+        raise RuntimeError("Cannot bypass non-normal tuner run mode")
+    # Config hooks can be called at launch, independently of benchmark hooks.
+    # Inspect active/default/best configs, not only our selected runtime config.
+    configs = list(getattr(wrapper, "configs", ()) or ())
+    configs += list(getattr(wrapper, "_flagtune_default_configs", ()) or ())
+    best = getattr(wrapper, "best_config", None)
+    if best is not None:
+        configs.append(best)
+    for config in configs:
+        if getattr(config, "pre_hook", None) is not None:
+            raise RuntimeError("Cannot bypass tuner config pre_hook")
+
+
+def _audit_registered_tuner(wrapper, lib):
+    """Admit only source-verified DEFAULT policy factory subclasses, not names."""
+    cls, base = type(wrapper), lib.LibTuner
+    if not isinstance(wrapper, base) or cls.__bases__ != (base,):
+        raise RuntimeError("Not a direct runtime LibTuner policy subclass")
+    if (cls is not base._dispatch_table.get("default")
+            or cls is not getattr(lib, "default_policy", None)
+            or cls.__module__ != base.__module__ or base.__module__ != lib.__name__):
+        raise RuntimeError("Unregistered/non-default/foreign LibTuner subclass")
+    expected_qualname = "LibTuner.register_policy.<locals>.decorator.<locals>.AnonymousLibTunerImpl"
+    if cls.__qualname__ != expected_qualname:
+        raise RuntimeError("Unaudited LibTuner policy factory shape")
+    allowed = {"__module__", "__doc__", "__init__", "policy", "__abstractmethods__",
+               "_abc_impl", "__firstlineno__", "__static_attributes__", "__parameters__"}
+    if "__parameters__" in vars(cls) and vars(cls)["__parameters__"] != ():
+        raise RuntimeError("Unaudited nonempty Generic type parameters")
+    if set(vars(cls)) - allowed:
+        raise RuntimeError("Policy subclass defines unaudited state/overrides: " + repr(sorted(set(vars(cls))-allowed)))
+    for name in ("run", "__call__", "__getitem__", "__getattribute__", "__setattr__"):
+        if (name in vars(wrapper)
+                or inspect.getattr_static(cls, name, None) is not inspect.getattr_static(base, name, None)):
+            raise RuntimeError("Policy overrides launch/state method: " + name)
+    checks = {"factory": base.register_policy, "init": cls.__init__, "policy": cls.policy}
+    for label, method in checks.items():
+        accepted = {_TUNER_METHOD_HASHES[label]}
+        if label == "factory":
+            # Same authenticated factory; inspect dedents its docstring by four
+            # spaces whereas ast.get_source_segment retains class indentation.
+            accepted.add("c9527c3c360bc44d4cf820f9acdbf5aa4dd9ab08bec95db5e6badae961a31e9a")
+        if _function_hash(inspect.getsource(method)) not in accepted:
+            raise RuntimeError("Unaudited LibTuner method body: " + label)
+    # Generated policy closes over the actual policy implementation; certify it,
+    # not just the wrapper that could delegate to arbitrary custom policy code.
+    closure = inspect.getclosurevars(cls.policy).nonlocals
+    impl = closure.get("policy_impl")
+    if (set(closure) != {"policy_impl"} or not inspect.isfunction(impl)
+            or impl.__module__ != lib.__name__
+            or _function_hash(inspect.getsource(impl)) != _TUNER_METHOD_HASHES["default_policy"]):
+        raise RuntimeError("Unaudited default policy closure")
+    _audit_tuner_state(wrapper, required=True)
+
+
+def _resolve_kernel(owner, triton):
+    outer = getattr(owner, "addmm_kernel", None)
+    if outer is None:
+        raise RuntimeError("Selected FlagGems addmm module has no addmm_kernel")
+    lib = importlib.import_module("flag_gems.utils.libentry")
+    known_types = {lib.LibEntry, lib.LibTuner}
+    for name in ("Autotuner", "Heuristics"):
+        cls = getattr(triton.runtime, name, None)
+        if isinstance(cls, type):
+            known_types.add(cls)
+    current, seen, wrappers = outer, set(), []
+    while not isinstance(current, triton.runtime.JITFunction):
+        if current is None or id(current) in seen:
+            raise RuntimeError("Invalid/cyclic addmm kernel wrapper chain")
+        seen.add(id(current))
+        cls = type(current)
+        if cls not in known_types:
+            if isinstance(current, lib.LibTuner):
+                _audit_registered_tuner(current, lib)
+            else:
+                raise RuntimeError("Unsupported kernel wrapper: " + cls.__name__)
+        _audit_tuner_state(current)
+        wrappers.append(cls.__name__)
+        current = getattr(current, "fn", None)
+    digest = _function_hash(_source(current))
+    abi = _KERNEL_HASHES.get(digest)
+    if abi is None:
+        raise RuntimeError("Unaudited addmm JIT body: " + digest)
+    if abi == "common_v2":
+        helper = getattr(owner, "_accumulate_dot", None)
+        if helper is None or _function_hash(_source(helper)) != _HELPER_HASH:
+            raise RuntimeError("Unaudited _accumulate_dot helper")
+    return current, abi, digest, wrappers
+
+
+def _select_config(runtime, config_index):
+    configs = list(runtime.get_tuned_config("addmm"))
+    if not configs:
+        raise RuntimeError("Runtime has no addmm launch configs")
+    # Source-audited Hygon pool preferences, never best_config. A runtime/arch
+    # override may omit stage1: match only entries actually present in THAT pool.
+    # Tuples are (BM, BN, BK, warps, stages, num_ldmatrixes); exact metadata and
+    # hook/option validation below remains mandatory. No configuration is forged.
+    preferences = ((64, 64, 32, 4, 1, 0),
+                   (32, 32, 128, 4, 1, 0),
+                   (128, 64, 32, 8, 1, 0),
+                   (128, 128, 32, 4, 2, 1))
+    if config_index is None:
+        for bm, bn, bk, warps, stages, ldmatrixes in preferences:
+            config_index = next((i for i, c in enumerate(configs)
+                                 if c.kwargs == {"BLOCK_SIZE_M": bm,
+                                                 "BLOCK_SIZE_N": bn,
+                                                 "BLOCK_SIZE_K": bk}
+                                 and c.num_warps == warps and c.num_stages == stages
+                                 and getattr(c, "pre_hook", None) is None
+                                 and c.all_kwargs().get("num_ldmatrixes", 0) == ldmatrixes
+                                 and c.all_kwargs().get("num_ctas", 1) == 1
+                                 and c.all_kwargs().get("maxnreg", None) is None), None)
+            if config_index is not None:
+                break
+        if config_index is None:
+            raise RuntimeError("No source-audited tile in active runtime pool; supply an audited config_index")
+    if type(config_index) is not int or not 0 <= config_index < len(configs):
+        raise ValueError("config_index must be a valid builtin int")
+    config = configs[config_index]
+    if getattr(config, "pre_hook", None) is not None:
+        raise RuntimeError("Config pre_hook is not safe to bypass")
+    # all_kwargs retains vendor options, num_ctas, and register controls. Do not
+    # silently drop num_ldmatrixes or construct a partial launch-option cache.
+    launch = dict(config.all_kwargs())
+    for key in ("BLOCK_SIZE_M", "BLOCK_SIZE_N", "BLOCK_SIZE_K"):
+        v = launch.get(key)
+        if type(v) is not int or v <= 0 or v & (v - 1):
+            raise RuntimeError("Invalid tile parameter: " + key)
+    # Audit currently covers these runtime tile META keys only. Other options are
+    # allowed only as actual attributes of the selected Triton Config.
+    if set(config.kwargs) != {"BLOCK_SIZE_M", "BLOCK_SIZE_N", "BLOCK_SIZE_K"}:
+        raise RuntimeError("Unaudited launch META keys: " + repr(config.kwargs))
+    if config.num_warps not in (4, 8) or config.num_stages not in (1, 2, 3):
+        raise RuntimeError("Unaudited launch occupancy parameters")
+    return config_index, launch
+
+
+def _guard(torch, tensor_types, bias, mat1, mat2, beta, alpha):
+    # Scope is deliberately inference-only. Never pretend that a direct Triton
+    # launch provides the original Autograd behavior for a direct Python call.
+    if torch.is_grad_enabled():
+        return None
+    if type(alpha) not in (int, float) or alpha != 1:
+        return None
+    if type(beta) not in (int, float) or beta != 1:
+        return None
+    inputs = (bias, mat1, mat2)
+    for x in inputs:
+        if type(x) not in tensor_types or x.dtype != torch.float32 or x.layout != torch.strided:
+            return None
+        if x.is_conj() or x.is_neg():
+            return None
+    device = mat1.device
+    if device.type != "flagos" or type(device.index) is not int or device.index < 0:
+        return None
+    if bias.device != device or mat2.device != device:
+        return None
+    if bias.ndim != 1 or mat1.ndim != 2 or mat2.ndim != 2:
+        return None
+    m, k = mat1.shape
+    k2, n = mat2.shape
+    if any(type(v) is not int for v in (m, n, k, k2)):
+        return None
+    if k2 != k or (m, n, k) not in SUPPORTED_CASES or tuple(bias.shape) != (n,):
+        return None
+    # Explicit row-major A / transposed dense column-major B / dense vector bias.
+    # This proves mat1.contiguous() is a no-op. General views MUST go to original.
+    if tuple(mat1.stride()) != (k, 1) or tuple(mat2.stride()) != (1, k) or tuple(bias.stride()) != (1,):
+        return None
+    return m, n, k, device
+
+
+def install(*, config_index=None):
+    """Patch only addmm aliases in this process; return (originals, live_counts).
+
+    Import torch_fl FIRST in the coordinator, then call install before the first
+    Torch-FL addmm: the C++ PythonOpCache caches function objects. No C++ cache,
+    registration table, shared launcher, on-disk Release, or route is modified.
+    Repeated install() is idempotent; reconfiguration requires restore().
+    """
+    global _STATE
+    if _STATE is not None:
+        if config_index is not None and config_index != _STATE["config_index"]:
+            raise RuntimeError("restore before selecting another launch config")
+        return _STATE["originals"], _STATE["counts"]
+    torch = importlib.import_module("torch")
+    triton = importlib.import_module("triton")
+    fg = importlib.import_module("flag_gems")
+    ops = importlib.import_module("flag_gems.ops")
+    runtime = importlib.import_module("flag_gems.runtime")
+    original = fg.addmm
+    owner = importlib.import_module(original.__module__)
+    jit, abi, digest, wrappers = _resolve_kernel(owner, triton)
+    chosen, launch = _select_config(runtime, config_index)
+    tensor_types = (torch.Tensor, torch.nn.Parameter)
+    device_fn = runtime.torch_device_fn
+    # Bind a normal JIT launcher, not a compiled kernel; Triton's complete cache
+    # identity includes its own specialization, target/device, and compiler state.
+    configs = dict(launch)
+    bm, bn, bk = (configs[k] for k in ("BLOCK_SIZE_M", "BLOCK_SIZE_N", "BLOCK_SIZE_K"))
+    plans = {}
+    for m, n, k in SUPPORTED_CASES:
+        if abi == "hygon":
+            flags = dict(ALPHA_ONE=True, BETA_ZERO=False, BETA_ONE=True,
+                         BIAS_SCALAR=False, BIAS_ROW=True, BIAS_COL=False,
+                         B_CONTIGUOUS=False, EVEN_M=m % bm == 0,
+                         EVEN_N=n % bn == 0, EVEN_K=k % bk == 0,
+                         GROUP_SIZE_M=8, ALLOW_TF32=False, IS_FP64=False)
+            strides = (1, k, 0, 1, n, 1)
+            grid = (((m + bm - 1) // bm) * ((n + bn - 1) // bn),)
+        else:
+            strides = (k, 1, 1, k, 0, 1, n, 1)
+            flags = dict(IS_FP64=False)
+            if abi == "common_v2":
+                flags.update(BIAS_IS_VECTOR=True, BIAS_IS_SCALAR=False, HAS_K=True)
+            grid = ((m + bm - 1) // bm, (n + bn - 1) // bn)
+        # Only immutable metadata and the ordinary JIT grid-bound callable are
+        # prepared. No compile/launch here, no CompiledKernel/cached device stream.
+        # Triton still resolves its COMPLETE cache identity for every invocation.
+        plans[m, n, k] = jit[grid], (m, n, k) + strides, {**configs, **flags}
+    counts = {"calls": 0, "hits": 0, "fallbacks": 0, "launch_errors": 0}
+
+    def addmm(bias, mat1, mat2, *, beta=1, alpha=1):
+        counts["calls"] += 1
+        spec = _guard(torch, tensor_types, bias, mat1, mat2, beta, alpha)
+        if spec is None:
+            counts["fallbacks"] += 1
+            return original(bias, mat1, mat2, beta=beta, alpha=alpha)
+        m, n, k, device = spec
+        # Preserve the required device/stream context. Fresh allocation every time;
+        # no storage reuse, graph-tensor cache, input mutation, or bias view needed.
+        with device_fn.device(device):
+            out = torch.empty((m, n), dtype=torch.float32, device=device)
+            launcher, tail, keywords = plans[m, n, k]
+            try:
+                launcher(mat1, mat2, bias, out, alpha, beta, *tail, **keywords)
+            except Exception:
+                counts["launch_errors"] += 1
+                # Never conceal compilation/launch failures by returning fallback
+                # output after a potentially enqueued kernel.
+                raise
+        counts["hits"] += 1
+        return out
+
+    addmm.__name__ = "addmm"
+    addmm.__qualname__ = "addmm"
+    # Keep actual callable identity honest (candidate.addmm); no fabricated source
+    # path. The original aliases are what the generated C++ caller resolves.
+    aliases = {}
+    for module in (fg, ops, owner):
+        if getattr(module, "addmm", None) is original:
+            aliases[module.__name__ + ".addmm"] = (module, original)
+    originals = {key: value[1] for key, value in aliases.items()}
+    for module, _ in aliases.values():
+        module.addmm = addmm
+    _STATE = {"originals": originals, "aliases": aliases, "counts": counts,
+              "candidate": addmm, "config_index": chosen, "launch": launch,
+              "abi": abi, "kernel_sha256": digest, "wrappers_bypassed": wrappers,
+              "original_module": original.__module__}
+    return originals, counts
+
+
+def restore(originals=None):
+    """Restore Python aliases only. Restart process to reset a warmed C++ op cache."""
+    global _STATE
+    if _STATE is None:
+        return
+    if originals is not None and originals is not _STATE["originals"]:
+        raise ValueError("restore requires the mapping returned by this install")
+    # Do not overwrite another experiment's patch installed on top of ours.
+    for key, (module, _) in _STATE["aliases"].items():
+        if module.addmm is not _STATE["candidate"]:
+            raise RuntimeError("Alias changed after install: " + key)
+    for module, original in _STATE["aliases"].values():
+        module.addmm = original
+    _STATE = None
+
+
+def status():
+    """JSON-serializable, snapshot evidence; counters returned by install stay live."""
+    if _STATE is None:
+        return {"installed": False, "version": VERSION, "hardware_validated": False}
+    return {"installed": True, "version": VERSION, "hardware_validated": False,
+            "schema": "aten::addmm", "scope": "ESM-2 FP32 eager no-grad; alpha=beta=1",
+            "original_module": _STATE["original_module"], "abi": _STATE["abi"],
+            "kernel_ast_sha256": _STATE["kernel_sha256"],
+            "wrappers_bypassed": list(_STATE["wrappers_bypassed"]),
+            "config_index": _STATE["config_index"], "launch": dict(_STATE["launch"]),
+            "counts": dict(_STATE["counts"])}
+
+
+def invoke(torch, args, kwargs):
+    """Optional AI4perf adapter entry. install() must precede ANY addmm warmup."""
+    return torch.ops.aten.addmm.default(*args, **kwargs)
+
+
+def get_stats():
+    """Flat counter snapshot for coordinator contracts; no implicit reset.
+
+    hits counts successfully enqueued candidate launches, not fallback calls.
+    A later asynchronous GPU failure must still fail the coordinator's result.
+    """
+    if _STATE is None:
+        return {"installed": False, "version": VERSION, "calls": 0, "hits": 0, "hitcount": 0,
+                "fallbacks": 0, "launch_errors": 0}
+    return {"installed": True, "version": VERSION, **dict(_STATE["counts"]),
+            "hitcount": _STATE["counts"]["hits"], "abi": _STATE["abi"],
+            "config_index": _STATE["config_index"]}
+
+
+def hitcount():
+    """Return successful candidate enqueue count; check delta per contract case."""
+    return 0 if _STATE is None else _STATE["counts"]["hits"]

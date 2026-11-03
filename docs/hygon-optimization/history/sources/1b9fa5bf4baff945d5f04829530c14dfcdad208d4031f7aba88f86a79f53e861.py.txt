@@ -1,0 +1,379 @@
+"""Isolated, inference-only FP32 pointwise launch candidates (not GPU validated).
+
+Bootstrap torch_fl before importing this module in a Torch-FL process. Install
+before the first FlagGems-routed call: Torch-FL C++ can cache Python callables.
+No shared source/configuration writes; unsupported inputs call the saved original.
+"""
+import functools
+import importlib
+import math
+import sys
+from collections import Counter
+
+import torch
+import triton
+import triton.language as tl
+from flag_gems import runtime
+from flag_gems.runtime import torch_device_fn
+from flag_gems.utils import tl_extra_shim
+
+# Same mathematical primitives as the inspected FlagGems sources. In particular,
+# Hygon FP32 pow promotes to FP64, unlike the common FP32 pow implementation.
+_pow = tl_extra_shim.pow
+_exp2 = tl_extra_shim.exp2
+SCHEMAS = {
+    "aten::neg": "neg",
+    "aten::erf": "erf",
+    "aten::pow.Tensor_Scalar": "pow_tensor_scalar",
+    "aten::sigmoid": "sigmoid",
+    "aten::sin": "sin",
+    "aten::cos": "cos",
+}
+_OPS = {name: index for index, name in enumerate(SCHEMAS)}
+_originals = {}
+_wrappers = {}
+_patches = []
+_counts = {}
+# Unified flat witness for coordinator code; counts successful candidate calls,
+# including empty outputs, NOT completed device kernels. Never rebind this object.
+HITS = Counter({schema: 0 for schema in SCHEMAS})
+_install_mapping = None
+
+
+@triton.jit
+def _unary_apply(values, OP: tl.constexpr):
+    if OP == 0:
+        return -values
+    elif OP == 1:
+        return tl.math.erf(values)
+    elif OP == 3:
+        return 1.0 / (1.0 + _exp2(-values * 1.4426950408889634))
+    elif OP == 4:
+        return tl.sin(values)
+    else:
+        return tl.cos(values)
+
+
+@triton.jit
+def _pointwise_kernel(X, Y, N, OP: tl.constexpr, EXPONENT: tl.constexpr,
+                      POW64: tl.constexpr, BLOCK: tl.constexpr):
+    offsets = tl.program_id(0) * BLOCK + tl.arange(0, BLOCK)
+    values = tl.load(X + offsets, offsets < N, other=0).to(tl.float32)
+    if OP == 2:
+        if POW64:
+            result = _pow(values.to(tl.float64), tl.full((), EXPONENT, tl.float64))
+        else:
+            result = _pow(values, tl.full((), EXPONENT, tl.float32))
+    else:
+        result = _unary_apply(values, OP)
+    tl.store(Y + offsets, result, offsets < N)
+
+
+@triton.jit
+def _strided_unary_kernel(X, Y, N, OP: tl.constexpr,
+                          D0: tl.constexpr, D1: tl.constexpr,
+                          D2: tl.constexpr, D3: tl.constexpr,
+                          S0: tl.constexpr, S1: tl.constexpr,
+                          S2: tl.constexpr, S3: tl.constexpr,
+                          BLOCK: tl.constexpr):
+    # Padded logical dimensions, not physical storage order. X already points to
+    # the tensor's first logical element, including its storage_offset exactly once.
+    tl.static_assert(OP != 2, "pow fast path remains contiguous only")
+    offsets = tl.program_id(0) * BLOCK + tl.arange(0, BLOCK)
+    rest = offsets.to(tl.int64)
+    c3 = rest % D3
+    rest = rest // D3
+    c2 = rest % D2
+    rest = rest // D2
+    c1 = rest % D1
+    c0 = rest // D1
+    # Signed 64-bit arithmetic also handles large positive strides; S==0 broadcasts.
+    source = c0 * S0 + c1 * S1 + c2 * S2 + c3 * S3
+    values = tl.load(X + source, offsets < N, other=0).to(tl.float32)
+    result = _unary_apply(values, OP)
+    tl.store(Y + offsets, result, offsets < N)
+
+
+def _strided_geometry(x):
+    """Return concrete rank<=4 geometry and guard reason, without reading data."""
+    shape = tuple(x.shape)
+    strides = tuple(x.stride())
+    if len(shape) > 4 or len(strides) != len(shape):
+        return None, "strided_rank"
+    if any(type(d) is not int or d < 0 for d in shape):
+        return None, "strided_shape_or_symbolic"
+    if any(type(t) is not int or t < 0 for t in strides):
+        return None, "strided_negative_or_symbolic_stride"
+    storage_offset = x.storage_offset()
+    if type(storage_offset) is not int or storage_offset < 0:
+        return None, "strided_storage_offset"
+    # A real torch strided tensor already guarantees storage validity. Bound the
+    # address arithmetic explicitly; overlapping READS and zero strides are safe.
+    span = sum(max(d - 1, 0) * t for d, t in zip(shape, strides))
+    if any(t > 2**63 - 1 for t in strides) or storage_offset + span > 2**63 - 1:
+        return None, "strided_address_range"
+    pad = 4 - len(shape)
+    return ((1,) * pad + shape, (0,) * pad + strides), None
+
+
+def _bind(schema, args, kwargs):
+    """Only unambiguous observed positional forms; all other signatures fallback."""
+    if schema == "aten::pow.Tensor_Scalar":
+        if len(args) == 2 and not kwargs:
+            return args[0], args[1], None
+        if len(args) == 1 and set(kwargs) == {"exponent"}:
+            return args[0], kwargs["exponent"], None
+        return None, None, "signature"
+    if len(args) == 1 and not kwargs:
+        return args[0], None, None
+    return None, None, "signature"
+
+
+def _guard(schema, x, exponent, original):
+    # Restrict to a known Hygon/HIP runtime and ordinary non-subclass tensors.
+    # This is deliberately NOT a general CUDA or all-dtype replacement.
+    if getattr(runtime.device, "vendor_name", None) != "hygon":
+        return "vendor"
+    if not getattr(torch.version, "hip", None):
+        return "hip_runtime"
+    if type(x) is not torch.Tensor:
+        return "tensor_subclass_or_non_tensor"
+    private_name = torch._C._get_privateuse1_backend_name()
+    if x.device.type not in (private_name, "cuda") or x.device.index is None:
+        return "device"
+    if x.dtype != torch.float32:
+        return "dtype"
+    if x.layout != torch.strided or x.is_quantized or x.is_nested:
+        return "layout"
+    if x.is_conj() or x.is_neg():
+        return "lazy_view_bits"
+    if not x.is_contiguous():
+        if schema == "aten::pow.Tensor_Scalar":
+            return "noncontiguous_pow"
+        _, reason = _strided_geometry(x)
+        if reason is not None:
+            return reason
+    if any(name is not None for name in x.names):
+        return "named_tensor"
+    # Do not silently introduce an autograd hole when called as a Python function.
+    # Ordinary aten Autograd may mask grad mode below its own dispatch boundary;
+    # such model paths still require coordinator-level force/gradient checks.
+    if x.requires_grad and torch.is_grad_enabled():
+        return "reverse_autograd"
+    if torch.autograd.forward_ad.unpack_dual(x).tangent is not None:
+        return "forward_autograd"
+    n = x.numel()
+    if type(n) is not int or not 0 <= n <= 2**31 - 1:
+        return "index_range_or_symbolic"
+    if not hasattr(torch_device_fn, "is_current_stream_capturing"):
+        return "capture_query_unavailable"
+    if schema == "aten::pow.Tensor_Scalar":
+        if type(exponent) not in (int, float):
+            return "exponent_type"
+        # No GPU data read, no special-case input contents. A finite bounded scalar
+        # keeps the supported domain explicit; each distinct exponent specializes.
+        if not -16 <= exponent <= 16 or not math.isfinite(exponent):
+            return "exponent_range"
+        if _pow_precision(original) is None:
+            return "unknown_pow_implementation"
+    return None
+
+
+def _pow_precision(original):
+    module = original.__module__
+    if "_hygon" in module:
+        return True
+    if module == "flag_gems.ops.pow":
+        return False
+    return None
+
+
+def _make_wrapper(schema, original):
+    @functools.wraps(original)
+    def wrapped(*args, **kwargs):
+        counts = _counts[schema]
+        counts["calls"] += 1
+        x, exponent, reason = _bind(schema, args, kwargs)
+        if reason is None:
+            reason = _guard(schema, x, exponent, original)
+        if reason is not None:
+            counts["fallback"] += 1
+            counts["fallback:" + reason] += 1
+            return original(*args, **kwargs)
+        try:
+            # Match FlagGems pointwise_dynamic's device guard. Triton JIT selects
+            # the current stream for EACH launch; do not cache/pass stream handles.
+            with torch_device_fn.device(x.device.index):
+                if torch_device_fn.is_current_stream_capturing():
+                    counts["fallback"] += 1
+                    counts["fallback:graph_capture"] += 1
+                    return original(*args, **kwargs)
+                output = torch.empty_like(x, memory_format=torch.contiguous_format)
+                n = x.numel()
+                if n:
+                    block = 256 if n <= 4096 else 1024
+                    grid = ((n + block - 1) // block,)
+                    if x.is_contiguous():
+                        _pointwise_kernel[grid](
+                            x, output, n, OP=_OPS[schema],
+                            EXPONENT=float(exponent) if exponent is not None else 0.0,
+                            POW64=bool(_pow_precision(original)) if exponent is not None else False,
+                            BLOCK=block, num_warps=4, num_stages=1,
+                            enable_fp_fusion=False,
+                        )
+                        counts["contiguous_launches"] += 1
+                    else:
+                        (dims, strides), reason = _strided_geometry(x)
+                        if reason is not None:
+                            raise RuntimeError("Tensor geometry changed after guard: " + reason)
+                        _strided_unary_kernel[grid](
+                            x, output, n, OP=_OPS[schema],
+                            D0=dims[0], D1=dims[1], D2=dims[2], D3=dims[3],
+                            S0=strides[0], S1=strides[1], S2=strides[2], S3=strides[3],
+                            BLOCK=block, num_warps=4, num_stages=1,
+                            enable_fp_fusion=False,
+                        )
+                        counts["strided_launches"] += 1
+                    counts["launches"] += 1
+                else:
+                    counts["empty_outputs"] += 1
+            counts["fast"] += 1
+            HITS[schema] += 1
+            return output
+        except Exception:
+            # A failed/partly submitted launch must be visible, not hidden by a
+            # second implementation. Device asynchronous errors surface at sync.
+            counts["errors"] += 1
+            raise
+    wrapped.__pointwise_candidate_schema__ = schema
+    wrapped.__pointwise_original__ = original
+    return wrapped
+
+
+def install(enabled=None):
+    """Patch loaded aliases + _FULL_CONFIG; return {qualified_attribute: old_value}.
+
+    Call before model warmup/first routed op. Repeated installation is an error.
+    `enabled` is an iterable of exact schemas; None selects all six candidates.
+    Never rewrites torch.library registrations, dispatcher tables, or route files.
+    """
+    global _install_mapping
+    if _install_mapping is not None:
+        raise RuntimeError("Already installed; call uninstall() before reinstalling")
+    selected = tuple(SCHEMAS if enabled is None else enabled)
+    if not selected or len(set(selected)) != len(selected) or set(selected) - set(SCHEMAS):
+        raise ValueError("enabled must contain unique supported exact schemas")
+    gems = importlib.import_module("flag_gems")
+    ops = importlib.import_module("flag_gems.ops")
+    config = gems._FULL_CONFIG
+    pending = {}
+    for schema in selected:
+        key = schema.removeprefix("aten::")
+        entries = [entry[1] for entry in config if entry[0] == key]
+        if not entries:
+            raise RuntimeError("Missing exact FlagGems registration: " + key)
+        if any(fn is not entries[0] for fn in entries):
+            raise RuntimeError("Ambiguous implementation for " + key)
+        original = entries[0]
+        # Ensure defining modules exist before alias discovery, including vendor
+        # modules such as _hygon.ops.pow used by generic Torch-FL qualnames.
+        importlib.import_module(original.__module__)
+        if any(original is fn for fn in pending.values()):
+            raise RuntimeError("Different selected schemas share one callable")
+        pending[schema] = original
+    _counts.clear()
+    for schema in HITS:
+        HITS[schema] = 0
+    # All checks above run before mutation. Identity-based alias patching covers
+    # both bare flag_gems.ops names and dotted fn.__module__ + fn.__name__ lookups.
+    for schema, original in pending.items():
+        _originals[schema] = original
+        _counts[schema] = Counter()
+        _wrappers[schema] = _make_wrapper(schema, original)
+    replacements = {id(_originals[s]): _wrappers[s] for s in selected}
+    modules = {id(gems): gems, id(ops): ops}
+    for original in pending.values():
+        module = sys.modules[original.__module__]
+        modules[id(module)] = module
+    for name, module in list(sys.modules.items()):
+        if module is not None and (name.startswith("flag_gems.") or name.startswith("_hygon.")):
+            modules[id(module)] = module
+    mapping = {}
+    try:
+        for module in modules.values():
+            for attr, value in list(vars(module).items()):
+                replacement = replacements.get(id(value))
+                if replacement is not None:
+                    mapping[module.__name__ + "." + attr] = value
+                    _patches.append((module, attr, value, replacement))
+                    setattr(module, attr, replacement)
+        replaced_config = []
+        for entry in config:
+            replacement = replacements.get(id(entry[1])) if entry[0] in {
+                s.removeprefix("aten::") for s in selected} else None
+            if replacement is None:
+                replaced_config.append(entry)
+            else:
+                values = [entry[0], replacement, *entry[2:]]
+                replaced_config.append(tuple(values) if isinstance(entry, tuple) else values)
+        new_config = tuple(replaced_config) if isinstance(config, tuple) else replaced_config
+        mapping["flag_gems._FULL_CONFIG"] = config
+        _patches.append((gems, "_FULL_CONFIG", config, new_config))
+        gems._FULL_CONFIG = new_config
+        _install_mapping = mapping
+        return dict(mapping)
+    except Exception:
+        uninstall()
+        raise
+
+
+def uninstall():
+    """Restore only attributes still owned by this candidate; never clobber peers."""
+    global _install_mapping
+    conflicts = []
+    for module, attr, original, replacement in reversed(_patches):
+        if getattr(module, attr, None) is replacement:
+            setattr(module, attr, original)
+        else:
+            conflicts.append(module.__name__ + "." + attr)
+    _patches.clear()
+    _originals.clear()
+    _wrappers.clear()
+    _install_mapping = None
+    return conflicts
+
+
+def call(schema, *args, **kwargs):
+    """Direct Python candidate call for microbench controls, after install()."""
+    return _wrappers[schema](*args, **kwargs)
+
+
+def get_wrappers():
+    return dict(_wrappers)
+
+
+def get_stats(reset=False):
+    """Counters are Python-call witnesses, not proof of an executed GPU kernel."""
+    result = {schema: dict(counts) for schema, counts in _counts.items()}
+    result["HITS"] = dict(HITS)
+    if reset:
+        for counts in _counts.values():
+            counts.clear()
+        for schema in HITS:
+            HITS[schema] = 0
+    return result
+
+
+def describe_installation():
+    return {
+        "installed": _install_mapping is not None,
+        "schemas": list(_wrappers),
+        "patched_attributes": list(_install_mapping or {}),
+        "originals": {schema: fn.__module__ + "." + fn.__name__
+                      for schema, fn in _originals.items()},
+        "hardware_validation": "not_run",
+        "strided_unary": "rank<=4, nonnegative strides incl. broadcast; fresh C-contiguous output",
+        "hits_contract": "HITS[exact_schema] == get_stats()[schema].get(fast, 0); empty included",
+        "fallback": "saved original FlagGems callable; no explicit boxing",
+        "required_order": "torch_fl import, install, first routed call, warmup, measurement",
+    }

@@ -1,0 +1,299 @@
+"""Restricted GenScore multi-row sum.dim_IntList candidates; hardware validation is NOT done.
+
+Bootstrap torch_fl first and install before the first routed sum.dim_IntList call.
+Only process-local FG aliases/config entries are replaced. No boxing or caches.
+"""
+import functools
+import importlib
+import sys
+from collections import Counter
+
+from capture_guard import capture_state
+import torch
+import triton
+import triton.language as tl
+from flag_gems import runtime
+from flag_gems.runtime import torch_device_fn
+
+SCHEMA = "aten::sum.dim_IntList"
+FULL_SCHEMA = ("aten::sum.dim_IntList(Tensor self, int[1]? dim, "
+               "bool keepdim=False, *, ScalarType? dtype=None) -> Tensor")
+# Exact five metadata shapes. Values: (stride, dtype, keepdim, case_name).
+CASES = {
+    (2806, 4, 32): ((128, 32, 1), torch.float32, True, "fp32_ligand_k32"),
+    (126636, 4, 32): ((128, 32, 1), torch.float32, True, "fp32_protein_k32"),
+    (61, 1896, 3): ((5688, 3, 1), torch.float64, False, "fp64_distance_k3"),
+    (61, 20, 3): ((60, 3, 1), torch.float64, False, "fp64_ligand_k3"),
+    (96380, 10): ((10, 1), torch.float64, False, "fp64_probability_k10"),
+}
+BLOCK_M = 64
+_ACTIVE = None
+HITS = Counter({SCHEMA: 0})
+
+
+@triton.jit
+def _rows_sum(X, Y, M: tl.constexpr, K: tl.constexpr,
+              BLOCK_M: tl.constexpr, BLOCK_K: tl.constexpr, FP64: tl.constexpr):
+    row = tl.program_id(0) * BLOCK_M + tl.arange(0, BLOCK_M)
+    col = tl.arange(0, BLOCK_K)
+    mask = (row[:, None] < M) & (col[None, :] < K)
+    values = tl.load(X + row[:, None] * K + col[None, :], mask, other=0)
+    if FP64:
+        # FP64 loads, FP64 reduction, FP64 store; never demote to FP32.
+        result = tl.sum(values.to(tl.float64), axis=1, dtype=tl.float64)
+    else:
+        result = tl.sum(values.to(tl.float32), axis=1, dtype=tl.float32)
+    tl.store(Y + row, result, row < M)
+
+
+def _bind(args, kwargs):
+    # Inspected FG signature: sum_dim(inp, dim=None, keepdim=False, *, dtype=None).
+    # Also accept the ATen spelling 'self'; never accept duplicate/extra values.
+    if len(args) > 3 or set(kwargs).difference({"inp", "self", "dim", "keepdim", "dtype"}):
+        return None, None, None, None, "signature"
+    kw = dict(kwargs)
+    if "self" in kw:
+        if "inp" in kw:
+            return None, None, None, None, "duplicate_argument"
+        kw["inp"] = kw.pop("self")
+    bound = dict(zip(("inp", "dim", "keepdim"), args))
+    if set(bound).intersection(kw):
+        return None, None, None, None, "duplicate_argument"
+    bound.update(kw)
+    if "inp" not in bound:
+        return None, None, None, None, "signature"
+    return (bound["inp"], bound.get("dim"), bound.get("keepdim", False),
+            bound.get("dtype"), None)
+
+
+def _guard(x, dim, keepdim, dtype):
+    """Return (case_name, output_shape, output_dtype, fallback_reason)."""
+    def reject(reason):
+        return None, None, None, reason
+    if getattr(runtime.device, "vendor_name", None) != "hygon":
+        return reject("vendor")
+    if not getattr(torch.version, "hip", None):
+        return reject("hip_runtime")
+    if type(x) is not torch.Tensor:
+        return reject("tensor_subclass_or_non_tensor")
+    index = x.device.index
+    if (x.device.type not in (torch._C._get_privateuse1_backend_name(), "cuda")
+            or type(index) is not int or index < 0):
+        return reject("device")
+    if x.layout != torch.strided or x.is_quantized or x.is_nested:
+        return reject("layout")
+    if x.is_conj() or x.is_neg():
+        return reject("lazy_view_bits")
+    if any(name is not None for name in x.names):
+        return reject("named_tensor")
+    # Preserve the default grad path even for a grad-enabled direct call without
+    # requires_grad; backend Autograd may mask grad mode, so reject req-grad too.
+    if torch.is_grad_enabled():
+        return reject("grad_enabled")
+    if x.requires_grad:
+        return reject("requires_grad")
+    if torch.autograd.forward_ad.unpack_dual(x).tangent is not None:
+        return reject("forward_autograd")
+    transforms = getattr(torch._C, "_are_functorch_transforms_active", None)
+    if transforms is not None and transforms():
+        return reject("functorch_transform")
+    if type(keepdim) is not bool:
+        return reject("keepdim_type")
+    # Only the observed dtype=None contract is specialized, without any dtype conversion.
+    if dtype is not None:
+        return reject("dtype_argument")
+    shape, stride = tuple(x.shape), tuple(x.stride())
+    if any(type(d) is not int for d in shape):
+        return reject("shape_or_symbolic")
+    if any(type(s) is not int for s in stride) or not x.is_contiguous():
+        return reject("stride_or_noncontiguous")
+    if type(dim) is int:
+        dims = (dim,)
+    elif type(dim) in (list, tuple) and all(type(d) is int for d in dim):
+        dims = tuple(dim)
+    else:
+        return reject("dim_type")
+    if not dims or any(d < -len(shape) or d >= len(shape) for d in dims):
+        return reject("dim_range_or_empty")
+    normalized = tuple(d % len(shape) for d in dims)
+    if len(set(normalized)) != len(normalized):
+        return reject("duplicate_dimension")
+    dims = tuple(sorted(normalized))
+    entry = CASES.get(shape)
+    if entry is None:
+        return reject("shape")
+    expected_stride, expected_dtype, expected_keep, case = entry
+    if x.dtype != expected_dtype:
+        return reject("dtype")
+    if stride != expected_stride:
+        return reject("stride")
+    if keepdim is not expected_keep:
+        return reject("keepdim")
+    if dims != (len(shape) - 1,):
+        return reject("dimension")
+    output_shape = shape[:-1] + ((1,) if keepdim else ())
+    output_dtype = expected_dtype
+    offset, numel = x.storage_offset(), x.numel()
+    if (type(offset) is not int or offset < 0 or type(numel) is not int
+            or offset + numel > 2**31 - 1):
+        return reject("storage_offset_or_index_range")
+    if not callable(getattr(torch_device_fn, "is_current_stream_capturing", None)):
+        return reject("capture_query_unavailable")
+    return case, output_shape, output_dtype, None
+
+
+class Installation:
+    """Process-local patches; stale cached wrappers are disabled on uninstall."""
+    def __init__(self, original):
+        self.original = original
+        self.enabled = True
+        self.counts = Counter()
+        self.patches = []
+        self.wrapper = self._make_wrapper()
+
+    def _fallback(self, reason, args, kwargs):
+        self.counts["fallback"] += 1
+        self.counts["fallback:" + reason] += 1
+        return self.original(*args, **kwargs)
+
+    def _make_wrapper(self):
+        @functools.wraps(self.original)
+        def sum_dim(*args, **kwargs):
+            self.counts["calls"] += 1
+            if not self.enabled:
+                return self._fallback("uninstalled", args, kwargs)
+            x, dim, keepdim, dtype, reason = _bind(args, kwargs)
+            if reason is None:
+                case, shape, out_dtype, reason = _guard(x, dim, keepdim, dtype)
+            if reason is not None:
+                return self._fallback(reason, args, kwargs)
+            try:
+                # Standard device guard and JIT launcher resolve the CURRENT
+                # stream each call. No stream, tensor, output or kernel cache.
+                with torch_device_fn.device(x.device.index):
+                    if capture_state() is not False:
+                        return self._fallback("graph_capture", args, kwargs)
+                    out = torch.empty(shape, dtype=out_dtype, device=x.device)
+                    k = x.shape[-1]
+                    m = x.numel() // k
+                    block_k = triton.next_power_of_2(k)
+                    _rows_sum[((m + BLOCK_M - 1) // BLOCK_M,)](
+                        x, out, M=m, K=k, BLOCK_M=BLOCK_M, BLOCK_K=block_k,
+                        FP64=(x.dtype == torch.float64), num_warps=4, num_stages=1,
+                        enable_fp_fusion=False,
+                    )
+                self.counts["launches"] += 1
+                self.counts["fast"] += 1
+                self.counts["fast:" + case] += 1
+                HITS[SCHEMA] += 1
+                return out
+            except Exception:
+                # Do not hide compilation, launch, allocator or device errors by
+                # silently calling another implementation after partial work.
+                self.counts["errors"] += 1
+                self.counts["errors:" + case] += 1
+                raise
+        sum_dim.__reduction_gs_candidate_schema__ = SCHEMA
+        sum_dim.__reduction_gs_original__ = self.original
+        return sum_dim
+
+    def get_stats(self, reset=False):
+        result = {SCHEMA: dict(self.counts), "HITS": {SCHEMA: self.counts.get("fast", 0)},
+                  "installed": self.enabled, "hardware_validation": "not_run_by_this_module"}
+        if reset:
+            self.counts.clear()
+            if _ACTIVE is self:
+                HITS[SCHEMA] = 0
+        return result
+
+    get_counters = get_stats
+
+    def require_hits(self):
+        if not self.counts.get("fast", 0):
+            raise RuntimeError("No reduction candidate hits; check guards/route/C++ callable cache")
+        return self.get_stats()
+
+    def uninstall(self):
+        global _ACTIVE
+        self.enabled = False
+        conflicts = []
+        for module, attr, old, new in reversed(self.patches):
+            if getattr(module, attr, None) is new:
+                setattr(module, attr, old)
+            else:
+                conflicts.append(module.__name__ + "." + attr)
+        self.patches.clear()
+        if _ACTIVE is self:
+            _ACTIVE = None
+        return conflicts
+
+
+def install():
+    """Patch exact _FULL_CONFIG callable + its loaded FG aliases; return handle.
+
+    Does NOT change route, re-register torch.library kernels, or invalidate an
+    already cached C++ callable. Use a fresh process BEFORE first target call.
+    """
+    global _ACTIVE
+    if _ACTIVE is not None:
+        raise RuntimeError("Already installed; use a fresh process")
+    gems = importlib.import_module("flag_gems")
+    ops = importlib.import_module("flag_gems.ops")
+    config = gems._FULL_CONFIG
+    if type(config) not in (tuple, list):
+        raise TypeError("Unknown _FULL_CONFIG container")
+    key = SCHEMA.removeprefix("aten::")
+    entries = [e for e in config if isinstance(e, (tuple, list)) and len(e) >= 2 and e[0] == key]
+    if not entries or not callable(entries[0][1]):
+        raise RuntimeError("Missing callable exact sum.dim_IntList registration")
+    original = entries[0][1]
+    if any(e[1] is not original for e in entries):
+        raise RuntimeError("Ambiguous exact sum.dim_IntList registration")
+    if (getattr(original, "__reduction_candidate_schema__", None)
+            or getattr(original, "__reduction_gs_candidate_schema__", None)):
+        raise RuntimeError("Another reduction candidate is already installed")
+    if any(isinstance(e, (tuple, list)) and len(e) >= 2 and e[1] is original and e[0] != key
+           for e in config):
+        raise RuntimeError("sum.dim_IntList callable shared by another schema")
+    owner = importlib.import_module(original.__module__)
+    state = Installation(original)
+    modules = {id(m): m for m in (gems, ops, owner)}
+    for name, module in list(sys.modules.items()):
+        if module is not None and (name.startswith("flag_gems.") or name.startswith("_hygon.")):
+            modules[id(module)] = module
+    planned = []
+    for module in modules.values():
+        for attr, value in list(vars(module).items()):
+            if value is original:
+                planned.append((module, attr, original, state.wrapper))
+    updated = []
+    for entry in config:
+        if isinstance(entry, (tuple, list)) and len(entry) >= 2 and entry[0] == key:
+            entry = type(entry)((entry[0], state.wrapper, *entry[2:]))
+        updated.append(entry)
+    planned.append((gems, "_FULL_CONFIG", config, type(config)(updated)))
+    try:
+        for module, attr, old, new in planned:
+            setattr(module, attr, new)
+            state.patches.append((module, attr, old, new))
+    except Exception:
+        state.uninstall()
+        raise
+    HITS[SCHEMA] = 0
+    _ACTIVE = state
+    return state
+
+
+def get_stats(reset=False):
+    if _ACTIVE is None:
+        return {SCHEMA: {}, "HITS": dict(HITS), "installed": False,
+                "hardware_validation": "not_run_by_this_module"}
+    return _ACTIVE.get_stats(reset)
+
+
+def get_wrappers():
+    return {} if _ACTIVE is None else {SCHEMA: _ACTIVE.wrapper}
+
+
+def uninstall():
+    return [] if _ACTIVE is None else _ACTIVE.uninstall()

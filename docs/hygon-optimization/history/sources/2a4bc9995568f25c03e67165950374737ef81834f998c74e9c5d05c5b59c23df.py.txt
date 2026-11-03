@@ -1,0 +1,56 @@
+"""One exact FlagGems ATen implementation change; never modifies a model."""
+import hashlib
+import importlib
+import sys
+from pathlib import Path
+
+EXPECTED_INSTALLED_SUM = "5259b9f60445ef4a99e85387bc1e4c7a2264681170c695c6fc9b94378fa6348b"
+EXPECTED_OPTIMIZED_SUM = "00f407bffaa7865d4a3ef4a4f86e11e593ea586dfb336ad579f9efed6a692d6c"
+_STATE = None
+
+
+def install():
+    global _STATE
+    if _STATE is not None:
+        raise RuntimeError("fresh process required")
+    import flag_gems as fg
+    config = fg._FULL_CONFIG
+    rows = [row for row in config if len(row) >= 2 and row[0] == "sum.dim_IntList"]
+    if len(rows) != 1 or not callable(rows[0][1]):
+        raise RuntimeError("ambiguous exact sum.dim_IntList provider")
+    original = rows[0][1]
+    owner = importlib.import_module(original.__module__)
+    path = Path(owner.__file__).resolve()
+    if hashlib.sha256(path.read_bytes()).hexdigest() != EXPECTED_INSTALLED_SUM:
+        raise RuntimeError("actual sum provider is not reviewed installed common source")
+    module_path = Path(__file__).with_name("optimized_sum.py")
+    if hashlib.sha256(module_path.read_bytes()).hexdigest() != EXPECTED_OPTIMIZED_SUM:
+        raise RuntimeError("optimized sum source mismatch")
+    mod = importlib.import_module("sum_candidate.optimized_sum")
+    replacement = mod.sum_dim
+    # Preserve non-target schemas even if another alias shares a name.
+    new_config = []
+    for row in config:
+        if row[0] == "sum.dim_IntList":
+            row = type(row)((row[0], replacement, *row[2:]))
+        new_config.append(row)
+    patches = []
+    for name, module in list(sys.modules.items()):
+        if module is None or not (name == "flag_gems" or name.startswith(("flag_gems.", "_hygon."))):
+            continue
+        for attr, value in list(vars(module).items()):
+            if value is original:
+                setattr(module, attr, replacement)
+                patches.append((name, attr))
+    fg._FULL_CONFIG = type(config)(new_config)
+    _STATE = (mod, patches, str(path))
+    return get_stats()
+
+
+def get_stats():
+    if _STATE is None:
+        return {"installed": False}
+    mod, patches, path = _STATE
+    return {"installed": True, "schema": "aten::sum.dim_IntList", "provider_before": path,
+            "patched_aliases": patches, "stats": dict(mod.OVERNIGHT_STATS),
+            "model_modified": False, "numerical_validation": "external gate required"}

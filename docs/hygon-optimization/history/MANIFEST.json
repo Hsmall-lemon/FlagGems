@@ -1,0 +1,1234 @@
+{
+  "schema_version": 1,
+  "scope": "All implementation blobs identified across the locally available optimization archive history, plus matrix candidate revisions. Excludes benchmark/control scripts, logs, inputs, credentials, binaries and unrelated upstream history.",
+  "selection_rule": "Python functions named install or decorated with triton.jit; all 15 operator-registry source paths are checked separately. Duplicate content is stored once.",
+  "archive_commit_count": 22,
+  "source_count": 91,
+  "sources": [
+    {
+      "path": "docs/hygon-optimization/history/sources/00f407bffaa7865d4a3ef4a4f86e11e593ea586dfb336ad579f9efed6a692d6c.py.txt",
+      "sha256": "00f407bffaa7865d4a3ef4a4f86e11e593ea586dfb336ad579f9efed6a692d6c",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/aten-overnight-20261018/phase1_resource_fix_v2/source/sum_candidate/optimized_sum.py",
+        "snapshots/aten-overnight-20261018/source/sum_candidate/optimized_sum.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/0105c8069955da8963b0fc9fc7ea179de2f5532493c610a6e8529e8c353ecbf1.py.txt",
+      "sha256": "0105c8069955da8963b0fc9fc7ea179de2f5532493c610a6e8529e8c353ecbf1",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/domain-op-optimization-20261017/addmm/candidate.py",
+        "snapshots/domain-op-optimization-20261017/ai-run-v3/experiments/baseline/candidate/addmm/candidate.py",
+        "snapshots/domain-op-optimization-20261017/ai-run-v3/experiments/candidate-confirm/candidate/addmm/candidate.py",
+        "snapshots/domain-op-optimization-20261017/ai-run-v3/experiments/candidate-confirm/reference/addmm/candidate.py",
+        "snapshots/domain-op-optimization-20261017/ai-run-v3/experiments/candidate-explore/candidate/addmm/candidate.py",
+        "snapshots/domain-op-optimization-20261017/ai-run-v3/snapshots/baseline/addmm/candidate.py",
+        "snapshots/domain-op-optimization-20261017/ai-run-v3/snapshots/combined-candidates/addmm/candidate.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/02bd4a661524bbba9a1b1f9cdcce89014f9b9689447c9202ccf7b61c9b15ec20.py.txt",
+      "sha256": "02bd4a661524bbba9a1b1f9cdcce89014f9b9689447c9202ccf7b61c9b15ec20",
+      "origin_commit": "23a15d53d9badef115d89a0b779f59f974c63b55",
+      "origins": [
+        "experiments/top20-index-20261103/index-family-r2/base-source/f01.py",
+        "experiments/top20-index-20261103/index-family/r2/base-source/f01.py",
+        "experiments/top20-index-20261103/index-family/selected/f01.py",
+        "experiments/top20-index-20261103/reproduction/base-source/f01.py",
+        "experiments/top20-matrix-20261103/trusted/private/f01.py",
+        "experiments/under90-apptainer-ai4perf-20261102-r2/baseline/f01.py",
+        "experiments/under90-apptainer-ai4perf-20261102-r2/evidence/api-final/run/trusted/reference/f01.py",
+        "experiments/under90-apptainer-ai4perf-20261102-r2/selected/f01.py",
+        "experiments/under90-apptainer-ai4perf-20261102/selected/f01.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/0516c47e899b4ba6f7773e04f882dd76439615ce368d7d7da3df88f8f105ed13.py.txt",
+      "sha256": "0516c47e899b4ba6f7773e04f882dd76439615ce368d7d7da3df88f8f105ed13",
+      "origin_commit": "09aee41c692b76f6117d2790884fc8eeb0bde7d1",
+      "origins": [
+        "experiments/sort-randperm-followup-20261029/deliverables/randperm-selected.py",
+        "experiments/sort-randperm-followup-20261029/v2/randperm/candidate-3.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/0978d5c068684bbf1b7fbcc1f6807f24c325bf2d66a864751e1540fa74232cb4.py.txt",
+      "sha256": "0978d5c068684bbf1b7fbcc1f6807f24c325bf2d66a864751e1540fa74232cb4",
+      "origin_commit": "96c8a376fc969f70fee34dcb294010085aa5ab9d",
+      "origins": [
+        "experiments/sort-randperm-ai4perf-20261027/candidates/randperm-candidate-2-frozen.py",
+        "experiments/sort-randperm-ai4perf-20261027/evidence/randperm-serial-r4b/snapshots/candidate-2/variant.py",
+        "experiments/sort-randperm-followup-20261029/v2/randperm/base-variant.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/0b3bf85b417a4050ce760126b1c7db5623a25ba9510796880de535c6391873bd.py.txt",
+      "sha256": "0b3bf85b417a4050ce760126b1c7db5623a25ba9510796880de535c6391873bd",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/aten-overnight-20261018/phase14_full_like_output_only_prepare/source/pointwise_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase14_full_like_output_only_v1/source/pointwise_atens/candidate.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/0c531df1a247ad36d4840fd547048117b3d01484823c42719edd32cc517c581c.py.txt",
+      "sha256": "0c531df1a247ad36d4840fd547048117b3d01484823c42719edd32cc517c581c",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/domain-op-optimization-20261017/norm_mask_v4/candidate.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/0d27f332604587e87c81130d290917318c16e30104536d08b2b09866783bf2d9.py.txt",
+      "sha256": "0d27f332604587e87c81130d290917318c16e30104536d08b2b09866783bf2d9",
+      "origin_commit": "9491f53a94eca1377369cf7a4453d8f5a42bdaea",
+      "origins": [
+        "experiments/top20-index-20261103/reproduction/base-source/index_impl.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/0fc9fe56af6eed465095c436703f5c34f6f5db3dd4ac9d378dbe37b697957358.py.txt",
+      "sha256": "0fc9fe56af6eed465095c436703f5c34f6f5db3dd4ac9d378dbe37b697957358",
+      "origin_commit": "ae3a6d66a6adef15c4b7feb9c71d24c99d56343b",
+      "origins": [
+        "experiments/top20-index-20261103/index-family-r2/base-source/f06.py",
+        "experiments/top20-index-20261103/index-family/r2/base-source/f06.py",
+        "experiments/top20-index-20261103/index-family/selected/f06.py",
+        "experiments/top20-index-20261103/reproduction/base-source/f06.py",
+        "experiments/top20-matrix-20261103/trusted/private/f06.py",
+        "experiments/under90-apptainer-ai4perf-20261102-r2/selected/f06.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/176e4e575a1b1470ee34c5a8ab42403a39151052a316c5e237dd9aa8bc1f38d5.py.txt",
+      "sha256": "176e4e575a1b1470ee34c5a8ab42403a39151052a316c5e237dd9aa8bc1f38d5",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/domain-op-optimization-20261017/ai-run-v3/experiments/baseline/candidate/softmax/candidate.py",
+        "snapshots/domain-op-optimization-20261017/ai-run-v3/experiments/candidate-confirm/candidate/softmax/candidate.py",
+        "snapshots/domain-op-optimization-20261017/ai-run-v3/experiments/candidate-confirm/reference/softmax/candidate.py",
+        "snapshots/domain-op-optimization-20261017/ai-run-v3/experiments/candidate-explore/candidate/softmax/candidate.py",
+        "snapshots/domain-op-optimization-20261017/ai-run-v3/snapshots/baseline/softmax/candidate.py",
+        "snapshots/domain-op-optimization-20261017/ai-run-v3/snapshots/combined-candidates/softmax/candidate.py",
+        "snapshots/domain-op-optimization-20261017/softmax/candidate.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/19f5129c0719ee9bdff93c73fcee72739a00a7717133a6007cf813af089f38ca.py.txt",
+      "sha256": "19f5129c0719ee9bdff93c73fcee72739a00a7717133a6007cf813af089f38ca",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/aten-overnight-20261018/phase11_pointwise_block4096_v1/source/pointwise_legacy/candidate.py",
+        "snapshots/aten-overnight-20261018/phase12_pointwise_components_v1/source/pointwise_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase12_pointwise_components_v1/source/pointwise_legacy/candidate.py",
+        "snapshots/aten-overnight-20261018/phase13_routed_profile_integration_prepare/source/pointwise_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase13_routed_profile_integration_prepare/source/pointwise_legacy/candidate.py",
+        "snapshots/aten-overnight-20261018/phase13_routed_profile_v1/source/pointwise_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase13_routed_profile_v1/source/pointwise_legacy/candidate.py",
+        "snapshots/aten-overnight-20261018/phase13_routed_profile_v2/source/pointwise_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase13_routed_profile_v2/source/pointwise_legacy/candidate.py",
+        "snapshots/aten-overnight-20261018/phase14_full_like_output_only_v1/source/pointwise_legacy/candidate.py",
+        "snapshots/aten-overnight-20261018/phase21_genscore_sum_bm128_prepare/source/pointwise_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase21_genscore_sum_bm128_prepare/source/pointwise_legacy/candidate.py",
+        "snapshots/aten-overnight-20261018/phase21_genscore_sum_bm128_v1/source/pointwise_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase21_genscore_sum_bm128_v1/source/pointwise_legacy/candidate.py",
+        "snapshots/aten-overnight-20261018/phase21_genscore_sum_bm128_v2/source/pointwise_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase21_genscore_sum_bm128_v2/source/pointwise_legacy/candidate.py",
+        "snapshots/aten-overnight-20261018/phase22_genscore_sum_direct_shape_prepare/source/pointwise_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase22_genscore_sum_direct_shape_prepare/source/pointwise_legacy/candidate.py",
+        "snapshots/aten-overnight-20261018/phase22_genscore_sum_direct_shape_v1/source/pointwise_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase22_genscore_sum_direct_shape_v1/source/pointwise_legacy/candidate.py",
+        "snapshots/aten-overnight-20261018/phase23_genscore_addmm_tile128_v1/source/pointwise_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase23_genscore_addmm_tile_prepare/source/pointwise_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase24_genscore_addmm_narrow32_v1/source/pointwise_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase24_genscore_addmm_tile32_prepare/source/pointwise_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase5_pointwise_fix_prepare/source/pointwise_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase5_pointwise_fix_v1/source/pointwise_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase7_pointwise_timing_prepare/source/pointwise_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase7_pointwise_timing_v1/source/pointwise_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase8_genscore_addmm_prepare/source/pointwise_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase8_genscore_addmm_v1/source/pointwise_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase9_pointwise_allocation_v1/source/pointwise_legacy/candidate.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/1a4875491d034633bd80d365135dc2a222efdc8f3e456fec583a0c53a4a482e0.py.txt",
+      "sha256": "1a4875491d034633bd80d365135dc2a222efdc8f3e456fec583a0c53a4a482e0",
+      "origin_commit": "09aee41c692b76f6117d2790884fc8eeb0bde7d1",
+      "origins": [
+        "experiments/sort-randperm-followup-20261029/v2/randperm/candidate-2.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/1b9fa5bf4baff945d5f04829530c14dfcdad208d4031f7aba88f86a79f53e861.py.txt",
+      "sha256": "1b9fa5bf4baff945d5f04829530c14dfcdad208d4031f7aba88f86a79f53e861",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/domain-op-optimization-20261017/frozen-v1/pointwise/candidate.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/1cc5c915f94023dfdce324669a474dd2baaf012927664e9393f623543203ad90.py.txt",
+      "sha256": "1cc5c915f94023dfdce324669a474dd2baaf012927664e9393f623543203ad90",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/aten-overnight-20261018/phase2_sum_order_v1/source/sum_candidate/candidate.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/1d42b0b10c55e5e0e5938554c5a778fce58b30c5f2025421af8b98065df6b9b6.py.txt",
+      "sha256": "1d42b0b10c55e5e0e5938554c5a778fce58b30c5f2025421af8b98065df6b9b6",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/aten-overnight-20261018/phase24_genscore_addmm_narrow32_v1/source/addmm_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase24_genscore_addmm_tile32_prepare/source/addmm_atens/candidate.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/29a93563c9cd0a2076114ec508535df89f4bbe6585d983492c747c90692fdc4c.py.txt",
+      "sha256": "29a93563c9cd0a2076114ec508535df89f4bbe6585d983492c747c90692fdc4c",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/domain-op-optimization-20261017/gs-micro/source/pointwise_gs/candidate.py",
+        "snapshots/domain-op-optimization-20261017/pointwise_gs/candidate.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/2a15b0837a3543c1d3240e06393a1566f8a53d7ae676b313a6e853565d7d6b6d.py.txt",
+      "sha256": "2a15b0837a3543c1d3240e06393a1566f8a53d7ae676b313a6e853565d7d6b6d",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/domain-op-optimization-20261017/addmm/evidence/addmm_common_v1_local.py",
+        "snapshots/domain-op-optimization-20261017/frozen-v1/addmm/evidence/addmm_common_v1_local.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/2a4bc9995568f25c03e67165950374737ef81834f998c74e9c5d05c5b59c23df.py.txt",
+      "sha256": "2a4bc9995568f25c03e67165950374737ef81834f998c74e9c5d05c5b59c23df",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/aten-overnight-20261018/phase1_resource_fix_v2/source/sum_candidate/candidate.py",
+        "snapshots/aten-overnight-20261018/source/sum_candidate/candidate.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/33babde34a26f4907b94f9a14d6166401f6c902bce79697faec3921cf7ef1644.py.txt",
+      "sha256": "33babde34a26f4907b94f9a14d6166401f6c902bce79697faec3921cf7ef1644",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/domain-op-optimization-20261017/frozen-v1/reduction/candidate.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/377208d2497f013bed5affefd6bbbde24ea367059abebab16150dcbfba1056fb.py.txt",
+      "sha256": "377208d2497f013bed5affefd6bbbde24ea367059abebab16150dcbfba1056fb",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/aten-overnight-20261018/phase21_genscore_sum_bm128_prepare/source/sum_candidate/candidate.py",
+        "snapshots/aten-overnight-20261018/phase21_genscore_sum_bm128_v1/source/sum_candidate/candidate.py",
+        "snapshots/aten-overnight-20261018/phase21_genscore_sum_bm128_v2/source/sum_candidate/candidate.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/3a35b5bf50262b65d0558e4ec1b7bdaf26a52461c2bf155d6265ea845481cb26.py.txt",
+      "sha256": "3a35b5bf50262b65d0558e4ec1b7bdaf26a52461c2bf155d6265ea845481cb26",
+      "origin_commit": "ae3a6d66a6adef15c4b7feb9c71d24c99d56343b",
+      "origins": [
+        "experiments/top20-index-20261103/index-family-r2/base-source/f05.py",
+        "experiments/top20-index-20261103/index-family/r2/base-source/f05.py",
+        "experiments/top20-index-20261103/index-family/selected/f05.py",
+        "experiments/top20-index-20261103/reproduction/base-source/f05.py",
+        "experiments/top20-matrix-20261103/trusted/private/f05.py",
+        "experiments/under90-apptainer-ai4perf-20261102-r2/selected/f05.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/3c278f2298343f8a9d6432715c2280f45510e8a85ae0597979f21102475037fe.py.txt",
+      "sha256": "3c278f2298343f8a9d6432715c2280f45510e8a85ae0597979f21102475037fe",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/aten-overnight-20261018/phase11_pointwise_block4096_v1/source/pointwise_atens/candidate.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/3c93c3cb5f86887c5209b731e1cee815987fdd681cf610673953e725d267d75e.py.txt",
+      "sha256": "3c93c3cb5f86887c5209b731e1cee815987fdd681cf610673953e725d267d75e",
+      "origin_commit": "09aee41c692b76f6117d2790884fc8eeb0bde7d1",
+      "origins": [
+        "experiments/sort-randperm-followup-20261029/deliverables/sort-selected.py",
+        "experiments/sort-randperm-followup-20261029/v2/sort/candidate-1.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/3ca0e5bda74fb9dd58aee738b09efe1ca0b32a27d35fd0cc689da136a3892623.py.txt",
+      "sha256": "3ca0e5bda74fb9dd58aee738b09efe1ca0b32a27d35fd0cc689da136a3892623",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/aten-overnight-20261018/phase11_pointwise_block4096_v1/source/sum_candidate/kernels.py",
+        "snapshots/aten-overnight-20261018/phase12_pointwise_components_v1/source/sum_candidate/kernels.py",
+        "snapshots/aten-overnight-20261018/phase13_routed_profile_integration_prepare/source/sum_candidate/kernels.py",
+        "snapshots/aten-overnight-20261018/phase13_routed_profile_v1/source/sum_candidate/kernels.py",
+        "snapshots/aten-overnight-20261018/phase13_routed_profile_v2/source/sum_candidate/kernels.py",
+        "snapshots/aten-overnight-20261018/phase14_full_like_output_only_v1/source/sum_candidate/kernels.py",
+        "snapshots/aten-overnight-20261018/phase21_genscore_sum_bm128_prepare/source/sum_candidate/kernels.py",
+        "snapshots/aten-overnight-20261018/phase21_genscore_sum_bm128_prepare/source/sum_legacy/kernels.py",
+        "snapshots/aten-overnight-20261018/phase21_genscore_sum_bm128_v1/source/sum_candidate/kernels.py",
+        "snapshots/aten-overnight-20261018/phase21_genscore_sum_bm128_v1/source/sum_legacy/kernels.py",
+        "snapshots/aten-overnight-20261018/phase21_genscore_sum_bm128_v2/source/sum_candidate/kernels.py",
+        "snapshots/aten-overnight-20261018/phase21_genscore_sum_bm128_v2/source/sum_legacy/kernels.py",
+        "snapshots/aten-overnight-20261018/phase22_genscore_sum_direct_shape_prepare/source/sum_candidate/kernels.py",
+        "snapshots/aten-overnight-20261018/phase22_genscore_sum_direct_shape_prepare/source/sum_legacy/kernels.py",
+        "snapshots/aten-overnight-20261018/phase22_genscore_sum_direct_shape_v1/source/sum_candidate/kernels.py",
+        "snapshots/aten-overnight-20261018/phase22_genscore_sum_direct_shape_v1/source/sum_legacy/kernels.py",
+        "snapshots/aten-overnight-20261018/phase23_genscore_addmm_tile128_v1/source/sum_candidate/kernels.py",
+        "snapshots/aten-overnight-20261018/phase23_genscore_addmm_tile_prepare/source/sum_candidate/kernels.py",
+        "snapshots/aten-overnight-20261018/phase24_genscore_addmm_narrow32_v1/source/sum_candidate/kernels.py",
+        "snapshots/aten-overnight-20261018/phase24_genscore_addmm_tile32_prepare/source/sum_candidate/kernels.py",
+        "snapshots/aten-overnight-20261018/phase2_sum_order_v1/source/sum_candidate/kernels.py",
+        "snapshots/aten-overnight-20261018/phase3_sum_order8_v1/source/sum_candidate/kernels.py",
+        "snapshots/aten-overnight-20261018/phase4_atens_prepare/source/sum_candidate/kernels.py",
+        "snapshots/aten-overnight-20261018/phase4_pointwise_v1/source/sum_candidate/kernels.py",
+        "snapshots/aten-overnight-20261018/phase4_pointwise_v2/source/sum_candidate/kernels.py",
+        "snapshots/aten-overnight-20261018/phase5_pointwise_fix_v1/source/sum_candidate/kernels.py",
+        "snapshots/aten-overnight-20261018/phase7_pointwise_timing_prepare/source/sum_candidate/kernels.py",
+        "snapshots/aten-overnight-20261018/phase7_pointwise_timing_v1/source/sum_candidate/kernels.py",
+        "snapshots/aten-overnight-20261018/phase8_genscore_addmm_prepare/source/sum_candidate/kernels.py",
+        "snapshots/aten-overnight-20261018/phase8_genscore_addmm_v1/source/sum_candidate/kernels.py",
+        "snapshots/aten-overnight-20261018/phase9_pointwise_allocation_v1/source/sum_candidate/kernels.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/3d0d1e35ae96e69dfb27cd15c7664564d3ec53efc90be945be72d5b3eaefd068.py.txt",
+      "sha256": "3d0d1e35ae96e69dfb27cd15c7664564d3ec53efc90be945be72d5b3eaefd068",
+      "origin_commit": "23a15d53d9badef115d89a0b779f59f974c63b55",
+      "origins": [
+        "experiments/top20-index-20261103/index-family-r2/base-source/f03.py",
+        "experiments/top20-index-20261103/index-family/r2/base-source/f03.py",
+        "experiments/top20-index-20261103/index-family/selected/f03.py",
+        "experiments/top20-index-20261103/reproduction/base-source/f03.py",
+        "experiments/top20-matrix-20261103/trusted/private/f03.py",
+        "experiments/under90-apptainer-ai4perf-20261102-r2/baseline/f03.py",
+        "experiments/under90-apptainer-ai4perf-20261102-r2/evidence/api-final/run/trusted/reference/f03.py",
+        "experiments/under90-apptainer-ai4perf-20261102-r2/selected/f03.py",
+        "experiments/under90-apptainer-ai4perf-20261102/selected/f03.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/41320d9e8796c0c6de43d7989eb52635828a2d7360a28c79d48c14dbeecc84c6.py.txt",
+      "sha256": "41320d9e8796c0c6de43d7989eb52635828a2d7360a28c79d48c14dbeecc84c6",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/aten-overnight-20261018/phase9_pointwise_allocation_prepare/source/pointwise_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase9_pointwise_allocation_v1/source/pointwise_atens/candidate.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/429df7efe7ab97f2e634d6841923397637e6391988d1fc4322e780d55609836d.py.txt",
+      "sha256": "429df7efe7ab97f2e634d6841923397637e6391988d1fc4322e780d55609836d",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/aten-overnight-20261018/phase16_esm_welford_v1/source/esm_atens/kernels.py",
+        "snapshots/aten-overnight-20261018/phase16_norm_welford_prepare/source/esm_atens/kernels.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/42c4627de559f34dfad46b0bb1274f95019e7c15001ba15a81ba842ecfdc32ed.py.txt",
+      "sha256": "42c4627de559f34dfad46b0bb1274f95019e7c15001ba15a81ba842ecfdc32ed",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/domain-op-optimization-20261017/ai-run-v3/experiments/baseline/candidate/pointwise/candidate.py",
+        "snapshots/domain-op-optimization-20261017/ai-run-v3/experiments/candidate-confirm/candidate/pointwise/candidate.py",
+        "snapshots/domain-op-optimization-20261017/ai-run-v3/experiments/candidate-confirm/reference/pointwise/candidate.py",
+        "snapshots/domain-op-optimization-20261017/ai-run-v3/experiments/candidate-explore/candidate/pointwise/candidate.py",
+        "snapshots/domain-op-optimization-20261017/ai-run-v3/snapshots/baseline/pointwise/candidate.py",
+        "snapshots/domain-op-optimization-20261017/ai-run-v3/snapshots/combined-candidates/pointwise/candidate.py",
+        "snapshots/domain-op-optimization-20261017/pointwise/candidate.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/435b55ffbdc0b949722c62f0e58cec04894d447608fe4e7d5120397afafb6cc8.py.txt",
+      "sha256": "435b55ffbdc0b949722c62f0e58cec04894d447608fe4e7d5120397afafb6cc8",
+      "origin_commit": "23a15d53d9badef115d89a0b779f59f974c63b55",
+      "origins": [
+        "experiments/top20-index-20261103/index-family-r2/base-source/f09.py",
+        "experiments/top20-index-20261103/index-family/r2/base-source/f09.py",
+        "experiments/top20-index-20261103/index-family/selected/f09.py",
+        "experiments/top20-index-20261103/reproduction/base-source/f09.py",
+        "experiments/top20-matrix-20261103/trusted/private/f09.py",
+        "experiments/under90-apptainer-ai4perf-20261102-r2/baseline/f09.py",
+        "experiments/under90-apptainer-ai4perf-20261102-r2/evidence/api-final/run/trusted/reference/f09.py",
+        "experiments/under90-apptainer-ai4perf-20261102-r2/selected/f09.py",
+        "experiments/under90-apptainer-ai4perf-20261102/selected/f09.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/45fabb31a0502a2d4845fec4e5bafe1c4ed04fd7bfbcb254889bce20b6b5d024.py.txt",
+      "sha256": "45fabb31a0502a2d4845fec4e5bafe1c4ed04fd7bfbcb254889bce20b6b5d024",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/aten-overnight-20261018/phase10_esm_neg_bitwise_prepare/source/esm_atens/candidate.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/475478255b8a4b3dff18bbbca96966f3572e34e620993a84d7ed80e55db184af.py.txt",
+      "sha256": "475478255b8a4b3dff18bbbca96966f3572e34e620993a84d7ed80e55db184af",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/domain-op-optimization-20261017/frozen-v1/softmax/candidate.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/48737da6e08c6b28720abc0a2c6dc5c4426a5a76f7e0972880495d0dab39ad66.py.txt",
+      "sha256": "48737da6e08c6b28720abc0a2c6dc5c4426a5a76f7e0972880495d0dab39ad66",
+      "origin_commit": "ae3a6d66a6adef15c4b7feb9c71d24c99d56343b",
+      "origins": [
+        "experiments/top20-index-20261103/index-family-r2/base-source/f07.py",
+        "experiments/top20-index-20261103/index-family/r2/base-source/f07.py",
+        "experiments/top20-index-20261103/index-family/selected/f07.py",
+        "experiments/top20-index-20261103/reproduction/base-source/f07.py",
+        "experiments/top20-matrix-20261103/trusted/private/f07.py",
+        "experiments/under90-apptainer-ai4perf-20261102-r2/selected/f07.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/4e03497e4dbcc8bf479eda69f6338a4f89308b7a4ef27ce4404333fbe478e689.py.txt",
+      "sha256": "4e03497e4dbcc8bf479eda69f6338a4f89308b7a4ef27ce4404333fbe478e689",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/aten-overnight-20261018/esm_aten_next_prepare/provider_reference/neg.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/4ff2a042d24efbba31e5d7bc5f13c80be44166c71ee2d2f8e21a6cc6ce1471c4.py.txt",
+      "sha256": "4ff2a042d24efbba31e5d7bc5f13c80be44166c71ee2d2f8e21a6cc6ce1471c4",
+      "origin_commit": "23a15d53d9badef115d89a0b779f59f974c63b55",
+      "origins": [
+        "experiments/top20-index-20261103/index-family-r2/base-source/variant.py",
+        "experiments/top20-index-20261103/index-family/r2/base-source/variant.py",
+        "experiments/top20-index-20261103/index-family/selected/variant.py",
+        "experiments/top20-index-20261103/reproduction/base-source/variant.py",
+        "experiments/top20-matrix-20261103/trusted/private/variant.py",
+        "experiments/under90-apptainer-ai4perf-20261102-r2/baseline/variant.py",
+        "experiments/under90-apptainer-ai4perf-20261102-r2/evidence/api-final/run/trusted/reference/variant.py",
+        "experiments/under90-apptainer-ai4perf-20261102-r2/selected/variant.py",
+        "experiments/under90-apptainer-ai4perf-20261102/selected/variant.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/5015feda236e211638891784b17a681d77d12a7dfebe81208a04e85f2b5ec342.py.txt",
+      "sha256": "5015feda236e211638891784b17a681d77d12a7dfebe81208a04e85f2b5ec342",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "experiments/top20-matrix-20261103/runtime-source/ops/addmm.py",
+        "snapshots/aten-overnight-20261018/phase1_resource_fix_v2/source/installed_addmm.py",
+        "snapshots/aten-overnight-20261018/source/installed_addmm.py",
+        "snapshots/domain-op-optimization-20261017/addmm/evidence/addmm_common_v2_e7b4a865.py",
+        "snapshots/domain-op-optimization-20261017/frozen-v1/addmm/evidence/addmm_common_v2_e7b4a865.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/5259b9f60445ef4a99e85387bc1e4c7a2264681170c695c6fc9b94378fa6348b.py.txt",
+      "sha256": "5259b9f60445ef4a99e85387bc1e4c7a2264681170c695c6fc9b94378fa6348b",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/aten-overnight-20261018/phase1_resource_fix_v2/source/installed_sum.py",
+        "snapshots/aten-overnight-20261018/source/installed_sum.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/539010e8cac97637bcb776707dfb2ade2965205d16640c46ce474da5af631c98.py.txt",
+      "sha256": "539010e8cac97637bcb776707dfb2ade2965205d16640c46ce474da5af631c98",
+      "origin_commit": "96c8a376fc969f70fee34dcb294010085aa5ab9d",
+      "origins": [
+        "experiments/sort-randperm-ai4perf-20261027/evidence/sort-r4/snapshots/candidate-2/variant.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/54001d43fe9b986f4b673cd88c59fd6cc21c7a31ad3f0005f8e3d2079cec5728.py.txt",
+      "sha256": "54001d43fe9b986f4b673cd88c59fd6cc21c7a31ad3f0005f8e3d2079cec5728",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/aten-overnight-20261018/phase17_esm_norm_avx2_v1/source/esm_atens/kernels.py",
+        "snapshots/aten-overnight-20261018/phase18_norm_order_diagnostic_v1/source/esm_atens/kernels.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/5827d58b5a555c67f43cb31653c44ba92b818257609e3c40ee496d771bbec642.py.txt",
+      "sha256": "5827d58b5a555c67f43cb31653c44ba92b818257609e3c40ee496d771bbec642",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/aten-overnight-20261018/phase3_sum_order8_v1/source/sum_candidate/candidate.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/59574d1e7d8d9a303ac86e1fc84e8520be7dda767ff42e75adb9b83b868d2fd0.py.txt",
+      "sha256": "59574d1e7d8d9a303ac86e1fc84e8520be7dda767ff42e75adb9b83b868d2fd0",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/aten-overnight-20261018/phase2_atens_prepare/source/cpu_order_sum_fragment.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/5b90be889b6b2e3b3b73c786f3cb33cd394f11d40c3f02b2ef18e78532046364.py.txt",
+      "sha256": "5b90be889b6b2e3b3b73c786f3cb33cd394f11d40c3f02b2ef18e78532046364",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/domain-op-optimization-20261017/ai-run-v3/experiments/baseline/candidate/norm_mask/_kernels.py",
+        "snapshots/domain-op-optimization-20261017/ai-run-v3/experiments/candidate-confirm/candidate/norm_mask/_kernels.py",
+        "snapshots/domain-op-optimization-20261017/ai-run-v3/experiments/candidate-confirm/reference/norm_mask/_kernels.py",
+        "snapshots/domain-op-optimization-20261017/ai-run-v3/experiments/candidate-explore/candidate/norm_mask/_kernels.py",
+        "snapshots/domain-op-optimization-20261017/ai-run-v3/snapshots/baseline/norm_mask/_kernels.py",
+        "snapshots/domain-op-optimization-20261017/ai-run-v3/snapshots/combined-candidates/norm_mask/_kernels.py",
+        "snapshots/domain-op-optimization-20261017/frozen-v1/norm_mask/_kernels.py",
+        "snapshots/domain-op-optimization-20261017/norm_mask/_kernels.py",
+        "snapshots/domain-op-optimization-20261017/norm_mask_v4/_kernels.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/5c5db9554d8dc9ac36a0ffdaf19f7edb612bb6693d0c0374eaee74fa8a37836a.py.txt",
+      "sha256": "5c5db9554d8dc9ac36a0ffdaf19f7edb612bb6693d0c0374eaee74fa8a37836a",
+      "origin_commit": "5e9fa97ad475bb0f5a7a2a7ba643abc8c13d5db5",
+      "origins": [
+        "experiments/top20-index-20261103/index-family-r2/base-source/index_impl.py",
+        "experiments/top20-index-20261103/index-family/r2/base-source/index_impl.py",
+        "experiments/top20-index-20261103/index-family/selected/index_impl.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/6068f99ce84e6bc2daae401653d567284da84cbbdc59684e09ff040d56e90bf6.py.txt",
+      "sha256": "6068f99ce84e6bc2daae401653d567284da84cbbdc59684e09ff040d56e90bf6",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/aten-overnight-20261018/esm_aten_next_prepare/provider_reference/erf.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/62523b730fa57ad4efdff428a11d02509eee1270032318dddc9d91b3e98a740e.py.txt",
+      "sha256": "62523b730fa57ad4efdff428a11d02509eee1270032318dddc9d91b3e98a740e",
+      "origin_commit": "23a15d53d9badef115d89a0b779f59f974c63b55",
+      "origins": [
+        "experiments/top20-index-20261103/index-family-r2/base-source/f02.py",
+        "experiments/top20-index-20261103/index-family/r2/base-source/f02.py",
+        "experiments/top20-index-20261103/index-family/selected/f02.py",
+        "experiments/top20-index-20261103/reproduction/base-source/f02.py",
+        "experiments/top20-matrix-20261103/trusted/private/f02.py",
+        "experiments/under90-apptainer-ai4perf-20261102-r2/baseline/f02.py",
+        "experiments/under90-apptainer-ai4perf-20261102-r2/evidence/api-final/run/trusted/reference/f02.py",
+        "experiments/under90-apptainer-ai4perf-20261102-r2/selected/f02.py",
+        "experiments/under90-apptainer-ai4perf-20261102/selected/f02.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/65510c465186441a69cf6ad0193e04415067a697a00041e777d7f9a89b3ef054.py.txt",
+      "sha256": "65510c465186441a69cf6ad0193e04415067a697a00041e777d7f9a89b3ef054",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/aten-overnight-20261018/phase19_esm_mean_fma_v1/source/esm_atens/kernels.py",
+        "snapshots/aten-overnight-20261018/phase20_esm_tile32_v1/source/esm_atens/kernels.py",
+        "snapshots/aten-overnight-20261018/phase20_esm_tile32_v2/source/esm_atens/kernels.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/67150678a8ae03d4800de85d82cbe9dad8992fabd481dea21e14748cfcb45961.py.txt",
+      "sha256": "67150678a8ae03d4800de85d82cbe9dad8992fabd481dea21e14748cfcb45961",
+      "origin_commit": "c93db6856c6c29cc89a5f595ae0d0f4aedf599e9",
+      "origins": [
+        "snapshots/aurora-modelscope-20261019/max_pool2d_with_indices.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/683a190ad74d1f26b7a61b1cb94a60a8a43d05bf246aca974507e880b9d546ae.py.txt",
+      "sha256": "683a190ad74d1f26b7a61b1cb94a60a8a43d05bf246aca974507e880b9d546ae",
+      "origin_commit": "9dd934251f5b9b65739fdaf8cdc6dd54394d3e4f",
+      "origins": [
+        "reports/20261026-lilith-bottom5-device/variant.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/730b618feb0897069abd14144ade0d0dac64ab16ac3b79ecbdea8667a0e803b9.py.txt",
+      "sha256": "730b618feb0897069abd14144ade0d0dac64ab16ac3b79ecbdea8667a0e803b9",
+      "origin_commit": "23a15d53d9badef115d89a0b779f59f974c63b55",
+      "origins": [
+        "experiments/under90-apptainer-ai4perf-20261102-r2/baseline/f08.py",
+        "experiments/under90-apptainer-ai4perf-20261102-r2/evidence/api-final/run/trusted/reference/f08.py",
+        "experiments/under90-apptainer-ai4perf-20261102/selected/f08.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/753b0e58b5ed18c9f73a915edd21c51871bb8c0192953cc9f114655d0e9d2619.py.txt",
+      "sha256": "753b0e58b5ed18c9f73a915edd21c51871bb8c0192953cc9f114655d0e9d2619",
+      "origin_commit": "96c8a376fc969f70fee34dcb294010085aa5ab9d",
+      "origins": [
+        "experiments/sort-randperm-ai4perf-20261027/candidates/sort-candidate-3-frozen.py",
+        "experiments/sort-randperm-ai4perf-20261027/evidence/sort-r4/snapshots/candidate-3/variant.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/76ad265adc924641679eb81bfd57b900400824929f85c2cb3b4bd630ae73f097.py.txt",
+      "sha256": "76ad265adc924641679eb81bfd57b900400824929f85c2cb3b4bd630ae73f097",
+      "origin_commit": "23a15d53d9badef115d89a0b779f59f974c63b55",
+      "origins": [
+        "experiments/under90-apptainer-ai4perf-20261102-r2/baseline/f06.py",
+        "experiments/under90-apptainer-ai4perf-20261102-r2/evidence/api-final/run/trusted/reference/f06.py",
+        "experiments/under90-apptainer-ai4perf-20261102/selected/f06.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/785674d1c9a2e207c14d900de22361dea9e3e1b1bbb468474a832e920d9a6006.py.txt",
+      "sha256": "785674d1c9a2e207c14d900de22361dea9e3e1b1bbb468474a832e920d9a6006",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/aten-only-restart-20261018/addmm_bias_view/addmm.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/7ab230f40ed56164619eb776961397251955645d47b15248ee437b7de4bec1a2.py.txt",
+      "sha256": "7ab230f40ed56164619eb776961397251955645d47b15248ee437b7de4bec1a2",
+      "origin_commit": "96c8a376fc969f70fee34dcb294010085aa5ab9d",
+      "origins": [
+        "experiments/sort-randperm-ai4perf-20261027/evidence/sort-r4/snapshots/candidate-1/variant.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/81e5ae4ac6e396c363be2228c7894bd9d04080224c4cd7eae2907a5f4936fb89.py.txt",
+      "sha256": "81e5ae4ac6e396c363be2228c7894bd9d04080224c4cd7eae2907a5f4936fb89",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "experiments/top20-matrix-20261103/runtime-source/runtime/backend/_hygon/ops/addmm.py",
+        "snapshots/aten-overnight-20261018/phase1_resource_fix_v2/source/installed_hygon_addmm.py",
+        "snapshots/aten-overnight-20261018/source/installed_hygon_addmm.py",
+        "snapshots/domain-op-optimization-20261017/addmm/evidence/addmm_hygon_e7b4a865.py",
+        "snapshots/domain-op-optimization-20261017/frozen-v1/addmm/evidence/addmm_hygon_e7b4a865.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/83b6eade5a7e8096420709b49745295350770c84ffc44319af0a1f363440b1c3.py.txt",
+      "sha256": "83b6eade5a7e8096420709b49745295350770c84ffc44319af0a1f363440b1c3",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/aten-overnight-20261018/phase10_esm_neg_bitwise_prepare/source/esm_atens/kernels.py",
+        "snapshots/aten-overnight-20261018/phase15_esm_neg_meta_prepare/source/esm_atens/kernels.py",
+        "snapshots/aten-overnight-20261018/phase15_esm_neg_meta_v1/source/esm_atens/kernels.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/861c539364c85eb95a1db4cbf1142df00ae3d336d7ed08d3fe00c6c13244f27c.py.txt",
+      "sha256": "861c539364c85eb95a1db4cbf1142df00ae3d336d7ed08d3fe00c6c13244f27c",
+      "origin_commit": "1ca582b4d17f935ba04706384da9a06d5a5bae6e",
+      "origins": [
+        "experiments/top20-matrix-20261103/coordinators/variant.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/875a5cef8c3e172ba3d8db791801317e09ed25390b867a01f1638a90562c481b.py.txt",
+      "sha256": "875a5cef8c3e172ba3d8db791801317e09ed25390b867a01f1638a90562c481b",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/aten-overnight-20261018/phase2_atens_prepare/source/pointwise_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase4_atens_prepare/source/pointwise_atens/candidate.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/897493af761a3bfa173be87443500ab006b73ef5b65f4025f1538c2dc2d07040.py.txt",
+      "sha256": "897493af761a3bfa173be87443500ab006b73ef5b65f4025f1538c2dc2d07040",
+      "origin_commit": "1ca582b4d17f935ba04706384da9a06d5a5bae6e",
+      "origins": [
+        "experiments/top20-matrix-20261103/history/candidate-1.py",
+        "top20/matrix-family/candidate-1.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/8acc691e1867a590dcac8a244c498089cf33c1a433c156198259a52441500df0.py.txt",
+      "sha256": "8acc691e1867a590dcac8a244c498089cf33c1a433c156198259a52441500df0",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/aten-overnight-20261018/phase22_genscore_sum_direct_shape_prepare/source/sum_candidate/candidate.py",
+        "snapshots/aten-overnight-20261018/phase22_genscore_sum_direct_shape_v1/source/sum_candidate/candidate.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/91bd352bd1bd0dc72a74881f8b635e46cb23c374fb85f0f11850a06c7a7fca4d.py.txt",
+      "sha256": "91bd352bd1bd0dc72a74881f8b635e46cb23c374fb85f0f11850a06c7a7fca4d",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/aten-overnight-20261018/phase10_esm_neg_bitwise_prepare/source/addmm_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase6_esm_atens_prepare/source/addmm_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase6_esm_atens_v1/source/addmm_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase6_esm_atens_v2/source/addmm_atens/candidate.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/95e54f839d33fd5168a5e8c5959955ad58a0d5c66273e7240134cd18c92f46a1.py.txt",
+      "sha256": "95e54f839d33fd5168a5e8c5959955ad58a0d5c66273e7240134cd18c92f46a1",
+      "origin_commit": "ae3a6d66a6adef15c4b7feb9c71d24c99d56343b",
+      "origins": [
+        "experiments/top20-index-20261103/index-family-r2/base-source/f08.py",
+        "experiments/top20-index-20261103/index-family/r2/base-source/f08.py",
+        "experiments/top20-index-20261103/index-family/selected/f08.py",
+        "experiments/top20-index-20261103/reproduction/base-source/f08.py",
+        "experiments/top20-matrix-20261103/trusted/private/f08.py",
+        "experiments/under90-apptainer-ai4perf-20261102-r2/selected/f08.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/967594419f12cc0c895bb10f5b8def68857f6d19a9b421952261b8ba5d32b8d3.py.txt",
+      "sha256": "967594419f12cc0c895bb10f5b8def68857f6d19a9b421952261b8ba5d32b8d3",
+      "origin_commit": "96c8a376fc969f70fee34dcb294010085aa5ab9d",
+      "origins": [
+        "experiments/sort-randperm-ai4perf-20261027/candidates/sort-candidate-4-frozen.py",
+        "experiments/sort-randperm-ai4perf-20261027/evidence/sort-r4/snapshots/candidate-4/variant.py",
+        "experiments/sort-randperm-followup-20261029/v2/sort/base-variant.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/9b08074b410fab0dc990c384f6fb9fff99f02499a8ca9d7ff37fafbc29d426ae.py.txt",
+      "sha256": "9b08074b410fab0dc990c384f6fb9fff99f02499a8ca9d7ff37fafbc29d426ae",
+      "origin_commit": "1ca582b4d17f935ba04706384da9a06d5a5bae6e",
+      "origins": [
+        "experiments/top20-matrix-20261103/candidate-2.py",
+        "top20/matrix-family/candidate-2.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/9d3c37a65acb47867bdc7f219e03907216b534af0074c751b75e87a0f2096f4f.py.txt",
+      "sha256": "9d3c37a65acb47867bdc7f219e03907216b534af0074c751b75e87a0f2096f4f",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/aten-overnight-20261018/phase23_genscore_addmm_tile128_v1/source/legacy/addmm_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase23_genscore_addmm_tile_prepare/source/legacy/addmm_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase24_genscore_addmm_narrow32_v1/source/legacy/addmm_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase24_genscore_addmm_tile32_prepare/source/legacy/addmm_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase8_genscore_addmm_prepare/source/addmm_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase8_genscore_addmm_v1/source/addmm_atens/candidate.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/a16c9c4332a8fa01e4f84c3dc8c5e82fcc55dadba7cf65188934fdc50b2b0e6b.py.txt",
+      "sha256": "a16c9c4332a8fa01e4f84c3dc8c5e82fcc55dadba7cf65188934fdc50b2b0e6b",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/domain-op-optimization-20261017/frozen-v2/addmm/candidate.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/a2be8eceda89990deea5e23fe9aa5814aa8d328fae51066b273876ca7c459d3c.py.txt",
+      "sha256": "a2be8eceda89990deea5e23fe9aa5814aa8d328fae51066b273876ca7c459d3c",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/aten-overnight-20261018/phase15_esm_neg_meta_prepare/source/esm_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase15_esm_neg_meta_v1/source/esm_atens/candidate.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/a90257c7eb0029328e1029a896fcaaa929538cf39bf4c1542c7994f9d88db065.py.txt",
+      "sha256": "a90257c7eb0029328e1029a896fcaaa929538cf39bf4c1542c7994f9d88db065",
+      "origin_commit": "96c8a376fc969f70fee34dcb294010085aa5ab9d",
+      "origins": [
+        "experiments/sort-randperm-ai4perf-20261027/evidence/randperm-serial-r4b/snapshots/candidate-1/variant.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/a92e71eedcce3b3d99366ba41480c6557a7fdb43fd9b925159a092a8f331060b.py.txt",
+      "sha256": "a92e71eedcce3b3d99366ba41480c6557a7fdb43fd9b925159a092a8f331060b",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/aten-overnight-20261018/phase20_esm_tile32_v1/source/addmm_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase20_esm_tile32_v2/source/addmm_atens/candidate.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/ad337c53c4d95fbdfec8ddf6359a63dc62ac5b87a1e3fd8160241f0ae12db450.py.txt",
+      "sha256": "ad337c53c4d95fbdfec8ddf6359a63dc62ac5b87a1e3fd8160241f0ae12db450",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/aten-overnight-20261018/phase2_atens_prepare/source/addmm_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase7_operator_timing_prepare/source/addmm_atens/candidate.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/ad7f6af3e6e8f7aa5fa14127fa31e5a30647292669905b1c1448d70dd9842995.py.txt",
+      "sha256": "ad7f6af3e6e8f7aa5fa14127fa31e5a30647292669905b1c1448d70dd9842995",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/aten-overnight-20261018/phase6_esm_atens_prepare/source/esm_atens/kernels.py",
+        "snapshots/aten-overnight-20261018/phase6_esm_atens_v1/source/esm_atens/kernels.py",
+        "snapshots/aten-overnight-20261018/phase6_esm_atens_v2/source/esm_atens/kernels.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/b3d11d3f11db190c6be9a5e60219fcd4f409d93bd0d77cb578f9d4ba1f1778cc.py.txt",
+      "sha256": "b3d11d3f11db190c6be9a5e60219fcd4f409d93bd0d77cb578f9d4ba1f1778cc",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/aten-overnight-20261018/phase6_esm_atens_prepare/source/esm_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase6_esm_atens_v1/source/esm_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase6_esm_atens_v2/source/esm_atens/candidate.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/b76d5708935428b14d2beb37f8bb472adfa3f841e7bee824f9e15f2dd5ce860f.py.txt",
+      "sha256": "b76d5708935428b14d2beb37f8bb472adfa3f841e7bee824f9e15f2dd5ce860f",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/aten-only-restart-20261018/sum_small_rows/sum.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/ba0dc3368724e126f90b4fda00a9aedcaa20c22a1d8f9f53fcbae3df286ee3d4.py.txt",
+      "sha256": "ba0dc3368724e126f90b4fda00a9aedcaa20c22a1d8f9f53fcbae3df286ee3d4",
+      "origin_commit": "23a15d53d9badef115d89a0b779f59f974c63b55",
+      "origins": [
+        "experiments/under90-apptainer-ai4perf-20261102-r2/baseline/f07.py",
+        "experiments/under90-apptainer-ai4perf-20261102-r2/evidence/api-final/run/trusted/reference/f07.py",
+        "experiments/under90-apptainer-ai4perf-20261102/selected/f07.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/bcee1ec35da5b16afd1a81655bf49bd1b3e2468fc3d9b4c5c4b4b20bcddbd9de.py.txt",
+      "sha256": "bcee1ec35da5b16afd1a81655bf49bd1b3e2468fc3d9b4c5c4b4b20bcddbd9de",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/aten-overnight-20261018/phase23_genscore_addmm_tile128_v1/source/addmm_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase23_genscore_addmm_tile_prepare/source/addmm_atens/candidate.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/c2d7851122a1f49a09c9286cfd2ba1955d9e338420a5cb110ee5d6574c3004f8.py.txt",
+      "sha256": "c2d7851122a1f49a09c9286cfd2ba1955d9e338420a5cb110ee5d6574c3004f8",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/aten-overnight-20261018/phase2_atens_prepare/source/sum_candidate/optimized_sum.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/c301cc1eb2186ae6fd3042ad16504023679fb8597ac0bf4d51cc250f54243c05.py.txt",
+      "sha256": "c301cc1eb2186ae6fd3042ad16504023679fb8597ac0bf4d51cc250f54243c05",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/aten-overnight-20261018/phase4_pointwise_v1/source/pointwise_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase4_pointwise_v2/source/pointwise_atens/candidate.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/d02db2dc2564d2bd2d752922898712ae64262fda9484b6e6003ee9199b6bab64.py.txt",
+      "sha256": "d02db2dc2564d2bd2d752922898712ae64262fda9484b6e6003ee9199b6bab64",
+      "origin_commit": "23a15d53d9badef115d89a0b779f59f974c63b55",
+      "origins": [
+        "experiments/under90-apptainer-ai4perf-20261102-r2/baseline/f05.py",
+        "experiments/under90-apptainer-ai4perf-20261102-r2/evidence/api-final/run/trusted/reference/f05.py",
+        "experiments/under90-apptainer-ai4perf-20261102/selected/f05.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/d1803460713b6282c0915c7340b28fcfa483251a1b719ce5997fc7ae2663fd9f.py.txt",
+      "sha256": "d1803460713b6282c0915c7340b28fcfa483251a1b719ce5997fc7ae2663fd9f",
+      "origin_commit": "09aee41c692b76f6117d2790884fc8eeb0bde7d1",
+      "origins": [
+        "experiments/sort-randperm-followup-20261029/v2/randperm/candidate-1.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/d2594faf1b89fa0bdb2de549d4e2dde19ea87f63c0d92e587b326773d094a0cb.py.txt",
+      "sha256": "d2594faf1b89fa0bdb2de549d4e2dde19ea87f63c0d92e587b326773d094a0cb",
+      "origin_commit": "1ca582b4d17f935ba04706384da9a06d5a5bae6e",
+      "origins": [
+        "experiments/top20-matrix-20261103/runtime-source/runtime/backend/_hygon/ops/mm.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/d37eb3ca6511b79340f2c199428873baf7d1e704f34146e154c61c1801aa8d89.py.txt",
+      "sha256": "d37eb3ca6511b79340f2c199428873baf7d1e704f34146e154c61c1801aa8d89",
+      "origin_commit": "1ca582b4d17f935ba04706384da9a06d5a5bae6e",
+      "origins": [
+        "experiments/top20-matrix-20261103/runtime-source/ops/mm.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/d395e1ec16b6117c57780dd473339b03d0c604306046d160bf33e45e46d83931.py.txt",
+      "sha256": "d395e1ec16b6117c57780dd473339b03d0c604306046d160bf33e45e46d83931",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/aten-overnight-20261018/phase11_pointwise_block4096_v1/source/sum_candidate/candidate.py",
+        "snapshots/aten-overnight-20261018/phase12_pointwise_components_v1/source/sum_candidate/candidate.py",
+        "snapshots/aten-overnight-20261018/phase13_routed_profile_integration_prepare/source/sum_candidate/candidate.py",
+        "snapshots/aten-overnight-20261018/phase13_routed_profile_v1/source/sum_candidate/candidate.py",
+        "snapshots/aten-overnight-20261018/phase13_routed_profile_v2/source/sum_candidate/candidate.py",
+        "snapshots/aten-overnight-20261018/phase14_full_like_output_only_v1/source/sum_candidate/candidate.py",
+        "snapshots/aten-overnight-20261018/phase21_genscore_sum_bm128_prepare/source/sum_legacy/candidate.py",
+        "snapshots/aten-overnight-20261018/phase21_genscore_sum_bm128_v1/source/sum_legacy/candidate.py",
+        "snapshots/aten-overnight-20261018/phase21_genscore_sum_bm128_v2/source/sum_legacy/candidate.py",
+        "snapshots/aten-overnight-20261018/phase22_genscore_sum_direct_shape_prepare/source/sum_legacy/candidate.py",
+        "snapshots/aten-overnight-20261018/phase22_genscore_sum_direct_shape_v1/source/sum_legacy/candidate.py",
+        "snapshots/aten-overnight-20261018/phase23_genscore_addmm_tile128_v1/source/sum_candidate/candidate.py",
+        "snapshots/aten-overnight-20261018/phase23_genscore_addmm_tile_prepare/source/sum_candidate/candidate.py",
+        "snapshots/aten-overnight-20261018/phase24_genscore_addmm_narrow32_v1/source/sum_candidate/candidate.py",
+        "snapshots/aten-overnight-20261018/phase24_genscore_addmm_tile32_prepare/source/sum_candidate/candidate.py",
+        "snapshots/aten-overnight-20261018/phase4_atens_prepare/source/sum_candidate/candidate.py",
+        "snapshots/aten-overnight-20261018/phase4_pointwise_v1/source/sum_candidate/candidate.py",
+        "snapshots/aten-overnight-20261018/phase4_pointwise_v2/source/sum_candidate/candidate.py",
+        "snapshots/aten-overnight-20261018/phase5_pointwise_fix_v1/source/sum_candidate/candidate.py",
+        "snapshots/aten-overnight-20261018/phase7_pointwise_timing_prepare/source/sum_candidate/candidate.py",
+        "snapshots/aten-overnight-20261018/phase7_pointwise_timing_v1/source/sum_candidate/candidate.py",
+        "snapshots/aten-overnight-20261018/phase8_genscore_addmm_prepare/source/sum_candidate/candidate.py",
+        "snapshots/aten-overnight-20261018/phase8_genscore_addmm_v1/source/sum_candidate/candidate.py",
+        "snapshots/aten-overnight-20261018/phase9_pointwise_allocation_v1/source/sum_candidate/candidate.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/d4d10ed9e5462fa9f35d56c575646261268ebaaf5378adc3d1837fc42fd657bf.py.txt",
+      "sha256": "d4d10ed9e5462fa9f35d56c575646261268ebaaf5378adc3d1837fc42fd657bf",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/domain-op-optimization-20261017/ai-run-v3/experiments/baseline/candidate/norm_mask/candidate.py",
+        "snapshots/domain-op-optimization-20261017/ai-run-v3/experiments/candidate-confirm/candidate/norm_mask/candidate.py",
+        "snapshots/domain-op-optimization-20261017/ai-run-v3/experiments/candidate-confirm/reference/norm_mask/candidate.py",
+        "snapshots/domain-op-optimization-20261017/ai-run-v3/experiments/candidate-explore/candidate/norm_mask/candidate.py",
+        "snapshots/domain-op-optimization-20261017/ai-run-v3/snapshots/baseline/norm_mask/candidate.py",
+        "snapshots/domain-op-optimization-20261017/ai-run-v3/snapshots/combined-candidates/norm_mask/candidate.py",
+        "snapshots/domain-op-optimization-20261017/frozen-v1/norm_mask/candidate.py",
+        "snapshots/domain-op-optimization-20261017/norm_mask/candidate.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/d5a286461d03375896bc2f21dab5346b180a582f13eafdf4fbe3af4547117378.py.txt",
+      "sha256": "d5a286461d03375896bc2f21dab5346b180a582f13eafdf4fbe3af4547117378",
+      "origin_commit": "96c8a376fc969f70fee34dcb294010085aa5ab9d",
+      "origins": [
+        "experiments/sort-randperm-ai4perf-20261027/evidence/randperm-serial-r4b/snapshots/baseline-evidence/variant.py",
+        "experiments/sort-randperm-ai4perf-20261027/evidence/randperm-serial-r4b/snapshots/baseline/variant.py",
+        "experiments/sort-randperm-ai4perf-20261027/evidence/sort-r4/snapshots/baseline-evidence/variant.py",
+        "experiments/sort-randperm-ai4perf-20261027/evidence/sort-r4/snapshots/baseline/variant.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/d6d2b59ddc808effa2e3d9c9d072ccca4ad98b9d74dd080c8622d8eab98486f8.py.txt",
+      "sha256": "d6d2b59ddc808effa2e3d9c9d072ccca4ad98b9d74dd080c8622d8eab98486f8",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/domain-op-optimization-20261017/frozen-v1/addmm/candidate.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/dc8d7c775818830cb28486af62add55ec5cacc9a986746c6156b67ebb03046a6.py.txt",
+      "sha256": "dc8d7c775818830cb28486af62add55ec5cacc9a986746c6156b67ebb03046a6",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/aten-overnight-20261018/phase16_esm_welford_v1/source/esm_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase16_norm_welford_prepare/source/esm_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase17_esm_norm_avx2_v1/source/esm_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase18_norm_order_diagnostic_v1/source/esm_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase19_esm_mean_fma_v1/source/esm_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase20_esm_tile32_v1/source/esm_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase20_esm_tile32_v2/source/esm_atens/candidate.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/e07964330ae4b2a4fffea5144d5382e275bc5f4b11deab9cea714705b5e7e509.py.txt",
+      "sha256": "e07964330ae4b2a4fffea5144d5382e275bc5f4b11deab9cea714705b5e7e509",
+      "origin_commit": "1ca582b4d17f935ba04706384da9a06d5a5bae6e",
+      "origins": [
+        "experiments/top20-matrix-20261103/runtime-source/ops/bmm.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/e9b1697df48f591e34fabfebebcc6c42d3d02eea79582effbde387092e569e1c.py.txt",
+      "sha256": "e9b1697df48f591e34fabfebebcc6c42d3d02eea79582effbde387092e569e1c",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/domain-op-optimization-20261017/ai-run-v3/experiments/baseline/candidate/reduction/candidate.py",
+        "snapshots/domain-op-optimization-20261017/ai-run-v3/experiments/candidate-confirm/candidate/reduction/candidate.py",
+        "snapshots/domain-op-optimization-20261017/ai-run-v3/experiments/candidate-confirm/reference/reduction/candidate.py",
+        "snapshots/domain-op-optimization-20261017/ai-run-v3/experiments/candidate-explore/candidate/reduction/candidate.py",
+        "snapshots/domain-op-optimization-20261017/ai-run-v3/snapshots/baseline/reduction/candidate.py",
+        "snapshots/domain-op-optimization-20261017/ai-run-v3/snapshots/combined-candidates/reduction/candidate.py",
+        "snapshots/domain-op-optimization-20261017/reduction/candidate.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/ed9677496cd63675f28c7a2575aae5840f24c2d9bcbd861a187614c63da17547.py.txt",
+      "sha256": "ed9677496cd63675f28c7a2575aae5840f24c2d9bcbd861a187614c63da17547",
+      "origin_commit": "c93db6856c6c29cc89a5f595ae0d0f4aedf599e9",
+      "origins": [
+        "snapshots/aurora-modelscope-20261019/avg_pool2d.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/f6a924290afefbbbf4454691b8edf9fe3c8357264592485f676f77d83dce9863.py.txt",
+      "sha256": "f6a924290afefbbbf4454691b8edf9fe3c8357264592485f676f77d83dce9863",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/aten-overnight-20261018/phase15_esm_neg_meta_prepare/source/addmm_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase15_esm_neg_meta_v1/source/addmm_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase16_esm_welford_v1/source/addmm_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase16_norm_welford_prepare/source/addmm_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase17_esm_norm_avx2_v1/source/addmm_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase18_norm_order_diagnostic_v1/source/addmm_atens/candidate.py",
+        "snapshots/aten-overnight-20261018/phase19_esm_mean_fma_v1/source/addmm_atens/candidate.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/f6b8589e480d6da79319fc1cff7e0fdbe21441b1c38eea18bf49c78c30e35734.py.txt",
+      "sha256": "f6b8589e480d6da79319fc1cff7e0fdbe21441b1c38eea18bf49c78c30e35734",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/domain-op-optimization-20261017/gs-micro/source/reduction_gs/candidate.py",
+        "snapshots/domain-op-optimization-20261017/reduction_gs/candidate.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/f90bfd1ccc5d4f4e1fa7760e6e3cd14e01bbd93a07691b169e96fcaefddc9762.py.txt",
+      "sha256": "f90bfd1ccc5d4f4e1fa7760e6e3cd14e01bbd93a07691b169e96fcaefddc9762",
+      "origin_commit": "ac2f31f18a64ac72268f7770953495bb57375b93",
+      "origins": [
+        "snapshots/domain-op-optimization-20261017/pointwise_selected/candidate.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    },
+    {
+      "path": "docs/hygon-optimization/history/sources/fc9c2dbaecfa9d36dd218a62f05716db4933dd29170748da7929c3017e2ea417.py.txt",
+      "sha256": "fc9c2dbaecfa9d36dd218a62f05716db4933dd29170748da7929c3017e2ea417",
+      "origin_commit": "23a15d53d9badef115d89a0b779f59f974c63b55",
+      "origins": [
+        "experiments/top20-index-20261103/index-family-r2/base-source/f04.py",
+        "experiments/top20-index-20261103/index-family/r2/base-source/f04.py",
+        "experiments/top20-index-20261103/index-family/selected/f04.py",
+        "experiments/top20-index-20261103/reproduction/base-source/f04.py",
+        "experiments/top20-matrix-20261103/trusted/private/f04.py",
+        "experiments/under90-apptainer-ai4perf-20261102-r2/baseline/f04.py",
+        "experiments/under90-apptainer-ai4perf-20261102-r2/evidence/api-final/run/trusted/reference/f04.py",
+        "experiments/under90-apptainer-ai4perf-20261102-r2/selected/f04.py",
+        "experiments/under90-apptainer-ai4perf-20261102/selected/f04.py"
+      ],
+      "status": "historical_source_only_not_enabled_or_requalified"
+    }
+  ],
+  "operator_registry": [
+    {
+      "schema": "aten::sum.dim_IntList",
+      "historical_status": "RETAINED_EXPERIMENTAL",
+      "pr_ready": false,
+      "source_sha256": [
+        "d395e1ec16b6117c57780dd473339b03d0c604306046d160bf33e45e46d83931",
+        "3ca0e5bda74fb9dd58aee738b09efe1ca0b32a27d35fd0cc689da136a3892623",
+        "f6b8589e480d6da79319fc1cff7e0fdbe21441b1c38eea18bf49c78c30e35734",
+        "e9b1697df48f591e34fabfebebcc6c42d3d02eea79582effbde387092e569e1c"
+      ]
+    },
+    {
+      "schema": "aten::silu",
+      "historical_status": "RETAINED_EXPERIMENTAL",
+      "pr_ready": false,
+      "source_sha256": [
+        "19f5129c0719ee9bdff93c73fcee72739a00a7717133a6007cf813af089f38ca",
+        "29a93563c9cd0a2076114ec508535df89f4bbe6585d983492c747c90692fdc4c"
+      ]
+    },
+    {
+      "schema": "aten::clamp",
+      "historical_status": "RETAINED_EXPERIMENTAL",
+      "pr_ready": false,
+      "source_sha256": [
+        "19f5129c0719ee9bdff93c73fcee72739a00a7717133a6007cf813af089f38ca",
+        "29a93563c9cd0a2076114ec508535df89f4bbe6585d983492c747c90692fdc4c"
+      ]
+    },
+    {
+      "schema": "aten::exp",
+      "historical_status": "RETAINED_EXPERIMENTAL",
+      "pr_ready": false,
+      "source_sha256": [
+        "19f5129c0719ee9bdff93c73fcee72739a00a7717133a6007cf813af089f38ca",
+        "29a93563c9cd0a2076114ec508535df89f4bbe6585d983492c747c90692fdc4c"
+      ]
+    },
+    {
+      "schema": "aten::full_like",
+      "historical_status": "RETAINED_EXPERIMENTAL",
+      "pr_ready": false,
+      "source_sha256": [
+        "19f5129c0719ee9bdff93c73fcee72739a00a7717133a6007cf813af089f38ca",
+        "29a93563c9cd0a2076114ec508535df89f4bbe6585d983492c747c90692fdc4c"
+      ]
+    },
+    {
+      "schema": "aten::addmm",
+      "historical_status": "RETAINED_OLD_AND_REJECTED_TRIAL_SEPARATED",
+      "pr_ready": false,
+      "source_sha256": [
+        "9d3c37a65acb47867bdc7f219e03907216b534af0074c751b75e87a0f2096f4f",
+        "1d42b0b10c55e5e0e5938554c5a778fce58b30c5f2025421af8b98065df6b9b6",
+        "a92e71eedcce3b3d99366ba41480c6557a7fdb43fd9b925159a092a8f331060b",
+        "0105c8069955da8963b0fc9fc7ea179de2f5532493c610a6e8529e8c353ecbf1"
+      ]
+    },
+    {
+      "schema": "aten::neg",
+      "historical_status": "ESM_MODEL_REGRESSION_BLOCKED",
+      "pr_ready": false,
+      "source_sha256": [
+        "dc8d7c775818830cb28486af62add55ec5cacc9a986746c6156b67ebb03046a6",
+        "a92e71eedcce3b3d99366ba41480c6557a7fdb43fd9b925159a092a8f331060b",
+        "42c4627de559f34dfad46b0bb1274f95019e7c15001ba15a81ba842ecfdc32ed"
+      ]
+    },
+    {
+      "schema": "aten::erf",
+      "historical_status": "ESM_MODEL_REGRESSION_BLOCKED",
+      "pr_ready": false,
+      "source_sha256": [
+        "dc8d7c775818830cb28486af62add55ec5cacc9a986746c6156b67ebb03046a6",
+        "a92e71eedcce3b3d99366ba41480c6557a7fdb43fd9b925159a092a8f331060b",
+        "42c4627de559f34dfad46b0bb1274f95019e7c15001ba15a81ba842ecfdc32ed"
+      ]
+    },
+    {
+      "schema": "aten::native_layer_norm",
+      "historical_status": "ESM_MODEL_REGRESSION_BLOCKED",
+      "pr_ready": false,
+      "source_sha256": [
+        "dc8d7c775818830cb28486af62add55ec5cacc9a986746c6156b67ebb03046a6",
+        "a92e71eedcce3b3d99366ba41480c6557a7fdb43fd9b925159a092a8f331060b",
+        "0c531df1a247ad36d4840fd547048117b3d01484823c42719edd32cc517c581c"
+      ]
+    },
+    {
+      "schema": "aten::_softmax",
+      "historical_status": "HISTORICAL_TRIAL_REGRESSED",
+      "pr_ready": false,
+      "source_sha256": [
+        "176e4e575a1b1470ee34c5a8ab42403a39151052a316c5e237dd9aa8bc1f38d5"
+      ]
+    },
+    {
+      "schema": "aten::masked_fill.Scalar",
+      "historical_status": "HISTORICAL_CAPTURE_ONLY",
+      "pr_ready": false,
+      "source_sha256": [
+        "0c531df1a247ad36d4840fd547048117b3d01484823c42719edd32cc517c581c"
+      ]
+    },
+    {
+      "schema": "aten::sin",
+      "historical_status": "HISTORICAL_CAPTURE_ONLY",
+      "pr_ready": false,
+      "source_sha256": [
+        "42c4627de559f34dfad46b0bb1274f95019e7c15001ba15a81ba842ecfdc32ed"
+      ]
+    },
+    {
+      "schema": "aten::cos",
+      "historical_status": "HISTORICAL_CAPTURE_ONLY",
+      "pr_ready": false,
+      "source_sha256": [
+        "42c4627de559f34dfad46b0bb1274f95019e7c15001ba15a81ba842ecfdc32ed"
+      ]
+    },
+    {
+      "schema": "aten::sigmoid",
+      "historical_status": "HISTORICAL_CAPTURE_ONLY",
+      "pr_ready": false,
+      "source_sha256": [
+        "42c4627de559f34dfad46b0bb1274f95019e7c15001ba15a81ba842ecfdc32ed"
+      ]
+    },
+    {
+      "schema": "aten::pow.Tensor_Scalar",
+      "historical_status": "NO_FAST_PATH_HIT",
+      "pr_ready": false,
+      "source_sha256": [
+        "42c4627de559f34dfad46b0bb1274f95019e7c15001ba15a81ba842ecfdc32ed"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,353 @@
+"""F05 round2 trial2: full-tile masks and four-element numeric launch geometry.
+
+No vendor delegation, result cache, benchmark-case selector, or live source import.
+Main must install after private FlagGems import and before ATen provider lookup.
+"""
+import hashlib
+import importlib
+import math
+from pathlib import Path
+import sys
+
+import triton
+import triton.language as tl
+from flag_gems.utils import libentry, tl_extra_shim
+from flag_gems.utils import triton_lang_extension as ext
+
+TRIAL = "f05-r2-t2-fulltiles-floor1024-w4-nan512-w2-1024-w4"
+MIN_TUNED_ELEMENTS = 1 << 19
+MAX_ELEMENTS = (1 << 31) - 1
+TILE = 4096
+
+
+@libentry()
+@triton.jit
+def _f05_fill_kernel(out, n, BLOCK: tl.constexpr):
+    offsets = ext.program_id(0) * BLOCK + tl.arange(0, BLOCK)
+    tl.store(out + offsets, 1.0, mask=offsets < n)
+
+
+
+# Same scalar operations as the pinned FP32 providers; only launch geometry
+# changes. Each kernel handles arbitrary positive lengths with a masked tail.
+_isnan = tl_extra_shim.isnan
+
+
+@libentry()
+@triton.jit
+def _f05_r2_floor_kernel(X, Y, N, BLOCK: tl.constexpr, FULL: tl.constexpr):
+    offsets = ext.program_id(0) * BLOCK + tl.arange(0, BLOCK)
+    if FULL:
+        x = tl.load(X + offsets)
+    else:
+        active = offsets < N
+        x = tl.load(X + offsets, mask=active, other=0.0)
+    y = tl.floor(x.to(tl.float32)).to(x.dtype)
+    if FULL:
+        tl.store(Y + offsets, y)
+    else:
+        tl.store(Y + offsets, y, mask=active)
+
+
+@libentry()
+@triton.jit
+def _f05_r2_nan_to_num_kernel(X, Y, N, nan, posinf, neginf,
+                             BLOCK: tl.constexpr, FULL: tl.constexpr):
+    offsets = ext.program_id(0) * BLOCK + tl.arange(0, BLOCK)
+    if FULL:
+        x = tl.load(X + offsets)
+    else:
+        active = offsets < N
+        x = tl.load(X + offsets, mask=active, other=0.0)
+    # All three masks must describe the ORIGINAL x. In particular, replacing a
+    # NaN with +Inf must not then turn that replacement into posinf.
+    x_nan = _isnan(x.to(tl.float32))
+    x_posinf = x == float("inf")
+    x_neginf = x == -float("inf")
+    y = tl.where(x_nan, nan, x)
+    y = tl.where(x_posinf, posinf, y)
+    y = tl.where(x_neginf, neginf, y)
+    if FULL:
+        tl.store(Y + offsets, y)
+    else:
+        tl.store(Y + offsets, y, mask=active)
+
+
+def _numel(size):
+    if type(size) is int:
+        size = (size,)
+    try:
+        dimensions = tuple(size)
+    except TypeError:
+        return None
+    n = 1
+    for dimension in dimensions:
+        if type(dimension) is not int or dimension < 0:
+            return None
+        n *= dimension
+        if n > MAX_ELEMENTS:
+            return None
+    return n
+
+
+def install(torch, flag_gems):
+    source_sha256 = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
+    prior = getattr(flag_gems, "__under90_f05_receipt__", None)
+    if prior is not None:
+        if (prior["trial"] != TRIAL or prior["source_sha256"] != source_sha256) or any(
+            getattr(flag_gems, name) is not fn
+            for name, fn in prior["wrappers"].items()
+        ):
+            raise RuntimeError("F05 mixed installation: use a fresh variant process")
+        return prior
+
+    from flag_gems.runtime import torch_device_fn
+    stock_fill = importlib.import_module("flag_gems.ops.ones").ones_kernel
+    original = {name: getattr(flag_gems, name)
+                for name in ("ones", "ones_like", "linspace", "floor", "nan_to_num")}
+    counters = {}
+
+    def count(key):
+        counters[key] = counters.get(key, 0) + 1
+
+    def resolve_device(value):
+        try:
+            dev = torch.device(value)
+        except (TypeError, ValueError, RuntimeError):
+            return None
+        # This trial owns the actual PrivateUse1/flagos path, not vendor cuda.
+        if dev.type not in ("flagos", "privateuseone"):
+            return None
+        if dev.index is None:
+            dev = torch.device(dev.type, torch_device_fn.current_device())
+        return dev
+
+    def supported_options(dtype, layout, pin_memory):
+        return (dtype == torch.float32
+                and (layout is None or layout == torch.strided)
+                and (pin_memory is None or pin_memory is False))
+
+    def fill(out, operation):
+        n = out.numel()
+        if n == 0:
+            count(operation + ":empty")
+            return out
+        with torch_device_fn.device(out.device):
+            if out.is_contiguous() and MIN_TUNED_ELEMENTS <= n <= MAX_ELEMENTS:
+                _f05_fill_kernel[(triton.cdiv(n, TILE),)](
+                    out, n, BLOCK=TILE, num_warps=4)
+                count(operation + ":tuned4096")
+            else:
+                # Base fill handles dense transpose/channels-last physical
+                # storage too: empty_like never copies a holey/overlapping
+                # layout into a non-dense allocation with this supported domain.
+                stock_fill[(triton.cdiv(n, 1024),)](
+                    out, n, BLOCK_SIZE=1024)
+                count(operation + ":stock_fill")
+        return out
+
+    def ones(size, *, dtype=None, layout=None, device=None, pin_memory=None):
+        resolved_dtype = torch.get_default_dtype() if dtype is None else dtype
+        n = _numel(size)
+        dev = resolve_device(device) if device is not None else None
+        if (dev is None or n is None or n < MIN_TUNED_ELEMENTS
+                or not supported_options(resolved_dtype, layout, pin_memory)):
+            count("ones:delegate")
+            return original["ones"](size, dtype=dtype, layout=layout,
+                                    device=device, pin_memory=pin_memory)
+        with torch_device_fn.device(dev):
+            out = torch.empty(size, dtype=resolved_dtype, device=dev,
+                              layout=torch.strided, pin_memory=False)
+            return fill(out, "ones")
+
+    def ones_like(x, *, dtype=None, layout=None, device=None,
+                  pin_memory=None, memory_format=None):
+        resolved_dtype = x.dtype if dtype is None else dtype
+        dev = resolve_device(x.device if device is None else device)
+        allowed_formats = (None, torch.preserve_format, torch.contiguous_format,
+                           torch.channels_last, torch.channels_last_3d)
+        if (type(x) is not torch.Tensor or x.layout != torch.strided
+                or dev is None or resolve_device(x.device) != dev
+                or not supported_options(resolved_dtype, layout, pin_memory)
+                or memory_format not in allowed_formats
+                or x.is_conj() or x.is_neg()
+                or x.numel() > MAX_ELEMENTS):
+            count("ones_like:delegate")
+            return original["ones_like"](
+                x, dtype=dtype, layout=layout, device=device,
+                pin_memory=pin_memory, memory_format=memory_format)
+        # The pinned empty_like device bridge drops explicit memory_format.
+        # Do not request a changed layout through that path: allocate by shape.
+        # Ordinary empty(shape) guarantees contiguous strides even when x is a
+        # transpose, sliced view, or already channels-last.
+        with torch_device_fn.device(dev):
+            if memory_format == torch.contiguous_format:
+                out = torch.empty(tuple(x.shape), dtype=resolved_dtype,
+                                  device=dev, layout=torch.strided,
+                                  pin_memory=False)
+                count("ones_like:explicit_contiguous_allocation")
+            elif memory_format in (torch.channels_last, torch.channels_last_3d):
+                # Allocate the requested layout independently of x; importantly,
+                # never fall back to original ones_like, which loses this request.
+                # torch.empty validates format/rank compatibility. Noncontiguous
+                # dense layouts use the unchanged pinned stock fill kernel.
+                out = torch.empty(tuple(x.shape), dtype=resolved_dtype,
+                                  device=dev, layout=torch.strided,
+                                  pin_memory=False, memory_format=memory_format)
+                count("ones_like:explicit_channels_last_allocation")
+            else:
+                # None/preserve_format intentionally requests the input's dense
+                # layout. The bridge's default preserves dense transpose and
+                # channels-last strides, and densifies sliced/expanded inputs.
+                out = torch.empty_like(x, dtype=resolved_dtype, device=dev,
+                                       layout=torch.strided, pin_memory=False,
+                                       memory_format=torch.preserve_format)
+                count("ones_like:preserve_allocation")
+            return fill(out, "ones_like")
+
+    def linspace(start, end, steps, *, dtype=None, layout=None,
+                 device=None, pin_memory=None):
+        if (type(steps) is int and steps == 0
+                and type(start) in (int, float) and type(end) in (int, float)):
+            count("linspace:steps0_semantic_fix")
+            return torch.empty((0,), dtype=dtype, layout=layout,
+                               device=device, pin_memory=pin_memory)
+        count("linspace:stock")
+        return original["linspace"](
+            start, end, steps, dtype=dtype, layout=layout,
+            device=device, pin_memory=pin_memory)
+
+    def numeric_eligible(A):
+        # No input-value reads, alignment assumptions, or whole-shape guards.
+        if (type(A) is not torch.Tensor or A.layout != torch.strided
+                or A.dtype != torch.float32
+                or A.device.type not in ("flagos", "privateuseone")
+                or A.requires_grad or A.is_conj() or A.is_neg()
+                or not A.is_contiguous()):
+            return False
+        n = A.numel()
+        if type(n) is not int or not 0 < n <= MAX_ELEMENTS:
+            return False
+        if torch.autograd.forward_ad.unpack_dual(A).tangent is not None:
+            return False
+        return True
+
+    def floor(A):
+        if not numeric_eligible(A):
+            count("floor:delegate")
+            return original["floor"](A)
+        n = A.numel()
+        with torch_device_fn.device(A.device):
+            out = torch.empty_like(A)
+            _f05_r2_floor_kernel[(triton.cdiv(n, 1024),)](
+                A, out, n, BLOCK=1024, FULL=(n % 1024 == 0), num_warps=4, num_stages=2,
+                waves_per_eu=1, enable_fp_fusion=True,
+                allow_flush_denorm=False)
+        count("floor:tuned1024_w4_fulltiles")
+        return out
+
+    def nan_to_num(A, nan=None, posinf=None, neginf=None):
+        if not numeric_eligible(A):
+            count("nan_to_num:delegate_metadata")
+            return original["nan_to_num"](
+                A, nan=nan, posinf=posinf, neginf=neginf)
+        limits = torch.finfo(A.dtype)
+        supplied = (nan, posinf, neginf)
+        defaults = (0.0, limits.max, limits.min)
+        replacements = []
+        for value, default in zip(supplied, defaults):
+            value = default if value is None else value
+            # Scalar parameters are not tensor data. Unknown scalar classes,
+            # integer overflows and finite values outside FP32 retain the exact
+            # active provider's conversion/error behavior. NaN/Inf replacements
+            # are supported, and -0.0 is preserved. No finite-input assumption.
+            if type(value) not in (int, float):
+                count("nan_to_num:delegate_scalar")
+                return original["nan_to_num"](
+                    A, nan=nan, posinf=posinf, neginf=neginf)
+            try:
+                value = float(value)
+            except (OverflowError, ValueError):
+                count("nan_to_num:delegate_scalar")
+                return original["nan_to_num"](
+                    A, nan=nan, posinf=posinf, neginf=neginf)
+            if math.isfinite(value) and abs(value) > limits.max:
+                count("nan_to_num:delegate_scalar")
+                return original["nan_to_num"](
+                    A, nan=nan, posinf=posinf, neginf=neginf)
+            replacements.append(value)
+        n = A.numel()
+        block, warps = (512, 2) if n <= 65536 else (1024, 4)
+        with torch_device_fn.device(A.device):
+            out = torch.empty_like(A)
+            _f05_r2_nan_to_num_kernel[(triton.cdiv(n, block),)](
+                A, out, n, *replacements, BLOCK=block, FULL=(n % block == 0), num_warps=warps,
+                num_stages=2, waves_per_eu=1, enable_fp_fusion=True,
+                allow_flush_denorm=False)
+        count("nan_to_num:tuned%d_w%d" % (block, warps))
+        return out
+
+    numeric_wrappers = {"floor": floor, "nan_to_num": nan_to_num}
+
+    def patch_numeric_entries(entries):
+        updated = []
+        for item in entries:
+            name = item[0] if len(item) >= 2 else None
+            if name in numeric_wrappers:
+                if item[1] is not original[name]:
+                    raise RuntimeError("F05 numeric provider/config mismatch: " + name)
+                updated.append((name, numeric_wrappers[name], *item[2:]))
+            else:
+                updated.append(item)
+        if all(a is b for a, b in zip(updated, entries)):
+            return entries
+        return tuple(updated) if isinstance(entries, tuple) else updated
+
+    # Validate and prepare BOTH live registrar views before mutating any roots.
+    # Do not reconstruct a base config: F01..F04 have already installed patches.
+    config = flag_gems._FULL_CONFIG
+    for name in numeric_wrappers:
+        entries = [item for item in config if len(item) >= 2 and item[0] == name]
+        if len(entries) != 1 or entries[0][1] is not original[name]:
+            raise RuntimeError("F05 expected exact active numeric entry: " + name)
+    new_config = patch_numeric_entries(config)
+    by_func = flag_gems.FULL_CONFIG_BY_FUNC
+    new_by_func = {name: patch_numeric_entries(entries)
+                   for name, entries in by_func.items()}
+    for name in numeric_wrappers:
+        if not any(len(item) >= 2 and item[0] == name
+                   and item[1] is numeric_wrappers[name]
+                   for entries in new_by_func.values() for item in entries):
+            raise RuntimeError("F05 numeric cache entry missing: " + name)
+
+    wrappers = {"ones": ones, "ones_like": ones_like, "linspace": linspace}
+    wrappers.update(numeric_wrappers)
+    changed = []
+    for name, replacement in wrappers.items():
+        replacement._under90_f05_trial = TRIAL
+        replacement._under90_f05_original = original[name]
+        names = {"flag_gems", "flag_gems.ops", "flag_gems.ops." + name,
+                 "flag_gems.runtime.backend._hygon.ops",
+                 "_hygon.ops", getattr(original[name], "__module__", "")}
+        for module_name in names:
+            module = sys.modules.get(module_name)
+            if module is not None and getattr(module, name, None) is original[name]:
+                setattr(module, name, replacement)
+                changed.append(module_name + "." + name)
+        setattr(flag_gems, name, replacement)
+    flag_gems._FULL_CONFIG = new_config
+    flag_gems.FULL_CONFIG_BY_FUNC = new_by_func
+    receipt = {"trial": TRIAL, "source_sha256": source_sha256, "wrappers": wrappers, "original": original,
+               "counters": counters, "patched_aliases": sorted(set(changed)),
+               "full_alias": "not patched: fresh baseline witnessed ones",
+               "semantic_fixes": ["linspace scalar steps=0 returns fresh empty",
+                                  "ones_like explicit formats allocate by shape; preserve-format empty_like; output device guard"],
+               "launch": {"tile": TILE, "num_warps": 4,
+                          "minimum_numel": MIN_TUNED_ELEMENTS}}
+    receipt["numeric_launch"] = {"floor": (2048, 4),
+                                 "nan_small": (512, 2),
+                                 "nan_large": (2048, 4),
+                                 "nan_small_max_numel": 65536}
+    receipt["numeric_config_keys"] = tuple(numeric_wrappers)
+    flag_gems.__under90_f05_receipt__ = receipt
+    return receipt

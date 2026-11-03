@@ -1,0 +1,341 @@
+# Copyright 2026, The FlagOS Contributors.
+# SPDX-License-Identifier: Apache-2.0
+"""Research-only process-local FlagGems integration. No import-time torch/device work.
+
+Install after importing torch_fl, before FIRST target ATen invocation. See README.
+Only captured FP32 ESM layouts enter the candidate; all other calls use original FG.
+"""
+from collections import Counter
+from functools import wraps
+import importlib
+import importlib.util
+import hashlib
+import sys
+import math
+from pathlib import Path
+
+SUPPORTED_SCHEMAS = ("aten::native_layer_norm", "aten::masked_fill.Scalar", "aten::masked_fill_.Scalar")
+UNSUPPORTED_SCHEMAS = {}
+_ENTRY_NAMES = ("native_layer_norm", "masked_fill", "masked_fill_")
+_CONFIG_NAMES = ("native_layer_norm", "masked_fill.Scalar", "masked_fill_.Scalar")
+NORM_SHAPE = (101, 3, 320)
+NORM_STRIDE = (320, 32320, 1)
+MASK_INPUT_SHAPE = (3, 20, 101, 101)
+MASK_SHAPE = (3, 1, 1, 101)
+PAD_INPUT_SHAPE = (3, 101, 320)
+PAD_INPUT_STRIDE = (32320, 320, 1)
+PAD_MASK_SHAPE = (3, 101, 1)
+PAD_MASK_STRIDE = (101, 1, 1)
+_ACTIVE = None
+
+
+def _plain_fp32(torch, tensor):
+    return (type(tensor) is torch.Tensor and tensor.dtype == torch.float32
+            and tensor.layout == torch.strided and not tensor.is_conj()
+            and not tensor.is_neg())
+
+
+
+def _norm_affine_fp32(torch, tensor):
+    """Exact Parameter affine is admitted ONLY under no_grad, never subclasses.
+
+    Do not relax _plain_fp32: input/masking guards must remain unchanged.
+    No detach, conversion, mutation or changes to requires_grad are performed.
+    """
+    if type(tensor) is torch.Tensor:
+        return _plain_fp32(torch, tensor)
+    if type(tensor) is not torch.nn.Parameter or torch.is_grad_enabled():
+        return False
+    return (tensor.dtype == torch.float32 and tensor.layout == torch.strided
+            and not tensor.is_conj() and not tensor.is_neg())
+
+
+def _norm_eligible(torch, x, normalized_shape, weight, bias, eps):
+    if not _plain_fp32(torch, x) or x.device.type not in ("flagos", "cuda"):
+        return False
+    if tuple(x.shape) != NORM_SHAPE or tuple(x.stride()) != NORM_STRIDE:
+        return False
+    if type(normalized_shape) not in (tuple, list) or tuple(normalized_shape) != (320,):
+        return False
+    if type(eps) is not float or not math.isfinite(eps) or eps <= 0:
+        return False
+    for affine in (weight, bias):
+        if affine is not None and not (
+            _norm_affine_fp32(torch, affine) and tuple(affine.shape) == (320,)
+            and affine.device == x.device and affine.is_contiguous()
+        ):
+            return False
+    # v4 is explicitly no_grad-only, even if every tensor has requires_grad=False.
+    # Affine Parameters may retain requires_grad=True under no_grad; preserve them.
+    if torch.is_grad_enabled():
+        return False
+    return True
+
+
+def _mask_eligible(torch, inp, mask, value):
+    if type(value) is not float or not _plain_fp32(torch, inp):
+        return False
+    if type(mask) is not torch.Tensor or mask.dtype != torch.bool or mask.layout != torch.strided:
+        return False
+    if inp.device.type not in ("flagos", "cuda") or mask.device != inp.device:
+        return False
+    if mask.is_conj() or mask.is_neg():
+        return False
+    if tuple(inp.shape) != MASK_INPUT_SHAPE or tuple(mask.shape) != MASK_SHAPE:
+        return False
+    if not inp.is_contiguous() or not mask.is_contiguous():
+        return False
+    if torch.is_grad_enabled() and inp.requires_grad:
+        return False
+    # Overflow/error semantics and Tensor/int/bool Scalar overloads stay in FG.
+    # NaN / +/-Inf remain valid fills: tl.where selects, never multiplies masks.
+    if math.isfinite(value) and abs(value) > 3.4028234663852886e38:
+        return False
+    return True
+
+
+def _pad_mask_eligible(torch, inp, mask, value):
+    """ONLY the inventoried inplace ESM pad mask, not general 3D masking."""
+    if type(value) is not float or value != 0.0 or not _plain_fp32(torch, inp):
+        return False
+    if type(mask) is not torch.Tensor or mask.dtype != torch.bool or mask.layout != torch.strided:
+        return False
+    if inp.device.type not in ("flagos", "cuda") or mask.device != inp.device:
+        return False
+    if mask.is_conj() or mask.is_neg():
+        return False
+    if tuple(inp.shape) != PAD_INPUT_SHAPE or tuple(inp.stride()) != PAD_INPUT_STRIDE:
+        return False
+    if tuple(mask.shape) != PAD_MASK_SHAPE or tuple(mask.stride()) != PAD_MASK_STRIDE:
+        return False
+    return inp.is_contiguous() and mask.is_contiguous()
+
+
+def _storages_disjoint(inp, mask):
+    """Conservative whole-storage check, including distinct wrappers of a range.
+
+    Keep pointers local to this guard. No tensor data read, copies or syncs.
+    Shared storage is rejected even if the particular views do not overlap.
+    Unavailable/ambiguous metadata fails closed to ORIGINAL FG.
+    """
+    try:
+        xs, ms = inp.untyped_storage(), mask.untyped_storage()
+        xp, mp = int(xs.data_ptr()), int(ms.data_ptr())
+        xn, mn = int(xs.nbytes()), int(ms.nbytes())
+        if xp <= 0 or mp <= 0 or xn <= 0 or mn <= 0:
+            return False
+        return xp + xn <= mp or mp + mn <= xp
+    except Exception:
+        return False
+
+
+def _mask_inplace_eligible(torch, inp, mask, value):
+    # The out-of-place guards cover dtype/device/real shape/contiguity/scalar,
+    # plus the ordinary gradient-enabled case. Be stricter for mutation:
+    # tensors marked requires_grad are always delegated to original FG.
+    if not (_mask_eligible(torch, inp, mask, value) or _pad_mask_eligible(torch, inp, mask, value)):
+        return False
+    if inp.requires_grad:
+        return False
+    try:
+        # Exact nonempty contiguous layout already implies no repeated writes;
+        # also require the runtime's explicit non-overlap proof (0 = no overlap).
+        if int(torch._debug_has_internal_overlap(inp)) != 0:
+            return False
+    except Exception:
+        return False
+    return _storages_disjoint(inp, mask)
+
+
+def _load_kernels():
+    path = Path(__file__).resolve().with_name("_kernels.py")
+    name = "_norm_mask_local_kernels_" + hashlib.sha256(str(path).encode()).hexdigest()[:12]
+    if name in sys.modules:
+        return sys.modules[name]
+    spec = importlib.util.spec_from_file_location(name, path)
+    module = importlib.util.module_from_spec(spec)
+    # Triton may resolve a JIT function's defining module during inspection.
+    sys.modules[name] = module
+    try:
+        spec.loader.exec_module(module)
+    except Exception:
+        sys.modules.pop(name, None)
+        raise
+    return module
+
+
+class Installation:
+    """Process-local owner. Counters are diagnostic witnesses, not profiler data."""
+    def __init__(self, torch, kernels, originals, operators, count_hits):
+        self.torch = torch
+        self.kernels = kernels
+        self.originals = originals.copy()
+        self.operators = tuple(operators)
+        self.count_hits = count_hits
+        self.enabled = True
+        self._patches = []
+        self._counts = Counter({f"{s}.{kind}": 0 for s in SUPPORTED_SCHEMAS
+                                for kind in ("calls", "fast", "fallback", "errors")})
+
+        @wraps(originals["native_layer_norm"])
+        def norm(input, normalized_shape, weight=None, bias=None, eps=1e-5):
+            schema = SUPPORTED_SCHEMAS[0]
+            self._tick(schema, "calls")
+            if not self.enabled or not _norm_eligible(torch, input, normalized_shape, weight, bias, eps):
+                self._tick(schema, "fallback")
+                return originals["native_layer_norm"](input, normalized_shape, weight, bias, eps)
+            try:
+                result = kernels.run_norm(input, weight, bias, eps)
+            except Exception:
+                self._tick(schema, "errors")
+                raise  # Never hide a candidate failure behind a different route.
+            self._tick(schema, "fast")
+            return result
+
+        @wraps(originals["masked_fill"])
+        def mask(inp, mask, value):
+            schema = SUPPORTED_SCHEMAS[1]
+            self._tick(schema, "calls")
+            if not self.enabled or not _mask_eligible(torch, inp, mask, value):
+                self._tick(schema, "fallback")
+                return originals["masked_fill"](inp, mask, value)
+            try:
+                result = kernels.run_mask(inp, mask, value)
+            except Exception:
+                self._tick(schema, "errors")
+                raise
+            self._tick(schema, "fast")
+            return result
+
+        @wraps(originals["masked_fill_"])
+        def mask_inplace(inp, mask, value):
+            schema = SUPPORTED_SCHEMAS[2]
+            self._tick(schema, "calls")
+            if not self.enabled or not _mask_inplace_eligible(torch, inp, mask, value):
+                self._tick(schema, "fallback")
+                return originals["masked_fill_"](inp, mask, value)
+            try:
+                result = kernels.run_mask_inplace(inp, mask, value)
+                if result is not inp:
+                    raise RuntimeError("Inplace candidate must return the original input object")
+            except Exception:
+                self._tick(schema, "errors")
+                raise  # A partial mutation cannot safely be retried/fallen back.
+            self._tick(schema, "fast")
+            return inp
+
+        self.native_layer_norm = norm
+        self.masked_fill = mask
+        self.masked_fill_ = mask_inplace
+        for fn in (norm, mask, mask_inplace):
+            fn._norm_mask_research_candidate = str(Path(__file__).resolve())
+
+    def _tick(self, schema, kind):
+        if self.count_hits:
+            self._counts[f"{schema}.{kind}"] += 1
+
+    def get_counters(self, reset=False):
+        result = dict(self._counts)
+        if reset:
+            for key in self._counts:
+                self._counts[key] = 0
+        return result
+
+    def require_hits(self, *schemas):
+        if not self.count_hits:
+            raise RuntimeError("Counters disabled: cannot certify candidate entry")
+        expected = schemas or self.operators
+        invalid = set(expected).difference(self.operators)
+        if invalid:
+            raise ValueError(f"Schemas not installed: {sorted(invalid)}")
+        missing = [s for s in expected if not self._counts[f"{s}.fast"]]
+        if missing:
+            raise RuntimeError(f"No candidate hits: {missing}; check scope/route/early C++ callable cache")
+        return self.get_counters()
+
+    def uninstall(self):
+        global _ACTIVE
+        # Cached wrappers remain safe and delegate to saved FG after disabling.
+        # They cannot be reactivated by a later fresh install; use a fresh process.
+        self.enabled = False
+        conflicts = []
+        for obj, attr, old, new in reversed(self._patches):
+            if getattr(obj, attr) is new:
+                setattr(obj, attr, old)
+            else:
+                conflicts.append(f"{getattr(obj, '__name__', repr(obj))}.{attr}")
+        self._patches.clear()
+        if _ACTIVE is self:
+            _ACTIVE = None
+        if conflicts:
+            raise RuntimeError(f"Concurrent patch detected; did not overwrite: {conflicts}")
+
+
+def install(*, operators=SUPPORTED_SCHEMAS, count_hits=True):
+    """Patch FG entry aliases/config, NOT a dispatcher route or shared file.
+
+    Caller must import torch_fl first and call before warmup/first target op.
+    No way to invalidate an already-populated Torch-FL C++ callable cache here.
+    Return Installation with get_counters(), require_hits(), uninstall().
+    """
+    global _ACTIVE
+    if isinstance(operators, str):
+        operators = (operators,)
+    operators = tuple(dict.fromkeys(operators))
+    if not operators or set(operators).difference(SUPPORTED_SCHEMAS):
+        raise ValueError(f"Supported schemas only: {SUPPORTED_SCHEMAS}")
+    if _ACTIVE is not None:
+        if _ACTIVE.operators != operators or _ACTIVE.count_hits != count_hits:
+            raise RuntimeError("Already installed with different options; use a fresh process")
+        return _ACTIVE
+    torch = importlib.import_module("torch")
+    gems = importlib.import_module("flag_gems")
+    ops = importlib.import_module("flag_gems.ops")
+    originals = {name: getattr(gems, name) for name in _ENTRY_NAMES}
+    if any(getattr(fn, "_norm_mask_research_candidate", None) for fn in originals.values()):
+        raise RuntimeError("A different norm_mask integration is already installed")
+    # Import and validate first; do not partially patch on a missing dependency.
+    kernels = _load_kernels()
+    state = Installation(torch, kernels, originals, operators, count_hits)
+    planned = []
+    names = dict(zip(SUPPORTED_SCHEMAS, _ENTRY_NAMES))
+    targets = dict(zip(SUPPORTED_SCHEMAS, _CONFIG_NAMES))
+    for schema in operators:
+        name = names[schema]
+        original = originals[name]
+        replacement = getattr(state, name)
+        canonical = importlib.import_module("flag_gems.ops." + ("masked_fill" if name == "masked_fill_" else name))
+        owner = importlib.import_module(original.__module__)
+        seen = set()
+        for module in (gems, ops, canonical, owner):
+            if id(module) in seen or not hasattr(module, name):
+                continue
+            seen.add(id(module))
+            if getattr(module, name) is not original:
+                raise RuntimeError(f"Ambiguous FG alias {module.__name__}.{name}; refusing vendor override")
+            planned.append((module, name, original, replacement))
+    # Existing torch.library implementations / already-cached C++ functions are
+    # NOT rebound by editing this table. The first-call requirement still holds.
+    if hasattr(gems, "_FULL_CONFIG"):
+        old_config = gems._FULL_CONFIG
+        updated = []
+        selected = {targets[s]: names[s] for s in operators}
+        for entry in old_config:
+            if isinstance(entry, (tuple, list)) and len(entry) >= 2 and entry[0] in selected:
+                name = selected[entry[0]]
+                if entry[1] is not originals[name]:
+                    raise RuntimeError(f"Ambiguous _FULL_CONFIG target: {entry[0]}")
+                entry = type(entry)((entry[0], getattr(state, name), *entry[2:]))
+            updated.append(entry)
+        if type(old_config) not in (list, tuple):
+            raise TypeError("Unsupported _FULL_CONFIG container")
+        planned.append((gems, "_FULL_CONFIG", old_config, type(old_config)(updated)))
+    try:
+        for obj, attr, old, new in planned:
+            setattr(obj, attr, new)
+            state._patches.append((obj, attr, old, new))
+    except Exception:
+        state.uninstall()
+        raise
+    _ACTIVE = state
+    return state
