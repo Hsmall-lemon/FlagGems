@@ -24,7 +24,9 @@ from ._thnn_fused_lstm_cell import _thnn_fused_lstm_cell
 from .adaptive_avg_pool2d_backward import adaptive_avg_pool2d_backward
 from .adaptive_max_pool2d_backward import adaptive_max_pool2d_backward
 from .adaptive_max_pool3d_backward import adaptive_max_pool3d_backward
+from .add import add
 from .addmm_ import addmm_
+from .addmm_kernel90 import addmm, addmm_out
 from .addmv_ import addmv_
 from .addr import addr
 from .any import any, any_dim, any_dims
@@ -43,8 +45,10 @@ from .baddbmm_ import baddbmm_
 from .beam_search_score import beam_search_score
 from .binary_cross_entropy_backward import binary_cross_entropy_backward
 from .block_diag import block_diag
+from .bmm import bmm, bmm_out
 from .bmm_w8a8 import bmm_w8a8
 from .cholesky_inverse import cholesky_inverse
+from .clone import clone
 from .conj_physical import conj_physical
 from .conv2d import conv2d
 from .conv_depthwise2d import conv_depthwise2d
@@ -90,6 +94,7 @@ from .fused_moving_avg_obs_fq_helper import fused_moving_avg_obs_fq_helper
 from .gcd_ import gcd_
 from .gelu import gelu, gelu_, gelu_backward
 from .hadamard_transform import hadamard_transform
+from .index import index
 from .index_add import index_add, index_add_
 from .index_copy_ import index_copy, index_copy_
 from .index_select_backward import index_select_backward
@@ -212,7 +217,10 @@ __all__ = [
     "adaptive_avg_pool2d_backward",
     "adaptive_max_pool2d_backward",
     "adaptive_max_pool3d_backward",
+    "add",
+    "addmm",
     "addmm_",
+    "addmm_out",
     "addmv_",
     "addr",
     "any",
@@ -225,8 +233,11 @@ __all__ = [
     "beam_search_score",
     "binary_cross_entropy_backward",
     "block_diag",
+    "bmm",
+    "bmm_out",
     "bmm_w8a8",
     "cholesky_inverse",
+    "clone",
     "conj_physical",
     "conv2d",
     "conv_depthwise2d",
@@ -264,6 +275,7 @@ __all__ = [
     "gelu_backward",
     "hadamard_transform",
     "heur_block_n",
+    "index",
     "index_add",
     "index_add_",
     "index_copy",
