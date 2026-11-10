@@ -125,7 +125,7 @@ def _compact_mask(
         tl.store(OUT + rank[:, None] * SUFFIX + j[None, :], value, valid)
 
 
-def index(inp, indices):
+def _legacy_index(inp, indices):
     if len(indices) != 1 or indices[0] is None:
         return _generic_index(inp, indices)
     mask = indices[0]
@@ -226,3 +226,205 @@ def index(inp, indices):
                 num_warps=4,
             )
     return out
+
+
+# Additional layouts: strided/column gathers and wide or broadcast masks.
+@triton.jit
+def _offset(i, SHAPE: tl.constexpr, STRIDE: tl.constexpr):
+    out = tl.full(i.shape, 0, tl.int64)
+    for d in tl.static_range(len(SHAPE) - 1, -1, -1):
+        out += (i % SHAPE[d]) * STRIDE[d]
+        i = i // SHAPE[d]
+    return out
+
+
+@triton.jit
+def _axis_gather(
+    X,
+    I,
+    O,
+    SIZE: tl.constexpr,
+    COUNT: tl.constexpr,
+    ROWS: tl.constexpr,
+    SUFFIX: tl.constexpr,
+    PS: tl.constexpr,
+    PST: tl.constexpr,
+    SS: tl.constexpr,
+    SST: tl.constexpr,
+    AXIS_STRIDE: tl.constexpr,
+    INDEX_STRIDE: tl.constexpr,
+    BLOCK: tl.constexpr,
+):
+    i = tl.program_id(0) * BLOCK + tl.arange(0, BLOCK)
+    valid = i < SIZE
+    row = tl.load(I + ((i // SUFFIX) % COUNT) * INDEX_STRIDE, valid, other=0)
+    tl.device_assert((~valid) | ((row >= -ROWS) & (row < ROWS)), "index out of bounds")
+    row = tl.where(row < 0, row + ROWS, row)
+    offset = (
+        _offset(i // (COUNT * SUFFIX), PS, PST)
+        + row * AXIS_STRIDE
+        + _offset(i % SUFFIX, SS, SST)
+    )
+    value = tl.load(X + offset, valid & (row >= 0) & (row < ROWS), other=0)
+    tl.store(O + i, value, valid)
+
+
+@triton.jit
+def _counts(
+    M, C, N: tl.constexpr, SH: tl.constexpr, ST: tl.constexpr, BLOCK: tl.constexpr
+):
+    i = tl.program_id(0) * BLOCK + tl.arange(0, BLOCK)
+    v = tl.load(M + _offset(i, SH, ST), i < N, other=0).to(tl.int32)
+    tl.store(C + tl.program_id(0), tl.sum(v, 0))
+
+
+@triton.jit
+def _prefix(C, P, T, N: tl.constexpr, BLOCK: tl.constexpr):
+    i = tl.arange(0, BLOCK)
+    c = tl.load(C + i, i < N, other=0)
+    p = tl.cumsum(c, 0)
+    tl.store(P + i, p - c, i < N)
+    tl.store(T, tl.sum(c, 0))
+
+
+@triton.jit
+def _compact(
+    X,
+    M,
+    P,
+    O,
+    N: tl.constexpr,
+    SH: tl.constexpr,
+    MST: tl.constexpr,
+    XST: tl.constexpr,
+    SS: tl.constexpr,
+    SST: tl.constexpr,
+    SUFFIX: tl.constexpr,
+    BLOCK: tl.constexpr,
+):
+    i = tl.program_id(0) * BLOCK + tl.arange(0, BLOCK)
+    take = tl.load(M + _offset(i, SH, MST), i < N, other=0).to(tl.int32)
+    rank = tl.cumsum(take, 0) - 1 + tl.load(P + tl.program_id(0))
+    offset = _offset(i, SH, XST)
+    if SUFFIX == 1:
+        valid = (i < N) & (take != 0)
+        v = tl.load(X + offset, valid, other=0)
+        tl.store(O + rank, v, valid)
+    else:
+        j = tl.arange(0, triton.next_power_of_2(SUFFIX))
+        sj = _offset(j, SS, SST)
+        valid = (i[:, None] < N) & (take[:, None] != 0) & (j[None, :] < SUFFIX)
+        v = tl.load(X + offset[:, None] + sj[None, :], valid, other=0)
+        tl.store(O + rank[:, None] * SUFFIX + j[None, :], v, valid)
+
+
+def index(x, indices):
+    nonnull = [(d, v) for d, v in enumerate(indices) if v is not None]
+    if len(nonnull) == 1 and len(indices) <= x.ndim:
+        axis, ix = nonnull[0]
+        if (
+            ix.dtype in (torch.int32, torch.int64)
+            and ix.ndim == 1
+            and axis < x.ndim
+            and x.shape[axis] > 0
+            and ix.device == x.device
+            and not x.is_complex()
+        ):
+            shape = (*x.shape[:axis], ix.numel(), *x.shape[axis + 1 :])
+            output_size = math.prod(shape)
+            suffix_size = math.prod(x.shape[axis + 1 :])
+            if (
+                ix.is_contiguous()
+                and axis == 0
+                and (output_size < 1048576 or suffix_size > 16)
+                and not (output_size <= 16384 and suffix_size <= 16)
+            ):
+                return _legacy_index(x, indices)
+            out = torch.empty(shape, dtype=x.dtype, device=x.device)
+            size = out.numel()
+            suffix = math.prod(x.shape[axis + 1 :])
+            if size:
+                block, warps = (64, 1) if size <= 16384 and suffix <= 16 else (256, 4)
+                with torch_device_fn.device(x.device):
+                    _axis_gather[(triton.cdiv(size, block),)](
+                        x,
+                        ix,
+                        out,
+                        size,
+                        ix.numel(),
+                        x.shape[axis],
+                        suffix,
+                        tuple(x.shape[:axis]),
+                        tuple(x.stride()[:axis]),
+                        tuple(x.shape[axis + 1 :]),
+                        tuple(x.stride()[axis + 1 :]),
+                        x.stride(axis),
+                        ix.stride(0),
+                        block,
+                        num_warps=warps,
+                        debug=True,
+                    )
+            return out
+    if len(indices) == 1 and indices[0] is not None:
+        mask = indices[0]
+        rank = mask.ndim
+        suffix = math.prod(x.shape[rank:])
+        if (
+            mask.dtype == torch.bool
+            and mask.device == x.device
+            and rank
+            and tuple(mask.shape) == tuple(x.shape[:rank])
+            and suffix <= 128
+            and not x.is_complex()
+            and (suffix > 16 or not mask.is_contiguous())
+        ):
+            n = mask.numel()
+            if not n:
+                return torch.empty((0, *x.shape[rank:]), dtype=x.dtype, device=x.device)
+            block, warps = (32, 4) if suffix > 16 else (2048, 4)
+            groups = triton.cdiv(n, block)
+            if groups > 8192:
+                return _legacy_index(x, indices)
+            counts = torch.empty((groups,), dtype=torch.int32, device=x.device)
+            prefix = torch.empty_like(counts)
+            total = torch.empty((), dtype=torch.int32, device=x.device)
+            with torch_device_fn.device(x.device):
+                _counts[(groups,)](
+                    mask,
+                    counts,
+                    n,
+                    tuple(mask.shape),
+                    tuple(mask.stride()),
+                    block,
+                    num_warps=warps,
+                )
+                _prefix[(1,)](
+                    counts,
+                    prefix,
+                    total,
+                    groups,
+                    triton.next_power_of_2(groups),
+                    num_warps=4,
+                )
+                selected = total.item()
+                out = torch.empty(
+                    (selected, *x.shape[rank:]), dtype=x.dtype, device=x.device
+                )
+                if selected and suffix:
+                    _compact[(groups,)](
+                        x,
+                        mask,
+                        prefix,
+                        out,
+                        n,
+                        tuple(mask.shape),
+                        tuple(mask.stride()),
+                        tuple(x.stride()[:rank]),
+                        tuple(x.shape[rank:]),
+                        tuple(x.stride()[rank:]),
+                        suffix,
+                        block,
+                        num_warps=warps,
+                    )
+            return out
+    return _legacy_index(x, indices)
