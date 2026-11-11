@@ -25,6 +25,7 @@ from .adaptive_avg_pool2d_backward import adaptive_avg_pool2d_backward
 from .adaptive_max_pool2d_backward import adaptive_max_pool2d_backward
 from .adaptive_max_pool3d_backward import adaptive_max_pool3d_backward
 from .addmm_ import addmm_
+from .addmm_precision import addmm, addmm_out
 from .addmv_ import addmv_
 from .addr import addr
 from .any import any, any_dim, any_dims
@@ -212,7 +213,9 @@ __all__ = [
     "adaptive_avg_pool2d_backward",
     "adaptive_max_pool2d_backward",
     "adaptive_max_pool3d_backward",
+    "addmm",
     "addmm_",
+    "addmm_out",
     "addmv_",
     "addr",
     "any",

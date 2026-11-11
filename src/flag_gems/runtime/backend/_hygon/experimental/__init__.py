@@ -82,8 +82,9 @@ def install(*, groups, serialized_eager=False):
     This entrypoint does not modify configuration files or shared environments.
     """
     global _STATE
-    import flag_gems
     import torch
+
+    import flag_gems
 
     with _LOCK:
         if _STATE is not None:
