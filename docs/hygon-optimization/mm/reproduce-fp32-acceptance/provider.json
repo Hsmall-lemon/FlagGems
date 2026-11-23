@@ -9,7 +9,7 @@
   "mm_specialized/cpu_simt_full_panel.py": "cb9c13905b44e5ab936f5539b338e40aa272523d22d62d35b2c995c9867ae0c1",
   "mm_specialized/direct_global_panel.py": "3995252bd905268624726974615543eaa591604041e89bd4ea5ba003a139322f",
   "mm_specialized/dispatch.py": "ad5f657df394a4a7e6ec49f849cdaa63802d82e305144af61eba1dc517f30cb4",
-  "mm_specialized/fp32_workloads.py": "e7761bfcf3b6eece38d86563e03ec5c2295d7e7b7560d2ed64348e5942e87b0f",
+  "mm_specialized/fp32_workloads.py": "c0dc71289d0a653d976ab2b4f18f9ba6ee6a63e04699a34fa56adb9045e13ef4",
   "mm_specialized/mm_bank_buffer_clip_kernels.py": "03c4f04fe0423fb4d520c72be575d8830835e289939403ab8e373768557c5ca8",
   "mm_specialized/mm_bank_buffer_kernels.py": "78556451ad3909630a582ef3a2fc25780a4fe6d46fae3552ebdccccabea932eb",
   "mm_specialized/mm_bank_dual_kernels.py": "fd09d7f374ba11439542853e8d3fd0f7070b1020838b4cb6be7237da062adeab",
