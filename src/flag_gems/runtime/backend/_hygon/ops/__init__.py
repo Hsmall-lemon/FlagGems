@@ -171,6 +171,7 @@ from .lstm import lstm
 from .masked_fill import masked_fill
 from .masked_scale import masked_scale
 from .masked_scatter_backward import masked_scatter_backward
+from .masked_select import masked_select
 from .matmul_bf16 import matmul_bf16
 from .matmul_bias_activation import matmul_bias_activation
 from .matmul_int8 import matmul_int8
@@ -440,6 +441,7 @@ __all__ = [
     "masked_fill",
     "masked_scale",
     "masked_scatter_backward",
+    "masked_select",
     "matmul_bf16",
     "matmul_bias_activation",
     "matmul_int8",
