@@ -1,17 +1,17 @@
 # Reproduce Hygon FP32 aten::mm acceptance
 
-The suite covers 115 FP32 cases from the model workloads above 5% and scale extension worksheets. [cases.json](cases.json) records the input geometry. [fp32-acceptance-frozen.csv](fp32-acceptance-frozen.csv) maps each case to its worksheet row and tolerance.
+The suite covers 116 FP32 cases from the model workloads above 5% and scale extension worksheets. [cases.json](cases.json) records the input geometry. [fp32-acceptance-frozen.csv](fp32-acceptance-frozen.csv) maps each case to its worksheet row and tolerance.
 
 ## Tolerances
 
 FG and DAS are compared independently against CPU FP32 with identical inputs. Every output element must satisfy `abs(actual - reference) <= atol + 1.3e-6 * abs(reference)` on all five seeds (20261109, 20261210, 20261311, 20261412 and 20261513). The worker reconstructs seeded FP32 tensors using the recorded shapes, strides, storage offsets and aliases. The first seed supplies the timed inputs.
 
-| atol | Cases | Model worksheet rows | Scale extension worksheet rows |
-|---|---:|---|---|
-| 1e-5 | 91 | See the per-case CSV | See the per-case CSV |
-| 2e-5 | 5 | 114 | 466, 472, 478, 485 |
-| 5e-5 | 15 | 61, 63, 117, 120, 123, 125, 127, 128, 135, 142 | 452, 462, 469, 477, 497 |
-| 1e-4 | 4 | 60 | 480, 487, 495 |
+| atol | rtol | Cases | Model worksheet rows | Scale extension worksheet rows |
+|---:|---:|---:|---|---|
+| 1e-5 | 1.3e-6 | 91 | 56, 57, 58, 59, 62, 64, 65, 66, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 115, 116, 118, 119, 121, 122, 124, 126, 129, 130, 131, 132, 133, 134, 136, 137, 138, 139, 140, 141, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153 | 401, 404, 406, 408, 409, 411, 412, 413, 415, 417, 419, 424, 425, 427, 429, 430, 431, 436, 438, 439, 440, 442, 444, 447, 448, 450, 454, 457, 465, 467, 468, 474, 475, 490, 491, 492, 498 |
+| 2e-5 | 1.3e-6 | 5 | 114 | 466, 472, 478, 485 |
+| 5e-5 | 1.3e-6 | 15 | 61, 63, 117, 120, 123, 125, 127, 128, 135, 142 | 452, 462, 469, 477, 497 |
+| 1e-4 | 1.3e-6 | 5 | 60 | 479, 480, 487, 495 |
 
 ## Run the suite
 
@@ -38,18 +38,22 @@ Eight gfx936 DCUs on f13r2n12, FlagOS development image 20261103-hygon-optimizat
 |---|---:|---:|---:|---:|
 | 1e-5 | 91 | 91 | 74 | 91 |
 | 2e-5 | 5 | 5 | 4 | 5 |
-| 5e-5 | 15 | 15 | 8 | 14 |
-| 1e-4 | 4 | 4 | 0 | 2 |
-| **Total** | **115** | **115** | **86** | **112** |
+| 5e-5 | 15 | 15 | 8 | 11 |
+| 1e-4 | 5 | 5 | 0 | 2 |
+| **Total** | **116** | **116** | **86** | **109** |
 
-The final run covered 66 model cases and 49 scale extension cases. The lowest DAS / FG ratio was 79.08% for scale extension row 469. The full measurements are in [results.csv](results.csv).
+The final run covered 66 model cases and 50 scale extension cases. The lowest DAS / FG ratio was 51.02% for scale extension row 479. The full measurements are in [results.csv](results.csv).
 
 ### Included cases below 90%
 
 | Worksheet | Row | atol | FG seeds | DAS seeds | FG device time (us) | DAS device time (us) | DAS / FG |
 |---|---:|---:|---:|---:|---:|---:|---:|
-| Scale extension | 469 | 5e-05 | 5/5 | 5/5 | 9.02 | 7.14 | 79.08% |
-| Scale extension | 480 | 0.0001 | 5/5 | 0/5 | 77.12 | 68.00 | 88.17% |
-| Scale extension | 495 | 0.0001 | 5/5 | 2/5 | 135.87 | 120.86 | 88.95% |
+| Model above 5% | 125 | 5e-05 | 5/5 | 5/5 | 12.40 | 11.09 | 89.42% |
+| Model above 5% | 135 | 5e-05 | 5/5 | 0/5 | 24.83 | 22.11 | 89.05% |
+| Scale extension | 469 | 5e-05 | 5/5 | 5/5 | 9.76 | 7.97 | 81.64% |
+| Scale extension | 477 | 5e-05 | 5/5 | 1/5 | 93.81 | 83.78 | 89.31% |
+| Scale extension | 479 | 0.0001 | 5/5 | 0/5 | 95.58 | 48.77 | 51.02% |
+| Scale extension | 480 | 0.0001 | 5/5 | 0/5 | 78.13 | 68.91 | 88.20% |
+| Scale extension | 495 | 0.0001 | 5/5 | 2/5 | 135.17 | 116.56 | 86.23% |
 
-Scale extension row 479 is outside this PR's dispatch scope. Its previous full run passed FG accuracy on five seeds and measured 50.31% of DAS at atol=1e-4, below its 60% target.
+Scale extension row 479 used atol=1e-4 and rtol=1.3e-6. FG passed all five seeds. Its 51.02% DAS / FG ratio fell below the separate 60% performance target.
