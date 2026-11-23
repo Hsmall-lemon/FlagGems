@@ -132,6 +132,7 @@ from .mv import mv
 from .mvlgamma import mvlgamma
 from .nanmedian import nanmedian, nanmedian_dim, nanmedian_dim_values, nanmedian_out
 from .nansum import nansum, nansum_out
+from .native_batch_norm import native_batch_norm
 from .nll_loss_backward import heur_block_n, nll_loss_backward
 from .nonzero_numpy import nonzero_numpy
 from .norm_scalaropt_dim import norm_scalaropt_dim
@@ -324,6 +325,7 @@ __all__ = [
     "nanmedian_out",
     "nansum",
     "nansum_out",
+    "native_batch_norm",
     "nll_loss_backward",
     "nonzero_numpy",
     "norm_scalaropt_dim",
