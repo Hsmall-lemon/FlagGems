@@ -239,6 +239,26 @@ def mm(a, b):
     n = b.shape[1]
     if m == 0 or n == 0:
         return torch.empty((m, n), device=a.device, dtype=a.dtype)
+    if a.dtype == torch.float32 and a.device == b.device:
+        from .mm_specialized.fp32_workloads import FP32_WORKLOADS
+
+        key = (
+            m,
+            k,
+            n,
+            *a.stride(),
+            *b.stride(),
+            a.storage_offset(),
+            b.storage_offset(),
+        )
+        if key in FP32_WORKLOADS:
+            from .mm_specialized import try_mm
+
+            with torch_device_fn.device(a.device):
+                if triton.runtime.driver.active.get_current_target().arch == "gfx936":
+                    selected = try_mm(a, b)
+                    return selected if selected is not None else _mm_default(a, b)
+
     from .mm_config import select_config
     from .mm_kernels import (
         reduction,
