@@ -13,6 +13,22 @@ from flag_gems.utils import libentry
 from .to_kernels import cast_fp32_bf16_packed, cast_fp32_bf16_quad
 
 _PACKED_MIN_ELEMENTS = 8 * 1024 * 1024
+_GFX936_VECTOR_CASTS = {
+    (torch.float32, torch.bfloat16, 168200): (512, 2),
+    (torch.int64, torch.float32, 4194304): (512, 2),
+}
+_GFX936_HIP_CASTS = {
+    (torch.bfloat16, torch.float32, 4096): (64, 1),
+    (torch.bfloat16, torch.float32, 262144): (256, 1),
+    (torch.bfloat16, torch.float32, 371200): (256, 1),
+    (torch.float32, torch.bfloat16, 4096): (64, 1),
+    (torch.float32, torch.bfloat16, 262144): (256, 1),
+    (torch.float32, torch.bfloat16, 273325): (256, 2),
+}
+_GFX936_DENSE_CASTS = {
+    (torch.bfloat16, torch.float32, 256): 64,
+    (torch.float32, torch.bfloat16, 21025): 256,
+}
 
 
 @triton.jit
@@ -77,7 +93,9 @@ def to_copy(
             out = torch.empty_strided(x.shape, x.stride(), dtype=dtype, device=x.device)
             n = x.numel()
             kernel = cast_dense
+            launch_options = {}
             block, warps = (256, 1) if n <= 4096 else (1024, 1)
+            key = (x.dtype, dtype, n)
             if x.dtype == torch.bfloat16 and dtype == torch.float32:
                 if n >= 8 * 1024 * 1024:
                     block, warps = 4096, 4
@@ -103,6 +121,36 @@ def to_copy(
                     # per 64-bit store, retaining the same integer RNE rule.
                     kernel = cast_fp32_bf16_quad
                     block, warps = 4096, 4
+            vector_config = _GFX936_VECTOR_CASTS.get(key)
+            hip_config = _GFX936_HIP_CASTS.get(key)
+            dense_block = _GFX936_DENSE_CASTS.get(key)
+            if (
+                (
+                    vector_config is not None
+                    or hip_config is not None
+                    or dense_block is not None
+                )
+                and x.is_contiguous()
+                and triton.runtime.driver.active.get_current_target().arch == "gfx936"
+            ):
+                if (
+                    hip_config is not None
+                    and x.data_ptr() % 16 == 0
+                    and out.data_ptr() % 16 == 0
+                ):
+                    from ..dtype_cast_hip import launch_dtype_cast
+
+                    if launch_dtype_cast(x, out, *hip_config):
+                        return out
+                elif vector_config is not None and x.data_ptr() % 16 == 0:
+                    from .to_vector_kernels import cast_vector
+
+                    kernel = cast_vector
+                    block, warps = vector_config
+                    launch_options["WARPS"] = warps
+                elif dense_block is not None:
+                    kernel = cast_dense
+                    block, warps = dense_block, 1
             kernel[(triton.cdiv(n, block),)](
                 x,
                 out,
@@ -111,6 +159,7 @@ def to_copy(
                 num_warps=warps,
                 num_stages=1,
                 allow_flush_denorm=False,
+                **launch_options,
             )
         return out
     return default_to_copy(
