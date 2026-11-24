@@ -1,0 +1,497 @@
+{
+  "file": "expanded-mm-20261109.tar.gz",
+  "sha256": "d7b1e43b3ea17562a8df1a6939781c32cf70c4b7434ba9f2699d0f8c220f6b40",
+  "manifest": [
+    {
+      "file": "expanded-final-gpu0/analyze_correction_profile.py",
+      "size": 5974,
+      "sha256": "589ad5e2c363ccad4543dcb5c30a068fb87d897dab241f5b11d8effefd8fa226"
+    },
+    {
+      "file": "expanded-final-gpu0/mm-expanded-lowbits-final-r1-analysis.log",
+      "size": 1810,
+      "sha256": "6582c44b94308634a0ee634c9a37daf5c6b8aa2714306f626646e28c03c1cd21"
+    },
+    {
+      "file": "expanded-final-gpu0/mm-expanded-lowbits-final-r1-analyzed.json",
+      "size": 311903,
+      "sha256": "29c2c130c517e4bb3a792ca24ca8056246e7be8cb8cfdffc7cdf4a56c1b60a1d"
+    },
+    {
+      "file": "expanded-final-gpu0/mm-expanded-lowbits-final-r1.log",
+      "size": 120680,
+      "sha256": "08e33a622c1a060b894e01733a8b21be87e474848a4efb3438efa853c6456daf"
+    },
+    {
+      "file": "expanded-final-gpu0/mm-expanded-lowbits-final-records.jsonl",
+      "size": 129690,
+      "sha256": "671436c806d8a30619b269226784036791e647bae5fde0d5bd4091c744b338ae"
+    },
+    {
+      "file": "expanded-final-gpu0/mm_original.py",
+      "size": 7559,
+      "sha256": "d2594faf1b89fa0bdb2de549d4e2dde19ea87f63c0d92e587b326773d094a0cb"
+    },
+    {
+      "file": "expanded-final-gpu0/phase2-controller-status.json",
+      "size": 122,
+      "sha256": "31ea71ead1bdd9727ac40c27ea164bef1270f09acf9a532d05d3c62b8806a338"
+    },
+    {
+      "file": "expanded-final-gpu0/profile_mm_expanded_lowbits_final-runtime-fingerprint.json",
+      "size": 78989,
+      "sha256": "5eae9c1217a78e7ba41f150059e0eb162d722c25517caa180229e2bd416a847e"
+    },
+    {
+      "file": "expanded-final-gpu0/profile_mm_expanded_lowbits_final.py",
+      "size": 4904,
+      "sha256": "09a0542bda71a5418a2be4514e2c82b752b7e59af9bdf8b933b062da3ca2f03b"
+    },
+    {
+      "file": "expanded-final-gpu0/profile_setup_long.py",
+      "size": 974,
+      "sha256": "dcc61c9ea622aec005956fcf7479f6e8515fbd3977dfef5a42aa9caa8c31f720"
+    },
+    {
+      "file": "expanded-final-gpu0/reproduce_mm.py",
+      "size": 6215,
+      "sha256": "7e21628f6b949a682de01487f247703c732b692fe843a920966251bf028d4c78"
+    },
+    {
+      "file": "expanded-final-gpu0/run-expanded-lowbits-final.log",
+      "size": 153,
+      "sha256": "a5c18111776171380d6d548ff95605953f8d6486d7b10f13c143625e046ce501"
+    },
+    {
+      "file": "expanded-final-gpu0/run_expanded_lowbits_final.py",
+      "size": 1683,
+      "sha256": "5fbac5fa0ea8226b137e5eb1a24a8eccee9dd29508b9dc1a213442375f8e10ec"
+    },
+    {
+      "file": "expanded-final-gpu1/analyze_correction_profile.py",
+      "size": 5974,
+      "sha256": "589ad5e2c363ccad4543dcb5c30a068fb87d897dab241f5b11d8effefd8fa226"
+    },
+    {
+      "file": "expanded-final-gpu1/focused-mm-expanded-final.log",
+      "size": 5201,
+      "sha256": "0c189bbf78d2fb261a52ce5bb00e8d85898cb75c810072a376119ab1e9ed807f"
+    },
+    {
+      "file": "expanded-final-gpu1/focused_mm_expanded_final-exit.json",
+      "size": 273,
+      "sha256": "11e477975fd29e4ff8ada1da9ecd6f26ffc9978cd61a1b0c8b400958bb455e50"
+    },
+    {
+      "file": "expanded-final-gpu1/focused_mm_expanded_final-runtime-fingerprint.json",
+      "size": 78989,
+      "sha256": "2c56e6ecbb985e1fa88005555880894db8dae650f330957d084d9055292899c7"
+    },
+    {
+      "file": "expanded-final-gpu1/focused_mm_expanded_final.py",
+      "size": 227,
+      "sha256": "e14b43b53162a216d7a9920a2c14dad773f0f393d6afa50b1bcbe8cb00173f04"
+    },
+    {
+      "file": "expanded-final-gpu1/mm-expanded-final-r1-analysis.log",
+      "size": 3173,
+      "sha256": "e4cab499d812bbaa12da2c8bc7a63d8f7b250a803da15c4f54be86f216508e4c"
+    },
+    {
+      "file": "expanded-final-gpu1/mm-expanded-final-r1-analyzed.json",
+      "size": 554467,
+      "sha256": "f0968fa182e6ec50c4538f69072e017c359e02a317c32f1f09e855d5290d59c1"
+    },
+    {
+      "file": "expanded-final-gpu1/mm-expanded-final-r1.log",
+      "size": 242047,
+      "sha256": "32e9d07557fff044eebe9d8e06dbf72cbeb96f522de72953b4861f293a815fc6"
+    },
+    {
+      "file": "expanded-final-gpu1/mm-expanded-final-records.jsonl",
+      "size": 222690,
+      "sha256": "ade752a7e9bf044df7d3913e05e39af19a5e1d3a59504c3018e31482f4fe0ac9"
+    },
+    {
+      "file": "expanded-final-gpu1/mm_original.py",
+      "size": 7559,
+      "sha256": "d2594faf1b89fa0bdb2de549d4e2dde19ea87f63c0d92e587b326773d094a0cb"
+    },
+    {
+      "file": "expanded-final-gpu1/phase2-controller-status.json",
+      "size": 206,
+      "sha256": "f380a2e9e20a2835bbd5e6894c741f90a45439d1a3228d32e0e72f063e79c911"
+    },
+    {
+      "file": "expanded-final-gpu1/profile_mm_expanded_final-runtime-fingerprint.json",
+      "size": 78989,
+      "sha256": "625ce824a31569bae40f682d5767286b30fedcb5f01728846a76d57f96684a37"
+    },
+    {
+      "file": "expanded-final-gpu1/profile_mm_expanded_final.py",
+      "size": 4922,
+      "sha256": "2ad09d30e98fdb1cf12be2a60086779a9db1d6a1086185f03da3ef0c36b91137"
+    },
+    {
+      "file": "expanded-final-gpu1/profile_setup_long.py",
+      "size": 974,
+      "sha256": "dcc61c9ea622aec005956fcf7479f6e8515fbd3977dfef5a42aa9caa8c31f720"
+    },
+    {
+      "file": "expanded-final-gpu1/repo-mm-final/src/flag_gems/runtime/backend/_hygon/ops/mm.py",
+      "size": 16874,
+      "sha256": "68de7e38cfbc66ae0b086b711fc5fc02137fd8a05de179476c343fd066d24d81"
+    },
+    {
+      "file": "expanded-final-gpu1/repo-mm-final/src/flag_gems/runtime/backend/_hygon/ops/mm_config.py",
+      "size": 15169,
+      "sha256": "743ccf1a65c16e5d2290e575fcb7797920429441a654fecdc83d6e73f3509a78"
+    },
+    {
+      "file": "expanded-final-gpu1/repo-mm-final/src/flag_gems/runtime/backend/_hygon/ops/mm_kernels.py",
+      "size": 8907,
+      "sha256": "d9930250ab93ea65dcd5a1558bbabb5e4a199d7485cb4f703a22920ecfb65e01"
+    },
+    {
+      "file": "expanded-final-gpu1/repo-mm-final/src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_coalesced.py",
+      "size": 6122,
+      "sha256": "ec1b3332b7422cb098bceed1e568872a3f0ba8ba6680216a01bab219dee42377"
+    },
+    {
+      "file": "expanded-final-gpu1/repo-mm-final/src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_coopfast.py",
+      "size": 9020,
+      "sha256": "5c67d0eaf4d86bb2fecfe1be7df53bd983c11c82f6b040ce0744ec502215f0d1"
+    },
+    {
+      "file": "expanded-final-gpu1/repo-mm-final/src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_operands.py",
+      "size": 4830,
+      "sha256": "625c11755688890e17f1f95929fbd5602edc076602a888a5e1dbe3d4bc549c25"
+    },
+    {
+      "file": "expanded-final-gpu1/repo-mm-final/src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_peel.py",
+      "size": 9807,
+      "sha256": "ae7ec90f31f84f43c1772e29cf153d56ffff73c469c37acb4259a6c997067a18"
+    },
+    {
+      "file": "expanded-final-gpu1/repo-mm-final/src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_pipeline.py",
+      "size": 8557,
+      "sha256": "1fd06ad6ba3d30956d53cd70212348d4e4dd794ce3c4f48d3ccf0d607fcddf80"
+    },
+    {
+      "file": "expanded-final-gpu1/repo-mm-final/src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_prefetch.py",
+      "size": 5223,
+      "sha256": "6480f69c8513aba86bc0ae37b5ba85cd557e0583c93d2bc78dfabbf2ec8fe0bb"
+    },
+    {
+      "file": "expanded-final-gpu1/repo-mm-final/src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_rawpipe.py",
+      "size": 6326,
+      "sha256": "7d88f76f0af0bdc5635bd843555fe7c28f7711892e7b6a57033807cc63e09e08"
+    },
+    {
+      "file": "expanded-final-gpu1/repo-mm-final/src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_reshape.py",
+      "size": 7528,
+      "sha256": "a7c5025e05e3a8a657250a5e8658fd330e2103774b9524592f6044b3473999d1"
+    },
+    {
+      "file": "expanded-final-gpu1/repo-mm-final/src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_swizzle.py",
+      "size": 16801,
+      "sha256": "0c04c55dc98a24a8d57c2e9dd6586a16f62db853f5ff35d90156fe89f0aea741"
+    },
+    {
+      "file": "expanded-final-gpu1/repo-mm-final/src/flag_gems/runtime/backend/_hygon/ops/mm_w8a8_int8.py",
+      "size": 19012,
+      "sha256": "309d2556e79186b24e6874839162039415f03d89246340e3e90819cbee6d1e46"
+    },
+    {
+      "file": "expanded-final-gpu1/repo-mm-final/tests/test_hygon_mm.py",
+      "size": 4930,
+      "sha256": "894c19a1a09a0c8fb3892ae04b8d04948829ab1268875c69853df088690cce48"
+    },
+    {
+      "file": "expanded-final-gpu1/reproduce_mm.py",
+      "size": 6215,
+      "sha256": "7e21628f6b949a682de01487f247703c732b692fe843a920966251bf028d4c78"
+    },
+    {
+      "file": "expanded-final-gpu1/run-expanded-final.log",
+      "size": 224,
+      "sha256": "1396cd928ecd13797d0146108f8faf258ad0a8cde9368209bbaba122e6211f35"
+    },
+    {
+      "file": "expanded-final-gpu1/run_expanded_final.py",
+      "size": 1770,
+      "sha256": "19ab8b32f243c0f61e39caa861314917032b630c54a7c3311c84b7d4b91b3573"
+    },
+    {
+      "file": "expanded-final-gpu1/validate_focused.py",
+      "size": 665,
+      "sha256": "929f5103d82b77107795eca81bb8fe287b066e4c8bee2d9792754a2e33f7b570"
+    },
+    {
+      "file": "expanded-gpu0/analyze_correction_profile.py",
+      "size": 5974,
+      "sha256": "589ad5e2c363ccad4543dcb5c30a068fb87d897dab241f5b11d8effefd8fa226"
+    },
+    {
+      "file": "expanded-gpu0/bf16-expanded-tune-r1-analysis.log",
+      "size": 1494,
+      "sha256": "6476afdcbc0fbf8baa3bed25fa46a1ec1b204151d88dd4595f12de014e64952f"
+    },
+    {
+      "file": "expanded-gpu0/bf16-expanded-tune-r1-analyzed.json",
+      "size": 107138,
+      "sha256": "67dcbdb587f36991ea04fb0d47abfb4c84f02fa91aaf7f286051ebe2ece919e6"
+    },
+    {
+      "file": "expanded-gpu0/bf16-expanded-tune-r1.log",
+      "size": 62422,
+      "sha256": "993ffc402b6c0c9e006da970d03aedfde2ab6d096ff102fc5d5862c2b27bc143"
+    },
+    {
+      "file": "expanded-gpu0/bf16-expanded-tune-records.jsonl",
+      "size": 39540,
+      "sha256": "01c7ad42c6dedcb1c2cb170b6a67200b12c3a14b78c0494551d80c24ab45e0ed"
+    },
+    {
+      "file": "expanded-gpu0/mm-expanded-r1-analysis.log",
+      "size": 11537,
+      "sha256": "0146dd612d6bf566bc0fc6cd63f801986aa19e967ed3989ff6dae4795068eb49"
+    },
+    {
+      "file": "expanded-gpu0/mm-expanded-r1-analyzed.json",
+      "size": 2056770,
+      "sha256": "aecf0fd2a34e3332c4e980678b24cc204176361fa84e83f189d9e66b0d033296"
+    },
+    {
+      "file": "expanded-gpu0/mm-expanded-r1.log",
+      "size": 833737,
+      "sha256": "5e73ccae7e0a5a8e680dc0e6c01b1bfe6c23bf53bcd3572c6a5c121dbd5fe8a7"
+    },
+    {
+      "file": "expanded-gpu0/mm-expanded-records.jsonl",
+      "size": 859485,
+      "sha256": "39dbe34a1878d29ff6fd695f9750bc28839e7a10bfd3bdc98e4b4323db99fba2"
+    },
+    {
+      "file": "expanded-gpu0/mm_original.py",
+      "size": 7559,
+      "sha256": "d2594faf1b89fa0bdb2de549d4e2dde19ea87f63c0d92e587b326773d094a0cb"
+    },
+    {
+      "file": "expanded-gpu0/phase2-controller-status.json",
+      "size": 108,
+      "sha256": "8d1d43dc53bd0696bf4a90579a8a8b474abb3e055626f3eac5e13200157ebb68"
+    },
+    {
+      "file": "expanded-gpu0/profile_bf16_expanded_tune-runtime-fingerprint.json",
+      "size": 78988,
+      "sha256": "ea44272e8d8dc60c4454d8e7ff461aff3e574947491ae9b3465ba5aae1693900"
+    },
+    {
+      "file": "expanded-gpu0/profile_bf16_expanded_tune.py",
+      "size": 2675,
+      "sha256": "aa329d105b022318bda679305b59b434122dd66ac1583d488532e22a5ab8f67c"
+    },
+    {
+      "file": "expanded-gpu0/profile_mm_expanded-runtime-fingerprint.json",
+      "size": 78986,
+      "sha256": "04af5e4cc7979ed7dcdc25f0570e0550c1a11859c831d0ca1ca0971948aff09a"
+    },
+    {
+      "file": "expanded-gpu0/profile_mm_expanded.py",
+      "size": 4830,
+      "sha256": "c19ff6ef50cba636942fa63b9d6b896110d7f6bbacc4d76515c86037d2a8ab91"
+    },
+    {
+      "file": "expanded-gpu0/profile_setup_long.py",
+      "size": 974,
+      "sha256": "dcc61c9ea622aec005956fcf7479f6e8515fbd3977dfef5a42aa9caa8c31f720"
+    },
+    {
+      "file": "expanded-gpu0/repo-mm-expanded/src/flag_gems/runtime/backend/_hygon/ops/mm.py",
+      "size": 16874,
+      "sha256": "68de7e38cfbc66ae0b086b711fc5fc02137fd8a05de179476c343fd066d24d81"
+    },
+    {
+      "file": "expanded-gpu0/repo-mm-expanded/src/flag_gems/runtime/backend/_hygon/ops/mm_config.py",
+      "size": 14995,
+      "sha256": "d6d418346c04ac7e931e18707105476dee8fbec4c2a6b4a474024568a7569770"
+    },
+    {
+      "file": "expanded-gpu0/repo-mm-expanded/src/flag_gems/runtime/backend/_hygon/ops/mm_kernels.py",
+      "size": 8907,
+      "sha256": "d9930250ab93ea65dcd5a1558bbabb5e4a199d7485cb4f703a22920ecfb65e01"
+    },
+    {
+      "file": "expanded-gpu0/repo-mm-expanded/src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_coalesced.py",
+      "size": 6122,
+      "sha256": "ec1b3332b7422cb098bceed1e568872a3f0ba8ba6680216a01bab219dee42377"
+    },
+    {
+      "file": "expanded-gpu0/repo-mm-expanded/src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_coopfast.py",
+      "size": 9020,
+      "sha256": "5c67d0eaf4d86bb2fecfe1be7df53bd983c11c82f6b040ce0744ec502215f0d1"
+    },
+    {
+      "file": "expanded-gpu0/repo-mm-expanded/src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_operands.py",
+      "size": 4830,
+      "sha256": "625c11755688890e17f1f95929fbd5602edc076602a888a5e1dbe3d4bc549c25"
+    },
+    {
+      "file": "expanded-gpu0/repo-mm-expanded/src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_peel.py",
+      "size": 9807,
+      "sha256": "ae7ec90f31f84f43c1772e29cf153d56ffff73c469c37acb4259a6c997067a18"
+    },
+    {
+      "file": "expanded-gpu0/repo-mm-expanded/src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_pipeline.py",
+      "size": 8557,
+      "sha256": "1fd06ad6ba3d30956d53cd70212348d4e4dd794ce3c4f48d3ccf0d607fcddf80"
+    },
+    {
+      "file": "expanded-gpu0/repo-mm-expanded/src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_prefetch.py",
+      "size": 5223,
+      "sha256": "6480f69c8513aba86bc0ae37b5ba85cd557e0583c93d2bc78dfabbf2ec8fe0bb"
+    },
+    {
+      "file": "expanded-gpu0/repo-mm-expanded/src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_rawpipe.py",
+      "size": 6326,
+      "sha256": "7d88f76f0af0bdc5635bd843555fe7c28f7711892e7b6a57033807cc63e09e08"
+    },
+    {
+      "file": "expanded-gpu0/repo-mm-expanded/src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_reshape.py",
+      "size": 7528,
+      "sha256": "a7c5025e05e3a8a657250a5e8658fd330e2103774b9524592f6044b3473999d1"
+    },
+    {
+      "file": "expanded-gpu0/repo-mm-expanded/src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_swizzle.py",
+      "size": 16801,
+      "sha256": "0c04c55dc98a24a8d57c2e9dd6586a16f62db853f5ff35d90156fe89f0aea741"
+    },
+    {
+      "file": "expanded-gpu0/repo-mm-expanded/src/flag_gems/runtime/backend/_hygon/ops/mm_w8a8_int8.py",
+      "size": 19012,
+      "sha256": "309d2556e79186b24e6874839162039415f03d89246340e3e90819cbee6d1e46"
+    },
+    {
+      "file": "expanded-gpu0/repo-mm-expanded/tests/test_hygon_mm.py",
+      "size": 4930,
+      "sha256": "894c19a1a09a0c8fb3892ae04b8d04948829ab1268875c69853df088690cce48"
+    },
+    {
+      "file": "expanded-gpu0/reproduce_mm.py",
+      "size": 6215,
+      "sha256": "7e21628f6b949a682de01487f247703c732b692fe843a920966251bf028d4c78"
+    },
+    {
+      "file": "expanded-gpu0/run-expanded.log",
+      "size": 139,
+      "sha256": "fb75fefb25974d2d77716f412d23119522e071a312420ebac02b37297beceb6f"
+    },
+    {
+      "file": "expanded-gpu0/run-mm-expanded.log",
+      "size": 125,
+      "sha256": "170d74755b3f3404a2b7927aa4644ec935c60eb9cacf89da120707a0e702d223"
+    },
+    {
+      "file": "expanded-gpu0/run_expanded.py",
+      "size": 1654,
+      "sha256": "12e16e58d499bbdc698d477655c13ab631c755301c522801d6226a25f2280f2a"
+    },
+    {
+      "file": "expanded-gpu0/run_mm_expanded.py",
+      "size": 1624,
+      "sha256": "ba8dde2ae2dc23eae1d47e5143493047b1d2b3d3adffe960d3b749807000d5c6"
+    },
+    {
+      "file": "expanded-gpu1/analyze_correction_profile.py",
+      "size": 5974,
+      "sha256": "589ad5e2c363ccad4543dcb5c30a068fb87d897dab241f5b11d8effefd8fa226"
+    },
+    {
+      "file": "expanded-gpu1/focused-mm-expanded.log",
+      "size": 5223,
+      "sha256": "4c322ce4a1ce66d199567df0a52caf04233c974c3c9240cfb13d3ac2c1f17243"
+    },
+    {
+      "file": "expanded-gpu1/focused_mm_expanded-exit.json",
+      "size": 267,
+      "sha256": "8c5dfc5ef545bfa732a35d55d787fa3ac52b5eeebd8df7fdbada15f67e99080d"
+    },
+    {
+      "file": "expanded-gpu1/focused_mm_expanded-runtime-fingerprint.json",
+      "size": 78986,
+      "sha256": "dfdb5d514d8123e213bbc1638bc47a602e391a7e5e8fb0a173b085bb84b4f485"
+    },
+    {
+      "file": "expanded-gpu1/focused_mm_expanded.py",
+      "size": 230,
+      "sha256": "79b47bb5a0bbd55fb90f63256dabd85357624e774b030981b08e16c0303550d7"
+    },
+    {
+      "file": "expanded-gpu1/mm-strided-tune-r1-analysis.log",
+      "size": 2082,
+      "sha256": "471b6b1bdce32abc7cca95d493782e660a332d6c801ac3cebec998afbdd8b1b0"
+    },
+    {
+      "file": "expanded-gpu1/mm-strided-tune-r1-analyzed.json",
+      "size": 185347,
+      "sha256": "75f10f00ed9b2af5bf2b01dc957e83350e1f14708038f861d4819fdccf030d5a"
+    },
+    {
+      "file": "expanded-gpu1/mm-strided-tune-r1.log",
+      "size": 167134,
+      "sha256": "38a135234c68c16bca05393e5523255b3e89cd4f6548cc70a9854ce26c799b29"
+    },
+    {
+      "file": "expanded-gpu1/mm-strided-tune-records.jsonl",
+      "size": 68310,
+      "sha256": "43b0307bc0fad3cd63608bb2a1068ea7bf49cbfaf041fc4daa6671d2fe37d615"
+    },
+    {
+      "file": "expanded-gpu1/mm_original.py",
+      "size": 7559,
+      "sha256": "d2594faf1b89fa0bdb2de549d4e2dde19ea87f63c0d92e587b326773d094a0cb"
+    },
+    {
+      "file": "expanded-gpu1/profile_mm_strided_tune-runtime-fingerprint.json",
+      "size": 78986,
+      "sha256": "a656876b8597b1a4face01fe15978299aeb403bc20ad9a722f358385a0f44963"
+    },
+    {
+      "file": "expanded-gpu1/profile_mm_strided_tune.py",
+      "size": 3087,
+      "sha256": "e48c8aa62adb666da891fb130f867af4134ec05158a550a931cf418f79c033a4"
+    },
+    {
+      "file": "expanded-gpu1/profile_setup_long.py",
+      "size": 974,
+      "sha256": "dcc61c9ea622aec005956fcf7479f6e8515fbd3977dfef5a42aa9caa8c31f720"
+    },
+    {
+      "file": "expanded-gpu1/reproduce_mm.py",
+      "size": 6215,
+      "sha256": "7e21628f6b949a682de01487f247703c732b692fe843a920966251bf028d4c78"
+    },
+    {
+      "file": "expanded-gpu1/run-mm-strided-tune.log",
+      "size": 214,
+      "sha256": "bfb25bcb174aba07ed821eb04bce46a6797f8d01e371e1536bcde476eb7974d4"
+    },
+    {
+      "file": "expanded-gpu1/run_mm_strided_tune.py",
+      "size": 1750,
+      "sha256": "7b51b1d9424f4217be223976ebdbc3686e51f73808cb1e200c63d5d9178a41df"
+    },
+    {
+      "file": "expanded-gpu1/validate_focused.py",
+      "size": 665,
+      "sha256": "929f5103d82b77107795eca81bb8fe287b066e4c8bee2d9792754a2e33f7b570"
+    }
+  ],
+  "native_trace_directories": [
+    "expanded-gpu0/profiles/",
+    "expanded-gpu1/profiles/",
+    "expanded-final-gpu0/profiles/",
+    "expanded-final-gpu1/profiles/"
+  ]
+}

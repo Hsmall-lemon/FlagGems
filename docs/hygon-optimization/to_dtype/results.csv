@@ -1,0 +1,21 @@
+﻿row,physical_card,seed,input_dtype,output_dtype,shape,stride,storage_offset,optimized_us,same_operator_cpp_us,same_operator_performance,paired_boxing_copy_out_us,paired_boxing_performance,accuracy_ok,stride_ok,alias_ok,noop
+1711,0,0,torch.bfloat16,torch.float32,"[1, 145, 2560]","[371200, 2560, 1]",0,3.808,4.096,1.0756302521008405,4.912,1.2899159663865547,True,True,True,False
+1712,0,0,torch.bfloat16,torch.float32,"[1, 4, 145, 256]","[148480, 256, 1024, 1]",0,3.792,11.12,2.932489451476793,4.864,1.2827004219409284,True,True,True,False
+1713,0,0,torch.bfloat16,torch.float32,"[1, 8, 145, 256]","[296960, 256, 2048, 1]",0,3.824,11.344,2.9665271966527196,4.928,1.288702928870293,True,True,True,False
+1714,0,0,torch.bfloat16,torch.float32,[2560],[1],0,3.76,4.096,1.0893617021276596,4.864,1.2936170212765958,True,True,True,False
+1715,0,0,torch.bfloat16,torch.float32,[256],[1],0,3.792,4.096,1.0801687763713081,4.864,1.2827004219409284,True,True,True,False
+1716,0,0,torch.bfloat16,torch.bfloat16,[],[],0,0.0,0.0,,0.0,,True,True,True,True
+1717,0,0,torch.bool,torch.int32,"[1, 145]","[145, 1]",0,3.792,6.704,1.7679324894514767,6.976,1.8396624472573841,True,True,True,False
+1718,0,0,torch.float32,torch.bfloat16,"[1, 145, 256]","[37120, 256, 1]",0,3.776,4.08,1.0805084745762712,4.88,1.2923728813559323,True,True,True,False
+1719,0,0,torch.float32,torch.bfloat16,"[1, 8, 145, 145]","[168200, 21025, 145, 1]",0,3.792,4.096,1.0801687763713081,4.896,1.2911392405063291,True,True,True,False
+1720,0,0,torch.int64,torch.float32,"[1, 145, 1]","[145, 1, 1]",0,3.792,6.416,1.6919831223628694,7.424,1.957805907172996,True,True,True,False
+1711,1,100003,torch.bfloat16,torch.float32,"[1, 145, 2560]","[371200, 2560, 1]",0,3.968,4.048,1.0201612903225807,5.2,1.310483870967742,True,True,True,False
+1712,1,100003,torch.bfloat16,torch.float32,"[1, 4, 145, 256]","[148480, 256, 1024, 1]",0,3.984,10.912,2.738955823293173,4.88,1.2248995983935742,True,True,True,False
+1713,1,100003,torch.bfloat16,torch.float32,"[1, 8, 145, 256]","[296960, 256, 2048, 1]",0,4.0,11.136,2.784,4.944,1.236,True,True,True,False
+1714,1,100003,torch.bfloat16,torch.float32,[2560],[1],0,3.984,4.0,1.0040160642570282,4.864,1.2208835341365463,True,True,True,False
+1715,1,100003,torch.bfloat16,torch.float32,[256],[1],0,3.968,3.936,0.9919354838709677,4.896,1.2338709677419355,True,True,True,False
+1716,1,100003,torch.bfloat16,torch.bfloat16,[],[],0,0.0,0.0,,0.0,,True,True,True,True
+1717,1,100003,torch.bool,torch.int32,"[1, 145]","[145, 1]",0,3.968,6.848,1.7258064516129032,7.872,1.9838709677419355,True,True,True,False
+1718,1,100003,torch.float32,torch.bfloat16,"[1, 145, 256]","[37120, 256, 1]",0,3.8238,4.016,1.0502641351535122,4.944,1.2929546524399813,True,True,True,False
+1719,1,100003,torch.float32,torch.bfloat16,"[1, 8, 145, 145]","[168200, 21025, 145, 1]",0,3.824,4.048,1.0585774058577406,4.912,1.284518828451883,True,True,True,False
+1720,1,100003,torch.int64,torch.float32,"[1, 145, 1]","[145, 1, 1]",0,3.824,6.368,1.665271966527197,7.296,1.9079497907949792,True,True,True,False

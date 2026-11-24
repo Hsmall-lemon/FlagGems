@@ -1,0 +1,136 @@
+{
+  "node": "a01r4n15",
+  "physical_card": 1,
+  "pci_bus": "0000:36:00.0",
+  "other_card_0_concurrently_running_mm": true,
+  "kernel_changes": false,
+  "all_cases_accepted": false,
+  "original_user_review_failures_superseded": false,
+  "protocol": "1024 calls/ROI; 100M-iteration single-CU gate; five ROIs per A/A block; three blocks; max/min block median -1 <=5%. Earlier 200-call failures retained.",
+  "correctness_cases_passed": 10,
+  "new_public_stability_cases_passed": 10,
+  "valid_native_public_conversion_cases_passed": 7,
+  "invalid_native_public_layout_rows": [
+    1712,
+    1713
+  ],
+  "no_kernel_identity_row": 1716,
+  "rows": [
+    {
+      "row": 1711,
+      "native_public_us": 4.9393720703125,
+      "new_public_us": 4.9428115234375,
+      "native_over_new": 0.9993041504599779,
+      "native_aa_drift": 0.018444203157029104,
+      "new_aa_drift": 0.00484168397558471,
+      "status": "passes_this_protocol",
+      "additional_proxy_device_us": 9.70577734375,
+      "additional_proxy_is_same_public_baseline": false
+    },
+    {
+      "row": 1712,
+      "native_public_us": 11.67655859375,
+      "new_public_us": 4.8182783203125,
+      "native_over_new": 2.4233881518477105,
+      "native_aa_drift": 0.007304798559320647,
+      "new_aa_drift": 0.026175430119729892,
+      "status": "invalid_native_public_layout",
+      "additional_proxy_device_us": 9.607496093750001,
+      "additional_proxy_is_same_public_baseline": false
+    },
+    {
+      "row": 1713,
+      "native_public_us": 11.87343359375,
+      "new_public_us": 4.7532802734375,
+      "native_over_new": 2.4979451895781675,
+      "native_aa_drift": 0.010532416969171843,
+      "new_aa_drift": 0.004802474590160477,
+      "status": "invalid_native_public_layout",
+      "additional_proxy_device_us": 9.63624609375,
+      "additional_proxy_is_same_public_baseline": false
+    },
+    {
+      "row": 1714,
+      "native_public_us": 4.7957783203125,
+      "new_public_us": 4.7967158203125,
+      "native_over_new": 0.9998045537748912,
+      "native_aa_drift": 0.01897942594640223,
+      "new_aa_drift": 0.01279605526234695,
+      "status": "passes_this_protocol",
+      "additional_proxy_device_us": 9.56405859375,
+      "additional_proxy_is_same_public_baseline": false
+    },
+    {
+      "row": 1715,
+      "native_public_us": 4.7848427734375,
+      "new_public_us": 4.7934365234375,
+      "native_over_new": 0.998207183936205,
+      "native_aa_drift": 0.014129766414225475,
+      "new_aa_drift": 0.01221069921598228,
+      "status": "passes_this_protocol",
+      "additional_proxy_device_us": 9.584685546875,
+      "additional_proxy_is_same_public_baseline": false
+    },
+    {
+      "row": 1716,
+      "native_public_us": 0.0,
+      "new_public_us": 0.0,
+      "native_over_new": null,
+      "native_aa_drift": 0,
+      "new_aa_drift": 0,
+      "status": "identity_no_kernel",
+      "additional_proxy_device_us": 0.0,
+      "additional_proxy_is_same_public_baseline": false
+    },
+    {
+      "row": 1717,
+      "native_public_us": 4.8243740234375,
+      "new_public_us": 4.8082802734375,
+      "native_over_new": 1.0033470906612716,
+      "native_aa_drift": 0.014734718906036948,
+      "new_aa_drift": 0.01063138261415375,
+      "status": "passes_this_protocol",
+      "additional_proxy_device_us": 9.64171484375,
+      "additional_proxy_is_same_public_baseline": false
+    },
+    {
+      "row": 1718,
+      "native_public_us": 4.8493740234375,
+      "new_public_us": 4.7659365234375,
+      "native_over_new": 1.0175070523053922,
+      "native_aa_drift": 0.0037184794607658667,
+      "new_aa_drift": 0.005872899705268164,
+      "status": "passes_this_protocol",
+      "additional_proxy_device_us": 9.59718359375,
+      "additional_proxy_is_same_public_baseline": false
+    },
+    {
+      "row": 1719,
+      "native_public_us": 4.8060908203125,
+      "new_public_us": 4.8421865234375,
+      "native_over_new": 0.9925455777157102,
+      "native_aa_drift": 0.028011814039121674,
+      "new_aa_drift": 0.01698306017613782,
+      "status": "passes_this_protocol",
+      "additional_proxy_device_us": 9.59858984375,
+      "additional_proxy_is_same_public_baseline": false
+    },
+    {
+      "row": 1720,
+      "native_public_us": 4.8082783203125,
+      "new_public_us": 4.8432802734375,
+      "native_over_new": 0.9927730894871054,
+      "native_aa_drift": 0.00296436310271897,
+      "new_aa_drift": 0.013261575456520402,
+      "status": "passes_this_protocol",
+      "additional_proxy_device_us": 9.60390234375,
+      "additional_proxy_is_same_public_baseline": false
+    }
+  ],
+  "limitations": [
+    "The two invalid native-public layouts do not provide a semantically equivalent public DAS performance baseline.",
+    "The explicit-layout proxy runs a kernel and an extra device copy; both components are recorded, without inferring public-route speedup.",
+    "These timings were measured with MM work on another physical card; each operator itself runs on one card.",
+    "No uniform cast-kernel speedup is claimed."
+  ]
+}

@@ -1,0 +1,111 @@
+{
+  "accepted": false,
+  "pr_is_draft": true,
+  "node": "a01r3n13",
+  "physical_card_ordinal": 0,
+  "kernel_changes_this_correction": false,
+  "uniform_kernel_speedup_claimed": false,
+  "new_value_dtype_stride_alias_checks_passed": 10,
+  "rows": [
+    {
+      "row": 1711,
+      "native_public_us": 5.0912,
+      "new_public_us": 5.3048,
+      "native_over_new": 0.959734580003016,
+      "native_aa_drift": 0.06516129032258067,
+      "new_aa_drift": 0.009696969696969537,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "row": 1712,
+      "native_public_us": 12.295195,
+      "new_public_us": 5.0424,
+      "native_over_new": 2.438361692844677,
+      "native_aa_drift": 0.04181698472652995,
+      "new_aa_drift": 0.052458477224140765,
+      "status": "public_baseline_invalid_layout"
+    },
+    {
+      "row": 1713,
+      "native_public_us": 12.259195,
+      "new_public_us": 5.116,
+      "native_over_new": 2.3962460906958563,
+      "native_aa_drift": 0.04276448214471151,
+      "new_aa_drift": 0.051958695295853286,
+      "status": "public_baseline_invalid_layout"
+    },
+    {
+      "row": 1714,
+      "native_public_us": 5.0504,
+      "new_public_us": 5.2688,
+      "native_over_new": 0.958548436076526,
+      "native_aa_drift": 0.017452006980802848,
+      "new_aa_drift": 0.04844290657439432,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 1715,
+      "native_public_us": 5.1424,
+      "new_public_us": 5.0584,
+      "native_over_new": 1.0166060414360274,
+      "native_aa_drift": 0.054281703322414554,
+      "new_aa_drift": 0.03256035578144845,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "row": 1716,
+      "native_public_us": 0.0,
+      "new_public_us": 0.0,
+      "native_over_new": null,
+      "native_aa_drift": 0,
+      "new_aa_drift": 0,
+      "status": "identity_no_kernel"
+    },
+    {
+      "row": 1717,
+      "native_public_us": 5.0656,
+      "new_public_us": 5.1312,
+      "native_over_new": 0.987215466167758,
+      "native_aa_drift": 0.06974410436527845,
+      "new_aa_drift": 0.058832933653077735,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "row": 1718,
+      "native_public_us": 5.2304,
+      "new_public_us": 5.148,
+      "native_over_new": 1.0160062160062162,
+      "native_aa_drift": 0.004284621270084221,
+      "new_aa_drift": 0.051533151388665877,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "row": 1719,
+      "native_public_us": 5.1128,
+      "new_public_us": 5.1992,
+      "native_over_new": 0.9833820587782736,
+      "native_aa_drift": 0.02541575149042985,
+      "new_aa_drift": 0.039203288017704674,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 1720,
+      "native_public_us": 5.0296,
+      "new_public_us": 5.0912,
+      "native_over_new": 0.9879006913890636,
+      "native_aa_drift": 0.024029280712921652,
+      "new_aa_drift": 0.12007378836156302,
+      "status": "unstable_diagnostic"
+    }
+  ],
+  "new_public_stability_failures": [
+    1712,
+    1713,
+    1717,
+    1718,
+    1720
+  ],
+  "additional_proxy": "das_valid_layout is low-level _to_copy.out with explicitly preserved strides. Each nonidentity call executes a conversion kernel AND a DeviceToDevice copy. Full device sums and components are retained; it is not the public DAS baseline.",
+  "prior_kernel_only_proxy_comparisons_superseded_as_full_device_cost": true,
+  "crossnode_revalidation": "Separate a01r4n15 card 1 run is pending at this publication."
+}

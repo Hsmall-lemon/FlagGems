@@ -1,0 +1,59 @@
+{
+  "scope": "Historical a01r3n18 DAS 185 run; not current source or the current DAS 2.8.4 verification",
+  "current_verification": "node15-verification/summary.json",
+  "status": "Historical DAS 185 target unverified; previous 94.57% acceptance claim withdrawn",
+  "operator": "aten::_scaled_dot_product_flash_attention",
+  "git_base": "6d9ac5543fb2a543ec00a7770c8c583f1a9f1f29",
+  "repository": "/public/home/wzx226226/算子优化/FlagGems-hygon-optimization",
+  "compute_account": "wzx226226",
+  "node": "a01r3n18",
+  "gpu_ids": [
+    4,
+    5
+  ],
+  "shape": [
+    8,
+    16,
+    2049,
+    128
+  ],
+  "dtype": "bfloat16",
+  "stride": [
+    12589056,
+    128,
+    6144,
+    1
+  ],
+  "storage_offsets": [
+    0,
+    2048,
+    4096
+  ],
+  "scale": 0.08838834764831845,
+  "timing_us": {
+    "wheel": 1620.6,
+    "aten": 1620.792,
+    "repo": 1713.7359499999998
+  },
+  "das_over_implementation": null,
+  "meets_90": null,
+  "timing_method": "hipprof HIPOPS duration; all helper kernels included; 5 ROIs x 10 calls x 2 repeats",
+  "source_sha256": {
+    "src/flag_gems/runtime/backend/_hygon/attention_state_hip.py": "5c04672ac2450071c4a9e2cd2a70b8e8489f1526218a1d42a2df471ff947932f",
+    "src/flag_gems/runtime/backend/_hygon/attention_state_hip.cpp": "643c0fce72ca7cfbe7ec8885201e797b088b770020b19a48e9b50d28c5d84b60",
+    "src/flag_gems/runtime/backend/_hygon/ops/attention_state.py": "e5c354efd1670f7350a0decc165a1e03a64a9a2e777fb5f1cb04478e8994cb91",
+    "src/flag_gems/runtime/backend/_hygon/ops/_scaled_dot_product_flash_attention.py": "de4599a3bc4bf1e5f232d681c65cc6885694d5942665057b2154d1e4a844c2b3",
+    "tests/test_flash_attention_hygon_state.py": "7815052eecbd43570d07a995d70432756ca3388ba3166ae548b2a29321a2baba"
+  },
+  "compiled_binary": "/public/home/wzx226226/.cache/flag_gems/hygon_state_flash/0bf10ad9b21be21b47d9a85ecd007c4774521c86eb54983de8f68ad0aaaf22c7/kernel.so",
+  "compiled_binary_sha256": "7622b26b1e0f1335d02c7f49116ac322f4d127e262d3bb7cbbeaee6e2ca81563",
+  "full_accuracy": "repo_final_validation.json",
+  "pytest": "pytest-current.log",
+  "static_checks": "ci-static-current.log",
+  "profile": "profiles/repo-final-1.json/.db",
+  "performance_summary": "repo_final_kernel_summary.json#/historical_profile",
+  "pre_commit": "Attempted; image lacks pre_commit. Independent format/lint/static checks passed.",
+  "implementation": "Autonomous gfx936 HIP MMAC + Triton norms/stable fallback; no DAS compute calls.",
+  "acceptance_correction": "acceptance_correction.json",
+  "timing_scope": "Historical diagnostic only; ineligible native baseline must not be used as denominator"
+}

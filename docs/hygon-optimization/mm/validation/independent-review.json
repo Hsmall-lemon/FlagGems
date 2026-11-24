@@ -1,0 +1,23 @@
+{
+  "source_hashes_verified": 15,
+  "raw_trace_review": [
+    {
+      "profile": "paired-fp32-gated-r1",
+      "cases": 68,
+      "rois": 680,
+      "device_duration_identity": true,
+      "gate_excluded": true,
+      "all_five_roi_medians_match": true
+    },
+    {
+      "profile": "paired-fp64-gated-r2",
+      "cases": 26,
+      "rois": 260,
+      "device_duration_identity": true,
+      "gate_excluded": true,
+      "all_five_roi_medians_match": true
+    }
+  ],
+  "acceptance_cases": 94,
+  "result": "passed"
+}

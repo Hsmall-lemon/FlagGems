@@ -1,0 +1,42 @@
+/bin/bash: /opt/flagos/python/lib/libtinfo.so.6: no version information available (required by /bin/bash)
+WARNING: /opt/hyhal/lib/cmake/rocm_smi doesn't exist, please install the latest driver(version >= 6.3.15)
+The rocm_smi_lib will be used in default
+bash: /opt/flagos/python/lib/libtinfo.so.6: no version information available (required by bash)
+.................................                                        [100%]
+33 passed in 13.04s
+STABILITY_PASSED model_state normal 20261105 False
+STABILITY_PASSED model_state normal 0 False
+STABILITY_PASSED model_state normal 65537 False
+STABILITY_PASSED model_state normal 20261105 True
+STABILITY_PASSED model_state normal 0 True
+STABILITY_PASSED model_state normal 65537 True
+STABILITY_PASSED expanded_small normal 5058009176373978791 False
+STABILITY_PASSED expanded_small normal 0 False
+STABILITY_PASSED expanded_small normal 65537 False
+STABILITY_PASSED expanded_small normal 5058009176373978791 True
+STABILITY_PASSED expanded_small normal 0 True
+STABILITY_PASSED expanded_small normal 65537 True
+STABILITY_PASSED expanded_medium normal 6792970978253416049 False
+STABILITY_PASSED expanded_medium normal 0 False
+STABILITY_PASSED expanded_medium normal 65537 False
+STABILITY_PASSED expanded_medium normal 6792970978253416049 True
+STABILITY_PASSED expanded_medium normal 0 True
+STABILITY_PASSED expanded_medium normal 65537 True
+STABILITY_PASSED expanded_large normal 8147618770989597313 False
+STABILITY_PASSED expanded_large normal 0 False
+STABILITY_PASSED expanded_large normal 65537 False
+STABILITY_PASSED expanded_large normal 8147618770989597313 True
+STABILITY_PASSED expanded_large normal 0 True
+STABILITY_PASSED expanded_large normal 65537 True
+STABILITY_PASSED expanded_large large_qk 8147618770989597313 False
+STABILITY_PASSED expanded_large zero_q_large_k 8147618770989597313 False
+STABILITY_PASSED expanded_large large_q_zero_k 8147618770989597313 False
+STABILITY_PASSED expanded_large large_v 8147618770989597313 False
+STABILITY_PASSED expanded_large large_scores_large_v 8147618770989597313 False
+STABILITY_PASSED expanded_large signed_v8 8147618770989597313 False
+STABILITY_PASSED expanded_large tiny_v 8147618770989597313 False
+STABILITY_PASSED expanded_large large_finite_v 8147618770989597313 False
+STABILITY_PASSED expanded_large negative_scores 8147618770989597313 False
+STABILITY_PASSED expanded_large changing_scores 8147618770989597313 False
+WORKBOOK_STABILITY_COMPLETE
+RELEASE2610_REPOSITORY_REGRESSION_COMPLETE

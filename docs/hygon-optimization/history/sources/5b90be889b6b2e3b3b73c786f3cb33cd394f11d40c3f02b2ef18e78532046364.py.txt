@@ -1,0 +1,154 @@
+# Copyright 2026, The FlagOS Contributors.
+# SPDX-License-Identifier: Apache-2.0
+"""Copied kernels; scope/installation live in candidate.py. See SOURCES.json.
+
+Standard LibEntry/JIT launcher only. No boxing, raw HIP, captured streams,
+output/pointer/data caches or hand-built partial specialization keys.
+"""
+import torch
+import triton
+import triton.language as tl
+from flag_gems.runtime import torch_device_fn
+from flag_gems.utils.libentry import libentry
+
+# Reuse existing full LibEntry specialization, device, and grid cache contract.
+_strided_kernel_cache = {}
+
+@libentry()
+@triton.jit(do_not_specialize=["eps"])
+def _native_layer_norm_strided_kernel(
+    X, Y, W, B, Mean, Rstd,
+    N: tl.constexpr, Outer: tl.constexpr,
+    S0: tl.constexpr, S1: tl.constexpr,
+    eps, BLOCK: tl.constexpr,
+):
+    row = tl.program_id(0)
+    col = tl.arange(0, BLOCK)
+    mask = col < N
+    # For rank 2, Outer=1 and S1=0. Rank 3 maps [i,j] explicitly.
+    base = (row // Outer) * S0 + (row % Outer) * S1
+    x = tl.load(X + base + col, mask=mask, other=0.0).to(tl.float32)
+    mean = tl.sum(x, 0) / N
+    centered = x - mean
+    var = tl.sum(tl.where(mask, centered * centered, 0.0), 0) / N
+    rstd = tl.rsqrt(var + eps)
+    value = centered * rstd
+    if W is not None:
+        value = value * tl.load(W + col, mask=mask, other=1.0)
+    if B is not None:
+        value = value + tl.load(B + col, mask=mask, other=0.0)
+    tl.store(Y + row * N + col, value, mask=mask)
+    tl.store(Mean + row, mean)
+    tl.store(Rstd + row, rstd)
+
+@libentry()
+@triton.jit
+def _masked_fill_fp32_broadcast_v1_kernel(
+    inp_ptr, mask_ptr, out_ptr, value,
+    NUMEL: tl.constexpr, N: tl.constexpr, BATCH_STRIDE: tl.constexpr,
+    BLOCK: tl.constexpr,
+):
+    # Guard bounds NUMEL and the rounded-up launch offsets to signed int32.
+    offsets = tl.program_id(0) * BLOCK + tl.arange(0, BLOCK)
+    valid = offsets < NUMEL
+    # Contiguous input [B,H,M,N], contiguous mask [B,1,1,N].
+    # Tensor pointers already include storage_offset; do not add it twice.
+    mask_offsets = (offsets // BATCH_STRIDE) * N + offsets % N
+    selected = tl.load(mask_ptr + mask_offsets, mask=valid, other=0)
+    original = tl.load(inp_ptr + offsets, mask=valid, other=0)
+    result = tl.where(selected, value, original)
+    tl.store(out_ptr + offsets, result, mask=valid)
+
+def run_norm(input, weight, bias, eps):
+    """Copied v4/metadata launch mechanism, tightened by candidate.py guards.
+
+    Caller guards FP32: ATen mean/rstd are FP32 with shape [101,3,1].
+    All three outputs are newly allocated on every invocation.
+    """
+    shape = input.shape
+    device = input.device
+    n = shape[-1]
+    rows = input.numel() // n
+    outer = shape[1]
+    s0, s1 = input.stride(0), input.stride(1)
+    with torch_device_fn.device(device):
+        output = torch.empty_like(input, memory_format=torch.contiguous_format)
+        stats_shape = shape[:-1] + (1,)
+        mean = torch.empty(stats_shape, dtype=input.dtype, device=device)
+        rstd = torch.empty(stats_shape, dtype=input.dtype, device=device)
+        block = triton.next_power_of_2(n)
+        args = (input, output, weight, bias, mean, rstd, n, outer, s0, s1, eps, block)
+        specialization = _native_layer_norm_strided_kernel.key(
+            args[:6], [eps], [n, outer, s0, s1, block]
+        )
+        key = (device, rows, specialization)
+        kernel = _strided_kernel_cache.get(key)
+        if kernel is None:
+            # LibEntry compiles AND launches once. Do not double launch.
+            kernel, _ = _native_layer_norm_strided_kernel[(rows,)](*args, num_warps=4)
+            _strided_kernel_cache[key] = kernel
+        else:
+            # Normal CompiledKernel launcher reads current stream each call.
+            # Same device, complete specialization and row-grid required.
+            kernel[(rows, 1, 1)](*args)
+    return output, mean, rstd
+
+
+def run_mask(inp, mask, value):
+    """Existing v1 broadcast path; fresh output, original tl.where NaN/Inf math."""
+    numel = inp.numel()
+    n = inp.shape[3]
+    batch_stride = inp.shape[1] * inp.shape[2] * n
+    with torch_device_fn.device(inp.device):
+        out = torch.empty_like(inp)
+        _masked_fill_fp32_broadcast_v1_kernel[(triton.cdiv(numel, 1024),)](
+            inp, mask, out, value,
+            NUMEL=numel, N=n, BATCH_STRIDE=batch_stride, BLOCK=1024,
+            num_warps=4, num_stages=2,
+        )
+    return out
+
+
+@libentry()
+@triton.jit
+
+def _masked_fill_fp32_pad3d_kernel(
+    inp_ptr, mask_ptr, out_ptr, value,
+    NUMEL: tl.constexpr, CHANNELS: tl.constexpr, BLOCK: tl.constexpr,
+):
+    # Fixed contiguous [3,101,320] input and [3,101,1] mask.
+    # Every row of 320 values shares exactly one mask element.
+    offsets = tl.program_id(0) * BLOCK + tl.arange(0, BLOCK)
+    valid = offsets < NUMEL
+    selected = tl.load(mask_ptr + offsets // CHANNELS, mask=valid, other=0)
+    original = tl.load(inp_ptr + offsets, mask=valid, other=0)
+    result = tl.where(selected, value, original)
+    tl.store(out_ptr + offsets, result, mask=valid)
+
+
+def run_mask_inplace(inp, mask, value):
+    """Restricted real-layout mutation: 3D pad or 4D broadcast, out_ptr IS input.
+
+    Caller must prove non-overlap/disjoint mask storage/gradient guards.
+    No allocation, copy-back, Tensor data cache, synthetic fresh output, or
+    manual version bump. ADInplaceOrView is the public-ATen version boundary;
+    target-runtime version/alias validation remains mandatory (see README).
+    """
+    numel = inp.numel()
+    if inp.ndim == 3:
+        with torch_device_fn.device(inp.device):
+            _masked_fill_fp32_pad3d_kernel[(triton.cdiv(numel, 1024),)](
+                inp, mask, inp, value,
+                NUMEL=numel, CHANNELS=320, BLOCK=1024,
+                num_warps=4, num_stages=2,
+            )
+        return inp
+    n = inp.shape[3]
+    batch_stride = inp.shape[1] * inp.shape[2] * n
+    with torch_device_fn.device(inp.device):
+        _masked_fill_fp32_broadcast_v1_kernel[(triton.cdiv(numel, 1024),)](
+            inp, mask, inp, value,
+            NUMEL=numel, N=n, BATCH_STRIDE=batch_stride, BLOCK=1024,
+            num_warps=4, num_stages=2,
+        )
+    return inp

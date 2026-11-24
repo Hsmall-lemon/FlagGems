@@ -1,0 +1,29 @@
+{
+  "files": [
+    {
+      "file": "cases.csv",
+      "sha256": "994ac7baa9b217cc528a6e2c2b1eca78d89accd4044890a8759f0f0fb71fa3b8",
+      "normalize_lf": true
+    },
+    {
+      "file": "device-observations.json.gz",
+      "sha256": "27be8ea59c285d6d9b7fe6ec428192da2b3a3472c2c6a6c4ecc76255a614bcf1",
+      "normalize_lf": false
+    },
+    {
+      "file": "README.md",
+      "sha256": "24c21c0792193c8601b076f5be9ea97634d5565bd84d100f37c7b2d3b98f000c",
+      "normalize_lf": true
+    },
+    {
+      "file": "status.json",
+      "sha256": "4b1a6ada0228ab846bbe6723ccedcaa04bc6a55c727f603b741d0ffd6a3f41a7",
+      "normalize_lf": true
+    },
+    {
+      "file": "verify_evidence.py",
+      "sha256": "93f3a66423914bce52ec7676a36a1eb39af7ee1a8981f1f9317608ba78b34304",
+      "normalize_lf": true
+    }
+  ]
+}

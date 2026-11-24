@@ -1,0 +1,735 @@
+{
+  "schema": 5,
+  "run_id": "c9d90ba4372541d7beb3eb65169e2516",
+  "workbook_sha256": "d2596052c66d7145af47b35fda45198d1f213b69825aeb91d10112dfd8871597",
+  "numerical_tolerances": {
+    "output_atol": 0.002,
+    "output_rtol": 0.02,
+    "lse_atol": 2e-05,
+    "lse_rtol": 2e-05
+  },
+  "source_sha256": {
+    "src/flag_gems/runtime/backend/_hygon/attention_state_hip.py": "185460a1f7a25f27ba55202cf42f35fef5a10fda845b527c3058b5b9b88f12d4",
+    "src/flag_gems/runtime/backend/_hygon/attention_state_hip.cpp": "9d737b24687977ab0a1e027f6485009d308f4392aac7c736b188611f0f990f88",
+    "src/flag_gems/runtime/backend/_hygon/ops/attention_state.py": "df304186cee67c9773c5c9796a8d95ce847d3b238b2b9375831bc35a1e131348",
+    "src/flag_gems/runtime/backend/_hygon/ops/_scaled_dot_product_flash_attention.py": "6eabe38ca1abcf6ff68c30b40250895b45f0fb402c6acad82bb50982b4ac3a0e",
+    "tests/test_flash_attention_hygon_state.py": "1115a5ca4796e0fe980a517dacbf6e4f73efca7d02d279444a7c408120e3ccc4"
+  },
+  "device": {
+    "node": "a01r4n15",
+    "physical_card": "3"
+  },
+  "sampling": {
+    "calls": 1000,
+    "rounds": 5,
+    "warmup": 100
+  },
+  "external_frozen_gate_verified": false,
+  "original_model_acceptance_verified": false,
+  "cases": {
+    "model_state": {
+      "case": {
+        "id": "model_state",
+        "sheet": "\u5927\u4e8e5%\u7684\u6a21\u578b\u5de5\u51b5",
+        "row": 645,
+        "specification": [
+          [
+            {
+              "tensor": true,
+              "shape": [
+                8,
+                16,
+                2049,
+                128
+              ],
+              "stride": [
+                12589056,
+                128,
+                6144,
+                1
+              ],
+              "dtype": "torch.bfloat16",
+              "device": "cuda:0",
+              "layout": "torch.strided",
+              "storage_offset": 0,
+              "requires_grad": false,
+              "is_contiguous": false
+            },
+            {
+              "tensor": true,
+              "shape": [
+                8,
+                16,
+                2049,
+                128
+              ],
+              "stride": [
+                12589056,
+                128,
+                6144,
+                1
+              ],
+              "dtype": "torch.bfloat16",
+              "device": "cuda:0",
+              "layout": "torch.strided",
+              "storage_offset": 2048,
+              "requires_grad": false,
+              "is_contiguous": false
+            },
+            {
+              "tensor": true,
+              "shape": [
+                8,
+                16,
+                2049,
+                128
+              ],
+              "stride": [
+                12589056,
+                128,
+                6144,
+                1
+              ],
+              "dtype": "torch.bfloat16",
+              "device": "cuda:0",
+              "layout": "torch.strided",
+              "storage_offset": 4096,
+              "requires_grad": false,
+              "is_contiguous": false
+            }
+          ],
+          {
+            "scale": 0.08838834764831843
+          }
+        ],
+        "seed": 20261105,
+        "generation": "CPU direct BF16 randn",
+        "storage": "shared_qkv_backing_from_user_review",
+        "input_scope": "metadata reconstruction; original model payload and external contract not replayed",
+        "original_model_acceptance_verified": false
+      },
+      "input_identity": {
+        "seed": 20261105,
+        "fp32_generation": false,
+        "backing_sha256": "44ebfeb326f5a257e890668d149dd0e28a715052ab3d7560d14726f39107fc04",
+        "backing_elements": [
+          100712448
+        ],
+        "backing_bytes": 201424896,
+        "storage_policy": "shared_qkv_backing_from_user_review"
+      },
+      "full_accuracy": {
+        "wheel": {
+          "output": {
+            "shape": [
+              8,
+              16,
+              2049,
+              128
+            ],
+            "elements": 33570816,
+            "failed": 0,
+            "failed_percent": 0.0,
+            "nonfinite": 0,
+            "max_abs_finite": 0.0010229945182800293
+          },
+          "lse": {
+            "shape": [
+              8,
+              16,
+              2049
+            ],
+            "elements": 262272,
+            "failed": 0,
+            "failed_percent": 0.0,
+            "nonfinite": 0,
+            "max_abs_finite": 1.9073486328125e-06
+          }
+        },
+        "aten": {
+          "output": {
+            "shape": [
+              8,
+              16,
+              2049,
+              128
+            ],
+            "elements": 33570816,
+            "failed": 0,
+            "failed_percent": 0.0,
+            "nonfinite": 0,
+            "max_abs_finite": 0.0010229945182800293
+          },
+          "lse": {
+            "shape": [
+              8,
+              16,
+              2049
+            ],
+            "elements": 262272,
+            "failed": 0,
+            "failed_percent": 0.0,
+            "nonfinite": 0,
+            "max_abs_finite": 1.9073486328125e-06
+          }
+        },
+        "repo": {
+          "output": {
+            "shape": [
+              8,
+              16,
+              2049,
+              128
+            ],
+            "elements": 33570816,
+            "failed": 0,
+            "failed_percent": 0.0,
+            "nonfinite": 0,
+            "max_abs_finite": 0.0015590786933898926
+          },
+          "lse": {
+            "shape": [
+              8,
+              16,
+              2049
+            ],
+            "elements": 262272,
+            "failed": 0,
+            "failed_percent": 0.0,
+            "nonfinite": 0,
+            "max_abs_finite": 1.9073486328125e-06
+          }
+        }
+      },
+      "timing_started": true,
+      "timing_completed": true
+    },
+    "expanded_small": {
+      "case": {
+        "id": "expanded_small",
+        "sheet": "\u89c4\u6a21\u6269\u5c55\u5de5\u51b5",
+        "row": 2,
+        "specification": [
+          [
+            {
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "layout": "torch.strided",
+              "requires_grad": false,
+              "shape": [
+                2,
+                16,
+                3,
+                128
+              ],
+              "storage_offset": 0,
+              "stride": [
+                18432,
+                128,
+                6144,
+                1
+              ]
+            },
+            {
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "layout": "torch.strided",
+              "requires_grad": false,
+              "shape": [
+                2,
+                16,
+                3,
+                128
+              ],
+              "storage_offset": 2048,
+              "stride": [
+                18432,
+                128,
+                6144,
+                1
+              ]
+            },
+            {
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "layout": "torch.strided",
+              "requires_grad": false,
+              "shape": [
+                2,
+                16,
+                3,
+                128
+              ],
+              "storage_offset": 4096,
+              "stride": [
+                18432,
+                128,
+                6144,
+                1
+              ]
+            }
+          ],
+          {
+            "scale": 0.08838834764831843
+          }
+        ],
+        "seed": 5058009176373978791,
+        "generation": "CPU direct BF16 randn",
+        "storage": "independent_minimum_backings_from_expansion_spec",
+        "input_scope": "independent synthetic input; shape/stride/offset and seed from workbook",
+        "original_model_acceptance_verified": false
+      },
+      "input_identity": {
+        "seed": 5058009176373978791,
+        "fp32_generation": false,
+        "backing_sha256": "8a234cca0975021f970d0dd385a7395834c89924f8f4e3e39a9f1c7f4cd29398",
+        "backing_elements": [
+          32768,
+          34816,
+          36864
+        ],
+        "backing_bytes": 208896,
+        "storage_policy": "independent_minimum_backings_from_expansion_spec"
+      },
+      "full_accuracy": {
+        "wheel": {
+          "output": {
+            "shape": [
+              2,
+              16,
+              3,
+              128
+            ],
+            "elements": 12288,
+            "failed": 0,
+            "failed_percent": 0.0,
+            "nonfinite": 0,
+            "max_abs_finite": 0.008086681365966797
+          },
+          "lse": {
+            "shape": [
+              2,
+              16,
+              3
+            ],
+            "elements": 96,
+            "failed": 0,
+            "failed_percent": 0.0,
+            "nonfinite": 0,
+            "max_abs_finite": 4.76837158203125e-07
+          }
+        },
+        "aten": {
+          "output": {
+            "shape": [
+              2,
+              16,
+              3,
+              128
+            ],
+            "elements": 12288,
+            "failed": 0,
+            "failed_percent": 0.0,
+            "nonfinite": 0,
+            "max_abs_finite": 0.008086681365966797
+          },
+          "lse": {
+            "shape": [
+              2,
+              16,
+              3
+            ],
+            "elements": 96,
+            "failed": 0,
+            "failed_percent": 0.0,
+            "nonfinite": 0,
+            "max_abs_finite": 4.76837158203125e-07
+          }
+        },
+        "repo": {
+          "output": {
+            "shape": [
+              2,
+              16,
+              3,
+              128
+            ],
+            "elements": 12288,
+            "failed": 0,
+            "failed_percent": 0.0,
+            "nonfinite": 0,
+            "max_abs_finite": 0.007538318634033203
+          },
+          "lse": {
+            "shape": [
+              2,
+              16,
+              3
+            ],
+            "elements": 96,
+            "failed": 0,
+            "failed_percent": 0.0,
+            "nonfinite": 0,
+            "max_abs_finite": 4.76837158203125e-07
+          }
+        }
+      },
+      "timing_started": true,
+      "timing_completed": true
+    },
+    "expanded_medium": {
+      "case": {
+        "id": "expanded_medium",
+        "sheet": "\u89c4\u6a21\u6269\u5c55\u5de5\u51b5",
+        "row": 3,
+        "specification": [
+          [
+            {
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "layout": "torch.strided",
+              "requires_grad": false,
+              "shape": [
+                2,
+                16,
+                23,
+                128
+              ],
+              "storage_offset": 0,
+              "stride": [
+                141312,
+                128,
+                6144,
+                1
+              ]
+            },
+            {
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "layout": "torch.strided",
+              "requires_grad": false,
+              "shape": [
+                2,
+                16,
+                23,
+                128
+              ],
+              "storage_offset": 2048,
+              "stride": [
+                141312,
+                128,
+                6144,
+                1
+              ]
+            },
+            {
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "layout": "torch.strided",
+              "requires_grad": false,
+              "shape": [
+                2,
+                16,
+                23,
+                128
+              ],
+              "storage_offset": 4096,
+              "stride": [
+                141312,
+                128,
+                6144,
+                1
+              ]
+            }
+          ],
+          {
+            "scale": 0.08838834764831843
+          }
+        ],
+        "seed": 6792970978253416049,
+        "generation": "CPU direct BF16 randn",
+        "storage": "independent_minimum_backings_from_expansion_spec",
+        "input_scope": "independent synthetic input; shape/stride/offset and seed from workbook",
+        "original_model_acceptance_verified": false
+      },
+      "input_identity": {
+        "seed": 6792970978253416049,
+        "fp32_generation": false,
+        "backing_sha256": "76139531dc6bf5c53593bfdc88d3dd5acc5ca13733b5ac6944e92b20064208b5",
+        "backing_elements": [
+          278528,
+          280576,
+          282624
+        ],
+        "backing_bytes": 1683456,
+        "storage_policy": "independent_minimum_backings_from_expansion_spec"
+      },
+      "full_accuracy": {
+        "wheel": {
+          "output": {
+            "shape": [
+              2,
+              16,
+              23,
+              128
+            ],
+            "elements": 94208,
+            "failed": 0,
+            "failed_percent": 0.0,
+            "nonfinite": 0,
+            "max_abs_finite": 0.004246354103088379
+          },
+          "lse": {
+            "shape": [
+              2,
+              16,
+              23
+            ],
+            "elements": 736,
+            "failed": 0,
+            "failed_percent": 0.0,
+            "nonfinite": 0,
+            "max_abs_finite": 4.76837158203125e-07
+          }
+        },
+        "aten": {
+          "output": {
+            "shape": [
+              2,
+              16,
+              23,
+              128
+            ],
+            "elements": 94208,
+            "failed": 0,
+            "failed_percent": 0.0,
+            "nonfinite": 0,
+            "max_abs_finite": 0.004246354103088379
+          },
+          "lse": {
+            "shape": [
+              2,
+              16,
+              23
+            ],
+            "elements": 736,
+            "failed": 0,
+            "failed_percent": 0.0,
+            "nonfinite": 0,
+            "max_abs_finite": 4.76837158203125e-07
+          }
+        },
+        "repo": {
+          "output": {
+            "shape": [
+              2,
+              16,
+              23,
+              128
+            ],
+            "elements": 94208,
+            "failed": 0,
+            "failed_percent": 0.0,
+            "nonfinite": 0,
+            "max_abs_finite": 0.003898143768310547
+          },
+          "lse": {
+            "shape": [
+              2,
+              16,
+              23
+            ],
+            "elements": 736,
+            "failed": 0,
+            "failed_percent": 0.0,
+            "nonfinite": 0,
+            "max_abs_finite": 7.152557373046875e-07
+          }
+        }
+      },
+      "timing_started": true,
+      "timing_completed": true
+    },
+    "expanded_large": {
+      "case": {
+        "id": "expanded_large",
+        "sheet": "\u89c4\u6a21\u6269\u5c55\u5de5\u51b5",
+        "row": 4,
+        "specification": [
+          [
+            {
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "layout": "torch.strided",
+              "requires_grad": false,
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "storage_offset": 0,
+              "stride": [
+                2224128,
+                128,
+                6144,
+                1
+              ]
+            },
+            {
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "layout": "torch.strided",
+              "requires_grad": false,
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "storage_offset": 2048,
+              "stride": [
+                2224128,
+                128,
+                6144,
+                1
+              ]
+            },
+            {
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "layout": "torch.strided",
+              "requires_grad": false,
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "storage_offset": 4096,
+              "stride": [
+                2224128,
+                128,
+                6144,
+                1
+              ]
+            }
+          ],
+          {
+            "scale": 0.08838834764831843
+          }
+        ],
+        "seed": 8147618770989597313,
+        "generation": "CPU direct BF16 randn",
+        "storage": "independent_minimum_backings_from_expansion_spec",
+        "input_scope": "independent synthetic input; shape/stride/offset and seed from workbook",
+        "original_model_acceptance_verified": false
+      },
+      "input_identity": {
+        "seed": 8147618770989597313,
+        "fp32_generation": false,
+        "backing_sha256": "407dd00340ce0c38435ba91f1f4516284411104c40bcf7e59d0d960bb5f15316",
+        "backing_elements": [
+          4444160,
+          4446208,
+          4448256
+        ],
+        "backing_bytes": 26677248,
+        "storage_policy": "independent_minimum_backings_from_expansion_spec"
+      },
+      "full_accuracy": {
+        "wheel": {
+          "output": {
+            "shape": [
+              2,
+              16,
+              362,
+              128
+            ],
+            "elements": 1482752,
+            "failed": 0,
+            "failed_percent": 0.0,
+            "nonfinite": 0,
+            "max_abs_finite": 0.002032339572906494
+          },
+          "lse": {
+            "shape": [
+              2,
+              16,
+              362
+            ],
+            "elements": 11584,
+            "failed": 0,
+            "failed_percent": 0.0,
+            "nonfinite": 0,
+            "max_abs_finite": 9.5367431640625e-07
+          }
+        },
+        "aten": {
+          "output": {
+            "shape": [
+              2,
+              16,
+              362,
+              128
+            ],
+            "elements": 1482752,
+            "failed": 0,
+            "failed_percent": 0.0,
+            "nonfinite": 0,
+            "max_abs_finite": 0.002032339572906494
+          },
+          "lse": {
+            "shape": [
+              2,
+              16,
+              362
+            ],
+            "elements": 11584,
+            "failed": 0,
+            "failed_percent": 0.0,
+            "nonfinite": 0,
+            "max_abs_finite": 9.5367431640625e-07
+          }
+        },
+        "repo": {
+          "output": {
+            "shape": [
+              2,
+              16,
+              362,
+              128
+            ],
+            "elements": 1482752,
+            "failed": 0,
+            "failed_percent": 0.0,
+            "nonfinite": 0,
+            "max_abs_finite": 0.002032339572906494
+          },
+          "lse": {
+            "shape": [
+              2,
+              16,
+              362
+            ],
+            "elements": 11584,
+            "failed": 0,
+            "failed_percent": 0.0,
+            "nonfinite": 0,
+            "max_abs_finite": 9.5367431640625e-07
+          }
+        }
+      },
+      "timing_started": true,
+      "timing_completed": true
+    }
+  },
+  "native": {
+    "version": "2.8.4+dtk2604.torch2100.2609292239.g74de14",
+    "module": "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/11992/package/flash_attn_2_cuda.cpython-310-x86_64-linux-gnu.so",
+    "loaded_libraries_sha256": {
+      "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/11992/package/flash_attn/lib/libflash_attention.so": "42b820080757241f048e7ed6673a91703e5563353364ea279fa03cd0ca1a422e",
+      "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/11992/package/flash_attn_2_cuda.cpython-310-x86_64-linux-gnu.so": "4dbb514cd0d6b30b720bbc739b13f3655ec5b345765b303e463184a1cd243f25"
+    }
+  }
+}

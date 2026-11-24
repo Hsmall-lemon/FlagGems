@@ -1,0 +1,913 @@
+[
+  {
+    "row": 4,
+    "mode": "paired",
+    "provider": "das",
+    "config_id": "das",
+    "description": "FP64 \u00b7 [1344,256] + [256,128]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 7.815970093361102e-14,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 21.680000238120556,
+    "rois_us": [
+      21.60000056028366,
+      21.75999991595745,
+      23.120000027120113,
+      21.67899999767542,
+      21.680000238120556
+    ],
+    "sheet_das_us": 19.36,
+    "native_us": 14.959999999999999,
+    "native_rois_us": [
+      14.959999999999999,
+      14.959999999999999,
+      15.632,
+      14.959800000000001,
+      14.9759
+    ],
+    "kernels": [
+      "Cijk_Ailk_Bljk_DB_MT32x32x8_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS0_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM1_MMAC_KME0_NLCA1_NLCB1_OLDSR0_PGR2_PLR1_RK0_SU0_SUM0_SUS256_SVW2_TT4_2_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG8_16_1_WGM1"
+    ],
+    "sheet_native_ratio": 1.2941176470588236
+  },
+  {
+    "row": 5,
+    "mode": "paired",
+    "provider": "das",
+    "config_id": "das",
+    "description": "FP64 \u00b7 [192,11392] + [11392,128]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 7.673861546209082e-13,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 142.55999773740768,
+    "rois_us": [
+      142.08000153303146,
+      142.55999773740768,
+      142.7994966506958,
+      142.87999272346497,
+      142.5594985485077
+    ],
+    "sheet_das_us": 135.68,
+    "native_us": 133.0719,
+    "native_rois_us": [
+      132.5279,
+      131.5359,
+      134.2559,
+      133.0719,
+      134.0479
+    ],
+    "kernels": [
+      "Cijk_Ailk_Bljk_DB_MT64x16x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS0_FL0_GRVW2_GSU8_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM1_MMAC_KME0_NLCA1_NLCB1_OLDSR0_PGR2_PLR1_RK0_SU0_SUM0_SUS256_SVW2_TT2_2_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG32_8_1_WGM3",
+      "Cijk_D"
+    ],
+    "sheet_native_ratio": 1.0195991790904015
+  },
+  {
+    "row": 6,
+    "mode": "paired",
+    "provider": "das",
+    "config_id": "das",
+    "description": "FP64 \u00b7 [192,128] + [128,128]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 2.1316282072803006e-14,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 14.08000010997057,
+    "rois_us": [
+      14.08000010997057,
+      16.080000437796116,
+      13.999999966472387,
+      14.399999752640724,
+      14.08000010997057
+    ],
+    "sheet_das_us": 10.08,
+    "native_us": 8.2239,
+    "native_rois_us": [
+      8.096,
+      9.2,
+      8.064,
+      8.464,
+      8.2239
+    ],
+    "kernels": [
+      "Cijk_Ailk_Bljk_DB_MT16x16x8_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS0_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM1_MMAC_KME0_NLCA1_NLCB1_OLDSR0_PGR2_PLR1_RK0_SU0_SUM0_SUS256_SVW2_TT2_2_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG8_8_1_WGM1"
+    ],
+    "sheet_native_ratio": 1.2256958377412177
+  },
+  {
+    "row": 7,
+    "mode": "paired",
+    "provider": "das",
+    "config_id": "das",
+    "description": "FP64 \u00b7 [192,128] + [128,16]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 1.4210854715202004e-14,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 13.60000018030405,
+    "rois_us": [
+      13.60000018030405,
+      15.519999898970127,
+      13.75999953597784,
+      13.60000018030405,
+      13.60000018030405
+    ],
+    "sheet_das_us": 9.92,
+    "native_us": 7.92,
+    "native_rois_us": [
+      8.048,
+      8.623999999999999,
+      7.904000000000001,
+      7.92,
+      7.856
+    ],
+    "kernels": [
+      "Cijk_Ailk_Bljk_DB_MT16x16x8_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS0_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM1_MMAC_KME0_NLCA1_NLCB1_OLDSR0_PGR2_PLR1_RK0_SU0_SUM0_SUS256_SVW2_TT2_2_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG8_8_1_WGM1"
+    ],
+    "sheet_native_ratio": 1.2525252525252526
+  },
+  {
+    "row": 8,
+    "mode": "paired",
+    "provider": "das",
+    "config_id": "das",
+    "description": "FP64 \u00b7 [192,128] + [128,1]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 1.7763568394002505e-14,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 13.919999822974205,
+    "rois_us": [
+      15.200000256299973,
+      13.919999822974205,
+      13.839999679476023,
+      13.919999822974205,
+      15.920000150799751
+    ],
+    "sheet_das_us": 11.04,
+    "native_us": 8.176,
+    "native_rois_us": [
+      9.168000000000001,
+      8.112,
+      8.16,
+      8.176,
+      8.8639
+    ],
+    "kernels": [
+      "Cijk_Ailk_Bljk_DB_MT32x32x8_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS0_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM1_MMAC_KME0_NLCA1_NLCB1_OLDSR0_PGR2_PLR1_RK0_SU0_SUM0_SUS256_SVW2_TT2_2_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG16_16_1_WGM1"
+    ],
+    "sheet_native_ratio": 1.3502935420743638
+  },
+  {
+    "row": 9,
+    "mode": "paired",
+    "provider": "das",
+    "config_id": "das",
+    "description": "FP64 \u00b7 [192,16] + [16,1]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 1.7763568394002505e-15,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 9.920000098645687,
+    "rois_us": [
+      10.720000136643648,
+      9.839999955147505,
+      9.839999955147505,
+      9.920000098645687,
+      9.920000098645687
+    ],
+    "sheet_das_us": 6.24,
+    "native_us": 3.936,
+    "native_rois_us": [
+      4.864,
+      3.9520000000000004,
+      3.8880000000000003,
+      3.936,
+      3.872
+    ],
+    "kernels": [
+      "Cijk_Ailk_Bljk_DB_MT32x32x8_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS0_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM1_MMAC_KME0_NLCA1_NLCB1_OLDSR0_PGR2_PLR1_RK0_SU0_SUM0_SUS256_SVW2_TT2_2_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG16_16_1_WGM1"
+    ],
+    "sheet_native_ratio": 1.5853658536585367
+  },
+  {
+    "row": 10,
+    "mode": "paired",
+    "provider": "das",
+    "config_id": "das",
+    "description": "FP64 \u00b7 [192,256] + [256,128]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 7.460698725481052e-14,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 16.16000011563301,
+    "rois_us": [
+      16.16000011563301,
+      16.239999793469906,
+      16.239999793469906,
+      16.16000011563301,
+      16.16000011563301
+    ],
+    "sheet_das_us": 12.64,
+    "native_us": 10.336,
+    "native_rois_us": [
+      10.368,
+      10.352,
+      10.304,
+      10.304,
+      10.336
+    ],
+    "kernels": [
+      "Cijk_Ailk_Bljk_DB_MT64x16x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS0_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM1_MMAC_KME0_NLCA1_NLCB1_OLDSR0_PGR2_PLR1_RK0_SU0_SUM0_SUS256_SVW2_TT2_2_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG32_8_1_WGM1"
+    ],
+    "sheet_native_ratio": 1.2229102167182662
+  },
+  {
+    "row": 11,
+    "mode": "paired",
+    "provider": "das",
+    "config_id": "das",
+    "description": "FP64 \u00b7 [192,89] + [89,128]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 1.4210854715202004e-14,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 13.120000250637531,
+    "rois_us": [
+      13.120000250637531,
+      13.120000250637531,
+      12.959999963641167,
+      13.120000250637531,
+      14.719999860972166
+    ],
+    "sheet_das_us": 9.12,
+    "native_us": 7.248,
+    "native_rois_us": [
+      7.168000000000001,
+      7.328,
+      7.040000000000001,
+      7.248,
+      7.808
+    ],
+    "kernels": [
+      "Cijk_Ailk_Bljk_DB_MT16x16x8_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS0_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM1_MMAC_KME0_NLCA1_NLCB1_OLDSR0_PGR2_PLR1_RK0_SU0_SUM0_SUS256_SVW2_TT2_2_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG8_8_1_WGM1"
+    ],
+    "sheet_native_ratio": 1.258278145695364
+  },
+  {
+    "row": 12,
+    "mode": "paired",
+    "provider": "das",
+    "config_id": "das",
+    "description": "FP64 \u00b7 [192,89] + [89,1]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 1.4210854715202004e-14,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 12.640000320971012,
+    "rois_us": [
+      13.75999953597784,
+      12.640000320971012,
+      12.640000320971012,
+      12.640000320971012,
+      12.640000320971012
+    ],
+    "sheet_das_us": 9.92,
+    "native_us": 7.104000000000001,
+    "native_rois_us": [
+      8.0,
+      7.072,
+      7.12,
+      7.104000000000001,
+      7.1038
+    ],
+    "kernels": [
+      "Cijk_Ailk_Bljk_DB_MT32x32x8_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS0_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM1_MMAC_KME0_NLCA1_NLCB1_OLDSR0_PGR2_PLR1_RK0_SU0_SUM0_SUS256_SVW2_TT2_2_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG16_16_1_WGM1"
+    ],
+    "sheet_native_ratio": 1.3963963963963961
+  },
+  {
+    "row": 15,
+    "mode": "paired",
+    "provider": "das",
+    "config_id": "das",
+    "description": "FP64 \u00b7 [192,89] + [89,6528]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 2.1316282072803006e-14,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 26.639999821782112,
+    "rois_us": [
+      81.92000165581703,
+      26.559999212622643,
+      26.639999821782112,
+      26.479999534785748,
+      26.639999821782112
+    ],
+    "sheet_das_us": 25.76,
+    "native_us": 18.080000000000002,
+    "native_rois_us": [
+      18.56,
+      18.080000000000002,
+      18.112000000000002,
+      18.0,
+      18.080000000000002
+    ],
+    "kernels": [
+      "Cijk_Ailk_Bljk_DB_MT128x64x8_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS0_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM1_MMAC_KME0_NLCA1_NLCB1_OLDSR0_PGR2_PLR1_RK0_SU0_SUM0_SUS256_SVW2_TT4_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG32_8_1_WGM1"
+    ],
+    "sheet_native_ratio": 1.424778761061947
+  },
+  {
+    "row": 16,
+    "mode": "paired",
+    "provider": "das",
+    "config_id": "das",
+    "description": "FP64 \u00b7 [192,89] + [89,768]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 2.1316282072803006e-14,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 14.720000326633453,
+    "rois_us": [
+      14.560000039637089,
+      14.800000004470348,
+      14.720000326633453,
+      14.720000326633453,
+      14.720000326633453
+    ],
+    "sheet_das_us": 10.88,
+    "native_us": 8.064,
+    "native_rois_us": [
+      8.064,
+      8.128,
+      8.0318,
+      8.0799,
+      8.048
+    ],
+    "kernels": [
+      "Cijk_Ailk_Bljk_DB_MT128x16x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS0_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM1_MMAC_KME0_NLCA1_NLCB1_OLDSR0_PGR2_PLR1_RK0_SU0_SUM0_SUS256_SVW2_TT4_2_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG32_8_1_WGM8"
+    ],
+    "sheet_native_ratio": 1.3492063492063493
+  },
+  {
+    "row": 18,
+    "mode": "paired",
+    "provider": "das",
+    "config_id": "das",
+    "description": "FP64 \u00b7 [2208,3] + [3,15]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 1.7763568394002505e-15,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 9.759999811649323,
+    "rois_us": [
+      9.759999811649323,
+      9.759999811649323,
+      9.759999811649323,
+      9.839999955147505,
+      9.759999811649323
+    ],
+    "sheet_das_us": 5.28,
+    "native_us": 3.8240000000000003,
+    "native_rois_us": [
+      3.872,
+      3.808,
+      3.776,
+      3.84,
+      3.8240000000000003
+    ],
+    "kernels": [
+      "Cijk_Ailk_Bljk_DB_MT16x32x8_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS1_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM1_MMAC_KME0_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK0_SU32_SUM0_SUS256_SVW2_TT2_4_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG8_8_1_WGM8"
+    ],
+    "sheet_native_ratio": 1.3807531380753137
+  },
+  {
+    "row": 19,
+    "mode": "paired",
+    "provider": "das",
+    "config_id": "das",
+    "description": "FP64 \u00b7 [2208,64] + [64,1280]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 1.7763568394002505e-14,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 37.20000013709068,
+    "rois_us": [
+      206.31950348615646,
+      37.28000074625015,
+      37.20000013709068,
+      36.959998309612274,
+      36.80000081658363
+    ],
+    "sheet_das_us": 37.6,
+    "native_us": 29.344,
+    "native_rois_us": [
+      30.880000000000003,
+      29.472,
+      29.344,
+      29.1358,
+      29.1199
+    ],
+    "kernels": [
+      "Cijk_Ailk_Bljk_DB_MT64x64x8_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS0_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM1_MMAC_KME0_NLCA1_NLCB1_OLDSR0_PGR2_PLR1_RK0_SU0_SUM0_SUS256_SVW2_TT4_4_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG16_16_1_WGM1"
+    ],
+    "sheet_native_ratio": 1.2813522355507088
+  },
+  {
+    "row": 20,
+    "mode": "paired",
+    "provider": "das",
+    "config_id": "das",
+    "description": "FP64 \u00b7 [2208,64] + [64,512]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 1.7763568394002505e-14,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 21.75999991595745,
+    "rois_us": [
+      21.99999988079071,
+      21.75999991595745,
+      21.60000056028366,
+      21.839999593794346,
+      21.51999995112419
+    ],
+    "sheet_das_us": 20.32,
+    "native_us": 14.016,
+    "native_rois_us": [
+      14.272,
+      14.016,
+      14.032,
+      13.9518,
+      13.519900000000002
+    ],
+    "kernels": [
+      "Cijk_Ailk_Bljk_DB_MT128x64x8_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS0_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM1_MMAC_KME0_NLCA1_NLCB1_OLDSR0_PGR2_PLR1_RK0_SU0_SUM0_SUS256_SVW2_TT8_4_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG16_16_1_WGM1"
+    ],
+    "sheet_native_ratio": 1.4497716894977168
+  },
+  {
+    "row": 21,
+    "mode": "paired",
+    "provider": "das",
+    "config_id": "das",
+    "description": "FP64 \u00b7 [2208,64] + [64,64]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 1.4210854715202004e-14,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 12.799999676644802,
+    "rois_us": [
+      12.799999676644802,
+      12.799999676644802,
+      12.719999998807907,
+      12.719999998807907,
+      12.799999676644802
+    ],
+    "sheet_das_us": 8.96,
+    "native_us": 6.048,
+    "native_rois_us": [
+      5.984,
+      6.048,
+      6.08,
+      6.048,
+      5.968
+    ],
+    "kernels": [
+      "Cijk_Ailk_Bljk_DB_MT16x16x8_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS0_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM1_MMAC_KME0_NLCA1_NLCB1_OLDSR0_PGR2_PLR1_RK0_SU0_SUM0_SUS256_SVW2_TT2_2_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG8_8_1_WGM1"
+    ],
+    "sheet_native_ratio": 1.4814814814814816
+  },
+  {
+    "row": 22,
+    "mode": "paired",
+    "provider": "das",
+    "config_id": "das",
+    "description": "FP64 \u00b7 [2208,7] + [7,15]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 3.552713678800501e-15,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 9.759999811649323,
+    "rois_us": [
+      9.759999811649323,
+      9.680000133812428,
+      9.680000133812428,
+      9.759999811649323,
+      9.759999811649323
+    ],
+    "sheet_das_us": 5.12,
+    "native_us": 3.776,
+    "native_rois_us": [
+      3.84,
+      3.776,
+      3.7600000000000002,
+      3.84,
+      3.776
+    ],
+    "kernels": [
+      "Cijk_Alik_Bljk_DB_MT16x16x8_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS0_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM1_MMAC_KME0_NLCA1_NLCB1_OLDSR0_PGR2_PLR1_RK0_SU0_SUM0_SUS256_SVW2_TT2_2_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG8_8_1_WGM8"
+    ],
+    "sheet_native_ratio": 1.3559322033898307
+  },
+  {
+    "row": 24,
+    "mode": "paired",
+    "provider": "das",
+    "config_id": "das",
+    "description": "FP64 \u00b7 [24576,1] + [1,48]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 0.0,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 19.039999693632126,
+    "rois_us": [
+      19.200000911951065,
+      19.039999693632126,
+      18.880000337958336,
+      19.039999693632126,
+      18.880000337958336
+    ],
+    "sheet_das_us": 16.64,
+    "native_us": 10.736,
+    "native_rois_us": [
+      11.072,
+      10.784,
+      10.72,
+      10.736,
+      10.704
+    ],
+    "kernels": [
+      "Cijk_Ailk_Bljk_DB_MT16x32x8_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS0_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM1_MMAC_KME0_NLCA1_NLCB1_OLDSR0_PGR2_PLR1_RK0_SU0_SUM0_SUS256_SVW2_TT2_4_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG8_8_1_WGM1"
+    ],
+    "sheet_native_ratio": 1.5499254843517138
+  },
+  {
+    "row": 25,
+    "mode": "paired",
+    "provider": "das",
+    "config_id": "das",
+    "description": "FP64 \u00b7 [24576,368] + [368,256]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 1.6342482922482304e-13,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 214.88000452518463,
+    "rois_us": [
+      393.99999380111694,
+      214.1595035791397,
+      214.00000154972076,
+      214.88000452518463,
+      215.11899679899216
+    ],
+    "sheet_das_us": 234.72,
+    "native_us": 206.8319,
+    "native_rois_us": [
+      216.62399999999997,
+      206.8319,
+      206.55990000000003,
+      206.8159,
+      207.0078
+    ],
+    "kernels": [
+      "Cijk_Ailk_Bljk_DB_MT64x64x8_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS0_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM1_MMAC_KME0_NLCA1_NLCB1_OLDSR0_PGR2_PLR1_RK0_SU0_SUM0_SUS256_SVW2_TT4_4_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG16_16_1_WGM1"
+    ],
+    "sheet_native_ratio": 1.1348346169038723
+  },
+  {
+    "row": 26,
+    "mode": "paired",
+    "provider": "das",
+    "config_id": "das",
+    "description": "FP64 \u00b7 [24576,4] + [4,256]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 3.552713678800501e-15,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 98.39999675750732,
+    "rois_us": [
+      102.88000106811523,
+      98.31999987363815,
+      98.16000238060951,
+      98.79999980330467,
+      98.39999675750732
+    ],
+    "sheet_das_us": 111.84,
+    "native_us": 90.28790000000001,
+    "native_rois_us": [
+      94.0959,
+      90.192,
+      90.2239,
+      90.752,
+      90.28790000000001
+    ],
+    "kernels": [
+      "Cijk_Alik_Bljk_DB_MT16x16x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS0_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM1_MMAC_KME0_NLCA1_NLCB1_OLDSR0_PGR2_PLR1_RK0_SU0_SUM0_SUS256_SVW2_TT2_2_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG8_8_1_WGM1"
+    ],
+    "sheet_native_ratio": 1.2387041895979416
+  },
+  {
+    "row": 27,
+    "mode": "paired",
+    "provider": "das",
+    "config_id": "das",
+    "description": "FP64 \u00b7 [24576,6] + [6,768]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 5.329070518200751e-15,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 257.60000944137573,
+    "rois_us": [
+      600.3199815750122,
+      256.9600045681,
+      256.9600045681,
+      257.7594965696335,
+      257.60000944137573
+    ],
+    "sheet_das_us": 283.04,
+    "native_us": 248.70390000000003,
+    "native_rois_us": [
+      254.49589999999998,
+      248.6719,
+      248.7359,
+      248.70390000000003,
+      248.6239
+    ],
+    "kernels": [
+      "Cijk_Alik_Bljk_DB_MT16x16x8_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS0_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM1_MMAC_KME0_NLCA1_NLCB1_OLDSR0_PGR2_PLR1_RK0_SU0_SUM0_SUS256_SVW2_TT2_2_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG8_8_1_WGM8"
+    ],
+    "sheet_native_ratio": 1.1380601590887798
+  },
+  {
+    "row": 28,
+    "mode": "paired",
+    "provider": "das",
+    "config_id": "das",
+    "description": "FP64 \u00b7 [24576,816] + [816,768]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 3.694822225952521e-13,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 1303.5199642181396,
+    "rois_us": [
+      1303.5199642181396,
+      1301.199495792389,
+      1305.999517440796,
+      1303.8390278816223,
+      1296.9594597816467
+    ],
+    "sheet_das_us": 1421.12,
+    "native_us": 1295.3593999999998,
+    "native_rois_us": [
+      1295.3593999999998,
+      1294.8314,
+      1296.5914,
+      1295.4073,
+      1289.3274
+    ],
+    "kernels": [
+      "Cijk_Ailk_Bljk_DB_MT128x128x8_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS1_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM1_MMAC_KME0_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK0_SU0_SUM0_SUS256_SVW2_TT8_8_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG16_16_1_WGM1"
+    ],
+    "sheet_native_ratio": 1.097085488398046
+  },
+  {
+    "row": 29,
+    "mode": "paired",
+    "provider": "das",
+    "config_id": "das",
+    "description": "FP64 \u00b7 [282624,15] + [15,3]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 5.329070518200751e-15,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 51.35999992489815,
+    "rois_us": [
+      51.359500735998154,
+      53.199999034404755,
+      51.52000114321709,
+      51.35999992489815,
+      51.04000121355057
+    ],
+    "sheet_das_us": 53.28,
+    "native_us": 44.9919,
+    "native_rois_us": [
+      44.9919,
+      46.063900000000004,
+      45.056,
+      44.9439,
+      44.7999
+    ],
+    "kernels": [
+      "Cijk_Ailk_Bljk_DB_MT16x32x8_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS1_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM1_MMAC_KME0_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK0_SU0_SUM0_SUS256_SVW2_TT2_4_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG8_8_1_WGM8"
+    ],
+    "sheet_native_ratio": 1.1842131583685063
+  },
+  {
+    "row": 30,
+    "mode": "paired",
+    "provider": "das",
+    "config_id": "das",
+    "description": "FP64 \u00b7 [282624,15] + [15,7]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 5.329070518200751e-15,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 55.52000179886818,
+    "rois_us": [
+      55.67999929189682,
+      55.27999997138977,
+      55.52000179886818,
+      55.6000005453825,
+      55.27999997138977
+    ],
+    "sheet_das_us": 57.76,
+    "native_us": 48.8,
+    "native_rois_us": [
+      48.88,
+      48.608,
+      48.8,
+      48.928,
+      48.624
+    ],
+    "kernels": [
+      "Cijk_Ailk_Bljk_DB_MT16x32x8_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS1_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM1_MMAC_KME0_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK0_SU0_SUM0_SUS256_SVW2_TT2_2_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG8_16_1_WGM8"
+    ],
+    "sheet_native_ratio": 1.1836065573770491
+  },
+  {
+    "row": 31,
+    "mode": "paired",
+    "provider": "das",
+    "config_id": "das",
+    "description": "FP64 \u00b7 [576,128] + [128,128]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 2.1316282072803006e-14,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 12.959999963641167,
+    "rois_us": [
+      56.31999857723713,
+      12.959999963641167,
+      12.879999820142984,
+      12.959999963641167,
+      12.959999963641167
+    ],
+    "sheet_das_us": 8.96,
+    "native_us": 6.688,
+    "native_rois_us": [
+      7.12,
+      6.847799999999999,
+      6.671899999999999,
+      6.623900000000001,
+      6.688
+    ],
+    "kernels": [
+      "Cijk_Ailk_Bljk_DB_MT64x16x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS0_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM1_MMAC_KME0_NLCA1_NLCB1_OLDSR0_PGR2_PLR1_RK0_SU0_SUM0_SUS256_SVW2_TT2_2_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG32_8_1_WGM1"
+    ],
+    "sheet_native_ratio": 1.3397129186602872
+  },
+  {
+    "row": 32,
+    "mode": "paired",
+    "provider": "das",
+    "config_id": "das",
+    "description": "FP64 \u00b7 [576,384] + [384,128]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 1.0658141036401503e-13,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 26.87999978661537,
+    "rois_us": [
+      26.87999978661537,
+      27.03999914228916,
+      26.72000043094158,
+      26.959999464452267,
+      26.87999978661537
+    ],
+    "sheet_das_us": 23.52,
+    "native_us": 20.56,
+    "native_rois_us": [
+      20.56,
+      20.736,
+      20.56,
+      20.736,
+      20.448
+    ],
+    "kernels": [
+      "Cijk_Ailk_Bljk_DB_MT16x16x8_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS0_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM1_MMAC_KME0_NLCA1_NLCB1_OLDSR0_PGR2_PLR1_RK0_SU0_SUM0_SUS256_SVW2_TT2_2_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG8_8_1_WGM8"
+    ],
+    "sheet_native_ratio": 1.143968871595331
+  },
+  {
+    "row": 33,
+    "mode": "paired",
+    "provider": "das",
+    "config_id": "das",
+    "description": "FP64 \u00b7 [960,128] + [128,128]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 2.1316282072803006e-14,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 15.200000256299973,
+    "rois_us": [
+      38.479999639093876,
+      15.279999934136868,
+      15.200000256299973,
+      15.200000256299973,
+      15.200000256299973
+    ],
+    "sheet_das_us": 11.36,
+    "native_us": 8.672,
+    "native_rois_us": [
+      9.184000000000001,
+      8.848,
+      8.672,
+      8.5599,
+      8.6239
+    ],
+    "kernels": [
+      "Cijk_Ailk_Bljk_DB_MT32x16x8_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS0_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM1_MMAC_KME0_NLCA1_NLCB1_OLDSR0_PGR2_PLR1_RK0_SU0_SUM0_SUS256_SVW2_TT2_2_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG16_8_1_WGM1"
+    ],
+    "sheet_native_ratio": 1.309963099630996
+  }
+]

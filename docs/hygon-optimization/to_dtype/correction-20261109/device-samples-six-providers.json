@@ -1,0 +1,5584 @@
+{
+  "profile": "to-comparison-r4",
+  "metric": "HIPOPS DurationNs sum/call; host and gate excluded",
+  "calls_per_roi": 20,
+  "rois_per_aa_block": 5,
+  "aa_blocks": 3,
+  "stability_threshold": 0.05,
+  "minimum_gate_us": 29585.103,
+  "maximum_inter_kernel_gap_us": 127.2,
+  "results": [
+    {
+      "case": 1711,
+      "provider": "das_valid_layout",
+      "device_us": 4.864,
+      "aa_medians_us": [
+        4.856,
+        4.864,
+        4.872
+      ],
+      "aa_max_drift": 0.0032948929159801743,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "void at::native::vectorized_elementwise_kernel<4, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul> >(int, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul>)"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 4.856
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 4.856
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 5.592
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 4.856
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 4.848
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 4.864
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 5.57595
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 4.872
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 4.824
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 4.84
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 4.84
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 5.56
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 4.872
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 4.872
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 5.592
+        }
+      ]
+    },
+    {
+      "case": 1711,
+      "provider": "native_public",
+      "device_us": 4.808,
+      "aa_medians_us": [
+        4.816,
+        4.808,
+        4.8
+      ],
+      "aa_max_drift": 0.0033333333333334103,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "void at::native::vectorized_elementwise_kernel<4, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul> >(int, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul>)"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 4.38395
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 4.816
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 5.48
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 4.816
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 4.824
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 5.472
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 4.78395
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 4.808
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 5.496
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 4.808
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 4.8
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 4.816
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 4.776
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 5.48
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 4.8
+        }
+      ]
+    },
+    {
+      "case": 1711,
+      "provider": "new_public",
+      "device_us": 4.856,
+      "aa_medians_us": [
+        4.856,
+        4.872,
+        4.848
+      ],
+      "aa_max_drift": 0.004950495049504955,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 4.872
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 4.856
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 4.856
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 4.888
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 4.856
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 5.536
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 4.86395
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 4.872
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 5.528
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 4.864
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 5.57595
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 4.848
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 4.83195
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 5.552
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 4.848
+        }
+      ]
+    },
+    {
+      "case": 1711,
+      "provider": "old_generic",
+      "device_us": 4.856,
+      "aa_medians_us": [
+        4.872,
+        4.848,
+        4.856
+      ],
+      "aa_max_drift": 0.004950495049504955,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 5.536
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 4.848
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 4.872
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 4.864
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 5.52
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 4.832
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 5.496
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 4.848
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 4.864
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 4.832
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 4.832
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 5.52
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 4.84
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 4.856
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 5.536
+        }
+      ]
+    },
+    {
+      "case": 1711,
+      "provider": "old_public",
+      "device_us": 4.816,
+      "aa_medians_us": [
+        4.816,
+        4.832,
+        4.816
+      ],
+      "aa_max_drift": 0.0033222591362125353,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "void at::native::vectorized_elementwise_kernel<4, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul> >(int, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul>)"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 4.8
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 5.488
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 4.816
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 4.80795
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 5.52
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 5.496
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 4.816
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 4.832
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 4.792
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 5.464
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 4.816
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 5.47995
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 4.784
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 4.816
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 4.8
+        }
+      ]
+    },
+    {
+      "case": 1711,
+      "provider": "routing_only",
+      "device_us": 4.864,
+      "aa_medians_us": [
+        4.864,
+        4.872,
+        4.848
+      ],
+      "aa_max_drift": 0.004950495049504955,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 4.872
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 4.856
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 5.544
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 4.856
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 4.864
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 5.52
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 4.872
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 5.528
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 4.84
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 4.872
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 4.848
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 4.84
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 5.52
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 4.864
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 4.848
+        }
+      ]
+    },
+    {
+      "case": 1712,
+      "provider": "das_valid_layout",
+      "device_us": 4.824,
+      "aa_medians_us": [
+        4.824,
+        4.824,
+        4.8
+      ],
+      "aa_max_drift": 0.0050000000000001155,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "void at::native::vectorized_elementwise_kernel<4, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul> >(int, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul>)"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 5.224
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 4.824
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 4.76
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 5.52
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 4.76
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 5.536
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 4.824
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 4.8
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 5.52
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 4.76
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 5.48
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 4.784
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 4.784
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 5.536
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 4.8
+        }
+      ]
+    },
+    {
+      "case": 1712,
+      "provider": "native_public",
+      "device_us": 11.632,
+      "aa_medians_us": [
+        11.64,
+        11.632,
+        11.62395
+      ],
+      "aa_max_drift": 0.0013807698759888964,
+      "stable": true,
+      "correctness": false,
+      "kernels": [
+        "void at::native::elementwise_kernel_manual_unroll<128, 8, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#12}::operator()() const::{lambda(c10::BFloat16)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#12}::operator()() const::{lambda(c10::BFloat16)#1} const&)::{lambda(int, bool)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#12}::operator()() const::{lambda(c10::BFloat16)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#12}::operator()() const::{lambda(c10::BFloat16)#1} const&)::{lambda(int, bool)#1})",
+        "void at::native::vectorized_elementwise_kernel<4, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul> >(int, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul>)"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 10.456
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 11.648
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 11.64
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 14.536
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 11.592
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 11.632
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 14.568
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 11.648
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 11.6
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 11.624
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 11.616
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 14.576
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 11.608
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 11.62395
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 11.64
+        }
+      ]
+    },
+    {
+      "case": 1712,
+      "provider": "new_public",
+      "device_us": 4.736,
+      "aa_medians_us": [
+        4.736,
+        4.736,
+        4.744
+      ],
+      "aa_max_drift": 0.0016891891891892552,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 4.744
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 5.472
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 4.736
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 4.72
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 4.736
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 4.736
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 5.448
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 4.76
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 4.728
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 4.736
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 4.744
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 5.48
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 4.72
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 4.744
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 4.784
+        }
+      ]
+    },
+    {
+      "case": 1712,
+      "provider": "old_generic",
+      "device_us": 4.736,
+      "aa_medians_us": [
+        4.744,
+        4.736,
+        4.736
+      ],
+      "aa_max_drift": 0.0016891891891892552,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 5.472
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 4.736
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 5.44
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 4.728
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 4.744
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 5.45595
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 4.728
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 5.456
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 4.704
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 4.736
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 4.736
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 4.76
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 4.728
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 5.472
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 4.72
+        }
+      ]
+    },
+    {
+      "case": 1712,
+      "provider": "old_public",
+      "device_us": 11.648,
+      "aa_medians_us": [
+        11.656,
+        11.64,
+        11.648
+      ],
+      "aa_max_drift": 0.0013745704467353903,
+      "stable": true,
+      "correctness": false,
+      "kernels": [
+        "void at::native::elementwise_kernel_manual_unroll<128, 8, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#12}::operator()() const::{lambda(c10::BFloat16)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#12}::operator()() const::{lambda(c10::BFloat16)#1} const&)::{lambda(int, bool)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#12}::operator()() const::{lambda(c10::BFloat16)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#12}::operator()() const::{lambda(c10::BFloat16)#1} const&)::{lambda(int, bool)#1})",
+        "void at::native::vectorized_elementwise_kernel<4, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul> >(int, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul>)"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 11.656
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 14.528
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 11.624
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 11.608
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 11.656
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 11.64
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 14.552
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 11.624
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 11.64
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 11.632
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 14.536
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 11.632
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 11.648
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 14.56795
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 11.64
+        }
+      ]
+    },
+    {
+      "case": 1712,
+      "provider": "routing_only",
+      "device_us": 4.744,
+      "aa_medians_us": [
+        4.744,
+        4.744,
+        4.728
+      ],
+      "aa_max_drift": 0.0033840947546530664,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 5.456
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 4.728
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 4.744
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 5.472
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 4.72
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 5.472
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 4.744
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 4.736
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 4.736
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 5.48
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 5.448
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 4.72
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 4.728
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 4.712
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 5.488
+        }
+      ]
+    },
+    {
+      "case": 1713,
+      "provider": "das_valid_layout",
+      "device_us": 4.792,
+      "aa_medians_us": [
+        4.8,
+        4.792,
+        4.792
+      ],
+      "aa_max_drift": 0.0016694490818029983,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "void at::native::vectorized_elementwise_kernel<4, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul> >(int, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul>)"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 4.76
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 5.536
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 4.784
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 4.8
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 4.8
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 4.792
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 5.568
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 4.768
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 4.784
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 5.544
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 5.496
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 4.792
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 4.792
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 4.76
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 5.504
+        }
+      ]
+    },
+    {
+      "case": 1713,
+      "provider": "native_public",
+      "device_us": 11.84,
+      "aa_medians_us": [
+        11.856,
+        11.832,
+        11.84
+      ],
+      "aa_max_drift": 0.002028397565922768,
+      "stable": true,
+      "correctness": false,
+      "kernels": [
+        "void at::native::elementwise_kernel_manual_unroll<128, 8, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#12}::operator()() const::{lambda(c10::BFloat16)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#12}::operator()() const::{lambda(c10::BFloat16)#1} const&)::{lambda(int, bool)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#12}::operator()() const::{lambda(c10::BFloat16)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#12}::operator()() const::{lambda(c10::BFloat16)#1} const&)::{lambda(int, bool)#1})",
+        "void at::native::vectorized_elementwise_kernel<4, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul> >(int, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul>)"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 11.872
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 14.784
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 11.84
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 11.856
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 11.824
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 11.824
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 11.832
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 11.856
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 14.76
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 11.824
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 11.808
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 11.816
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 14.8
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 11.84
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 11.84
+        }
+      ]
+    },
+    {
+      "case": 1713,
+      "provider": "new_public",
+      "device_us": 4.736,
+      "aa_medians_us": [
+        4.72,
+        4.752,
+        4.736
+      ],
+      "aa_max_drift": 0.006779661016949268,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 5.504
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 4.72
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 4.72
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 5.456
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 4.704
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 5.456
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 4.72
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 4.752
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 5.488
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 4.728
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 4.728
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 4.736
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 5.472
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 4.712
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 4.736
+        }
+      ]
+    },
+    {
+      "case": 1713,
+      "provider": "old_generic",
+      "device_us": 4.752,
+      "aa_medians_us": [
+        4.76,
+        4.752,
+        4.736
+      ],
+      "aa_max_drift": 0.0050675675675675436,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 4.76
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 5.488
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 4.736
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 4.736
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 5.464
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 4.752
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 5.48
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 4.736
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 4.736
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 5.456
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 5.44
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 4.736
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 4.736
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 4.728
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 5.48
+        }
+      ]
+    },
+    {
+      "case": 1713,
+      "provider": "old_public",
+      "device_us": 11.856,
+      "aa_medians_us": [
+        11.864,
+        11.832,
+        11.856
+      ],
+      "aa_max_drift": 0.0027045300878971723,
+      "stable": true,
+      "correctness": false,
+      "kernels": [
+        "void at::native::elementwise_kernel_manual_unroll<128, 8, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#12}::operator()() const::{lambda(c10::BFloat16)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#12}::operator()() const::{lambda(c10::BFloat16)#1} const&)::{lambda(int, bool)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#12}::operator()() const::{lambda(c10::BFloat16)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#12}::operator()() const::{lambda(c10::BFloat16)#1} const&)::{lambda(int, bool)#1})",
+        "void at::native::vectorized_elementwise_kernel<4, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul> >(int, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul>)"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 14.76
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 11.84
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 11.864
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 14.808
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 11.832
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 14.736
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 11.832
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 11.84
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 11.824
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 11.816
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 11.856
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 14.768
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 11.84
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 11.856
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 14.448
+        }
+      ]
+    },
+    {
+      "case": 1713,
+      "provider": "routing_only",
+      "device_us": 4.744,
+      "aa_medians_us": [
+        4.752,
+        4.728,
+        4.744
+      ],
+      "aa_max_drift": 0.0050761421319796,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 4.752
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 4.736
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 5.448
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 4.752
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 4.72
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 4.72
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 4.728
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 5.472
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 4.72
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 4.728
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 4.72
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 5.464
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 4.744
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 4.736
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 4.744
+        }
+      ]
+    },
+    {
+      "case": 1714,
+      "provider": "das_valid_layout",
+      "device_us": 4.8,
+      "aa_medians_us": [
+        4.8,
+        4.816,
+        4.784
+      ],
+      "aa_max_drift": 0.006688963210702337,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "void at::native::vectorized_elementwise_kernel<4, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul> >(int, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul>)"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 4.784
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 4.792
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 4.8
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 5.544
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 4.808
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 5.504
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 4.816
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 4.816
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 5.544
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 4.768
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 5.52
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 4.784
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 4.776
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 4.776
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 4.784
+        }
+      ]
+    },
+    {
+      "case": 1714,
+      "provider": "native_public",
+      "device_us": 4.728,
+      "aa_medians_us": [
+        4.72,
+        4.728,
+        4.728
+      ],
+      "aa_max_drift": 0.0016949152542373724,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "void at::native::vectorized_elementwise_kernel<4, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul> >(int, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul>)"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 4.696
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 4.744
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 4.72
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 5.472
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 4.712
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 4.744
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 4.736
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 4.728
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 4.712
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 4.728
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 4.728
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 4.72
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 5.488
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 4.72
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 4.752
+        }
+      ]
+    },
+    {
+      "case": 1714,
+      "provider": "new_public",
+      "device_us": 4.752,
+      "aa_medians_us": [
+        4.752,
+        4.76,
+        4.744
+      ],
+      "aa_max_drift": 0.003372681281618828,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 4.752
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 5.464
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 4.728
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 4.72
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 5.472
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 4.736
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 5.456
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 4.76
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 4.744
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 4.768
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 4.752
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 4.744
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 5.464
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 4.744
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 4.72
+        }
+      ]
+    },
+    {
+      "case": 1714,
+      "provider": "old_generic",
+      "device_us": 4.752,
+      "aa_medians_us": [
+        4.752,
+        4.736,
+        4.752
+      ],
+      "aa_max_drift": 0.0033783783783782884,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 4.736
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 4.76
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 5.456
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 4.752
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 4.728
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 5.48
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 4.728
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 4.728
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 5.48
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 4.736
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 5.488
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 4.744
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 4.736
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 5.448
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 4.752
+        }
+      ]
+    },
+    {
+      "case": 1714,
+      "provider": "old_public",
+      "device_us": 4.736,
+      "aa_medians_us": [
+        4.736,
+        4.744,
+        4.728
+      ],
+      "aa_max_drift": 0.0033840947546530664,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "void at::native::vectorized_elementwise_kernel<4, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul> >(int, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul>)"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 4.72
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 5.472
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 4.72
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 4.736
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 5.456
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 4.728
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 5.456
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 4.728
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 4.744
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 4.744
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 4.728
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 5.45595
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 4.728
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 4.712
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 5.456
+        }
+      ]
+    },
+    {
+      "case": 1714,
+      "provider": "routing_only",
+      "device_us": 4.76,
+      "aa_medians_us": [
+        4.76,
+        4.752,
+        4.768
+      ],
+      "aa_max_drift": 0.0033670033670034627,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 5.48
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 4.76
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 4.72
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 5.496
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 4.752
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 5.464
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 4.744
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 4.744
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 4.768
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 4.752
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 4.744
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 5.456
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 4.768
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 4.728
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 5.464
+        }
+      ]
+    },
+    {
+      "case": 1715,
+      "provider": "das_valid_layout",
+      "device_us": 4.808,
+      "aa_medians_us": [
+        4.816,
+        4.808,
+        4.808
+      ],
+      "aa_max_drift": 0.0016638935108153063,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "void at::native::vectorized_elementwise_kernel<4, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul> >(int, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul>)"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 4.784
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 5.528
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 4.816
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 4.776
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 5.28
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 4.808
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 5.544
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 4.8
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 4.792
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 5.28
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 4.792
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 5.52
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 4.816
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 4.808
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 4.808
+        }
+      ]
+    },
+    {
+      "case": 1715,
+      "provider": "native_public",
+      "device_us": 4.728,
+      "aa_medians_us": [
+        4.728,
+        4.736,
+        4.728
+      ],
+      "aa_max_drift": 0.0016920473773265332,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "void at::native::vectorized_elementwise_kernel<4, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul> >(int, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul>)"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 4.728
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 4.744
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 4.72
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 5.464
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 4.728
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 4.72
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 4.768
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 4.712
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 5.472
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 4.736
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 4.72
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 4.72
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 4.728
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 5.472
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 4.736
+        }
+      ]
+    },
+    {
+      "case": 1715,
+      "provider": "new_public",
+      "device_us": 5.456,
+      "aa_medians_us": [
+        5.456,
+        5.464,
+        5.456
+      ],
+      "aa_max_drift": 0.0014662756598240456,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 5.456
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 5.472
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 5.472
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 5.448
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 5.432
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 5.448
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 5.464
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 5.448
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 5.464
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 5.464
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 5.456
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 5.448
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 5.464
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 5.448
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 5.48
+        }
+      ]
+    },
+    {
+      "case": 1715,
+      "provider": "old_generic",
+      "device_us": 4.744,
+      "aa_medians_us": [
+        4.744,
+        4.744,
+        4.752
+      ],
+      "aa_max_drift": 0.001686340640809414,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 4.744
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 5.448
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 4.736
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 4.736
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 5.448
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 4.712
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 5.464
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 4.712
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 4.744
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 5.44
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 4.712
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 5.48
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 4.704
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 4.752
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 5.44
+        }
+      ]
+    },
+    {
+      "case": 1715,
+      "provider": "old_public",
+      "device_us": 4.736,
+      "aa_medians_us": [
+        5.456,
+        4.72,
+        4.736
+      ],
+      "aa_max_drift": 0.15593220338983071,
+      "stable": false,
+      "correctness": true,
+      "kernels": [
+        "void at::native::vectorized_elementwise_kernel<4, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul> >(int, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul>)"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 4.72
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 5.48
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 5.464
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 5.448
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 5.456
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 4.72
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 4.752
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 4.72
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 5.464
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 4.712
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 4.736
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 5.464
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 4.728
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 4.728
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 4.744
+        }
+      ]
+    },
+    {
+      "case": 1715,
+      "provider": "routing_only",
+      "device_us": 4.72,
+      "aa_medians_us": [
+        4.72,
+        4.72,
+        4.72
+      ],
+      "aa_max_drift": 0.0,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 4.712
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 4.728
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 5.44
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 4.72
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 4.72
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 4.704
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 4.744
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 5.448
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 4.72
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 4.72
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 4.72
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 4.72
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 5.456
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 4.736
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 4.72
+        }
+      ]
+    },
+    {
+      "case": 1716,
+      "provider": "das_valid_layout",
+      "device_us": 0.0,
+      "aa_medians_us": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "aa_max_drift": 0,
+      "stable": true,
+      "correctness": true,
+      "kernels": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 0.0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 0.0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 0.0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 0.0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 0.0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 0.0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 0.0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 0.0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 0.0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 0.0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 0.0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 0.0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 0.0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 0.0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 0.0
+        }
+      ]
+    },
+    {
+      "case": 1716,
+      "provider": "native_public",
+      "device_us": 0.0,
+      "aa_medians_us": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "aa_max_drift": 0,
+      "stable": true,
+      "correctness": true,
+      "kernels": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 0.0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 0.0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 0.0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 0.0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 0.0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 0.0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 0.0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 0.0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 0.0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 0.0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 0.0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 0.0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 0.0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 0.0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 0.0
+        }
+      ]
+    },
+    {
+      "case": 1716,
+      "provider": "new_public",
+      "device_us": 0.0,
+      "aa_medians_us": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "aa_max_drift": 0,
+      "stable": true,
+      "correctness": true,
+      "kernels": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 0.0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 0.0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 0.0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 0.0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 0.0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 0.0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 0.0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 0.0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 0.0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 0.0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 0.0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 0.0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 0.0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 0.0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 0.0
+        }
+      ]
+    },
+    {
+      "case": 1716,
+      "provider": "old_generic",
+      "device_us": 0.0,
+      "aa_medians_us": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "aa_max_drift": 0,
+      "stable": true,
+      "correctness": true,
+      "kernels": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 0.0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 0.0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 0.0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 0.0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 0.0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 0.0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 0.0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 0.0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 0.0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 0.0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 0.0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 0.0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 0.0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 0.0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 0.0
+        }
+      ]
+    },
+    {
+      "case": 1716,
+      "provider": "old_public",
+      "device_us": 0.0,
+      "aa_medians_us": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "aa_max_drift": 0,
+      "stable": true,
+      "correctness": true,
+      "kernels": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 0.0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 0.0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 0.0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 0.0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 0.0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 0.0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 0.0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 0.0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 0.0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 0.0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 0.0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 0.0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 0.0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 0.0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 0.0
+        }
+      ]
+    },
+    {
+      "case": 1716,
+      "provider": "routing_only",
+      "device_us": 0.0,
+      "aa_medians_us": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "aa_max_drift": 0,
+      "stable": true,
+      "correctness": true,
+      "kernels": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 0.0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 0.0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 0.0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 0.0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 0.0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 0.0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 0.0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 0.0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 0.0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 0.0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 0.0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 0.0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 0.0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 0.0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 0.0
+        }
+      ]
+    },
+    {
+      "case": 1717,
+      "provider": "das_valid_layout",
+      "device_us": 4.816,
+      "aa_medians_us": [
+        4.96,
+        4.792,
+        4.816
+      ],
+      "aa_max_drift": 0.03505843071786319,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "void at::native::elementwise_kernel_manual_unroll<128, 4, at::native::gpu_kernel_impl<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#3}::operator()() const::{lambda(int)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#3}::operator()() const::{lambda(int)#1} const&)::{lambda(int, bool)#1}>(int, at::native::gpu_kernel_impl<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#3}::operator()() const::{lambda(int)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#3}::operator()() const::{lambda(int)#1} const&)::{lambda(int, bool)#1})"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 5.816
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 4.768
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 4.96
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 5.528
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 4.8
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 5.52
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 4.768
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 4.768
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 4.792
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 5.568
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 5.552
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 4.816
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 4.784
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 4.792
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 5.504
+        }
+      ]
+    },
+    {
+      "case": 1717,
+      "provider": "native_public",
+      "device_us": 4.736,
+      "aa_medians_us": [
+        4.728,
+        4.744,
+        4.736
+      ],
+      "aa_max_drift": 0.0033840947546530664,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "void at::native::elementwise_kernel_manual_unroll<128, 4, at::native::gpu_kernel_impl<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#3}::operator()() const::{lambda(int)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#3}::operator()() const::{lambda(int)#1} const&)::{lambda(int, bool)#1}>(int, at::native::gpu_kernel_impl<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#3}::operator()() const::{lambda(int)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#3}::operator()() const::{lambda(int)#1} const&)::{lambda(int, bool)#1})"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 4.728
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 5.488
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 4.728
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 4.728
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 5.456
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 4.744
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 4.72
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 5.472
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 4.712
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 4.752
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 4.744
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 4.736
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 5.464
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 4.736
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 4.736
+        }
+      ]
+    },
+    {
+      "case": 1717,
+      "provider": "new_public",
+      "device_us": 4.728,
+      "aa_medians_us": [
+        4.728,
+        4.728,
+        4.736
+      ],
+      "aa_max_drift": 0.0016920473773265332,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 4.728
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 5.44
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 4.728
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 4.704
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 4.728
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 4.736
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 4.712
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 5.456
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 4.728
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 4.728
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 4.736
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 4.72
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 5.464
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 4.728
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 4.736
+        }
+      ]
+    },
+    {
+      "case": 1717,
+      "provider": "old_generic",
+      "device_us": 4.728,
+      "aa_medians_us": [
+        4.728,
+        4.752,
+        4.72
+      ],
+      "aa_max_drift": 0.006779661016949268,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 5.44
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 4.728
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 4.72
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 5.456
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 4.72
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 5.456
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 4.704
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 4.736
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 5.432
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 4.752
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 5.456
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 4.712
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 4.72
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 5.496
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 4.72
+        }
+      ]
+    },
+    {
+      "case": 1717,
+      "provider": "old_public",
+      "device_us": 4.736,
+      "aa_medians_us": [
+        4.728,
+        4.736,
+        4.752
+      ],
+      "aa_max_drift": 0.0050761421319796,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "void at::native::elementwise_kernel_manual_unroll<128, 4, at::native::gpu_kernel_impl<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#3}::operator()() const::{lambda(int)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#3}::operator()() const::{lambda(int)#1} const&)::{lambda(int, bool)#1}>(int, at::native::gpu_kernel_impl<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#3}::operator()() const::{lambda(int)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#3}::operator()() const::{lambda(int)#1} const&)::{lambda(int, bool)#1})"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 4.728
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 4.728
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 5.456
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 4.76
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 4.728
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 4.72
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 4.736
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 5.456
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 4.704
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 4.736
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 4.728
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 5.44
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 4.712
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 4.752
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 5.456
+        }
+      ]
+    },
+    {
+      "case": 1717,
+      "provider": "routing_only",
+      "device_us": 4.736,
+      "aa_medians_us": [
+        4.744,
+        4.736,
+        4.73595
+      ],
+      "aa_max_drift": 0.0016997645667711225,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 5.456
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 4.712
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 4.744
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 4.712
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 5.464
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 4.736
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 5.44
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 4.728
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 4.72
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 5.464
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 4.712
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 5.47995
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 4.73595
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 4.72
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 5.464
+        }
+      ]
+    },
+    {
+      "case": 1718,
+      "provider": "das_valid_layout",
+      "device_us": 4.784,
+      "aa_medians_us": [
+        4.776,
+        4.8,
+        4.784
+      ],
+      "aa_max_drift": 0.005025125628140614,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "void at::native::vectorized_elementwise_kernel<4, at::native::bfloat16_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(float)#1}, std::array<char*, 2ul> >(int, at::native::bfloat16_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(float)#1}, std::array<char*, 2ul>)"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 4.776
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 5.52
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 4.768
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 4.784
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 4.776
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 4.784
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 4.776
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 5.528
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 4.8
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 4.824
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 4.776
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 4.752
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 4.784
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 5.488
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 4.792
+        }
+      ]
+    },
+    {
+      "case": 1718,
+      "provider": "native_public",
+      "device_us": 4.728,
+      "aa_medians_us": [
+        4.728,
+        4.728,
+        4.744
+      ],
+      "aa_max_drift": 0.0033840947546530664,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "void at::native::vectorized_elementwise_kernel<4, at::native::bfloat16_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(float)#1}, std::array<char*, 2ul> >(int, at::native::bfloat16_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(float)#1}, std::array<char*, 2ul>)"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 4.744
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 4.728
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 4.728
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 5.472
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 4.728
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 5.456
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 4.712
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 4.712
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 4.728
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 5.448
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 4.744
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 5.44
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 4.744
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 4.736
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 5.472
+        }
+      ]
+    },
+    {
+      "case": 1718,
+      "provider": "new_public",
+      "device_us": 4.752,
+      "aa_medians_us": [
+        4.736,
+        4.752,
+        4.76
+      ],
+      "aa_max_drift": 0.0050675675675675436,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "cast_dense"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 4.736
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 4.736
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 4.752
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 5.472
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 4.736
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 5.48
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 4.72
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 4.752
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 5.456
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 4.736
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 4.744
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 5.44
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 4.76
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 4.72
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 5.464
+        }
+      ]
+    },
+    {
+      "case": 1718,
+      "provider": "old_generic",
+      "device_us": 4.728,
+      "aa_medians_us": [
+        4.72,
+        4.736,
+        4.728
+      ],
+      "aa_max_drift": 0.003389830508474523,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 4.712
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 5.456
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 4.704
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 4.736
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 4.72
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 4.712
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 5.464
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 4.72
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 4.736
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 5.44
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 4.688
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 4.736
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 5.464
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 4.72
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 4.728
+        }
+      ]
+    },
+    {
+      "case": 1718,
+      "provider": "old_public",
+      "device_us": 4.728,
+      "aa_medians_us": [
+        4.728,
+        4.752,
+        4.728
+      ],
+      "aa_max_drift": 0.0050761421319796,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "void at::native::vectorized_elementwise_kernel<4, at::native::bfloat16_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(float)#1}, std::array<char*, 2ul> >(int, at::native::bfloat16_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(float)#1}, std::array<char*, 2ul>)"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 4.728
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 5.448
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 4.712
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 4.744
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 4.696
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 5.424
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 4.752
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 4.72
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 5.448
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 4.72
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 4.728
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 4.72
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 4.72
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 5.464
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 4.728
+        }
+      ]
+    },
+    {
+      "case": 1718,
+      "provider": "routing_only",
+      "device_us": 4.736,
+      "aa_medians_us": [
+        4.744,
+        4.736,
+        4.72
+      ],
+      "aa_max_drift": 0.005084745762711895,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 5.464
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 4.728
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 5.448
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 4.744
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 4.72
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 4.736
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 4.752
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 5.44
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 4.712
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 4.736
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 5.464
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 4.704
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 4.696
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 5.448
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 4.72
+        }
+      ]
+    },
+    {
+      "case": 1719,
+      "provider": "das_valid_layout",
+      "device_us": 4.80795,
+      "aa_medians_us": [
+        4.80795,
+        4.80795,
+        4.81595
+      ],
+      "aa_max_drift": 0.0016639108143803316,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "void at::native::vectorized_elementwise_kernel<4, at::native::bfloat16_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(float)#1}, std::array<char*, 2ul> >(int, at::native::bfloat16_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(float)#1}, std::array<char*, 2ul>)"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 5.496
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 4.80795
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 4.8
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 5.488
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 4.79195
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 5.512
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 4.80795
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 4.80795
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 4.776
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 4.8
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 5.512
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 4.81595
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 4.784
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 4.808
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 5.544
+        }
+      ]
+    },
+    {
+      "case": 1719,
+      "provider": "native_public",
+      "device_us": 4.728,
+      "aa_medians_us": [
+        4.728,
+        4.72,
+        4.728
+      ],
+      "aa_max_drift": 0.0016949152542373724,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "void at::native::vectorized_elementwise_kernel<4, at::native::bfloat16_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(float)#1}, std::array<char*, 2ul> >(int, at::native::bfloat16_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(float)#1}, std::array<char*, 2ul>)"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 4.744
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 4.736
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 4.728
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 4.712
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 4.72
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 4.72
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 4.704
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 5.456
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 4.728
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 4.72
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 4.728
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 4.712
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 5.456
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 4.696
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 4.728
+        }
+      ]
+    },
+    {
+      "case": 1719,
+      "provider": "new_public",
+      "device_us": 4.736,
+      "aa_medians_us": [
+        4.752,
+        4.736,
+        4.728
+      ],
+      "aa_max_drift": 0.0050761421319796,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "cast_dense"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 4.768
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 5.448
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 4.744
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 4.696
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 4.752
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 4.736
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 5.456
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 4.736
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 4.696
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 4.744
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 4.72
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 4.728
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 5.448
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 4.712
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 4.736
+        }
+      ]
+    },
+    {
+      "case": 1719,
+      "provider": "old_generic",
+      "device_us": 6.472,
+      "aa_medians_us": [
+        6.472,
+        6.456,
+        6.47995
+      ],
+      "aa_max_drift": 0.0037097273853778923,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 7.168
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 6.456
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 6.472
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 7.144
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 6.448
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 7.168
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 6.456
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 7.152
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 6.456
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 6.456
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 7.128
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 6.47995
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 6.472
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 7.16
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 6.464
+        }
+      ]
+    },
+    {
+      "case": 1719,
+      "provider": "old_public",
+      "device_us": 4.736,
+      "aa_medians_us": [
+        4.736,
+        4.712,
+        4.736
+      ],
+      "aa_max_drift": 0.005093378607809784,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "void at::native::vectorized_elementwise_kernel<4, at::native::bfloat16_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(float)#1}, std::array<char*, 2ul> >(int, at::native::bfloat16_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(float)#1}, std::array<char*, 2ul>)"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 5.488
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 4.736
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 4.712
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 5.48
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 4.704
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 4.712
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 5.448
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 4.744
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 4.712
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 4.704
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 5.48
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 4.704
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 4.736
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 4.712
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 5.464
+        }
+      ]
+    },
+    {
+      "case": 1719,
+      "provider": "routing_only",
+      "device_us": 6.472,
+      "aa_medians_us": [
+        6.472,
+        6.472,
+        6.472
+      ],
+      "aa_max_drift": 0.0,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 6.472
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 7.144
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 6.448
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 6.456
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 7.176
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 7.136
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 6.464
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 6.464
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 7.112
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 6.472
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 7.136
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 6.464
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 6.464
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 6.472
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 7.152
+        }
+      ]
+    },
+    {
+      "case": 1720,
+      "provider": "das_valid_layout",
+      "device_us": 4.808,
+      "aa_medians_us": [
+        4.984,
+        4.808,
+        4.8
+      ],
+      "aa_max_drift": 0.03833333333333333,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "void at::native::elementwise_kernel_manual_unroll<128, 4, at::native::gpu_kernel_impl<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1} const&)::{lambda(int, bool)#1}>(int, at::native::gpu_kernel_impl<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1} const&)::{lambda(int, bool)#1})"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 5.472
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 5.552
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 4.976
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 4.8
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 4.984
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 4.824
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 4.784
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 5.552
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 4.808
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 4.8
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 4.8
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 4.824
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 5.504
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 4.792
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 4.776
+        }
+      ]
+    },
+    {
+      "case": 1720,
+      "provider": "native_public",
+      "device_us": 4.752,
+      "aa_medians_us": [
+        4.736,
+        5.472,
+        4.752
+      ],
+      "aa_max_drift": 0.15540540540540548,
+      "stable": false,
+      "correctness": true,
+      "kernels": [
+        "void at::native::elementwise_kernel_manual_unroll<128, 4, at::native::gpu_kernel_impl<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1} const&)::{lambda(int, bool)#1}>(int, at::native::gpu_kernel_impl<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1} const&)::{lambda(int, bool)#1})"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 4.736
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 4.736
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 5.472
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 4.728
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 4.736
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 5.504
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 5.464
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 5.472
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 4.752
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 5.512
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 5.496
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 4.72
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 4.752
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 4.728
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 5.48
+        }
+      ]
+    },
+    {
+      "case": 1720,
+      "provider": "new_public",
+      "device_us": 4.744,
+      "aa_medians_us": [
+        4.728,
+        4.744,
+        5.432
+      ],
+      "aa_max_drift": 0.1489001692047378,
+      "stable": false,
+      "correctness": true,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 4.72
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 4.736
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 4.696
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 5.456
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 4.728
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 5.432
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 4.736
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 4.736
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 5.464
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 4.744
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 5.464
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 5.432
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 4.712
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 4.704
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 5.48
+        }
+      ]
+    },
+    {
+      "case": 1720,
+      "provider": "old_generic",
+      "device_us": 4.71995,
+      "aa_medians_us": [
+        4.752,
+        4.71995,
+        4.712
+      ],
+      "aa_max_drift": 0.008488964346349714,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 4.696
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 5.456
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 4.704
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 4.752
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 5.448
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 4.712
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 5.488
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 4.736
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 4.71995
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 4.704
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 4.712
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 4.712
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 4.72
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 4.704
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 4.744
+        }
+      ]
+    },
+    {
+      "case": 1720,
+      "provider": "old_public",
+      "device_us": 4.76,
+      "aa_medians_us": [
+        4.76,
+        4.76,
+        4.776
+      ],
+      "aa_max_drift": 0.003361344537815114,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "void at::native::elementwise_kernel_manual_unroll<128, 4, at::native::gpu_kernel_impl<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1} const&)::{lambda(int, bool)#1}>(int, at::native::gpu_kernel_impl<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1} const&)::{lambda(int, bool)#1})"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 5.464
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 4.76
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 4.752
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 4.744
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 5.448
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 5.464
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 4.76
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 4.72
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 7.488
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 4.744
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 4.752
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 4.72
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 5.496
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 5.448
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 4.776
+        }
+      ]
+    },
+    {
+      "case": 1720,
+      "provider": "routing_only",
+      "device_us": 4.728,
+      "aa_medians_us": [
+        4.728,
+        4.736,
+        4.72
+      ],
+      "aa_max_drift": 0.003389830508474523,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "device_us": 4.696
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "device_us": 4.72
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "device_us": 5.44
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "device_us": 4.736
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "device_us": 4.728
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "device_us": 5.448
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "device_us": 4.736
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "device_us": 5.44
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "device_us": 4.728
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "device_us": 4.728
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "device_us": 4.72
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "device_us": 4.712
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "device_us": 4.72
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "device_us": 5.44
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "device_us": 5.448
+        }
+      ]
+    }
+  ]
+}

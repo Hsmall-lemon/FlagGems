@@ -1,0 +1,14 @@
+{
+  "date": "2026-11-09",
+  "pr_is_draft": true,
+  "accepted": false,
+  "standalone_focused_tests": 33,
+  "kernel_changes_this_correction": false,
+  "limitations": [
+    "Original-registration public and native public have incorrect output strides for rows 1712 and 1713.",
+    "Single-CU protocol row 1715 is stable but below 90% against the valid-layout boxing reference.",
+    "Single-CU protocol row 1720 new_public fails the declared 5% A/A guard.",
+    "Timing conditions differ from the reviewer table; do not combine absolute timings or overwrite user review conclusions."
+  ],
+  "claimed_uniform_kernel_speedup": false
+}

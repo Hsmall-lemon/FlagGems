@@ -1,0 +1,33 @@
+FlagGems source override: /public/home/wzx226226/flash_attention_node15_20261109/FlagGems
+6d9ac5543fb2a543ec00a7770c8c583f1a9f1f29
+ M .gitattributes
+ M pyproject.toml
+ M src/flag_gems/runtime/backend/_hygon/ops/_scaled_dot_product_flash_attention.py
+?? docs/hygon-optimization/flash_attention/
+?? src/flag_gems/runtime/backend/_hygon/attention_state_hip.cpp
+?? src/flag_gems/runtime/backend/_hygon/attention_state_hip.py
+?? src/flag_gems/runtime/backend/_hygon/ops/attention_state.py
+?? tests/test_flash_attention_hygon_state.py
+/bin/bash: /opt/flagos/python/lib/libtinfo.so.6: no version information available (required by /bin/bash)
+WARNING: /opt/hyhal/lib/cmake/rocm_smi doesn't exist, please install the latest driver(version >= 6.3.15)
+The rocm_smi_lib will be used in default
+bash: /opt/flagos/python/lib/libtinfo.so.6: no version information available (required by bash)
+[flagos] not a torch_fl variable; ignored (FLAGOS_DEV_CACHE='/public/home/wzx226226/.cache/flagos-dev/20261103-flash-node15-gpu4')
+[flagos] not a torch_fl variable; ignored (FLAGOS_PYTHON_PREFIX='/opt/flagos/python')
+[flagos] not a torch_fl variable; ignored (FLAGOS_DEV_SOURCE='/opt/flagos/live-FlagGems')
+[flagos] not a torch_fl variable; ignored (FLAGOS_DEV_ROOT='/opt/flagos')
+[W1110 12:29:36.340570956 OperatorEntry.cpp:208] Warning: Warning only once for all operators,  other operators may also be overridden.
+  Overriding a previously registered kernel for the same operator and the same dispatch key
+  operator: aten::_has_compatible_shallow_copy_type(Tensor self, Tensor from) -> bool
+    registered at /pytorch/build/aten/src/ATen/RegisterSchema.cpp:6
+  dispatch key: (catch all)
+  previous kernel: registered at /pytorch/build/aten/src/ATen/RegisterCompositeImplicitAutograd_0.cpp:9479
+       new kernel: registered at /work1/share/scnethpc2601/flagos-dev/20261103-hygon-optimization/src/Torch-FL/csrc/aten/register.cc:567 (function operator())
+EDGE_FULL_CHECK zero_q_large_k repo True
+[flagos] loading backend config from /opt/flagos/python/lib/python3.10/site-packages/torch_fl/configs/backends_hygon_boxing.conf
+EDGE_FULL_CHECK zero_q_large_k native True
+EDGE_FULL_CHECK large_q_zero_k repo True
+EDGE_FULL_CHECK large_q_zero_k native True
+EDGE_FULL_CHECK large_v repo True
+EDGE_FULL_CHECK large_v native False
+EDGE_FULL_CHECK_COMPLETE

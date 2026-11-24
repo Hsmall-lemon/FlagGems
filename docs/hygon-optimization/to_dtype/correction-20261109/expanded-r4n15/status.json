@@ -1,0 +1,309 @@
+{
+  "node": "a01r4n15",
+  "physical_card": 1,
+  "pci_bus": "0000:36:00.0",
+  "production_kernel_changed": false,
+  "includes_added_regression_cases": true,
+  "all_cases_accepted": false,
+  "new_correctness_passed": 13,
+  "new_stability_passed": 13,
+  "valid_native_public_device_cases_passed": 10,
+  "no_device_work_cases": 2,
+  "invalid_native_public_layout_cases": [
+    920001
+  ],
+  "rows": [
+    {
+      "case": 920000,
+      "label": "contiguous",
+      "shape": [
+        5,
+        17
+      ],
+      "stride": [
+        17,
+        1
+      ],
+      "offset": 0,
+      "memory_format": "torch.preserve_format",
+      "native_public_us": 4.8356220703125,
+      "new_public_us": 4.7853095703125,
+      "native_over_new": 1.010513948838782,
+      "invalid_native_diagnostic_ratio": null,
+      "native_correctness": true,
+      "new_correctness": true,
+      "native_aa_drift": 0.015046985442584093,
+      "new_aa_drift": 0.012538059921523903,
+      "status": "passes"
+    },
+    {
+      "case": 920001,
+      "label": "transpose",
+      "shape": [
+        17,
+        5
+      ],
+      "stride": [
+        1,
+        17
+      ],
+      "offset": 0,
+      "memory_format": "torch.preserve_format",
+      "native_public_us": 9.517498046875,
+      "new_public_us": 4.7649990234375,
+      "native_over_new": null,
+      "invalid_native_diagnostic_ratio": 1.9973767046040267,
+      "native_correctness": false,
+      "new_correctness": true,
+      "native_aa_drift": 0.007849064783110205,
+      "new_aa_drift": 0.011466990081918649,
+      "status": "invalid_native_public_layout"
+    },
+    {
+      "case": 920002,
+      "label": "offset",
+      "shape": [
+        5,
+        17
+      ],
+      "stride": [
+        17,
+        1
+      ],
+      "offset": 1,
+      "memory_format": "torch.preserve_format",
+      "native_public_us": 4.8546865234375,
+      "new_public_us": 4.8149990234375,
+      "native_over_new": 1.0082424731151172,
+      "invalid_native_diagnostic_ratio": null,
+      "native_correctness": true,
+      "new_correctness": true,
+      "native_aa_drift": 0.016407383567735634,
+      "new_aa_drift": 0.0077799494995016705,
+      "status": "passes"
+    },
+    {
+      "case": 920003,
+      "label": "holes",
+      "shape": [
+        5,
+        17
+      ],
+      "stride": [
+        68,
+        2
+      ],
+      "offset": 0,
+      "memory_format": "torch.preserve_format",
+      "native_public_us": 9.53655859375,
+      "new_public_us": 4.8428095703125,
+      "native_over_new": 1.9692202336865,
+      "invalid_native_diagnostic_ratio": null,
+      "native_correctness": true,
+      "new_correctness": true,
+      "native_aa_drift": 0.010957935811496844,
+      "new_aa_drift": 0.027005747950317627,
+      "status": "passes"
+    },
+    {
+      "case": 920004,
+      "label": "empty",
+      "shape": [
+        0,
+        17
+      ],
+      "stride": [
+        17,
+        1
+      ],
+      "offset": 0,
+      "memory_format": "torch.preserve_format",
+      "native_public_us": 0.0,
+      "new_public_us": 0.0,
+      "native_over_new": null,
+      "invalid_native_diagnostic_ratio": null,
+      "native_correctness": true,
+      "new_correctness": true,
+      "native_aa_drift": 0,
+      "new_aa_drift": 0,
+      "status": "no_device_work"
+    },
+    {
+      "case": 920005,
+      "label": "scalar",
+      "shape": [],
+      "stride": [],
+      "offset": 0,
+      "memory_format": "torch.preserve_format",
+      "native_public_us": 4.8876533203125,
+      "new_public_us": 4.8242177734375,
+      "native_over_new": 1.0131493953743715,
+      "invalid_native_diagnostic_ratio": null,
+      "native_correctness": true,
+      "new_correctness": true,
+      "native_aa_drift": 0.00303950334379377,
+      "new_aa_drift": 0.010687328835749188,
+      "status": "passes"
+    },
+    {
+      "case": 920006,
+      "label": "contiguous",
+      "shape": [
+        5,
+        17
+      ],
+      "stride": [
+        17,
+        1
+      ],
+      "offset": 0,
+      "memory_format": "torch.contiguous_format",
+      "native_public_us": 4.8442158203125,
+      "new_public_us": 4.8118720703125,
+      "native_over_new": 1.0067216562550674,
+      "invalid_native_diagnostic_ratio": null,
+      "native_correctness": true,
+      "new_correctness": true,
+      "native_aa_drift": 0.004204810968495565,
+      "new_aa_drift": 0.006037271585642268,
+      "status": "passes"
+    },
+    {
+      "case": 920007,
+      "label": "transpose",
+      "shape": [
+        17,
+        5
+      ],
+      "stride": [
+        1,
+        17
+      ],
+      "offset": 0,
+      "memory_format": "torch.contiguous_format",
+      "native_public_us": 9.59890234375,
+      "new_public_us": 4.7989052734375,
+      "native_over_new": 2.000227509569952,
+      "invalid_native_diagnostic_ratio": null,
+      "native_correctness": true,
+      "new_correctness": true,
+      "native_aa_drift": 0.005167497419307665,
+      "new_aa_drift": 0.009854484170105593,
+      "status": "passes"
+    },
+    {
+      "case": 920008,
+      "label": "offset",
+      "shape": [
+        5,
+        17
+      ],
+      "stride": [
+        17,
+        1
+      ],
+      "offset": 1,
+      "memory_format": "torch.contiguous_format",
+      "native_public_us": 4.8062470703125,
+      "new_public_us": 4.8023408203125,
+      "native_over_new": 1.0008134054091866,
+      "invalid_native_diagnostic_ratio": null,
+      "native_correctness": true,
+      "new_correctness": true,
+      "native_aa_drift": 0.020936417304735278,
+      "new_aa_drift": 0.007451685150134946,
+      "status": "passes"
+    },
+    {
+      "case": 920009,
+      "label": "holes",
+      "shape": [
+        5,
+        17
+      ],
+      "stride": [
+        68,
+        2
+      ],
+      "offset": 0,
+      "memory_format": "torch.contiguous_format",
+      "native_public_us": 9.61608984375,
+      "new_public_us": 4.7962470703125,
+      "native_over_new": 2.004919617938586,
+      "invalid_native_diagnostic_ratio": null,
+      "native_correctness": true,
+      "new_correctness": true,
+      "native_aa_drift": 0.003930139727882587,
+      "new_aa_drift": 0.01719733760646225,
+      "status": "passes"
+    },
+    {
+      "case": 920010,
+      "label": "empty",
+      "shape": [
+        0,
+        17
+      ],
+      "stride": [
+        17,
+        1
+      ],
+      "offset": 0,
+      "memory_format": "torch.contiguous_format",
+      "native_public_us": 0.0,
+      "new_public_us": 0.0,
+      "native_over_new": null,
+      "invalid_native_diagnostic_ratio": null,
+      "native_correctness": true,
+      "new_correctness": true,
+      "native_aa_drift": 0,
+      "new_aa_drift": 0,
+      "status": "no_device_work"
+    },
+    {
+      "case": 920011,
+      "label": "scalar",
+      "shape": [],
+      "stride": [],
+      "offset": 0,
+      "memory_format": "torch.contiguous_format",
+      "native_public_us": 4.8765615234375,
+      "new_public_us": 4.7907802734375,
+      "native_over_new": 1.0179054861847066,
+      "invalid_native_diagnostic_ratio": null,
+      "native_correctness": true,
+      "new_correctness": true,
+      "native_aa_drift": 0.009900588959869783,
+      "new_aa_drift": 0.004763459372646883,
+      "status": "passes"
+    },
+    {
+      "case": 920012,
+      "label": "special_values",
+      "shape": [
+        17
+      ],
+      "stride": [
+        1
+      ],
+      "offset": 0,
+      "memory_format": "torch.preserve_format",
+      "native_public_us": 4.8181240234375,
+      "new_public_us": 4.8224990234375,
+      "native_over_new": 0.9990927940101726,
+      "invalid_native_diagnostic_ratio": null,
+      "native_correctness": true,
+      "new_correctness": true,
+      "native_aa_drift": 0.0014936528884630373,
+      "new_aa_drift": 0.012903430250237768,
+      "status": "passes"
+    }
+  ],
+  "protocol": "1024 calls/ROI, 3 A/A blocks of 5 ROIs, 100M-iteration single-CU queue gate, 5% A/A max/min guard. Sum all kernel and copy durations; exclude host and gate.",
+  "limitations": [
+    "Case 920001 is a preserve_format transpose: native public DAS returns the wrong output strides; its timing ratio cannot count as equivalent-public-baseline acceptance.",
+    "The two empty views launch no device work and have no defined speedup ratio.",
+    "These are added regression cases, separate from the ten original spreadsheet rows.",
+    "Performance against DAS does not establish a uniform improvement over old public FG."
+  ]
+}

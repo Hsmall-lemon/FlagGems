@@ -1,0 +1,51 @@
+FlagGems source override: /public/home/wzx226226/算子优化/FlagGems-hygon-optimization
+6d9ac5543fb2a543ec00a7770c8c583f1a9f1f29
+ M docs/hygon-optimization/SELECTED_SOURCES.json
+ M docs/hygon-optimization/history/MANIFEST.json
+ M src/flag_gems/__init__.py
+ M src/flag_gems/runtime/backend/_hygon/experimental/SOURCES.json
+ M src/flag_gems/runtime/backend/_hygon/experimental/__init__.py
+ M src/flag_gems/runtime/backend/_hygon/experimental/matrix.py
+ M src/flag_gems/runtime/backend/_hygon/ops/__init__.py
+ M src/flag_gems/runtime/backend/_hygon/ops/_scaled_dot_product_flash_attention.py
+ M src/flag_gems/runtime/backend/_hygon/ops/flash_api.py
+ M src/flag_gems/runtime/backend/_hygon/ops/mm.py
+?? docs/hygon-optimization/history/sources/7f855dc8c79eeff4bde0e901043e117b8a21f3aa3cf5fbc52b5b72b6d0f6503d.py.txt
+?? docs/hygon-optimization/mm/
+?? docs/hygon-optimization/to_dtype/
+?? src/flag_gems/runtime/backend/_hygon/attention_state_hip.cpp
+?? src/flag_gems/runtime/backend/_hygon/attention_state_hip.py
+?? src/flag_gems/runtime/backend/_hygon/ops/attention_state.py
+?? src/flag_gems/runtime/backend/_hygon/ops/mm_config.py
+?? src/flag_gems/runtime/backend/_hygon/ops/mm_kernels.py
+?? src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_coalesced.py
+?? src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_coopfast.py
+?? src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_operands.py
+?? src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_peel.py
+?? src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_pipeline.py
+?? src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_prefetch.py
+?? src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_rawpipe.py
+?? src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_reshape.py
+?? src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_swizzle.py
+?? src/flag_gems/runtime/backend/_hygon/ops/sum.py
+?? src/flag_gems/runtime/backend/_hygon/ops/to.py
+?? tests/test_flash_attention_hygon_state.py
+?? tests/test_hygon_mm.py
+?? tests/test_hygon_to_dtype.py
+?? tests/test_sum_hygon_short.py
+/bin/bash: /opt/flagos/python/lib/libtinfo.so.6: no version information available (required by /bin/bash)
+WARNING: /opt/hyhal/lib/cmake/rocm_smi doesn't exist, please install the latest driver(version >= 6.3.15)
+The rocm_smi_lib will be used in default
+[flagos] not a torch_fl variable; ignored (FLAGOS_DEV_CACHE='/public/home/wzx226226/.cache/flagos-dev/20261103-flash-gpu5')
+[flagos] not a torch_fl variable; ignored (FLAGOS_PYTHON_PREFIX='/opt/flagos/python')
+[flagos] not a torch_fl variable; ignored (FLAGOS_DEV_SOURCE='/opt/flagos/live-FlagGems')
+[flagos] not a torch_fl variable; ignored (FLAGOS_DEV_ROOT='/opt/flagos')
+[W1105 21:19:33.779971100 OperatorEntry.cpp:208] Warning: Warning only once for all operators,  other operators may also be overridden.
+  Overriding a previously registered kernel for the same operator and the same dispatch key
+  operator: aten::_has_compatible_shallow_copy_type(Tensor self, Tensor from) -> bool
+    registered at /pytorch/build/aten/src/ATen/RegisterSchema.cpp:6
+  dispatch key: (catch all)
+  previous kernel: registered at /pytorch/build/aten/src/ATen/RegisterCompositeImplicitAutograd_0.cpp:9479
+       new kernel: registered at /work1/share/scnethpc2601/flagos-dev/20261103-hygon-optimization/src/Torch-FL/csrc/aten/register.cc:567 (function operator())
+......                                                                   [100%]
+6 passed in 25.87s

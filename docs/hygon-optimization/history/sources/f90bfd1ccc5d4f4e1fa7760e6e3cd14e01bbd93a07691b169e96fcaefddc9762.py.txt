@@ -1,0 +1,5 @@
+"""Post-AI selection: do not install rejected pow wrapper; other code unchanged."""
+from pointwise import candidate as original
+SELECTED=('aten::neg','aten::erf','aten::sigmoid','aten::sin','aten::cos')
+def install():return original.install(enabled=SELECTED)
+def get_stats():return original.get_stats()

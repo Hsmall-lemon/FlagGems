@@ -1,0 +1,5180 @@
+{
+  "node": "a01r4n15",
+  "physical_cards": [
+    0,
+    1
+  ],
+  "each_operator_uses_one_card": true,
+  "independent_card_processes_run_concurrently": true,
+  "added_case_seed_layout_records": 54,
+  "device_cases": 50,
+  "device_cases_passed": 50,
+  "no_device_work_cases": 4,
+  "all_generated_added_device_cases_pass": true,
+  "unresolved_current_cases": [],
+  "minimum_passing_das_over_new": 0.9071326779353531,
+  "initial_below_target_cases": [
+    930038,
+    930039,
+    930043,
+    930044
+  ],
+  "initial_unstable_cases": [
+    930037
+  ],
+  "final_source_performance_records": 24,
+  "initial_source_records_reused_with_source_delta_proof": 30,
+  "final_source_focused_tests_passed": 39,
+  "original_reviewer_failure_matched": false,
+  "pr_remains_draft": true,
+  "protocol": "1024 calls/ROI; three independent A/A blocks, five ROIs per block; 100M single-CU queue gate; <=5% max/min guard. Sum kernel and device-copy durations; exclude host and queue gate.",
+  "limitations": [
+    "This is per-case coverage across separately recorded paired runs on cards 0 and 1, not one uniform final-source 54-case run.",
+    "Initial four strided performance failures and the low-mantissa case 930037 DAS A/A failure remain in full.",
+    "Thirty initial FP64 seed/offset records reuse the identical dispatch and kernel sources; only the new exact stride keys differ in the final source.",
+    "The original reviewer input/seed/tolerance has not been supplied or matched; these generated checks do not close the original reported FP64 or shared FP32 failure.",
+    "All 94 previous exact launch configurations and all eleven device-source files are unchanged; previous spreadsheet measurements are not described as rerun in this extension."
+  ],
+  "rows": [
+    {
+      "case": 930000,
+      "source": "initial-card0",
+      "physical_card": 0,
+      "label": "peel_regression",
+      "seed": 1238,
+      "dtype": "torch.float64",
+      "a_shape": [
+        1344,
+        256
+      ],
+      "b_shape": [
+        256,
+        128
+      ],
+      "a_stride": [
+        256,
+        1
+      ],
+      "b_stride": [
+        128,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 0,
+      "config": {
+        "kind": "swizzle",
+        "group": 1,
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 8,
+        "split": 1,
+        "trans": false,
+        "pipe": true,
+        "swap": false
+      },
+      "das_us": 13.813583984375,
+      "new_public_us": 14.4957705078125,
+      "das_over_new": 0.9529389263530466,
+      "das_aa_drift": 0.002888702130205534,
+      "new_aa_drift": 0.0038870202473939575,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "mmac_tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930000,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "peel_regression",
+        "seed": 1238,
+        "dtype": "torch.float64",
+        "a_shape": [
+          1344,
+          256
+        ],
+        "b_shape": [
+          256,
+          128
+        ],
+        "a_stride": [
+          256,
+          1
+        ],
+        "b_stride": [
+          128,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 0,
+        "config": {
+          "kind": "swizzle",
+          "group": 1,
+          "tm": 1,
+          "tn": 1,
+          "wm": 1,
+          "warps": 2,
+          "prefetch": 8,
+          "split": 1,
+          "trans": false,
+          "pipe": true,
+          "swap": false
+        },
+        "das_us": 13.813583984375,
+        "new_public_us": 14.4957705078125,
+        "das_over_new": 0.9529389263530466,
+        "das_aa_drift": 0.002888702130205534,
+        "new_aa_drift": 0.0038870202473939575,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mmac_tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930001,
+      "source": "initial-card0",
+      "physical_card": 0,
+      "label": "peel_regression",
+      "seed": 1238,
+      "dtype": "torch.float64",
+      "a_shape": [
+        1344,
+        256
+      ],
+      "b_shape": [
+        256,
+        128
+      ],
+      "a_stride": [
+        256,
+        1
+      ],
+      "b_stride": [
+        128,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 131072,
+      "config": {
+        "kind": "swizzle",
+        "group": 1,
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 8,
+        "split": 1,
+        "trans": false,
+        "pipe": true,
+        "swap": false
+      },
+      "das_us": 13.798740234375,
+      "new_public_us": 14.5209267578125,
+      "das_over_new": 0.9502658104759772,
+      "das_aa_drift": 0.002990554689839664,
+      "new_aa_drift": 0.0019506847233432545,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "mmac_tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930001,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "peel_regression",
+        "seed": 1238,
+        "dtype": "torch.float64",
+        "a_shape": [
+          1344,
+          256
+        ],
+        "b_shape": [
+          256,
+          128
+        ],
+        "a_stride": [
+          256,
+          1
+        ],
+        "b_stride": [
+          128,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 131072,
+        "config": {
+          "kind": "swizzle",
+          "group": 1,
+          "tm": 1,
+          "tn": 1,
+          "wm": 1,
+          "warps": 2,
+          "prefetch": 8,
+          "split": 1,
+          "trans": false,
+          "pipe": true,
+          "swap": false
+        },
+        "das_us": 13.798740234375,
+        "new_public_us": 14.5209267578125,
+        "das_over_new": 0.9502658104759772,
+        "das_aa_drift": 0.002990554689839664,
+        "new_aa_drift": 0.0019506847233432545,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mmac_tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930002,
+      "source": "initial-card0",
+      "physical_card": 0,
+      "label": "peel_regression",
+      "seed": 101241,
+      "dtype": "torch.float64",
+      "a_shape": [
+        1344,
+        256
+      ],
+      "b_shape": [
+        256,
+        128
+      ],
+      "a_stride": [
+        256,
+        1
+      ],
+      "b_stride": [
+        128,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 0,
+      "config": {
+        "kind": "swizzle",
+        "group": 1,
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 8,
+        "split": 1,
+        "trans": false,
+        "pipe": true,
+        "swap": false
+      },
+      "das_us": 13.792490234375,
+      "new_public_us": 14.5074892578125,
+      "das_over_new": 0.9507151781585872,
+      "das_aa_drift": 0.0028122326699235867,
+      "new_aa_drift": 0.0008406265658607026,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "mmac_tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930002,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "peel_regression",
+        "seed": 101241,
+        "dtype": "torch.float64",
+        "a_shape": [
+          1344,
+          256
+        ],
+        "b_shape": [
+          256,
+          128
+        ],
+        "a_stride": [
+          256,
+          1
+        ],
+        "b_stride": [
+          128,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 0,
+        "config": {
+          "kind": "swizzle",
+          "group": 1,
+          "tm": 1,
+          "tn": 1,
+          "wm": 1,
+          "warps": 2,
+          "prefetch": 8,
+          "split": 1,
+          "trans": false,
+          "pipe": true,
+          "swap": false
+        },
+        "das_us": 13.792490234375,
+        "new_public_us": 14.5074892578125,
+        "das_over_new": 0.9507151781585872,
+        "das_aa_drift": 0.0028122326699235867,
+        "new_aa_drift": 0.0008406265658607026,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mmac_tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930003,
+      "source": "initial-card0",
+      "physical_card": 0,
+      "label": "peel_regression",
+      "seed": 101241,
+      "dtype": "torch.float64",
+      "a_shape": [
+        1344,
+        256
+      ],
+      "b_shape": [
+        256,
+        128
+      ],
+      "a_stride": [
+        256,
+        1
+      ],
+      "b_stride": [
+        128,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 131072,
+      "config": {
+        "kind": "swizzle",
+        "group": 1,
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 8,
+        "split": 1,
+        "trans": false,
+        "pipe": true,
+        "swap": false
+      },
+      "das_us": 13.8070224609375,
+      "new_public_us": 14.4987392578125,
+      "das_over_new": 0.952291245150693,
+      "das_aa_drift": 0.004244867093856186,
+      "new_aa_drift": 0.0014340406338917422,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "mmac_tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930003,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "peel_regression",
+        "seed": 101241,
+        "dtype": "torch.float64",
+        "a_shape": [
+          1344,
+          256
+        ],
+        "b_shape": [
+          256,
+          128
+        ],
+        "a_stride": [
+          256,
+          1
+        ],
+        "b_stride": [
+          128,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 131072,
+        "config": {
+          "kind": "swizzle",
+          "group": 1,
+          "tm": 1,
+          "tn": 1,
+          "wm": 1,
+          "warps": 2,
+          "prefetch": 8,
+          "split": 1,
+          "trans": false,
+          "pipe": true,
+          "swap": false
+        },
+        "das_us": 13.8070224609375,
+        "new_public_us": 14.4987392578125,
+        "das_over_new": 0.952291245150693,
+        "das_aa_drift": 0.004244867093856186,
+        "new_aa_drift": 0.0014340406338917422,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mmac_tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930004,
+      "source": "initial-card0",
+      "physical_card": 0,
+      "label": "peel_regression",
+      "seed": 907,
+      "dtype": "torch.float64",
+      "a_shape": [
+        1344,
+        256
+      ],
+      "b_shape": [
+        256,
+        128
+      ],
+      "a_stride": [
+        256,
+        1
+      ],
+      "b_stride": [
+        128,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 0,
+      "config": {
+        "kind": "swizzle",
+        "group": 1,
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 8,
+        "split": 1,
+        "trans": false,
+        "pipe": true,
+        "swap": false
+      },
+      "das_us": 13.8007724609375,
+      "new_public_us": 14.5032705078125,
+      "das_over_new": 0.9515627839598948,
+      "das_aa_drift": 0.0019035885710756428,
+      "new_aa_drift": 0.0037943923124639234,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "mmac_tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930004,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "peel_regression",
+        "seed": 907,
+        "dtype": "torch.float64",
+        "a_shape": [
+          1344,
+          256
+        ],
+        "b_shape": [
+          256,
+          128
+        ],
+        "a_stride": [
+          256,
+          1
+        ],
+        "b_stride": [
+          128,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 0,
+        "config": {
+          "kind": "swizzle",
+          "group": 1,
+          "tm": 1,
+          "tn": 1,
+          "wm": 1,
+          "warps": 2,
+          "prefetch": 8,
+          "split": 1,
+          "trans": false,
+          "pipe": true,
+          "swap": false
+        },
+        "das_us": 13.8007724609375,
+        "new_public_us": 14.5032705078125,
+        "das_over_new": 0.9515627839598948,
+        "das_aa_drift": 0.0019035885710756428,
+        "new_aa_drift": 0.0037943923124639234,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mmac_tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930005,
+      "source": "initial-card0",
+      "physical_card": 0,
+      "label": "peel_regression",
+      "seed": 907,
+      "dtype": "torch.float64",
+      "a_shape": [
+        1344,
+        256
+      ],
+      "b_shape": [
+        256,
+        128
+      ],
+      "a_stride": [
+        256,
+        1
+      ],
+      "b_stride": [
+        128,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 131072,
+      "config": {
+        "kind": "swizzle",
+        "group": 1,
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 8,
+        "split": 1,
+        "trans": false,
+        "pipe": true,
+        "swap": false
+      },
+      "das_us": 13.7998330078125,
+      "new_public_us": 14.4910849609375,
+      "das_over_new": 0.9522981229501895,
+      "das_aa_drift": 0.002438034126099442,
+      "new_aa_drift": 0.0009709164014681804,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "mmac_tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930005,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "peel_regression",
+        "seed": 907,
+        "dtype": "torch.float64",
+        "a_shape": [
+          1344,
+          256
+        ],
+        "b_shape": [
+          256,
+          128
+        ],
+        "a_stride": [
+          256,
+          1
+        ],
+        "b_stride": [
+          128,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 131072,
+        "config": {
+          "kind": "swizzle",
+          "group": 1,
+          "tm": 1,
+          "tn": 1,
+          "wm": 1,
+          "warps": 2,
+          "prefetch": 8,
+          "split": 1,
+          "trans": false,
+          "pipe": true,
+          "swap": false
+        },
+        "das_us": 13.7998330078125,
+        "new_public_us": 14.4910849609375,
+        "das_over_new": 0.9522981229501895,
+        "das_aa_drift": 0.002438034126099442,
+        "new_aa_drift": 0.0009709164014681804,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mmac_tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930006,
+      "source": "initial-card0",
+      "physical_card": 0,
+      "label": "peel_regression",
+      "seed": 1238,
+      "dtype": "torch.float64",
+      "a_shape": [
+        2208,
+        64
+      ],
+      "b_shape": [
+        64,
+        64
+      ],
+      "a_stride": [
+        64,
+        1
+      ],
+      "b_stride": [
+        64,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 0,
+      "config": {
+        "kind": "swizzle",
+        "group": 1,
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 8,
+        "split": 1,
+        "trans": false,
+        "pipe": true,
+        "swap": false
+      },
+      "das_us": 6.06374609375,
+      "new_public_us": 5.95608984375,
+      "das_over_new": 1.0180749875882025,
+      "das_aa_drift": 0.0023459669669805283,
+      "new_aa_drift": 0.008567063771482308,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "mmac_tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930006,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "peel_regression",
+        "seed": 1238,
+        "dtype": "torch.float64",
+        "a_shape": [
+          2208,
+          64
+        ],
+        "b_shape": [
+          64,
+          64
+        ],
+        "a_stride": [
+          64,
+          1
+        ],
+        "b_stride": [
+          64,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 0,
+        "config": {
+          "kind": "swizzle",
+          "group": 1,
+          "tm": 1,
+          "tn": 1,
+          "wm": 1,
+          "warps": 2,
+          "prefetch": 8,
+          "split": 1,
+          "trans": false,
+          "pipe": true,
+          "swap": false
+        },
+        "das_us": 6.06374609375,
+        "new_public_us": 5.95608984375,
+        "das_over_new": 1.0180749875882025,
+        "das_aa_drift": 0.0023459669669805283,
+        "new_aa_drift": 0.008567063771482308,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mmac_tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930007,
+      "source": "initial-card0",
+      "physical_card": 0,
+      "label": "peel_regression",
+      "seed": 1238,
+      "dtype": "torch.float64",
+      "a_shape": [
+        2208,
+        64
+      ],
+      "b_shape": [
+        64,
+        64
+      ],
+      "a_stride": [
+        64,
+        1
+      ],
+      "b_stride": [
+        64,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 131072,
+      "config": {
+        "kind": "swizzle",
+        "group": 1,
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 8,
+        "split": 1,
+        "trans": false,
+        "pipe": true,
+        "swap": false
+      },
+      "das_us": 6.05437109375,
+      "new_public_us": 5.95530859375,
+      "das_over_new": 1.0166343185144033,
+      "das_aa_drift": 0.0033563771650180207,
+      "new_aa_drift": 0.007140437496922614,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "mmac_tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930007,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "peel_regression",
+        "seed": 1238,
+        "dtype": "torch.float64",
+        "a_shape": [
+          2208,
+          64
+        ],
+        "b_shape": [
+          64,
+          64
+        ],
+        "a_stride": [
+          64,
+          1
+        ],
+        "b_stride": [
+          64,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 131072,
+        "config": {
+          "kind": "swizzle",
+          "group": 1,
+          "tm": 1,
+          "tn": 1,
+          "wm": 1,
+          "warps": 2,
+          "prefetch": 8,
+          "split": 1,
+          "trans": false,
+          "pipe": true,
+          "swap": false
+        },
+        "das_us": 6.05437109375,
+        "new_public_us": 5.95530859375,
+        "das_over_new": 1.0166343185144033,
+        "das_aa_drift": 0.0033563771650180207,
+        "new_aa_drift": 0.007140437496922614,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mmac_tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930008,
+      "source": "initial-card0",
+      "physical_card": 0,
+      "label": "peel_regression",
+      "seed": 101241,
+      "dtype": "torch.float64",
+      "a_shape": [
+        2208,
+        64
+      ],
+      "b_shape": [
+        64,
+        64
+      ],
+      "a_stride": [
+        64,
+        1
+      ],
+      "b_stride": [
+        64,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 0,
+      "config": {
+        "kind": "swizzle",
+        "group": 1,
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 8,
+        "split": 1,
+        "trans": false,
+        "pipe": true,
+        "swap": false
+      },
+      "das_us": 6.04655859375,
+      "new_public_us": 5.9796826171875,
+      "das_over_new": 1.0111838672457762,
+      "das_aa_drift": 0.0086189062653379,
+      "new_aa_drift": 0.007370661779231069,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "mmac_tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930008,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "peel_regression",
+        "seed": 101241,
+        "dtype": "torch.float64",
+        "a_shape": [
+          2208,
+          64
+        ],
+        "b_shape": [
+          64,
+          64
+        ],
+        "a_stride": [
+          64,
+          1
+        ],
+        "b_stride": [
+          64,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 0,
+        "config": {
+          "kind": "swizzle",
+          "group": 1,
+          "tm": 1,
+          "tn": 1,
+          "wm": 1,
+          "warps": 2,
+          "prefetch": 8,
+          "split": 1,
+          "trans": false,
+          "pipe": true,
+          "swap": false
+        },
+        "das_us": 6.04655859375,
+        "new_public_us": 5.9796826171875,
+        "das_over_new": 1.0111838672457762,
+        "das_aa_drift": 0.0086189062653379,
+        "new_aa_drift": 0.007370661779231069,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mmac_tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930009,
+      "source": "initial-card0",
+      "physical_card": 0,
+      "label": "peel_regression",
+      "seed": 101241,
+      "dtype": "torch.float64",
+      "a_shape": [
+        2208,
+        64
+      ],
+      "b_shape": [
+        64,
+        64
+      ],
+      "a_stride": [
+        64,
+        1
+      ],
+      "b_stride": [
+        64,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 131072,
+      "config": {
+        "kind": "swizzle",
+        "group": 1,
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 8,
+        "split": 1,
+        "trans": false,
+        "pipe": true,
+        "swap": false
+      },
+      "das_us": 6.069837890625,
+      "new_public_us": 5.9624970703125,
+      "das_over_new": 1.0180026621475344,
+      "das_aa_drift": 0.008307728392166203,
+      "new_aa_drift": 0.0067988095577316,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "mmac_tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930009,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "peel_regression",
+        "seed": 101241,
+        "dtype": "torch.float64",
+        "a_shape": [
+          2208,
+          64
+        ],
+        "b_shape": [
+          64,
+          64
+        ],
+        "a_stride": [
+          64,
+          1
+        ],
+        "b_stride": [
+          64,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 131072,
+        "config": {
+          "kind": "swizzle",
+          "group": 1,
+          "tm": 1,
+          "tn": 1,
+          "wm": 1,
+          "warps": 2,
+          "prefetch": 8,
+          "split": 1,
+          "trans": false,
+          "pipe": true,
+          "swap": false
+        },
+        "das_us": 6.069837890625,
+        "new_public_us": 5.9624970703125,
+        "das_over_new": 1.0180026621475344,
+        "das_aa_drift": 0.008307728392166203,
+        "new_aa_drift": 0.0067988095577316,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mmac_tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930010,
+      "source": "initial-card0",
+      "physical_card": 0,
+      "label": "peel_regression",
+      "seed": 907,
+      "dtype": "torch.float64",
+      "a_shape": [
+        2208,
+        64
+      ],
+      "b_shape": [
+        64,
+        64
+      ],
+      "a_stride": [
+        64,
+        1
+      ],
+      "b_stride": [
+        64,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 0,
+      "config": {
+        "kind": "swizzle",
+        "group": 1,
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 8,
+        "split": 1,
+        "trans": false,
+        "pipe": true,
+        "swap": false
+      },
+      "das_us": 6.0274951171875,
+      "new_public_us": 5.9653076171875,
+      "das_over_new": 1.0104248605421156,
+      "das_aa_drift": 0.0024674358213432335,
+      "new_aa_drift": 0.007872156442654044,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "mmac_tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930010,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "peel_regression",
+        "seed": 907,
+        "dtype": "torch.float64",
+        "a_shape": [
+          2208,
+          64
+        ],
+        "b_shape": [
+          64,
+          64
+        ],
+        "a_stride": [
+          64,
+          1
+        ],
+        "b_stride": [
+          64,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 0,
+        "config": {
+          "kind": "swizzle",
+          "group": 1,
+          "tm": 1,
+          "tn": 1,
+          "wm": 1,
+          "warps": 2,
+          "prefetch": 8,
+          "split": 1,
+          "trans": false,
+          "pipe": true,
+          "swap": false
+        },
+        "das_us": 6.0274951171875,
+        "new_public_us": 5.9653076171875,
+        "das_over_new": 1.0104248605421156,
+        "das_aa_drift": 0.0024674358213432335,
+        "new_aa_drift": 0.007872156442654044,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mmac_tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930011,
+      "source": "initial-card0",
+      "physical_card": 0,
+      "label": "peel_regression",
+      "seed": 907,
+      "dtype": "torch.float64",
+      "a_shape": [
+        2208,
+        64
+      ],
+      "b_shape": [
+        64,
+        64
+      ],
+      "a_stride": [
+        64,
+        1
+      ],
+      "b_stride": [
+        64,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 131072,
+      "config": {
+        "kind": "swizzle",
+        "group": 1,
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 8,
+        "split": 1,
+        "trans": false,
+        "pipe": true,
+        "swap": false
+      },
+      "das_us": 6.074681640625,
+      "new_public_us": 5.9673388671875,
+      "das_over_new": 1.0179883823973437,
+      "das_aa_drift": 0.01093962015027361,
+      "new_aa_drift": 0.008870826021419642,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "mmac_tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930011,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "peel_regression",
+        "seed": 907,
+        "dtype": "torch.float64",
+        "a_shape": [
+          2208,
+          64
+        ],
+        "b_shape": [
+          64,
+          64
+        ],
+        "a_stride": [
+          64,
+          1
+        ],
+        "b_stride": [
+          64,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 131072,
+        "config": {
+          "kind": "swizzle",
+          "group": 1,
+          "tm": 1,
+          "tn": 1,
+          "wm": 1,
+          "warps": 2,
+          "prefetch": 8,
+          "split": 1,
+          "trans": false,
+          "pipe": true,
+          "swap": false
+        },
+        "das_us": 6.074681640625,
+        "new_public_us": 5.9673388671875,
+        "das_over_new": 1.0179883823973437,
+        "das_aa_drift": 0.01093962015027361,
+        "new_aa_drift": 0.008870826021419642,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mmac_tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930012,
+      "source": "initial-card0",
+      "physical_card": 0,
+      "label": "peel_regression",
+      "seed": 1238,
+      "dtype": "torch.float64",
+      "a_shape": [
+        576,
+        128
+      ],
+      "b_shape": [
+        128,
+        128
+      ],
+      "a_stride": [
+        128,
+        1
+      ],
+      "b_stride": [
+        128,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 0,
+      "config": {
+        "kind": "swizzle",
+        "group": 1,
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 8,
+        "split": 1,
+        "trans": false,
+        "pipe": true,
+        "swap": false
+      },
+      "das_us": 6.99921484375,
+      "new_public_us": 6.52843359375,
+      "das_over_new": 1.0721124360444905,
+      "das_aa_drift": 0.005740606983823504,
+      "new_aa_drift": 0.003786156446140998,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "mmac_tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930012,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "peel_regression",
+        "seed": 1238,
+        "dtype": "torch.float64",
+        "a_shape": [
+          576,
+          128
+        ],
+        "b_shape": [
+          128,
+          128
+        ],
+        "a_stride": [
+          128,
+          1
+        ],
+        "b_stride": [
+          128,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 0,
+        "config": {
+          "kind": "swizzle",
+          "group": 1,
+          "tm": 1,
+          "tn": 1,
+          "wm": 1,
+          "warps": 2,
+          "prefetch": 8,
+          "split": 1,
+          "trans": false,
+          "pipe": true,
+          "swap": false
+        },
+        "das_us": 6.99921484375,
+        "new_public_us": 6.52843359375,
+        "das_over_new": 1.0721124360444905,
+        "das_aa_drift": 0.005740606983823504,
+        "new_aa_drift": 0.003786156446140998,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mmac_tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930013,
+      "source": "initial-card0",
+      "physical_card": 0,
+      "label": "peel_regression",
+      "seed": 1238,
+      "dtype": "torch.float64",
+      "a_shape": [
+        576,
+        128
+      ],
+      "b_shape": [
+        128,
+        128
+      ],
+      "a_stride": [
+        128,
+        1
+      ],
+      "b_stride": [
+        128,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 131072,
+      "config": {
+        "kind": "swizzle",
+        "group": 1,
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 8,
+        "split": 1,
+        "trans": false,
+        "pipe": true,
+        "swap": false
+      },
+      "das_us": 6.99218359375,
+      "new_public_us": 6.51405859375,
+      "das_over_new": 1.07339894063261,
+      "das_aa_drift": 0.007036891576403859,
+      "new_aa_drift": 0.0052955934043383834,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "mmac_tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930013,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "peel_regression",
+        "seed": 1238,
+        "dtype": "torch.float64",
+        "a_shape": [
+          576,
+          128
+        ],
+        "b_shape": [
+          128,
+          128
+        ],
+        "a_stride": [
+          128,
+          1
+        ],
+        "b_stride": [
+          128,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 131072,
+        "config": {
+          "kind": "swizzle",
+          "group": 1,
+          "tm": 1,
+          "tn": 1,
+          "wm": 1,
+          "warps": 2,
+          "prefetch": 8,
+          "split": 1,
+          "trans": false,
+          "pipe": true,
+          "swap": false
+        },
+        "das_us": 6.99218359375,
+        "new_public_us": 6.51405859375,
+        "das_over_new": 1.07339894063261,
+        "das_aa_drift": 0.007036891576403859,
+        "new_aa_drift": 0.0052955934043383834,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mmac_tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930014,
+      "source": "initial-card0",
+      "physical_card": 0,
+      "label": "peel_regression",
+      "seed": 101241,
+      "dtype": "torch.float64",
+      "a_shape": [
+        576,
+        128
+      ],
+      "b_shape": [
+        128,
+        128
+      ],
+      "a_stride": [
+        128,
+        1
+      ],
+      "b_stride": [
+        128,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 0,
+      "config": {
+        "kind": "swizzle",
+        "group": 1,
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 8,
+        "split": 1,
+        "trans": false,
+        "pipe": true,
+        "swap": false
+      },
+      "das_us": 7.02030859375,
+      "new_public_us": 6.48405859375,
+      "das_over_new": 1.0827028306802922,
+      "das_aa_drift": 0.0024299453986809105,
+      "new_aa_drift": 0.010137920480232543,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "mmac_tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930014,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "peel_regression",
+        "seed": 101241,
+        "dtype": "torch.float64",
+        "a_shape": [
+          576,
+          128
+        ],
+        "b_shape": [
+          128,
+          128
+        ],
+        "a_stride": [
+          128,
+          1
+        ],
+        "b_stride": [
+          128,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 0,
+        "config": {
+          "kind": "swizzle",
+          "group": 1,
+          "tm": 1,
+          "tn": 1,
+          "wm": 1,
+          "warps": 2,
+          "prefetch": 8,
+          "split": 1,
+          "trans": false,
+          "pipe": true,
+          "swap": false
+        },
+        "das_us": 7.02030859375,
+        "new_public_us": 6.48405859375,
+        "das_over_new": 1.0827028306802922,
+        "das_aa_drift": 0.0024299453986809105,
+        "new_aa_drift": 0.010137920480232543,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mmac_tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930015,
+      "source": "initial-card0",
+      "physical_card": 0,
+      "label": "peel_regression",
+      "seed": 101241,
+      "dtype": "torch.float64",
+      "a_shape": [
+        576,
+        128
+      ],
+      "b_shape": [
+        128,
+        128
+      ],
+      "a_stride": [
+        128,
+        1
+      ],
+      "b_stride": [
+        128,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 131072,
+      "config": {
+        "kind": "swizzle",
+        "group": 1,
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 8,
+        "split": 1,
+        "trans": false,
+        "pipe": true,
+        "swap": false
+      },
+      "das_us": 7.01843359375,
+      "new_public_us": 6.510462890625,
+      "das_over_new": 1.0780237460314033,
+      "das_aa_drift": 0.008226493062258866,
+      "new_aa_drift": 0.0014416391385958516,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "mmac_tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930015,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "peel_regression",
+        "seed": 101241,
+        "dtype": "torch.float64",
+        "a_shape": [
+          576,
+          128
+        ],
+        "b_shape": [
+          128,
+          128
+        ],
+        "a_stride": [
+          128,
+          1
+        ],
+        "b_stride": [
+          128,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 131072,
+        "config": {
+          "kind": "swizzle",
+          "group": 1,
+          "tm": 1,
+          "tn": 1,
+          "wm": 1,
+          "warps": 2,
+          "prefetch": 8,
+          "split": 1,
+          "trans": false,
+          "pipe": true,
+          "swap": false
+        },
+        "das_us": 7.01843359375,
+        "new_public_us": 6.510462890625,
+        "das_over_new": 1.0780237460314033,
+        "das_aa_drift": 0.008226493062258866,
+        "new_aa_drift": 0.0014416391385958516,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mmac_tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930016,
+      "source": "initial-card0",
+      "physical_card": 0,
+      "label": "peel_regression",
+      "seed": 907,
+      "dtype": "torch.float64",
+      "a_shape": [
+        576,
+        128
+      ],
+      "b_shape": [
+        128,
+        128
+      ],
+      "a_stride": [
+        128,
+        1
+      ],
+      "b_stride": [
+        128,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 0,
+      "config": {
+        "kind": "swizzle",
+        "group": 1,
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 8,
+        "split": 1,
+        "trans": false,
+        "pipe": true,
+        "swap": false
+      },
+      "das_us": 6.984681640625,
+      "new_public_us": 6.484994140625,
+      "das_over_new": 1.077052883805974,
+      "das_aa_drift": 0.008952959750570644,
+      "new_aa_drift": 0.005108040859484797,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "mmac_tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930016,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "peel_regression",
+        "seed": 907,
+        "dtype": "torch.float64",
+        "a_shape": [
+          576,
+          128
+        ],
+        "b_shape": [
+          128,
+          128
+        ],
+        "a_stride": [
+          128,
+          1
+        ],
+        "b_stride": [
+          128,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 0,
+        "config": {
+          "kind": "swizzle",
+          "group": 1,
+          "tm": 1,
+          "tn": 1,
+          "wm": 1,
+          "warps": 2,
+          "prefetch": 8,
+          "split": 1,
+          "trans": false,
+          "pipe": true,
+          "swap": false
+        },
+        "das_us": 6.984681640625,
+        "new_public_us": 6.484994140625,
+        "das_over_new": 1.077052883805974,
+        "das_aa_drift": 0.008952959750570644,
+        "new_aa_drift": 0.005108040859484797,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mmac_tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930017,
+      "source": "initial-card0",
+      "physical_card": 0,
+      "label": "peel_regression",
+      "seed": 907,
+      "dtype": "torch.float64",
+      "a_shape": [
+        576,
+        128
+      ],
+      "b_shape": [
+        128,
+        128
+      ],
+      "a_stride": [
+        128,
+        1
+      ],
+      "b_stride": [
+        128,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 131072,
+      "config": {
+        "kind": "swizzle",
+        "group": 1,
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 8,
+        "split": 1,
+        "trans": false,
+        "pipe": true,
+        "swap": false
+      },
+      "das_us": 7.003119140625,
+      "new_public_us": 6.454369140625,
+      "das_over_new": 1.0850199280586643,
+      "das_aa_drift": 0.005671799850222037,
+      "new_aa_drift": 0.0027124171727281876,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "mmac_tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930017,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "peel_regression",
+        "seed": 907,
+        "dtype": "torch.float64",
+        "a_shape": [
+          576,
+          128
+        ],
+        "b_shape": [
+          128,
+          128
+        ],
+        "a_stride": [
+          128,
+          1
+        ],
+        "b_stride": [
+          128,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 131072,
+        "config": {
+          "kind": "swizzle",
+          "group": 1,
+          "tm": 1,
+          "tn": 1,
+          "wm": 1,
+          "warps": 2,
+          "prefetch": 8,
+          "split": 1,
+          "trans": false,
+          "pipe": true,
+          "swap": false
+        },
+        "das_us": 7.003119140625,
+        "new_public_us": 6.454369140625,
+        "das_over_new": 1.0850199280586643,
+        "das_aa_drift": 0.005671799850222037,
+        "new_aa_drift": 0.0027124171727281876,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mmac_tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930018,
+      "source": "initial-card0",
+      "physical_card": 0,
+      "label": "peel_regression",
+      "seed": 1238,
+      "dtype": "torch.float64",
+      "a_shape": [
+        2208,
+        64
+      ],
+      "b_shape": [
+        64,
+        512
+      ],
+      "a_stride": [
+        64,
+        1
+      ],
+      "b_stride": [
+        512,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 0,
+      "config": {
+        "kind": "swizzle",
+        "tm": 1,
+        "tn": 2,
+        "wm": 4,
+        "warps": 4,
+        "prefetch": 4,
+        "group": 1,
+        "pipe": true,
+        "swap": true
+      },
+      "das_us": 14.2635849609375,
+      "new_public_us": 15.584365234375,
+      "das_over_new": 0.9152496586435098,
+      "das_aa_drift": 0.00031758093983014213,
+      "new_aa_drift": 0.0005616910410906062,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "mmac_tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930018,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "peel_regression",
+        "seed": 1238,
+        "dtype": "torch.float64",
+        "a_shape": [
+          2208,
+          64
+        ],
+        "b_shape": [
+          64,
+          512
+        ],
+        "a_stride": [
+          64,
+          1
+        ],
+        "b_stride": [
+          512,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 0,
+        "config": {
+          "kind": "swizzle",
+          "tm": 1,
+          "tn": 2,
+          "wm": 4,
+          "warps": 4,
+          "prefetch": 4,
+          "group": 1,
+          "pipe": true,
+          "swap": true
+        },
+        "das_us": 14.2635849609375,
+        "new_public_us": 15.584365234375,
+        "das_over_new": 0.9152496586435098,
+        "das_aa_drift": 0.00031758093983014213,
+        "new_aa_drift": 0.0005616910410906062,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mmac_tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930019,
+      "source": "initial-card0",
+      "physical_card": 0,
+      "label": "peel_regression",
+      "seed": 1238,
+      "dtype": "torch.float64",
+      "a_shape": [
+        2208,
+        64
+      ],
+      "b_shape": [
+        64,
+        512
+      ],
+      "a_stride": [
+        64,
+        1
+      ],
+      "b_stride": [
+        512,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 131072,
+      "config": {
+        "kind": "swizzle",
+        "tm": 1,
+        "tn": 2,
+        "wm": 4,
+        "warps": 4,
+        "prefetch": 4,
+        "group": 1,
+        "pipe": true,
+        "swap": true
+      },
+      "das_us": 14.2471787109375,
+      "new_public_us": 15.589052734375,
+      "das_over_new": 0.9139220293688166,
+      "das_aa_drift": 0.000416708059804316,
+      "new_aa_drift": 0.0030762754196420605,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "mmac_tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930019,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "peel_regression",
+        "seed": 1238,
+        "dtype": "torch.float64",
+        "a_shape": [
+          2208,
+          64
+        ],
+        "b_shape": [
+          64,
+          512
+        ],
+        "a_stride": [
+          64,
+          1
+        ],
+        "b_stride": [
+          512,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 131072,
+        "config": {
+          "kind": "swizzle",
+          "tm": 1,
+          "tn": 2,
+          "wm": 4,
+          "warps": 4,
+          "prefetch": 4,
+          "group": 1,
+          "pipe": true,
+          "swap": true
+        },
+        "das_us": 14.2471787109375,
+        "new_public_us": 15.589052734375,
+        "das_over_new": 0.9139220293688166,
+        "das_aa_drift": 0.000416708059804316,
+        "new_aa_drift": 0.0030762754196420605,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mmac_tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930020,
+      "source": "initial-card0",
+      "physical_card": 0,
+      "label": "peel_regression",
+      "seed": 101241,
+      "dtype": "torch.float64",
+      "a_shape": [
+        2208,
+        64
+      ],
+      "b_shape": [
+        64,
+        512
+      ],
+      "a_stride": [
+        64,
+        1
+      ],
+      "b_stride": [
+        512,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 0,
+      "config": {
+        "kind": "swizzle",
+        "tm": 1,
+        "tn": 2,
+        "wm": 4,
+        "warps": 4,
+        "prefetch": 4,
+        "group": 1,
+        "pipe": true,
+        "swap": true
+      },
+      "das_us": 14.2648349609375,
+      "new_public_us": 15.584833984375,
+      "das_over_new": 0.9153023365689426,
+      "das_aa_drift": 0.0024013172705492636,
+      "new_aa_drift": 0.0037063473080956033,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "mmac_tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930020,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "peel_regression",
+        "seed": 101241,
+        "dtype": "torch.float64",
+        "a_shape": [
+          2208,
+          64
+        ],
+        "b_shape": [
+          64,
+          512
+        ],
+        "a_stride": [
+          64,
+          1
+        ],
+        "b_stride": [
+          512,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 0,
+        "config": {
+          "kind": "swizzle",
+          "tm": 1,
+          "tn": 2,
+          "wm": 4,
+          "warps": 4,
+          "prefetch": 4,
+          "group": 1,
+          "pipe": true,
+          "swap": true
+        },
+        "das_us": 14.2648349609375,
+        "new_public_us": 15.584833984375,
+        "das_over_new": 0.9153023365689426,
+        "das_aa_drift": 0.0024013172705492636,
+        "new_aa_drift": 0.0037063473080956033,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mmac_tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930021,
+      "source": "initial-card0",
+      "physical_card": 0,
+      "label": "peel_regression",
+      "seed": 101241,
+      "dtype": "torch.float64",
+      "a_shape": [
+        2208,
+        64
+      ],
+      "b_shape": [
+        64,
+        512
+      ],
+      "a_stride": [
+        64,
+        1
+      ],
+      "b_stride": [
+        512,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 131072,
+      "config": {
+        "kind": "swizzle",
+        "tm": 1,
+        "tn": 2,
+        "wm": 4,
+        "warps": 4,
+        "prefetch": 4,
+        "group": 1,
+        "pipe": true,
+        "swap": true
+      },
+      "das_us": 14.2385849609375,
+      "new_public_us": 15.580458984375,
+      "das_over_new": 0.9138745511423502,
+      "das_aa_drift": 0.0024294806483553533,
+      "new_aa_drift": 0.00183615225765843,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "mmac_tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930021,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "peel_regression",
+        "seed": 101241,
+        "dtype": "torch.float64",
+        "a_shape": [
+          2208,
+          64
+        ],
+        "b_shape": [
+          64,
+          512
+        ],
+        "a_stride": [
+          64,
+          1
+        ],
+        "b_stride": [
+          512,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 131072,
+        "config": {
+          "kind": "swizzle",
+          "tm": 1,
+          "tn": 2,
+          "wm": 4,
+          "warps": 4,
+          "prefetch": 4,
+          "group": 1,
+          "pipe": true,
+          "swap": true
+        },
+        "das_us": 14.2385849609375,
+        "new_public_us": 15.580458984375,
+        "das_over_new": 0.9138745511423502,
+        "das_aa_drift": 0.0024294806483553533,
+        "new_aa_drift": 0.00183615225765843,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mmac_tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930022,
+      "source": "initial-card0",
+      "physical_card": 0,
+      "label": "peel_regression",
+      "seed": 907,
+      "dtype": "torch.float64",
+      "a_shape": [
+        2208,
+        64
+      ],
+      "b_shape": [
+        64,
+        512
+      ],
+      "a_stride": [
+        64,
+        1
+      ],
+      "b_stride": [
+        512,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 0,
+      "config": {
+        "kind": "swizzle",
+        "tm": 1,
+        "tn": 2,
+        "wm": 4,
+        "warps": 4,
+        "prefetch": 4,
+        "group": 1,
+        "pipe": true,
+        "swap": true
+      },
+      "das_us": 14.2718642578125,
+      "new_public_us": 15.606240234375,
+      "das_over_new": 0.9144972807977577,
+      "das_aa_drift": 0.00210507980013519,
+      "new_aa_drift": 0.00018037224525535578,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "mmac_tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930022,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "peel_regression",
+        "seed": 907,
+        "dtype": "torch.float64",
+        "a_shape": [
+          2208,
+          64
+        ],
+        "b_shape": [
+          64,
+          512
+        ],
+        "a_stride": [
+          64,
+          1
+        ],
+        "b_stride": [
+          512,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 0,
+        "config": {
+          "kind": "swizzle",
+          "tm": 1,
+          "tn": 2,
+          "wm": 4,
+          "warps": 4,
+          "prefetch": 4,
+          "group": 1,
+          "pipe": true,
+          "swap": true
+        },
+        "das_us": 14.2718642578125,
+        "new_public_us": 15.606240234375,
+        "das_over_new": 0.9144972807977577,
+        "das_aa_drift": 0.00210507980013519,
+        "new_aa_drift": 0.00018037224525535578,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mmac_tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930023,
+      "source": "initial-card0",
+      "physical_card": 0,
+      "label": "peel_regression",
+      "seed": 907,
+      "dtype": "torch.float64",
+      "a_shape": [
+        2208,
+        64
+      ],
+      "b_shape": [
+        64,
+        512
+      ],
+      "a_stride": [
+        64,
+        1
+      ],
+      "b_stride": [
+        512,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 131072,
+      "config": {
+        "kind": "swizzle",
+        "tm": 1,
+        "tn": 2,
+        "wm": 4,
+        "warps": 4,
+        "prefetch": 4,
+        "group": 1,
+        "pipe": true,
+        "swap": true
+      },
+      "das_us": 14.2285830078125,
+      "new_public_us": 15.57280078125,
+      "das_over_new": 0.9136816946213061,
+      "das_aa_drift": 0.0021001940009712783,
+      "new_aa_drift": 0.0019601942351441526,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "mmac_tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930023,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "peel_regression",
+        "seed": 907,
+        "dtype": "torch.float64",
+        "a_shape": [
+          2208,
+          64
+        ],
+        "b_shape": [
+          64,
+          512
+        ],
+        "a_stride": [
+          64,
+          1
+        ],
+        "b_stride": [
+          512,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 131072,
+        "config": {
+          "kind": "swizzle",
+          "tm": 1,
+          "tn": 2,
+          "wm": 4,
+          "warps": 4,
+          "prefetch": 4,
+          "group": 1,
+          "pipe": true,
+          "swap": true
+        },
+        "das_us": 14.2285830078125,
+        "new_public_us": 15.57280078125,
+        "das_over_new": 0.9136816946213061,
+        "das_aa_drift": 0.0021001940009712783,
+        "new_aa_drift": 0.0019601942351441526,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mmac_tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930024,
+      "source": "initial-card0",
+      "physical_card": 0,
+      "label": "peel_regression",
+      "seed": 1238,
+      "dtype": "torch.float64",
+      "a_shape": [
+        576,
+        384
+      ],
+      "b_shape": [
+        384,
+        128
+      ],
+      "a_stride": [
+        384,
+        1
+      ],
+      "b_stride": [
+        128,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 0,
+      "config": {
+        "kind": "swizzle",
+        "group": 1,
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 8,
+        "split": 1,
+        "trans": false,
+        "pipe": true,
+        "swap": false
+      },
+      "das_us": 14.1484267578125,
+      "new_public_us": 13.508115234375,
+      "das_over_new": 1.0474019885326458,
+      "das_aa_drift": 0.034184595445274635,
+      "new_aa_drift": 0.0016316244694780657,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "mmac_tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930024,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "peel_regression",
+        "seed": 1238,
+        "dtype": "torch.float64",
+        "a_shape": [
+          576,
+          384
+        ],
+        "b_shape": [
+          384,
+          128
+        ],
+        "a_stride": [
+          384,
+          1
+        ],
+        "b_stride": [
+          128,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 0,
+        "config": {
+          "kind": "swizzle",
+          "group": 1,
+          "tm": 1,
+          "tn": 1,
+          "wm": 1,
+          "warps": 2,
+          "prefetch": 8,
+          "split": 1,
+          "trans": false,
+          "pipe": true,
+          "swap": false
+        },
+        "das_us": 14.1484267578125,
+        "new_public_us": 13.508115234375,
+        "das_over_new": 1.0474019885326458,
+        "das_aa_drift": 0.034184595445274635,
+        "new_aa_drift": 0.0016316244694780657,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mmac_tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930025,
+      "source": "initial-card0",
+      "physical_card": 0,
+      "label": "peel_regression",
+      "seed": 1238,
+      "dtype": "torch.float64",
+      "a_shape": [
+        576,
+        384
+      ],
+      "b_shape": [
+        384,
+        128
+      ],
+      "a_stride": [
+        384,
+        1
+      ],
+      "b_stride": [
+        128,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 131072,
+      "config": {
+        "kind": "swizzle",
+        "group": 1,
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 8,
+        "split": 1,
+        "trans": false,
+        "pipe": true,
+        "swap": false
+      },
+      "das_us": 14.1507705078125,
+      "new_public_us": 13.5795205078125,
+      "das_over_new": 1.0420670228872477,
+      "das_aa_drift": 0.024134948274128654,
+      "new_aa_drift": 0.0029511168364453333,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "mmac_tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930025,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "peel_regression",
+        "seed": 1238,
+        "dtype": "torch.float64",
+        "a_shape": [
+          576,
+          384
+        ],
+        "b_shape": [
+          384,
+          128
+        ],
+        "a_stride": [
+          384,
+          1
+        ],
+        "b_stride": [
+          128,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 131072,
+        "config": {
+          "kind": "swizzle",
+          "group": 1,
+          "tm": 1,
+          "tn": 1,
+          "wm": 1,
+          "warps": 2,
+          "prefetch": 8,
+          "split": 1,
+          "trans": false,
+          "pipe": true,
+          "swap": false
+        },
+        "das_us": 14.1507705078125,
+        "new_public_us": 13.5795205078125,
+        "das_over_new": 1.0420670228872477,
+        "das_aa_drift": 0.024134948274128654,
+        "new_aa_drift": 0.0029511168364453333,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mmac_tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930026,
+      "source": "initial-card0",
+      "physical_card": 0,
+      "label": "peel_regression",
+      "seed": 101241,
+      "dtype": "torch.float64",
+      "a_shape": [
+        576,
+        384
+      ],
+      "b_shape": [
+        384,
+        128
+      ],
+      "a_stride": [
+        384,
+        1
+      ],
+      "b_stride": [
+        128,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 0,
+      "config": {
+        "kind": "swizzle",
+        "group": 1,
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 8,
+        "split": 1,
+        "trans": false,
+        "pipe": true,
+        "swap": false
+      },
+      "das_us": 14.1432705078125,
+      "new_public_us": 13.575302734375,
+      "das_over_new": 1.0418383136310698,
+      "das_aa_drift": 0.021202047688957837,
+      "new_aa_drift": 0.0009906357563354007,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "mmac_tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930026,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "peel_regression",
+        "seed": 101241,
+        "dtype": "torch.float64",
+        "a_shape": [
+          576,
+          384
+        ],
+        "b_shape": [
+          384,
+          128
+        ],
+        "a_stride": [
+          384,
+          1
+        ],
+        "b_stride": [
+          128,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 0,
+        "config": {
+          "kind": "swizzle",
+          "group": 1,
+          "tm": 1,
+          "tn": 1,
+          "wm": 1,
+          "warps": 2,
+          "prefetch": 8,
+          "split": 1,
+          "trans": false,
+          "pipe": true,
+          "swap": false
+        },
+        "das_us": 14.1432705078125,
+        "new_public_us": 13.575302734375,
+        "das_over_new": 1.0418383136310698,
+        "das_aa_drift": 0.021202047688957837,
+        "new_aa_drift": 0.0009906357563354007,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mmac_tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930027,
+      "source": "initial-card0",
+      "physical_card": 0,
+      "label": "peel_regression",
+      "seed": 101241,
+      "dtype": "torch.float64",
+      "a_shape": [
+        576,
+        384
+      ],
+      "b_shape": [
+        384,
+        128
+      ],
+      "a_stride": [
+        384,
+        1
+      ],
+      "b_stride": [
+        128,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 131072,
+      "config": {
+        "kind": "swizzle",
+        "group": 1,
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 8,
+        "split": 1,
+        "trans": false,
+        "pipe": true,
+        "swap": false
+      },
+      "das_us": 14.1638955078125,
+      "new_public_us": 13.5863974609375,
+      "das_over_new": 1.042505605222825,
+      "das_aa_drift": 0.02619803059626813,
+      "new_aa_drift": 0.0014970384205312826,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "mmac_tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930027,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "peel_regression",
+        "seed": 101241,
+        "dtype": "torch.float64",
+        "a_shape": [
+          576,
+          384
+        ],
+        "b_shape": [
+          384,
+          128
+        ],
+        "a_stride": [
+          384,
+          1
+        ],
+        "b_stride": [
+          128,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 131072,
+        "config": {
+          "kind": "swizzle",
+          "group": 1,
+          "tm": 1,
+          "tn": 1,
+          "wm": 1,
+          "warps": 2,
+          "prefetch": 8,
+          "split": 1,
+          "trans": false,
+          "pipe": true,
+          "swap": false
+        },
+        "das_us": 14.1638955078125,
+        "new_public_us": 13.5863974609375,
+        "das_over_new": 1.042505605222825,
+        "das_aa_drift": 0.02619803059626813,
+        "new_aa_drift": 0.0014970384205312826,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mmac_tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930028,
+      "source": "initial-card0",
+      "physical_card": 0,
+      "label": "peel_regression",
+      "seed": 907,
+      "dtype": "torch.float64",
+      "a_shape": [
+        576,
+        384
+      ],
+      "b_shape": [
+        384,
+        128
+      ],
+      "a_stride": [
+        384,
+        1
+      ],
+      "b_stride": [
+        128,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 0,
+      "config": {
+        "kind": "swizzle",
+        "group": 1,
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 8,
+        "split": 1,
+        "trans": false,
+        "pipe": true,
+        "swap": false
+      },
+      "das_us": 14.1242080078125,
+      "new_public_us": 13.5820224609375,
+      "das_over_new": 1.0399193528382353,
+      "das_aa_drift": 0.01819724926349342,
+      "new_aa_drift": 0.001668134679835509,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "mmac_tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930028,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "peel_regression",
+        "seed": 907,
+        "dtype": "torch.float64",
+        "a_shape": [
+          576,
+          384
+        ],
+        "b_shape": [
+          384,
+          128
+        ],
+        "a_stride": [
+          384,
+          1
+        ],
+        "b_stride": [
+          128,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 0,
+        "config": {
+          "kind": "swizzle",
+          "group": 1,
+          "tm": 1,
+          "tn": 1,
+          "wm": 1,
+          "warps": 2,
+          "prefetch": 8,
+          "split": 1,
+          "trans": false,
+          "pipe": true,
+          "swap": false
+        },
+        "das_us": 14.1242080078125,
+        "new_public_us": 13.5820224609375,
+        "das_over_new": 1.0399193528382353,
+        "das_aa_drift": 0.01819724926349342,
+        "new_aa_drift": 0.001668134679835509,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mmac_tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930029,
+      "source": "initial-card0",
+      "physical_card": 0,
+      "label": "peel_regression",
+      "seed": 907,
+      "dtype": "torch.float64",
+      "a_shape": [
+        576,
+        384
+      ],
+      "b_shape": [
+        384,
+        128
+      ],
+      "a_stride": [
+        384,
+        1
+      ],
+      "b_stride": [
+        128,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 131072,
+      "config": {
+        "kind": "swizzle",
+        "group": 1,
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 8,
+        "split": 1,
+        "trans": false,
+        "pipe": true,
+        "swap": false
+      },
+      "das_us": 14.1365517578125,
+      "new_public_us": 13.5620224609375,
+      "das_over_new": 1.0423630987583015,
+      "das_aa_drift": 0.02573102741782196,
+      "new_aa_drift": 0.0010253452322057655,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "mmac_tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930029,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "peel_regression",
+        "seed": 907,
+        "dtype": "torch.float64",
+        "a_shape": [
+          576,
+          384
+        ],
+        "b_shape": [
+          384,
+          128
+        ],
+        "a_stride": [
+          384,
+          1
+        ],
+        "b_stride": [
+          128,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 131072,
+        "config": {
+          "kind": "swizzle",
+          "group": 1,
+          "tm": 1,
+          "tn": 1,
+          "wm": 1,
+          "warps": 2,
+          "prefetch": 8,
+          "split": 1,
+          "trans": false,
+          "pipe": true,
+          "swap": false
+        },
+        "das_us": 14.1365517578125,
+        "new_public_us": 13.5620224609375,
+        "das_over_new": 1.0423630987583015,
+        "das_aa_drift": 0.02573102741782196,
+        "new_aa_drift": 0.0010253452322057655,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mmac_tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930030,
+      "source": "final-lowbits-card0",
+      "physical_card": 0,
+      "label": "low_mantissa_bits",
+      "seed": null,
+      "dtype": "torch.float64",
+      "a_shape": [
+        192,
+        128
+      ],
+      "b_shape": [
+        128,
+        128
+      ],
+      "a_stride": [
+        128,
+        1
+      ],
+      "b_stride": [
+        128,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 0,
+      "config": {
+        "kind": "prefetch",
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 1,
+        "prefetch": 8,
+        "split": 1,
+        "trans": false
+      },
+      "das_us": 6.31671484375,
+      "new_public_us": 6.6254638671875,
+      "das_over_new": 0.9533996366704865,
+      "das_aa_drift": 0.004172361142243952,
+      "new_aa_drift": 0.013157904502767215,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "mmac_tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930030,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "low_mantissa_bits",
+        "seed": null,
+        "dtype": "torch.float64",
+        "a_shape": [
+          192,
+          128
+        ],
+        "b_shape": [
+          128,
+          128
+        ],
+        "a_stride": [
+          128,
+          1
+        ],
+        "b_stride": [
+          128,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 0,
+        "config": {
+          "kind": "prefetch",
+          "tm": 1,
+          "tn": 1,
+          "wm": 1,
+          "warps": 1,
+          "prefetch": 8,
+          "split": 1,
+          "trans": false
+        },
+        "das_us": 6.29421484375,
+        "new_public_us": 6.611712890625,
+        "das_over_new": 0.951979456439315,
+        "das_aa_drift": 0.0003727964733017952,
+        "new_aa_drift": 0.010775613247846927,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mmac_tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930031,
+      "source": "final-lowbits-card0",
+      "physical_card": 0,
+      "label": "low_mantissa_bits",
+      "seed": null,
+      "dtype": "torch.float64",
+      "a_shape": [
+        192,
+        89
+      ],
+      "b_shape": [
+        89,
+        6528
+      ],
+      "a_stride": [
+        89,
+        1
+      ],
+      "b_stride": [
+        6528,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 0,
+      "config": {
+        "kind": "swizzle",
+        "tm": 2,
+        "tn": 2,
+        "wm": 2,
+        "warps": 4,
+        "prefetch": 4,
+        "group": 1,
+        "pipe": true,
+        "swizzle": true,
+        "store": 0,
+        "swap": true
+      },
+      "das_us": 19.287796875,
+      "new_public_us": 21.073888671875,
+      "das_over_new": 0.9152462165533455,
+      "das_aa_drift": 0.0010132295353977305,
+      "new_aa_drift": 0.0005636356203251314,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "mmac_tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930031,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "low_mantissa_bits",
+        "seed": null,
+        "dtype": "torch.float64",
+        "a_shape": [
+          192,
+          89
+        ],
+        "b_shape": [
+          89,
+          6528
+        ],
+        "a_stride": [
+          89,
+          1
+        ],
+        "b_stride": [
+          6528,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 0,
+        "config": {
+          "kind": "swizzle",
+          "tm": 2,
+          "tn": 2,
+          "wm": 2,
+          "warps": 4,
+          "prefetch": 4,
+          "group": 1,
+          "pipe": true,
+          "swizzle": true,
+          "store": 0,
+          "swap": true
+        },
+        "das_us": 19.293423828125,
+        "new_public_us": 20.954205078125,
+        "das_over_new": 0.9207423405560843,
+        "das_aa_drift": 0.0008182402053933391,
+        "new_aa_drift": 0.001927413384996246,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mmac_tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930032,
+      "source": "final-lowbits-card0",
+      "physical_card": 0,
+      "label": "low_mantissa_bits",
+      "seed": null,
+      "dtype": "torch.float64",
+      "a_shape": [
+        2208,
+        64
+      ],
+      "b_shape": [
+        64,
+        1280
+      ],
+      "a_stride": [
+        64,
+        1
+      ],
+      "b_stride": [
+        1280,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 0,
+      "config": {
+        "kind": "swizzle",
+        "tm": 2,
+        "tn": 2,
+        "wm": 2,
+        "warps": 4,
+        "prefetch": 2,
+        "group": 1,
+        "pipe": true,
+        "swizzle": true,
+        "store": 2
+      },
+      "das_us": 30.3999755859375,
+      "new_public_us": 33.51216015625,
+      "das_over_new": 0.9071326779353531,
+      "das_aa_drift": 0.01308410344089106,
+      "new_aa_drift": 0.0005968094067885232,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "mmac_tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930032,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "low_mantissa_bits",
+        "seed": null,
+        "dtype": "torch.float64",
+        "a_shape": [
+          2208,
+          64
+        ],
+        "b_shape": [
+          64,
+          1280
+        ],
+        "a_stride": [
+          64,
+          1
+        ],
+        "b_stride": [
+          1280,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 0,
+        "config": {
+          "kind": "swizzle",
+          "tm": 2,
+          "tn": 2,
+          "wm": 2,
+          "warps": 4,
+          "prefetch": 2,
+          "group": 1,
+          "pipe": true,
+          "swizzle": true,
+          "store": 2
+        },
+        "das_us": 30.386228515625,
+        "new_public_us": 33.6777890625,
+        "das_over_new": 0.902263163987207,
+        "das_aa_drift": 0.011633085329231685,
+        "new_aa_drift": 0.0007472459230426498,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mmac_tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930033,
+      "source": "final-lowbits-card0",
+      "physical_card": 0,
+      "label": "low_mantissa_bits",
+      "seed": null,
+      "dtype": "torch.float64",
+      "a_shape": [
+        1344,
+        256
+      ],
+      "b_shape": [
+        256,
+        128
+      ],
+      "a_stride": [
+        256,
+        1
+      ],
+      "b_stride": [
+        128,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 0,
+      "config": {
+        "kind": "swizzle",
+        "group": 1,
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 8,
+        "split": 1,
+        "trans": false,
+        "pipe": true,
+        "swap": false
+      },
+      "das_us": 13.80983203125,
+      "new_public_us": 14.4779560546875,
+      "das_over_new": 0.9538523241185566,
+      "das_aa_drift": 0.0011776213308756223,
+      "new_aa_drift": 0.0026250428139216186,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "mmac_tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930033,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "low_mantissa_bits",
+        "seed": null,
+        "dtype": "torch.float64",
+        "a_shape": [
+          1344,
+          256
+        ],
+        "b_shape": [
+          256,
+          128
+        ],
+        "a_stride": [
+          256,
+          1
+        ],
+        "b_stride": [
+          128,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 0,
+        "config": {
+          "kind": "swizzle",
+          "group": 1,
+          "tm": 1,
+          "tn": 1,
+          "wm": 1,
+          "warps": 2,
+          "prefetch": 8,
+          "split": 1,
+          "trans": false,
+          "pipe": true,
+          "swap": false
+        },
+        "das_us": 13.8193642578125,
+        "new_public_us": 14.4498330078125,
+        "das_over_new": 0.9563684404062573,
+        "das_aa_drift": 0.0030601166286949866,
+        "new_aa_drift": 0.0016557020369396547,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mmac_tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930034,
+      "source": "final-lowbits-card0",
+      "physical_card": 0,
+      "label": "low_mantissa_bits",
+      "seed": null,
+      "dtype": "torch.float64",
+      "a_shape": [
+        2208,
+        64
+      ],
+      "b_shape": [
+        64,
+        64
+      ],
+      "a_stride": [
+        64,
+        1
+      ],
+      "b_stride": [
+        64,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 0,
+      "config": {
+        "kind": "swizzle",
+        "group": 1,
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 8,
+        "split": 1,
+        "trans": false,
+        "pipe": true,
+        "swap": false
+      },
+      "das_us": 6.041087890625,
+      "new_public_us": 5.97249609375,
+      "das_over_new": 1.011484611425159,
+      "das_aa_drift": 0.00960167017160063,
+      "new_aa_drift": 0.0022777865412924037,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "mmac_tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930034,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "low_mantissa_bits",
+        "seed": null,
+        "dtype": "torch.float64",
+        "a_shape": [
+          2208,
+          64
+        ],
+        "b_shape": [
+          64,
+          64
+        ],
+        "a_stride": [
+          64,
+          1
+        ],
+        "b_stride": [
+          64,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 0,
+        "config": {
+          "kind": "swizzle",
+          "group": 1,
+          "tm": 1,
+          "tn": 1,
+          "wm": 1,
+          "warps": 2,
+          "prefetch": 8,
+          "split": 1,
+          "trans": false,
+          "pipe": true,
+          "swap": false
+        },
+        "das_us": 6.03858984375,
+        "new_public_us": 5.93546484375,
+        "das_over_new": 1.0173743763487353,
+        "das_aa_drift": 0.00763260185402137,
+        "new_aa_drift": 0.011268565856704438,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mmac_tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930035,
+      "source": "final-lowbits-card0",
+      "physical_card": 0,
+      "label": "low_mantissa_bits",
+      "seed": null,
+      "dtype": "torch.float64",
+      "a_shape": [
+        576,
+        128
+      ],
+      "b_shape": [
+        128,
+        128
+      ],
+      "a_stride": [
+        128,
+        1
+      ],
+      "b_stride": [
+        128,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 0,
+      "config": {
+        "kind": "swizzle",
+        "group": 1,
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 8,
+        "split": 1,
+        "trans": false,
+        "pipe": true,
+        "swap": false
+      },
+      "das_us": 7.0107744140625,
+      "new_public_us": 6.5209306640625,
+      "das_over_new": 1.075118687076306,
+      "das_aa_drift": 0.0019407532102246883,
+      "new_aa_drift": 0.008316267659074672,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "mmac_tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930035,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "low_mantissa_bits",
+        "seed": null,
+        "dtype": "torch.float64",
+        "a_shape": [
+          576,
+          128
+        ],
+        "b_shape": [
+          128,
+          128
+        ],
+        "a_stride": [
+          128,
+          1
+        ],
+        "b_stride": [
+          128,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 0,
+        "config": {
+          "kind": "swizzle",
+          "group": 1,
+          "tm": 1,
+          "tn": 1,
+          "wm": 1,
+          "warps": 2,
+          "prefetch": 8,
+          "split": 1,
+          "trans": false,
+          "pipe": true,
+          "swap": false
+        },
+        "das_us": 7.01999609375,
+        "new_public_us": 6.47999609375,
+        "das_over_new": 1.08333338356806,
+        "das_aa_drift": 0.00551585837196189,
+        "new_aa_drift": 0.005996860111751934,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mmac_tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930036,
+      "source": "final-lowbits-card0",
+      "physical_card": 0,
+      "label": "low_mantissa_bits",
+      "seed": null,
+      "dtype": "torch.float64",
+      "a_shape": [
+        2208,
+        64
+      ],
+      "b_shape": [
+        64,
+        512
+      ],
+      "a_stride": [
+        64,
+        1
+      ],
+      "b_stride": [
+        512,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 0,
+      "config": {
+        "kind": "swizzle",
+        "tm": 1,
+        "tn": 2,
+        "wm": 4,
+        "warps": 4,
+        "prefetch": 4,
+        "group": 1,
+        "pipe": true,
+        "swap": true
+      },
+      "das_us": 14.3279580078125,
+      "new_public_us": 15.616861328125,
+      "das_over_new": 0.9174671982268765,
+      "das_aa_drift": 0.0019084493702314909,
+      "new_aa_drift": 0.0015425156502109072,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "mmac_tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930036,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "low_mantissa_bits",
+        "seed": null,
+        "dtype": "torch.float64",
+        "a_shape": [
+          2208,
+          64
+        ],
+        "b_shape": [
+          64,
+          512
+        ],
+        "a_stride": [
+          64,
+          1
+        ],
+        "b_stride": [
+          512,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 0,
+        "config": {
+          "kind": "swizzle",
+          "tm": 1,
+          "tn": 2,
+          "wm": 4,
+          "warps": 4,
+          "prefetch": 4,
+          "group": 1,
+          "pipe": true,
+          "swap": true
+        },
+        "das_us": 14.3221767578125,
+        "new_public_us": 15.608427734375,
+        "das_over_new": 0.9175925340814601,
+        "das_aa_drift": 0.0014842633637077718,
+        "new_aa_drift": 0.001653613199338766,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mmac_tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930037,
+      "source": "final-lowbits-card0",
+      "physical_card": 0,
+      "label": "low_mantissa_bits",
+      "seed": null,
+      "dtype": "torch.float64",
+      "a_shape": [
+        576,
+        384
+      ],
+      "b_shape": [
+        384,
+        128
+      ],
+      "a_stride": [
+        384,
+        1
+      ],
+      "b_stride": [
+        128,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 0,
+      "config": {
+        "kind": "swizzle",
+        "group": 1,
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 8,
+        "split": 1,
+        "trans": false,
+        "pipe": true,
+        "swap": false
+      },
+      "das_us": 13.71561328125,
+      "new_public_us": 13.5610830078125,
+      "das_over_new": 1.011395127759964,
+      "das_aa_drift": 0.028271593323214717,
+      "new_aa_drift": 0.002829232233702683,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "mmac_tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930037,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "low_mantissa_bits",
+        "seed": null,
+        "dtype": "torch.float64",
+        "a_shape": [
+          576,
+          384
+        ],
+        "b_shape": [
+          384,
+          128
+        ],
+        "a_stride": [
+          384,
+          1
+        ],
+        "b_stride": [
+          128,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 0,
+        "config": {
+          "kind": "swizzle",
+          "group": 1,
+          "tm": 1,
+          "tn": 1,
+          "wm": 1,
+          "warps": 2,
+          "prefetch": 8,
+          "split": 1,
+          "trans": false,
+          "pipe": true,
+          "swap": false
+        },
+        "das_us": 14.1256162109375,
+        "new_public_us": 13.5287392578125,
+        "das_over_new": 1.0441191852212184,
+        "das_aa_drift": 0.1510598023665699,
+        "new_aa_drift": 0.0023019785461499964,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mmac_tiled"
+        ],
+        "status": "unstable"
+      }
+    },
+    {
+      "case": 930038,
+      "source": "final-card1",
+      "physical_card": 1,
+      "label": "both_strides",
+      "seed": 7,
+      "dtype": "torch.float32",
+      "a_shape": [
+        33,
+        65
+      ],
+      "b_shape": [
+        65,
+        37
+      ],
+      "a_stride": [
+        137,
+        2
+      ],
+      "b_stride": [
+        83,
+        2
+      ],
+      "a_offset": 7,
+      "b_offset": 5,
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 4
+      },
+      "das_us": 14.459208984375,
+      "new_public_us": 4.80046484375,
+      "das_over_new": 3.0120435114112483,
+      "das_aa_drift": 0.0038867562704734127,
+      "new_aa_drift": 0.021846058576732164,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "reduction"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930038,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "both_strides",
+        "seed": 7,
+        "dtype": "torch.float32",
+        "a_shape": [
+          33,
+          65
+        ],
+        "b_shape": [
+          65,
+          37
+        ],
+        "a_stride": [
+          137,
+          2
+        ],
+        "b_stride": [
+          83,
+          2
+        ],
+        "a_offset": 7,
+        "b_offset": 5,
+        "config": null,
+        "das_us": 14.3487392578125,
+        "new_public_us": 18.9463935546875,
+        "das_over_new": 0.7573335377202961,
+        "das_aa_drift": 0.008551670438774917,
+        "new_aa_drift": 0.0015096013253184104,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mm_kernel",
+          "void at::native::elementwise_kernel_manual_unroll<128, 4, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1} const&)::{lambda(int, bool)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1} const&)::{lambda(int, bool)#1})"
+        ],
+        "status": "below_target"
+      }
+    },
+    {
+      "case": 930039,
+      "source": "final-card1",
+      "physical_card": 1,
+      "label": "both_strides",
+      "seed": 101,
+      "dtype": "torch.float32",
+      "a_shape": [
+        33,
+        65
+      ],
+      "b_shape": [
+        65,
+        37
+      ],
+      "a_stride": [
+        137,
+        2
+      ],
+      "b_stride": [
+        83,
+        2
+      ],
+      "a_offset": 7,
+      "b_offset": 5,
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 4
+      },
+      "das_us": 14.483271484375,
+      "new_public_us": 4.80843359375,
+      "das_over_new": 3.012056047358198,
+      "das_aa_drift": 0.0037149053151359634,
+      "new_aa_drift": 0.009736774821740513,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "reduction"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930039,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "both_strides",
+        "seed": 101,
+        "dtype": "torch.float32",
+        "a_shape": [
+          33,
+          65
+        ],
+        "b_shape": [
+          65,
+          37
+        ],
+        "a_stride": [
+          137,
+          2
+        ],
+        "b_stride": [
+          83,
+          2
+        ],
+        "a_offset": 7,
+        "b_offset": 5,
+        "config": null,
+        "das_us": 14.3845205078125,
+        "new_public_us": 18.979361328125,
+        "das_over_new": 0.7579032960659465,
+        "das_aa_drift": 0.006875522258157574,
+        "new_aa_drift": 0.0030625997240978364,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mm_kernel",
+          "void at::native::elementwise_kernel_manual_unroll<128, 4, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1} const&)::{lambda(int, bool)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1} const&)::{lambda(int, bool)#1})"
+        ],
+        "status": "below_target"
+      }
+    },
+    {
+      "case": 930040,
+      "source": "final-card1",
+      "physical_card": 1,
+      "label": "empty_dimension",
+      "seed": null,
+      "dtype": "torch.float32",
+      "a_shape": [
+        0,
+        9
+      ],
+      "b_shape": [
+        9,
+        17
+      ],
+      "a_stride": [
+        9,
+        1
+      ],
+      "b_stride": [
+        17,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 0,
+      "config": {
+        "kind": "small",
+        "block": 256,
+        "warps": 4
+      },
+      "das_us": 0.0,
+      "new_public_us": 0.0,
+      "das_over_new": null,
+      "das_aa_drift": 0,
+      "new_aa_drift": 0,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [],
+      "status": "no_device_work",
+      "earlier_initial_result": {
+        "case": 930040,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "empty_dimension",
+        "seed": null,
+        "dtype": "torch.float32",
+        "a_shape": [
+          0,
+          9
+        ],
+        "b_shape": [
+          9,
+          17
+        ],
+        "a_stride": [
+          9,
+          1
+        ],
+        "b_stride": [
+          17,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 0,
+        "config": {
+          "kind": "small",
+          "block": 256,
+          "warps": 4
+        },
+        "das_us": 0.0,
+        "new_public_us": 0.0,
+        "das_over_new": null,
+        "das_aa_drift": 0,
+        "new_aa_drift": 0,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [],
+        "status": "no_device_work"
+      }
+    },
+    {
+      "case": 930041,
+      "source": "final-card1",
+      "physical_card": 1,
+      "label": "empty_dimension",
+      "seed": null,
+      "dtype": "torch.float32",
+      "a_shape": [
+        13,
+        9
+      ],
+      "b_shape": [
+        9,
+        0
+      ],
+      "a_stride": [
+        9,
+        1
+      ],
+      "b_stride": [
+        1,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 0,
+      "config": {
+        "kind": "small",
+        "block": 256,
+        "warps": 4
+      },
+      "das_us": 0.0,
+      "new_public_us": 0.0,
+      "das_over_new": null,
+      "das_aa_drift": 0,
+      "new_aa_drift": 0,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [],
+      "status": "no_device_work",
+      "earlier_initial_result": {
+        "case": 930041,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "empty_dimension",
+        "seed": null,
+        "dtype": "torch.float32",
+        "a_shape": [
+          13,
+          9
+        ],
+        "b_shape": [
+          9,
+          0
+        ],
+        "a_stride": [
+          9,
+          1
+        ],
+        "b_stride": [
+          1,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 0,
+        "config": {
+          "kind": "small",
+          "block": 256,
+          "warps": 4
+        },
+        "das_us": 0.0,
+        "new_public_us": 0.0,
+        "das_over_new": null,
+        "das_aa_drift": 0,
+        "new_aa_drift": 0,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [],
+        "status": "no_device_work"
+      }
+    },
+    {
+      "case": 930042,
+      "source": "final-card1",
+      "physical_card": 1,
+      "label": "empty_dimension",
+      "seed": null,
+      "dtype": "torch.float32",
+      "a_shape": [
+        13,
+        0
+      ],
+      "b_shape": [
+        0,
+        17
+      ],
+      "a_stride": [
+        1,
+        1
+      ],
+      "b_stride": [
+        17,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 0,
+      "config": {
+        "kind": "small",
+        "block": 256,
+        "warps": 4
+      },
+      "das_us": 4.8504638671875,
+      "new_public_us": 4.8304658203125,
+      "das_over_new": 1.0041399831028524,
+      "das_aa_drift": 0.0028388945489796757,
+      "new_aa_drift": 0.01197390618305838,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "small_k"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930042,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "empty_dimension",
+        "seed": null,
+        "dtype": "torch.float32",
+        "a_shape": [
+          13,
+          0
+        ],
+        "b_shape": [
+          0,
+          17
+        ],
+        "a_stride": [
+          1,
+          1
+        ],
+        "b_stride": [
+          17,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 0,
+        "config": {
+          "kind": "small",
+          "block": 256,
+          "warps": 4
+        },
+        "das_us": 4.8071845703125,
+        "new_public_us": 4.8198408203125,
+        "das_over_new": 0.9973741352729613,
+        "das_aa_drift": 0.011614669938615263,
+        "new_aa_drift": 0.007495461613392207,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "small_k"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930043,
+      "source": "final-card1",
+      "physical_card": 1,
+      "label": "both_strides",
+      "seed": 7,
+      "dtype": "torch.float64",
+      "a_shape": [
+        33,
+        65
+      ],
+      "b_shape": [
+        65,
+        37
+      ],
+      "a_stride": [
+        137,
+        2
+      ],
+      "b_stride": [
+        83,
+        2
+      ],
+      "a_offset": 7,
+      "b_offset": 5,
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 4
+      },
+      "das_us": 15.1663955078125,
+      "new_public_us": 4.8209326171875,
+      "das_over_new": 3.1459463784541493,
+      "das_aa_drift": 0.002157443156308503,
+      "new_aa_drift": 0.004782765614595119,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "reduction"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930043,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "both_strides",
+        "seed": 7,
+        "dtype": "torch.float64",
+        "a_shape": [
+          33,
+          65
+        ],
+        "b_shape": [
+          65,
+          37
+        ],
+        "a_stride": [
+          137,
+          2
+        ],
+        "b_stride": [
+          83,
+          2
+        ],
+        "a_offset": 7,
+        "b_offset": 5,
+        "config": null,
+        "das_us": 15.1782705078125,
+        "new_public_us": 56.1615244140625,
+        "das_over_new": 0.2702610134993408,
+        "das_aa_drift": 0.005616821399212046,
+        "new_aa_drift": 0.00022536089306290918,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mm_kernel",
+          "void at::native::elementwise_kernel_manual_unroll<128, 4, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#6}::operator()() const::{lambda(double)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#6}::operator()() const::{lambda(double)#1} const&)::{lambda(int, bool)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#6}::operator()() const::{lambda(double)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#6}::operator()() const::{lambda(double)#1} const&)::{lambda(int, bool)#1})"
+        ],
+        "status": "below_target"
+      }
+    },
+    {
+      "case": 930044,
+      "source": "final-card1",
+      "physical_card": 1,
+      "label": "both_strides",
+      "seed": 101,
+      "dtype": "torch.float64",
+      "a_shape": [
+        33,
+        65
+      ],
+      "b_shape": [
+        65,
+        37
+      ],
+      "a_stride": [
+        137,
+        2
+      ],
+      "b_stride": [
+        83,
+        2
+      ],
+      "a_offset": 7,
+      "b_offset": 5,
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 4
+      },
+      "das_us": 15.2317080078125,
+      "new_public_us": 4.7968720703125,
+      "das_over_new": 3.1753417194676623,
+      "das_aa_drift": 0.0036027060728767157,
+      "new_aa_drift": 0.005317592606751909,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "reduction"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930044,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "both_strides",
+        "seed": 101,
+        "dtype": "torch.float64",
+        "a_shape": [
+          33,
+          65
+        ],
+        "b_shape": [
+          65,
+          37
+        ],
+        "a_stride": [
+          137,
+          2
+        ],
+        "b_stride": [
+          83,
+          2
+        ],
+        "a_offset": 7,
+        "b_offset": 5,
+        "config": null,
+        "das_us": 15.1595205078125,
+        "new_public_us": 56.1576181640625,
+        "das_over_new": 0.2699459308178722,
+        "das_aa_drift": 0.005464145458553116,
+        "new_aa_drift": 0.0006375531212341468,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "mm_kernel",
+          "void at::native::elementwise_kernel_manual_unroll<128, 4, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#6}::operator()() const::{lambda(double)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#6}::operator()() const::{lambda(double)#1} const&)::{lambda(int, bool)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#6}::operator()() const::{lambda(double)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#6}::operator()() const::{lambda(double)#1} const&)::{lambda(int, bool)#1})"
+        ],
+        "status": "below_target"
+      }
+    },
+    {
+      "case": 930045,
+      "source": "final-card1",
+      "physical_card": 1,
+      "label": "empty_dimension",
+      "seed": null,
+      "dtype": "torch.float64",
+      "a_shape": [
+        0,
+        9
+      ],
+      "b_shape": [
+        9,
+        17
+      ],
+      "a_stride": [
+        9,
+        1
+      ],
+      "b_stride": [
+        17,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 0,
+      "config": {
+        "kind": "small",
+        "block": 256,
+        "warps": 4
+      },
+      "das_us": 0.0,
+      "new_public_us": 0.0,
+      "das_over_new": null,
+      "das_aa_drift": 0,
+      "new_aa_drift": 0,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [],
+      "status": "no_device_work",
+      "earlier_initial_result": {
+        "case": 930045,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "empty_dimension",
+        "seed": null,
+        "dtype": "torch.float64",
+        "a_shape": [
+          0,
+          9
+        ],
+        "b_shape": [
+          9,
+          17
+        ],
+        "a_stride": [
+          9,
+          1
+        ],
+        "b_stride": [
+          17,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 0,
+        "config": {
+          "kind": "small",
+          "block": 256,
+          "warps": 4
+        },
+        "das_us": 0.0,
+        "new_public_us": 0.0,
+        "das_over_new": null,
+        "das_aa_drift": 0,
+        "new_aa_drift": 0,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [],
+        "status": "no_device_work"
+      }
+    },
+    {
+      "case": 930046,
+      "source": "final-card1",
+      "physical_card": 1,
+      "label": "empty_dimension",
+      "seed": null,
+      "dtype": "torch.float64",
+      "a_shape": [
+        13,
+        9
+      ],
+      "b_shape": [
+        9,
+        0
+      ],
+      "a_stride": [
+        9,
+        1
+      ],
+      "b_stride": [
+        1,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 0,
+      "config": {
+        "kind": "small",
+        "block": 256,
+        "warps": 4
+      },
+      "das_us": 0.0,
+      "new_public_us": 0.0,
+      "das_over_new": null,
+      "das_aa_drift": 0,
+      "new_aa_drift": 0,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [],
+      "status": "no_device_work",
+      "earlier_initial_result": {
+        "case": 930046,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "empty_dimension",
+        "seed": null,
+        "dtype": "torch.float64",
+        "a_shape": [
+          13,
+          9
+        ],
+        "b_shape": [
+          9,
+          0
+        ],
+        "a_stride": [
+          9,
+          1
+        ],
+        "b_stride": [
+          1,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 0,
+        "config": {
+          "kind": "small",
+          "block": 256,
+          "warps": 4
+        },
+        "das_us": 0.0,
+        "new_public_us": 0.0,
+        "das_over_new": null,
+        "das_aa_drift": 0,
+        "new_aa_drift": 0,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [],
+        "status": "no_device_work"
+      }
+    },
+    {
+      "case": 930047,
+      "source": "final-card1",
+      "physical_card": 1,
+      "label": "empty_dimension",
+      "seed": null,
+      "dtype": "torch.float64",
+      "a_shape": [
+        13,
+        0
+      ],
+      "b_shape": [
+        0,
+        17
+      ],
+      "a_stride": [
+        1,
+        1
+      ],
+      "b_stride": [
+        17,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 0,
+      "config": {
+        "kind": "small",
+        "block": 256,
+        "warps": 4
+      },
+      "das_us": 4.7904658203125,
+      "new_public_us": 4.8137470703125,
+      "das_over_new": 0.9951635909282436,
+      "das_aa_drift": 0.006812565598939058,
+      "new_aa_drift": 0.008699326877410263,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "small_k"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930047,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "empty_dimension",
+        "seed": null,
+        "dtype": "torch.float64",
+        "a_shape": [
+          13,
+          0
+        ],
+        "b_shape": [
+          0,
+          17
+        ],
+        "a_stride": [
+          1,
+          1
+        ],
+        "b_stride": [
+          17,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 0,
+        "config": {
+          "kind": "small",
+          "block": 256,
+          "warps": 4
+        },
+        "das_us": 4.7406220703125,
+        "new_public_us": 4.7831220703125,
+        "das_over_new": 0.9911145901410742,
+        "das_aa_drift": 0.011901616891842215,
+        "new_aa_drift": 0.01826560838295288,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "small_k"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930048,
+      "source": "final-card1",
+      "physical_card": 1,
+      "label": "bf16_control",
+      "seed": 880301,
+      "dtype": "torch.bfloat16",
+      "a_shape": [
+        32,
+        64
+      ],
+      "b_shape": [
+        64,
+        32
+      ],
+      "a_stride": [
+        64,
+        1
+      ],
+      "b_stride": [
+        32,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 0,
+      "config": {
+        "kind": "tile",
+        "bm": 32,
+        "bn": 32,
+        "bk": 32,
+        "warps": 4,
+        "stages": 1,
+        "split": 1,
+        "group": 1
+      },
+      "das_us": 5.3034345703125,
+      "new_public_us": 4.8596845703125,
+      "das_over_new": 1.091312510838839,
+      "das_aa_drift": 0.00783004806800025,
+      "new_aa_drift": 0.008682979517442568,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930048,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "bf16_control",
+        "seed": 880301,
+        "dtype": "torch.bfloat16",
+        "a_shape": [
+          32,
+          64
+        ],
+        "b_shape": [
+          64,
+          32
+        ],
+        "a_stride": [
+          64,
+          1
+        ],
+        "b_stride": [
+          32,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 0,
+        "config": {
+          "kind": "tile",
+          "bm": 32,
+          "bn": 32,
+          "bk": 32,
+          "warps": 4,
+          "stages": 1,
+          "split": 1,
+          "group": 1
+        },
+        "das_us": 5.3282763671875,
+        "new_public_us": 4.7639033203125,
+        "das_over_new": 1.1184686188883401,
+        "das_aa_drift": 0.013254250878736551,
+        "new_aa_drift": 0.006662492988612545,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930049,
+      "source": "final-card1",
+      "physical_card": 1,
+      "label": "bf16_control",
+      "seed": 880301,
+      "dtype": "torch.bfloat16",
+      "a_shape": [
+        32,
+        64
+      ],
+      "b_shape": [
+        64,
+        32
+      ],
+      "a_stride": [
+        64,
+        1
+      ],
+      "b_stride": [
+        32,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 17,
+      "config": {
+        "kind": "tile",
+        "bm": 32,
+        "bn": 32,
+        "bk": 32,
+        "warps": 4,
+        "stages": 1,
+        "split": 1,
+        "group": 1
+      },
+      "das_us": 5.4045283203125,
+      "new_public_us": 4.8035908203125,
+      "das_over_new": 1.1251017254548141,
+      "das_aa_drift": 0.005566672592128841,
+      "new_aa_drift": 0.01011589699708848,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930049,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "bf16_control",
+        "seed": 880301,
+        "dtype": "torch.bfloat16",
+        "a_shape": [
+          32,
+          64
+        ],
+        "b_shape": [
+          64,
+          32
+        ],
+        "a_stride": [
+          64,
+          1
+        ],
+        "b_stride": [
+          32,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 17,
+        "config": {
+          "kind": "tile",
+          "bm": 32,
+          "bn": 32,
+          "bk": 32,
+          "warps": 4,
+          "stages": 1,
+          "split": 1,
+          "group": 1
+        },
+        "das_us": 5.4454658203125,
+        "new_public_us": 4.7879658203125,
+        "das_over_new": 1.137323453148019,
+        "das_aa_drift": 0.011205536802644689,
+        "new_aa_drift": 0.0012728051912500593,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930050,
+      "source": "final-card1",
+      "physical_card": 1,
+      "label": "bf16_control",
+      "seed": 7,
+      "dtype": "torch.bfloat16",
+      "a_shape": [
+        32,
+        64
+      ],
+      "b_shape": [
+        64,
+        32
+      ],
+      "a_stride": [
+        64,
+        1
+      ],
+      "b_stride": [
+        32,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 0,
+      "config": {
+        "kind": "tile",
+        "bm": 32,
+        "bn": 32,
+        "bk": 32,
+        "warps": 4,
+        "stages": 1,
+        "split": 1,
+        "group": 1
+      },
+      "das_us": 5.3178076171875,
+      "new_public_us": 4.8071845703125,
+      "das_over_new": 1.106220811663532,
+      "das_aa_drift": 0.008960263780702693,
+      "new_aa_drift": 0.0013011528417481433,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930050,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "bf16_control",
+        "seed": 7,
+        "dtype": "torch.bfloat16",
+        "a_shape": [
+          32,
+          64
+        ],
+        "b_shape": [
+          64,
+          32
+        ],
+        "a_stride": [
+          64,
+          1
+        ],
+        "b_stride": [
+          32,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 0,
+        "config": {
+          "kind": "tile",
+          "bm": 32,
+          "bn": 32,
+          "bk": 32,
+          "warps": 4,
+          "stages": 1,
+          "split": 1,
+          "group": 1
+        },
+        "das_us": 5.2578095703125,
+        "new_public_us": 4.7889033203125,
+        "das_over_new": 1.097915163167128,
+        "das_aa_drift": 0.00618238366186219,
+        "new_aa_drift": 0.00839156786200923,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930051,
+      "source": "final-card1",
+      "physical_card": 1,
+      "label": "bf16_control",
+      "seed": 7,
+      "dtype": "torch.bfloat16",
+      "a_shape": [
+        32,
+        64
+      ],
+      "b_shape": [
+        64,
+        32
+      ],
+      "a_stride": [
+        64,
+        1
+      ],
+      "b_stride": [
+        32,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 17,
+      "config": {
+        "kind": "tile",
+        "bm": 32,
+        "bn": 32,
+        "bk": 32,
+        "warps": 4,
+        "stages": 1,
+        "split": 1,
+        "group": 1
+      },
+      "das_us": 5.4073388671875,
+      "new_public_us": 4.7692138671875,
+      "das_over_new": 1.1338008774130137,
+      "das_aa_drift": 0.020406998600460913,
+      "new_aa_drift": 0.012453722526670763,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930051,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "bf16_control",
+        "seed": 7,
+        "dtype": "torch.bfloat16",
+        "a_shape": [
+          32,
+          64
+        ],
+        "b_shape": [
+          64,
+          32
+        ],
+        "a_stride": [
+          64,
+          1
+        ],
+        "b_stride": [
+          32,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 17,
+        "config": {
+          "kind": "tile",
+          "bm": 32,
+          "bn": 32,
+          "bk": 32,
+          "warps": 4,
+          "stages": 1,
+          "split": 1,
+          "group": 1
+        },
+        "das_us": 5.4564033203125,
+        "new_public_us": 4.7621845703125,
+        "das_over_new": 1.1457773716558082,
+        "das_aa_drift": 0.003896850231115634,
+        "new_aa_drift": 0.010396795253665436,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930052,
+      "source": "final-card1",
+      "physical_card": 1,
+      "label": "bf16_control",
+      "seed": 101,
+      "dtype": "torch.bfloat16",
+      "a_shape": [
+        32,
+        64
+      ],
+      "b_shape": [
+        64,
+        32
+      ],
+      "a_stride": [
+        64,
+        1
+      ],
+      "b_stride": [
+        32,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 0,
+      "config": {
+        "kind": "tile",
+        "bm": 32,
+        "bn": 32,
+        "bk": 32,
+        "warps": 4,
+        "stages": 1,
+        "split": 1,
+        "group": 1
+      },
+      "das_us": 5.3321826171875,
+      "new_public_us": 4.8179638671875,
+      "das_over_new": 1.1067294741461347,
+      "das_aa_drift": 0.007200620463300167,
+      "new_aa_drift": 0.0022397529779687453,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930052,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "bf16_control",
+        "seed": 101,
+        "dtype": "torch.bfloat16",
+        "a_shape": [
+          32,
+          64
+        ],
+        "b_shape": [
+          64,
+          32
+        ],
+        "a_stride": [
+          64,
+          1
+        ],
+        "b_stride": [
+          32,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 0,
+        "config": {
+          "kind": "tile",
+          "bm": 32,
+          "bn": 32,
+          "bk": 32,
+          "warps": 4,
+          "stages": 1,
+          "split": 1,
+          "group": 1
+        },
+        "das_us": 5.3132783203125,
+        "new_public_us": 4.7673408203125,
+        "das_over_new": 1.1145161465431401,
+        "das_aa_drift": 0.00798186114691024,
+        "new_aa_drift": 0.0018367291298064803,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "tiled"
+        ],
+        "status": "passes"
+      }
+    },
+    {
+      "case": 930053,
+      "source": "final-card1",
+      "physical_card": 1,
+      "label": "bf16_control",
+      "seed": 101,
+      "dtype": "torch.bfloat16",
+      "a_shape": [
+        32,
+        64
+      ],
+      "b_shape": [
+        64,
+        32
+      ],
+      "a_stride": [
+        64,
+        1
+      ],
+      "b_stride": [
+        32,
+        1
+      ],
+      "a_offset": 0,
+      "b_offset": 17,
+      "config": {
+        "kind": "tile",
+        "bm": 32,
+        "bn": 32,
+        "bk": 32,
+        "warps": 4,
+        "stages": 1,
+        "split": 1,
+        "group": 1
+      },
+      "das_us": 5.4354658203125,
+      "new_public_us": 4.7924951171875,
+      "das_over_new": 1.1341619944106132,
+      "das_aa_drift": 0.014763187188698401,
+      "new_aa_drift": 0.009855846124533052,
+      "das_correct": true,
+      "new_correct": true,
+      "actual_new_kernels": [
+        "tiled"
+      ],
+      "status": "passes",
+      "earlier_initial_result": {
+        "case": 930053,
+        "source": "initial-card0",
+        "physical_card": 0,
+        "label": "bf16_control",
+        "seed": 101,
+        "dtype": "torch.bfloat16",
+        "a_shape": [
+          32,
+          64
+        ],
+        "b_shape": [
+          64,
+          32
+        ],
+        "a_stride": [
+          64,
+          1
+        ],
+        "b_stride": [
+          32,
+          1
+        ],
+        "a_offset": 0,
+        "b_offset": 17,
+        "config": {
+          "kind": "tile",
+          "bm": 32,
+          "bn": 32,
+          "bk": 32,
+          "warps": 4,
+          "stages": 1,
+          "split": 1,
+          "group": 1
+        },
+        "das_us": 5.4424970703125,
+        "new_public_us": 4.8195283203125,
+        "das_over_new": 1.1292592777958002,
+        "das_aa_drift": 0.01042747423421897,
+        "new_aa_drift": 0.012854574226045745,
+        "das_correct": true,
+        "new_correct": true,
+        "actual_new_kernels": [
+          "tiled"
+        ],
+        "status": "passes"
+      }
+    }
+  ]
+}

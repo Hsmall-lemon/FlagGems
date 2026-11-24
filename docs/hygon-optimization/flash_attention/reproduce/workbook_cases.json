@@ -1,0 +1,309 @@
+{
+  "workbook_name": "待优化设备耗时的算子1.xlsx",
+  "workbook_sha256": "d2596052c66d7145af47b35fda45198d1f213b69825aeb91d10112dfd8871597",
+  "operator": "aten::_scaled_dot_product_flash_attention",
+  "cases": [
+    {
+      "id": "model_state",
+      "sheet": "大于5%的模型工况",
+      "row": 645,
+      "specification": [
+        [
+          {
+            "tensor": true,
+            "shape": [
+              8,
+              16,
+              2049,
+              128
+            ],
+            "stride": [
+              12589056,
+              128,
+              6144,
+              1
+            ],
+            "dtype": "torch.bfloat16",
+            "device": "cuda:0",
+            "layout": "torch.strided",
+            "storage_offset": 0,
+            "requires_grad": false,
+            "is_contiguous": false
+          },
+          {
+            "tensor": true,
+            "shape": [
+              8,
+              16,
+              2049,
+              128
+            ],
+            "stride": [
+              12589056,
+              128,
+              6144,
+              1
+            ],
+            "dtype": "torch.bfloat16",
+            "device": "cuda:0",
+            "layout": "torch.strided",
+            "storage_offset": 2048,
+            "requires_grad": false,
+            "is_contiguous": false
+          },
+          {
+            "tensor": true,
+            "shape": [
+              8,
+              16,
+              2049,
+              128
+            ],
+            "stride": [
+              12589056,
+              128,
+              6144,
+              1
+            ],
+            "dtype": "torch.bfloat16",
+            "device": "cuda:0",
+            "layout": "torch.strided",
+            "storage_offset": 4096,
+            "requires_grad": false,
+            "is_contiguous": false
+          }
+        ],
+        {
+          "scale": 0.08838834764831843
+        }
+      ],
+      "seed": 20261105,
+      "generation": "CPU direct BF16 randn",
+      "storage": "shared_qkv_backing_from_user_review",
+      "input_scope": "metadata reconstruction; original model payload and external contract not replayed",
+      "original_model_acceptance_verified": false
+    },
+    {
+      "id": "expanded_small",
+      "sheet": "规模扩展工况",
+      "row": 2,
+      "specification": [
+        [
+          {
+            "device": "cuda:0",
+            "dtype": "torch.bfloat16",
+            "layout": "torch.strided",
+            "requires_grad": false,
+            "shape": [
+              2,
+              16,
+              3,
+              128
+            ],
+            "storage_offset": 0,
+            "stride": [
+              18432,
+              128,
+              6144,
+              1
+            ]
+          },
+          {
+            "device": "cuda:0",
+            "dtype": "torch.bfloat16",
+            "layout": "torch.strided",
+            "requires_grad": false,
+            "shape": [
+              2,
+              16,
+              3,
+              128
+            ],
+            "storage_offset": 2048,
+            "stride": [
+              18432,
+              128,
+              6144,
+              1
+            ]
+          },
+          {
+            "device": "cuda:0",
+            "dtype": "torch.bfloat16",
+            "layout": "torch.strided",
+            "requires_grad": false,
+            "shape": [
+              2,
+              16,
+              3,
+              128
+            ],
+            "storage_offset": 4096,
+            "stride": [
+              18432,
+              128,
+              6144,
+              1
+            ]
+          }
+        ],
+        {
+          "scale": 0.08838834764831843
+        }
+      ],
+      "seed": 5058009176373978791,
+      "generation": "CPU direct BF16 randn",
+      "storage": "independent_minimum_backings_from_expansion_spec",
+      "input_scope": "independent synthetic input; shape/stride/offset and seed from workbook",
+      "original_model_acceptance_verified": false
+    },
+    {
+      "id": "expanded_medium",
+      "sheet": "规模扩展工况",
+      "row": 3,
+      "specification": [
+        [
+          {
+            "device": "cuda:0",
+            "dtype": "torch.bfloat16",
+            "layout": "torch.strided",
+            "requires_grad": false,
+            "shape": [
+              2,
+              16,
+              23,
+              128
+            ],
+            "storage_offset": 0,
+            "stride": [
+              141312,
+              128,
+              6144,
+              1
+            ]
+          },
+          {
+            "device": "cuda:0",
+            "dtype": "torch.bfloat16",
+            "layout": "torch.strided",
+            "requires_grad": false,
+            "shape": [
+              2,
+              16,
+              23,
+              128
+            ],
+            "storage_offset": 2048,
+            "stride": [
+              141312,
+              128,
+              6144,
+              1
+            ]
+          },
+          {
+            "device": "cuda:0",
+            "dtype": "torch.bfloat16",
+            "layout": "torch.strided",
+            "requires_grad": false,
+            "shape": [
+              2,
+              16,
+              23,
+              128
+            ],
+            "storage_offset": 4096,
+            "stride": [
+              141312,
+              128,
+              6144,
+              1
+            ]
+          }
+        ],
+        {
+          "scale": 0.08838834764831843
+        }
+      ],
+      "seed": 6792970978253416049,
+      "generation": "CPU direct BF16 randn",
+      "storage": "independent_minimum_backings_from_expansion_spec",
+      "input_scope": "independent synthetic input; shape/stride/offset and seed from workbook",
+      "original_model_acceptance_verified": false
+    },
+    {
+      "id": "expanded_large",
+      "sheet": "规模扩展工况",
+      "row": 4,
+      "specification": [
+        [
+          {
+            "device": "cuda:0",
+            "dtype": "torch.bfloat16",
+            "layout": "torch.strided",
+            "requires_grad": false,
+            "shape": [
+              2,
+              16,
+              362,
+              128
+            ],
+            "storage_offset": 0,
+            "stride": [
+              2224128,
+              128,
+              6144,
+              1
+            ]
+          },
+          {
+            "device": "cuda:0",
+            "dtype": "torch.bfloat16",
+            "layout": "torch.strided",
+            "requires_grad": false,
+            "shape": [
+              2,
+              16,
+              362,
+              128
+            ],
+            "storage_offset": 2048,
+            "stride": [
+              2224128,
+              128,
+              6144,
+              1
+            ]
+          },
+          {
+            "device": "cuda:0",
+            "dtype": "torch.bfloat16",
+            "layout": "torch.strided",
+            "requires_grad": false,
+            "shape": [
+              2,
+              16,
+              362,
+              128
+            ],
+            "storage_offset": 4096,
+            "stride": [
+              2224128,
+              128,
+              6144,
+              1
+            ]
+          }
+        ],
+        {
+          "scale": 0.08838834764831843
+        }
+      ],
+      "seed": 8147618770989597313,
+      "generation": "CPU direct BF16 randn",
+      "storage": "independent_minimum_backings_from_expansion_spec",
+      "input_scope": "independent synthetic input; shape/stride/offset and seed from workbook",
+      "original_model_acceptance_verified": false
+    }
+  ]
+}

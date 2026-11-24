@@ -1,0 +1,318 @@
+{
+  "status": "passed_common_captured_input_contract",
+  "acceptance_scope": "Recorded fixture and common full-output/LSE contract; no claim of replaying external review inputs",
+  "run_id": "cb00c4ce4b4c4ca883de3e7ce1350440",
+  "contract_sha256": "76b91f84692542b4c33e721bed2eb4b0fc88befe0a22f0ae6520be3bc6ef76c1",
+  "input_sha256": "44ebfeb326f5a257e890668d149dd0e28a715052ab3d7560d14726f39107fc04",
+  "device": {
+    "node": "a01r4n15",
+    "physical_card": "4",
+    "pid": 1626266
+  },
+  "native": {
+    "version": "2.8.4+dtk2604.torch2100.2609292239.g74de14",
+    "options": {
+      "FA_FWD_NO_MLS": null,
+      "FLASH_ATTENTION_FWD_PREFETCH": null
+    },
+    "module": "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/11992/package/flash_attn_2_cuda.cpython-310-x86_64-linux-gnu.so",
+    "module_sha256": "4dbb514cd0d6b30b720bbc739b13f3655ec5b345765b303e463184a1cd243f25",
+    "loaded_libraries_sha256": {
+      "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/11992/package/flash_attn/lib/libflash_attention.so": "42b820080757241f048e7ed6673a91703e5563353364ea279fa03cd0ca1a422e",
+      "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/11992/package/flash_attn_2_cuda.cpython-310-x86_64-linux-gnu.so": "4dbb514cd0d6b30b720bbc739b13f3655ec5b345765b303e463184a1cd243f25"
+    }
+  },
+  "method": "hipprof HIPOPS duration; all helper kernels included; 5 ROIs x 10 calls x 2 repeats",
+  "timing_us": {
+    "wheel": 1606.8310500000002,
+    "aten": 1607.6791,
+    "repo": 1684.4071
+  },
+  "diagnostic_wheel_over_repo_under_original_PR_contract": 0.953944595697798,
+  "common_contract_meets_90": true,
+  "wheel_over_repo": 0.953944595697798,
+  "qualified_native_over_repo": 0.953944595697798,
+  "meets_90": true,
+  "external_frozen_gate_verified": false,
+  "source_sha256": {
+    "src/flag_gems/runtime/backend/_hygon/attention_state_hip.py": "0ffacefa9c015e0f9a6eabf3eb8a5c17ae97f9a2fbac704d9bed61d53db40ed1",
+    "src/flag_gems/runtime/backend/_hygon/attention_state_hip.cpp": "dd37b81750a12253f7d1e95b9d3de72d4ae18bfafa3659dfd0f4d43a7f6bb38c",
+    "src/flag_gems/runtime/backend/_hygon/ops/attention_state.py": "f99f2e42501ffd66de0015012b3fd74ee3d93f9c34a6d0928f405644c3d8f0e4",
+    "src/flag_gems/runtime/backend/_hygon/ops/_scaled_dot_product_flash_attention.py": "91820f5a5aca0d6fd43df7069f219274ec9723ad3dde26f92286f302bf74d44f",
+    "tests/test_flash_attention_hygon_state.py": "293e9e135c61b754e25714fc56a7f0cf4de01ef880cf942f702103eb20d57f70"
+  },
+  "arms": {
+    "wheel": [
+      {
+        "roi": "flash:cb00c4ce4b4c4ca883de3e7ce1350440:wheel:roi=0",
+        "calls": 10,
+        "kernels": {
+          "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 10
+        },
+        "us": 1609.4869999999999
+      },
+      {
+        "roi": "flash:cb00c4ce4b4c4ca883de3e7ce1350440:wheel:roi=1",
+        "calls": 10,
+        "kernels": {
+          "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 10
+        },
+        "us": 1607.4871
+      },
+      {
+        "roi": "flash:cb00c4ce4b4c4ca883de3e7ce1350440:wheel:roi=2",
+        "calls": 10,
+        "kernels": {
+          "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 10
+        },
+        "us": 1607.4070000000002
+      },
+      {
+        "roi": "flash:cb00c4ce4b4c4ca883de3e7ce1350440:wheel:roi=3",
+        "calls": 10,
+        "kernels": {
+          "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 10
+        },
+        "us": 1605.951
+      },
+      {
+        "roi": "flash:cb00c4ce4b4c4ca883de3e7ce1350440:wheel:roi=4",
+        "calls": 10,
+        "kernels": {
+          "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 10
+        },
+        "us": 1608.239
+      }
+    ],
+    "aten": [
+      {
+        "roi": "flash:cb00c4ce4b4c4ca883de3e7ce1350440:aten:roi=0",
+        "calls": 10,
+        "kernels": {
+          "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 10
+        },
+        "us": 1608.6390999999999
+      },
+      {
+        "roi": "flash:cb00c4ce4b4c4ca883de3e7ce1350440:aten:roi=1",
+        "calls": 10,
+        "kernels": {
+          "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 10
+        },
+        "us": 1607.5671000000002
+      },
+      {
+        "roi": "flash:cb00c4ce4b4c4ca883de3e7ce1350440:aten:roi=2",
+        "calls": 10,
+        "kernels": {
+          "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 10
+        },
+        "us": 1606.895
+      },
+      {
+        "roi": "flash:cb00c4ce4b4c4ca883de3e7ce1350440:aten:roi=3",
+        "calls": 10,
+        "kernels": {
+          "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 10
+        },
+        "us": 1607.3591000000001
+      },
+      {
+        "roi": "flash:cb00c4ce4b4c4ca883de3e7ce1350440:aten:roi=4",
+        "calls": 10,
+        "kernels": {
+          "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 10
+        },
+        "us": 1607.8871
+      }
+    ],
+    "repo": [
+      {
+        "roi": "flash:cb00c4ce4b4c4ca883de3e7ce1350440:repo:roi=0",
+        "calls": 10,
+        "kernels": {
+          "_state_key_norms": 10,
+          "void flash_vpackedlds<4, 3, 16, 1, 8, 2>(unsigned short const*, unsigned short const*, unsigned short const*, float const*, unsigned char*, unsigned short*, float*)": 10,
+          "_state_stable": 10
+        },
+        "us": 1688.2549999999999
+      },
+      {
+        "roi": "flash:cb00c4ce4b4c4ca883de3e7ce1350440:repo:roi=1",
+        "calls": 10,
+        "kernels": {
+          "_state_key_norms": 10,
+          "void flash_vpackedlds<4, 3, 16, 1, 8, 2>(unsigned short const*, unsigned short const*, unsigned short const*, float const*, unsigned char*, unsigned short*, float*)": 10,
+          "_state_stable": 10
+        },
+        "us": 1684.4471999999998
+      },
+      {
+        "roi": "flash:cb00c4ce4b4c4ca883de3e7ce1350440:repo:roi=2",
+        "calls": 10,
+        "kernels": {
+          "_state_key_norms": 10,
+          "void flash_vpackedlds<4, 3, 16, 1, 8, 2>(unsigned short const*, unsigned short const*, unsigned short const*, float const*, unsigned char*, unsigned short*, float*)": 10,
+          "_state_stable": 10
+        },
+        "us": 1684.2071
+      },
+      {
+        "roi": "flash:cb00c4ce4b4c4ca883de3e7ce1350440:repo:roi=3",
+        "calls": 10,
+        "kernels": {
+          "_state_key_norms": 10,
+          "void flash_vpackedlds<4, 3, 16, 1, 8, 2>(unsigned short const*, unsigned short const*, unsigned short const*, float const*, unsigned char*, unsigned short*, float*)": 10,
+          "_state_stable": 10
+        },
+        "us": 1684.3829999999994
+      },
+      {
+        "roi": "flash:cb00c4ce4b4c4ca883de3e7ce1350440:repo:roi=4",
+        "calls": 10,
+        "kernels": {
+          "_state_key_norms": 10,
+          "void flash_vpackedlds<4, 3, 16, 1, 8, 2>(unsigned short const*, unsigned short const*, unsigned short const*, float const*, unsigned char*, unsigned short*, float*)": 10,
+          "_state_stable": 10
+        },
+        "us": 1684.4949999999994
+      }
+    ],
+    "wheel_repeat": [
+      {
+        "roi": "flash:cb00c4ce4b4c4ca883de3e7ce1350440:wheel_repeat:roi=0",
+        "calls": 10,
+        "kernels": {
+          "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 10
+        },
+        "us": 1605.9350000000002
+      },
+      {
+        "roi": "flash:cb00c4ce4b4c4ca883de3e7ce1350440:wheel_repeat:roi=1",
+        "calls": 10,
+        "kernels": {
+          "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 10
+        },
+        "us": 1605.0230999999999
+      },
+      {
+        "roi": "flash:cb00c4ce4b4c4ca883de3e7ce1350440:wheel_repeat:roi=2",
+        "calls": 10,
+        "kernels": {
+          "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 10
+        },
+        "us": 1606.1750000000002
+      },
+      {
+        "roi": "flash:cb00c4ce4b4c4ca883de3e7ce1350440:wheel_repeat:roi=3",
+        "calls": 10,
+        "kernels": {
+          "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 10
+        },
+        "us": 1607.9509999999998
+      },
+      {
+        "roi": "flash:cb00c4ce4b4c4ca883de3e7ce1350440:wheel_repeat:roi=4",
+        "calls": 10,
+        "kernels": {
+          "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 10
+        },
+        "us": 1606.2711
+      }
+    ],
+    "aten_repeat": [
+      {
+        "roi": "flash:cb00c4ce4b4c4ca883de3e7ce1350440:aten_repeat:roi=0",
+        "calls": 10,
+        "kernels": {
+          "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 10
+        },
+        "us": 1607.7751
+      },
+      {
+        "roi": "flash:cb00c4ce4b4c4ca883de3e7ce1350440:aten_repeat:roi=1",
+        "calls": 10,
+        "kernels": {
+          "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 10
+        },
+        "us": 1608.3991
+      },
+      {
+        "roi": "flash:cb00c4ce4b4c4ca883de3e7ce1350440:aten_repeat:roi=2",
+        "calls": 10,
+        "kernels": {
+          "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 10
+        },
+        "us": 1608.0791
+      },
+      {
+        "roi": "flash:cb00c4ce4b4c4ca883de3e7ce1350440:aten_repeat:roi=3",
+        "calls": 10,
+        "kernels": {
+          "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 10
+        },
+        "us": 1607.7111000000002
+      },
+      {
+        "roi": "flash:cb00c4ce4b4c4ca883de3e7ce1350440:aten_repeat:roi=4",
+        "calls": 10,
+        "kernels": {
+          "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 10
+        },
+        "us": 1607.7911
+      }
+    ],
+    "repo_repeat": [
+      {
+        "roi": "flash:cb00c4ce4b4c4ca883de3e7ce1350440:repo_repeat:roi=0",
+        "calls": 10,
+        "kernels": {
+          "_state_key_norms": 10,
+          "void flash_vpackedlds<4, 3, 16, 1, 8, 2>(unsigned short const*, unsigned short const*, unsigned short const*, float const*, unsigned char*, unsigned short*, float*)": 10,
+          "_state_stable": 10
+        },
+        "us": 1684.3510999999999
+      },
+      {
+        "roi": "flash:cb00c4ce4b4c4ca883de3e7ce1350440:repo_repeat:roi=1",
+        "calls": 10,
+        "kernels": {
+          "_state_key_norms": 10,
+          "void flash_vpackedlds<4, 3, 16, 1, 8, 2>(unsigned short const*, unsigned short const*, unsigned short const*, float const*, unsigned char*, unsigned short*, float*)": 10,
+          "_state_stable": 10
+        },
+        "us": 1684.3191
+      },
+      {
+        "roi": "flash:cb00c4ce4b4c4ca883de3e7ce1350440:repo_repeat:roi=2",
+        "calls": 10,
+        "kernels": {
+          "_state_key_norms": 10,
+          "void flash_vpackedlds<4, 3, 16, 1, 8, 2>(unsigned short const*, unsigned short const*, unsigned short const*, float const*, unsigned char*, unsigned short*, float*)": 10,
+          "_state_stable": 10
+        },
+        "us": 1684.7509999999995
+      },
+      {
+        "roi": "flash:cb00c4ce4b4c4ca883de3e7ce1350440:repo_repeat:roi=3",
+        "calls": 10,
+        "kernels": {
+          "_state_key_norms": 10,
+          "void flash_vpackedlds<4, 3, 16, 1, 8, 2>(unsigned short const*, unsigned short const*, unsigned short const*, float const*, unsigned char*, unsigned short*, float*)": 10,
+          "_state_stable": 10
+        },
+        "us": 1684.3669999999997
+      },
+      {
+        "roi": "flash:cb00c4ce4b4c4ca883de3e7ce1350440:repo_repeat:roi=4",
+        "calls": 10,
+        "kernels": {
+          "_state_key_norms": 10,
+          "void flash_vpackedlds<4, 3, 16, 1, 8, 2>(unsigned short const*, unsigned short const*, unsigned short const*, float const*, unsigned char*, unsigned short*, float*)": 10,
+          "_state_stable": 10
+        },
+        "us": 1684.5111999999995
+      }
+    ]
+  }
+}

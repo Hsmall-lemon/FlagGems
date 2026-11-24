@@ -1,0 +1,17 @@
+/bin/bash: /opt/flagos/python/lib/libtinfo.so.6: no version information available (required by /bin/bash)
+WARNING: /opt/hyhal/lib/cmake/rocm_smi doesn't exist, please install the latest driver(version >= 6.3.15)
+The rocm_smi_lib will be used in default
+[flagos] not a torch_fl variable; ignored (FLAGOS_DEV_CACHE='/public/home/wzx226226/.cache/flagos-dev/20261103-mm-gpu1')
+[flagos] not a torch_fl variable; ignored (FLAGOS_PYTHON_PREFIX='/opt/flagos/python')
+[flagos] not a torch_fl variable; ignored (FLAGOS_DEV_SOURCE='')
+[flagos] not a torch_fl variable; ignored (FLAGOS_DEV_ROOT='/opt/flagos')
+[W1105 18:32:47.377740283 OperatorEntry.cpp:208] Warning: Warning only once for all operators,  other operators may also be overridden.
+  Overriding a previously registered kernel for the same operator and the same dispatch key
+  operator: aten::_has_compatible_shallow_copy_type(Tensor self, Tensor from) -> bool
+    registered at /pytorch/build/aten/src/ATen/RegisterSchema.cpp:6
+  dispatch key: (catch all)
+  previous kernel: registered at /pytorch/build/aten/src/ATen/RegisterCompositeImplicitAutograd_0.cpp:9479
+       new kernel: registered at /work1/share/scnethpc2601/flagos-dev/20261103-hygon-optimization/src/Torch-FL/csrc/aten/register.cc:567 (function operator())
+TO_COPY_SOURCE _hygon.ops.to
+.................................                                        [100%]
+33 passed in 9.20s

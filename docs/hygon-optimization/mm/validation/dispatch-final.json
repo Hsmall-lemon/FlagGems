@@ -1,0 +1,59 @@
+{
+  "cases": [
+    {
+      "row": 21,
+      "dtype": "torch.float64",
+      "direct": {
+        "ok": true,
+        "max_abs": 1.4210854715202004e-14,
+        "rtol": 1e-10,
+        "atol": 1e-10
+      },
+      "aten_dispatch": {
+        "ok": true,
+        "max_abs": 1.4210854715202004e-14,
+        "rtol": 1e-10,
+        "atol": 1e-10
+      }
+    },
+    {
+      "row": 61,
+      "dtype": "torch.float32",
+      "direct": {
+        "ok": true,
+        "max_abs": 4.38663934971828e-05,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      },
+      "aten_dispatch": {
+        "ok": true,
+        "max_abs": 4.38663934971828e-05,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 122,
+      "dtype": "torch.bfloat16",
+      "direct": {
+        "ok": true,
+        "max_abs": 0.062232017517089844,
+        "rtol": 0.016,
+        "atol": 0.02
+      },
+      "aten_dispatch": {
+        "ok": true,
+        "max_abs": 0.062232017517089844,
+        "rtol": 0.016,
+        "atol": 0.02
+      }
+    }
+  ],
+  "experimental": {
+    "status": "installed",
+    "groups": [
+      "matrix"
+    ],
+    "changed_roots": 3
+  }
+}

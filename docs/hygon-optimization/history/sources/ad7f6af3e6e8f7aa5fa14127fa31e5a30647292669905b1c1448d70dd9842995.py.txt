@@ -1,0 +1,51 @@
+"""Same-ATen eager FP32 inference kernels. Ordinary JIT/LibEntry, never CompiledKernel caches."""
+import torch
+import triton
+import triton.language as tl
+from flag_gems.runtime import torch_device_fn
+from flag_gems.utils.libentry import libentry
+
+@libentry()
+@triton.jit(do_not_specialize=['eps'])
+def norm_kernel(X,Y,W,B,Mean,Rstd,N:tl.constexpr,Outer:tl.constexpr,S0:tl.constexpr,S1:tl.constexpr,eps,BLOCK:tl.constexpr):
+ row=tl.program_id(0);col=tl.arange(0,BLOCK);mask=col<N
+ base=(row//Outer)*S0+(row%Outer)*S1
+ x=tl.load(X+base+col,mask,other=0.).to(tl.float32)
+ mean=tl.sum(x,0)/N
+ d=x-mean
+ var=tl.sum(tl.where(mask,d*d,0.),0)/N
+ rstd=tl.rsqrt(var+eps)
+ v=d*rstd
+ if W is not None:v=v*tl.load(W+col,mask,other=1.)
+ if B is not None:v=v+tl.load(B+col,mask,other=0.)
+ tl.store(Y+row*N+col,v,mask);tl.store(Mean+row,mean);tl.store(Rstd+row,rstd)
+
+@triton.jit
+def unary_kernel(X,Y,N,D0:tl.constexpr,D1:tl.constexpr,D2:tl.constexpr,D3:tl.constexpr,S0:tl.constexpr,S1:tl.constexpr,S2:tl.constexpr,S3:tl.constexpr,OP:tl.constexpr,BLOCK:tl.constexpr):
+ i=tl.program_id(0)*BLOCK+tl.arange(0,BLOCK)
+ j=i.to(tl.int64)
+ off=(j%D3)*S3;j=j//D3
+ off+=(j%D2)*S2;j=j//D2
+ off+=(j%D1)*S1;j=j//D1
+ off+=(j%D0)*S0
+ x=tl.load(X+off,i<N,other=0.)
+ if OP==0:v=-x
+ else:v=tl.math.erf(x)
+ tl.store(Y+i,v,i<N)
+
+def run_norm(x,weight,bias,eps):
+ n=x.shape[-1];rows=x.numel()//n;outer=x.shape[1]
+ with torch_device_fn.device(x.device):
+  y=torch.empty(x.shape,dtype=x.dtype,device=x.device)
+  mean=torch.empty(x.shape[:-1]+(1,),dtype=torch.float32,device=x.device)
+  rstd=torch.empty_like(mean)
+  norm_kernel[(rows,)](x,y,weight,bias,mean,rstd,n,outer,x.stride(0),x.stride(1),eps,triton.next_power_of_2(n),num_warps=4,enable_fp_fusion=False)
+ return y,mean,rstd
+
+def run_unary(x,op):
+ n=x.numel();pad=4-x.ndim
+ shape=(1,)*pad+tuple(x.shape);stride=(0,)*pad+tuple(x.stride())
+ with torch_device_fn.device(x.device):
+  y=torch.empty(x.shape,dtype=x.dtype,device=x.device)
+  if n:unary_kernel[(triton.cdiv(n,1024),)](x,y,n,*shape,*stride,op,1024,num_warps=4,enable_fp_fusion=False)
+ return y

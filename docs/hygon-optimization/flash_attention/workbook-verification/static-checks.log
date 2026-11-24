@@ -1,0 +1,144 @@
+COMMAND: tools/ci_checks/check_operators_yaml.py --operators ["scaled_dot_product_flash_attention"]
+Total operators in conf\operators.yaml: 1770
+Checking required fields for 1 changed operator(s)...
+✅ All checks passed.
+COMMAND: tools/ci_checks/check_init_exports.py
+Discovered 25 __init__.py file(s) to check:
+
+  • src\flag_gems\__init__.py
+  • src\flag_gems\ops\__init__.py
+  • src\flag_gems\runtime\backend\_aipu\ops\__init__.py
+  • src\flag_gems\runtime\backend\_amd\ops\__init__.py
+  • src\flag_gems\runtime\backend\_amd\rdna4\ops\__init__.py
+  • src\flag_gems\runtime\backend\_arm\ops\__init__.py
+  • src\flag_gems\runtime\backend\_ascend\ops\__init__.py
+  • src\flag_gems\runtime\backend\_biren\ops\__init__.py
+  • src\flag_gems\runtime\backend\_cambricon\ops\__init__.py
+  • src\flag_gems\runtime\backend\_enflame\gcu300\ops\__init__.py
+  • src\flag_gems\runtime\backend\_enflame\gcu400\ops\__init__.py
+  • src\flag_gems\runtime\backend\_enflame\ops\__init__.py
+  • src\flag_gems\runtime\backend\_hygon\ops\__init__.py
+  • src\flag_gems\runtime\backend\_iluvatar\ops\__init__.py
+  • src\flag_gems\runtime\backend\_kunlunxin\ops\__init__.py
+  • src\flag_gems\runtime\backend\_metax\ops\__init__.py
+  • src\flag_gems\runtime\backend\_mthreads\ops\__init__.py
+  • src\flag_gems\runtime\backend\_nvidia\ampere\ops\__init__.py
+  • src\flag_gems\runtime\backend\_nvidia\hopper\ops\__init__.py
+  • src\flag_gems\runtime\backend\_nvidia\ops\__init__.py
+  • src\flag_gems\runtime\backend\_nvidia\turing\ops\__init__.py
+  • src\flag_gems\runtime\backend\_spacemit\ops\__init__.py
+  • src\flag_gems\runtime\backend\_sunrise\ops\__init__.py
+  • src\flag_gems\runtime\backend\_thead\ops\__init__.py
+  • src\flag_gems\runtime\backend\_tsingmicro\ops\__init__.py
+
+Checking src\flag_gems\__init__.py...
+  __all__ has 6 entries
+  ✅ All checks passed
+
+Checking src\flag_gems\ops\__init__.py...
+  __all__ has 1684 entries
+  ✅ All checks passed
+
+Checking src\flag_gems\runtime\backend\_aipu\ops\__init__.py...
+  __all__ has 2 entries
+  ✅ All checks passed
+
+Checking src\flag_gems\runtime\backend\_amd\ops\__init__.py...
+  __all__ has 0 entries
+  ✅ All checks passed
+
+Checking src\flag_gems\runtime\backend\_amd\rdna4\ops\__init__.py...
+  __all__ has 2 entries
+  ✅ All checks passed
+
+Checking src\flag_gems\runtime\backend\_arm\ops\__init__.py...
+  __all__ has 37 entries
+  ✅ All checks passed
+
+Checking src\flag_gems\runtime\backend\_ascend\ops\__init__.py...
+  __all__ has 220 entries
+  ✅ All checks passed
+
+Checking src\flag_gems\runtime\backend\_biren\ops\__init__.py...
+  __all__ not found (skipping __all__ checks)
+  ✅ All checks passed
+
+Checking src\flag_gems\runtime\backend\_cambricon\ops\__init__.py...
+  __all__ has 441 entries
+  ✅ All checks passed
+
+Checking src\flag_gems\runtime\backend\_enflame\gcu300\ops\__init__.py...
+  __all__ has 369 entries
+  ✅ All checks passed
+
+Checking src\flag_gems\runtime\backend\_enflame\gcu400\ops\__init__.py...
+  __all__ has 331 entries
+  ✅ All checks passed
+
+Checking src\flag_gems\runtime\backend\_enflame\ops\__init__.py...
+  __all__ has 0 entries
+  ✅ All checks passed
+
+Checking src\flag_gems\runtime\backend\_hygon\ops\__init__.py...
+  __all__ has 189 entries
+  ✅ All checks passed
+
+Checking src\flag_gems\runtime\backend\_iluvatar\ops\__init__.py...
+  __all__ has 110 entries
+  ✅ All checks passed
+
+Checking src\flag_gems\runtime\backend\_kunlunxin\ops\__init__.py...
+  __all__ has 972 entries
+  ✅ All checks passed
+
+Checking src\flag_gems\runtime\backend\_metax\ops\__init__.py...
+  __all__ has 162 entries
+  ✅ All checks passed
+
+Checking src\flag_gems\runtime\backend\_mthreads\ops\__init__.py...
+  __all__ has 184 entries
+  ✅ All checks passed
+
+Checking src\flag_gems\runtime\backend\_nvidia\ampere\ops\__init__.py...
+  __all__ not found (skipping __all__ checks)
+  ✅ All checks passed
+
+Checking src\flag_gems\runtime\backend\_nvidia\hopper\ops\__init__.py...
+  __all__ has 1 entries
+  ✅ All checks passed
+
+Checking src\flag_gems\runtime\backend\_nvidia\ops\__init__.py...
+  __all__ has 3 entries
+  ✅ All checks passed
+
+Checking src\flag_gems\runtime\backend\_nvidia\turing\ops\__init__.py...
+  __all__ has 1 entries
+  ✅ All checks passed
+
+Checking src\flag_gems\runtime\backend\_spacemit\ops\__init__.py...
+  __all__ has 33 entries
+  ✅ All checks passed
+
+Checking src\flag_gems\runtime\backend\_sunrise\ops\__init__.py...
+  __all__ has 223 entries
+  ✅ All checks passed
+
+Checking src\flag_gems\runtime\backend\_thead\ops\__init__.py...
+  __all__ has 105 entries
+  ✅ All checks passed
+
+Checking src\flag_gems\runtime\backend\_tsingmicro\ops\__init__.py...
+  __all__ has 110 entries
+  ✅ All checks passed
+
+======================================================================
+✅ All 25 file(s) passed all checks.
+COMMAND: tools/ci_checks/check_operator_markers.py --operators ["scaled_dot_product_flash_attention"]
+Loaded 251 test aliases
+Indexed 1845 pytest markers across test files
+Checking test coverage for 1 operator(s)...
+✅ All operators have test coverage.
+COMMAND: tools/ci_checks/check_aten_operators.py --operators ["scaled_dot_product_flash_attention"]
+No aten allowlist found, skipping allowlist validation
+Checking aten names for 1 operator(s)...
+✅ All aten names are valid.

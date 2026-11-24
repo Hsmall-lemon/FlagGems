@@ -1,0 +1,258 @@
+"""Native FlashAttention checks inside the isolated Python 3.12 Apptainer runtime."""
+import hashlib
+import importlib.metadata as metadata
+import json
+import math
+import os
+import socket
+import traceback
+from pathlib import Path
+
+import torch
+import flash_attn
+import flash_attn_2_cuda as native
+
+torch.set_num_threads(16)
+root = Path(__file__).resolve().parent
+receipt = {'node': socket.gethostname(), 'physical_card': os.environ['HIP_VISIBLE_DEVICES'],
+           'apptainer_container': os.environ.get('APPTAINER_CONTAINER'),
+           'torch_file': torch.__file__, 'torch_hip': torch.version.hip,
+           'native_file': native.__file__, 'device': str(torch.cuda.get_device_properties(0)),
+           'packages': {n: metadata.version(n) for n in ('torch', 'triton', 'flash-attn')},
+           'scope': 'Native feature checks and byte-identical workbook metadata reconstructions; no original model payload.',
+           'tolerances': {'output_atol': .002, 'output_rtol': .02, 'lse_atol': 2e-5, 'lse_rtol': 2e-5,
+                          'gradient_atol': .01, 'gradient_rtol': .03}, 'tests': []}
+assert receipt['physical_card'] in ('3', '4') and socket.gethostname() == 'a01r4n15'
+assert os.environ.get('APPTAINER_CONTAINER') and torch.cuda.device_count() == 1
+assert receipt['packages']['flash-attn'] == '2.8.4+dtk2610.torch2130.2610211904.g0f1a5a'
+assert Path(native.__file__).resolve().is_relative_to(root / 'venv')
+
+def save():
+    Path('functional.json').write_text(json.dumps(receipt, indent=2) + '\n')
+
+def stats(actual, expected, atol=.002, rtol=.02):
+    actual = actual.detach().cpu().float()
+    expected = expected.detach().float()
+    assert actual.shape == expected.shape, (actual.shape, expected.shape)
+    a, b = actual.reshape(-1), expected.reshape(-1)
+    failed = nonfinite = 0
+    maxabs = 0.
+    for start in range(0, a.numel(), 1048576):
+        x, y = a[start:start+1048576], b[start:start+1048576]
+        finite = torch.isfinite(x) & torch.isfinite(y)
+        d = (x - y).abs()
+        failed += int((~(finite & (d <= atol + rtol * y.abs()))).sum())
+        nonfinite += int((~finite).sum())
+        if finite.any(): maxabs = max(maxabs, float(d[finite].max()))
+    return {'shape': list(expected.shape), 'elements': expected.numel(), 'failed': failed,
+            'nonfinite': nonfinite, 'max_abs': maxabs, 'atol': atol, 'rtol': rtol}
+
+def reference(cpu, scale=None, causal=False, window=(-1, -1)):
+    q, k, v = [x.transpose(1, 2).float() for x in cpu]
+    if q.shape[1] != k.shape[1]:
+        count = q.shape[1] // k.shape[1]
+        k, v = k.repeat_interleave(count, 1), v.repeat_interleave(count, 1)
+    m, n, dim = q.shape[2], k.shape[2], q.shape[-1]
+    scale = dim**-.5 if scale is None else scale
+    out = torch.empty_like(q)
+    lse = torch.empty(q.shape[:3])
+    for start in range(0, m, 128):
+        s = (q[:, :, start:start+128] @ k.transpose(-1, -2)) * scale
+        rows = torch.arange(start, min(start+128, m))[:, None] + n - m
+        cols = torch.arange(n)[None, :]
+        mask = torch.ones((rows.shape[0], n), dtype=torch.bool)
+        if causal: mask &= cols <= rows
+        if window[0] >= 0: mask &= cols >= rows - window[0]
+        if window[1] >= 0: mask &= cols <= rows + window[1]
+        s.masked_fill_(~mask, -float('inf'))
+        out[:, :, start:start+128] = s.softmax(-1) @ v
+        lse[:, :, start:start+128] = s.logsumexp(-1)
+    return out.transpose(1, 2), lse
+
+def record(name, function):
+    item = {'id': name, 'status': 'running'}
+    receipt['tests'].append(item)
+    save()
+    try:
+        result = function()
+        item.update(result)
+        checks = result.get('checks', [])
+        item['status'] = 'passed' if all(s['failed'] == 0 and s['nonfinite'] == 0 for s in checks) and result.get('stable', True) else 'failed'
+    except Exception as error:
+        item['status'] = 'failed'
+        item['error'] = repr(error)
+        item['traceback'] = traceback.format_exc()
+        if any(s in str(error).lower() for s in ('illegal memory', 'device-side assert', 'memory access fault')):
+            save()
+            raise
+    save()
+    print('FEATURE_RESULT', name, item['status'], item.get('error', ''), flush=True)
+
+def forward(cpu, *, causal=False, scale=None, window=(-1, -1), arm='public', repeats=2, device_inputs=None):
+    dev = [x.cuda() for x in cpu] if device_inputs is None else device_inputs
+    expected, expected_lse = reference(cpu, scale, causal, window)
+    kwargs = {'causal': causal, 'softmax_scale': scale, 'window_size': window, 'return_attn_probs': True}
+    checks, first, stable = [], None, True
+    for repeat in range(repeats):
+        if arm == 'public':
+            out, lse = flash_attn.flash_attn_func(*dev, **kwargs)[:2]
+        elif arm == 'wheel':
+            args = (dev[0], dev[1], dev[2], None, None, 0., cpu[0].shape[-1]**-.5 if scale is None else scale,
+                    causal, window[0], window[1], 0., False, None, False, None, 0.)
+            raw = native.fwd(*args)
+            out, lse = raw[0], raw[5]
+        elif arm == 'aten':
+            out, lse = torch.ops.aten._scaled_dot_product_flash_attention.default(
+                *(x.transpose(1, 2) for x in dev), is_causal=causal, scale=scale)[:2]
+            out = out.transpose(1, 2)
+        else:
+            raise ValueError(arm)
+        torch.cuda.synchronize()
+        checks.extend([stats(out, expected), stats(lse, expected_lse, 2e-5, 2e-5)])
+        current = [out.detach().cpu(), lse.detach().cpu()]
+        if first is None: first = current
+        else: stable &= all(torch.equal(a, b) for a, b in zip(first, current))
+    return {'checks': checks, 'stable': stable, 'repeats': repeats, 'arm': arm,
+            'input_layouts_bshd': [{'shape': list(x.shape), 'stride': list(x.stride()), 'offset': x.storage_offset()} for x in dev]}
+
+def generated(dtype, m, n, d, h=4, hk=None):
+    torch.manual_seed(20261110 + m + d)
+    return [torch.randn((2, m, h, d), dtype=dtype),
+            torch.randn((2, n, h if hk is None else hk, d), dtype=dtype),
+            torch.randn((2, n, h if hk is None else hk, d), dtype=dtype)]
+
+# Reuse precisely the bytes exported from the current Python 3.10 image.
+manifest = json.loads((root / 'inputs/manifest.json').read_text())
+for name, case in manifest['cases'].items():
+    backings = []
+    for file in case['files']:
+        path = root / 'inputs' / file['name']
+        assert hashlib.sha256(path.read_bytes()).hexdigest() == file['sha256']
+        backings.append(torch.from_file(str(path), shared=False, size=file['elements'], dtype=torch.bfloat16))
+    specs, kwargs = case['case']['specification']
+    cpu = [backings[index].as_strided(spec['shape'], spec['stride'], spec['storage_offset']).transpose(1, 2)
+           for index, spec in zip(case['backing_indices'], specs)]
+    stores = [x.cuda() for x in backings]
+    dev = [stores[index].as_strided(spec['shape'], spec['stride'], spec['storage_offset']).transpose(1, 2)
+           for index, spec in zip(case['backing_indices'], specs)]
+    assert all(x.stride() == y.stride() and x.storage_offset() == y.storage_offset() for x, y in zip(cpu, dev))
+    for arm in ('wheel', 'aten', 'public'):
+        record(f'workbook/{name}/{arm}', lambda cpu=cpu, dev=dev, arm=arm: forward(cpu, scale=kwargs['scale'], arm=arm, repeats=3, device_inputs=dev))
+    del cpu, dev, stores, backings
+
+for dtype in (torch.bfloat16, torch.float16):
+    label = str(dtype).split('.')[-1]
+    for m, n, d in ((3, 3, 32), (23, 23, 64), (127, 127, 128), (128, 128, 128),
+                     (129, 129, 128), (137, 137, 256), (23, 137, 64), (257, 257, 64)):
+        cpu = generated(dtype, m, n, d)
+        record(f'{label}/dense/{m}/{n}/{d}', lambda cpu=cpu: forward(cpu))
+    for causal, window in ((True, (-1, -1)), (False, (17, 9)), (True, (31, 0))):
+        cpu = generated(dtype, 97, 137, 64)
+        record(f'{label}/mask/{causal}/{window}', lambda cpu=cpu, causal=causal, window=window: forward(cpu, causal=causal, window=window))
+    for causal in (False, True):
+        cpu = generated(dtype, 23, 137, 128, h=8, hk=2)
+        record(f'{label}/gqa/{causal}', lambda cpu=cpu, causal=causal: forward(cpu, causal=causal))
+    for scale in (0., -.08838834764831843, .25):
+        cpu = generated(dtype, 129, 129, 128)
+        record(f'{label}/scale/{scale}', lambda cpu=cpu, scale=scale: forward(cpu, scale=scale))
+
+    def packed(kind):
+        cpu = generated(dtype, 97, 97, 64)
+        dev = [x.cuda() for x in cpu]
+        kwargs = {'return_attn_probs': True, 'causal': True}
+        if kind == 'qkv':
+            out, lse = flash_attn.flash_attn_qkvpacked_func(torch.stack(dev, dim=2), **kwargs)[:2]
+        else:
+            out, lse = flash_attn.flash_attn_kvpacked_func(dev[0], torch.stack(dev[1:], dim=2), **kwargs)[:2]
+        torch.cuda.synchronize()
+        expected, expected_lse = reference(cpu, causal=True)
+        return {'checks': [stats(out, expected), stats(lse, expected_lse, 2e-5, 2e-5)]}
+    for kind in ('qkv', 'kv'):
+        record(f'{label}/packed/{kind}', lambda kind=kind: packed(kind))
+
+    def variable(causal):
+        lengths = [(3, 5), (23, 31), (97, 137)]
+        cpus = [generated(dtype, m, n, 64) for m, n in lengths]
+        # Select one batch item per sequence; preserve unequal Q/K lengths.
+        q = torch.cat([c[0][0] for c in cpus]).cuda()
+        k = torch.cat([c[1][0] for c in cpus]).cuda()
+        v = torch.cat([c[2][0] for c in cpus]).cuda()
+        cuq = torch.tensor([0, 3, 26, 123], device='cuda', dtype=torch.int32)
+        cuk = torch.tensor([0, 5, 36, 173], device='cuda', dtype=torch.int32)
+        out, lse = flash_attn.flash_attn_varlen_func(q, k, v, cuq, cuk, 97, 137, causal=causal, return_attn_probs=True)[:2]
+        refs = [reference([x[:1] for x in c], causal=causal) for c in cpus]
+        expected = torch.cat([r[0][0] for r in refs])
+        expected_lse = torch.cat([r[1][0] for r in refs], dim=1)
+        torch.cuda.synchronize()
+        return {'checks': [stats(out, expected), stats(lse, expected_lse, 2e-5, 2e-5)]}
+    for causal in (False, True):
+        record(f'{label}/varlen/{causal}', lambda causal=causal: variable(causal))
+
+    def backward(causal, gqa):
+        cpu = generated(dtype, 23, 31, 64, h=4, hk=2 if gqa else 4)
+        dev = [x.cuda().detach().requires_grad_(True) for x in cpu]
+        out = flash_attn.flash_attn_func(*dev, causal=causal, deterministic=True)
+        torch.manual_seed(42)
+        grad = torch.randn(out.shape)
+        out.backward(grad.cuda().to(dtype))
+        ref = [x.float().detach().requires_grad_(True) for x in cpu]
+        q, k, v = [x.transpose(1, 2) for x in ref]
+        if gqa: k, v = k.repeat_interleave(2, 1), v.repeat_interleave(2, 1)
+        scores = q @ k.transpose(-1, -2) / 8
+        if causal:
+            mask = torch.arange(31)[None, :] <= torch.arange(23)[:, None] + 8
+            scores = scores.masked_fill(~mask, -float('inf'))
+        expected = (scores.softmax(-1) @ v).transpose(1, 2)
+        expected.backward(grad.to(dtype).float())
+        torch.cuda.synchronize()
+        return {'checks': [stats(out, expected)] + [stats(x.grad, y.grad, .01, .03) for x, y in zip(dev, ref)]}
+    for causal, gqa in ((False, False), (True, False), (True, True)):
+        record(f'{label}/backward/{causal}/{gqa}', lambda causal=causal, gqa=gqa: backward(causal, gqa))
+
+    def kvcache():
+        cpu = generated(dtype, 1, 129, 64, h=8, hk=2)
+        q, k, v = [x.cuda() for x in cpu]
+        out, lse = flash_attn.flash_attn_with_kvcache(q, k, v, return_softmax_lse=True)
+        torch.cuda.synchronize()
+        expected, expected_lse = reference(cpu)
+        return {'checks': [stats(out, expected), stats(lse, expected_lse, 2e-5, 2e-5)]}
+    record(f'{label}/kvcache', kvcache)
+
+    def dropout():
+        cpu = generated(dtype, 97, 97, 64)
+        dev = [x.cuda() for x in cpu]
+        state = torch.cuda.get_rng_state()
+        a = flash_attn.flash_attn_func(*dev, dropout_p=.125, return_attn_probs=True, deterministic=True)
+        torch.cuda.set_rng_state(state)
+        b = flash_attn.flash_attn_func(*dev, dropout_p=.125, return_attn_probs=True, deterministic=True)
+        out, lse, mask = a
+        torch.cuda.synchronize()
+        q, k, v = [x.transpose(1, 2).float() for x in cpu]
+        scores = q @ k.transpose(-1, -2) / 8
+        keep = ~torch.signbit(mask.detach().cpu()[:, :, :97, :97])
+        expected = ((scores.softmax(-1) * keep / .875) @ v).transpose(1, 2)
+        return {'checks': [stats(out, expected), stats(lse, scores.logsumexp(-1), 2e-5, 2e-5)],
+                'stable': torch.equal(a[0], b[0]) and torch.equal(a[1], b[1])}
+    record(f'{label}/dropout', dropout)
+
+# Explicit boundary checks on the large worksheet shape.
+case = manifest['cases']['model_state']
+backing = torch.from_file(str(root / 'inputs' / case['files'][0]['name']), shared=False,
+                          size=case['files'][0]['elements'], dtype=torch.bfloat16)
+specs, kwargs = case['case']['specification']
+base = [backing.as_strided(s['shape'], s['stride'], s['storage_offset']).transpose(1, 2) for s in specs]
+for pattern in ('zero_q_large_k', 'large_q_zero_k', 'large_v'):
+    cpu = [x.clone() for x in base]
+    if pattern == 'zero_q_large_k': cpu[0].zero_(); cpu[1].fill_(1e20)
+    if pattern == 'large_q_zero_k': cpu[0].fill_(1e20); cpu[1].zero_()
+    if pattern == 'large_v': cpu[2].mul_(100)
+    record('boundary/model/' + pattern, lambda cpu=cpu: forward(cpu, scale=kwargs['scale'], repeats=2))
+    del cpu
+
+receipt['completed'] = True
+receipt['loaded_libraries'] = sorted({line.split()[-1] for line in Path('/proc/self/maps').read_text().splitlines()
+                                    if any(tag in line for tag in ('flash_att', 'libgalaxyhip', 'libhsa-runtime', 'libtorch_', 'libroc', 'libhip', 'libmpi', 'libMIOpen')) and line.split()[-1].startswith('/')})
+receipt['passed'] = sum(t['status'] == 'passed' for t in receipt['tests'])
+receipt['failed'] = sum(t['status'] != 'passed' for t in receipt['tests'])
+save()
+print('RELEASE2610_FUNCTIONAL_COMPLETE', receipt['passed'], receipt['failed'], flush=True)

@@ -1,0 +1,37 @@
+FlagGems source override: /public/home/wzx226226/算子优化/correction-20261109/repo-mm-standalone
+6d9ac5543fb2a543ec00a7770c8c583f1a9f1f29
+ M src/flag_gems/runtime/backend/_hygon/experimental/SOURCES.json
+ M src/flag_gems/runtime/backend/_hygon/experimental/__init__.py
+ M src/flag_gems/runtime/backend/_hygon/experimental/matrix.py
+ M src/flag_gems/runtime/backend/_hygon/ops/mm.py
+?? docs/hygon-optimization/mm/
+?? src/flag_gems/runtime/backend/_hygon/ops/mm_config.py
+?? src/flag_gems/runtime/backend/_hygon/ops/mm_kernels.py
+?? src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_coalesced.py
+?? src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_coopfast.py
+?? src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_operands.py
+?? src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_peel.py
+?? src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_pipeline.py
+?? src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_prefetch.py
+?? src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_rawpipe.py
+?? src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_reshape.py
+?? src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_swizzle.py
+?? tests/test_hygon_mm.py
+/bin/bash: /opt/flagos/python/lib/libtinfo.so.6: no version information available (required by /bin/bash)
+WARNING: /opt/hyhal/lib/cmake/rocm_smi doesn't exist, please install the latest driver(version >= 6.3.15)
+The rocm_smi_lib will be used in default
+[flagos] not a torch_fl variable; ignored (FLAGOS_DEV_CACHE='/public/home/wzx226226/.cache/flagos-dev/correction-20261109-gpu0')
+[flagos] not a torch_fl variable; ignored (FLAGOS_PYTHON_PREFIX='/opt/flagos/python')
+[flagos] not a torch_fl variable; ignored (FLAGOS_DEV_SOURCE='/opt/flagos/live-FlagGems')
+[flagos] not a torch_fl variable; ignored (FLAGOS_DEV_ROOT='/opt/flagos')
+[W1109 18:52:45.153564158 OperatorEntry.cpp:208] Warning: Warning only once for all operators,  other operators may also be overridden.
+  Overriding a previously registered kernel for the same operator and the same dispatch key
+  operator: aten::_has_compatible_shallow_copy_type(Tensor self, Tensor from) -> bool
+    registered at /pytorch/build/aten/src/ATen/RegisterSchema.cpp:6
+  dispatch key: (catch all)
+  previous kernel: registered at /pytorch/build/aten/src/ATen/RegisterCompositeImplicitAutograd_0.cpp:9479
+       new kernel: registered at /work1/share/scnethpc2601/flagos-dev/20261103-hygon-optimization/src/Torch-FL/csrc/aten/register.cc:567 (function operator())
+FINGERPRINT {"node": "a01r3n13", "python": "3.10.20 (main, Jun 11 2026, 15:17:37) [GCC 14.3.0]", "torch": "2.10.0+cpu", "torch_hip": "6.3.26113", "torch_cuda": null, "triton": "3.6.0", "torch_fl": null, "device": "GPUTarget(backend='hip', arch='gfx936', warp_size=64)", "device_name": "<torch_fl.flagos._DeviceProperties object at 0x1542bba34d60>", "visible": "0", "mm_export": "_hygon.ops.mm", "source_sha256": {"src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_peel.py": "ae7ec90f31f84f43c1772e29cf153d56ffff73c469c37acb4259a6c997067a18", "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_rawpipe.py": "7d88f76f0af0bdc5635bd843555fe7c28f7711892e7b6a57033807cc63e09e08", "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_reshape.py": "a7c5025e05e3a8a657250a5e8658fd330e2103774b9524592f6044b3473999d1", "src/flag_gems/runtime/backend/_hygon/ops/mm.py": "c4ff04798b4b8d73bf1602f3a27269102cfaeca94c96d16819bf99f8d43136ce", "src/flag_gems/runtime/backend/_hygon/ops/mm_w8a8_int8.py": "309d2556e79186b24e6874839162039415f03d89246340e3e90819cbee6d1e46", "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_coalesced.py": "ec1b3332b7422cb098bceed1e568872a3f0ba8ba6680216a01bab219dee42377", "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_prefetch.py": "6480f69c8513aba86bc0ae37b5ba85cd557e0583c93d2bc78dfabbf2ec8fe0bb", "src/flag_gems/runtime/backend/_hygon/ops/mm_config.py": "6b9c2a8054ccffe5363f9b426a3e6febc8b2209dca29a7935ee9a7966927db24", "src/flag_gems/runtime/backend/_hygon/ops/mm_kernels.py": "d9930250ab93ea65dcd5a1558bbabb5e4a199d7485cb4f703a22920ecfb65e01", "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_coopfast.py": "5c67d0eaf4d86bb2fecfe1be7df53bd983c11c82f6b040ce0744ec502215f0d1", "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_operands.py": "625c11755688890e17f1f95929fbd5602edc076602a888a5e1dbe3d4bc549c25", "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_pipeline.py": "1fd06ad6ba3d30956d53cd70212348d4e4dd794ce3c4f48d3ccf0d607fcddf80", "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_swizzle.py": "0c04c55dc98a24a8d57c2e9dd6586a16f62db853f5ff35d90156fe89f0aea741"}, "checkout": "/public/home/wzx226226/\u7b97\u5b50\u4f18\u5316/correction-20261109/repo-mm-standalone", "to_copy_export": "flag_gems.ops.to", "support_source_sha256": {"src/flag_gems/__init__.py": "fba3eb3dd96be3cebf8d9c5126e34122302cdf1e666825275800d2a55feddb89", "src/flag_gems/runtime/backend/_hygon/ops/__init__.py": "28f7d985d0ef33201b226b25091a796ea2e0bacb3a2e02038e59cfe890edbe63", "src/flag_gems/ops/to.py": "5b49026770a02ea3fe9f3c262b81f4ceb2108e7513b2ea38175263cc8acc7489", "tests/test_hygon_mm.py": "f6cbadc1999ee17bc782bd816e7cb44d286ba2f3b8ea11b9beeccdfb6284f684"}, "old_source_sha256": "d2594faf1b89fa0bdb2de549d4e2dde19ea87f63c0d92e587b326773d094a0cb", "compiler_library": {"path": "/opt/flagos/python/lib/python3.10/site-packages/triton/_C/libtriton.so", "sha256": "d4176c9cbc4887d5f2d516795b0b1236420fa825df07ee94638d020c41572991"}}
+.........................                                                [100%]
+25 passed in 1.26s
+FOCUSED_CORRECTION_FINISHED 0

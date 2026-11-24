@@ -1,0 +1,178 @@
+"""Same-process full precision gates, then GPU kernel duration sampling."""
+import argparse
+import gzip
+import hashlib
+import importlib.metadata as metadata
+import json
+import os
+import socket
+import statistics
+import sys
+import uuid
+from pathlib import Path
+
+root = Path(__file__).resolve().parent
+sys.path.insert(0, str(root / 'fg-compiler36'))
+repo = root.parents[1] / 'FlagGems'
+sys.path.insert(0, str(repo / 'src'))
+sys.path.insert(0, str(repo / 'docs/hygon-optimization/flash_attention/reproduce'))
+os.environ['GEMS_VENDOR'] = 'hygon'
+os.environ['AMDGCN_USE_BUFFER_OPS'] = '0'
+# The validated production HIP compiler and device libraries are DTK 26.04.
+# Runtime libraries remain the exact DTK 26.10 libraries selected by native-entry.sh.
+os.environ['ROCM_PATH'] = '/public/software/compiler/dtk-26.04'
+os.environ['HIP_PATH'] = '/public/software/compiler/dtk-26.04/hip'
+
+import torch
+import triton
+import flash_attn_2_cuda as native
+import flag_gems
+from accuracy_gate import check_full, cpu_reference
+from flag_gems.runtime.backend._hygon.attention_state_hip import _load_state_kernel
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--arms', nargs='+', choices=('wheel','aten','repo'), default=['wheel','aten','repo'])
+parser.add_argument('--calls', type=int, default=100)
+parser.add_argument('--rounds', type=int, default=3)
+parser.add_argument('--warmup', type=int, default=50)
+args = parser.parse_args()
+assert args.calls > 0 and args.rounds > 0 and args.warmup >= 0
+assert socket.gethostname() == 'a01r4n15' and os.environ['HIP_VISIBLE_DEVICES'] in ('3', '4')
+assert torch.cuda.device_count() == 1 and os.environ.get('APPTAINER_CONTAINER')
+assert metadata.version('flash-attn') == '2.8.4+dtk2610.torch2130.2610211904.g0f1a5a'
+assert Path(native.__file__).resolve().is_relative_to(root/'venv')
+assert hashlib.sha256(Path(native.__file__).read_bytes()).hexdigest() == 'f130f8a659a91b67a9776f8cd2a2746d645db6e20697ff4e16bd25dc12e91663'
+assert hashlib.sha256((root/'venv/lib/python3.12/site-packages/flash_attn/lib/libflash_attention.so').read_bytes()).hexdigest() == '69060dc997524cdc803a5bd691d698ae6e97a125cea767d37b941f536787f00b'
+torch.set_num_threads(16)
+torch.set_grad_enabled(False)
+library = _load_state_kernel()
+assert library is not None, 'Production HIP specialization unavailable'
+manifest = json.loads((root/'inputs/manifest.json').read_text())
+sources = ['attention_state_hip.py', 'attention_state_hip.cpp', 'ops/attention_state.py', 'ops/_scaled_dot_product_flash_attention.py']
+receipt = {'schema': 'release2610-device-kernels-v1', 'run_id': uuid.uuid4().hex,
+           'node': socket.gethostname(), 'physical_card': os.environ['HIP_VISIBLE_DEVICES'],
+           'container': os.environ['APPTAINER_CONTAINER'],
+           'packages': {x: metadata.version(x) for x in ('torch', 'triton', 'flash-attn')},
+           'repo_source_sha256': {x: hashlib.sha256((repo/'src/flag_gems/runtime/backend/_hygon'/x).read_bytes()).hexdigest() for x in sources},
+           'native_extension_sha256': hashlib.sha256(Path(native.__file__).read_bytes()).hexdigest(),
+           'compiled_hip_library': library._name,
+           'compile_sdk': os.environ['ROCM_PATH'], 'sampling': vars(args),
+           'triton_module': triton.__file__,
+           'compiler_environment': {'AMDGCN_USE_BUFFER_OPS': os.environ['AMDGCN_USE_BUFFER_OPS']},
+           'torch_module': torch.__file__,
+           'torch_runtime': {'hip': torch.version.hip, 'cuda': torch.version.cuda},
+           'device_properties': str(torch.cuda.get_device_properties(0)),
+           'compiled_hip_sha256': hashlib.sha256(Path(library._name).read_bytes()).hexdigest(),
+           'baseline_libraries_sha256': {name: hashlib.sha256((root/'venv/lib/python3.12/site-packages'/name).read_bytes()).hexdigest() for name in ('flash_attn_2_cuda.cpython-312-x86_64-linux-gnu.so', 'flash_attn/lib/libflash_attention.so')},
+           'measurement': 'sum of kernel durations in torch.profiler CUDA activity, divided by calls; host durations excluded',
+           'tolerances': {'output_atol': .002, 'output_rtol': .02, 'lse_atol': 2e-5, 'lse_rtol': 2e-5},
+           'input_scope': manifest['scope'], 'workbook_sha256': manifest['workbook_sha256'],
+           'cases': {}}
+
+def save():
+    Path('benchmark.json').write_text(json.dumps(receipt, indent=2)+'\n')
+
+def sample(fn, case_id, arm, round_index):
+    for _ in range(args.warmup): fn()
+    torch.cuda.synchronize()
+    label = f'{case_id}:{arm}:round{round_index}'
+    with torch.profiler.profile(activities=[torch.profiler.ProfilerActivity.CPU, torch.profiler.ProfilerActivity.CUDA]) as profile:
+        with torch.profiler.record_function(label):
+            keep = [None, None]
+            for index in range(args.calls): keep[index % 2] = fn()
+            torch.cuda.synchronize()
+    trace = Path(f'{case_id}-{arm}-round{round_index}.json')
+    profile.export_chrome_trace(str(trace))
+    data = json.loads(trace.read_text())
+    events = [e for e in data['traceEvents'] if e.get('cat') == 'kernel' and e.get('ph') == 'X']
+    assert events, ('No GPU kernel activity captured', profile.key_averages().table())
+    assert len(events) % args.calls == 0, (label, len(events), args.calls)
+    names = {}
+    for event in events:
+        item = names.setdefault(event['name'], {'calls': 0, 'sum_us': 0.})
+        item['calls'] += 1
+        item['sum_us'] += event['dur']
+    total = sum(e['dur'] for e in events)
+    compressed = trace.with_suffix('.json.gz')
+    with trace.open('rb') as source, gzip.open(compressed, 'wb', compresslevel=3) as destination:
+        import shutil
+        shutil.copyfileobj(source, destination)
+    trace.unlink()
+    return {'us_per_call': total/args.calls, 'kernel_count': len(events),
+            'kernels_per_call': len(events)//args.calls, 'kernels': names,
+            'trace': compressed.name, 'trace_sha256': hashlib.sha256(compressed.read_bytes()).hexdigest()}
+
+save()
+for case_id, case in manifest['cases'].items():
+    backings = []
+    for file in case['files']:
+        path = root/'inputs'/file['name']
+        assert hashlib.sha256(path.read_bytes()).hexdigest() == file['sha256']
+        backings.append(torch.from_file(str(path), shared=False, size=file['elements'], dtype=torch.bfloat16))
+    specs, kwargs = case['case']['specification']
+    cpu = [backings[index].as_strided(spec['shape'], spec['stride'], spec['storage_offset']) for index, spec in zip(case['backing_indices'], specs)]
+    stores = [x.cuda() for x in backings]
+    dev = [stores[index].as_strided(spec['shape'], spec['stride'], spec['storage_offset']) for index, spec in zip(case['backing_indices'], specs)]
+    assert all(a.stride() == b.stride() and a.storage_offset() == b.storage_offset() for a,b in zip(cpu,dev))
+    bshd = [x.transpose(1,2) for x in dev]
+    functions = {
+        'wheel': lambda: native.fwd(*bshd, None, None, 0., kwargs['scale'], False, -1, -1, 0., False, None, False, None, 0.),
+        'aten': lambda: torch.ops.aten._scaled_dot_product_flash_attention.default(*dev, **kwargs),
+        'repo': lambda: flag_gems._scaled_dot_product_flash_attention(*dev, **kwargs)}
+    functions = {arm: fn for arm, fn in functions.items() if arm in args.arms}
+    record = {'case': case['case'], 'input_identity': case['identity'],
+              'input_layouts': [{'shape': list(x.shape), 'stride': list(x.stride()), 'offset': x.storage_offset()} for x in dev],
+              'precision': {}, 'samples': {arm: [] for arm in functions}, 'timing_started': False}
+    receipt['cases'][case_id] = record
+    save()
+    reference = cpu_reference(cpu)
+    for arm, fn in functions.items():
+        checks, first = [], None
+        stable = True
+        for repeat in range(3):
+            y = fn(); torch.cuda.synchronize()
+            out, lse = (y[0].transpose(1,2), y[5]) if arm == 'wheel' else y[:2]
+            checks.append(check_full(out, lse, reference))
+            current = (out.cpu(), lse.cpu())
+            if first is None: first = current
+            else: stable &= all(torch.equal(a,b) for a,b in zip(first,current))
+        record['precision'][arm] = {'checks': checks, 'stable': stable}
+        save()
+    for arm, result in record['precision'].items():
+        assert result['stable'], (case_id,arm,'unstable')
+        for check in result['checks']:
+            assert all(s['failed'] == 0 and s['nonfinite'] == 0 for s in check.values()), (case_id,arm,check)
+    del reference, checks, first, current, y, out, lse
+    record['timing_started'] = True
+    save()
+    for round_index in range(args.rounds):
+        order = ('wheel','aten','repo') if round_index % 2 == 0 else ('repo','aten','wheel')
+        for arm in order:
+            if arm not in functions: continue
+            result = sample(functions[arm], case_id, arm, round_index)
+            record['samples'][arm].append(result)
+            save()
+            print('DEVICE_SAMPLE',case_id,arm,round_index,result['us_per_call'],result['kernels_per_call'],flush=True)
+    medians = {arm: statistics.median(x['us_per_call'] for x in samples) for arm,samples in record['samples'].items()}
+    record['median_us'] = medians
+    if 'repo' not in medians:
+        record['native_measurement_complete'] = True
+        save()
+        print('NATIVE_CASE_DEVICE_RESULT',case_id,json.dumps(medians),flush=True)
+        continue
+    record['ratio_vs_wheel'] = medians['wheel']/medians['repo']
+    record['ratio_vs_aten'] = medians['aten']/medians['repo']
+    record['conservative_ratio'] = min(medians['wheel'],medians['aten'])/medians['repo']
+    record['round_ratios'] = [min(record['samples']['wheel'][i]['us_per_call'], record['samples']['aten'][i]['us_per_call']) / record['samples']['repo'][i]['us_per_call'] for i in range(args.rounds)]
+    means = {arm: statistics.mean(x['us_per_call'] for x in samples) for arm,samples in record['samples'].items()}
+    record['mean_us'] = means
+    record['mean_ratio'] = min(means['wheel'], means['aten']) / means['repo']
+    record['meets_90_percent'] = min(record['round_ratios'] + [record['conservative_ratio'], record['mean_ratio']]) >= .9
+    save()
+    print('CASE_DEVICE_RESULT',case_id,json.dumps(medians),'RATIO',record['conservative_ratio'],flush=True)
+    del backings,stores,cpu,dev,bshd,functions
+receipt['complete'] = True
+receipt['meets_90_percent'] = all(x.get('meets_90_percent', False) for x in receipt['cases'].values())
+receipt['loaded_libraries'] = sorted({line.split()[-1] for line in Path('/proc/self/maps').read_text().splitlines() if any(x in line for x in ('flash_att','libgalaxyhip','libhsa-runtime64')) and line.split()[-1].startswith('/')})
+save()
+print('RELEASE2610_DEVICE_BENCHMARK_COMPLETE',receipt['meets_90_percent'],flush=True)

@@ -1,0 +1,3 @@
+"""Frozen matrix baseline: retain active pinned private providers."""
+def install(torch, flag_gems):
+    return None

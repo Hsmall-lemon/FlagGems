@@ -1,0 +1,12 @@
+{
+  "scope": "Local pure-Python wheel content check; not a Windows GPU runtime test",
+  "wheel": "flag_gems-5.4.0rc2.post1+gb51418e05.d20261110-py3-none-any.whl",
+  "wheel_sha256": "1aa047796e6f6f3c4e4af2d2c0903e4fa731dad4c79a971f9b83bec746d4467a",
+  "measured_source_sha256": {
+    "flag_gems/runtime/backend/_hygon/attention_state_hip.py": "185460a1f7a25f27ba55202cf42f35fef5a10fda845b527c3058b5b9b88f12d4",
+    "flag_gems/runtime/backend/_hygon/attention_state_hip.cpp": "9d737b24687977ab0a1e027f6485009d308f4392aac7c736b188611f0f990f88",
+    "flag_gems/runtime/backend/_hygon/ops/attention_state.py": "df304186cee67c9773c5c9796a8d95ce847d3b238b2b9375831bc35a1e131348",
+    "flag_gems/runtime/backend/_hygon/ops/_scaled_dot_product_flash_attention.py": "6eabe38ca1abcf6ff68c30b40250895b45f0fb402c6acad82bb50982b4ac3a0e",
+    "flaggems_tests/test_flash_attention_hygon_state.py": "1115a5ca4796e0fe980a517dacbf6e4f73efca7d02d279444a7c408120e3ccc4"
+  }
+}

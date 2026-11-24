@@ -1,0 +1,16 @@
+{
+  "scope": "Historical correction for the invalid DAS 185 comparison; not the current DAS 2.8.4 verification",
+  "current_verification": "node15-verification/summary.json",
+  "source": "User-supplied external review summary; raw review receipt not yet provided",
+  "operator": "aten::_scaled_dot_product_flash_attention",
+  "old_flaggems_device_us": 4664.8,
+  "new_flaggems_device_us": 1722.0,
+  "old_over_new_flaggems": 2.7089430894308943,
+  "new_and_old_output_lse_correctness_and_stability": "passed according to external review",
+  "native_lse_failed_percent": 23.6,
+  "native_baseline_eligible": false,
+  "accepted_das_ratio": null,
+  "meets_das_90": null,
+  "acceptance_status": "not_determined_invalid_native_LSE_baseline",
+  "author_independently_reproduced_external_review": false
+}

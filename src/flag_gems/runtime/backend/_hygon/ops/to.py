@@ -13,6 +13,22 @@ from flag_gems.utils import libentry
 from .to_kernels import cast_fp32_bf16_packed, cast_fp32_bf16_quad
 
 _PACKED_MIN_ELEMENTS = 8 * 1024 * 1024
+_GFX936_VECTOR_CASTS = {
+    (torch.float32, torch.bfloat16, 168200): (512, 2),
+    (torch.int64, torch.float32, 4194304): (512, 2),
+}
+_GFX936_HIP_CASTS = {
+    (torch.bfloat16, torch.float32, 4096): (64, 1),
+    (torch.bfloat16, torch.float32, 262144): (256, 1),
+    (torch.bfloat16, torch.float32, 371200): (256, 1),
+    (torch.float32, torch.bfloat16, 4096): (64, 1),
+    (torch.float32, torch.bfloat16, 262144): (256, 1),
+    (torch.float32, torch.bfloat16, 273325): (256, 2),
+}
+_GFX936_DENSE_CASTS = {
+    (torch.bfloat16, torch.float32, 256): 64,
+    (torch.float32, torch.bfloat16, 21025): 256,
+}
 
 
 @triton.jit
@@ -59,11 +75,14 @@ def to_copy(
         memory_format == torch.contiguous_format and x.is_contiguous()
     )
     n = x.numel()
-    # Keep generic launch choices in the size/layout ranges that regressed
-    # against official master. Preserve the explicit nonzero-to-bool correction.
+    key = (x.dtype, dtype, n)
     contiguous = x.is_contiguous()
+    vector_config = _GFX936_VECTOR_CASTS.get(key) if contiguous else None
+    hip_config = _GFX936_HIP_CASTS.get(key) if contiguous else None
+    dense_block = _GFX936_DENSE_CASTS.get(key) if contiguous else None
+    # Keep the R9 generic fallbacks unless an exact gfx936 specialization applies.
     prefer_generic = (
-        (contiguous and dtype != torch.bool and n <= min(65536, _PACKED_MIN_ELEMENTS))
+        (contiguous and dtype != torch.bool and n <= 65536)
         or (
             x.dtype == torch.bfloat16
             and dtype == torch.float32
@@ -74,12 +93,16 @@ def to_copy(
             and x.dtype == torch.float32
             and dtype == torch.bfloat16
             and 131072 < n <= 262144
-            and n < _PACKED_MIN_ELEMENTS
         )
     )
     if (
         dense_pair
-        and not prefer_generic
+        and (
+            not prefer_generic
+            or vector_config is not None
+            or hip_config is not None
+            or dense_block is not None
+        )
         and x.layout == torch.strided
         and layout in (None, torch.strided)
         and x.device.type in ("cuda", "flagos")
@@ -95,8 +118,8 @@ def to_copy(
         # into an output with identical strides preserves logical coordinates.
         with torch_device_fn.device(x.device):
             out = torch.empty_strided(x.shape, x.stride(), dtype=dtype, device=x.device)
-            n = x.numel()
             kernel = cast_dense
+            launch_options = {}
             block, warps = (256, 1) if n <= 4096 else (1024, 1)
             if x.dtype == torch.bfloat16 and dtype == torch.float32:
                 if n >= 8 * 1024 * 1024:
@@ -123,16 +146,44 @@ def to_copy(
                     # per 64-bit store, retaining the same integer RNE rule.
                     kernel = cast_fp32_bf16_quad
                     block, warps = 4096, 4
-            kernel[(triton.cdiv(n, block),)](
-                x,
-                out,
-                n,
-                BLOCK=block,
-                num_warps=warps,
-                num_stages=1,
-                allow_flush_denorm=False,
-            )
-        return out
+            tuned = False
+            if (
+                vector_config is not None
+                or hip_config is not None
+                or dense_block is not None
+            ) and triton.runtime.driver.active.get_current_target().arch == "gfx936":
+                if (
+                    hip_config is not None
+                    and x.data_ptr() % 16 == 0
+                    and out.data_ptr() % 16 == 0
+                ):
+                    from ..dtype_cast_hip import launch_dtype_cast
+
+                    if launch_dtype_cast(x, out, *hip_config):
+                        return out
+                elif vector_config is not None and x.data_ptr() % 16 == 0:
+                    from .to_vector_kernels import cast_vector
+
+                    kernel = cast_vector
+                    block, warps = vector_config
+                    launch_options["WARPS"] = warps
+                    tuned = True
+                elif dense_block is not None:
+                    kernel = cast_dense
+                    block, warps = dense_block, 1
+                    tuned = True
+            if tuned or not prefer_generic:
+                kernel[(triton.cdiv(n, block),)](
+                    x,
+                    out,
+                    n,
+                    BLOCK=block,
+                    num_warps=warps,
+                    num_stages=1,
+                    allow_flush_denorm=False,
+                    **launch_options,
+                )
+                return out
     return default_to_copy(
         x,
         dtype=dtype,

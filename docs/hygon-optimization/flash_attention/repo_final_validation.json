@@ -1,0 +1,28 @@
+{
+  "sample": {
+    "ok": true,
+    "max_abs": 0.0005477964878082275,
+    "lse_max_abs": 1.9073486328125e-06
+  },
+  "full_output": {
+    "elements": 33570816,
+    "max_abs": 0.0015590786933898926,
+    "rmse": 8.35555256344378e-05
+  },
+  "full_lse": {
+    "elements": 262272,
+    "max_abs": 1.9073486328125e-06
+  },
+  "guard_checks": {
+    "mixed_large": {
+      "ok": true,
+      "max_abs": 0.06234550476074219,
+      "lse_max_abs": 6.103515625e-05
+    },
+    "zero_qk": {
+      "ok": true,
+      "max_abs": 0.00023772567510604858,
+      "lse_max_abs": 4.76837158203125e-07
+    }
+  }
+}

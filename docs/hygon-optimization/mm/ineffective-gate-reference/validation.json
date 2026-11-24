@@ -1,0 +1,69 @@
+{
+  "base_commit": "6d9ac5543fb2a543ec00a7770c8c583f1a9f1f29",
+  "device_cards": [
+    0,
+    1
+  ],
+  "device_metric": "HIPOPS DurationNs; host overhead excluded",
+  "public_performance": {
+    "cases": 94,
+    "fp32": 68,
+    "fp64": 26,
+    "accuracy_pass": 94,
+    "sheet_pass": 94,
+    "paired_pass": 88,
+    "minimum_sheet_performance": 0.9593243531549558,
+    "minimum_paired_performance": 0.7509855453350854,
+    "geomean_sheet_performance": 1.8017992659484379,
+    "geomean_paired_performance": 1.3700429103779386
+  },
+  "second_seed_regression": [
+    {
+      "dtype": "fp32",
+      "passed": 88,
+      "cases": 88,
+      "seed": 100003
+    },
+    {
+      "dtype": "fp64",
+      "passed": 32,
+      "cases": 32,
+      "seed": 100003
+    }
+  ],
+  "aten_and_experimental_checks": {
+    "cases": 3,
+    "passed": 3,
+    "includes_bfloat16_fallback": true
+  },
+  "pytest": {
+    "passed": 15,
+    "deselected": 3
+  },
+  "source_inventory_tests": {
+    "passed": 8
+  },
+  "static_checks": [
+    "check_operators_yaml",
+    "check_init_exports",
+    "check_operator_markers",
+    "check_aten_operators"
+  ],
+  "pre_commit_all_files": "passed",
+  "pre_commit_changed_and_new_files": "passed",
+  "source_sha256": {
+    "src/flag_gems/runtime/backend/_hygon/ops/mm.py": "d67e3f0f5a12d8eb2e1f5a322b653913b602d98a354bb2520a3188305da00894",
+    "src/flag_gems/runtime/backend/_hygon/ops/mm_config.py": "39b94836423f11c417f2ea8c033de90a79f7d383fe30d65e28203a75f28bd194",
+    "src/flag_gems/runtime/backend/_hygon/ops/mm_kernels.py": "d9930250ab93ea65dcd5a1558bbabb5e4a199d7485cb4f703a22920ecfb65e01",
+    "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_coalesced.py": "ec1b3332b7422cb098bceed1e568872a3f0ba8ba6680216a01bab219dee42377",
+    "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_coopfast.py": "5c67d0eaf4d86bb2fecfe1be7df53bd983c11c82f6b040ce0744ec502215f0d1",
+    "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_operands.py": "625c11755688890e17f1f95929fbd5602edc076602a888a5e1dbe3d4bc549c25",
+    "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_peel.py": "ae7ec90f31f84f43c1772e29cf153d56ffff73c469c37acb4259a6c997067a18",
+    "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_pipeline.py": "1fd06ad6ba3d30956d53cd70212348d4e4dd794ce3c4f48d3ccf0d607fcddf80",
+    "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_prefetch.py": "6480f69c8513aba86bc0ae37b5ba85cd557e0583c93d2bc78dfabbf2ec8fe0bb",
+    "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_reshape.py": "a7c5025e05e3a8a657250a5e8658fd330e2103774b9524592f6044b3473999d1",
+    "src/flag_gems/runtime/backend/_hygon/ops/mm_w8a8_int8.py": "309d2556e79186b24e6874839162039415f03d89246340e3e90819cbee6d1e46",
+    "src/flag_gems/runtime/backend/_hygon/experimental/matrix.py": "7f855dc8c79eeff4bde0e901043e117b8a21f3aa3cf5fbc52b5b72b6d0f6503d",
+    "tests/test_hygon_mm.py": "df6db45ce740326b80ce974c2913521ed76d8aee4095a0d5651ca3e1e768344d"
+  }
+}

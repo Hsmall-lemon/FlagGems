@@ -1,0 +1,5318 @@
+{
+  "profile": "dtype-layout-copy-r1",
+  "metric": "(HIPOPS + HIPCOPY) DurationNs sum/call; host and gate excluded; kernel/copy components retained",
+  "calls_per_roi": [
+    1024
+  ],
+  "rois_per_aa_block": 5,
+  "aa_blocks": 3,
+  "stability_threshold": 0.05,
+  "minimum_gate_us": 295835.598,
+  "maximum_inter_kernel_gap_us": 9.76,
+  "results": [
+    {
+      "case": 1712,
+      "provider": "das_copy_into_layout",
+      "device_us": 4.8171865234375,
+      "aa_medians_us": [
+        4.8359345703125,
+        4.8171865234375,
+        4.7942177734375
+      ],
+      "aa_max_drift": 0.008701481419165491,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "void at::native::vectorized_elementwise_kernel<4, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul> >(int, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul>)"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "case": 1712,
+          "provider": "das_copy_into_layout",
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              256,
+              1024,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": false,
+          "device_us": 4.8359345703125,
+          "kernel_us": 4.8359345703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "das_copy_into_layout",
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              256,
+              1024,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": false,
+          "device_us": 4.7392158203125,
+          "kernel_us": 4.7392158203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "das_copy_into_layout",
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              256,
+              1024,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": false,
+          "device_us": 4.8639033203125,
+          "kernel_us": 4.8639033203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "das_copy_into_layout",
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              256,
+              1024,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": false,
+          "device_us": 4.7924970703125,
+          "kernel_us": 4.7924970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "das_copy_into_layout",
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              256,
+              1024,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": false,
+          "device_us": 4.8756240234375,
+          "kernel_us": 4.8756240234375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "das_copy_into_layout",
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              256,
+              1024,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": false,
+          "device_us": 4.8779677734375,
+          "kernel_us": 4.8779677734375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "das_copy_into_layout",
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              256,
+              1024,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": false,
+          "device_us": 4.7664052734375,
+          "kernel_us": 4.7664052734375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "das_copy_into_layout",
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              256,
+              1024,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": false,
+          "device_us": 4.7717177734375,
+          "kernel_us": 4.7717177734375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "das_copy_into_layout",
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              256,
+              1024,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": false,
+          "device_us": 4.8609365234375,
+          "kernel_us": 4.8609365234375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "das_copy_into_layout",
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              256,
+              1024,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": false,
+          "device_us": 4.8171865234375,
+          "kernel_us": 4.8171865234375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "das_copy_into_layout",
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              256,
+              1024,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": false,
+          "device_us": 4.7942177734375,
+          "kernel_us": 4.7942177734375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "das_copy_into_layout",
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              256,
+              1024,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": false,
+          "device_us": 4.7374990234375,
+          "kernel_us": 4.7374990234375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "das_copy_into_layout",
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              256,
+              1024,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": false,
+          "device_us": 4.7712490234375,
+          "kernel_us": 4.7712490234375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "das_copy_into_layout",
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              256,
+              1024,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": false,
+          "device_us": 4.8634365234375,
+          "kernel_us": 4.8634365234375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "das_copy_into_layout",
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              256,
+              1024,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": false,
+          "device_us": 4.8660908203125,
+          "kernel_us": 4.8660908203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 1712,
+      "provider": "native_public",
+      "device_us": 11.66046484375,
+      "aa_medians_us": [
+        11.66046484375,
+        11.62890234375,
+        11.73421484375
+      ],
+      "aa_max_drift": 0.00905609978370836,
+      "stable": true,
+      "correctness": false,
+      "kernels": [
+        "void at::native::elementwise_kernel_manual_unroll<128, 8, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#12}::operator()() const::{lambda(c10::BFloat16)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#12}::operator()() const::{lambda(c10::BFloat16)#1} const&)::{lambda(int, bool)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#12}::operator()() const::{lambda(c10::BFloat16)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#12}::operator()() const::{lambda(c10::BFloat16)#1} const&)::{lambda(int, bool)#1})",
+        "void at::native::vectorized_elementwise_kernel<4, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul> >(int, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul>)"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "case": 1712,
+          "provider": "native_public",
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              37120,
+              256,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 11.65452734375,
+          "kernel_us": 11.65452734375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "native_public",
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              37120,
+              256,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 11.76890234375,
+          "kernel_us": 11.76890234375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "native_public",
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              37120,
+              256,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 11.79405859375,
+          "kernel_us": 11.79405859375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "native_public",
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              37120,
+              256,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 11.61624609375,
+          "kernel_us": 11.61624609375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "native_public",
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              37120,
+              256,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 11.66046484375,
+          "kernel_us": 11.66046484375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "native_public",
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              37120,
+              256,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 11.70796484375,
+          "kernel_us": 11.70796484375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "native_public",
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              37120,
+              256,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 11.60718359375,
+          "kernel_us": 11.60718359375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "native_public",
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              37120,
+              256,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 11.62890234375,
+          "kernel_us": 11.62890234375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "native_public",
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              37120,
+              256,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 11.77733984375,
+          "kernel_us": 11.77733984375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "native_public",
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              37120,
+              256,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 11.59952734375,
+          "kernel_us": 11.59952734375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "native_public",
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              37120,
+              256,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 11.61187109375,
+          "kernel_us": 11.61187109375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "native_public",
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              37120,
+              256,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 11.60718359375,
+          "kernel_us": 11.60718359375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "native_public",
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              37120,
+              256,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 11.79187109375,
+          "kernel_us": 11.79187109375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "native_public",
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              37120,
+              256,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 11.84296484375,
+          "kernel_us": 11.84296484375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "native_public",
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              37120,
+              256,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 11.73421484375,
+          "kernel_us": 11.73421484375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 1712,
+      "provider": "new_public",
+      "device_us": 4.8296845703125,
+      "aa_medians_us": [
+        4.8609345703125,
+        4.7568740234375,
+        4.8296845703125
+      ],
+      "aa_max_drift": 0.02187582567086821,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "case": 1712,
+          "provider": "new_public",
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              256,
+              1024,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 4.8832802734375,
+          "kernel_us": 4.8832802734375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "new_public",
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              256,
+              1024,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 4.8504677734375,
+          "kernel_us": 4.8504677734375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "new_public",
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              256,
+              1024,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 4.7651552734375,
+          "kernel_us": 4.7651552734375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "new_public",
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              256,
+              1024,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 4.8609345703125,
+          "kernel_us": 4.8609345703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "new_public",
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              256,
+              1024,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 4.8748408203125,
+          "kernel_us": 4.8748408203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "new_public",
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              256,
+              1024,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 4.8481240234375,
+          "kernel_us": 4.8481240234375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "new_public",
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              256,
+              1024,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 4.7539052734375,
+          "kernel_us": 4.7539052734375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "new_public",
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              256,
+              1024,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 4.7546865234375,
+          "kernel_us": 4.7546865234375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "new_public",
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              256,
+              1024,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 4.7568740234375,
+          "kernel_us": 4.7568740234375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "new_public",
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              256,
+              1024,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 4.7571865234375,
+          "kernel_us": 4.7571865234375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "new_public",
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              256,
+              1024,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 4.8296845703125,
+          "kernel_us": 4.8296845703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "new_public",
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              256,
+              1024,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 4.8749970703125,
+          "kernel_us": 4.8749970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "new_public",
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              256,
+              1024,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 4.7904658203125,
+          "kernel_us": 4.7904658203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "new_public",
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              256,
+              1024,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 4.8524970703125,
+          "kernel_us": 4.8524970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1712,
+          "provider": "new_public",
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              148480,
+              256,
+              1024,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 4.7535908203125,
+          "kernel_us": 4.7535908203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 1713,
+      "provider": "das_copy_into_layout",
+      "device_us": 4.8140595703125,
+      "aa_medians_us": [
+        4.8140595703125,
+        4.8237470703125,
+        4.7745302734375
+      ],
+      "aa_max_drift": 0.010308196630108624,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "void at::native::vectorized_elementwise_kernel<4, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul> >(int, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul>)"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "case": 1713,
+          "provider": "das_copy_into_layout",
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              256,
+              2048,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": false,
+          "device_us": 4.8031220703125,
+          "kernel_us": 4.8031220703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "das_copy_into_layout",
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              256,
+              2048,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": false,
+          "device_us": 4.8734345703125,
+          "kernel_us": 4.8734345703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "das_copy_into_layout",
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              256,
+              2048,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": false,
+          "device_us": 4.8140595703125,
+          "kernel_us": 4.8140595703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "das_copy_into_layout",
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              256,
+              2048,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": false,
+          "device_us": 4.7584345703125,
+          "kernel_us": 4.7584345703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "das_copy_into_layout",
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              256,
+              2048,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": false,
+          "device_us": 4.8403095703125,
+          "kernel_us": 4.8403095703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "das_copy_into_layout",
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              256,
+              2048,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": false,
+          "device_us": 4.7821845703125,
+          "kernel_us": 4.7821845703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "das_copy_into_layout",
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              256,
+              2048,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": false,
+          "device_us": 4.8604658203125,
+          "kernel_us": 4.8604658203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "das_copy_into_layout",
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              256,
+              2048,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": false,
+          "device_us": 4.7960908203125,
+          "kernel_us": 4.7960908203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "das_copy_into_layout",
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              256,
+              2048,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": false,
+          "device_us": 4.8853095703125,
+          "kernel_us": 4.8853095703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "das_copy_into_layout",
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              256,
+              2048,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": false,
+          "device_us": 4.8237470703125,
+          "kernel_us": 4.8237470703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "das_copy_into_layout",
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              256,
+              2048,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": false,
+          "device_us": 4.7418740234375,
+          "kernel_us": 4.7418740234375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "das_copy_into_layout",
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              256,
+              2048,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": false,
+          "device_us": 4.7745302734375,
+          "kernel_us": 4.7745302734375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "das_copy_into_layout",
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              256,
+              2048,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": false,
+          "device_us": 4.8674970703125,
+          "kernel_us": 4.8674970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "das_copy_into_layout",
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              256,
+              2048,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": false,
+          "device_us": 4.7956220703125,
+          "kernel_us": 4.7956220703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "das_copy_into_layout",
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              256,
+              2048,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": false,
+          "device_us": 4.7371845703125,
+          "kernel_us": 4.7371845703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 1713,
+      "provider": "native_public",
+      "device_us": 11.96249609375,
+      "aa_medians_us": [
+        11.98546484375,
+        11.96249609375,
+        11.92015234375
+      ],
+      "aa_max_drift": 0.005479166550605763,
+      "stable": true,
+      "correctness": false,
+      "kernels": [
+        "void at::native::elementwise_kernel_manual_unroll<128, 8, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#12}::operator()() const::{lambda(c10::BFloat16)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#12}::operator()() const::{lambda(c10::BFloat16)#1} const&)::{lambda(int, bool)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#12}::operator()() const::{lambda(c10::BFloat16)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#12}::operator()() const::{lambda(c10::BFloat16)#1} const&)::{lambda(int, bool)#1})",
+        "void at::native::vectorized_elementwise_kernel<4, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul> >(int, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul>)"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "case": 1713,
+          "provider": "native_public",
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              37120,
+              256,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 12.02093359375,
+          "kernel_us": 12.02093359375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "native_public",
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              37120,
+              256,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 11.98546484375,
+          "kernel_us": 11.98546484375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "native_public",
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              37120,
+              256,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 11.96999609375,
+          "kernel_us": 11.96999609375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "native_public",
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              37120,
+              256,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 12.00765234375,
+          "kernel_us": 12.00765234375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "native_public",
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              37120,
+              256,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 11.83515234375,
+          "kernel_us": 11.83515234375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "native_public",
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              37120,
+              256,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 11.96249609375,
+          "kernel_us": 11.96249609375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "native_public",
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              37120,
+              256,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 11.98233984375,
+          "kernel_us": 11.98233984375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "native_public",
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              37120,
+              256,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 12.01858984375,
+          "kernel_us": 12.01858984375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "native_public",
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              37120,
+              256,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 11.93562109375,
+          "kernel_us": 11.93562109375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "native_public",
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              37120,
+              256,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 11.83499609375,
+          "kernel_us": 11.83499609375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "native_public",
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              37120,
+              256,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 11.92015234375,
+          "kernel_us": 11.92015234375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "native_public",
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              37120,
+              256,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 11.94608984375,
+          "kernel_us": 11.94608984375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "native_public",
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              37120,
+              256,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 11.84140234375,
+          "kernel_us": 11.84140234375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "native_public",
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              37120,
+              256,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 11.97640234375,
+          "kernel_us": 11.97640234375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "native_public",
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              37120,
+              256,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 11.82530859375,
+          "kernel_us": 11.82530859375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 1713,
+      "provider": "new_public",
+      "device_us": 4.8537470703125,
+      "aa_medians_us": [
+        4.8537470703125,
+        4.8287470703125,
+        4.8578095703125
+      ],
+      "aa_max_drift": 0.0060186420155816656,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "case": 1713,
+          "provider": "new_public",
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              256,
+              2048,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 4.8899970703125,
+          "kernel_us": 4.8899970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "new_public",
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              256,
+              2048,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 4.7889033203125,
+          "kernel_us": 4.7889033203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "new_public",
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              256,
+              2048,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 4.8537470703125,
+          "kernel_us": 4.8537470703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "new_public",
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              256,
+              2048,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 4.8973408203125,
+          "kernel_us": 4.8973408203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "new_public",
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              256,
+              2048,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 4.7684345703125,
+          "kernel_us": 4.7684345703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "new_public",
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              256,
+              2048,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 4.8990595703125,
+          "kernel_us": 4.8990595703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "new_public",
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              256,
+              2048,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 4.7734345703125,
+          "kernel_us": 4.7734345703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "new_public",
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              256,
+              2048,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 4.8635908203125,
+          "kernel_us": 4.8635908203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "new_public",
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              256,
+              2048,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 4.7710908203125,
+          "kernel_us": 4.7710908203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "new_public",
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              256,
+              2048,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 4.8287470703125,
+          "kernel_us": 4.8287470703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "new_public",
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              256,
+              2048,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 4.8096845703125,
+          "kernel_us": 4.8096845703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "new_public",
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              256,
+              2048,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 4.8578095703125,
+          "kernel_us": 4.8578095703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "new_public",
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              256,
+              2048,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 4.7740595703125,
+          "kernel_us": 4.7740595703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "new_public",
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              256,
+              2048,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 4.8710908203125,
+          "kernel_us": 4.8710908203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 1713,
+          "provider": "new_public",
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              296960,
+              256,
+              2048,
+              1
+            ]
+          },
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "offset": 0,
+          "dtype": "torch.bfloat16",
+          "target_dtype": "torch.float32",
+          "same_public_baseline": true,
+          "device_us": 4.8664033203125,
+          "kernel_us": 4.8664033203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 920001,
+      "provider": "das_copy_into_layout",
+      "device_us": 4.7617158203125,
+      "aa_medians_us": [
+        4.7617158203125,
+        4.7592158203125,
+        4.8139033203125
+      ],
+      "aa_max_drift": 0.011490863634843418,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "void at::native::vectorized_elementwise_kernel<4, at::native::bfloat16_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(float)#1}, std::array<char*, 2ul> >(int, at::native::bfloat16_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(float)#1}, std::array<char*, 2ul>)"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "case": 920001,
+          "provider": "das_copy_into_layout",
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              1,
+              17
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": false,
+          "device_us": 4.7560908203125,
+          "kernel_us": 4.7560908203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "das_copy_into_layout",
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              1,
+              17
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": false,
+          "device_us": 4.8068720703125,
+          "kernel_us": 4.8068720703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "das_copy_into_layout",
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              1,
+              17
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": false,
+          "device_us": 4.7617158203125,
+          "kernel_us": 4.7617158203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "das_copy_into_layout",
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              1,
+              17
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": false,
+          "device_us": 4.7578095703125,
+          "kernel_us": 4.7578095703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "das_copy_into_layout",
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              1,
+              17
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": false,
+          "device_us": 4.8524970703125,
+          "kernel_us": 4.8524970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "das_copy_into_layout",
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              1,
+              17
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": false,
+          "device_us": 4.8331220703125,
+          "kernel_us": 4.8331220703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "das_copy_into_layout",
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              1,
+              17
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": false,
+          "device_us": 4.8212470703125,
+          "kernel_us": 4.8212470703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "das_copy_into_layout",
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              1,
+              17
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": false,
+          "device_us": 4.7592158203125,
+          "kernel_us": 4.7592158203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "das_copy_into_layout",
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              1,
+              17
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": false,
+          "device_us": 4.7545302734375,
+          "kernel_us": 4.7545302734375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "das_copy_into_layout",
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              1,
+              17
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": false,
+          "device_us": 4.7531240234375,
+          "kernel_us": 4.7531240234375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "das_copy_into_layout",
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              1,
+              17
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": false,
+          "device_us": 4.8581220703125,
+          "kernel_us": 4.8581220703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "das_copy_into_layout",
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              1,
+              17
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": false,
+          "device_us": 4.7679658203125,
+          "kernel_us": 4.7679658203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "das_copy_into_layout",
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              1,
+              17
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": false,
+          "device_us": 4.7626552734375,
+          "kernel_us": 4.7626552734375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "das_copy_into_layout",
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              1,
+              17
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": false,
+          "device_us": 4.8221845703125,
+          "kernel_us": 4.8221845703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "das_copy_into_layout",
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              1,
+              17
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": false,
+          "device_us": 4.8139033203125,
+          "kernel_us": 4.8139033203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 920001,
+      "provider": "native_public",
+      "device_us": 9.55530859375,
+      "aa_medians_us": [
+        9.55530859375,
+        9.52265234375,
+        9.62858984375
+      ],
+      "aa_max_drift": 0.011124789205344543,
+      "stable": true,
+      "correctness": false,
+      "kernels": [
+        "void at::native::elementwise_kernel_manual_unroll<128, 4, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1} const&)::{lambda(int, bool)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1} const&)::{lambda(int, bool)#1})",
+        "void at::native::vectorized_elementwise_kernel<4, at::native::bfloat16_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(float)#1}, std::array<char*, 2ul> >(int, at::native::bfloat16_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(float)#1}, std::array<char*, 2ul>)"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "case": 920001,
+          "provider": "native_public",
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              5,
+              1
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": true,
+          "device_us": 9.51405859375,
+          "kernel_us": 9.51405859375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "native_public",
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              5,
+              1
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": true,
+          "device_us": 9.53858984375,
+          "kernel_us": 9.53858984375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "native_public",
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              5,
+              1
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": true,
+          "device_us": 9.55530859375,
+          "kernel_us": 9.55530859375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "native_public",
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              5,
+              1
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": true,
+          "device_us": 9.59233984375,
+          "kernel_us": 9.59233984375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "native_public",
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              5,
+              1
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": true,
+          "device_us": 9.57640234375,
+          "kernel_us": 9.57640234375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "native_public",
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              5,
+              1
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": true,
+          "device_us": 9.52265234375,
+          "kernel_us": 9.52265234375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "native_public",
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              5,
+              1
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": true,
+          "device_us": 9.60796484375,
+          "kernel_us": 9.60796484375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "native_public",
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              5,
+              1
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": true,
+          "device_us": 9.58796484375,
+          "kernel_us": 9.58796484375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "native_public",
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              5,
+              1
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": true,
+          "device_us": 9.52108984375,
+          "kernel_us": 9.52108984375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "native_public",
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              5,
+              1
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": true,
+          "device_us": 9.51968359375,
+          "kernel_us": 9.51968359375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "native_public",
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              5,
+              1
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": true,
+          "device_us": 9.52421484375,
+          "kernel_us": 9.52421484375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "native_public",
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              5,
+              1
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": true,
+          "device_us": 9.64124609375,
+          "kernel_us": 9.64124609375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "native_public",
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              5,
+              1
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": true,
+          "device_us": 9.63515234375,
+          "kernel_us": 9.63515234375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "native_public",
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              5,
+              1
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": true,
+          "device_us": 9.62765234375,
+          "kernel_us": 9.62765234375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "native_public",
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": false,
+            "alias_ok": true,
+            "output_stride": [
+              5,
+              1
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": true,
+          "device_us": 9.62858984375,
+          "kernel_us": 9.62858984375,
+          "copy_us": 0.0,
+          "kernels_per_call": 2,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 920001,
+      "provider": "new_public",
+      "device_us": 4.7537470703125,
+      "aa_medians_us": [
+        4.7537470703125,
+        4.7817177734375,
+        4.7512470703125
+      ],
+      "aa_max_drift": 0.006413201139421343,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "cast_dense"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "case": 920001,
+          "provider": "new_public",
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              1,
+              17
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": true,
+          "device_us": 4.8554677734375,
+          "kernel_us": 4.8554677734375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "new_public",
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              1,
+              17
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": true,
+          "device_us": 4.7515595703125,
+          "kernel_us": 4.7515595703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "new_public",
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              1,
+              17
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": true,
+          "device_us": 4.8512470703125,
+          "kernel_us": 4.8512470703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "new_public",
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              1,
+              17
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": true,
+          "device_us": 4.7534345703125,
+          "kernel_us": 4.7534345703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "new_public",
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              1,
+              17
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": true,
+          "device_us": 4.7537470703125,
+          "kernel_us": 4.7537470703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "new_public",
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              1,
+              17
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": true,
+          "device_us": 4.7439052734375,
+          "kernel_us": 4.7439052734375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "new_public",
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              1,
+              17
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": true,
+          "device_us": 4.7817177734375,
+          "kernel_us": 4.7817177734375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "new_public",
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              1,
+              17
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": true,
+          "device_us": 4.7512470703125,
+          "kernel_us": 4.7512470703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "new_public",
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              1,
+              17
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": true,
+          "device_us": 4.8592158203125,
+          "kernel_us": 4.8592158203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "new_public",
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              1,
+              17
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": true,
+          "device_us": 4.8324970703125,
+          "kernel_us": 4.8324970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "new_public",
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              1,
+              17
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": true,
+          "device_us": 4.7510908203125,
+          "kernel_us": 4.7510908203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "new_public",
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              1,
+              17
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": true,
+          "device_us": 4.7551533203125,
+          "kernel_us": 4.7551533203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "new_public",
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              1,
+              17
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": true,
+          "device_us": 4.7517158203125,
+          "kernel_us": 4.7517158203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "new_public",
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              1,
+              17
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": true,
+          "device_us": 4.7512470703125,
+          "kernel_us": 4.7512470703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "case": 920001,
+          "provider": "new_public",
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "correctness": {
+            "value_ok": true,
+            "dtype_ok": true,
+            "stride_ok": true,
+            "alias_ok": true,
+            "output_stride": [
+              1,
+              17
+            ]
+          },
+          "shape": [
+            17,
+            5
+          ],
+          "stride": [
+            1,
+            17
+          ],
+          "offset": 0,
+          "dtype": "torch.float32",
+          "target_dtype": "torch.bfloat16",
+          "same_public_baseline": true,
+          "device_us": 4.7471845703125,
+          "kernel_us": 4.7471845703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    }
+  ]
+}

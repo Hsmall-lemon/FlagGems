@@ -1,0 +1,151 @@
+{
+  "scope": "Deterministic worksheet metadata reconstructions, not original model operands",
+  "workbook_sha256": "d2596052c66d7145af47b35fda45198d1f213b69825aeb91d10112dfd8871597",
+  "cards": {
+    "3": {
+      "model_state": {
+        "median_us": {
+          "wheel": 2162.252296,
+          "aten": 2162.32783,
+          "repo": 1741.864748
+        },
+        "median_ratio": 1.241343392753477,
+        "mean_ratio": 1.2413996852039515,
+        "round_ratios": [
+          1.2416411524809585,
+          1.2412612415201583,
+          1.2413048337769415,
+          1.2413843161375007,
+          1.241226807854208
+        ]
+      },
+      "expanded_small": {
+        "median_us": {
+          "wheel": 8.611801,
+          "aten": 8.60524,
+          "repo": 5.4330810000000005
+        },
+        "median_ratio": 1.5838600602494237,
+        "mean_ratio": 1.5697705711680199,
+        "round_ratios": [
+          1.4678795795755328,
+          1.5837717125881245,
+          1.5887245090146316,
+          1.5708276431195272,
+          1.6487391464283798
+        ]
+      },
+      "expanded_medium": {
+        "median_us": {
+          "wheel": 9.56236,
+          "aten": 9.55932,
+          "repo": 6.3902
+        },
+        "median_ratio": 1.4959343995493097,
+        "mean_ratio": 1.509123926442042,
+        "round_ratios": [
+          1.5350569662349796,
+          1.5940179397122571,
+          1.4888725468811348,
+          1.4959343995493097,
+          1.4387976073955855
+        ]
+      },
+      "expanded_large": {
+        "median_us": {
+          "wheel": 43.597242,
+          "aten": 43.119163,
+          "repo": 43.785563
+        },
+        "median_ratio": 0.9847803715576295,
+        "mean_ratio": 0.9846950183970764,
+        "round_ratios": [
+          0.9850855437131687,
+          0.9848527136284683,
+          0.9837612242975329,
+          0.9847803715576295,
+          0.9849954742727176
+        ]
+      }
+    },
+    "4": {
+      "model_state": {
+        "median_us": {
+          "wheel": 2162.4459589999997,
+          "aten": 2162.460835,
+          "repo": 1741.979733
+        },
+        "median_ratio": 1.241372627955827,
+        "mean_ratio": 1.2413536707659654,
+        "round_ratios": [
+          1.2413622956566825,
+          1.2411629808343791,
+          1.2412142798667039,
+          1.2412466724146438,
+          1.2415871611703153
+        ]
+      },
+      "expanded_small": {
+        "median_us": {
+          "wheel": 8.625233,
+          "aten": 8.627633,
+          "repo": 5.490514999999999
+        },
+        "median_ratio": 1.5709333277479436,
+        "mean_ratio": 1.5467983963441334,
+        "round_ratios": [
+          1.6106848342245825,
+          1.5711959624916787,
+          1.431567569685295,
+          1.6302704985147456,
+          1.5072996138104229
+        ]
+      },
+      "expanded_medium": {
+        "median_us": {
+          "wheel": 9.578835000000002,
+          "aten": 9.578514,
+          "repo": 6.2804340000000005
+        },
+        "median_ratio": 1.5251356832983198,
+        "mean_ratio": 1.5282717198930127,
+        "round_ratios": [
+          1.5110450365044674,
+          1.5236832359037606,
+          1.5522219455598802,
+          1.5966122035678125,
+          1.4619544497437005
+        ]
+      },
+      "expanded_large": {
+        "median_us": {
+          "wheel": 43.615451,
+          "aten": 43.108894,
+          "repo": 43.759291
+        },
+        "median_ratio": 0.985136939261653,
+        "mean_ratio": 0.9851128143731905,
+        "round_ratios": [
+          0.9850689850128567,
+          0.985219815241977,
+          0.9851447576811982,
+          0.98496136511901,
+          0.9851691682232496
+        ]
+      }
+    }
+  },
+  "source_sha256": {
+    "attention_state_hip.py": "185460a1f7a25f27ba55202cf42f35fef5a10fda845b527c3058b5b9b88f12d4",
+    "attention_state_hip.cpp": "9d737b24687977ab0a1e027f6485009d308f4392aac7c736b188611f0f990f88",
+    "ops/attention_state.py": "156b334c1a07150624f6eff2f8b059f7fef2f209b1d02e63235c7ac032040213",
+    "ops/_scaled_dot_product_flash_attention.py": "6eabe38ca1abcf6ff68c30b40250895b45f0fb402c6acad82bb50982b4ac3a0e"
+  },
+  "scope_excludes_original_model_payload_and_external_frozen_gate": true,
+  "per_card_regressions": {
+    "pytest": 33,
+    "full_stability_fixtures": 34,
+    "repeats": 3
+  },
+  "complete": true
+}

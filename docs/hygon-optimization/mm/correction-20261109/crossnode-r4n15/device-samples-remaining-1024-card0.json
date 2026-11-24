@@ -1,0 +1,6098 @@
+{
+  "profile": "mm-remaining-1024-r1",
+  "metric": "(HIPOPS + HIPCOPY) DurationNs sum/call; host and gate excluded; kernel/copy components retained",
+  "calls_per_roi": [
+    1024
+  ],
+  "rois_per_aa_block": 5,
+  "aa_blocks": 3,
+  "stability_threshold": 0.05,
+  "minimum_gate_us": 295835.304,
+  "maximum_inter_kernel_gap_us": 11.84,
+  "results": [
+    {
+      "case": 6,
+      "provider": "das",
+      "device_us": 6.342962890625,
+      "aa_medians_us": [
+        6.34843359375,
+        6.31968359375,
+        6.342962890625
+      ],
+      "aa_max_drift": 0.004549278389258893,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "Cijk_Ailk_Bljk_DB_MT16x16x8_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS0_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM1_MMAC_KME0_NLCA1_NLCB1_OLDSR0_PGR2_PLR1_RK0_SU0_SUM0_SUS256_SVW2_TT2_2_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG8_8_1_WGM1"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 6.39312109375,
+          "kernel_us": 6.39312109375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 6.38499609375,
+          "kernel_us": 6.38499609375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 6.34843359375,
+          "kernel_us": 6.34843359375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 6.31530859375,
+          "kernel_us": 6.31530859375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 6.26452734375,
+          "kernel_us": 6.26452734375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 6.38530859375,
+          "kernel_us": 6.38530859375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 6.24655859375,
+          "kernel_us": 6.24655859375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 6.31968359375,
+          "kernel_us": 6.31968359375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 6.27702734375,
+          "kernel_us": 6.27702734375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 6.32218359375,
+          "kernel_us": 6.32218359375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 6.314056640625,
+          "kernel_us": 6.314056640625,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 6.400931640625,
+          "kernel_us": 6.400931640625,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 6.342337890625,
+          "kernel_us": 6.342337890625,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 6.342962890625,
+          "kernel_us": 6.342962890625,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 6.354681640625,
+          "kernel_us": 6.354681640625,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 6,
+      "provider": "new_export",
+      "device_us": 6.642650390625,
+      "aa_medians_us": [
+        6.65093359375,
+        6.62733984375,
+        6.642650390625
+      ],
+      "aa_max_drift": 0.003560063397420432,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "mmac_tiled"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 6.70546484375,
+          "kernel_us": 6.70546484375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 6.69187109375,
+          "kernel_us": 6.69187109375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 6.65030859375,
+          "kernel_us": 6.65030859375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 6.60530859375,
+          "kernel_us": 6.60530859375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 6.65093359375,
+          "kernel_us": 6.65093359375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 6.57468359375,
+          "kernel_us": 6.57468359375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 6.58437109375,
+          "kernel_us": 6.58437109375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 6.68218359375,
+          "kernel_us": 6.68218359375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 6.62733984375,
+          "kernel_us": 6.62733984375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 6.64952734375,
+          "kernel_us": 6.64952734375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 6.688275390625,
+          "kernel_us": 6.688275390625,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 6.582494140625,
+          "kernel_us": 6.582494140625,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 6.691400390625,
+          "kernel_us": 6.691400390625,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 6.631869140625,
+          "kernel_us": 6.631869140625,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 6.642650390625,
+          "kernel_us": 6.642650390625,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 12,
+      "provider": "das",
+      "device_us": 6.609525390625,
+      "aa_medians_us": [
+        6.609525390625,
+        6.60968359375,
+        6.601244140625
+      ],
+      "aa_max_drift": 0.0012784640206020548,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "Cijk_Ailk_Bljk_DB_MT32x32x8_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS0_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM1_MMAC_KME0_NLCA1_NLCB1_OLDSR0_PGR2_PLR1_RK0_SU0_SUM0_SUS256_SVW2_TT2_2_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG16_16_1_WGM1"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 6.59749609375,
+          "kernel_us": 6.59749609375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 6.609525390625,
+          "kernel_us": 6.609525390625,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 6.618744140625,
+          "kernel_us": 6.618744140625,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 6.695931640625,
+          "kernel_us": 6.695931640625,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 6.602337890625,
+          "kernel_us": 6.602337890625,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 6.602806640625,
+          "kernel_us": 6.602806640625,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 6.601869140625,
+          "kernel_us": 6.601869140625,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 6.686400390625,
+          "kernel_us": 6.686400390625,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 6.674369140625,
+          "kernel_us": 6.674369140625,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 6.60968359375,
+          "kernel_us": 6.60968359375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 6.599681640625,
+          "kernel_us": 6.599681640625,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 6.601556640625,
+          "kernel_us": 6.601556640625,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 6.600306640625,
+          "kernel_us": 6.600306640625,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 6.685150390625,
+          "kernel_us": 6.685150390625,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 6.601244140625,
+          "kernel_us": 6.601244140625,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 12,
+      "provider": "new_export",
+      "device_us": 4.8149951171875,
+      "aa_medians_us": [
+        4.7914013671875,
+        4.8149951171875,
+        4.8239013671875
+      ],
+      "aa_max_drift": 0.006782984248108859,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "reduction"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7295263671875,
+          "kernel_us": 4.7295263671875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.8660908203125,
+          "kernel_us": 4.8660908203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.8367138671875,
+          "kernel_us": 4.8367138671875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7914013671875,
+          "kernel_us": 4.7914013671875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7267138671875,
+          "kernel_us": 4.7267138671875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.8149951171875,
+          "kernel_us": 4.8149951171875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7792138671875,
+          "kernel_us": 4.7792138671875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7528095703125,
+          "kernel_us": 4.7528095703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.8776513671875,
+          "kernel_us": 4.8776513671875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.8281201171875,
+          "kernel_us": 4.8281201171875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.8282783203125,
+          "kernel_us": 4.8282783203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.8239013671875,
+          "kernel_us": 4.8239013671875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7857763671875,
+          "kernel_us": 4.7857763671875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7234326171875,
+          "kernel_us": 4.7234326171875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.8368701171875,
+          "kernel_us": 4.8368701171875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 22,
+      "provider": "das",
+      "device_us": 4.7707783203125,
+      "aa_medians_us": [
+        4.7046845703125,
+        4.7707783203125,
+        4.8145283203125
+      ],
+      "aa_max_drift": 0.023347739547330493,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "Cijk_Alik_Bljk_DB_MT16x16x8_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS0_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM1_MMAC_KME0_NLCA1_NLCB1_OLDSR0_PGR2_PLR1_RK0_SU0_SUM0_SUS256_SVW2_TT2_2_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG8_8_1_WGM8"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.6971845703125,
+          "kernel_us": 4.6971845703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.6954658203125,
+          "kernel_us": 4.6954658203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7396845703125,
+          "kernel_us": 4.7396845703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7046845703125,
+          "kernel_us": 4.7046845703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.8257783203125,
+          "kernel_us": 4.8257783203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7414033203125,
+          "kernel_us": 4.7414033203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.8470283203125,
+          "kernel_us": 4.8470283203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7707783203125,
+          "kernel_us": 4.7707783203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.8181220703125,
+          "kernel_us": 4.8181220703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.6939033203125,
+          "kernel_us": 4.6939033203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.8426533203125,
+          "kernel_us": 4.8426533203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7940595703125,
+          "kernel_us": 4.7940595703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7515595703125,
+          "kernel_us": 4.7515595703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.9901533203125,
+          "kernel_us": 4.9901533203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.8145283203125,
+          "kernel_us": 4.8145283203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 22,
+      "provider": "new_export",
+      "device_us": 4.7899970703125,
+      "aa_medians_us": [
+        4.7576533203125,
+        4.8145283203125,
+        4.7899970703125
+      ],
+      "aa_max_drift": 0.011954422941490073,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "simt"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.8332783203125,
+          "kernel_us": 4.8332783203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7303095703125,
+          "kernel_us": 4.7303095703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7314033203125,
+          "kernel_us": 4.7314033203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7576533203125,
+          "kernel_us": 4.7576533203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.8417158203125,
+          "kernel_us": 4.8417158203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7318720703125,
+          "kernel_us": 4.7318720703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7349970703125,
+          "kernel_us": 4.7349970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.8717158203125,
+          "kernel_us": 4.8717158203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.8385908203125,
+          "kernel_us": 4.8385908203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.8145283203125,
+          "kernel_us": 4.8145283203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7612470703125,
+          "kernel_us": 4.7612470703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.8643720703125,
+          "kernel_us": 4.8643720703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7899970703125,
+          "kernel_us": 4.7899970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.8420283203125,
+          "kernel_us": 4.8420283203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7299970703125,
+          "kernel_us": 4.7299970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 36,
+      "provider": "das",
+      "device_us": 4.8920283203125,
+      "aa_medians_us": [
+        4.8520283203125,
+        4.9349970703125,
+        4.8920283203125
+      ],
+      "aa_max_drift": 0.01709980744602424,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "Cijk_Ailk_Bljk_SB_MT32x16x32_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS1_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK0_SU0_SUM0_SUS256_SVW4_TT2_2_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG16_8_1_WGM1"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.9321845703125,
+          "kernel_us": 4.9321845703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.8429658203125,
+          "kernel_us": 4.8429658203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.8534345703125,
+          "kernel_us": 4.8534345703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.8417158203125,
+          "kernel_us": 4.8417158203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.8520283203125,
+          "kernel_us": 4.8520283203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.9349970703125,
+          "kernel_us": 4.9349970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.8509345703125,
+          "kernel_us": 4.8509345703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.9267158203125,
+          "kernel_us": 4.9267158203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.9848408203125,
+          "kernel_us": 4.9848408203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.9565595703125,
+          "kernel_us": 4.9565595703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.8920283203125,
+          "kernel_us": 4.8920283203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.8820283203125,
+          "kernel_us": 4.8820283203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.9579658203125,
+          "kernel_us": 4.9579658203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.9237470703125,
+          "kernel_us": 4.9237470703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.8479658203125,
+          "kernel_us": 4.8479658203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 36,
+      "provider": "new_export",
+      "device_us": 4.8414033203125,
+      "aa_medians_us": [
+        4.8721845703125,
+        4.8414033203125,
+        4.8126533203125
+      ],
+      "aa_max_drift": 0.012369735785609182,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "tiled"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.8985908203125,
+          "kernel_us": 4.8985908203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.8679658203125,
+          "kernel_us": 4.8679658203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.8776533203125,
+          "kernel_us": 4.8776533203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.8132783203125,
+          "kernel_us": 4.8132783203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.8721845703125,
+          "kernel_us": 4.8721845703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.8899970703125,
+          "kernel_us": 4.8899970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.9184345703125,
+          "kernel_us": 4.9184345703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.8414033203125,
+          "kernel_us": 4.8414033203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7809345703125,
+          "kernel_us": 4.7809345703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7793720703125,
+          "kernel_us": 4.7793720703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.8126533203125,
+          "kernel_us": 4.8126533203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.8568720703125,
+          "kernel_us": 4.8568720703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.8051533203125,
+          "kernel_us": 4.8051533203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7821845703125,
+          "kernel_us": 4.7821845703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.8204658203125,
+          "kernel_us": 4.8204658203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 38,
+      "provider": "das",
+      "device_us": 4.7493720703125,
+      "aa_medians_us": [
+        4.7398388671875,
+        4.7587470703125,
+        4.7493720703125
+      ],
+      "aa_max_drift": 0.003989207999431477,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "Cijk_Ailk_Bljk_SB_MT16x16x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS0_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR2_PLR1_RK0_SU0_SUM0_SUS256_SVW4_TT2_2_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG8_8_1_WGM8"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7628076171875,
+          "kernel_us": 4.7628076171875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7110888671875,
+          "kernel_us": 4.7110888671875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7374951171875,
+          "kernel_us": 4.7374951171875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7398388671875,
+          "kernel_us": 4.7398388671875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7634326171875,
+          "kernel_us": 4.7634326171875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7587470703125,
+          "kernel_us": 4.7587470703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7096845703125,
+          "kernel_us": 4.7096845703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7479658203125,
+          "kernel_us": 4.7479658203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7664033203125,
+          "kernel_us": 4.7664033203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7634345703125,
+          "kernel_us": 4.7634345703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7493720703125,
+          "kernel_us": 4.7493720703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7626533203125,
+          "kernel_us": 4.7626533203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7951533203125,
+          "kernel_us": 4.7951533203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7048408203125,
+          "kernel_us": 4.7048408203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7089033203125,
+          "kernel_us": 4.7089033203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 38,
+      "provider": "new_export",
+      "device_us": 4.7937470703125,
+      "aa_medians_us": [
+        4.7937470703125,
+        4.7773388671875,
+        4.8123408203125
+      ],
+      "aa_max_drift": 0.007326663252926524,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "tiled"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7249970703125,
+          "kernel_us": 4.7249970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7679638671875,
+          "kernel_us": 4.7679638671875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.8621826171875,
+          "kernel_us": 4.8621826171875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.8114033203125,
+          "kernel_us": 4.8114033203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7937470703125,
+          "kernel_us": 4.7937470703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.8609326171875,
+          "kernel_us": 4.8609326171875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7773388671875,
+          "kernel_us": 4.7773388671875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.8696826171875,
+          "kernel_us": 4.8696826171875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7235888671875,
+          "kernel_us": 4.7235888671875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7668720703125,
+          "kernel_us": 4.7668720703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.8501533203125,
+          "kernel_us": 4.8501533203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7512470703125,
+          "kernel_us": 4.7512470703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.8281220703125,
+          "kernel_us": 4.8281220703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.8123408203125,
+          "kernel_us": 4.8123408203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7601533203125,
+          "kernel_us": 4.7601533203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 40,
+      "provider": "das",
+      "device_us": 4.7099970703125,
+      "aa_medians_us": [
+        4.7756220703125,
+        4.7099970703125,
+        4.7074970703125
+      ],
+      "aa_max_drift": 0.014471596897983385,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "Cijk_Ailk_Bljk_SB_MT8x8x8_SE_AMAS0_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS1_FL0_GRVW1_GSU1_ISA936_IU1_KME_GRCMn2_K1_KLA_LDL1_LRVW1_MAC_MMAC_BW0_MMAC_KM0_MMAC_KME0_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK0_SU0_SUM0_SUS256_SVW4_TT1_1_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW1_WG8_8_1_WGM1"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7629658203125,
+          "kernel_us": 4.7629658203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7549970703125,
+          "kernel_us": 4.7549970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.8335908203125,
+          "kernel_us": 4.8335908203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7756220703125,
+          "kernel_us": 4.7756220703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7928095703125,
+          "kernel_us": 4.7928095703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7429658203125,
+          "kernel_us": 4.7429658203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7485908203125,
+          "kernel_us": 4.7485908203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7099970703125,
+          "kernel_us": 4.7099970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7081220703125,
+          "kernel_us": 4.7081220703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7087470703125,
+          "kernel_us": 4.7087470703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7067158203125,
+          "kernel_us": 4.7067158203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7074970703125,
+          "kernel_us": 4.7074970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7078095703125,
+          "kernel_us": 4.7078095703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7074970703125,
+          "kernel_us": 4.7074970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7215595703125,
+          "kernel_us": 4.7215595703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 40,
+      "provider": "new_export",
+      "device_us": 4.7643720703125,
+      "aa_medians_us": [
+        4.7643720703125,
+        4.7999970703125,
+        4.7265595703125
+      ],
+      "aa_max_drift": 0.015537199713140382,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "reduction"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7643720703125,
+          "kernel_us": 4.7643720703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7446845703125,
+          "kernel_us": 4.7446845703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.8726533203125,
+          "kernel_us": 4.8726533203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7601533203125,
+          "kernel_us": 4.7601533203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.8768720703125,
+          "kernel_us": 4.8768720703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7249970703125,
+          "kernel_us": 4.7249970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.8039033203125,
+          "kernel_us": 4.8039033203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7999970703125,
+          "kernel_us": 4.7999970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.8424970703125,
+          "kernel_us": 4.8424970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7654658203125,
+          "kernel_us": 4.7654658203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7265595703125,
+          "kernel_us": 4.7265595703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7253095703125,
+          "kernel_us": 4.7253095703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7368720703125,
+          "kernel_us": 4.7368720703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7210908203125,
+          "kernel_us": 4.7210908203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.8640595703125,
+          "kernel_us": 4.8640595703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 44,
+      "provider": "das",
+      "device_us": 4.6882783203125,
+      "aa_medians_us": [
+        4.6882783203125,
+        4.7610908203125,
+        4.6881220703125
+      ],
+      "aa_max_drift": 0.015564601114393728,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "Cijk_Ailk_Bljk_SB_MT32x16x32_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS1_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK0_SU0_SUM0_SUS256_SVW4_TT2_2_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG16_8_1_WGM1"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.6882783203125,
+          "kernel_us": 4.6882783203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.6893720703125,
+          "kernel_us": 4.6893720703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7115595703125,
+          "kernel_us": 4.7115595703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.6873408203125,
+          "kernel_us": 4.6873408203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.6859345703125,
+          "kernel_us": 4.6859345703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.6898408203125,
+          "kernel_us": 4.6898408203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7871845703125,
+          "kernel_us": 4.7871845703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7895283203125,
+          "kernel_us": 4.7895283203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7610908203125,
+          "kernel_us": 4.7610908203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7440595703125,
+          "kernel_us": 4.7440595703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.6881220703125,
+          "kernel_us": 4.6881220703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.6873408203125,
+          "kernel_us": 4.6873408203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.6849970703125,
+          "kernel_us": 4.6849970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7346845703125,
+          "kernel_us": 4.7346845703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7190595703125,
+          "kernel_us": 4.7190595703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 44,
+      "provider": "new_export",
+      "device_us": 4.7695283203125,
+      "aa_medians_us": [
+        4.8267158203125,
+        4.7695283203125,
+        4.7164033203125
+      ],
+      "aa_max_drift": 0.023389115075233002,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "tiled"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.8329658203125,
+          "kernel_us": 4.8329658203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.8267158203125,
+          "kernel_us": 4.8267158203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.8468720703125,
+          "kernel_us": 4.8468720703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7548408203125,
+          "kernel_us": 4.7548408203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7118720703125,
+          "kernel_us": 4.7118720703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7103095703125,
+          "kernel_us": 4.7103095703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.8589033203125,
+          "kernel_us": 4.8589033203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7649970703125,
+          "kernel_us": 4.7649970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.8293720703125,
+          "kernel_us": 4.8293720703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7695283203125,
+          "kernel_us": 4.7695283203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7153095703125,
+          "kernel_us": 4.7153095703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7164033203125,
+          "kernel_us": 4.7164033203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7859345703125,
+          "kernel_us": 4.7859345703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7128095703125,
+          "kernel_us": 4.7128095703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.8310908203125,
+          "kernel_us": 4.8310908203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 66,
+      "provider": "das",
+      "device_us": 4.8187470703125,
+      "aa_medians_us": [
+        4.8187470703125,
+        4.8271845703125,
+        4.7917158203125
+      ],
+      "aa_max_drift": 0.007402097981196176,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "Cijk_Alik_Bljk_SB_MT16x16x32_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS0_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR2_PLR1_RK0_SU0_SUM0_SUS256_SVW4_TT2_2_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG8_8_1_WGM8"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7965595703125,
+          "kernel_us": 4.7965595703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.8942158203125,
+          "kernel_us": 4.8942158203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.8698408203125,
+          "kernel_us": 4.8698408203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.8028095703125,
+          "kernel_us": 4.8028095703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.8187470703125,
+          "kernel_us": 4.8187470703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.9143720703125,
+          "kernel_us": 4.9143720703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7932783203125,
+          "kernel_us": 4.7932783203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.8724970703125,
+          "kernel_us": 4.8724970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.8271845703125,
+          "kernel_us": 4.8271845703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7553095703125,
+          "kernel_us": 4.7553095703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7795283203125,
+          "kernel_us": 4.7795283203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7917158203125,
+          "kernel_us": 4.7917158203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.8556220703125,
+          "kernel_us": 4.8556220703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7539033203125,
+          "kernel_us": 4.7539033203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.8189033203125,
+          "kernel_us": 4.8189033203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 66,
+      "provider": "new_export",
+      "device_us": 4.8737470703125,
+      "aa_medians_us": [
+        4.7778095703125,
+        4.9101533203125,
+        4.8737470703125
+      ],
+      "aa_max_drift": 0.027699670330591397,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "tiled"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7790595703125,
+          "kernel_us": 4.7790595703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.8982783203125,
+          "kernel_us": 4.8982783203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7778095703125,
+          "kernel_us": 4.7778095703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7757783203125,
+          "kernel_us": 4.7757783203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7701533203125,
+          "kernel_us": 4.7701533203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.9101533203125,
+          "kernel_us": 4.9101533203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.9117158203125,
+          "kernel_us": 4.9117158203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7767158203125,
+          "kernel_us": 4.7767158203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.8323408203125,
+          "kernel_us": 4.8323408203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.9107783203125,
+          "kernel_us": 4.9107783203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.9057783203125,
+          "kernel_us": 4.9057783203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.8201533203125,
+          "kernel_us": 4.8201533203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.8112470703125,
+          "kernel_us": 4.8112470703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.8737470703125,
+          "kernel_us": 4.8737470703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.8757783203125,
+          "kernel_us": 4.8757783203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 69,
+      "provider": "das",
+      "device_us": 6.08515234375,
+      "aa_medians_us": [
+        6.14749609375,
+        6.08515234375,
+        6.07827734375
+      ],
+      "aa_max_drift": 0.011387889378094096,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "Cijk_Alik_Bljk_SB_MT16x16x32_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS0_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR2_PLR1_RK0_SU0_SUM0_SUS256_SVW4_TT2_2_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG8_8_1_WGM1"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 6.14749609375,
+          "kernel_us": 6.14749609375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 6.14843359375,
+          "kernel_us": 6.14843359375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 6.09655859375,
+          "kernel_us": 6.09655859375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 6.14155859375,
+          "kernel_us": 6.14155859375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 6.16140234375,
+          "kernel_us": 6.16140234375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 6.08515234375,
+          "kernel_us": 6.08515234375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 6.08218359375,
+          "kernel_us": 6.08218359375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 6.14296484375,
+          "kernel_us": 6.14296484375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 6.08249609375,
+          "kernel_us": 6.08249609375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 6.12999609375,
+          "kernel_us": 6.12999609375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 6.07749609375,
+          "kernel_us": 6.07749609375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 6.07655859375,
+          "kernel_us": 6.07655859375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 6.07827734375,
+          "kernel_us": 6.07827734375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 6.08827734375,
+          "kernel_us": 6.08827734375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 6.13265234375,
+          "kernel_us": 6.13265234375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 69,
+      "provider": "new_export",
+      "device_us": 4.7826533203125,
+      "aa_medians_us": [
+        4.7826533203125,
+        4.8296845703125,
+        4.7696845703125
+      ],
+      "aa_max_drift": 0.012579448203650978,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "reduction"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.8146845703125,
+          "kernel_us": 4.8146845703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.8268720703125,
+          "kernel_us": 4.8268720703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7601533203125,
+          "kernel_us": 4.7601533203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7095283203125,
+          "kernel_us": 4.7095283203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7826533203125,
+          "kernel_us": 4.7826533203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7982783203125,
+          "kernel_us": 4.7982783203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7081220703125,
+          "kernel_us": 4.7081220703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.8306220703125,
+          "kernel_us": 4.8306220703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.8296845703125,
+          "kernel_us": 4.8296845703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.8417158203125,
+          "kernel_us": 4.8417158203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7093720703125,
+          "kernel_us": 4.7093720703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7785908203125,
+          "kernel_us": 4.7785908203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7696845703125,
+          "kernel_us": 4.7696845703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7074970703125,
+          "kernel_us": 4.7074970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7782783203125,
+          "kernel_us": 4.7782783203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 79,
+      "provider": "das",
+      "device_us": 12.6474892578125,
+      "aa_medians_us": [
+        12.6279599609375,
+        12.6474892578125,
+        12.6704580078125
+      ],
+      "aa_max_drift": 0.0033653929064125787,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "Cijk_Alik_Bljk_SB_MT16x16x32_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS0_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR2_PLR1_RK0_SU0_SUM0_SUS256_SVW4_TT2_2_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG8_8_1_WGM8"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 12.6463974609375,
+          "kernel_us": 12.6463974609375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 12.6754599609375,
+          "kernel_us": 12.6754599609375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 12.6248349609375,
+          "kernel_us": 12.6248349609375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 12.6279599609375,
+          "kernel_us": 12.6279599609375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 12.6223349609375,
+          "kernel_us": 12.6223349609375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 12.6654599609375,
+          "kernel_us": 12.6654599609375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 12.6245224609375,
+          "kernel_us": 12.6245224609375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 12.6288974609375,
+          "kernel_us": 12.6288974609375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 12.6474892578125,
+          "kernel_us": 12.6474892578125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 12.6757724609375,
+          "kernel_us": 12.6757724609375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 12.6590517578125,
+          "kernel_us": 12.6590517578125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 12.6704580078125,
+          "kernel_us": 12.6704580078125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 12.6651474609375,
+          "kernel_us": 12.6651474609375,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 12.6815517578125,
+          "kernel_us": 12.6815517578125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 12.6829580078125,
+          "kernel_us": 12.6829580078125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 79,
+      "provider": "new_export",
+      "device_us": 4.7881220703125,
+      "aa_medians_us": [
+        4.7642158203125,
+        4.7881220703125,
+        4.7887451171875
+      ],
+      "aa_max_drift": 0.005148653587526031,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "reduction"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7884345703125,
+          "kernel_us": 4.7884345703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7781220703125,
+          "kernel_us": 4.7781220703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7248408203125,
+          "kernel_us": 4.7248408203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7642158203125,
+          "kernel_us": 4.7642158203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7504658203125,
+          "kernel_us": 4.7504658203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.8045283203125,
+          "kernel_us": 4.8045283203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7217158203125,
+          "kernel_us": 4.7217158203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7881220703125,
+          "kernel_us": 4.7881220703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.8104658203125,
+          "kernel_us": 4.8104658203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7785908203125,
+          "kernel_us": 4.7785908203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7887451171875,
+          "kernel_us": 4.7887451171875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7410888671875,
+          "kernel_us": 4.7410888671875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.8526513671875,
+          "kernel_us": 4.8526513671875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.8062451171875,
+          "kernel_us": 4.8062451171875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7685908203125,
+          "kernel_us": 4.7685908203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 84,
+      "provider": "das",
+      "device_us": 4.8053095703125,
+      "aa_medians_us": [
+        4.8053095703125,
+        4.7657783203125,
+        4.8524970703125
+      ],
+      "aa_max_drift": 0.01819613590300473,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "Cijk_Alik_Bjlk_SB_MT16x16x32_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS1_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn2_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK0_SU0_SUM0_SUS256_SVW4_TT2_2_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG8_8_1_WGM1"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.8707783203125,
+          "kernel_us": 4.8707783203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.8053095703125,
+          "kernel_us": 4.8053095703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7849970703125,
+          "kernel_us": 4.7849970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.8735908203125,
+          "kernel_us": 4.8735908203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7906220703125,
+          "kernel_us": 4.7906220703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7653095703125,
+          "kernel_us": 4.7653095703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7642158203125,
+          "kernel_us": 4.7642158203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7685908203125,
+          "kernel_us": 4.7685908203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7657783203125,
+          "kernel_us": 4.7657783203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.8704658203125,
+          "kernel_us": 4.8704658203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7621845703125,
+          "kernel_us": 4.7621845703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.9060908203125,
+          "kernel_us": 4.9060908203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.8524970703125,
+          "kernel_us": 4.8524970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.8056220703125,
+          "kernel_us": 4.8056220703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.9023408203125,
+          "kernel_us": 4.9023408203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 84,
+      "provider": "new_export",
+      "device_us": 4.7567158203125,
+      "aa_medians_us": [
+        4.7298408203125,
+        4.7570283203125,
+        4.7567158203125
+      ],
+      "aa_max_drift": 0.005748079276419293,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "reduction"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7318720703125,
+          "kernel_us": 4.7318720703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7271845703125,
+          "kernel_us": 4.7271845703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7298408203125,
+          "kernel_us": 4.7298408203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7271845703125,
+          "kernel_us": 4.7271845703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7601533203125,
+          "kernel_us": 4.7601533203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7570283203125,
+          "kernel_us": 4.7570283203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.8320283203125,
+          "kernel_us": 4.8320283203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7299970703125,
+          "kernel_us": 4.7299970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.8243720703125,
+          "kernel_us": 4.8243720703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7303095703125,
+          "kernel_us": 4.7303095703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7293720703125,
+          "kernel_us": 4.7293720703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.8634345703125,
+          "kernel_us": 4.8634345703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.8324970703125,
+          "kernel_us": 4.8324970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7567158203125,
+          "kernel_us": 4.7567158203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7334345703125,
+          "kernel_us": 4.7334345703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 87,
+      "provider": "das",
+      "device_us": 4.8745283203125,
+      "aa_medians_us": [
+        4.9370263671875,
+        4.8745283203125,
+        4.8551533203125
+      ],
+      "aa_max_drift": 0.016863122845671707,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "Cijk_Ailk_Bljk_SB_MT32x16x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS0_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR2_PLR1_RK0_SU0_SUM0_SUS256_SVW4_TT2_2_TLM1_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG16_8_1_WGM1"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.9617138671875,
+          "kernel_us": 4.9617138671875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.8604638671875,
+          "kernel_us": 4.8604638671875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.8965595703125,
+          "kernel_us": 4.8965595703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.9628076171875,
+          "kernel_us": 4.9628076171875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.9370263671875,
+          "kernel_us": 4.9370263671875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.9398408203125,
+          "kernel_us": 4.9398408203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.8399970703125,
+          "kernel_us": 4.8399970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.9335908203125,
+          "kernel_us": 4.9335908203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.8745283203125,
+          "kernel_us": 4.8745283203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.8410908203125,
+          "kernel_us": 4.8410908203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.8365595703125,
+          "kernel_us": 4.8365595703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.8551533203125,
+          "kernel_us": 4.8551533203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.8379658203125,
+          "kernel_us": 4.8379658203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.9348388671875,
+          "kernel_us": 4.9348388671875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.9632763671875,
+          "kernel_us": 4.9632763671875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 87,
+      "provider": "new_export",
+      "device_us": 4.8699951171875,
+      "aa_medians_us": [
+        4.8699951171875,
+        4.8362470703125,
+        4.8739013671875
+      ],
+      "aa_max_drift": 0.007785850542281425,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "tiled"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.8699951171875,
+          "kernel_us": 4.8699951171875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.9207763671875,
+          "kernel_us": 4.9207763671875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.8295263671875,
+          "kernel_us": 4.8295263671875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.8749970703125,
+          "kernel_us": 4.8749970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.8657763671875,
+          "kernel_us": 4.8657763671875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.8362470703125,
+          "kernel_us": 4.8362470703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.9042158203125,
+          "kernel_us": 4.9042158203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.8207783203125,
+          "kernel_us": 4.8207783203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.8678095703125,
+          "kernel_us": 4.8678095703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7735908203125,
+          "kernel_us": 4.7735908203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.8739013671875,
+          "kernel_us": 4.8739013671875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.9104638671875,
+          "kernel_us": 4.9104638671875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.8279638671875,
+          "kernel_us": 4.8279638671875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.8965576171875,
+          "kernel_us": 4.8965576171875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7743701171875,
+          "kernel_us": 4.7743701171875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 89,
+      "provider": "das",
+      "device_us": 4.6999970703125,
+      "aa_medians_us": [
+        4.6992158203125,
+        4.7326533203125,
+        4.6999970703125
+      ],
+      "aa_max_drift": 0.007115548908280589,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "Cijk_Alik_Bjlk_SB_MT32x32x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS1_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn2_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK0_SU0_SUM0_SUS256_SVW4_TT2_2_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG16_16_1_WGM1"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.6992158203125,
+          "kernel_us": 4.6992158203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.6995283203125,
+          "kernel_us": 4.6995283203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.6971845703125,
+          "kernel_us": 4.6971845703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.6974970703125,
+          "kernel_us": 4.6974970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.8024970703125,
+          "kernel_us": 4.8024970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7579658203125,
+          "kernel_us": 4.7579658203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7326533203125,
+          "kernel_us": 4.7326533203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7798408203125,
+          "kernel_us": 4.7798408203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.6967158203125,
+          "kernel_us": 4.6967158203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7003095703125,
+          "kernel_us": 4.7003095703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.6999970703125,
+          "kernel_us": 4.6999970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.6956220703125,
+          "kernel_us": 4.6956220703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7220283203125,
+          "kernel_us": 4.7220283203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7345283203125,
+          "kernel_us": 4.7345283203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.6992158203125,
+          "kernel_us": 4.6992158203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 89,
+      "provider": "new_export",
+      "device_us": 4.7292158203125,
+      "aa_medians_us": [
+        4.7292158203125,
+        4.7284345703125,
+        4.8023408203125
+      ],
+      "aa_max_drift": 0.015630172925310326,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "small_k"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7257783203125,
+          "kernel_us": 4.7257783203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7253095703125,
+          "kernel_us": 4.7253095703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7299970703125,
+          "kernel_us": 4.7299970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.8345283203125,
+          "kernel_us": 4.8345283203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7292158203125,
+          "kernel_us": 4.7292158203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7184345703125,
+          "kernel_us": 4.7184345703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7284345703125,
+          "kernel_us": 4.7284345703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.8418720703125,
+          "kernel_us": 4.8418720703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7274970703125,
+          "kernel_us": 4.7274970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.8168720703125,
+          "kernel_us": 4.8168720703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.8023408203125,
+          "kernel_us": 4.8023408203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7270283203125,
+          "kernel_us": 4.7270283203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7201533203125,
+          "kernel_us": 4.7201533203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.8329658203125,
+          "kernel_us": 4.8329658203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.8423408203125,
+          "kernel_us": 4.8423408203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 91,
+      "provider": "das",
+      "device_us": 4.7473408203125,
+      "aa_medians_us": [
+        4.7473408203125,
+        4.7128095703125,
+        4.7495283203125
+      ],
+      "aa_max_drift": 0.007791265369876843,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "Cijk_Ailk_Bljk_SB_MT16x16x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS0_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR2_PLR1_RK0_SU32_SUM0_SUS256_SVW4_TT2_2_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG8_8_1_WGM1"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7473408203125,
+          "kernel_us": 4.7473408203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7446845703125,
+          "kernel_us": 4.7446845703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.8070283203125,
+          "kernel_us": 4.8070283203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7742138671875,
+          "kernel_us": 4.7742138671875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7289033203125,
+          "kernel_us": 4.7289033203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7128095703125,
+          "kernel_us": 4.7128095703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7343720703125,
+          "kernel_us": 4.7343720703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7118720703125,
+          "kernel_us": 4.7118720703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7115595703125,
+          "kernel_us": 4.7115595703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7398408203125,
+          "kernel_us": 4.7398408203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.8084345703125,
+          "kernel_us": 4.8084345703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7595283203125,
+          "kernel_us": 4.7595283203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7495283203125,
+          "kernel_us": 4.7495283203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7473408203125,
+          "kernel_us": 4.7473408203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7382783203125,
+          "kernel_us": 4.7382783203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 91,
+      "provider": "new_export",
+      "device_us": 4.7998408203125,
+      "aa_medians_us": [
+        4.7998408203125,
+        4.8168720703125,
+        4.7353095703125
+      ],
+      "aa_max_drift": 0.017224322673927484,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "small_k"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.8090595703125,
+          "kernel_us": 4.8090595703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7623388671875,
+          "kernel_us": 4.7623388671875,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.8289033203125,
+          "kernel_us": 4.8289033203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7859345703125,
+          "kernel_us": 4.7859345703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7998408203125,
+          "kernel_us": 4.7998408203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.8168720703125,
+          "kernel_us": 4.8168720703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7324970703125,
+          "kernel_us": 4.7324970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.8181220703125,
+          "kernel_us": 4.8181220703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.8831220703125,
+          "kernel_us": 4.8831220703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7635908203125,
+          "kernel_us": 4.7635908203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.8731220703125,
+          "kernel_us": 4.8731220703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7353095703125,
+          "kernel_us": 4.7353095703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7349970703125,
+          "kernel_us": 4.7349970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7351533203125,
+          "kernel_us": 4.7351533203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7373408203125,
+          "kernel_us": 4.7373408203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 93,
+      "provider": "das",
+      "device_us": 4.7464033203125,
+      "aa_medians_us": [
+        4.7635908203125,
+        4.7406220703125,
+        4.7464033203125
+      ],
+      "aa_max_drift": 0.004845091985678174,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "Cijk_Ailk_Bljk_SB_MT32x16x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS0_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR2_PLR1_RK0_SU0_SUM0_SUS256_SVW4_TT2_2_TLM1_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG16_8_1_WGM1"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7985908203125,
+          "kernel_us": 4.7985908203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7635908203125,
+          "kernel_us": 4.7635908203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.6999970703125,
+          "kernel_us": 4.6999970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.8204658203125,
+          "kernel_us": 4.8204658203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.6984345703125,
+          "kernel_us": 4.6984345703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7406220703125,
+          "kernel_us": 4.7406220703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7132783203125,
+          "kernel_us": 4.7132783203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7765595703125,
+          "kernel_us": 4.7765595703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7178095703125,
+          "kernel_us": 4.7178095703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.8214033203125,
+          "kernel_us": 4.8214033203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7464033203125,
+          "kernel_us": 4.7464033203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.8267158203125,
+          "kernel_us": 4.8267158203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7564033203125,
+          "kernel_us": 4.7564033203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.6979658203125,
+          "kernel_us": 4.6979658203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.6999970703125,
+          "kernel_us": 4.6999970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 93,
+      "provider": "new_export",
+      "device_us": 4.7843720703125,
+      "aa_medians_us": [
+        4.7943720703125,
+        4.7429658203125,
+        4.7843720703125
+      ],
+      "aa_max_drift": 0.010838418817998852,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "small_k"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.8081220703125,
+          "kernel_us": 4.8081220703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7967158203125,
+          "kernel_us": 4.7967158203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7943720703125,
+          "kernel_us": 4.7943720703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7259345703125,
+          "kernel_us": 4.7259345703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7271845703125,
+          "kernel_us": 4.7271845703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7248408203125,
+          "kernel_us": 4.7248408203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7429658203125,
+          "kernel_us": 4.7429658203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7246845703125,
+          "kernel_us": 4.7246845703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.8378095703125,
+          "kernel_us": 4.8378095703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.8548408203125,
+          "kernel_us": 4.8548408203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7232783203125,
+          "kernel_us": 4.7232783203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7229658203125,
+          "kernel_us": 4.7229658203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7843720703125,
+          "kernel_us": 4.7843720703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7909345703125,
+          "kernel_us": 4.7909345703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7964033203125,
+          "kernel_us": 4.7964033203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 109,
+      "provider": "das",
+      "device_us": 4.7243720703125,
+      "aa_medians_us": [
+        4.7599970703125,
+        4.7243720703125,
+        4.7232783203125
+      ],
+      "aa_max_drift": 0.0077739966840597585,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "Cijk_Ailk_Bljk_SB_MT16x16x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS1_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK0_SU32_SUM0_SUS256_SVW4_TT2_2_TLM1_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG8_8_1_WGM1"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7599970703125,
+          "kernel_us": 4.7599970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7256220703125,
+          "kernel_us": 4.7256220703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7615595703125,
+          "kernel_us": 4.7615595703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7235908203125,
+          "kernel_us": 4.7235908203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7645283203125,
+          "kernel_us": 4.7645283203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7446845703125,
+          "kernel_us": 4.7446845703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.8231220703125,
+          "kernel_us": 4.8231220703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7224970703125,
+          "kernel_us": 4.7224970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7243720703125,
+          "kernel_us": 4.7243720703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7229658203125,
+          "kernel_us": 4.7229658203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7231220703125,
+          "kernel_us": 4.7231220703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7223408203125,
+          "kernel_us": 4.7223408203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7482783203125,
+          "kernel_us": 4.7482783203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.8546845703125,
+          "kernel_us": 4.8546845703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7232783203125,
+          "kernel_us": 4.7232783203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 109,
+      "provider": "new_export",
+      "device_us": 4.8110908203125,
+      "aa_medians_us": [
+        4.8110908203125,
+        4.8092158203125,
+        4.8318720703125
+      ],
+      "aa_max_drift": 0.0047110071260076936,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "reduction"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.8142158203125,
+          "kernel_us": 4.8142158203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7201533203125,
+          "kernel_us": 4.7201533203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.8110908203125,
+          "kernel_us": 4.8110908203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.8482783203125,
+          "kernel_us": 4.8482783203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7810908203125,
+          "kernel_us": 4.7810908203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.8092158203125,
+          "kernel_us": 4.8092158203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.8309345703125,
+          "kernel_us": 4.8309345703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7218720703125,
+          "kernel_us": 4.7218720703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.8015595703125,
+          "kernel_us": 4.8015595703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.8203095703125,
+          "kernel_us": 4.8203095703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.8318720703125,
+          "kernel_us": 4.8318720703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.8354658203125,
+          "kernel_us": 4.8354658203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.8674970703125,
+          "kernel_us": 4.8674970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7539033203125,
+          "kernel_us": 4.7539033203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7862470703125,
+          "kernel_us": 4.7862470703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 115,
+      "provider": "das",
+      "device_us": 4.7917158203125,
+      "aa_medians_us": [
+        4.8164033203125,
+        4.7917158203125,
+        4.7820283203125
+      ],
+      "aa_max_drift": 0.007188372317660008,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "Cijk_Alik_Bljk_SB_MT16x16x32_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS0_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR2_PLR1_RK0_SU32_SUM0_SUS256_SVW4_TT2_2_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG8_8_1_WGM1"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.8164033203125,
+          "kernel_us": 4.8164033203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.8151533203125,
+          "kernel_us": 4.8151533203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.8670283203125,
+          "kernel_us": 4.8670283203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.8392158203125,
+          "kernel_us": 4.8392158203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7606220703125,
+          "kernel_us": 4.7606220703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7581220703125,
+          "kernel_us": 4.7581220703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7728095703125,
+          "kernel_us": 4.7728095703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.8090595703125,
+          "kernel_us": 4.8090595703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7917158203125,
+          "kernel_us": 4.7917158203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7959345703125,
+          "kernel_us": 4.7959345703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7590595703125,
+          "kernel_us": 4.7590595703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7585908203125,
+          "kernel_us": 4.7585908203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7820283203125,
+          "kernel_us": 4.7820283203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.8273408203125,
+          "kernel_us": 4.8273408203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.8112470703125,
+          "kernel_us": 4.8112470703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 115,
+      "provider": "new_export",
+      "device_us": 4.7965595703125,
+      "aa_medians_us": [
+        4.7867158203125,
+        4.7965595703125,
+        4.8357783203125
+      ],
+      "aa_max_drift": 0.010249720652269145,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "reduction"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7770283203125,
+          "kernel_us": 4.7770283203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7867158203125,
+          "kernel_us": 4.7867158203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7326533203125,
+          "kernel_us": 4.7326533203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.8568720703125,
+          "kernel_us": 4.8568720703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.8729658203125,
+          "kernel_us": 4.8729658203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.8162470703125,
+          "kernel_us": 4.8162470703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7965595703125,
+          "kernel_us": 4.7965595703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.8367158203125,
+          "kernel_us": 4.8367158203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7334345703125,
+          "kernel_us": 4.7334345703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7490595703125,
+          "kernel_us": 4.7490595703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.8328095703125,
+          "kernel_us": 4.8328095703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.8357783203125,
+          "kernel_us": 4.8357783203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.8559345703125,
+          "kernel_us": 4.8559345703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7292158203125,
+          "kernel_us": 4.7292158203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.8531220703125,
+          "kernel_us": 4.8531220703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 119,
+      "provider": "das",
+      "device_us": 4.7793720703125,
+      "aa_medians_us": [
+        4.7399970703125,
+        4.7793720703125,
+        4.7993720703125
+      ],
+      "aa_max_drift": 0.012526379050290304,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "Cijk_Ailk_Bljk_SB_MT16x16x16_SE_AMAS3_BW_DTL0_BL1_DRB16_ALT_KME0_ETN_EPS1_FL0_GRVW2_GSU1_ISA936_IU1_KME_GRCMn1_K1_KLA_LDL1_LRVW2_MAC_MMAC_BW1_MMAC_KM0_MMAC_KME1_NLCA1_NLCB1_OLDSR0_PGR1_PLR1_RK0_SU32_SUM0_SUS256_SVW4_TT2_2_TLM0_ULDSWM0_USFGRO0_USSB0_VAW1_VSn1_VW2_WG8_8_1_WGM1"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7399970703125,
+          "kernel_us": 4.7399970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7393720703125,
+          "kernel_us": 4.7393720703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7392158203125,
+          "kernel_us": 4.7392158203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7957783203125,
+          "kernel_us": 4.7957783203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7773408203125,
+          "kernel_us": 4.7773408203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7407783203125,
+          "kernel_us": 4.7407783203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.8353095703125,
+          "kernel_us": 4.8353095703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7614033203125,
+          "kernel_us": 4.7614033203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.8381220703125,
+          "kernel_us": 4.8381220703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7793720703125,
+          "kernel_us": 4.7793720703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7774970703125,
+          "kernel_us": 4.7774970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.8729658203125,
+          "kernel_us": 4.8729658203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.8396845703125,
+          "kernel_us": 4.8396845703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7420283203125,
+          "kernel_us": 4.7420283203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7993720703125,
+          "kernel_us": 4.7993720703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    },
+    {
+      "case": 119,
+      "provider": "new_export",
+      "device_us": 4.7818720703125,
+      "aa_medians_us": [
+        4.7868720703125,
+        4.7615595703125,
+        4.7818720703125
+      ],
+      "aa_max_drift": 0.005316010358836776,
+      "stable": true,
+      "correctness": true,
+      "kernels": [
+        "small_k"
+      ],
+      "copies": [],
+      "samples": [
+        {
+          "aa": 0,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.8245283203125,
+          "kernel_us": 4.8245283203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7868720703125,
+          "kernel_us": 4.7868720703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.8204658203125,
+          "kernel_us": 4.8204658203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7656220703125,
+          "kernel_us": 4.7656220703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 0,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7548408203125,
+          "kernel_us": 4.7548408203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7615595703125,
+          "kernel_us": 4.7615595703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.8462470703125,
+          "kernel_us": 4.8462470703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.7726533203125,
+          "kernel_us": 4.7726533203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.7048408203125,
+          "kernel_us": 4.7048408203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 1,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7045283203125,
+          "kernel_us": 4.7045283203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 0,
+          "calls": 1024,
+          "device_us": 4.7743720703125,
+          "kernel_us": 4.7743720703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 1,
+          "calls": 1024,
+          "device_us": 4.7818720703125,
+          "kernel_us": 4.7818720703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 2,
+          "calls": 1024,
+          "device_us": 4.8442158203125,
+          "kernel_us": 4.8442158203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 3,
+          "calls": 1024,
+          "device_us": 4.8199970703125,
+          "kernel_us": 4.8199970703125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        },
+        {
+          "aa": 2,
+          "roi": 4,
+          "calls": 1024,
+          "device_us": 4.7779658203125,
+          "kernel_us": 4.7779658203125,
+          "copy_us": 0.0,
+          "kernels_per_call": 1,
+          "copies_per_call": 0
+        }
+      ]
+    }
+  ]
+}

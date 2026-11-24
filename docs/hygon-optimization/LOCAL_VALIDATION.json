@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-03",
+  "fork": "luojung/FlagGems",
+  "branch": "hygon-optimization",
+  "upstream_base": "f26de5a8d279ca02c1908c581899fadae2bf2ed0",
+  "historical_implementation_blobs": 91,
+  "selected_source_files": 13,
+  "inventory_installer_tests_passed": 8,
+  "executable_source_equivalence": "passed; comments and docstrings excluded",
+  "black_selected_files": "passed",
+  "isort_new_bootstrap_and_tests": "passed; archived provider import order intentionally retained",
+  "package_data_toml_and_yaml": "parsed and checked",
+  "checks": [
+    {
+      "check": "tests/test_hygon_optimization_inventory.py",
+      "passed": true
+    },
+    {
+      "check": "flake8_selected_sources_and_new_tests",
+      "passed": true
+    },
+    {
+      "check": "tools/ci_checks/check_init_exports.py",
+      "passed": true
+    },
+    {
+      "check": "tools/ci_checks/check_operators_yaml.py",
+      "passed": true
+    }
+  ],
+  "pre_commit_all_files": {
+    "status": "blocked_before_hooks",
+    "exit_code": 3,
+    "reason": "isolated hook environment dependency installation failed with PyPI TLS SSLEOFError fetching setuptools; not recorded as passing"
+  },
+  "hardware_retest_of_this_branch": "not_run",
+  "historical_results_are_not_new_qualification": true,
+  "prior_commit_series": [
+    "0780e7a2 [Hygon] support FP32 flash attention forward",
+    "2059f3b1 Merge remote-tracking branch 'upstream/master' into hygon-optimization",
+    "fc000f9a perf(hygon): preserve guarded logical row reductions",
+    "16296132 perf(hygon): preserve validated index_add scatter kernels",
+    "b14dcbd4 perf(hygon): preserve nonzero compaction and empty masked_select fixes",
+    "5b327996 perf(hygon): preserve contiguous masked_fill specialization",
+    "1f4a5dfb perf(hygon): preserve factory and second-round numeric optimizations",
+    "7776df83 perf(hygon): preserve guarded trigonometric kernels",
+    "ba65699f fix(hygon): preserve activation special-value and signed-zero handling",
+    "3a9e4401 fix(hygon): preserve tuned rsqrt with subnormal handling",
+    "d19cd155 perf(hygon): preserve bounded serialized eager randperm",
+    "4b099f8f perf(hygon): preserve selected stable sort algorithms",
+    "e3a2873d perf(hygon): preserve Top20 matrix tile and edge-case improvements",
+    "5f9d4b1a chore(hygon): preserve Torch-FL index route integration",
+    "70289120 docs(hygon): preserve historical implementation revisions and status"
+  ]
+}

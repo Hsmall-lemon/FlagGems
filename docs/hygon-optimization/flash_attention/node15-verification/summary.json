@@ -1,0 +1,292 @@
+{
+  "operator": "aten::_scaled_dot_product_flash_attention",
+  "status": "passed_common_exact_input_contract_on_each_card",
+  "node": "a01r4n15",
+  "execution": "physical cards 3 then 4, independently; no two-card aggregation",
+  "contract": {
+    "reference": "CPU FP32 SDPA output; CPU FP32 matmul/logsumexp LSE",
+    "output_atol": 0.002,
+    "output_rtol": 0.02,
+    "lse_atol": 2e-05,
+    "lse_rtol": 2e-05,
+    "output_shape": [
+      8,
+      16,
+      2049,
+      128
+    ],
+    "lse_shape": [
+      8,
+      16,
+      2049
+    ],
+    "output_elements": 33570816,
+    "lse_elements": 262272,
+    "seed": 20261105,
+    "stride": [
+      12589056,
+      128,
+      6144,
+      1
+    ],
+    "offsets": [
+      0,
+      2048,
+      4096
+    ],
+    "scale": 0.08838834764831843
+  },
+  "contract_sha256": "76b91f84692542b4c33e721bed2eb4b0fc88befe0a22f0ae6520be3bc6ef76c1",
+  "native_baseline_changed": true,
+  "excluded_native": {
+    "version": "2.8.3+das185.dtk2604.torch2100.2608132155.g9febea",
+    "eligible": false,
+    "historical_ratio_withdrawn": true
+  },
+  "baseline": "2.8.4+dtk2604.torch2100.2609292239.g74de14; official SourceFind wheel, isolated user directory",
+  "accepted_das_ratio_by_card": {
+    "3": 0.9530057364746019,
+    "4": 0.953944595697798
+  },
+  "meets_das_90_under_recorded_contract": true,
+  "external_frozen_gate_verified": false,
+  "acceptance_scope": "Pinned official 2.8.4, recorded fixtures, unchanged common tolerances; external review input not replayed",
+  "cards": {
+    "3": {
+      "run_id": "f897e1b6aece41fdaf76a9c24c7513af",
+      "timing_us": {
+        "wheel": 1606.76,
+        "aten": 1607.0479999999998,
+        "repo": 1685.9919499999999
+      },
+      "qualified_native_over_repo": 0.9530057364746019,
+      "common_contract_meets_90": true,
+      "meets_90_under_recorded_contract": true,
+      "external_frozen_gate_verified": false,
+      "trace_sha256": "a290aec1ef96522cc899df41c8fc3b1fc41fc814e6fb6fbf93243d0ac3224032",
+      "source_sha256": {
+        "src/flag_gems/runtime/backend/_hygon/attention_state_hip.py": "0ffacefa9c015e0f9a6eabf3eb8a5c17ae97f9a2fbac704d9bed61d53db40ed1",
+        "src/flag_gems/runtime/backend/_hygon/attention_state_hip.cpp": "dd37b81750a12253f7d1e95b9d3de72d4ae18bfafa3659dfd0f4d43a7f6bb38c",
+        "src/flag_gems/runtime/backend/_hygon/ops/attention_state.py": "f99f2e42501ffd66de0015012b3fd74ee3d93f9c34a6d0928f405644c3d8f0e4",
+        "src/flag_gems/runtime/backend/_hygon/ops/_scaled_dot_product_flash_attention.py": "91820f5a5aca0d6fd43df7069f219274ec9723ad3dde26f92286f302bf74d44f",
+        "tests/test_flash_attention_hygon_state.py": "293e9e135c61b754e25714fc56a7f0cf4de01ef880cf942f702103eb20d57f70"
+      },
+      "native": {
+        "version": "2.8.4+dtk2604.torch2100.2609292239.g74de14",
+        "options": {
+          "FA_FWD_NO_MLS": null,
+          "FLASH_ATTENTION_FWD_PREFETCH": null
+        },
+        "module": "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/11992/package/flash_attn_2_cuda.cpython-310-x86_64-linux-gnu.so",
+        "module_sha256": "4dbb514cd0d6b30b720bbc739b13f3655ec5b345765b303e463184a1cd243f25",
+        "loaded_libraries_sha256": {
+          "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/11992/package/flash_attn/lib/libflash_attention.so": "42b820080757241f048e7ed6673a91703e5563353364ea279fa03cd0ca1a422e",
+          "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/11992/package/flash_attn_2_cuda.cpython-310-x86_64-linux-gnu.so": "4dbb514cd0d6b30b720bbc739b13f3655ec5b345765b303e463184a1cd243f25"
+        }
+      },
+      "full_accuracy": {
+        "wheel": {
+          "output": {
+            "shape": [
+              8,
+              16,
+              2049,
+              128
+            ],
+            "elements": 33570816,
+            "failed": 0,
+            "failed_percent": 0.0,
+            "nonfinite": 0,
+            "max_abs_finite": 0.0010229945182800293
+          },
+          "lse": {
+            "shape": [
+              8,
+              16,
+              2049
+            ],
+            "elements": 262272,
+            "failed": 0,
+            "failed_percent": 0.0,
+            "nonfinite": 0,
+            "max_abs_finite": 1.9073486328125e-06
+          }
+        },
+        "aten": {
+          "output": {
+            "shape": [
+              8,
+              16,
+              2049,
+              128
+            ],
+            "elements": 33570816,
+            "failed": 0,
+            "failed_percent": 0.0,
+            "nonfinite": 0,
+            "max_abs_finite": 0.0010229945182800293
+          },
+          "lse": {
+            "shape": [
+              8,
+              16,
+              2049
+            ],
+            "elements": 262272,
+            "failed": 0,
+            "failed_percent": 0.0,
+            "nonfinite": 0,
+            "max_abs_finite": 1.9073486328125e-06
+          }
+        },
+        "repo": {
+          "output": {
+            "shape": [
+              8,
+              16,
+              2049,
+              128
+            ],
+            "elements": 33570816,
+            "failed": 0,
+            "failed_percent": 0.0,
+            "nonfinite": 0,
+            "max_abs_finite": 0.0015590786933898926
+          },
+          "lse": {
+            "shape": [
+              8,
+              16,
+              2049
+            ],
+            "elements": 262272,
+            "failed": 0,
+            "failed_percent": 0.0,
+            "nonfinite": 0,
+            "max_abs_finite": 1.9073486328125e-06
+          }
+        }
+      },
+      "pytest": "7 passed",
+      "stability": "3 seeds x 3 repeats; every element passes; bitwise repeatable"
+    },
+    "4": {
+      "run_id": "cb00c4ce4b4c4ca883de3e7ce1350440",
+      "timing_us": {
+        "wheel": 1606.8310500000002,
+        "aten": 1607.6791,
+        "repo": 1684.4071
+      },
+      "qualified_native_over_repo": 0.953944595697798,
+      "common_contract_meets_90": true,
+      "meets_90_under_recorded_contract": true,
+      "external_frozen_gate_verified": false,
+      "trace_sha256": "28516df7136a12754e5537fd3e85b44e6d826df06448722b5af4febf23adf623",
+      "source_sha256": {
+        "src/flag_gems/runtime/backend/_hygon/attention_state_hip.py": "0ffacefa9c015e0f9a6eabf3eb8a5c17ae97f9a2fbac704d9bed61d53db40ed1",
+        "src/flag_gems/runtime/backend/_hygon/attention_state_hip.cpp": "dd37b81750a12253f7d1e95b9d3de72d4ae18bfafa3659dfd0f4d43a7f6bb38c",
+        "src/flag_gems/runtime/backend/_hygon/ops/attention_state.py": "f99f2e42501ffd66de0015012b3fd74ee3d93f9c34a6d0928f405644c3d8f0e4",
+        "src/flag_gems/runtime/backend/_hygon/ops/_scaled_dot_product_flash_attention.py": "91820f5a5aca0d6fd43df7069f219274ec9723ad3dde26f92286f302bf74d44f",
+        "tests/test_flash_attention_hygon_state.py": "293e9e135c61b754e25714fc56a7f0cf4de01ef880cf942f702103eb20d57f70"
+      },
+      "native": {
+        "version": "2.8.4+dtk2604.torch2100.2609292239.g74de14",
+        "options": {
+          "FA_FWD_NO_MLS": null,
+          "FLASH_ATTENTION_FWD_PREFETCH": null
+        },
+        "module": "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/11992/package/flash_attn_2_cuda.cpython-310-x86_64-linux-gnu.so",
+        "module_sha256": "4dbb514cd0d6b30b720bbc739b13f3655ec5b345765b303e463184a1cd243f25",
+        "loaded_libraries_sha256": {
+          "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/11992/package/flash_attn/lib/libflash_attention.so": "42b820080757241f048e7ed6673a91703e5563353364ea279fa03cd0ca1a422e",
+          "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/11992/package/flash_attn_2_cuda.cpython-310-x86_64-linux-gnu.so": "4dbb514cd0d6b30b720bbc739b13f3655ec5b345765b303e463184a1cd243f25"
+        }
+      },
+      "full_accuracy": {
+        "wheel": {
+          "output": {
+            "shape": [
+              8,
+              16,
+              2049,
+              128
+            ],
+            "elements": 33570816,
+            "failed": 0,
+            "failed_percent": 0.0,
+            "nonfinite": 0,
+            "max_abs_finite": 0.0010229945182800293
+          },
+          "lse": {
+            "shape": [
+              8,
+              16,
+              2049
+            ],
+            "elements": 262272,
+            "failed": 0,
+            "failed_percent": 0.0,
+            "nonfinite": 0,
+            "max_abs_finite": 1.9073486328125e-06
+          }
+        },
+        "aten": {
+          "output": {
+            "shape": [
+              8,
+              16,
+              2049,
+              128
+            ],
+            "elements": 33570816,
+            "failed": 0,
+            "failed_percent": 0.0,
+            "nonfinite": 0,
+            "max_abs_finite": 0.0010229945182800293
+          },
+          "lse": {
+            "shape": [
+              8,
+              16,
+              2049
+            ],
+            "elements": 262272,
+            "failed": 0,
+            "failed_percent": 0.0,
+            "nonfinite": 0,
+            "max_abs_finite": 1.9073486328125e-06
+          }
+        },
+        "repo": {
+          "output": {
+            "shape": [
+              8,
+              16,
+              2049,
+              128
+            ],
+            "elements": 33570816,
+            "failed": 0,
+            "failed_percent": 0.0,
+            "nonfinite": 0,
+            "max_abs_finite": 0.0015590786933898926
+          },
+          "lse": {
+            "shape": [
+              8,
+              16,
+              2049
+            ],
+            "elements": 262272,
+            "failed": 0,
+            "failed_percent": 0.0,
+            "nonfinite": 0,
+            "max_abs_finite": 1.9073486328125e-06
+          }
+        }
+      },
+      "pytest": "7 passed",
+      "stability": "3 seeds x 3 repeats; every element passes; bitwise repeatable"
+    }
+  }
+}

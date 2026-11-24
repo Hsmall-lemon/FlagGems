@@ -1,0 +1,27 @@
+{
+  "src/flag_gems/runtime/backend/_hygon/attention_state_hip.py": {
+    "measured_sha256": "5c04672ac2450071c4a9e2cd2a70b8e8489f1526218a1d42a2df471ff947932f",
+    "pr_sha256": "0ffacefa9c015e0f9a6eabf3eb8a5c17ae97f9a2fbac704d9bed61d53db40ed1",
+    "equivalent_after_formatting_and_import_sorting": true
+  },
+  "src/flag_gems/runtime/backend/_hygon/attention_state_hip.cpp": {
+    "measured_sha256": "643c0fce72ca7cfbe7ec8885201e797b088b770020b19a48e9b50d28c5d84b60",
+    "pr_sha256": "dd37b81750a12253f7d1e95b9d3de72d4ae18bfafa3659dfd0f4d43a7f6bb38c",
+    "equivalent_after_formatting_and_import_sorting": true
+  },
+  "src/flag_gems/runtime/backend/_hygon/ops/attention_state.py": {
+    "measured_sha256": "e5c354efd1670f7350a0decc165a1e03a64a9a2e777fb5f1cb04478e8994cb91",
+    "pr_sha256": "0ad7623b0134e13d587f8464744fc0f24d8b5dac1f01930140046db7082c54db",
+    "equivalent_after_formatting_and_import_sorting": true
+  },
+  "src/flag_gems/runtime/backend/_hygon/ops/_scaled_dot_product_flash_attention.py": {
+    "measured_sha256": "de4599a3bc4bf1e5f232d681c65cc6885694d5942665057b2154d1e4a844c2b3",
+    "pr_sha256": "91820f5a5aca0d6fd43df7069f219274ec9723ad3dde26f92286f302bf74d44f",
+    "equivalent_after_formatting_and_import_sorting": true
+  },
+  "tests/test_flash_attention_hygon_state.py": {
+    "measured_sha256": "7815052eecbd43570d07a995d70432756ca3388ba3166ae548b2a29321a2baba",
+    "pr_sha256": "03ca41d283eca202974e2e110385d46a4fe00c00f988f4d211c7671dd5b01b9e",
+    "equivalent_after_formatting_and_import_sorting": true
+  }
+}

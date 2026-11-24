@@ -1,0 +1,157 @@
+"""Precision stress and final device traces, partitioned across three GPUs."""
+import argparse
+import ctypes
+import hashlib
+import importlib
+import json
+import os
+from pathlib import Path
+import sys
+
+parser=argparse.ArgumentParser()
+parser.add_argument('--mode',choices=['fp64','fp32','bf16'],required=True)
+parser.add_argument('--name',required=True)
+opt=parser.parse_args()
+root=Path(__file__).resolve().parent
+cache=Path(os.environ['FLAGOS_DEV_CACHE']);cache.mkdir(parents=True,exist_ok=True)
+config=Path('/opt/flagos/python/lib/python3.10/site-packages/torch_fl/configs/backends_hygon_boxing.conf')
+own=cache/'mm-boxing.conf';own.write_text(config.read_text().replace('\nmm = flaggems\n','\nmm = boxing\n'))
+os.environ['FLAGOS_BACKEND_CONFIG']=str(own)
+os.environ.pop('FLAGOS_FORCE_BACKEND',None)
+import torch_fl
+import torch
+import triton
+import triton.language as tl
+import flag_gems
+from torch_fl import _C
+
+torch.set_num_threads(4)
+assert torch.flagos.device_count()==1
+module=importlib.import_module(flag_gems.mm.__module__)
+configs=importlib.import_module(module.__package__+'.mm_config')
+source=Path(flag_gems.__file__).parents[2]
+prefix='src/flag_gems/runtime/backend/_hygon/ops/'
+hip=ctypes.CDLL('/public/software/compiler/dtk-26.04/lib/libamdhip64.so')
+hip.hipDeviceGetPCIBusId.argtypes=[ctypes.c_char_p,ctypes.c_int,ctypes.c_int]
+bus=ctypes.create_string_buffer(64);assert hip.hipDeviceGetPCIBusId(bus,64,0)==0
+fp=dict(node=os.uname().nodename,pci_bus=bus.value.decode(),visible_devices=1,mode=opt.mode,
+        source_files={prefix+p.name:hashlib.sha256(p.read_bytes().replace(b'\r\n',b'\n')).hexdigest() for p in Path(module.__file__).parent.glob('mm*.py')},
+        torch=torch.__version__,triton=triton.__version__,target=str(triton.runtime.driver.active.get_current_target()),
+        metric='All HIPOPS + HIPCOPY DurationNs/call; host and gate excluded')
+(root/(opt.name+'-fingerprint.json')).write_text(json.dumps(fp,indent=2)+'\n')
+print('MM_ACCEPT_FINGERPRINT',json.dumps(fp),flush=True)
+old_spec=importlib.util.spec_from_file_location(module.__package__+'.old_accept',root/'base_mm.py')
+old=importlib.util.module_from_spec(old_spec);old_spec.loader.exec_module(old)
+original_select=configs.select_config
+witness=[]
+def select(*a):
+    cfg=original_select(*a);witness.append(cfg);return cfg
+configs.select_config=select
+
+@triton.jit
+def queue_gate(P,ITERS:tl.constexpr):
+    x=tl.program_id(0)*64+tl.arange(0,64)
+    v=tl.load(P+x)
+    for i in range(ITERS):
+        v=tl.inline_asm_elementwise('v_add_u32 $0, 1, $1\ns_nop 1',constraints='=v,v',args=[v],dtype=tl.int32,is_pure=False,pack=1)
+    tl.store(P+x,v)
+
+gate=torch.zeros((8192,),device='flagos',dtype=torch.int32)
+queue_gate[(128,)](gate,100000000,num_warps=1);torch.flagos.synchronize()
+roctx=ctypes.CDLL('/public/software/compiler/dtk-26.04/lib/libroctx64.so')
+roctx.roctxRangePushA.argtypes=[ctypes.c_char_p]
+
+dtype={'fp64':torch.float64,'fp32':torch.float32,'bf16':torch.bfloat16}[opt.mode]
+m,k,n={'fp64':(1344,256,128),'fp32':(60025,128,128),'bf16':(32,64,32)}[opt.mode]
+def inputs(seed,regime='random',offset=0):
+    gen=torch.Generator().manual_seed(seed)
+    a=torch.randn((m,k),dtype=dtype,generator=gen)
+    b=torch.randn((n,k),dtype=dtype,generator=gen).t() if opt.mode=='fp32' else torch.randn((k,n),dtype=dtype,generator=gen)
+    if regime=='basis':
+        a.zero_();a[torch.arange(m),(torch.arange(m)*13)%k]=1
+        b=((torch.arange(k*n).reshape(k,n)%37)-18).to(dtype)
+        if opt.mode=='fp32':b=b.t().contiguous().t()
+    elif regime=='low_bits':
+        a.zero_();a[:,0]=1+2.0**(-40 if dtype==torch.float64 else -22)
+        b.zero_();b[0,:]=1+2.0**(-39 if dtype==torch.float64 else -21)
+    elif regime=='dyadic_scaled':
+        a=((torch.arange(m*k).reshape(m,k)%17)-8).to(dtype)*2.0**-20
+        b=((torch.arange(k*n).reshape(k,n)%19)-9).to(dtype)*2.0**20
+        if opt.mode=='fp32':b=b.t().contiguous().t()
+    elif regime=='cancellation':
+        a=torch.ones((m,k),dtype=dtype)
+        b=((torch.arange(k*n).reshape(k,n)%23)-11).to(dtype)
+        b[1::2]=-b[::2]
+        b[-1,:]+=2.0**(-30 if dtype==torch.float64 else -10)
+        if opt.mode=='fp32':b=b.t().contiguous().t()
+    ref=a.double()@b.double()
+    def transfer(x,off):
+        size=off+1+sum((s-1)*t for s,t in zip(x.shape,x.stride()))
+        store=torch.empty(size,dtype=dtype,device='flagos')
+        y=store.as_strided(x.shape,x.stride(),off);y.copy_(x)
+        assert torch.equal(y.cpu(),x)
+        return y
+    aa=transfer(a,0);bb=transfer(b,offset)
+    return a,b,aa,bb,ref
+
+def accurate(y,ref):
+    z=y.detach().cpu().double()
+    if dtype==torch.bfloat16:ref=ref.to(dtype).double()
+    atol,rtol=(1e-10,1e-10) if dtype==torch.float64 else (1e-5,.016) if dtype==torch.bfloat16 else (2e-4,1e-4)
+    delta=(z-ref).abs();limit=atol+rtol*ref.abs();bad=~torch.isfinite(delta)|(delta>limit)
+    return dict(ok=not bool(bad.any()) and y.dtype==dtype and y.shape==ref.shape and y.device.type in ['cuda','flagos'],
+                value_ok=not bool(bad.any()),dtype_ok=y.dtype==dtype,shape_ok=y.shape==ref.shape,device_ok=y.device.type in ['cuda','flagos'],
+                bad_elements=int(bad.sum()),total=ref.numel(),max_abs_error=float(delta.max()),max_allowed_ratio=float((delta/limit).max()),atol=atol,rtol=rtol)
+
+# Each category runs different tests; every result uses the original tolerance.
+stress=[]
+seeds=[1238,101241,907,20261111] if opt.mode=='fp64' else [7,101,880301,20261111]
+offsets=[0,131072] if opt.mode=='fp64' else [0,17]
+for regime in ['random','basis','low_bits','dyadic_scaled','cancellation']:
+    for seed in (seeds if regime=='random' else seeds[:1]):
+        for offset in offsets:
+            a,b,aa,bb,ref=inputs(seed,regime,offset)
+            witness.clear()
+            with torch.no_grad(),flag_gems.use_gems(include=['mm']):y=torch.mm(aa,bb)
+            assert len(witness)==1 and witness[0] is not None
+            acc=accurate(y,ref)
+            result=dict(seed=seed,regime=regime,offset=offset,accuracy=acc,route_witness=True,
+                        input_hash=[hashlib.sha256(x.contiguous().view(torch.uint8).numpy().tobytes()).hexdigest() for x in [a,b]])
+            stress.append(result);print('STRESS',json.dumps(result),flush=True)
+            (root/(opt.name+'-stress.json')).write_text(json.dumps(stress,indent=2)+'\n')
+            assert acc['ok'],result
+
+# Profile representative exact inputs, both reported offsets for FP64, and the
+# independently supplied small BF16 control. Native HIP shares physical inputs.
+representatives=offsets if opt.mode=='fp64' else [0]
+case_base={'fp64':960100,'fp32':960200,'bf16':960300}[opt.mode]
+with (root/(opt.name+'-records.jsonl')).open('w',buffering=1) as out:
+    for variant,offset in enumerate(representatives):
+        ci=case_base+variant;seed=1238 if opt.mode=='fp64' else 880301
+        a,b,aa,bb,ref=inputs(seed,'random',offset)
+        na=_C._flagos_to_cuda_view(aa);nb=_C._flagos_to_cuda_view(bb)
+        assert na.data_ptr()==aa.data_ptr() and nb.data_ptr()==bb.data_ptr() and nb.storage_offset()==offset
+        calls=min(1024,max(1,(1024*1024*1024)//(m*n*torch.empty((),dtype=dtype).element_size())))
+        providers=['das','old_fg','new_public']
+        for ar in range(3):
+            for provider in providers[ar:]+providers[:ar]:
+                from contextlib import nullcontext
+                ctx=flag_gems.use_gems(include=['mm']) if provider=='new_public' else nullcontext()
+                with torch.no_grad(),ctx:
+                    fn=(lambda:torch.mm(na,nb)) if provider=='das' else (lambda:old.mm(aa,bb)) if provider=='old_fg' else (lambda:torch.mm(aa,bb))
+                    witness.clear();y=fn();route=len(witness)
+                    acc=accurate(y,ref);assert acc['ok'],(ci,provider,acc)
+                    if provider=='new_public':assert route==1 and witness[0] is not None
+                    keep=[fn() for _ in range(min(calls,32))];torch.flagos.synchronize();del keep
+                    for roi in range(5):
+                        queue_gate[(128,)](gate,100000000,num_warps=1)
+                        roctx.roctxRangePushA(f'correction:case={ci}:provider={provider}:aa={ar}:roi={roi}'.encode())
+                        keep=[fn() for _ in range(calls)];torch.flagos.synchronize();roctx.roctxRangePop()
+                        check=accurate(keep[-1],ref);assert check['ok'],(ci,provider,check)
+                        out.write(json.dumps(dict(case=ci,provider=provider,aa=ar,roi=roi,calls=calls,accuracy=check,
+                            offset=offset,a_shape=list(a.shape),b_shape=list(b.shape),a_stride=list(a.stride()),b_stride=list(b.stride()),dtype=str(dtype),
+                            input_pointer_shared=True,primary_route_calls=route,config=witness[0] if provider=='new_public' else None,
+                            source_sha256=fp['source_files'],input_storage_sha256=[hashlib.sha256(x.contiguous().view(torch.uint8).numpy().tobytes()).hexdigest() for x in [a,b]]))+'\n')
+                        del keep
+                print('PROFILE_DONE',ci,provider,ar,flush=True)
+print('MM_ACCEPT_COMPLETE',opt.mode,flush=True)

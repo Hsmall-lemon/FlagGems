@@ -1,0 +1,8 @@
+{
+  "native_public": "Pinned Torch-FL public aten::to.dtype without an FG context.",
+  "old_public": "Public aten::to.dtype under the original three-field _to_copy registration, generic export and no extra PrivateUse1 key.",
+  "old_generic": "Original unchanged generic FG to_copy called directly; identity emulated for the same-dtype public no-op.",
+  "routing_only": "Current public registration with PrivateUse1 but the unchanged generic FG export.",
+  "new_public": "Current public registration and Hygon backend export; cast_dense only for dense FP32 -> BF16.",
+  "das_valid_layout": "Additional low-level boxing aten::_to_copy.out with explicit preserved strides; not the same public baseline."
+}

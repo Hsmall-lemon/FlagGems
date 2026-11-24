@@ -1,0 +1,45 @@
+{
+  "node": "a01r4n15",
+  "python": "3.10.20 (main, Jun 11 2026, 15:17:37) [GCC 14.3.0]",
+  "torch": "2.10.0+cpu",
+  "torch_hip": "6.3.26113",
+  "torch_cuda": null,
+  "triton": "3.6.0",
+  "torch_fl": null,
+  "device": "GPUTarget(backend='hip', arch='gfx936', warp_size=64)",
+  "device_name": "<torch_fl.flagos._DeviceProperties object at 0x14ce46035a80>",
+  "visible": "1",
+  "mm_export": "_hygon.ops.mm",
+  "visible_device_count": 1,
+  "physical_pci_bus_id": "0000:36:00.0",
+  "concurrent_other_card_validation": true,
+  "source_sha256": {
+    "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_coalesced.py": "ec1b3332b7422cb098bceed1e568872a3f0ba8ba6680216a01bab219dee42377",
+    "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_peel.py": "ae7ec90f31f84f43c1772e29cf153d56ffff73c469c37acb4259a6c997067a18",
+    "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_rawpipe.py": "7d88f76f0af0bdc5635bd843555fe7c28f7711892e7b6a57033807cc63e09e08",
+    "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_reshape.py": "a7c5025e05e3a8a657250a5e8658fd330e2103774b9524592f6044b3473999d1",
+    "src/flag_gems/runtime/backend/_hygon/ops/mm_config.py": "743ccf1a65c16e5d2290e575fcb7797920429441a654fecdc83d6e73f3509a78",
+    "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_operands.py": "625c11755688890e17f1f95929fbd5602edc076602a888a5e1dbe3d4bc549c25",
+    "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_pipeline.py": "1fd06ad6ba3d30956d53cd70212348d4e4dd794ce3c4f48d3ccf0d607fcddf80",
+    "src/flag_gems/runtime/backend/_hygon/ops/mm_w8a8_int8.py": "309d2556e79186b24e6874839162039415f03d89246340e3e90819cbee6d1e46",
+    "src/flag_gems/runtime/backend/_hygon/ops/mm.py": "68de7e38cfbc66ae0b086b711fc5fc02137fd8a05de179476c343fd066d24d81",
+    "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_prefetch.py": "6480f69c8513aba86bc0ae37b5ba85cd557e0583c93d2bc78dfabbf2ec8fe0bb",
+    "src/flag_gems/runtime/backend/_hygon/ops/mm_kernels.py": "d9930250ab93ea65dcd5a1558bbabb5e4a199d7485cb4f703a22920ecfb65e01",
+    "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_coopfast.py": "5c67d0eaf4d86bb2fecfe1be7df53bd983c11c82f6b040ce0744ec502215f0d1",
+    "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_swizzle.py": "0c04c55dc98a24a8d57c2e9dd6586a16f62db853f5ff35d90156fe89f0aea741"
+  },
+  "checkout": "/public/home/wzx226226/算子优化/correction-20261109/expanded-final-gpu1/repo-mm-final",
+  "to_copy_export": "flag_gems.ops.to",
+  "support_source_sha256": {
+    "src/flag_gems/__init__.py": "fba3eb3dd96be3cebf8d9c5126e34122302cdf1e666825275800d2a55feddb89",
+    "src/flag_gems/runtime/backend/_hygon/ops/__init__.py": "28f7d985d0ef33201b226b25091a796ea2e0bacb3a2e02038e59cfe890edbe63",
+    "src/flag_gems/ops/to.py": "5b49026770a02ea3fe9f3c262b81f4ceb2108e7513b2ea38175263cc8acc7489",
+    "tests/test_hygon_mm.py": "894c19a1a09a0c8fb3892ae04b8d04948829ab1268875c69853df088690cce48"
+  },
+  "old_source_sha256": "d2594faf1b89fa0bdb2de549d4e2dde19ea87f63c0d92e587b326773d094a0cb",
+  "compiler_library": {
+    "path": "/opt/flagos/python/lib/python3.10/site-packages/triton/_C/libtriton.so",
+    "sha256": "d4176c9cbc4887d5f2d516795b0b1236420fa825df07ee94638d020c41572991"
+  },
+  "backend_config_sha256": "f3e42c3cca89b20ef2e6250683f3953822b83e25ead7017ae7eacabb65a106c1"
+}

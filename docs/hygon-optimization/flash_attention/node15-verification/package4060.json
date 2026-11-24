@@ -1,0 +1,17 @@
+{
+  "package": {
+    "id": 4060,
+    "filename": "flash_attn-2.8.3+das.opt1.dtk2604.torch2100.2606192019.gca46e7-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+    "name": "flash_attn-2.8.3+das.opt1.dtk2604.torch2100.2606192019.gca46e7-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+    "version": "2.8.3+das.opt1.dtk2604.torch2100.2606192019.gca46e7",
+    "upload_time": "2026-07-06 03:41:10",
+    "repo": "das_release/das1.8.4",
+    "download_path": "/packages/das_release/das1.8.4/1fc/abaf4827a3bdc/flash_attn-2.8.3%2Bdas.opt1.dtk2604.torch2100.2606192019.gca46e7-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+    "download_url": "/packages/das_release/das1.8.4/1fc/abaf4827a3bdc/flash_attn-2.8.3%2Bdas.opt1.dtk2604.torch2100.2606192019.gca46e7-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl",
+    "pip_index_url": "https://pypi.sourcefind.cn/release/dtk/",
+    "url": "/packages/das_release/das1.8.4/1fc/abaf4827a3bdc/flash_attn-2.8.3%2Bdas.opt1.dtk2604.torch2100.2606192019.gca46e7-cp310-cp310-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl"
+  },
+  "size": 264774247,
+  "sha256": "1fcabaf4827a3bdc89c2c8d7631b9f15637df0135a786981eada35bdf88369f5",
+  "seconds": 48.785815477371216
+}

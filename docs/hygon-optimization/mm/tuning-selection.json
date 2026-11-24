@@ -1,0 +1,1815 @@
+{
+  "sources": [
+    "tune-fp32-native.json",
+    "tune-fp32-r2-native.json",
+    "tune-fp32-r3-native.json",
+    "tune-fast-native.json",
+    "tune-fast3-native.json",
+    "tune-fp64-native.json",
+    "tune-fp64-r2-native.json",
+    "tune-fp64-v3-native.json",
+    "tune-prefetch-probe-native.json",
+    "tune-mmacsmall-native.json",
+    "tune-coalesced-probe-native.json",
+    "tune-gather-native.json",
+    "tune-coal2-native.json",
+    "tune-reshape-native.json",
+    "tune-pipeline-native.json",
+    "tune-coopfast-native.json",
+    "tune-prefetchbig-native.json",
+    "tune-swap32-native.json",
+    "tune-peel-native.json",
+    "tune-wide64-native.json",
+    "tune-rawpipe-native.json",
+    "tune-swizzle2-native.json",
+    "tune-swapped-native.json",
+    "tune-smallnormal-native.json"
+  ],
+  "selected": [
+    {
+      "row": 2,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "tile",
+        "bm": 64,
+        "bn": 32,
+        "bk": 32,
+        "warps": 4,
+        "stages": 1,
+        "split": 1,
+        "group": 8
+      },
+      "candidate_device_us": 70.99199999999999,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 3.0157294602872753e-05,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 35,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "tile",
+        "bm": 16,
+        "bn": 64,
+        "bk": 64,
+        "warps": 4,
+        "stages": 2,
+        "split": 1,
+        "group": 8
+      },
+      "candidate_device_us": 4.704,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 2.2405353803378603e-05,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 36,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "tile",
+        "bm": 16,
+        "bn": 64,
+        "bk": 64,
+        "warps": 4,
+        "stages": 2,
+        "split": 1,
+        "group": 8
+      },
+      "candidate_device_us": 4.768,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 1.5033983395085215e-05,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 37,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "small",
+        "block": 256,
+        "warps": 4
+      },
+      "candidate_device_us": 3.2960000000000003,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 3.958692875727365e-06,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 38,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "tile",
+        "bm": 32,
+        "bn": 32,
+        "bk": 32,
+        "warps": 4,
+        "stages": 1,
+        "split": 1,
+        "group": 8
+      },
+      "candidate_device_us": 3.088,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 4.545265184674463e-06,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 39,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "tile",
+        "bm": 16,
+        "bn": 64,
+        "bk": 64,
+        "warps": 4,
+        "stages": 1,
+        "split": 1,
+        "group": 8
+      },
+      "candidate_device_us": 5.215999999999999,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 1.7327630004615457e-05,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 40,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 1
+      },
+      "candidate_device_us": 2.304,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 2.2937085253360578e-07,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 41,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "small",
+        "block": 1024,
+        "warps": 4
+      },
+      "candidate_device_us": 4.512,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 4.7065191211004276e-07,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 42,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "tile",
+        "bm": 64,
+        "bn": 32,
+        "bk": 32,
+        "warps": 4,
+        "stages": 1,
+        "split": 1,
+        "group": 8
+      },
+      "candidate_device_us": 7.392,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 8.790745017250856e-06,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 43,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "tile",
+        "bm": 64,
+        "bn": 32,
+        "bk": 32,
+        "warps": 4,
+        "stages": 1,
+        "split": 1,
+        "group": 8
+      },
+      "candidate_device_us": 10.512,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 8.353755966084009e-06,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 44,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "tile",
+        "bm": 32,
+        "bn": 32,
+        "bk": 32,
+        "warps": 4,
+        "stages": 1,
+        "split": 1,
+        "group": 8
+      },
+      "candidate_device_us": 3.632,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 7.970901641840555e-06,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 47,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "tile",
+        "bm": 32,
+        "bn": 32,
+        "bk": 32,
+        "warps": 4,
+        "stages": 1,
+        "split": 1,
+        "group": 8
+      },
+      "candidate_device_us": 5.072,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 1.095222470937074e-05,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 51,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "tile",
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "warps": 4,
+        "stages": 1,
+        "split": 1,
+        "group": 8
+      },
+      "candidate_device_us": 144.288,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 3.590452357116192e-05,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 52,
+      "source": "tune-fast-native.json",
+      "config": {
+        "kind": "fasttile",
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "warps": 4,
+        "stages": 1,
+        "group": 8,
+        "single_buffer": false
+      },
+      "candidate_device_us": 231.75979999999998,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 3.9137760921903464e-05,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 59,
+      "source": "tune-fast-native.json",
+      "config": {
+        "kind": "fasttile",
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "warps": 4,
+        "stages": 2,
+        "group": 8,
+        "single_buffer": false
+      },
+      "candidate_device_us": 15.232,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 4.687529457214623e-05,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 60,
+      "source": "tune-fast-native.json",
+      "config": {
+        "kind": "fasttile",
+        "bm": 32,
+        "bn": 64,
+        "bk": 32,
+        "warps": 4,
+        "stages": 2,
+        "group": 8,
+        "single_buffer": false
+      },
+      "candidate_device_us": 9.808,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 3.380282547738034e-05,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 61,
+      "source": "tune-fast3-native.json",
+      "config": {
+        "kind": "fast3",
+        "bm": 32,
+        "bn": 64,
+        "bk": 32,
+        "warps": 4,
+        "unroll": 2,
+        "tail": false,
+        "stages": 2
+      },
+      "candidate_device_us": 12.735899999999999,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 4.38663934971828e-05,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 62,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "reduce",
+        "bo": 16,
+        "warps": 4
+      },
+      "candidate_device_us": 6.688,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 6.035960616657121e-06,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 63,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "tile",
+        "bm": 32,
+        "bn": 32,
+        "bk": 32,
+        "warps": 4,
+        "stages": 1,
+        "split": 1,
+        "group": 8
+      },
+      "candidate_device_us": 11.312000000000001,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 4.4465471368937415e-05,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 64,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "tile",
+        "bm": 32,
+        "bn": 32,
+        "bk": 32,
+        "warps": 4,
+        "stages": 1,
+        "split": 1,
+        "group": 8
+      },
+      "candidate_device_us": 19.168,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 0.00011088263514125174,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 65,
+      "source": "tune-fp32-r3-native.json",
+      "config": {
+        "kind": "tile",
+        "bm": 16,
+        "bn": 64,
+        "bk": 16,
+        "warps": 4,
+        "stages": 3,
+        "split": 1,
+        "group": 8,
+        "single_buffer": false
+      },
+      "candidate_device_us": 3.0879000000000003,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 1.979547564090467e-06,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 66,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "tile",
+        "bm": 16,
+        "bn": 32,
+        "bk": 64,
+        "warps": 4,
+        "stages": 2,
+        "split": 1,
+        "group": 8
+      },
+      "candidate_device_us": 4.736,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 1.7407722914697388e-05,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 67,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "tile",
+        "bm": 16,
+        "bn": 32,
+        "bk": 64,
+        "warps": 4,
+        "stages": 2,
+        "split": 1,
+        "group": 8
+      },
+      "candidate_device_us": 4.768,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 2.220595743551712e-05,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 68,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "tile",
+        "bm": 16,
+        "bn": 32,
+        "bk": 64,
+        "warps": 4,
+        "stages": 2,
+        "split": 1,
+        "group": 8
+      },
+      "candidate_device_us": 7.5040000000000004,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 4.3487414728815565e-05,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 69,
+      "source": "tune-fp32-r2-native.json",
+      "config": {
+        "kind": "reduce",
+        "bo": 16,
+        "warps": 4
+      },
+      "candidate_device_us": 3.6799999999999997,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 6.288836360113237e-06,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 70,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "tile",
+        "bm": 16,
+        "bn": 32,
+        "bk": 64,
+        "warps": 4,
+        "stages": 2,
+        "split": 1,
+        "group": 8
+      },
+      "candidate_device_us": 7.44,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 4.745740701395107e-05,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 72,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "tile",
+        "bm": 16,
+        "bn": 32,
+        "bk": 64,
+        "warps": 4,
+        "stages": 1,
+        "split": 1,
+        "group": 8
+      },
+      "candidate_device_us": 4.064,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 7.6155631667518264e-06,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 73,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "tile",
+        "bm": 32,
+        "bn": 32,
+        "bk": 32,
+        "warps": 4,
+        "stages": 1,
+        "split": 16,
+        "group": 8
+      },
+      "candidate_device_us": 5.92,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 1.4259672347805008e-05,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 74,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "tile",
+        "bm": 16,
+        "bn": 64,
+        "bk": 64,
+        "warps": 4,
+        "stages": 1,
+        "split": 16,
+        "group": 8
+      },
+      "candidate_device_us": 6.192,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 2.1625023947535738e-05,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 75,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "tile",
+        "bm": 16,
+        "bn": 64,
+        "bk": 64,
+        "warps": 4,
+        "stages": 1,
+        "split": 16,
+        "group": 8
+      },
+      "candidate_device_us": 5.824,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 1.7362604438631024e-05,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 76,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "reduce",
+        "bo": 1,
+        "warps": 1
+      },
+      "candidate_device_us": 2.6559999999999997,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 1.0319901420530186e-05,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 77,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "tile",
+        "bm": 32,
+        "bn": 32,
+        "bk": 32,
+        "warps": 4,
+        "stages": 2,
+        "split": 16,
+        "group": 8
+      },
+      "candidate_device_us": 7.215999999999999,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 1.9923674230426514e-05,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 78,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "tile",
+        "bm": 32,
+        "bn": 64,
+        "bk": 32,
+        "warps": 4,
+        "stages": 1,
+        "split": 4,
+        "group": 8
+      },
+      "candidate_device_us": 24.368000000000002,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 5.53273608403515e-05,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 79,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "reduce",
+        "bo": 1,
+        "warps": 1
+      },
+      "candidate_device_us": 2.832,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 9.779574369872535e-06,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 80,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 1
+      },
+      "candidate_device_us": 3.152,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 5.1246256944637025e-06,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 81,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 1
+      },
+      "candidate_device_us": 2.448,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 7.620501421001791e-07,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 82,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 1
+      },
+      "candidate_device_us": 2.2239999999999998,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 2.2469171767625085e-07,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 83,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "reduce",
+        "bo": 1,
+        "warps": 1
+      },
+      "candidate_device_us": 2.496,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 2.5997330972415966e-06,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 84,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "reduce",
+        "bo": 1,
+        "warps": 1
+      },
+      "candidate_device_us": 2.896,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 2.593554402352538e-06,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 85,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "tile",
+        "bm": 16,
+        "bn": 64,
+        "bk": 64,
+        "warps": 4,
+        "stages": 2,
+        "split": 1,
+        "group": 8
+      },
+      "candidate_device_us": 4.672,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 1.7502310619477157e-05,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 86,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 1
+      },
+      "candidate_device_us": 3.5520000000000005,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 3.4547200442602843e-06,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 87,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "tile",
+        "bm": 16,
+        "bn": 64,
+        "bk": 64,
+        "warps": 4,
+        "stages": 2,
+        "split": 1,
+        "group": 8
+      },
+      "candidate_device_us": 4.736,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 1.877361691882129e-05,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 88,
+      "source": "tune-fp32-r2-native.json",
+      "config": {
+        "kind": "reduce",
+        "bo": 32,
+        "warps": 4
+      },
+      "candidate_device_us": 2.832,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 1.7878224571887813e-06,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 89,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "small",
+        "block": 128,
+        "warps": 1
+      },
+      "candidate_device_us": 2.832,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 1.0848667741925055e-06,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 90,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "small",
+        "block": 256,
+        "warps": 4
+      },
+      "candidate_device_us": 2.32,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 3.1221709662077046e-07,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 91,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "small",
+        "block": 128,
+        "warps": 1
+      },
+      "candidate_device_us": 2.576,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 1.080452239676788e-06,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 92,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "small",
+        "block": 256,
+        "warps": 4
+      },
+      "candidate_device_us": 3.024,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 1.0039920006477132e-06,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 93,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "small",
+        "block": 256,
+        "warps": 4
+      },
+      "candidate_device_us": 4.0,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 1.9466274245871773e-06,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 94,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 1
+      },
+      "candidate_device_us": 2.2079999999999997,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 9.760901775734965e-08,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 96,
+      "source": "tune-swap32-native.json",
+      "config": {
+        "kind": "swap32",
+        "bm": 64,
+        "bn": 32,
+        "bk": 32,
+        "warps": 4,
+        "unroll": 1,
+        "tail": false,
+        "stages": 2,
+        "swap": true
+      },
+      "candidate_device_us": 56.767999999999994,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 0.00020655124286861337,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 99,
+      "source": "tune-fast-native.json",
+      "config": {
+        "kind": "fasttile",
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "warps": 4,
+        "stages": 1,
+        "group": 8,
+        "single_buffer": false
+      },
+      "candidate_device_us": 36.512,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 0.0001710061972346466,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 101,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "reduce",
+        "bo": 1,
+        "warps": 1
+      },
+      "candidate_device_us": 2.496,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 1.1439787162004222e-06,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 102,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 1
+      },
+      "candidate_device_us": 2.6079999999999997,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 1.065363104402195e-06,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 103,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 1
+      },
+      "candidate_device_us": 2.6719999999999997,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 9.414501498383743e-07,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 104,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "reduce",
+        "bo": 1,
+        "warps": 1
+      },
+      "candidate_device_us": 2.416,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 8.424482409452594e-07,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 105,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 1
+      },
+      "candidate_device_us": 2.6079999999999997,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 1.4295622996485235e-06,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 106,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 1
+      },
+      "candidate_device_us": 2.6399999999999997,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 1.4619398047699406e-06,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 107,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 1
+      },
+      "candidate_device_us": 2.7039999999999997,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 1.6818944672536418e-06,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 108,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 1
+      },
+      "candidate_device_us": 2.7039999999999997,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 1.4336645222101652e-06,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 109,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 1
+      },
+      "candidate_device_us": 2.432,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 5.096517829983327e-07,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 110,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 1
+      },
+      "candidate_device_us": 2.32,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 5.399398972372182e-07,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 111,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 1
+      },
+      "candidate_device_us": 2.448,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 5.088097090322208e-07,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 114,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "reduce",
+        "bo": 1,
+        "warps": 1
+      },
+      "candidate_device_us": 2.32,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 1.2719104596214947e-06,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 115,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 1
+      },
+      "candidate_device_us": 2.6239999999999997,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 2.844950998337481e-06,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 116,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "small",
+        "block": 256,
+        "warps": 4
+      },
+      "candidate_device_us": 2.864,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 6.848809981363502e-07,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 118,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "small",
+        "block": 256,
+        "warps": 4
+      },
+      "candidate_device_us": 3.008,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 6.768566205295201e-07,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 119,
+      "source": "tune-fp32-native.json",
+      "config": {
+        "kind": "small",
+        "block": 256,
+        "warps": 4
+      },
+      "candidate_device_us": 4.208,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 1.1545723967998356e-06,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 121,
+      "source": "tune-fp32-r2-native.json",
+      "config": {
+        "kind": "tile",
+        "bm": 32,
+        "bn": 32,
+        "bk": 128,
+        "warps": 4,
+        "stages": 2,
+        "split": 1,
+        "group": 8
+      },
+      "candidate_device_us": 7.664,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 3.729148212983091e-05,
+        "rtol": 0.0001,
+        "atol": 0.0002
+      }
+    },
+    {
+      "row": 7,
+      "source": "tune-fp64-r2-native.json",
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 1
+      },
+      "candidate_device_us": 4.336,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 2.4868995751603507e-14,
+        "rtol": 1e-10,
+        "atol": 1e-10
+      }
+    },
+    {
+      "row": 8,
+      "source": "tune-fp64-r2-native.json",
+      "config": {
+        "kind": "reduce",
+        "bo": 1,
+        "warps": 1
+      },
+      "candidate_device_us": 2.384,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 1.2434497875801753e-14,
+        "rtol": 1e-10,
+        "atol": 1e-10
+      }
+    },
+    {
+      "row": 9,
+      "source": "tune-fp64-r2-native.json",
+      "config": {
+        "kind": "reduce",
+        "bo": 1,
+        "warps": 1
+      },
+      "candidate_device_us": 2.2399999999999998,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 1.7763568394002505e-15,
+        "rtol": 1e-10,
+        "atol": 1e-10
+      }
+    },
+    {
+      "row": 12,
+      "source": "tune-fp64-native.json",
+      "config": {
+        "kind": "reduce",
+        "bo": 1,
+        "warps": 1
+      },
+      "candidate_device_us": 2.576,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 1.0658141036401503e-14,
+        "rtol": 1e-10,
+        "atol": 1e-10
+      }
+    },
+    {
+      "row": 18,
+      "source": "tune-fp64-r2-native.json",
+      "config": {
+        "kind": "small",
+        "block": 512,
+        "warps": 4
+      },
+      "candidate_device_us": 2.752,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 1.7763568394002505e-15,
+        "rtol": 1e-10,
+        "atol": 1e-10
+      }
+    },
+    {
+      "row": 22,
+      "source": "tune-fp64-v3-native.json",
+      "config": {
+        "kind": "simt",
+        "bm": 64,
+        "bn": 8,
+        "warps": 4,
+        "split": 1,
+        "unroll": 4
+      },
+      "candidate_device_us": 3.504,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 3.552713678800501e-15,
+        "rtol": 1e-10,
+        "atol": 1e-10
+      }
+    },
+    {
+      "row": 24,
+      "source": "tune-fp64-r2-native.json",
+      "config": {
+        "kind": "small",
+        "block": 1024,
+        "warps": 4
+      },
+      "candidate_device_us": 7.264,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 0.0,
+        "rtol": 1e-10,
+        "atol": 1e-10
+      }
+    },
+    {
+      "row": 26,
+      "source": "tune-fp64-v3-native.json",
+      "config": {
+        "kind": "simt",
+        "bm": 256,
+        "bn": 8,
+        "warps": 4,
+        "split": 1,
+        "unroll": 1
+      },
+      "candidate_device_us": 67.18390000000001,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 3.552713678800501e-15,
+        "rtol": 1e-10,
+        "atol": 1e-10
+      }
+    },
+    {
+      "row": 27,
+      "source": "tune-fp64-v3-native.json",
+      "config": {
+        "kind": "simt",
+        "bm": 256,
+        "bn": 8,
+        "warps": 4,
+        "split": 1,
+        "unroll": 1
+      },
+      "candidate_device_us": 267.7439,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 5.329070518200751e-15,
+        "rtol": 1e-10,
+        "atol": 1e-10
+      }
+    },
+    {
+      "row": 29,
+      "source": "tune-mmacsmall-native.json",
+      "config": {
+        "kind": "mmac",
+        "impl": "operands",
+        "tm": 1,
+        "tn": 1,
+        "wm": 4,
+        "warps": 4,
+        "unroll": 1,
+        "split": 1,
+        "trans": false
+      },
+      "candidate_device_us": 43.408,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 5.329070518200751e-15,
+        "rtol": 1e-10,
+        "atol": 1e-10
+      }
+    },
+    {
+      "row": 30,
+      "source": "tune-coalesced-probe-native.json",
+      "config": {
+        "kind": "coalesced",
+        "group": 8,
+        "tm": 2,
+        "tn": 1,
+        "wm": 4,
+        "warps": 4,
+        "prefetch": 4,
+        "split": 1,
+        "trans": false
+      },
+      "candidate_device_us": 43.088,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 5.329070518200751e-15,
+        "rtol": 1e-10,
+        "atol": 1e-10
+      }
+    },
+    {
+      "row": 4,
+      "source": "tune-peel-native.json",
+      "config": {
+        "kind": "peel",
+        "group": 1,
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 16,
+        "split": 1,
+        "trans": false
+      },
+      "candidate_device_us": 17.872,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 7.815970093361102e-14,
+        "rtol": 1e-10,
+        "atol": 1e-10
+      }
+    },
+    {
+      "row": 5,
+      "source": "tune-fp64-v3-native.json",
+      "config": {
+        "kind": "mmac",
+        "tm": 4,
+        "tn": 4,
+        "wm": 2,
+        "warps": 4,
+        "unroll": 4,
+        "split": 32,
+        "trans": false,
+        "impl": "operands"
+      },
+      "candidate_device_us": 99.2,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 3.979039320256561e-13,
+        "rtol": 1e-10,
+        "atol": 1e-10
+      }
+    },
+    {
+      "row": 6,
+      "source": "tune-prefetch-probe-native.json",
+      "config": {
+        "kind": "prefetch",
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 1,
+        "prefetch": 8,
+        "split": 1,
+        "trans": false
+      },
+      "candidate_device_us": 7.4719999999999995,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 2.1316282072803006e-14,
+        "rtol": 1e-10,
+        "atol": 1e-10
+      }
+    },
+    {
+      "row": 10,
+      "source": "tune-smallnormal-native.json",
+      "config": {
+        "kind": "swizzle",
+        "tm": 1,
+        "tn": 1,
+        "wm": 2,
+        "warps": 2,
+        "prefetch": 8,
+        "group": 1,
+        "pipe": true,
+        "swizzle": true,
+        "store": 2
+      },
+      "candidate_device_us": 9.84,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 7.460698725481052e-14,
+        "rtol": 1e-10,
+        "atol": 1e-10
+      }
+    },
+    {
+      "row": 11,
+      "source": "tune-smallnormal-native.json",
+      "config": {
+        "kind": "swizzle",
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 8,
+        "group": 1,
+        "pipe": true,
+        "swizzle": true,
+        "store": 2
+      },
+      "candidate_device_us": 5.168,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 1.4210854715202004e-14,
+        "rtol": 1e-10,
+        "atol": 1e-10
+      }
+    },
+    {
+      "row": 15,
+      "source": "tune-swapped-native.json",
+      "config": {
+        "kind": "swizzle",
+        "tm": 2,
+        "tn": 2,
+        "wm": 2,
+        "warps": 4,
+        "prefetch": 4,
+        "group": 1,
+        "pipe": true,
+        "swizzle": true,
+        "store": 0,
+        "swap": true
+      },
+      "candidate_device_us": 19.503999999999998,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 2.1316282072803006e-14,
+        "rtol": 1e-10,
+        "atol": 1e-10
+      }
+    },
+    {
+      "row": 16,
+      "source": "tune-smallnormal-native.json",
+      "config": {
+        "kind": "swizzle",
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 8,
+        "group": 1,
+        "pipe": true,
+        "swizzle": true,
+        "store": 2
+      },
+      "candidate_device_us": 7.231999999999999,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 2.1316282072803006e-14,
+        "rtol": 1e-10,
+        "atol": 1e-10
+      }
+    },
+    {
+      "row": 19,
+      "source": "tune-swizzle2-native.json",
+      "config": {
+        "kind": "swizzle",
+        "tm": 2,
+        "tn": 2,
+        "wm": 2,
+        "warps": 4,
+        "prefetch": 2,
+        "group": 1,
+        "pipe": true,
+        "swizzle": true,
+        "store": 2
+      },
+      "candidate_device_us": 30.848000000000003,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 1.7763568394002505e-14,
+        "rtol": 1e-10,
+        "atol": 1e-10
+      }
+    },
+    {
+      "row": 20,
+      "source": "tune-swapped-native.json",
+      "config": {
+        "kind": "swizzle",
+        "tm": 2,
+        "tn": 2,
+        "wm": 2,
+        "warps": 4,
+        "prefetch": 4,
+        "group": 1,
+        "pipe": true,
+        "swizzle": true,
+        "store": 0,
+        "swap": true
+      },
+      "candidate_device_us": 14.512,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 1.7763568394002505e-14,
+        "rtol": 1e-10,
+        "atol": 1e-10
+      }
+    },
+    {
+      "row": 21,
+      "source": "tune-peel-native.json",
+      "config": {
+        "kind": "peel",
+        "group": 1,
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 16,
+        "split": 1,
+        "trans": false
+      },
+      "candidate_device_us": 6.688,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 1.4210854715202004e-14,
+        "rtol": 1e-10,
+        "atol": 1e-10
+      }
+    },
+    {
+      "row": 25,
+      "source": "tune-swizzle2-native.json",
+      "config": {
+        "kind": "swizzle",
+        "tm": 2,
+        "tn": 4,
+        "wm": 2,
+        "warps": 4,
+        "prefetch": 2,
+        "group": 1,
+        "pipe": true,
+        "swizzle": true,
+        "store": 2
+      },
+      "candidate_device_us": 210.7679,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 1.6342482922482304e-13,
+        "rtol": 1e-10,
+        "atol": 1e-10
+      }
+    },
+    {
+      "row": 28,
+      "source": "tune-pipeline-native.json",
+      "config": {
+        "kind": "pipeline",
+        "group": 1,
+        "tm": 4,
+        "tn": 4,
+        "wm": 2,
+        "warps": 4,
+        "prefetch": 2,
+        "split": 1,
+        "trans": false
+      },
+      "candidate_device_us": 1374.0951,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 3.694822225952521e-13,
+        "rtol": 1e-10,
+        "atol": 1e-10
+      }
+    },
+    {
+      "row": 31,
+      "source": "tune-peel-native.json",
+      "config": {
+        "kind": "peel",
+        "group": 1,
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 16,
+        "split": 1,
+        "trans": false
+      },
+      "candidate_device_us": 7.92,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 2.1316282072803006e-14,
+        "rtol": 1e-10,
+        "atol": 1e-10
+      }
+    },
+    {
+      "row": 32,
+      "source": "tune-fp64-v3-native.json",
+      "config": {
+        "kind": "mmac",
+        "tm": 2,
+        "tn": 2,
+        "wm": 2,
+        "warps": 4,
+        "unroll": 4,
+        "split": 4,
+        "trans": false,
+        "impl": "operands"
+      },
+      "candidate_device_us": 19.904,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 4.973799150320701e-14,
+        "rtol": 1e-10,
+        "atol": 1e-10
+      }
+    },
+    {
+      "row": 33,
+      "source": "tune-prefetchbig-native.json",
+      "config": {
+        "kind": "coopfast",
+        "group": 1,
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 16,
+        "split": 1,
+        "trans": false
+      },
+      "candidate_device_us": 9.2,
+      "accuracy": {
+        "ok": true,
+        "max_abs": 2.1316282072803006e-14,
+        "rtol": 1e-10,
+        "atol": 1e-10
+      }
+    }
+  ]
+}

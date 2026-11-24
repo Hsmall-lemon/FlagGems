@@ -1,0 +1,252 @@
+{
+  "accepted": false,
+  "pr_is_draft": true,
+  "node": "a01r3n13",
+  "physical_card_ordinal": 0,
+  "gpu_tests_serial": true,
+  "protocol": "200 calls/ROI, 100M-iteration single-CU gate; 5 ROIs/block; 3 A/A block medians; max/min-1 <=5%. Independent protocol; old failures retained.",
+  "focused_tests_passed": 33,
+  "public_checks_passed": 30,
+  "case_seed_accuracy_records": 38,
+  "original_reviewer_input_reproduced": false,
+  "original_reviewer_failure_resolved": false,
+  "targeted_performance_groups": 19,
+  "passing_groups": 11,
+  "remaining_stability_rows": [
+    9,
+    81,
+    82,
+    101,
+    107,
+    108,
+    111,
+    114
+  ],
+  "remaining_performance_rows": [],
+  "rows": [
+    {
+      "case": 8,
+      "das_us": 7.7184,
+      "new_us": 5.1808,
+      "das_over_new": 1.4898085237801113,
+      "das_aa_drift": 0.018791105543376263,
+      "new_aa_drift": 0.022117647058823575,
+      "status": "passes_this_protocol"
+    },
+    {
+      "case": 9,
+      "das_us": 5.2216,
+      "new_us": 5.3816,
+      "das_over_new": 0.970269064962093,
+      "das_aa_drift": 0.019869605712511618,
+      "new_aa_drift": 0.06374940972768761,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "case": 20,
+      "das_us": 14.355195,
+      "new_us": 15.691195,
+      "das_over_new": 0.9148567078543094,
+      "das_aa_drift": 0.00446877599876272,
+      "new_aa_drift": 0.01877716311593569,
+      "status": "passes_this_protocol"
+    },
+    {
+      "case": 24,
+      "das_us": 11.415195,
+      "new_us": 11.820795,
+      "das_over_new": 0.9656875870023971,
+      "das_aa_drift": 0.015112117414123327,
+      "new_aa_drift": 0.04147845716908671,
+      "status": "passes_this_protocol"
+    },
+    {
+      "case": 32,
+      "das_us": 14.235195,
+      "new_us": 13.751195,
+      "das_over_new": 1.0351969410658493,
+      "das_aa_drift": 0.008220260761028664,
+      "new_aa_drift": 0.001979737531929482,
+      "status": "passes_this_protocol"
+    },
+    {
+      "case": 43,
+      "das_us": 12.253595,
+      "new_us": 11.261595,
+      "das_over_new": 1.0880869894539806,
+      "das_aa_drift": 0.002548354412389875,
+      "new_aa_drift": 0.007333573929144688,
+      "status": "passes_this_protocol"
+    },
+    {
+      "case": 78,
+      "das_us": 95.035155,
+      "new_us": 29.611985,
+      "das_over_new": 3.209347667844624,
+      "das_aa_drift": 0.026972040302680966,
+      "new_aa_drift": 0.004841504132267804,
+      "status": "passes_this_protocol"
+    },
+    {
+      "case": 81,
+      "das_us": 5.0656,
+      "new_us": 5.104,
+      "das_over_new": 0.9924764890282132,
+      "das_aa_drift": 0.074983839689722,
+      "new_aa_drift": 0.05864147255253305,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "case": 82,
+      "das_us": 4.976,
+      "new_us": 5.0512,
+      "das_over_new": 0.9851124485270827,
+      "das_aa_drift": 0.10674437968359696,
+      "new_aa_drift": 0.020213273913735508,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "case": 83,
+      "das_us": 5.5248,
+      "new_us": 5.0232,
+      "das_over_new": 1.0998566650740564,
+      "das_aa_drift": 0.03264884030137383,
+      "new_aa_drift": 0.0478646253021755,
+      "status": "passes_this_protocol"
+    },
+    {
+      "case": 86,
+      "das_us": 5.3272,
+      "new_us": 5.1456,
+      "das_over_new": 1.035292288557214,
+      "das_aa_drift": 0.02722658052607274,
+      "new_aa_drift": 0.04135636190778014,
+      "status": "passes_this_protocol"
+    },
+    {
+      "case": 101,
+      "das_us": 5.1168,
+      "new_us": 5.2184,
+      "das_over_new": 0.9805304307833818,
+      "das_aa_drift": 0.04252964426877481,
+      "new_aa_drift": 0.061895551257253656,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "case": 103,
+      "das_us": 4.9888,
+      "new_us": 5.076,
+      "das_over_new": 0.9828211189913318,
+      "das_aa_drift": 0.049426586981101694,
+      "new_aa_drift": 0.03956777371682829,
+      "status": "passes_this_protocol"
+    },
+    {
+      "case": 104,
+      "das_us": 5.1704,
+      "new_us": 5.1096,
+      "das_over_new": 1.0118991701894473,
+      "das_aa_drift": 0.04053198226725763,
+      "new_aa_drift": 0.016666666666666607,
+      "status": "passes_this_protocol"
+    },
+    {
+      "case": 105,
+      "das_us": 5.2208,
+      "new_us": 5.188,
+      "das_over_new": 1.0063222821896685,
+      "das_aa_drift": 0.011409189022510091,
+      "new_aa_drift": 0.04185972200031962,
+      "status": "passes_this_protocol"
+    },
+    {
+      "case": 107,
+      "das_us": 5.1736,
+      "new_us": 4.9872,
+      "das_over_new": 1.037375681745268,
+      "das_aa_drift": 0.07274220032840728,
+      "new_aa_drift": 0.0862443590172155,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "case": 108,
+      "das_us": 5.1944,
+      "new_us": 5.0488,
+      "das_over_new": 1.0288385358897163,
+      "das_aa_drift": 0.0810855535330135,
+      "new_aa_drift": 0.04220417263895526,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "case": 111,
+      "das_us": 5.2696,
+      "new_us": 5.1568,
+      "das_over_new": 1.0218740304064535,
+      "das_aa_drift": 0.008097784568372957,
+      "new_aa_drift": 0.0623008285532185,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "case": 114,
+      "das_us": 5.164,
+      "new_us": 5.2152,
+      "das_over_new": 0.9901825433348672,
+      "das_aa_drift": 0.09544715447154473,
+      "new_aa_drift": 0.053896920175990015,
+      "status": "unstable_diagnostic"
+    }
+  ],
+  "candidate_five_generated_input_results": [
+    {
+      "case": 0,
+      "das_us": 13.900795,
+      "new_us": 14.618395,
+      "das_over_new": 0.9509111636400577,
+      "das_aa_drift": 0.0053583794359224335,
+      "new_aa_drift": 0.006932983566146689,
+      "status": "passes_this_protocol"
+    },
+    {
+      "case": 1,
+      "das_us": 6.3704,
+      "new_us": 6.3232,
+      "das_over_new": 1.0074645748987854,
+      "das_aa_drift": 0.040000000000000036,
+      "new_aa_drift": 0.04720805544658013,
+      "status": "passes_this_protocol"
+    },
+    {
+      "case": 2,
+      "das_us": 7.2944,
+      "new_us": 6.864,
+      "das_over_new": 1.0627039627039627,
+      "das_aa_drift": 0.018903591682419618,
+      "new_aa_drift": 0.030245296499166408,
+      "status": "passes_this_protocol"
+    },
+    {
+      "case": 3,
+      "das_us": 14.346395,
+      "new_us": 15.767195,
+      "das_over_new": 0.9098888546757999,
+      "das_aa_drift": 0.009069028532801227,
+      "new_aa_drift": 0.0009643694055074814,
+      "status": "passes_this_protocol"
+    },
+    {
+      "case": 4,
+      "das_us": 14.112795,
+      "new_us": 13.718395,
+      "das_over_new": 1.028749718899332,
+      "das_aa_drift": 0.021864219600194135,
+      "new_aa_drift": 0.010317138430278261,
+      "status": "passes_this_protocol"
+    }
+  ],
+  "full_94_case_crossnode_revalidation": "Started separately on a01r4n15 card 0; pending at this publication.",
+  "validation_limits": [
+    "The original FP64 all-output failure and FP32 shared 1-element failure remain open.",
+    "The 38 generated accuracy records cover 19 spreadsheet cases; do not relabel as a fresh 240-record full-scope pass.",
+    "The BF16 fallback control is an extra diagnostic, not an original optimization target."
+  ]
+}

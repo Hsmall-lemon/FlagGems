@@ -1,0 +1,29 @@
+python : D:\Anaconda\Lib\site-packages\paramiko\transport.py:219: CryptographyDeprecationWarning: Blowfish has been dep
+recated
+所在位置 行:10 字符: 1
++ python -X utf8 audit_login.py workbook_final_source_audit.sh *> workb ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (D:\Anaconda\Lib...been deprecated:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+  "class": algorithms.Blowfish,
+WARNING: /opt/hyhal/lib/cmake/rocm_smi doesn't exist, please install the latest driver(version >= 6.3.15)
+The rocm_smi_lib will be used in default
+clang-format version 18.0.0 (/buildspace/das-build/dtk-llvm-6.3.3/llvm-project/clang 9aee5cb61af87f87a1a80594fd81e38db33fc01a)
+9d737b24687977ab0a1e027f6485009d308f4392aac7c736b188611f0f990f88  /public/home/wzx226226/flash_attention_node15_20261109/FlagGems/src/flag_gems/runtime/backend/_hygon/attention_state_hip.cpp
+185460a1f7a25f27ba55202cf42f35fef5a10fda845b527c3058b5b9b88f12d4  /public/home/wzx226226/flash_attention_node15_20261109/FlagGems/src/flag_gems/runtime/backend/_hygon/attention_state_hip.py
+df304186cee67c9773c5c9796a8d95ce847d3b238b2b9375831bc35a1e131348  /public/home/wzx226226/flash_attention_node15_20261109/FlagGems/src/flag_gems/runtime/backend/_hygon/ops/attention_state.py
+6eabe38ca1abcf6ff68c30b40250895b45f0fb402c6acad82bb50982b4ac3a0e  /public/home/wzx226226/flash_attention_node15_20261109/FlagGems/src/flag_gems/runtime/backend/_hygon/ops/_scaled_dot_product_flash_attention.py
+1115a5ca4796e0fe980a517dacbf6e4f73efca7d02d279444a7c408120e3ccc4  /public/home/wzx226226/flash_attention_node15_20261109/FlagGems/tests/test_flash_attention_hygon_state.py
+FlagGems source override: /public/home/wzx226226/flash_attention_node15_20261109/FlagGems
+6d9ac5543fb2a543ec00a7770c8c583f1a9f1f29
+ M .gitattributes
+ M pyproject.toml
+ M src/flag_gems/runtime/backend/_hygon/ops/_scaled_dot_product_flash_attention.py
+?? docs/hygon-optimization/flash_attention/
+?? src/flag_gems/runtime/backend/_hygon/attention_state_hip.cpp
+?? src/flag_gems/runtime/backend/_hygon/attention_state_hip.py
+?? src/flag_gems/runtime/backend/_hygon/ops/attention_state.py
+?? tests/test_flash_attention_hygon_state.py
+/bin/bash: /opt/flagos/python/lib/libtinfo.so.6: no version information available (required by /bin/bash)
+bash: /opt/flagos/python/lib/libtinfo.so.6: no version information available (required by bash)

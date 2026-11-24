@@ -1,0 +1,914 @@
+[
+  {
+    "row": 4,
+    "mode": "paired",
+    "provider": "public",
+    "config_id": "public",
+    "description": "FP64 \u00b7 [1344,256] + [256,128]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 7.815970093361102e-14,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 22.71999977529049,
+    "rois_us": [
+      22.71999977529049,
+      24.40000046044588,
+      22.799999453127384,
+      22.5600004196167,
+      22.71999977529049
+    ],
+    "sheet_das_us": 19.36,
+    "native_us": 16.048,
+    "native_rois_us": [
+      15.952000000000002,
+      16.912,
+      16.16,
+      15.919999999999998,
+      16.048
+    ],
+    "kernels": [
+      "mmac_tiled"
+    ],
+    "sheet_native_ratio": 1.2063808574277168
+  },
+  {
+    "row": 5,
+    "mode": "paired",
+    "provider": "public",
+    "config_id": "public",
+    "description": "FP64 \u00b7 [192,11392] + [11392,128]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 3.979039320256561e-13,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 103.7600003182888,
+    "rois_us": [
+      103.7600003182888,
+      104.08000275492668,
+      103.52000221610069,
+      104.00000214576721,
+      103.36000099778175
+    ],
+    "sheet_das_us": 135.68,
+    "native_us": 97.184,
+    "native_rois_us": [
+      97.184,
+      97.6479,
+      97.136,
+      99.31190000000001,
+      97.1679
+    ],
+    "kernels": [
+      "mmac_tiled",
+      "split_reduce"
+    ],
+    "sheet_native_ratio": 1.3961145867632534
+  },
+  {
+    "row": 6,
+    "mode": "paired",
+    "provider": "public",
+    "config_id": "public",
+    "description": "FP64 \u00b7 [192,128] + [128,128]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 2.1316282072803006e-14,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 12.640000320971012,
+    "rois_us": [
+      12.640000320971012,
+      12.640000320971012,
+      12.640000320971012,
+      12.640000320971012,
+      12.719999998807907
+    ],
+    "sheet_das_us": 10.08,
+    "native_us": 6.752,
+    "native_rois_us": [
+      6.752,
+      6.752,
+      6.816,
+      6.720000000000001,
+      6.784000000000001
+    ],
+    "kernels": [
+      "mmac_tiled"
+    ],
+    "sheet_native_ratio": 1.4928909952606635
+  },
+  {
+    "row": 7,
+    "mode": "paired",
+    "provider": "public",
+    "config_id": "public",
+    "description": "FP64 \u00b7 [192,128] + [128,16]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 2.4868995751603507e-14,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 10.00000024214387,
+    "rois_us": [
+      10.080000385642052,
+      10.00000024214387,
+      10.00000024214387,
+      9.920000098645687,
+      10.00000024214387
+    ],
+    "sheet_das_us": 9.92,
+    "native_us": 4.176,
+    "native_rois_us": [
+      4.192,
+      4.144,
+      4.176,
+      4.176,
+      4.1918999999999995
+    ],
+    "kernels": [
+      "reduction"
+    ],
+    "sheet_native_ratio": 2.375478927203065
+  },
+  {
+    "row": 8,
+    "mode": "paired",
+    "provider": "public",
+    "config_id": "public",
+    "description": "FP64 \u00b7 [192,128] + [128,1]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 1.2434497875801753e-14,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 9.920000098645687,
+    "rois_us": [
+      9.919499978423119,
+      9.920000098645687,
+      9.759999811649323,
+      9.920000098645687,
+      9.920000098645687
+    ],
+    "sheet_das_us": 11.04,
+    "native_us": 3.9520000000000004,
+    "native_rois_us": [
+      3.9518999999999997,
+      3.9520000000000004,
+      3.776,
+      3.9520000000000004,
+      3.968
+    ],
+    "kernels": [
+      "reduction"
+    ],
+    "sheet_native_ratio": 2.7935222672064772
+  },
+  {
+    "row": 9,
+    "mode": "paired",
+    "provider": "public",
+    "config_id": "public",
+    "description": "FP64 \u00b7 [192,16] + [16,1]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 1.7763568394002505e-15,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 9.759999811649323,
+    "rois_us": [
+      9.759999811649323,
+      9.839999955147505,
+      9.920000098645687,
+      9.759999811649323,
+      9.759999811649323
+    ],
+    "sheet_das_us": 6.24,
+    "native_us": 3.9200000000000004,
+    "native_rois_us": [
+      3.84,
+      3.9200000000000004,
+      4.0,
+      3.9200000000000004,
+      3.872
+    ],
+    "kernels": [
+      "reduction"
+    ],
+    "sheet_native_ratio": 1.5918367346938775
+  },
+  {
+    "row": 10,
+    "mode": "paired",
+    "provider": "public",
+    "config_id": "public",
+    "description": "FP64 \u00b7 [192,256] + [256,128]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 7.460698725481052e-14,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 15.839999541640282,
+    "rois_us": [
+      15.839999541640282,
+      15.840000472962856,
+      15.839999541640282,
+      15.680000185966492,
+      15.920000150799751
+    ],
+    "sheet_das_us": 12.64,
+    "native_us": 9.904,
+    "native_rois_us": [
+      10.032,
+      9.904,
+      9.84,
+      9.808,
+      9.984
+    ],
+    "kernels": [
+      "mmac_tiled"
+    ],
+    "sheet_native_ratio": 1.2762520193861067
+  },
+  {
+    "row": 11,
+    "mode": "paired",
+    "provider": "public",
+    "config_id": "public",
+    "description": "FP64 \u00b7 [192,89] + [89,128]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 1.4210854715202004e-14,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 10.960000101476908,
+    "rois_us": [
+      10.960000101476908,
+      10.960000101476908,
+      10.960000101476908,
+      10.879999957978725,
+      10.879999957978725
+    ],
+    "sheet_das_us": 9.12,
+    "native_us": 5.12,
+    "native_rois_us": [
+      5.2,
+      5.104,
+      5.12,
+      5.104,
+      5.152
+    ],
+    "kernels": [
+      "mmac_tiled"
+    ],
+    "sheet_native_ratio": 1.7812499999999998
+  },
+  {
+    "row": 12,
+    "mode": "paired",
+    "provider": "public",
+    "config_id": "public",
+    "description": "FP64 \u00b7 [192,89] + [89,1]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 1.0658141036401503e-14,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 9.360000025480986,
+    "rois_us": [
+      9.279999881982803,
+      9.279999881982803,
+      11.039999779313803,
+      9.360000025480986,
+      9.440000168979168
+    ],
+    "sheet_das_us": 9.92,
+    "native_us": 3.808,
+    "native_rois_us": [
+      3.808,
+      3.776,
+      4.5919,
+      3.808,
+      3.8560000000000003
+    ],
+    "kernels": [
+      "reduction"
+    ],
+    "sheet_native_ratio": 2.6050420168067228
+  },
+  {
+    "row": 15,
+    "mode": "paired",
+    "provider": "public",
+    "config_id": "public",
+    "description": "FP64 \u00b7 [192,89] + [89,6528]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 2.1316282072803006e-14,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 28.560000471770763,
+    "rois_us": [
+      30.15999961644411,
+      28.560000471770763,
+      28.560000471770763,
+      28.560000471770763,
+      28.479999862611294
+    ],
+    "sheet_das_us": 25.76,
+    "native_us": 19.696,
+    "native_rois_us": [
+      20.624000000000002,
+      19.696,
+      19.776,
+      19.631999999999998,
+      19.68
+    ],
+    "kernels": [
+      "mmac_tiled"
+    ],
+    "sheet_native_ratio": 1.3078797725426483
+  },
+  {
+    "row": 16,
+    "mode": "paired",
+    "provider": "public",
+    "config_id": "public",
+    "description": "FP64 \u00b7 [192,89] + [89,768]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 2.1316282072803006e-14,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 14.08000010997057,
+    "rois_us": [
+      14.159999787807465,
+      14.08000010997057,
+      14.08000010997057,
+      13.919999822974205,
+      13.999999966472387
+    ],
+    "sheet_das_us": 10.88,
+    "native_us": 7.343999999999999,
+    "native_rois_us": [
+      7.648000000000001,
+      7.312,
+      7.4079999999999995,
+      7.328,
+      7.343999999999999
+    ],
+    "kernels": [
+      "mmac_tiled"
+    ],
+    "sheet_native_ratio": 1.4814814814814816
+  },
+  {
+    "row": 18,
+    "mode": "paired",
+    "provider": "public",
+    "config_id": "public",
+    "description": "FP64 \u00b7 [2208,3] + [3,15]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 1.7763568394002505e-15,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 9.759999811649323,
+    "rois_us": [
+      9.759999811649323,
+      9.759999811649323,
+      9.759999811649323,
+      9.759999811649323,
+      11.279999744147062
+    ],
+    "sheet_das_us": 5.28,
+    "native_us": 3.8240000000000003,
+    "native_rois_us": [
+      3.84,
+      3.8240000000000003,
+      3.776,
+      3.8240000000000003,
+      4.544
+    ],
+    "kernels": [
+      "small_k"
+    ],
+    "sheet_native_ratio": 1.3807531380753137
+  },
+  {
+    "row": 19,
+    "mode": "paired",
+    "provider": "public",
+    "config_id": "public",
+    "description": "FP64 \u00b7 [2208,64] + [64,1280]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 1.7763568394002505e-14,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 39.03999924659729,
+    "rois_us": [
+      42.55999997258186,
+      38.88000175356865,
+      38.96000050008297,
+      39.03999924659729,
+      39.03999924659729
+    ],
+    "sheet_das_us": 37.6,
+    "native_us": 30.656,
+    "native_rois_us": [
+      33.488,
+      30.560000000000002,
+      30.624000000000002,
+      30.768,
+      30.656
+    ],
+    "kernels": [
+      "mmac_tiled"
+    ],
+    "sheet_native_ratio": 1.2265135699373697
+  },
+  {
+    "row": 20,
+    "mode": "paired",
+    "provider": "public",
+    "config_id": "public",
+    "description": "FP64 \u00b7 [2208,64] + [64,512]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 1.7763568394002505e-14,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 23.19999970495701,
+    "rois_us": [
+      24.960000067949295,
+      23.19999970495701,
+      23.19999970495701,
+      23.118999786674976,
+      23.280000314116478
+    ],
+    "sheet_das_us": 20.32,
+    "native_us": 14.608,
+    "native_rois_us": [
+      15.584,
+      14.608,
+      14.512,
+      14.479800000000001,
+      14.672
+    ],
+    "kernels": [
+      "mmac_tiled"
+    ],
+    "sheet_native_ratio": 1.3910186199342827
+  },
+  {
+    "row": 21,
+    "mode": "paired",
+    "provider": "public",
+    "config_id": "public",
+    "description": "FP64 \u00b7 [2208,64] + [64,64]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 1.4210854715202004e-14,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 12.640000320971012,
+    "rois_us": [
+      12.640000320971012,
+      14.08000010997057,
+      12.640000320971012,
+      12.640000320971012,
+      12.640000320971012
+    ],
+    "sheet_das_us": 8.96,
+    "native_us": 6.0,
+    "native_rois_us": [
+      5.952,
+      6.720000000000001,
+      6.0,
+      6.0,
+      5.936
+    ],
+    "kernels": [
+      "mmac_tiled"
+    ],
+    "sheet_native_ratio": 1.4933333333333334
+  },
+  {
+    "row": 22,
+    "mode": "paired",
+    "provider": "public",
+    "config_id": "public",
+    "description": "FP64 \u00b7 [2208,7] + [7,15]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 3.552713678800501e-15,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 9.759999811649323,
+    "rois_us": [
+      9.759999811649323,
+      9.759999811649323,
+      11.19999960064888,
+      9.759999811649323,
+      9.759999811649323
+    ],
+    "sheet_das_us": 5.12,
+    "native_us": 3.84,
+    "native_rois_us": [
+      3.84,
+      3.8240000000000003,
+      4.464,
+      3.84,
+      3.84
+    ],
+    "kernels": [
+      "simt"
+    ],
+    "sheet_native_ratio": 1.3333333333333335
+  },
+  {
+    "row": 24,
+    "mode": "paired",
+    "provider": "public",
+    "config_id": "public",
+    "description": "FP64 \u00b7 [24576,1] + [1,48]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 0.0,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 15.519999898970127,
+    "rois_us": [
+      15.840000472962856,
+      15.519999898970127,
+      15.519999898970127,
+      15.519999898970127,
+      17.040000297129154
+    ],
+    "sheet_das_us": 16.64,
+    "native_us": 7.312,
+    "native_rois_us": [
+      7.616,
+      7.295999999999999,
+      7.312,
+      7.312,
+      8.08
+    ],
+    "kernels": [
+      "small_k"
+    ],
+    "sheet_native_ratio": 2.2757111597374178
+  },
+  {
+    "row": 25,
+    "mode": "paired",
+    "provider": "public",
+    "config_id": "public",
+    "description": "FP64 \u00b7 [24576,368] + [368,256]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 1.6342482922482304e-13,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 218.7199965119362,
+    "rois_us": [
+      218.7194973230362,
+      218.7199965119362,
+      218.55999529361725,
+      219.84000504016876,
+      220.39999812841415
+    ],
+    "sheet_das_us": 234.72,
+    "native_us": 210.94389999999999,
+    "native_rois_us": [
+      210.94389999999999,
+      210.6719,
+      210.68789999999998,
+      211.1679,
+      211.7759
+    ],
+    "kernels": [
+      "mmac_tiled"
+    ],
+    "sheet_native_ratio": 1.1127129061328629
+  },
+  {
+    "row": 26,
+    "mode": "paired",
+    "provider": "public",
+    "config_id": "public",
+    "description": "FP64 \u00b7 [24576,4] + [4,256]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 3.552713678800501e-15,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 77.27999985218048,
+    "rois_us": [
+      78.48000153899193,
+      77.11999863386154,
+      77.27999985218048,
+      76.72000303864479,
+      77.36000046133995
+    ],
+    "sheet_das_us": 111.84,
+    "native_us": 66.96000000000001,
+    "native_rois_us": [
+      68.56,
+      66.944,
+      66.96000000000001,
+      66.576,
+      67.2638
+    ],
+    "kernels": [
+      "simt"
+    ],
+    "sheet_native_ratio": 1.6702508960573474
+  },
+  {
+    "row": 27,
+    "mode": "paired",
+    "provider": "public",
+    "config_id": "public",
+    "description": "FP64 \u00b7 [24576,6] + [6,768]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 5.329070518200751e-15,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 280.64000606536865,
+    "rois_us": [
+      280.64000606536865,
+      281.99999034404755,
+      279.119998216629,
+      281.68000280857086,
+      278.719499707222
+    ],
+    "sheet_das_us": 283.04,
+    "native_us": 269.8239,
+    "native_rois_us": [
+      269.8239,
+      271.21590000000003,
+      268.3519,
+      271.11990000000003,
+      267.8079
+    ],
+    "kernels": [
+      "simt"
+    ],
+    "sheet_native_ratio": 1.0489804646660286
+  },
+  {
+    "row": 28,
+    "mode": "paired",
+    "provider": "public",
+    "config_id": "public",
+    "description": "FP64 \u00b7 [24576,816] + [816,768]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 3.694822225952521e-13,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 1383.5190534591675,
+    "rois_us": [
+      1387.7589702606201,
+      1384.1594457626343,
+      1383.5189938545227,
+      1383.5190534591675,
+      1383.3594918251038
+    ],
+    "sheet_das_us": 1421.12,
+    "native_us": 1375.1191999999999,
+    "native_rois_us": [
+      1379.3593999999998,
+      1375.6474,
+      1375.0554,
+      1375.1191999999999,
+      1374.8953999999999
+    ],
+    "kernels": [
+      "mmac_tiled"
+    ],
+    "sheet_native_ratio": 1.0334522272687343
+  },
+  {
+    "row": 29,
+    "mode": "paired",
+    "provider": "public",
+    "config_id": "public",
+    "description": "FP64 \u00b7 [282624,15] + [15,3]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 5.329070518200751e-15,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 45.599499717354774,
+    "rois_us": [
+      46.08000069856644,
+      45.67999951541424,
+      45.599499717354774,
+      45.43999955058098,
+      45.52000015974045
+    ],
+    "sheet_das_us": 53.28,
+    "native_us": 39.2159,
+    "native_rois_us": [
+      39.824,
+      47.936,
+      39.2159,
+      39.2,
+      39.184
+    ],
+    "kernels": [
+      "mmac_tiled"
+    ],
+    "sheet_native_ratio": 1.3586325954523548
+  },
+  {
+    "row": 30,
+    "mode": "paired",
+    "provider": "public",
+    "config_id": "public",
+    "description": "FP64 \u00b7 [282624,15] + [15,7]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 5.329070518200751e-15,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 48.16000163555145,
+    "rois_us": [
+      48.39999973773956,
+      48.16000163555145,
+      48.31999912858009,
+      48.00000041723251,
+      47.919999808073044
+    ],
+    "sheet_das_us": 57.76,
+    "native_us": 41.343900000000005,
+    "native_rois_us": [
+      41.519999999999996,
+      41.343900000000005,
+      41.5039,
+      41.152,
+      41.056
+    ],
+    "kernels": [
+      "mmac_tiled"
+    ],
+    "sheet_native_ratio": 1.3970622026465813
+  },
+  {
+    "row": 31,
+    "mode": "paired",
+    "provider": "public",
+    "config_id": "public",
+    "description": "FP64 \u00b7 [576,128] + [128,128]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 2.1316282072803006e-14,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 13.439999893307686,
+    "rois_us": [
+      15.039999969303608,
+      13.439999893307686,
+      13.439999893307686,
+      13.439999893307686,
+      13.439999893307686
+    ],
+    "sheet_das_us": 8.96,
+    "native_us": 7.168000000000001,
+    "native_rois_us": [
+      8.096,
+      7.151999999999999,
+      7.1838,
+      7.1039,
+      7.168000000000001
+    ],
+    "kernels": [
+      "mmac_tiled"
+    ],
+    "sheet_native_ratio": 1.25
+  },
+  {
+    "row": 32,
+    "mode": "paired",
+    "provider": "public",
+    "config_id": "public",
+    "description": "FP64 \u00b7 [576,384] + [384,128]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 4.973799150320701e-14,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 26.399999856948853,
+    "rois_us": [
+      26.399999856948853,
+      26.240000501275063,
+      26.240000501275063,
+      26.399999856948853,
+      26.399999856948853
+    ],
+    "sheet_das_us": 23.52,
+    "native_us": 19.296,
+    "native_rois_us": [
+      19.28,
+      19.296,
+      19.247999999999998,
+      19.328,
+      19.344
+    ],
+    "kernels": [
+      "mmac_tiled",
+      "split_reduce"
+    ],
+    "sheet_native_ratio": 1.218905472636816
+  },
+  {
+    "row": 33,
+    "mode": "paired",
+    "provider": "public",
+    "config_id": "public",
+    "description": "FP64 \u00b7 [960,128] + [128,128]",
+    "physical_card": "1",
+    "accuracy": {
+      "ok": true,
+      "max_abs": 2.1316282072803006e-14,
+      "rtol": 1e-10,
+      "atol": 1e-10
+    },
+    "us": 14.720000326633453,
+    "rois_us": [
+      14.720000326633453,
+      14.640000183135271,
+      14.640000183135271,
+      14.879999682307243,
+      14.720000326633453
+    ],
+    "sheet_das_us": 11.36,
+    "native_us": 8.128,
+    "native_rois_us": [
+      8.128,
+      8.032,
+      8.048,
+      8.192,
+      8.176
+    ],
+    "kernels": [
+      "mmac_tiled"
+    ],
+    "sheet_native_ratio": 1.3976377952755905
+  }
+]

@@ -1,0 +1,1007 @@
+[
+  {
+    "row": 771,
+    "seed": 32768,
+    "metadata": [
+      [
+        {
+          "tensor": true,
+          "shape": [
+            1,
+            145,
+            2560
+          ],
+          "stride": [
+            371200,
+            2560,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0",
+          "layout": "torch.strided",
+          "storage_offset": 0,
+          "requires_grad": false,
+          "is_contiguous": true
+        },
+        "torch.float32"
+      ],
+      {}
+    ],
+    "excel_ratio": 1.0955056179775282
+  },
+  {
+    "row": 772,
+    "seed": 32769,
+    "metadata": [
+      [
+        {
+          "tensor": true,
+          "shape": [
+            1,
+            4,
+            145,
+            256
+          ],
+          "stride": [
+            148480,
+            256,
+            1024,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0",
+          "layout": "torch.strided",
+          "storage_offset": 0,
+          "requires_grad": false,
+          "is_contiguous": false
+        },
+        "torch.float32"
+      ],
+      {}
+    ],
+    "excel_ratio": 3.9372937293729375
+  },
+  {
+    "row": 773,
+    "seed": 32770,
+    "metadata": [
+      [
+        {
+          "tensor": true,
+          "shape": [
+            1,
+            8,
+            145,
+            256
+          ],
+          "stride": [
+            296960,
+            256,
+            2048,
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0",
+          "layout": "torch.strided",
+          "storage_offset": 0,
+          "requires_grad": false,
+          "is_contiguous": false
+        },
+        "torch.float32"
+      ],
+      {}
+    ],
+    "excel_ratio": 3.52439024390244
+  },
+  {
+    "row": 774,
+    "seed": 32771,
+    "metadata": [
+      [
+        {
+          "tensor": true,
+          "shape": [
+            2560
+          ],
+          "stride": [
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0",
+          "layout": "torch.strided",
+          "storage_offset": 0,
+          "requires_grad": false,
+          "is_contiguous": true
+        },
+        "torch.float32"
+      ],
+      {}
+    ],
+    "excel_ratio": 1.1753731343283582
+  },
+  {
+    "row": 775,
+    "seed": 32772,
+    "metadata": [
+      [
+        {
+          "tensor": true,
+          "shape": [
+            256
+          ],
+          "stride": [
+            1
+          ],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0",
+          "layout": "torch.strided",
+          "storage_offset": 0,
+          "requires_grad": false,
+          "is_contiguous": true
+        },
+        "torch.float32"
+      ],
+      {}
+    ],
+    "excel_ratio": 1.0441873848987107
+  },
+  {
+    "row": 776,
+    "seed": 32773,
+    "metadata": [
+      [
+        {
+          "tensor": true,
+          "shape": [],
+          "stride": [],
+          "dtype": "torch.bfloat16",
+          "device": "cuda:0",
+          "layout": "torch.strided",
+          "storage_offset": 0,
+          "requires_grad": false,
+          "is_contiguous": true
+        },
+        "torch.bfloat16"
+      ],
+      {}
+    ],
+    "excel_ratio": null
+  },
+  {
+    "row": 777,
+    "seed": 32774,
+    "metadata": [
+      [
+        {
+          "tensor": true,
+          "shape": [
+            1,
+            145
+          ],
+          "stride": [
+            145,
+            1
+          ],
+          "dtype": "torch.bool",
+          "device": "cuda:0",
+          "layout": "torch.strided",
+          "storage_offset": 0,
+          "requires_grad": false,
+          "is_contiguous": true
+        },
+        "torch.int32"
+      ],
+      {}
+    ],
+    "excel_ratio": 1.496753246753247
+  },
+  {
+    "row": 778,
+    "seed": 32775,
+    "metadata": [
+      [
+        {
+          "tensor": true,
+          "shape": [
+            1,
+            145,
+            256
+          ],
+          "stride": [
+            37120,
+            256,
+            1
+          ],
+          "dtype": "torch.float32",
+          "device": "cuda:0",
+          "layout": "torch.strided",
+          "storage_offset": 0,
+          "requires_grad": false,
+          "is_contiguous": true
+        },
+        "torch.bfloat16"
+      ],
+      {}
+    ],
+    "excel_ratio": 1.0227272727272725
+  },
+  {
+    "row": 779,
+    "seed": 32776,
+    "metadata": [
+      [
+        {
+          "tensor": true,
+          "shape": [
+            1,
+            8,
+            145,
+            145
+          ],
+          "stride": [
+            168200,
+            21025,
+            145,
+            1
+          ],
+          "dtype": "torch.float32",
+          "device": "cuda:0",
+          "layout": "torch.strided",
+          "storage_offset": 0,
+          "requires_grad": false,
+          "is_contiguous": true
+        },
+        "torch.bfloat16"
+      ],
+      {}
+    ],
+    "excel_ratio": 0.434270765206017
+  },
+  {
+    "row": 780,
+    "seed": 32777,
+    "metadata": [
+      [
+        {
+          "tensor": true,
+          "shape": [
+            1,
+            145,
+            1
+          ],
+          "stride": [
+            145,
+            1,
+            1
+          ],
+          "dtype": "torch.int64",
+          "device": "cuda:0",
+          "layout": "torch.strided",
+          "storage_offset": 0,
+          "requires_grad": false,
+          "is_contiguous": true
+        },
+        "torch.float32"
+      ],
+      {}
+    ],
+    "excel_ratio": 1.6939890710382512
+  },
+  {
+    "row": 1056,
+    "seed": 66847705555902467,
+    "metadata": [
+      [
+        {
+          "alias_group": 0,
+          "device": "flagos:0",
+          "dtype": "torch.bfloat16",
+          "layout": "torch.strided",
+          "requires_grad": false,
+          "shape": [
+            1,
+            2,
+            2560
+          ],
+          "storage_offset": 0,
+          "stride": [
+            5120,
+            2560,
+            1
+          ]
+        },
+        "torch.float32"
+      ],
+      {}
+    ],
+    "excel_ratio": 1.1676720988523013
+  },
+  {
+    "row": 1057,
+    "seed": 360135330420178368,
+    "metadata": [
+      [
+        {
+          "alias_group": 0,
+          "device": "flagos:0",
+          "dtype": "torch.bfloat16",
+          "layout": "torch.strided",
+          "requires_grad": false,
+          "shape": [
+            1,
+            103,
+            2560
+          ],
+          "storage_offset": 0,
+          "stride": [
+            263680,
+            2560,
+            1
+          ]
+        },
+        "torch.float32"
+      ],
+      {}
+    ],
+    "excel_ratio": 1.3513425257164104
+  },
+  {
+    "row": 1058,
+    "seed": 199956417195478688,
+    "metadata": [
+      [
+        {
+          "alias_group": 0,
+          "device": "flagos:0",
+          "dtype": "torch.bfloat16",
+          "layout": "torch.strided",
+          "requires_grad": false,
+          "shape": [
+            1,
+            1639,
+            2560
+          ],
+          "storage_offset": 0,
+          "stride": [
+            4195840,
+            2560,
+            1
+          ]
+        },
+        "torch.float32"
+      ],
+      {}
+    ],
+    "excel_ratio": 1.0077452435268246
+  },
+  {
+    "row": 1059,
+    "seed": 784532093394855366,
+    "metadata": [
+      [
+        {
+          "alias_group": 0,
+          "device": "flagos:0",
+          "dtype": "torch.bfloat16",
+          "layout": "torch.strided",
+          "requires_grad": false,
+          "shape": [
+            1,
+            4,
+            4,
+            256
+          ],
+          "storage_offset": 0,
+          "stride": [
+            4096,
+            256,
+            1024,
+            1
+          ]
+        },
+        "torch.float32"
+      ],
+      {}
+    ],
+    "excel_ratio": 3.4690840771476656
+  },
+  {
+    "row": 1060,
+    "seed": 757094656856383612,
+    "metadata": [
+      [
+        {
+          "alias_group": 0,
+          "device": "flagos:0",
+          "dtype": "torch.bfloat16",
+          "layout": "torch.strided",
+          "requires_grad": false,
+          "shape": [
+            1,
+            4,
+            256,
+            256
+          ],
+          "storage_offset": 0,
+          "stride": [
+            262144,
+            256,
+            1024,
+            1
+          ]
+        },
+        "torch.float32"
+      ],
+      {}
+    ],
+    "excel_ratio": 3.012785501465082
+  },
+  {
+    "row": 1061,
+    "seed": 92321408058975208,
+    "metadata": [
+      [
+        {
+          "alias_group": 0,
+          "device": "flagos:0",
+          "dtype": "torch.bfloat16",
+          "layout": "torch.strided",
+          "requires_grad": false,
+          "shape": [
+            1,
+            4,
+            4096,
+            256
+          ],
+          "storage_offset": 0,
+          "stride": [
+            4194304,
+            256,
+            1024,
+            1
+          ]
+        },
+        "torch.float32"
+      ],
+      {}
+    ],
+    "excel_ratio": 2.061690967712945
+  },
+  {
+    "row": 1062,
+    "seed": 214825063470654492,
+    "metadata": [
+      [
+        {
+          "alias_group": 0,
+          "device": "flagos:0",
+          "dtype": "torch.bfloat16",
+          "layout": "torch.strided",
+          "requires_grad": false,
+          "shape": [
+            1,
+            8,
+            2,
+            256
+          ],
+          "storage_offset": 0,
+          "stride": [
+            4096,
+            256,
+            2048,
+            1
+          ]
+        },
+        "torch.float32"
+      ],
+      {}
+    ],
+    "excel_ratio": 3.4177598336825326
+  },
+  {
+    "row": 1063,
+    "seed": 5979913951521638,
+    "metadata": [
+      [
+        {
+          "alias_group": 0,
+          "device": "flagos:0",
+          "dtype": "torch.bfloat16",
+          "layout": "torch.strided",
+          "requires_grad": false,
+          "shape": [
+            1,
+            8,
+            128,
+            256
+          ],
+          "storage_offset": 0,
+          "stride": [
+            262144,
+            256,
+            2048,
+            1
+          ]
+        },
+        "torch.float32"
+      ],
+      {}
+    ],
+    "excel_ratio": 3.2504596121486684
+  },
+  {
+    "row": 1064,
+    "seed": 32504375996069072,
+    "metadata": [
+      [
+        {
+          "alias_group": 0,
+          "device": "flagos:0",
+          "dtype": "torch.bfloat16",
+          "layout": "torch.strided",
+          "requires_grad": false,
+          "shape": [
+            1,
+            8,
+            2048,
+            256
+          ],
+          "storage_offset": 0,
+          "stride": [
+            4194304,
+            256,
+            2048,
+            1
+          ]
+        },
+        "torch.float32"
+      ],
+      {}
+    ],
+    "excel_ratio": 2.0676378891663347
+  },
+  {
+    "row": 1065,
+    "seed": 81191532674329883,
+    "metadata": [
+      [
+        {
+          "alias_group": 0,
+          "device": "flagos:0",
+          "dtype": "torch.bfloat16",
+          "layout": "torch.strided",
+          "requires_grad": false,
+          "shape": [
+            4096
+          ],
+          "storage_offset": 0,
+          "stride": [
+            1
+          ]
+        },
+        "torch.float32"
+      ],
+      {}
+    ],
+    "excel_ratio": 0.856622346175608
+  },
+  {
+    "row": 1066,
+    "seed": 49196032551837154,
+    "metadata": [
+      [
+        {
+          "alias_group": 0,
+          "device": "flagos:0",
+          "dtype": "torch.bfloat16",
+          "layout": "torch.strided",
+          "requires_grad": false,
+          "shape": [
+            262144
+          ],
+          "storage_offset": 0,
+          "stride": [
+            1
+          ]
+        },
+        "torch.float32"
+      ],
+      {}
+    ],
+    "excel_ratio": 0.847546203541253
+  },
+  {
+    "row": 1067,
+    "seed": 696394419998530680,
+    "metadata": [
+      [
+        {
+          "alias_group": 0,
+          "device": "flagos:0",
+          "dtype": "torch.bfloat16",
+          "layout": "torch.strided",
+          "requires_grad": false,
+          "shape": [
+            4194304
+          ],
+          "storage_offset": 0,
+          "stride": [
+            1
+          ]
+        },
+        "torch.float32"
+      ],
+      {}
+    ],
+    "excel_ratio": 0.94610178416978
+  },
+  {
+    "row": 1068,
+    "seed": 626835759996368905,
+    "metadata": [
+      [
+        {
+          "alias_group": 0,
+          "device": "flagos:0",
+          "dtype": "torch.bfloat16",
+          "layout": "torch.strided",
+          "requires_grad": false,
+          "shape": [],
+          "storage_offset": 0,
+          "stride": []
+        },
+        "torch.bfloat16"
+      ],
+      {}
+    ],
+    "excel_ratio": null
+  },
+  {
+    "row": 1069,
+    "seed": 40260879632059771,
+    "metadata": [
+      [
+        {
+          "alias_group": 0,
+          "device": "flagos:0",
+          "dtype": "torch.bool",
+          "layout": "torch.strided",
+          "requires_grad": false,
+          "shape": [
+            1,
+            4096
+          ],
+          "storage_offset": 0,
+          "stride": [
+            4096,
+            1
+          ]
+        },
+        "torch.int32"
+      ],
+      {}
+    ],
+    "excel_ratio": 1.904116145475909
+  },
+  {
+    "row": 1070,
+    "seed": 1135115958188567674,
+    "metadata": [
+      [
+        {
+          "alias_group": 0,
+          "device": "flagos:0",
+          "dtype": "torch.bool",
+          "layout": "torch.strided",
+          "requires_grad": false,
+          "shape": [
+            1,
+            262144
+          ],
+          "storage_offset": 0,
+          "stride": [
+            262144,
+            1
+          ]
+        },
+        "torch.int32"
+      ],
+      {}
+    ],
+    "excel_ratio": 1.9376524019710746
+  },
+  {
+    "row": 1071,
+    "seed": 831631985839315052,
+    "metadata": [
+      [
+        {
+          "alias_group": 0,
+          "device": "flagos:0",
+          "dtype": "torch.bool",
+          "layout": "torch.strided",
+          "requires_grad": false,
+          "shape": [
+            1,
+            4194304
+          ],
+          "storage_offset": 0,
+          "stride": [
+            4194304,
+            1
+          ]
+        },
+        "torch.int32"
+      ],
+      {}
+    ],
+    "excel_ratio": 1.986397883981541
+  },
+  {
+    "row": 1072,
+    "seed": 688170498629756340,
+    "metadata": [
+      [
+        {
+          "alias_group": 0,
+          "device": "flagos:0",
+          "dtype": "torch.float32",
+          "layout": "torch.strided",
+          "requires_grad": false,
+          "shape": [
+            1,
+            16,
+            256
+          ],
+          "storage_offset": 0,
+          "stride": [
+            4096,
+            256,
+            1
+          ]
+        },
+        "torch.bfloat16"
+      ],
+      {}
+    ],
+    "excel_ratio": 0.7966188071220256
+  },
+  {
+    "row": 1073,
+    "seed": 636282340796377349,
+    "metadata": [
+      [
+        {
+          "alias_group": 0,
+          "device": "flagos:0",
+          "dtype": "torch.float32",
+          "layout": "torch.strided",
+          "requires_grad": false,
+          "shape": [
+            1,
+            1024,
+            256
+          ],
+          "storage_offset": 0,
+          "stride": [
+            262144,
+            256,
+            1
+          ]
+        },
+        "torch.bfloat16"
+      ],
+      {}
+    ],
+    "excel_ratio": 0.8295940163806003
+  },
+  {
+    "row": 1074,
+    "seed": 41821508613062473,
+    "metadata": [
+      [
+        {
+          "alias_group": 0,
+          "device": "flagos:0",
+          "dtype": "torch.float32",
+          "layout": "torch.strided",
+          "requires_grad": false,
+          "shape": [
+            1,
+            16384,
+            256
+          ],
+          "storage_offset": 0,
+          "stride": [
+            4194304,
+            256,
+            1
+          ]
+        },
+        "torch.bfloat16"
+      ],
+      {}
+    ],
+    "excel_ratio": 1.2895049569873445
+  },
+  {
+    "row": 1075,
+    "seed": 807312927835364339,
+    "metadata": [
+      [
+        {
+          "alias_group": 0,
+          "device": "flagos:0",
+          "dtype": "torch.float32",
+          "layout": "torch.strided",
+          "requires_grad": false,
+          "shape": [
+            1,
+            1,
+            145,
+            145
+          ],
+          "storage_offset": 0,
+          "stride": [
+            21025,
+            21025,
+            145,
+            1
+          ]
+        },
+        "torch.bfloat16"
+      ],
+      {}
+    ],
+    "excel_ratio": 0.5367514223246017
+  },
+  {
+    "row": 1076,
+    "seed": 322074843551064645,
+    "metadata": [
+      [
+        {
+          "alias_group": 0,
+          "device": "flagos:0",
+          "dtype": "torch.float32",
+          "layout": "torch.strided",
+          "requires_grad": false,
+          "shape": [
+            1,
+            13,
+            145,
+            145
+          ],
+          "storage_offset": 0,
+          "stride": [
+            273325,
+            21025,
+            145,
+            1
+          ]
+        },
+        "torch.bfloat16"
+      ],
+      {}
+    ],
+    "excel_ratio": 0.4484986929462313
+  },
+  {
+    "row": 1077,
+    "seed": 255173393010111922,
+    "metadata": [
+      [
+        {
+          "alias_group": 0,
+          "device": "flagos:0",
+          "dtype": "torch.float32",
+          "layout": "torch.strided",
+          "requires_grad": false,
+          "shape": [
+            1,
+            200,
+            145,
+            145
+          ],
+          "storage_offset": 0,
+          "stride": [
+            4205000,
+            21025,
+            145,
+            1
+          ]
+        },
+        "torch.bfloat16"
+      ],
+      {}
+    ],
+    "excel_ratio": 0.517748929213888
+  },
+  {
+    "row": 1078,
+    "seed": 332455645152689548,
+    "metadata": [
+      [
+        {
+          "alias_group": 0,
+          "device": "flagos:0",
+          "dtype": "torch.int64",
+          "layout": "torch.strided",
+          "requires_grad": false,
+          "shape": [
+            1,
+            4096,
+            1
+          ],
+          "storage_offset": 0,
+          "stride": [
+            4096,
+            1,
+            1
+          ]
+        },
+        "torch.float32"
+      ],
+      {}
+    ],
+    "excel_ratio": 1.6864367132832554
+  },
+  {
+    "row": 1079,
+    "seed": 697661691238703449,
+    "metadata": [
+      [
+        {
+          "alias_group": 0,
+          "device": "flagos:0",
+          "dtype": "torch.int64",
+          "layout": "torch.strided",
+          "requires_grad": false,
+          "shape": [
+            1,
+            262144,
+            1
+          ],
+          "storage_offset": 0,
+          "stride": [
+            262144,
+            1,
+            1
+          ]
+        },
+        "torch.float32"
+      ],
+      {}
+    ],
+    "excel_ratio": 1.569376200310428
+  },
+  {
+    "row": 1080,
+    "seed": 342024311393572940,
+    "metadata": [
+      [
+        {
+          "alias_group": 0,
+          "device": "flagos:0",
+          "dtype": "torch.int64",
+          "layout": "torch.strided",
+          "requires_grad": false,
+          "shape": [
+            1,
+            4194304,
+            1
+          ],
+          "storage_offset": 0,
+          "stride": [
+            4194304,
+            1,
+            1
+          ]
+        },
+        "torch.float32"
+      ],
+      {}
+    ],
+    "excel_ratio": 1.0408928280988308
+  }
+]

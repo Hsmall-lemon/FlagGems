@@ -1,0 +1,1159 @@
+{
+  "acceptance_status": {
+    "date": "2026-11-09",
+    "pr_is_draft": true,
+    "accepted": false,
+    "status": "superseded_historical_measurements",
+    "current_status": "REPORT.md",
+    "reason": "User review found new correctness regression and/or unaccepted performance stability; prior blanket acceptance withdrawn.",
+    "preserved_fields": "All original observations remain historical; they are not current acceptance evidence."
+  },
+  "summary": {
+    "spreadsheet_cases": 10,
+    "converted_cases": 9,
+    "no_kernel_identity_cases": 1,
+    "physical_cards": [
+      0,
+      1
+    ],
+    "semantic_passes": 20,
+    "semantic_checks": 20,
+    "paired_boxing_passes": 18,
+    "same_operator_passes": 18,
+    "conversion_checks": 18,
+    "minimum_paired_boxing_performance": 1.2208835341365463,
+    "minimum_same_operator_performance": 0.9919354838709677,
+    "focused_pytest_passed": 33
+  },
+  "metric": "DAS device kernel time / FlagGems device kernel time; host overhead excluded",
+  "spreadsheet_source": {
+    "path": "D:\\a800训练\\待优化设备耗时的算子.xlsx",
+    "sha256": "9fe21692b26e0c7cba3ccc108abedee2152a2208ff2e3830d82c954c9c43bdf3",
+    "sheet": "工况明细",
+    "cases": 10,
+    "mm_under90": 94
+  },
+  "measurement": {
+    "node": "a01r3n18",
+    "architecture": "gfx936",
+    "calls_per_roi": 10,
+    "rois_per_result": 5,
+    "estimator": "median of constituent HIPOPS DurationNs sums per call",
+    "gate_excluded": true,
+    "audits": [
+      {
+        "profile": "to-final-gpu0-r1",
+        "rois": 100,
+        "minimum_gate_us": 5918.556,
+        "gate_excluded": true,
+        "duration_equals_end_minus_begin": true,
+        "calls_per_roi": 10,
+        "host_overhead_included": false
+      },
+      {
+        "profile": "to-final-cpp-gpu0-r1",
+        "rois": 50,
+        "minimum_gate_us": 5918.556,
+        "gate_excluded": true,
+        "duration_equals_end_minus_begin": true,
+        "calls_per_roi": 10,
+        "host_overhead_included": false
+      },
+      {
+        "profile": "to-final-gpu1-r1",
+        "rois": 100,
+        "minimum_gate_us": 5918.398,
+        "gate_excluded": true,
+        "duration_equals_end_minus_begin": true,
+        "calls_per_roi": 10,
+        "host_overhead_included": false
+      },
+      {
+        "profile": "to-final-cpp-gpu1-r1",
+        "rois": 50,
+        "minimum_gate_us": 5918.557,
+        "gate_excluded": true,
+        "duration_equals_end_minus_begin": true,
+        "calls_per_roi": 10,
+        "host_overhead_included": false
+      }
+    ],
+    "same_operator_baseline": "Torch-FL C++ native aten::to.dtype without a FlagGems context, sequential runs on the same card and seed",
+    "paired_baseline": "boxing aten::_to_copy.out with CPU-reference output strides, immediately before the FlagGems public to.dtype call",
+    "noop_performance": "undefined (0/0); checked for identity and zero device kernels"
+  },
+  "cases": [
+    {
+      "row": 1711,
+      "physical_card": 0,
+      "seed": 0,
+      "input_dtype": "torch.bfloat16",
+      "output_dtype": "torch.float32",
+      "shape": [
+        1,
+        145,
+        2560
+      ],
+      "stride": [
+        371200,
+        2560,
+        1
+      ],
+      "storage_offset": 0,
+      "optimized_us": 3.808,
+      "paired_boxing_copy_out_us": 4.912,
+      "same_operator_cpp_us": 4.096,
+      "paired_boxing_performance": 1.2899159663865547,
+      "same_operator_performance": 1.0756302521008405,
+      "accuracy_ok": true,
+      "stride_ok": true,
+      "alias_ok": true,
+      "optimized_route_witness": true,
+      "noop": false,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "public_rois_us": [
+        4.576,
+        3.792,
+        3.776,
+        3.84,
+        3.808
+      ],
+      "paired_das_rois_us": [
+        4.928,
+        4.944,
+        4.912,
+        4.8959,
+        4.912
+      ],
+      "cpp_das_rois_us": [
+        4.08,
+        4.096,
+        4.16,
+        4.096,
+        4.112
+      ],
+      "cpp_output_stride_matches_cpu": true,
+      "profile": "to-final-gpu0-r1",
+      "cpp_profile": "to-final-cpp-gpu0-r1"
+    },
+    {
+      "row": 1712,
+      "physical_card": 0,
+      "seed": 0,
+      "input_dtype": "torch.bfloat16",
+      "output_dtype": "torch.float32",
+      "shape": [
+        1,
+        4,
+        145,
+        256
+      ],
+      "stride": [
+        148480,
+        256,
+        1024,
+        1
+      ],
+      "storage_offset": 0,
+      "optimized_us": 3.792,
+      "paired_boxing_copy_out_us": 4.864,
+      "same_operator_cpp_us": 11.12,
+      "paired_boxing_performance": 1.2827004219409284,
+      "same_operator_performance": 2.932489451476793,
+      "accuracy_ok": true,
+      "stride_ok": true,
+      "alias_ok": true,
+      "optimized_route_witness": true,
+      "noop": false,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "public_rois_us": [
+        3.792,
+        3.792,
+        3.824,
+        3.76,
+        3.776
+      ],
+      "paired_das_rois_us": [
+        4.64,
+        4.944,
+        4.864,
+        4.848,
+        4.912
+      ],
+      "cpp_das_rois_us": [
+        10.592,
+        11.12,
+        11.136,
+        11.088,
+        11.12
+      ],
+      "cpp_output_stride_matches_cpu": false,
+      "profile": "to-final-gpu0-r1",
+      "cpp_profile": "to-final-cpp-gpu0-r1"
+    },
+    {
+      "row": 1713,
+      "physical_card": 0,
+      "seed": 0,
+      "input_dtype": "torch.bfloat16",
+      "output_dtype": "torch.float32",
+      "shape": [
+        1,
+        8,
+        145,
+        256
+      ],
+      "stride": [
+        296960,
+        256,
+        2048,
+        1
+      ],
+      "storage_offset": 0,
+      "optimized_us": 3.824,
+      "paired_boxing_copy_out_us": 4.928,
+      "same_operator_cpp_us": 11.344,
+      "paired_boxing_performance": 1.288702928870293,
+      "same_operator_performance": 2.9665271966527196,
+      "accuracy_ok": true,
+      "stride_ok": true,
+      "alias_ok": true,
+      "optimized_route_witness": true,
+      "noop": false,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "public_rois_us": [
+        3.84,
+        3.824,
+        3.76,
+        3.872,
+        3.824
+      ],
+      "paired_das_rois_us": [
+        4.896,
+        5.696,
+        4.896,
+        4.928,
+        4.976
+      ],
+      "cpp_das_rois_us": [
+        11.232,
+        11.36,
+        11.3438,
+        14.256,
+        11.344
+      ],
+      "cpp_output_stride_matches_cpu": false,
+      "profile": "to-final-gpu0-r1",
+      "cpp_profile": "to-final-cpp-gpu0-r1"
+    },
+    {
+      "row": 1714,
+      "physical_card": 0,
+      "seed": 0,
+      "input_dtype": "torch.bfloat16",
+      "output_dtype": "torch.float32",
+      "shape": [
+        2560
+      ],
+      "stride": [
+        1
+      ],
+      "storage_offset": 0,
+      "optimized_us": 3.76,
+      "paired_boxing_copy_out_us": 4.864,
+      "same_operator_cpp_us": 4.096,
+      "paired_boxing_performance": 1.2936170212765958,
+      "same_operator_performance": 1.0893617021276596,
+      "accuracy_ok": true,
+      "stride_ok": true,
+      "alias_ok": true,
+      "optimized_route_witness": true,
+      "noop": false,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "public_rois_us": [
+        3.824,
+        3.744,
+        3.76,
+        3.7759,
+        3.76
+      ],
+      "paired_das_rois_us": [
+        4.896,
+        4.8639,
+        4.8638,
+        4.864,
+        4.912
+      ],
+      "cpp_das_rois_us": [
+        4.08,
+        4.144,
+        4.096,
+        4.064,
+        4.128
+      ],
+      "cpp_output_stride_matches_cpu": true,
+      "profile": "to-final-gpu0-r1",
+      "cpp_profile": "to-final-cpp-gpu0-r1"
+    },
+    {
+      "row": 1715,
+      "physical_card": 0,
+      "seed": 0,
+      "input_dtype": "torch.bfloat16",
+      "output_dtype": "torch.float32",
+      "shape": [
+        256
+      ],
+      "stride": [
+        1
+      ],
+      "storage_offset": 0,
+      "optimized_us": 3.792,
+      "paired_boxing_copy_out_us": 4.864,
+      "same_operator_cpp_us": 4.096,
+      "paired_boxing_performance": 1.2827004219409284,
+      "same_operator_performance": 1.0801687763713081,
+      "accuracy_ok": true,
+      "stride_ok": true,
+      "alias_ok": true,
+      "optimized_route_witness": true,
+      "noop": false,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "public_rois_us": [
+        3.776,
+        3.824,
+        3.792,
+        3.84,
+        3.76
+      ],
+      "paired_das_rois_us": [
+        5.664,
+        4.864,
+        4.848,
+        4.896,
+        4.864
+      ],
+      "cpp_das_rois_us": [
+        4.064,
+        4.192,
+        4.032,
+        4.096,
+        4.176
+      ],
+      "cpp_output_stride_matches_cpu": true,
+      "profile": "to-final-gpu0-r1",
+      "cpp_profile": "to-final-cpp-gpu0-r1"
+    },
+    {
+      "row": 1716,
+      "physical_card": 0,
+      "seed": 0,
+      "input_dtype": "torch.bfloat16",
+      "output_dtype": "torch.bfloat16",
+      "shape": [],
+      "stride": [],
+      "storage_offset": 0,
+      "optimized_us": 0.0,
+      "paired_boxing_copy_out_us": 0.0,
+      "same_operator_cpp_us": 0.0,
+      "paired_boxing_performance": null,
+      "same_operator_performance": null,
+      "accuracy_ok": true,
+      "stride_ok": true,
+      "alias_ok": true,
+      "optimized_route_witness": true,
+      "noop": true,
+      "kernels": [],
+      "public_rois_us": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_das_rois_us": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "cpp_das_rois_us": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "cpp_output_stride_matches_cpu": true,
+      "profile": "to-final-gpu0-r1",
+      "cpp_profile": "to-final-cpp-gpu0-r1"
+    },
+    {
+      "row": 1717,
+      "physical_card": 0,
+      "seed": 0,
+      "input_dtype": "torch.bool",
+      "output_dtype": "torch.int32",
+      "shape": [
+        1,
+        145
+      ],
+      "stride": [
+        145,
+        1
+      ],
+      "storage_offset": 0,
+      "optimized_us": 3.792,
+      "paired_boxing_copy_out_us": 6.976,
+      "same_operator_cpp_us": 6.704,
+      "paired_boxing_performance": 1.8396624472573841,
+      "same_operator_performance": 1.7679324894514767,
+      "accuracy_ok": true,
+      "stride_ok": true,
+      "alias_ok": true,
+      "optimized_route_witness": true,
+      "noop": false,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "public_rois_us": [
+        3.776,
+        3.744,
+        3.792,
+        3.792,
+        3.792
+      ],
+      "paired_das_rois_us": [
+        8.08,
+        7.344,
+        6.976,
+        6.752,
+        4.976
+      ],
+      "cpp_das_rois_us": [
+        6.736,
+        7.52,
+        6.704,
+        5.984,
+        6.48
+      ],
+      "cpp_output_stride_matches_cpu": true,
+      "profile": "to-final-gpu0-r1",
+      "cpp_profile": "to-final-cpp-gpu0-r1"
+    },
+    {
+      "row": 1718,
+      "physical_card": 0,
+      "seed": 0,
+      "input_dtype": "torch.float32",
+      "output_dtype": "torch.bfloat16",
+      "shape": [
+        1,
+        145,
+        256
+      ],
+      "stride": [
+        37120,
+        256,
+        1
+      ],
+      "storage_offset": 0,
+      "optimized_us": 3.776,
+      "paired_boxing_copy_out_us": 4.88,
+      "same_operator_cpp_us": 4.08,
+      "paired_boxing_performance": 1.2923728813559323,
+      "same_operator_performance": 1.0805084745762712,
+      "accuracy_ok": true,
+      "stride_ok": true,
+      "alias_ok": true,
+      "optimized_route_witness": true,
+      "noop": false,
+      "kernels": [
+        "cast_dense"
+      ],
+      "public_rois_us": [
+        3.744,
+        3.776,
+        3.808,
+        3.744,
+        3.776
+      ],
+      "paired_das_rois_us": [
+        4.88,
+        4.896,
+        4.88,
+        4.848,
+        4.8478
+      ],
+      "cpp_das_rois_us": [
+        4.096,
+        4.08,
+        4.096,
+        4.064,
+        4.08
+      ],
+      "cpp_output_stride_matches_cpu": true,
+      "profile": "to-final-gpu0-r1",
+      "cpp_profile": "to-final-cpp-gpu0-r1"
+    },
+    {
+      "row": 1719,
+      "physical_card": 0,
+      "seed": 0,
+      "input_dtype": "torch.float32",
+      "output_dtype": "torch.bfloat16",
+      "shape": [
+        1,
+        8,
+        145,
+        145
+      ],
+      "stride": [
+        168200,
+        21025,
+        145,
+        1
+      ],
+      "storage_offset": 0,
+      "optimized_us": 3.792,
+      "paired_boxing_copy_out_us": 4.896,
+      "same_operator_cpp_us": 4.096,
+      "paired_boxing_performance": 1.2911392405063291,
+      "same_operator_performance": 1.0801687763713081,
+      "accuracy_ok": true,
+      "stride_ok": true,
+      "alias_ok": true,
+      "optimized_route_witness": true,
+      "noop": false,
+      "kernels": [
+        "cast_dense"
+      ],
+      "public_rois_us": [
+        3.744,
+        3.792,
+        3.824,
+        3.744,
+        4.544
+      ],
+      "paired_das_rois_us": [
+        5.648,
+        4.848,
+        4.88,
+        4.896,
+        4.896
+      ],
+      "cpp_das_rois_us": [
+        4.048,
+        4.112,
+        4.128,
+        4.096,
+        4.032
+      ],
+      "cpp_output_stride_matches_cpu": true,
+      "profile": "to-final-gpu0-r1",
+      "cpp_profile": "to-final-cpp-gpu0-r1"
+    },
+    {
+      "row": 1720,
+      "physical_card": 0,
+      "seed": 0,
+      "input_dtype": "torch.int64",
+      "output_dtype": "torch.float32",
+      "shape": [
+        1,
+        145,
+        1
+      ],
+      "stride": [
+        145,
+        1,
+        1
+      ],
+      "storage_offset": 0,
+      "optimized_us": 3.792,
+      "paired_boxing_copy_out_us": 7.424,
+      "same_operator_cpp_us": 6.416,
+      "paired_boxing_performance": 1.957805907172996,
+      "same_operator_performance": 1.6919831223628694,
+      "accuracy_ok": true,
+      "stride_ok": true,
+      "alias_ok": true,
+      "optimized_route_witness": true,
+      "noop": false,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "public_rois_us": [
+        3.808,
+        3.76,
+        3.808,
+        3.744,
+        3.792
+      ],
+      "paired_das_rois_us": [
+        8.016,
+        7.424,
+        7.728,
+        6.384,
+        5.264
+      ],
+      "cpp_das_rois_us": [
+        7.504,
+        6.736,
+        6.352,
+        6.416,
+        6.352
+      ],
+      "cpp_output_stride_matches_cpu": true,
+      "profile": "to-final-gpu0-r1",
+      "cpp_profile": "to-final-cpp-gpu0-r1"
+    },
+    {
+      "row": 1711,
+      "physical_card": 1,
+      "seed": 100003,
+      "input_dtype": "torch.bfloat16",
+      "output_dtype": "torch.float32",
+      "shape": [
+        1,
+        145,
+        2560
+      ],
+      "stride": [
+        371200,
+        2560,
+        1
+      ],
+      "storage_offset": 0,
+      "optimized_us": 3.968,
+      "paired_boxing_copy_out_us": 5.2,
+      "same_operator_cpp_us": 4.048,
+      "paired_boxing_performance": 1.310483870967742,
+      "same_operator_performance": 1.0201612903225807,
+      "accuracy_ok": true,
+      "stride_ok": true,
+      "alias_ok": true,
+      "optimized_route_witness": true,
+      "noop": false,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "public_rois_us": [
+        4.16,
+        3.888,
+        3.968,
+        3.936,
+        3.984
+      ],
+      "paired_das_rois_us": [
+        5.168,
+        5.2,
+        5.12,
+        5.2,
+        5.2
+      ],
+      "cpp_das_rois_us": [
+        3.936,
+        4.128,
+        4.192,
+        4.048,
+        4.0158
+      ],
+      "cpp_output_stride_matches_cpu": true,
+      "profile": "to-final-gpu1-r1",
+      "cpp_profile": "to-final-cpp-gpu1-r1"
+    },
+    {
+      "row": 1712,
+      "physical_card": 1,
+      "seed": 100003,
+      "input_dtype": "torch.bfloat16",
+      "output_dtype": "torch.float32",
+      "shape": [
+        1,
+        4,
+        145,
+        256
+      ],
+      "stride": [
+        148480,
+        256,
+        1024,
+        1
+      ],
+      "storage_offset": 0,
+      "optimized_us": 3.984,
+      "paired_boxing_copy_out_us": 4.88,
+      "same_operator_cpp_us": 10.912,
+      "paired_boxing_performance": 1.2248995983935742,
+      "same_operator_performance": 2.738955823293173,
+      "accuracy_ok": true,
+      "stride_ok": true,
+      "alias_ok": true,
+      "optimized_route_witness": true,
+      "noop": false,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "public_rois_us": [
+        4.784,
+        3.904,
+        4.064,
+        3.984,
+        3.904
+      ],
+      "paired_das_rois_us": [
+        4.864,
+        5.024,
+        4.88,
+        4.864,
+        4.992
+      ],
+      "cpp_das_rois_us": [
+        10.544,
+        10.944,
+        10.912,
+        10.944,
+        10.896
+      ],
+      "cpp_output_stride_matches_cpu": false,
+      "profile": "to-final-gpu1-r1",
+      "cpp_profile": "to-final-cpp-gpu1-r1"
+    },
+    {
+      "row": 1713,
+      "physical_card": 1,
+      "seed": 100003,
+      "input_dtype": "torch.bfloat16",
+      "output_dtype": "torch.float32",
+      "shape": [
+        1,
+        8,
+        145,
+        256
+      ],
+      "stride": [
+        296960,
+        256,
+        2048,
+        1
+      ],
+      "storage_offset": 0,
+      "optimized_us": 4.0,
+      "paired_boxing_copy_out_us": 4.944,
+      "same_operator_cpp_us": 11.136,
+      "paired_boxing_performance": 1.236,
+      "same_operator_performance": 2.784,
+      "accuracy_ok": true,
+      "stride_ok": true,
+      "alias_ok": true,
+      "optimized_route_witness": true,
+      "noop": false,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "public_rois_us": [
+        3.968,
+        4.08,
+        4.0,
+        3.952,
+        4.144
+      ],
+      "paired_das_rois_us": [
+        4.896,
+        4.944,
+        4.992,
+        4.944,
+        4.912
+      ],
+      "cpp_das_rois_us": [
+        11.216,
+        11.136,
+        11.0718,
+        11.088,
+        14.128
+      ],
+      "cpp_output_stride_matches_cpu": false,
+      "profile": "to-final-gpu1-r1",
+      "cpp_profile": "to-final-cpp-gpu1-r1"
+    },
+    {
+      "row": 1714,
+      "physical_card": 1,
+      "seed": 100003,
+      "input_dtype": "torch.bfloat16",
+      "output_dtype": "torch.float32",
+      "shape": [
+        2560
+      ],
+      "stride": [
+        1
+      ],
+      "storage_offset": 0,
+      "optimized_us": 3.984,
+      "paired_boxing_copy_out_us": 4.864,
+      "same_operator_cpp_us": 4.0,
+      "paired_boxing_performance": 1.2208835341365463,
+      "same_operator_performance": 1.0040160642570282,
+      "accuracy_ok": true,
+      "stride_ok": true,
+      "alias_ok": true,
+      "optimized_route_witness": true,
+      "noop": false,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "public_rois_us": [
+        4.032,
+        3.872,
+        3.984,
+        3.984,
+        3.872
+      ],
+      "paired_das_rois_us": [
+        4.864,
+        5.6,
+        4.864,
+        4.864,
+        4.928
+      ],
+      "cpp_das_rois_us": [
+        4.0,
+        4.128,
+        4.016,
+        3.968,
+        3.984
+      ],
+      "cpp_output_stride_matches_cpu": true,
+      "profile": "to-final-gpu1-r1",
+      "cpp_profile": "to-final-cpp-gpu1-r1"
+    },
+    {
+      "row": 1715,
+      "physical_card": 1,
+      "seed": 100003,
+      "input_dtype": "torch.bfloat16",
+      "output_dtype": "torch.float32",
+      "shape": [
+        256
+      ],
+      "stride": [
+        1
+      ],
+      "storage_offset": 0,
+      "optimized_us": 3.968,
+      "paired_boxing_copy_out_us": 4.896,
+      "same_operator_cpp_us": 3.936,
+      "paired_boxing_performance": 1.2338709677419355,
+      "same_operator_performance": 0.9919354838709677,
+      "accuracy_ok": true,
+      "stride_ok": true,
+      "alias_ok": true,
+      "optimized_route_witness": true,
+      "noop": false,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "public_rois_us": [
+        4.032,
+        3.968,
+        3.968,
+        3.872,
+        3.936
+      ],
+      "paired_das_rois_us": [
+        4.864,
+        4.896,
+        4.896,
+        4.992,
+        4.928
+      ],
+      "cpp_das_rois_us": [
+        4.016,
+        3.936,
+        3.9038,
+        3.936,
+        3.888
+      ],
+      "cpp_output_stride_matches_cpu": true,
+      "profile": "to-final-gpu1-r1",
+      "cpp_profile": "to-final-cpp-gpu1-r1"
+    },
+    {
+      "row": 1716,
+      "physical_card": 1,
+      "seed": 100003,
+      "input_dtype": "torch.bfloat16",
+      "output_dtype": "torch.bfloat16",
+      "shape": [],
+      "stride": [],
+      "storage_offset": 0,
+      "optimized_us": 0.0,
+      "paired_boxing_copy_out_us": 0.0,
+      "same_operator_cpp_us": 0.0,
+      "paired_boxing_performance": null,
+      "same_operator_performance": null,
+      "accuracy_ok": true,
+      "stride_ok": true,
+      "alias_ok": true,
+      "optimized_route_witness": true,
+      "noop": true,
+      "kernels": [],
+      "public_rois_us": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "paired_das_rois_us": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "cpp_das_rois_us": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "cpp_output_stride_matches_cpu": true,
+      "profile": "to-final-gpu1-r1",
+      "cpp_profile": "to-final-cpp-gpu1-r1"
+    },
+    {
+      "row": 1717,
+      "physical_card": 1,
+      "seed": 100003,
+      "input_dtype": "torch.bool",
+      "output_dtype": "torch.int32",
+      "shape": [
+        1,
+        145
+      ],
+      "stride": [
+        145,
+        1
+      ],
+      "storage_offset": 0,
+      "optimized_us": 3.968,
+      "paired_boxing_copy_out_us": 7.872,
+      "same_operator_cpp_us": 6.848,
+      "paired_boxing_performance": 1.9838709677419355,
+      "same_operator_performance": 1.7258064516129032,
+      "accuracy_ok": true,
+      "stride_ok": true,
+      "alias_ok": true,
+      "optimized_route_witness": true,
+      "noop": false,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "public_rois_us": [
+        3.92,
+        4.032,
+        4.0,
+        3.872,
+        3.968
+      ],
+      "paired_das_rois_us": [
+        7.872,
+        8.976,
+        7.936,
+        5.712,
+        5.376
+      ],
+      "cpp_das_rois_us": [
+        6.848,
+        6.032,
+        7.184,
+        7.456,
+        6.8
+      ],
+      "cpp_output_stride_matches_cpu": true,
+      "profile": "to-final-gpu1-r1",
+      "cpp_profile": "to-final-cpp-gpu1-r1"
+    },
+    {
+      "row": 1718,
+      "physical_card": 1,
+      "seed": 100003,
+      "input_dtype": "torch.float32",
+      "output_dtype": "torch.bfloat16",
+      "shape": [
+        1,
+        145,
+        256
+      ],
+      "stride": [
+        37120,
+        256,
+        1
+      ],
+      "storage_offset": 0,
+      "optimized_us": 3.8238,
+      "paired_boxing_copy_out_us": 4.944,
+      "same_operator_cpp_us": 4.016,
+      "paired_boxing_performance": 1.2929546524399813,
+      "same_operator_performance": 1.0502641351535122,
+      "accuracy_ok": true,
+      "stride_ok": true,
+      "alias_ok": true,
+      "optimized_route_witness": true,
+      "noop": false,
+      "kernels": [
+        "cast_dense"
+      ],
+      "public_rois_us": [
+        3.792,
+        3.856,
+        3.856,
+        3.744,
+        3.8238
+      ],
+      "paired_das_rois_us": [
+        4.864,
+        4.976,
+        4.944,
+        4.992,
+        4.848
+      ],
+      "cpp_das_rois_us": [
+        4.112,
+        4.112,
+        4.0,
+        3.968,
+        4.016
+      ],
+      "cpp_output_stride_matches_cpu": true,
+      "profile": "to-final-gpu1-r1",
+      "cpp_profile": "to-final-cpp-gpu1-r1"
+    },
+    {
+      "row": 1719,
+      "physical_card": 1,
+      "seed": 100003,
+      "input_dtype": "torch.float32",
+      "output_dtype": "torch.bfloat16",
+      "shape": [
+        1,
+        8,
+        145,
+        145
+      ],
+      "stride": [
+        168200,
+        21025,
+        145,
+        1
+      ],
+      "storage_offset": 0,
+      "optimized_us": 3.824,
+      "paired_boxing_copy_out_us": 4.912,
+      "same_operator_cpp_us": 4.048,
+      "paired_boxing_performance": 1.284518828451883,
+      "same_operator_performance": 1.0585774058577406,
+      "accuracy_ok": true,
+      "stride_ok": true,
+      "alias_ok": true,
+      "optimized_route_witness": true,
+      "noop": false,
+      "kernels": [
+        "cast_dense"
+      ],
+      "public_rois_us": [
+        3.824,
+        3.84,
+        3.792,
+        3.792,
+        3.84
+      ],
+      "paired_das_rois_us": [
+        4.896,
+        4.928,
+        4.912,
+        4.864,
+        4.928
+      ],
+      "cpp_das_rois_us": [
+        4.048,
+        4.096,
+        3.968,
+        4.048,
+        4.08
+      ],
+      "cpp_output_stride_matches_cpu": true,
+      "profile": "to-final-gpu1-r1",
+      "cpp_profile": "to-final-cpp-gpu1-r1"
+    },
+    {
+      "row": 1720,
+      "physical_card": 1,
+      "seed": 100003,
+      "input_dtype": "torch.int64",
+      "output_dtype": "torch.float32",
+      "shape": [
+        1,
+        145,
+        1
+      ],
+      "stride": [
+        145,
+        1,
+        1
+      ],
+      "storage_offset": 0,
+      "optimized_us": 3.824,
+      "paired_boxing_copy_out_us": 7.296,
+      "same_operator_cpp_us": 6.368,
+      "paired_boxing_performance": 1.9079497907949792,
+      "same_operator_performance": 1.665271966527197,
+      "accuracy_ok": true,
+      "stride_ok": true,
+      "alias_ok": true,
+      "optimized_route_witness": true,
+      "noop": false,
+      "kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "public_rois_us": [
+        4.56,
+        3.792,
+        3.856,
+        3.824,
+        3.808
+      ],
+      "paired_das_rois_us": [
+        7.296,
+        7.728,
+        7.424,
+        6.352,
+        5.6
+      ],
+      "cpp_das_rois_us": [
+        6.736,
+        6.32,
+        6.016,
+        6.368,
+        6.784
+      ],
+      "cpp_output_stride_matches_cpu": true,
+      "profile": "to-final-gpu1-r1",
+      "cpp_profile": "to-final-cpp-gpu1-r1"
+    }
+  ]
+}

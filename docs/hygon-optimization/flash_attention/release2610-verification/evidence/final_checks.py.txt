@@ -1,0 +1,53 @@
+from pathlib import Path
+
+helper_path = Path(__file__).resolve().parent / 'functional.py'
+exec(compile(helper_path.read_text().split('# Reuse precisely the bytes exported')[0], str(helper_path), 'exec'))
+receipt['scope'] = 'Isolate exact Q/K/V aliasing and check dropout RNG excluding undefined mask padding.'
+
+def save():
+    Path('final-checks.json').write_text(json.dumps(receipt, indent=2) + '\n')
+
+for dtype in (torch.bfloat16, torch.float16):
+    label = str(dtype).split('.')[-1]
+    for alias in (True, False):
+        for arm in ('wheel', 'public', 'aten'):
+            def alias_test(alias=alias, arm=arm):
+                torch.manual_seed(42)
+                cpu = torch.randn((1, 3, 2, 64), dtype=dtype)
+                q = cpu.cuda()
+                dev = [q, q, q] if alias else [q, q.clone(), q.clone()]
+                snapshots = [x.detach().cpu().clone() for x in dev]
+                answer = forward([cpu, cpu, cpu], arm=arm, repeats=3, device_inputs=dev)
+                answer['inputs_unchanged'] = all(torch.equal(x.cpu(), y) for x, y in zip(dev, snapshots))
+                answer['pointers'] = [x.data_ptr() for x in dev]
+                return answer
+            record(f'alias/{label}/{alias}/{arm}', alias_test)
+
+    def dropout_checked():
+        cpu = generated(dtype, 97, 97, 64)
+        dev = [x.cuda().requires_grad_(True) for x in cpu]
+        state = torch.cuda.get_rng_state()
+        first = flash_attn.flash_attn_func(*dev, dropout_p=.125, return_attn_probs=True, deterministic=True)
+        torch.cuda.set_rng_state(state)
+        second = flash_attn.flash_attn_func(*dev, dropout_p=.125, return_attn_probs=True, deterministic=True)
+        torch.cuda.synchronize()
+        out, lse, mask = first
+        assert mask.ndim == 4, tuple(mask.shape)
+        keep = ~torch.signbit(mask.detach().cpu()[:, :, :97, :97])
+        keep_second = ~torch.signbit(second[2].detach().cpu()[:, :, :97, :97])
+        q, k, v = [x.transpose(1, 2).float() for x in cpu]
+        scores = q @ k.transpose(-1, -2) / 8
+        expected = ((scores.softmax(-1) * keep / .875) @ v).transpose(1, 2)
+        flags = {'output_equal': torch.equal(first[0], second[0]),
+                 'lse_equal': torch.equal(first[1], second[1]),
+                 'valid_dropout_mask_equal': torch.equal(keep, keep_second)}
+        return {'checks': [stats(out, expected), stats(lse, scores.logsumexp(-1), 2e-5, 2e-5)],
+                'stable': all(flags.values()), 'rng_restore': flags,
+                'mask_shape': list(mask.shape), 'observed_keep_fraction': float(keep.float().mean())}
+    record(f'dropout/{label}/valid_mask_rng_restore', dropout_checked)
+
+receipt['completed'] = True
+receipt['passed'] = sum(t['status'] == 'passed' for t in receipt['tests'])
+receipt['failed'] = sum(t['status'] != 'passed' for t in receipt['tests'])
+save()
+print('RELEASE2610_FINAL_CHECKS_COMPLETE', receipt['passed'], receipt['failed'], flush=True)

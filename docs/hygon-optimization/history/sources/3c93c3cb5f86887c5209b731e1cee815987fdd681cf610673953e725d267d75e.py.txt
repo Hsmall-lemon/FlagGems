@@ -1,0 +1,459 @@
+"""Followup sort candidate 1: narrow-key/rank/parallel-merge family dispatch.
+
+No vendor sort on supported inputs. Whole values/indices are produced anew on
+all calls. Uses the pinned FlagTree standard.py XOR partner-exchange primitive,
+not an unsupported tuple/comparator tl.sort API. See README.md for boundaries.
+"""
+import operator
+import sys
+
+import torch
+import triton
+import triton.language as tl
+from triton.language.standard import xor_sum
+
+from flag_gems.runtime import torch_device_fn
+from flag_gems.utils import libentry
+
+IS_BASELINE = False
+MAX_ROW_LENGTH = 4096
+_BASELINE_STABLE = None
+
+
+@triton.jit
+def _indicator(LOG_BLOCK: tl.constexpr, BIT: tl.constexpr):
+    # Same hypercube coordinate construction as pinned standard.py:366-370.
+    return tl.reshape(tl.arange(0, 2), [1] * (LOG_BLOCK - BIT - 1) + [2] + [1] * BIT)
+
+
+@triton.jit
+def _partner_integer(bits, LOG_BLOCK: tl.constexpr, BIT: tl.constexpr):
+    # Each axis has exactly 2 lanes: a ^ (a ^ b) = b, without float reduction,
+    # overflow-prone arithmetic, conversion, or int64 truncation.
+    return bits ^ xor_sum(bits, LOG_BLOCK - 1 - BIT, keep_dims=True)
+
+
+@triton.jit
+def _comes_before(a_bits, a_id, b_bits, b_id, N: tl.constexpr,
+                  VALUE_DTYPE: tl.constexpr, IS_FLOAT: tl.constexpr,
+                  IS_BOOL: tl.constexpr, DESCENDING: tl.constexpr):
+    av = a_id < N
+    bv = b_id < N
+    if IS_BOOL:
+        a = a_bits.to(tl.uint8)
+        b = b_bits.to(tl.uint8)
+    else:
+        a = a_bits.to(VALUE_DTYPE, bitcast=True)
+        b = b_bits.to(VALUE_DTYPE, bitcast=True)
+    if IS_FLOAT:
+        # Every half/bfloat value is exactly representable in float32; carrier
+        # bits remain unchanged, including zeros and all NaN sign/payload bits.
+        a = a.to(tl.float32)
+        b = b.to(tl.float32)
+        an = a != a
+        bn = b != b
+        if DESCENDING:
+            numeric_before = a > b
+            nan_before = an & ~bn
+        else:
+            numeric_before = a < b
+            nan_before = ~an & bn
+        value_before = tl.where(an != bn, nan_before, numeric_before)
+        equal = (a == b) | (an & bn)
+    else:
+        # VALUE_DTYPE is SIGNED tl.int64/int32 where appropriate; never cast
+        # these values through floating point or subtract to compare.
+        if DESCENDING:
+            value_before = a > b
+        else:
+            value_before = a < b
+        equal = a == b
+    # Validity always precedes value direction. All equal values, both signed
+    # zeros, and all NaNs keep ascending original id even in descending sort.
+    tie = a_id < b_id
+    ordered_valid = value_before | (equal & tie)
+    return (av & ~bv) | ((av == bv) & tl.where(av, ordered_valid, tie))
+
+
+@triton.jit
+def _bitonic_stage(bits, ids, STAGE: tl.constexpr, LOG_BLOCK: tl.constexpr,
+                   N: tl.constexpr, VALUE_DTYPE: tl.constexpr,
+                   IS_FLOAT: tl.constexpr, IS_BOOL: tl.constexpr,
+                   DESCENDING: tl.constexpr):
+    # Compiler-only repair matching pinned _bitonic_merge_hypercube: a stage
+    # is a JIT constexpr argument; pass STAGE-1-i DIRECTLY to constexpr BIT.
+    # No repeatedly assigned constexpr local or Tensor-valued bit binding.
+    if STAGE < LOG_BLOCK:
+        flip = _indicator(LOG_BLOCK, STAGE)
+    else:
+        flip = tl.full((), 0, tl.int32)
+    for i in tl.static_range(STAGE):
+        other_bits = _partner_integer(bits, LOG_BLOCK, STAGE - 1 - i)
+        other_ids = _partner_integer(ids, LOG_BLOCK, STAGE - 1 - i)
+        is_right = _indicator(LOG_BLOCK, STAGE - 1 - i)
+        other_before = _comes_before(other_bits, other_ids, bits, ids,
+            N, VALUE_DTYPE, IS_FLOAT, IS_BOOL, DESCENDING)
+        swap = other_before != ((flip ^ is_right) != 0)
+        bits = tl.where(swap, other_bits, bits)
+        ids = tl.where(swap, other_ids, ids)
+    return bits, ids
+
+
+@libentry()
+@triton.jit
+def _row_stable_bitonic(X, Y, INDEX,
+                        N: tl.constexpr, BLOCK: tl.constexpr,
+                        LOG_BLOCK: tl.constexpr,
+                        VALUE_DTYPE: tl.constexpr, BITS_DTYPE: tl.constexpr,
+                        IS_FLOAT: tl.constexpr, IS_BOOL: tl.constexpr,
+                        DESCENDING: tl.constexpr,
+                        ROW_SHAPE: tl.constexpr,
+                        X_ROW_STRIDES: tl.constexpr, Y_ROW_STRIDES: tl.constexpr,
+                        X_AXIS_STRIDE: tl.constexpr, Y_AXIS_STRIDE: tl.constexpr):
+    row = tl.program_id(0).to(tl.int64)
+    remaining = row
+    xbase = tl.full((), 0, tl.int64)
+    ybase = tl.full((), 0, tl.int64)
+    # Decode non-sort coordinates, using 64-bit pointer arithmetic and the
+    # actual view strides. Tensor pointer already includes storage_offset.
+    for d in tl.static_range(len(ROW_SHAPE) - 1, -1, -1):
+        coordinate = remaining % ROW_SHAPE[d]
+        remaining = remaining // ROW_SHAPE[d]
+        xbase += coordinate * X_ROW_STRIDES[d]
+        ybase += coordinate * Y_ROW_STRIDES[d]
+    col = tl.arange(0, BLOCK)
+    present = col < N
+    value = tl.load(X + xbase + col.to(tl.int64) * X_AXIS_STRIDE,
+                    mask=present, other=0)
+    if IS_BOOL:
+        bits = value.to(tl.int8)
+    else:
+        bits = value.to(BITS_DTYPE, bitcast=True)
+    ids = col
+    if LOG_BLOCK > 0:
+        bits = tl.reshape(bits, [2] * LOG_BLOCK)
+        ids = tl.reshape(ids, [2] * LOG_BLOCK)
+        # Semantic DESCENDING is inside comparator. The network's final order
+        # stays forward, so validity and stable id ties are never reversed.
+        for stage in tl.static_range(1, LOG_BLOCK + 1):
+            bits, ids = _bitonic_stage(
+                bits, ids, stage, LOG_BLOCK, N,
+                VALUE_DTYPE, IS_FLOAT, IS_BOOL, DESCENDING)
+        bits = tl.reshape(bits, [BLOCK])
+        ids = tl.reshape(ids, [BLOCK])
+    if IS_BOOL:
+        sorted_value = bits.to(VALUE_DTYPE)
+    else:
+        sorted_value = bits.to(VALUE_DTYPE, bitcast=True)
+    destination = ybase + col.to(tl.int64) * Y_AXIS_STRIDE
+    tl.store(Y + destination, sorted_value, mask=present)
+    tl.store(INDEX + destination, ids.to(tl.int64), mask=present)
+
+
+@libentry()
+@triton.jit
+def _row_packed_float(X, Y, INDEX, N: tl.constexpr, BLOCK: tl.constexpr,
+                      ROW_SHAPE: tl.constexpr, X_ROW_STRIDES: tl.constexpr,
+                      Y_ROW_STRIDES: tl.constexpr, X_AXIS_STRIDE: tl.constexpr,
+                      Y_AXIS_STRIDE: tl.constexpr, DESCENDING: tl.constexpr):
+    row = tl.program_id(0).to(tl.int64)
+    remaining = row
+    xbase = tl.full((), 0, tl.int64)
+    ybase = tl.full((), 0, tl.int64)
+    for d in tl.static_range(len(ROW_SHAPE)-1, -1, -1):
+        coord = remaining % ROW_SHAPE[d]
+        remaining = remaining // ROW_SHAPE[d]
+        xbase += coord * X_ROW_STRIDES[d]
+        ybase += coord * Y_ROW_STRIDES[d]
+    col = tl.arange(0, BLOCK)
+    present = col < N
+    value = tl.load(X + xbase + col.to(tl.int64)*X_AXIS_STRIDE, mask=present, other=0).to(tl.float32)
+    raw = value.to(tl.uint32, bitcast=True)
+    # Treat +0/-0 as equal, NaNs as one class, and carry original index for stability.
+    raw = tl.where(value == 0.0, 0, raw).to(tl.uint32)
+    key = tl.where((raw & 2147483648) != 0, ~raw, raw ^ 2147483648).to(tl.uint32)
+    key = tl.where(value != value, 4294967295, key).to(tl.uint32)
+    if DESCENDING:
+        key = ~key
+    # 32 order bits +16 index bits <=48 <63, so INT64_MAX is a true padding sentinel.
+    packed = ((key.to(tl.uint64) << 16) | col.to(tl.uint64)).to(tl.int64)
+    packed = tl.where(present, packed, 9223372036854775807)
+    packed = tl.sort(packed, dim=0, descending=False)
+    index = (packed & 65535).to(tl.int64)
+    # Reload original bits rather than reinterpreting the transformed key.
+    original = tl.load(X + xbase + index*X_AXIS_STRIDE, mask=present, other=0)
+    dest = ybase + col.to(tl.int64)*Y_AXIS_STRIDE
+    tl.store(Y + dest, original, mask=present)
+    tl.store(INDEX + dest, index, mask=present)
+
+
+
+@libentry()
+@triton.jit
+def _row_narrow_float(X, Y, INDEX, N: tl.constexpr, BLOCK: tl.constexpr,
+                      ROW_SHAPE: tl.constexpr, X_ROW_STRIDES: tl.constexpr,
+                      Y_ROW_STRIDES: tl.constexpr, XS: tl.constexpr, YS: tl.constexpr,
+                      DESCENDING: tl.constexpr):
+    row = tl.program_id(0).to(tl.int64)
+    remaining = row
+    xb = tl.full((), 0, tl.int64)
+    yb = tl.full((), 0, tl.int64)
+    for d in tl.static_range(len(ROW_SHAPE)-1, -1, -1):
+        coord = remaining % ROW_SHAPE[d]
+        remaining = remaining // ROW_SHAPE[d]
+        xb += coord * X_ROW_STRIDES[d]
+        yb += coord * Y_ROW_STRIDES[d]
+    col = tl.arange(0, BLOCK)
+    present = col < N
+    native = tl.load(X + xb + col.to(tl.int64)*XS, mask=present, other=0)
+    value = native.to(tl.float32)
+    raw = native.to(tl.uint16, bitcast=True).to(tl.uint32)
+    raw = tl.where(value == 0., 0, raw)
+    key = tl.where((raw & 32768) != 0, (~raw) & 65535, raw ^ 32768).to(tl.uint32)
+    key = tl.where(value != value, 65535, key).to(tl.uint32)
+    if DESCENDING:
+        key = key ^ 65535
+    # N<=4096; exact 16-bit order key + 12-bit original index fits uint32.
+    packed = (key << 12) | col.to(tl.uint32)
+    packed = tl.where(present, packed, 4294967295).to(tl.uint32)
+    packed = tl.sort(packed, dim=0, descending=False)
+    original_id = (packed & 4095).to(tl.int64)
+    original = tl.load(X + xb + original_id*XS, mask=present, other=0)
+    dest = yb + col.to(tl.int64)*YS
+    tl.store(Y + dest, original, mask=present)
+    tl.store(INDEX + dest, original_id, mask=present)
+
+
+@libentry()
+@triton.jit
+def _row_rank_integer(X, Y, INDEX, N: tl.constexpr, BLOCK: tl.constexpr,
+                      ROW_SHAPE: tl.constexpr, X_ROW_STRIDES: tl.constexpr,
+                      Y_ROW_STRIDES: tl.constexpr, XS: tl.constexpr, YS: tl.constexpr,
+                      DESCENDING: tl.constexpr, TILE: tl.constexpr):
+    tiles: tl.constexpr = ((N+TILE-1)//TILE)
+    pid = tl.program_id(0)
+    row = (pid // tiles).to(tl.int64)
+    tile = pid % tiles
+    remaining = row
+    xb = tl.full((), 0, tl.int64)
+    yb = tl.full((), 0, tl.int64)
+    for d in tl.static_range(len(ROW_SHAPE)-1, -1, -1):
+        coord = remaining % ROW_SHAPE[d]
+        remaining = remaining // ROW_SHAPE[d]
+        xb += coord * X_ROW_STRIDES[d]
+        yb += coord * Y_ROW_STRIDES[d]
+    own = tile*TILE + tl.arange(0, TILE)
+    other = tl.arange(0, BLOCK)
+    mine = tl.load(X + xb + own.to(tl.int64)*XS, mask=own<N, other=0)
+    theirs = tl.load(X + xb + other.to(tl.int64)*XS, mask=other<N, other=0)
+    if DESCENDING:
+        before = theirs[None,:] > mine[:,None]
+    else:
+        before = theirs[None,:] < mine[:,None]
+    before = before | ((theirs[None,:] == mine[:,None]) & (other[None,:] < own[:,None]))
+    before = before & (other[None,:] < N)
+    rank = tl.sum(before.to(tl.int32), axis=1)
+    dst = yb + rank.to(tl.int64)*YS
+    tl.store(Y + dst, mine, mask=own<N)
+    tl.store(INDEX + dst, own.to(tl.int64), mask=own<N)
+
+
+@libentry()
+@triton.jit
+def _row_sort_tiles(X, SORTED, N: tl.constexpr, TILE: tl.constexpr,
+                    ROW_SHAPE: tl.constexpr, X_ROW_STRIDES: tl.constexpr,
+                    XS: tl.constexpr, DESCENDING: tl.constexpr):
+    tiles: tl.constexpr = ((N+TILE-1)//TILE)
+    pid = tl.program_id(0)
+    row = (pid // tiles).to(tl.int64)
+    tile = pid % tiles
+    remaining = row
+    xb = tl.full((), 0, tl.int64)
+    for d in tl.static_range(len(ROW_SHAPE)-1, -1, -1):
+        coord = remaining % ROW_SHAPE[d]
+        remaining = remaining // ROW_SHAPE[d]
+        xb += coord * X_ROW_STRIDES[d]
+    col = tile*TILE + tl.arange(0,TILE)
+    present = col<N
+    value = tl.load(X + xb + col.to(tl.int64)*XS, mask=present, other=0)
+    raw = value.to(tl.uint32, bitcast=True)
+    raw = tl.where(value == 0., 0, raw).to(tl.uint32)
+    key = tl.where((raw & 2147483648) != 0, ~raw, raw ^ 2147483648).to(tl.uint32)
+    key = tl.where(value != value, 4294967295, key).to(tl.uint32)
+    if DESCENDING:
+        key = ~key
+    packed = ((key.to(tl.uint64)<<16) | col.to(tl.uint64)).to(tl.int64)
+    packed = tl.where(present, packed, 9223372036854775807)
+    packed = tl.sort(packed, dim=0, descending=False)
+    tl.store(SORTED + row*N + col.to(tl.int64), packed, mask=present)
+
+
+@libentry()
+@triton.jit
+def _row_merge_tiles(SRC, DST, X, Y, INDEX, N: tl.constexpr, RUN: tl.constexpr,
+                     STEPS: tl.constexpr, ROW_SHAPE: tl.constexpr,
+                     X_ROW_STRIDES: tl.constexpr, Y_ROW_STRIDES: tl.constexpr,
+                     XS: tl.constexpr, YS: tl.constexpr, TILE: tl.constexpr,
+                     LAST: tl.constexpr):
+    tiles: tl.constexpr = ((N+TILE-1)//TILE)
+    pid = tl.program_id(0)
+    row = (pid // tiles).to(tl.int64)
+    tile = pid % tiles
+    col = tile*TILE + tl.arange(0,TILE)
+    valid = col<N
+    packed = tl.load(SRC + row*N + col.to(tl.int64), mask=valid, other=9223372036854775807)
+    start = col//(2*RUN)*(2*RUN)
+    left = (col-start)<RUN
+    own_start = tl.where(left,start,start+RUN)
+    other_start = tl.minimum(tl.where(left,start+RUN,start),N)
+    lo = other_start
+    hi = tl.minimum(other_start+RUN,N)
+    for search in tl.static_range(STEPS):
+        active = valid & (lo<hi)
+        mid = lo+(hi-lo)//2
+        other = tl.load(SRC + row*N + mid.to(tl.int64), mask=active, other=9223372036854775807)
+        less = other<packed
+        lo = tl.where(active & less,mid+1,lo)
+        hi = tl.where(active & ~less,mid,hi)
+    dest = start+(col-own_start)+(lo-other_start)
+    if LAST:
+        remaining = row
+        xb = tl.full((),0,tl.int64)
+        yb = tl.full((),0,tl.int64)
+        for d in tl.static_range(len(ROW_SHAPE)-1,-1,-1):
+            coord = remaining % ROW_SHAPE[d]
+            remaining = remaining//ROW_SHAPE[d]
+            xb += coord*X_ROW_STRIDES[d]
+            yb += coord*Y_ROW_STRIDES[d]
+        original_id = packed & 65535
+        original = tl.load(X + xb + original_id*XS, mask=valid, other=0)
+        tl.store(Y + yb + dest.to(tl.int64)*YS, original, mask=valid)
+        tl.store(INDEX + yb + dest.to(tl.int64)*YS, original_id, mask=valid)
+    else:
+        tl.store(DST + row*N + dest.to(tl.int64), packed, mask=valid)
+
+def _fallback(inp, stable, dim, descending):
+    if _BASELINE_STABLE is None:
+        raise RuntimeError('sort candidate must be installed before use')
+    # Calling saved stable ENTRY directly avoids original sort() looking up a
+    # now-patched module-global sort_stable and accidentally recursing.
+    return _BASELINE_STABLE(inp, stable=stable, dim=dim, descending=descending)
+
+
+def _run(inp, stable, dim, descending):
+    if not isinstance(inp, torch.Tensor):
+        return _fallback(inp, stable, dim, descending)
+    supported = (torch.float16, torch.bfloat16, torch.float32,
+                 torch.int32, torch.int64, torch.bool)
+    if (inp.dtype not in supported or inp.layout != torch.strided or
+            inp.device.type not in ('flagos', 'privateuseone', 'cuda')):
+        return _fallback(inp, stable, dim, descending)
+    axis = operator.index(dim)
+    rank = inp.ndim
+    if rank == 0:
+        if axis not in (-1, 0):
+            raise IndexError('Dimension out of range for scalar sort')
+        axis = 0
+        n = 1
+    else:
+        if not -rank <= axis < rank:
+            raise IndexError('Dimension out of range for sort')
+        axis %= rank
+        n = int(inp.shape[axis])
+    if n > MAX_ROW_LENGTH or any(s < 0 for s in inp.stride()):
+        return _fallback(inp, stable, dim, descending)
+    rows = inp.numel() // n if n else 0
+    if rows > 2147483647:
+        return _fallback(inp, stable, dim, descending)
+    # Fresh contiguous outputs with original logical shape; never return inp,
+    # a view of inp, persistent buffers, prior answers, or a device/dtype copy.
+    values = torch.empty(tuple(inp.shape), dtype=inp.dtype, device=inp.device)
+    indices = torch.empty(tuple(inp.shape), dtype=torch.int64, device=inp.device)
+    if inp.numel() == 0:
+        return values, indices
+    block = triton.next_power_of_2(n)
+    log_block = block.bit_length() - 1
+    row_shape = tuple(int(inp.shape[d]) for d in range(rank) if d != axis)
+    xrows = tuple(int(inp.stride(d)) for d in range(rank) if d != axis)
+    yrows = tuple(int(values.stride(d)) for d in range(rank) if d != axis)
+    xs = int(inp.stride(axis)) if rank else 0
+    ys = int(values.stride(axis)) if rank else 0
+    if inp.dtype == torch.float16:
+        value_dtype, bits_dtype = tl.float16, tl.int16
+    elif inp.dtype == torch.bfloat16:
+        value_dtype, bits_dtype = tl.bfloat16, tl.int16
+    elif inp.dtype == torch.float32:
+        value_dtype, bits_dtype = tl.float32, tl.int32
+    elif inp.dtype == torch.int64:
+        value_dtype, bits_dtype = tl.int64, tl.int64
+    elif inp.dtype == torch.int32:
+        value_dtype, bits_dtype = tl.int32, tl.int32
+    else:
+        value_dtype, bits_dtype = tl.int1, tl.int8
+    with torch_device_fn.device(inp.device):
+        if inp.dtype in (torch.float16, torch.bfloat16):
+            _row_narrow_float[(rows,)](inp, values, indices, n, block,
+                row_shape, xrows, yrows, xs, ys, bool(descending),
+                num_warps=1 if n<=128 else 4)
+        elif inp.dtype == torch.float32 and n>1024 and rows<=256:
+            work_a = torch.empty((rows,n),dtype=torch.int64,device=inp.device)
+            work_b = torch.empty_like(work_a)
+            _row_sort_tiles[(rows*triton.cdiv(n,512),)](inp,work_a,n,512,
+                row_shape,xrows,xs,bool(descending),num_warps=4)
+            run = 512
+            while run<n:
+                _row_merge_tiles[(rows*triton.cdiv(n,256),)](work_a,work_b,inp,values,indices,
+                    n,run,run.bit_length(),row_shape,xrows,yrows,xs,ys,256,2*run>=n,num_warps=4)
+                work_a,work_b=work_b,work_a
+                run*=2
+        elif inp.dtype in (torch.int32,torch.int64) and 128<n<=1024 and rows<=8:
+            _row_rank_integer[(rows*triton.cdiv(n,8),)](inp,values,indices,n,block,
+                row_shape,xrows,yrows,xs,ys,bool(descending),8,num_warps=4)
+        elif inp.is_floating_point():
+            _row_packed_float[(rows,)](
+                inp, values, indices, n, block, row_shape, xrows, yrows, xs, ys,
+                bool(descending), num_warps=1 if n <=128 else (4 if n <=1024 else 8))
+        else:
+            _row_stable_bitonic[(rows,)](
+                inp, values, indices, n, block, log_block,
+                value_dtype, bits_dtype, False, inp.dtype == torch.bool,
+                bool(descending), row_shape, xrows, yrows, xs, ys,
+                num_warps=1 if n <=128 else 4)
+    return values, indices
+
+
+def sort(inp, dim=-1, descending=False):
+    return _run(inp, False, dim, descending)
+
+
+def sort_stable(inp, *, stable, dim=-1, descending=False):
+    return _run(inp, stable, dim, descending)
+
+
+def install(torch, flag_gems):
+    """Install root + already loaded module aliases before first ATen sort call.
+
+    Main's resident worker owns per-variant installation isolation. This helper
+    is idempotent for the same imported candidate module, never mixes variants.
+    """
+    global _BASELINE_STABLE
+    if flag_gems.sort_stable is sort_stable:
+        return
+    if _BASELINE_STABLE is not None:
+        raise RuntimeError('Candidate already installed but root changed; use a fresh variant worker')
+    _BASELINE_STABLE = flag_gems.sort_stable
+    modules = {
+        'flag_gems', 'flag_gems.ops', 'flag_gems.ops.sort',
+        'flag_gems.runtime.backend._hygon.ops',
+        'flag_gems.runtime.backend._hygon.ops.sort',
+        getattr(_BASELINE_STABLE, '__module__', ''),
+    }
+    flag_gems.sort = sort
+    flag_gems.sort_stable = sort_stable
+    for name in modules:
+        module = sys.modules.get(name)
+        if module is not None:
+            if hasattr(module, 'sort'):
+                module.sort = sort
+            if hasattr(module, 'sort_stable'):
+                module.sort_stable = sort_stable

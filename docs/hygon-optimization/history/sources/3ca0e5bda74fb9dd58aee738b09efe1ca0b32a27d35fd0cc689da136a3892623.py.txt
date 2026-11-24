@@ -1,0 +1,58 @@
+"""Generic one-ATen short-row reductions. FP32 order follows a fixed CPU cascade hypothesis."""
+import triton
+import triton.language as tl
+from flag_gems.utils import libentry
+from flag_gems.utils import triton_lang_extension as ext
+
+@libentry()
+@triton.jit
+def short_fp32(inp,out,M,N:tl.constexpr,BM:tl.constexpr,V:tl.constexpr):
+    row=ext.program_id(0)*BM+tl.arange(0,BM)
+    if N>=V:
+        lane=tl.arange(0,V)
+        a0=tl.full((BM,V),0.,tl.float32)
+        a1=tl.full((BM,V),0.,tl.float32)
+        a2=tl.full((BM,V),0.,tl.float32)
+        a3=tl.full((BM,V),0.,tl.float32)
+        for q in tl.static_range(0,(N//V)//4):
+            base=row[:,None]*N+q*4*V+lane[None,:]
+            a0=a0+tl.load(inp+base,mask=row[:,None]<M,other=0.)
+            a1=a1+tl.load(inp+base+V,mask=row[:,None]<M,other=0.)
+            a2=a2+tl.load(inp+base+2*V,mask=row[:,None]<M,other=0.)
+            a3=a3+tl.load(inp+base+3*V,mask=row[:,None]<M,other=0.)
+        for q in tl.static_range(((N//V)//4)*4,N//V):
+            a0=a0+tl.load(inp+row[:,None]*N+q*V+lane[None,:],mask=row[:,None]<M,other=0.)
+        a0=a0+a1
+        a0=a0+a2
+        a0=a0+a3
+        # CPU final_acc starts with scalar tail, THEN folds each vector lane.
+        result=tl.full((BM,1),0.,tl.float32)
+        for j in tl.static_range((N//V)*V,N):
+            result=result+tl.reshape(tl.load(inp+row*N+j,mask=row<M,other=0.),(BM,1))
+        for j in tl.static_range(0,V):
+            result=result+tl.gather(a0,tl.full((BM,1),j,tl.int32),axis=1)
+        ans=tl.reshape(result,(BM,))
+    else:
+        a0=tl.full((BM,),0.,tl.float32)
+        a1=tl.full((BM,),0.,tl.float32)
+        a2=tl.full((BM,),0.,tl.float32)
+        a3=tl.full((BM,),0.,tl.float32)
+        for q in tl.static_range(0,N//4):
+            base=row*N+q*4
+            a0=a0+tl.load(inp+base,mask=row<M,other=0.)
+            a1=a1+tl.load(inp+base+1,mask=row<M,other=0.)
+            a2=a2+tl.load(inp+base+2,mask=row<M,other=0.)
+            a3=a3+tl.load(inp+base+3,mask=row<M,other=0.)
+        for j in tl.static_range((N//4)*4,N):
+            a0=a0+tl.load(inp+row*N+j,mask=row<M,other=0.)
+        ans=((a0+a1)+a2)+a3
+    tl.store(out+row,ans,mask=row<M)
+
+@libentry()
+@triton.jit
+def short_fp64(inp,out,M,N:tl.constexpr,BM:tl.constexpr,BN:tl.constexpr):
+    row=ext.program_id(0)*BM+tl.arange(0,BM)
+    col=tl.arange(0,BN)
+    x=tl.load(inp+row[:,None]*N+col[None,:],mask=(row[:,None]<M)&(col[None,:]<N),other=0.).to(tl.float64)
+    y=tl.sum(x,axis=1)
+    tl.store(out+row,y,mask=row<M)

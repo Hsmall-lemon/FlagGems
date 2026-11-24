@@ -1,0 +1,18 @@
+{
+  "source": "_hygon.ops.mm",
+  "source_file": "/public/home/wzx226226/\u7b97\u5b50\u4f18\u5316/FlagGems-hygon-optimization/src",
+  "cases": [
+    {
+      "dtype": "torch.float32",
+      "optimized_export_calls": 1,
+      "accuracy_ok": true
+    },
+    {
+      "dtype": "torch.float64",
+      "optimized_export_calls": 1,
+      "accuracy_ok": true
+    }
+  ],
+  "config": "/public/home/wzx226226/.cache/flagos-dev/20261103-mm-gpu1/mm-route-witness.conf",
+  "privateuse1_dispatch_witness": true
+}

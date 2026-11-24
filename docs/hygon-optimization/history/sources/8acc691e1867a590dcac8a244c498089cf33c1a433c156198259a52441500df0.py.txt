@@ -1,0 +1,63 @@
+"""Exact aten::sum.dim_IntList; no model changes, outputs/cache or DAS rerouting."""
+import hashlib,importlib,sys
+from pathlib import Path
+EXPECTED='5259b9f60445ef4a99e85387bc1e4c7a2264681170c695c6fc9b94378fa6348b'
+_STATE=None
+STATS={'fast_fp32':0,'fast_fp64':0,'fallback':0,'model_modified':False,'native_stream_attested':False}
+def install():
+    global _STATE
+    if _STATE is not None:raise RuntimeError('fresh process required')
+    import torch,flag_gems as fg,triton
+    from flag_gems.runtime import torch_device_fn
+    from .kernels import short_fp32,short_fp64
+    from capture_guard import capture_state
+    rows=[r for r in fg._FULL_CONFIG if r[0]=='sum.dim_IntList']
+    if len(rows)!=1:raise RuntimeError('ambiguous provider')
+    original=rows[0][1]
+    module=importlib.import_module(original.__module__)
+    if hashlib.sha256(Path(module.__file__).read_bytes()).hexdigest()!=EXPECTED:raise RuntimeError('unreviewed installed provider')
+    if any(r[1] is original and r[0]!='sum.dim_IntList' for r in fg._FULL_CONFIG):raise RuntimeError('shared provider would change another schema')
+    capability=torch._C._get_cpu_capability()
+    if capability not in ('AVX2','AVX512'):raise RuntimeError('unqualified CPU reference vector capability '+capability)
+    # Per-kernel dispatch is not global capability. Fixed upstream sum explicitly excludes AVX512.
+    # Use one generic 8-lane algorithm; actual180cases must still qualify it.
+    V=8
+    STATS.update(cpu_capability=capability,fp32_vector_width_hypothesis=V,torch_git_version=torch.version.git_version)
+    def replacement(inp,dim=None,keepdim=False,*,dtype=None):
+        good=(type(inp) is torch.Tensor and inp.device.type=='flagos' and inp.layout is torch.strided
+              and inp.dtype in (torch.float32,torch.float64) and (dtype is None or dtype is inp.dtype)
+              and not inp.is_nested and inp.ndim>=1 and inp.is_contiguous() and 0<inp.numel()<=2**31-1
+              and not inp.is_conj() and not inp.is_neg() and all(name is None for name in inp.names)
+              and type(dim) in (list,tuple) and len(dim)==1 and type(dim[0]) is int and dim[0] in (-1,inp.ndim-1)
+              and type(keepdim) is bool and 0<inp.shape[-1]<=64 and not torch.is_grad_enabled()
+              and not inp.requires_grad and not torch._C._are_functorch_transforms_active()
+              and torch._C._get_tracing_state() is None
+              and torch.autograd.forward_ad.unpack_dual(inp).tangent is None)
+        if not good or capture_state() is not False:
+            STATS['fallback']+=1
+            return original(inp,dim,keepdim,dtype=dtype)
+        N=inp.shape[-1];M=inp.numel()//N
+        shape=list(inp.shape)
+        if keepdim:shape[-1]=1
+        else:shape.pop()
+        out=torch.empty(shape,dtype=inp.dtype,device=inp.device)
+        with torch_device_fn.device(inp.device):
+            if inp.dtype is torch.float32:
+                STATS['fast_fp32']+=1
+                short_fp32[(triton.cdiv(M,32),)](inp,out,M,N,BM=32,V=V,num_warps=4,num_stages=1,enable_fp_fusion=False)
+            else:
+                STATS['fast_fp64']+=1
+                short_fp64[(triton.cdiv(M,32),)](inp,out,M,N,BM=32,BN=triton.next_power_of_2(N),num_warps=4,num_stages=1,enable_fp_fusion=False)
+        return out
+    config=fg._FULL_CONFIG
+    new=[type(r)((r[0],replacement,*r[2:])) if r[0]=='sum.dim_IntList' else r for r in config]
+    patches=[]
+    for name,mod in list(sys.modules.items()):
+        if mod is None or not (name=='flag_gems' or name.startswith(('flag_gems.','_hygon.'))):continue
+        for attr,value in list(vars(mod).items()):
+            if value is original:setattr(mod,attr,replacement);patches.append((name,attr))
+    fg._FULL_CONFIG=type(config)(new)
+    _STATE=(original,replacement,patches)
+    return get_stats()
+def get_stats():
+    return {'installed':_STATE is not None,'schema':'aten::sum.dim_IntList','stats':dict(STATS),'no_model_forward_patch':True,'no_DAS_reroute':True}

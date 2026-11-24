@@ -1,0 +1,5932 @@
+{
+  "node": "a01r4n15",
+  "physical_card": "3",
+  "apptainer_container": "/work1/share/scnethpc2601/flagos-dev/20261103-hygon-optimization/images/flagos-dev-20261103.rootfs",
+  "torch_file": "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch/__init__.py",
+  "torch_hip": "7.2.26365",
+  "native_file": "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/flash_attn_2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "device": "_CudaDeviceProperties(name='BW', major=9, minor=3, gcnArchName='gfx936:sramecc+:xnack-', total_memory=65520MB, multi_processor_count=80, uuid=30303135-3736-3837-3534-646131306331, pci_bus_id=119, pci_device_id=0, pci_domain_id=0, L2_cache_size=8MB)",
+  "packages": {
+    "torch": "2.13.0+dtk2610.2610261432.gefb4e1",
+    "triton": "3.7.0+dtk2610.torch2130.2610212057.g024953",
+    "flash-attn": "2.8.4+dtk2610.torch2130.2610211904.g0f1a5a"
+  },
+  "scope": "Focused checks after the initial functional suite; original tolerances unchanged.",
+  "tolerances": {
+    "output_atol": 0.002,
+    "output_rtol": 0.02,
+    "lse_atol": 2e-05,
+    "lse_rtol": 2e-05,
+    "gradient_atol": 0.01,
+    "gradient_rtol": 0.03
+  },
+  "tests": [
+    {
+      "id": "tiny/bfloat16/bshd_contiguous/aliasTrue/wheel",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 100,
+          "nonfinite": 0,
+          "max_abs": 0.14536690711975098,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 2,
+          "nonfinite": 0,
+          "max_abs": 3.1006393432617188,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 121,
+          "nonfinite": 0,
+          "max_abs": 2.443880558013916,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 3.0639171600341797,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 121,
+          "nonfinite": 0,
+          "max_abs": 2.443880558013916,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 3.0639171600341797,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": false,
+      "repeats": 3,
+      "arm": "wheel",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "tiny/bfloat16/bshd_contiguous/aliasTrue/aten",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 128,
+          "nonfinite": 0,
+          "max_abs": 2.455599308013916,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 3.0747060775756836,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 100,
+          "nonfinite": 0,
+          "max_abs": 0.14536690711975098,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 2,
+          "nonfinite": 0,
+          "max_abs": 3.1006393432617188,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 128,
+          "nonfinite": 0,
+          "max_abs": 2.455599308013916,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 3.0747060775756836,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": false,
+      "repeats": 3,
+      "arm": "aten",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "tiny/bfloat16/bshd_contiguous/aliasTrue/public",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 100,
+          "nonfinite": 0,
+          "max_abs": 0.14536690711975098,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 2,
+          "nonfinite": 0,
+          "max_abs": 3.1006393432617188,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 100,
+          "nonfinite": 0,
+          "max_abs": 0.14536690711975098,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 2,
+          "nonfinite": 0,
+          "max_abs": 3.1006393432617188,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 128,
+          "nonfinite": 0,
+          "max_abs": 2.455599308013916,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 3.0747060775756836,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": false,
+      "repeats": 3,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "tiny/bfloat16/bshd_contiguous/aliasFalse/wheel",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.006838083267211914,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.006838083267211914,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.006838083267211914,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 3,
+      "arm": "wheel",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "tiny/bfloat16/bshd_contiguous/aliasFalse/aten",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.006838083267211914,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.006838083267211914,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.006838083267211914,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 3,
+      "arm": "aten",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "tiny/bfloat16/bshd_contiguous/aliasFalse/public",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.006838083267211914,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.006838083267211914,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.006838083267211914,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 3,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "tiny/bfloat16/bhsd_contiguous_view/aliasTrue/wheel",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 99,
+          "nonfinite": 0,
+          "max_abs": 2.3560194969177246,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 1.607630729675293,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 99,
+          "nonfinite": 0,
+          "max_abs": 2.3560194969177246,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 1.607630729675293,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 115,
+          "nonfinite": 0,
+          "max_abs": 2.3091444969177246,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 1.6082711219787598,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": false,
+      "repeats": 3,
+      "arm": "wheel",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            64,
+            192,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            64,
+            192,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            64,
+            192,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "tiny/bfloat16/bhsd_contiguous_view/aliasTrue/aten",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 99,
+          "nonfinite": 0,
+          "max_abs": 2.3560194969177246,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 1.607630729675293,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 99,
+          "nonfinite": 0,
+          "max_abs": 2.3560194969177246,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 1.607630729675293,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 115,
+          "nonfinite": 0,
+          "max_abs": 2.3091444969177246,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 1.6082711219787598,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": false,
+      "repeats": 3,
+      "arm": "aten",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            64,
+            192,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            64,
+            192,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            64,
+            192,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "tiny/bfloat16/bhsd_contiguous_view/aliasTrue/public",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 99,
+          "nonfinite": 0,
+          "max_abs": 2.3560194969177246,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 1.607630729675293,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 99,
+          "nonfinite": 0,
+          "max_abs": 2.3560194969177246,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 1.607630729675293,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 99,
+          "nonfinite": 0,
+          "max_abs": 2.3560194969177246,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 1.607630729675293,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 3,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            64,
+            192,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            64,
+            192,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            64,
+            192,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "tiny/bfloat16/bhsd_contiguous_view/aliasFalse/wheel",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.006838083267211914,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.006838083267211914,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.006838083267211914,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 3,
+      "arm": "wheel",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            64,
+            192,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            64,
+            192,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            64,
+            192,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "tiny/bfloat16/bhsd_contiguous_view/aliasFalse/aten",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.006838083267211914,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.006838083267211914,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.006838083267211914,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 3,
+      "arm": "aten",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            64,
+            192,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            64,
+            192,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            64,
+            192,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "tiny/bfloat16/bhsd_contiguous_view/aliasFalse/public",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.006838083267211914,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.006838083267211914,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.006838083267211914,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 3,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            64,
+            192,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            64,
+            192,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            64,
+            192,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "scale/bfloat16/0.0/wheel",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": false,
+      "repeats": 3,
+      "arm": "wheel",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "scale/bfloat16/0.0/aten",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": false,
+      "repeats": 3,
+      "arm": "aten",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "scale/bfloat16/0.0/public",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": false,
+      "repeats": 3,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "scale/bfloat16/-0.08838834764831843/wheel",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": false,
+      "repeats": 3,
+      "arm": "wheel",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "scale/bfloat16/-0.08838834764831843/aten",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": false,
+      "repeats": 3,
+      "arm": "aten",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "scale/bfloat16/-0.08838834764831843/public",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": false,
+      "repeats": 3,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "scale/bfloat16/0.25/wheel",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 1,
+          "nonfinite": 0,
+          "max_abs": 0.008176803588867188,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 2.86102294921875e-06,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 1,
+          "nonfinite": 0,
+          "max_abs": 0.008176803588867188,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 2.86102294921875e-06,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 1,
+          "nonfinite": 0,
+          "max_abs": 0.008176803588867188,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 2.86102294921875e-06,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 3,
+      "arm": "wheel",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "scale/bfloat16/0.25/aten",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 1,
+          "nonfinite": 0,
+          "max_abs": 0.008176803588867188,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 2.86102294921875e-06,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 1,
+          "nonfinite": 0,
+          "max_abs": 0.008176803588867188,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 2.86102294921875e-06,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 1,
+          "nonfinite": 0,
+          "max_abs": 0.008176803588867188,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 2.86102294921875e-06,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 3,
+      "arm": "aten",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "scale/bfloat16/0.25/public",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 1,
+          "nonfinite": 0,
+          "max_abs": 0.008176803588867188,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 2.86102294921875e-06,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 1,
+          "nonfinite": 0,
+          "max_abs": 0.008176803588867188,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 2.86102294921875e-06,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 1,
+          "nonfinite": 0,
+          "max_abs": 0.008176803588867188,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 2.86102294921875e-06,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 3,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "dropout/bfloat16/requires_grad",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            97,
+            4,
+            64
+          ],
+          "elements": 49664,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.003965258598327637,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            97
+          ],
+          "elements": 776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": false,
+      "mask_shape": [
+        2,
+        4,
+        256,
+        128
+      ],
+      "observed_keep_fraction": 0.8739770650863647
+    },
+    {
+      "id": "reference/bfloat16/numpy_float64",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 2.384185791015625e-07,
+          "atol": 2e-06,
+          "rtol": 2e-06
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-06,
+          "rtol": 2e-06
+        }
+      ],
+      "reference": "independent NumPy FP64 on compute node"
+    },
+    {
+      "id": "tiny/float16/bshd_contiguous/aliasTrue/wheel",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 130,
+          "nonfinite": 0,
+          "max_abs": 2.4590651988983154,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 3.0773391723632812,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 130,
+          "nonfinite": 0,
+          "max_abs": 2.4590651988983154,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 3.0773391723632812,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 103,
+          "nonfinite": 0,
+          "max_abs": 0.14253568649291992,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 2,
+          "nonfinite": 0,
+          "max_abs": 3.103057384490967,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": false,
+      "repeats": 3,
+      "arm": "wheel",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "tiny/float16/bshd_contiguous/aliasTrue/aten",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 130,
+          "nonfinite": 0,
+          "max_abs": 2.4590651988983154,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 3.0773391723632812,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 103,
+          "nonfinite": 0,
+          "max_abs": 0.14253568649291992,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 2,
+          "nonfinite": 0,
+          "max_abs": 3.103057384490967,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 130,
+          "nonfinite": 0,
+          "max_abs": 2.4590651988983154,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 3.0773391723632812,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": false,
+      "repeats": 3,
+      "arm": "aten",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "tiny/float16/bshd_contiguous/aliasTrue/public",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 130,
+          "nonfinite": 0,
+          "max_abs": 2.4590651988983154,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 3.0773391723632812,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 130,
+          "nonfinite": 0,
+          "max_abs": 2.4590651988983154,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 3.0773391723632812,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 130,
+          "nonfinite": 0,
+          "max_abs": 2.4590651988983154,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 3.0773391723632812,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 3,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "tiny/float16/bshd_contiguous/aliasFalse/wheel",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0009343624114990234,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0009343624114990234,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0009343624114990234,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 3,
+      "arm": "wheel",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "tiny/float16/bshd_contiguous/aliasFalse/aten",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0009343624114990234,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0009343624114990234,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0009343624114990234,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 3,
+      "arm": "aten",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "tiny/float16/bshd_contiguous/aliasFalse/public",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0009343624114990234,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0009343624114990234,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0009343624114990234,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 3,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "tiny/float16/bhsd_contiguous_view/aliasTrue/wheel",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 113,
+          "nonfinite": 0,
+          "max_abs": 2.309131383895874,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 1.6055002212524414,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 98,
+          "nonfinite": 0,
+          "max_abs": 2.344287633895874,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 1.6048579216003418,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 113,
+          "nonfinite": 0,
+          "max_abs": 2.309131383895874,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 1.6055002212524414,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": false,
+      "repeats": 3,
+      "arm": "wheel",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            64,
+            192,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            64,
+            192,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            64,
+            192,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "tiny/float16/bhsd_contiguous_view/aliasTrue/aten",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 98,
+          "nonfinite": 0,
+          "max_abs": 2.344287633895874,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 1.6048579216003418,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 98,
+          "nonfinite": 0,
+          "max_abs": 2.344287633895874,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 1.6048579216003418,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 113,
+          "nonfinite": 0,
+          "max_abs": 2.309131383895874,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 1.6055002212524414,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": false,
+      "repeats": 3,
+      "arm": "aten",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            64,
+            192,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            64,
+            192,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            64,
+            192,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "tiny/float16/bhsd_contiguous_view/aliasTrue/public",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 98,
+          "nonfinite": 0,
+          "max_abs": 2.344287633895874,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 1.6048579216003418,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 113,
+          "nonfinite": 0,
+          "max_abs": 2.309131383895874,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 1.6055002212524414,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 98,
+          "nonfinite": 0,
+          "max_abs": 2.344287633895874,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 1.6048579216003418,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": false,
+      "repeats": 3,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            64,
+            192,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            64,
+            192,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            64,
+            192,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "tiny/float16/bhsd_contiguous_view/aliasFalse/wheel",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0009343624114990234,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0009343624114990234,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0009343624114990234,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 3,
+      "arm": "wheel",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            64,
+            192,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            64,
+            192,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            64,
+            192,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "tiny/float16/bhsd_contiguous_view/aliasFalse/aten",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0009343624114990234,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0009343624114990234,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0009343624114990234,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 3,
+      "arm": "aten",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            64,
+            192,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            64,
+            192,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            64,
+            192,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "tiny/float16/bhsd_contiguous_view/aliasFalse/public",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0009343624114990234,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0009343624114990234,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0009343624114990234,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 3,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            64,
+            192,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            64,
+            192,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            64,
+            192,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "scale/float16/0.0/wheel",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": false,
+      "repeats": 3,
+      "arm": "wheel",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "scale/float16/0.0/aten",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": false,
+      "repeats": 3,
+      "arm": "aten",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "scale/float16/0.0/public",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": false,
+      "repeats": 3,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "scale/float16/-0.08838834764831843/wheel",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": false,
+      "repeats": 3,
+      "arm": "wheel",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "scale/float16/-0.08838834764831843/aten",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": false,
+      "repeats": 3,
+      "arm": "aten",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "scale/float16/-0.08838834764831843/public",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": false,
+      "repeats": 3,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "scale/float16/0.25/wheel",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.002351522445678711,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-06,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.002351522445678711,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-06,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.002351522445678711,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-06,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 3,
+      "arm": "wheel",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "scale/float16/0.25/aten",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.002351522445678711,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-06,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.002351522445678711,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-06,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.002351522445678711,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-06,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 3,
+      "arm": "aten",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "scale/float16/0.25/public",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.002351522445678711,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-06,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.002351522445678711,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-06,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.002351522445678711,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-06,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 3,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "dropout/float16/requires_grad",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            97,
+            4,
+            64
+          ],
+          "elements": 49664,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0009925365447998047,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            97
+          ],
+          "elements": 776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": false,
+      "mask_shape": [
+        2,
+        4,
+        256,
+        128
+      ],
+      "observed_keep_fraction": 0.8739770650863647
+    },
+    {
+      "id": "reference/float16/numpy_float64",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 2.384185791015625e-07,
+          "atol": 2e-06,
+          "rtol": 2e-06
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-06,
+          "rtol": 2e-06
+        }
+      ],
+      "reference": "independent NumPy FP64 on compute node"
+    }
+  ],
+  "completed": true,
+  "passed": 17,
+  "failed": 29
+}

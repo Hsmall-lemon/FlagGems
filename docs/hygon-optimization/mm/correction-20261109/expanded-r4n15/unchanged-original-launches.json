@@ -1,0 +1,112 @@
+{
+  "previous_measured_commit": "afe1c5732fd4d2d15fb50e3bc82750ab3c7887a5",
+  "all_previous_exact_configurations_unchanged": 94,
+  "mm_executable_ast_after_removing_only_new_bf16_acceptance_equals_previous": true,
+  "unchanged_device_source_files": [
+    {
+      "file": "src/flag_gems/runtime/backend/_hygon/ops/mm_kernels.py",
+      "sha256": "419261edee1297ae0462d24cb7aac68ee5b923eed05976dc0cb0e882e03e273d"
+    },
+    {
+      "file": "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_coalesced.py",
+      "sha256": "f7f986c572dff81ec5610360cc2acd7ab98565bb318abcccd36d56544e59dc7e"
+    },
+    {
+      "file": "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_coopfast.py",
+      "sha256": "54676e5e22ffe03e1ada3bc9491dd0e684fd476053cbfb209e5902bf786714b6"
+    },
+    {
+      "file": "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_operands.py",
+      "sha256": "8c89723524d11664aadb151bff65ebd547a1c9fa96a38566ad7e132134d83dc9"
+    },
+    {
+      "file": "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_peel.py",
+      "sha256": "ff2843ce943b2228d2fd0f3d04f32b7774ab804e23d19bb806d17d8a571d5f4d"
+    },
+    {
+      "file": "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_pipeline.py",
+      "sha256": "c2c21e33b52f1c6fa4c6761a51b920706d4933499e30789ca7fdf8c7ea830d8f"
+    },
+    {
+      "file": "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_prefetch.py",
+      "sha256": "46d995e82210b03603e0ab2942dc9b35425581a41062de2b748aa586a97e24b0"
+    },
+    {
+      "file": "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_rawpipe.py",
+      "sha256": "c7d88c8a9f69362e7097e93f227c5542f7838ead19a2f9f05bd37c815e1008bc"
+    },
+    {
+      "file": "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_reshape.py",
+      "sha256": "2b520d6ad9371509c6c518b8586e0b1643aed1b97335d38fadd46406a365ffe9"
+    },
+    {
+      "file": "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_swizzle.py",
+      "sha256": "9b76006a18f9fedf93a328384f0a0888bd28a78feeca295a01c4e75537f38d67"
+    },
+    {
+      "file": "src/flag_gems/runtime/backend/_hygon/ops/mm_w8a8_int8.py",
+      "sha256": "d4cc7ed5ff5f186d7974337894cfc5f723b60a9d8659ad2b52243226b15c13d6"
+    }
+  ],
+  "added_configurations": [
+    {
+      "key": [
+        "torch.bfloat16",
+        32,
+        32,
+        64,
+        64,
+        1,
+        32,
+        1
+      ],
+      "config": {
+        "kind": "tile",
+        "bm": 32,
+        "bn": 32,
+        "bk": 32,
+        "warps": 4,
+        "stages": 1,
+        "split": 1,
+        "group": 1
+      }
+    },
+    {
+      "key": [
+        "torch.float32",
+        33,
+        37,
+        65,
+        137,
+        2,
+        83,
+        2
+      ],
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 4
+      }
+    },
+    {
+      "key": [
+        "torch.float64",
+        33,
+        37,
+        65,
+        137,
+        2,
+        83,
+        2
+      ],
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 4
+      }
+    }
+  ],
+  "previous_fp32_fp64_measurements_reused_with_explicit_source_delta_proof": true,
+  "original_94_cases_remeasured_in_this_extension": false,
+  "limitation": "This proves unchanged source/dispatch for previous inputs; it does not itself prove runtime correctness or resolve the original reviewer failure."
+}

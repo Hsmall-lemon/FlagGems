@@ -1,0 +1,451 @@
+{
+  "scope": "Deterministic worksheet metadata reconstructions, not original model operands",
+  "torch": "2.10.0+cpu",
+  "workbook_sha256": "d2596052c66d7145af47b35fda45198d1f213b69825aeb91d10112dfd8871597",
+  "cases": {
+    "model_state": {
+      "case": {
+        "id": "model_state",
+        "sheet": "\u5927\u4e8e5%\u7684\u6a21\u578b\u5de5\u51b5",
+        "row": 645,
+        "specification": [
+          [
+            {
+              "tensor": true,
+              "shape": [
+                8,
+                16,
+                2049,
+                128
+              ],
+              "stride": [
+                12589056,
+                128,
+                6144,
+                1
+              ],
+              "dtype": "torch.bfloat16",
+              "device": "cuda:0",
+              "layout": "torch.strided",
+              "storage_offset": 0,
+              "requires_grad": false,
+              "is_contiguous": false
+            },
+            {
+              "tensor": true,
+              "shape": [
+                8,
+                16,
+                2049,
+                128
+              ],
+              "stride": [
+                12589056,
+                128,
+                6144,
+                1
+              ],
+              "dtype": "torch.bfloat16",
+              "device": "cuda:0",
+              "layout": "torch.strided",
+              "storage_offset": 2048,
+              "requires_grad": false,
+              "is_contiguous": false
+            },
+            {
+              "tensor": true,
+              "shape": [
+                8,
+                16,
+                2049,
+                128
+              ],
+              "stride": [
+                12589056,
+                128,
+                6144,
+                1
+              ],
+              "dtype": "torch.bfloat16",
+              "device": "cuda:0",
+              "layout": "torch.strided",
+              "storage_offset": 4096,
+              "requires_grad": false,
+              "is_contiguous": false
+            }
+          ],
+          {
+            "scale": 0.08838834764831843
+          }
+        ],
+        "seed": 20261105,
+        "generation": "CPU direct BF16 randn",
+        "storage": "shared_qkv_backing_from_user_review",
+        "input_scope": "metadata reconstruction; original model payload and external contract not replayed",
+        "original_model_acceptance_verified": false
+      },
+      "identity": {
+        "seed": 20261105,
+        "fp32_generation": false,
+        "backing_sha256": "44ebfeb326f5a257e890668d149dd0e28a715052ab3d7560d14726f39107fc04",
+        "backing_elements": [
+          100712448
+        ],
+        "backing_bytes": 201424896,
+        "storage_policy": "shared_qkv_backing_from_user_review"
+      },
+      "files": [
+        {
+          "name": "model_state-backing0.bf16",
+          "sha256": "44ebfeb326f5a257e890668d149dd0e28a715052ab3d7560d14726f39107fc04",
+          "elements": 100712448,
+          "bytes": 201424896
+        }
+      ],
+      "backing_indices": [
+        0,
+        0,
+        0
+      ]
+    },
+    "expanded_small": {
+      "case": {
+        "id": "expanded_small",
+        "sheet": "\u89c4\u6a21\u6269\u5c55\u5de5\u51b5",
+        "row": 2,
+        "specification": [
+          [
+            {
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "layout": "torch.strided",
+              "requires_grad": false,
+              "shape": [
+                2,
+                16,
+                3,
+                128
+              ],
+              "storage_offset": 0,
+              "stride": [
+                18432,
+                128,
+                6144,
+                1
+              ]
+            },
+            {
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "layout": "torch.strided",
+              "requires_grad": false,
+              "shape": [
+                2,
+                16,
+                3,
+                128
+              ],
+              "storage_offset": 2048,
+              "stride": [
+                18432,
+                128,
+                6144,
+                1
+              ]
+            },
+            {
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "layout": "torch.strided",
+              "requires_grad": false,
+              "shape": [
+                2,
+                16,
+                3,
+                128
+              ],
+              "storage_offset": 4096,
+              "stride": [
+                18432,
+                128,
+                6144,
+                1
+              ]
+            }
+          ],
+          {
+            "scale": 0.08838834764831843
+          }
+        ],
+        "seed": 5058009176373978791,
+        "generation": "CPU direct BF16 randn",
+        "storage": "independent_minimum_backings_from_expansion_spec",
+        "input_scope": "independent synthetic input; shape/stride/offset and seed from workbook",
+        "original_model_acceptance_verified": false
+      },
+      "identity": {
+        "seed": 5058009176373978791,
+        "fp32_generation": false,
+        "backing_sha256": "8a234cca0975021f970d0dd385a7395834c89924f8f4e3e39a9f1c7f4cd29398",
+        "backing_elements": [
+          32768,
+          34816,
+          36864
+        ],
+        "backing_bytes": 208896,
+        "storage_policy": "independent_minimum_backings_from_expansion_spec"
+      },
+      "files": [
+        {
+          "name": "expanded_small-backing0.bf16",
+          "sha256": "130b3b91027d785413d8f6454c71af066f76c3f625ff34c3c2fff9fb43016503",
+          "elements": 32768,
+          "bytes": 65536
+        },
+        {
+          "name": "expanded_small-backing1.bf16",
+          "sha256": "076b7854cc6dda420cf2230d0592ffec24b1ab750c8550fcb889a71afc0b859d",
+          "elements": 34816,
+          "bytes": 69632
+        },
+        {
+          "name": "expanded_small-backing2.bf16",
+          "sha256": "f9c798238185b723f3e3b39bfeb399bf25fb35ced0de451f1de15d7f2a193ae5",
+          "elements": 36864,
+          "bytes": 73728
+        }
+      ],
+      "backing_indices": [
+        0,
+        1,
+        2
+      ]
+    },
+    "expanded_medium": {
+      "case": {
+        "id": "expanded_medium",
+        "sheet": "\u89c4\u6a21\u6269\u5c55\u5de5\u51b5",
+        "row": 3,
+        "specification": [
+          [
+            {
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "layout": "torch.strided",
+              "requires_grad": false,
+              "shape": [
+                2,
+                16,
+                23,
+                128
+              ],
+              "storage_offset": 0,
+              "stride": [
+                141312,
+                128,
+                6144,
+                1
+              ]
+            },
+            {
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "layout": "torch.strided",
+              "requires_grad": false,
+              "shape": [
+                2,
+                16,
+                23,
+                128
+              ],
+              "storage_offset": 2048,
+              "stride": [
+                141312,
+                128,
+                6144,
+                1
+              ]
+            },
+            {
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "layout": "torch.strided",
+              "requires_grad": false,
+              "shape": [
+                2,
+                16,
+                23,
+                128
+              ],
+              "storage_offset": 4096,
+              "stride": [
+                141312,
+                128,
+                6144,
+                1
+              ]
+            }
+          ],
+          {
+            "scale": 0.08838834764831843
+          }
+        ],
+        "seed": 6792970978253416049,
+        "generation": "CPU direct BF16 randn",
+        "storage": "independent_minimum_backings_from_expansion_spec",
+        "input_scope": "independent synthetic input; shape/stride/offset and seed from workbook",
+        "original_model_acceptance_verified": false
+      },
+      "identity": {
+        "seed": 6792970978253416049,
+        "fp32_generation": false,
+        "backing_sha256": "76139531dc6bf5c53593bfdc88d3dd5acc5ca13733b5ac6944e92b20064208b5",
+        "backing_elements": [
+          278528,
+          280576,
+          282624
+        ],
+        "backing_bytes": 1683456,
+        "storage_policy": "independent_minimum_backings_from_expansion_spec"
+      },
+      "files": [
+        {
+          "name": "expanded_medium-backing0.bf16",
+          "sha256": "bb03de9107715d4f56aa4751c8e94dc8c93a8851b7e1923f632b74ddd228a787",
+          "elements": 278528,
+          "bytes": 557056
+        },
+        {
+          "name": "expanded_medium-backing1.bf16",
+          "sha256": "85a74e4269e7d74001019371e0928db8ecd02ca1b53256ac6cc553184e202e84",
+          "elements": 280576,
+          "bytes": 561152
+        },
+        {
+          "name": "expanded_medium-backing2.bf16",
+          "sha256": "46ee4de1110d04f4244b298ef548d8b85cee8420defc51fffe29108c3d55ee00",
+          "elements": 282624,
+          "bytes": 565248
+        }
+      ],
+      "backing_indices": [
+        0,
+        1,
+        2
+      ]
+    },
+    "expanded_large": {
+      "case": {
+        "id": "expanded_large",
+        "sheet": "\u89c4\u6a21\u6269\u5c55\u5de5\u51b5",
+        "row": 4,
+        "specification": [
+          [
+            {
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "layout": "torch.strided",
+              "requires_grad": false,
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "storage_offset": 0,
+              "stride": [
+                2224128,
+                128,
+                6144,
+                1
+              ]
+            },
+            {
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "layout": "torch.strided",
+              "requires_grad": false,
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "storage_offset": 2048,
+              "stride": [
+                2224128,
+                128,
+                6144,
+                1
+              ]
+            },
+            {
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "layout": "torch.strided",
+              "requires_grad": false,
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "storage_offset": 4096,
+              "stride": [
+                2224128,
+                128,
+                6144,
+                1
+              ]
+            }
+          ],
+          {
+            "scale": 0.08838834764831843
+          }
+        ],
+        "seed": 8147618770989597313,
+        "generation": "CPU direct BF16 randn",
+        "storage": "independent_minimum_backings_from_expansion_spec",
+        "input_scope": "independent synthetic input; shape/stride/offset and seed from workbook",
+        "original_model_acceptance_verified": false
+      },
+      "identity": {
+        "seed": 8147618770989597313,
+        "fp32_generation": false,
+        "backing_sha256": "407dd00340ce0c38435ba91f1f4516284411104c40bcf7e59d0d960bb5f15316",
+        "backing_elements": [
+          4444160,
+          4446208,
+          4448256
+        ],
+        "backing_bytes": 26677248,
+        "storage_policy": "independent_minimum_backings_from_expansion_spec"
+      },
+      "files": [
+        {
+          "name": "expanded_large-backing0.bf16",
+          "sha256": "f4a8c88aad6f1668b30d4706270269d05f7df656f476c18d600dda3991bff57a",
+          "elements": 4444160,
+          "bytes": 8888320
+        },
+        {
+          "name": "expanded_large-backing1.bf16",
+          "sha256": "fecd10205f10da818d2e368df885a1d9393bef948632b57eb874ee1aa45b71fd",
+          "elements": 4446208,
+          "bytes": 8892416
+        },
+        {
+          "name": "expanded_large-backing2.bf16",
+          "sha256": "71239635df508fe3473da551b9e1b7e6cf018ace5afa2f93b2243d7b00139be3",
+          "elements": 4448256,
+          "bytes": 8896512
+        }
+      ],
+      "backing_indices": [
+        0,
+        1,
+        2
+      ]
+    }
+  }
+}

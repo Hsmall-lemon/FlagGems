@@ -1,0 +1,11 @@
+{
+  "source_sha256": {
+    "src/flag_gems/__init__.py": "dd53c5c1dbb1c7a80174228aef2b9b580aec2b5fa0c4cbc4d991d98bb3c813dd",
+    "src/flag_gems/runtime/backend/_hygon/ops/__init__.py": "94fe1b4848843bb23cf9150ebe594fffba5b00f92946ff2d9ca15ba7b77c59e0",
+    "src/flag_gems/runtime/backend/_hygon/ops/to.py": "9be60225daf232b08cd618fa326286f98ff96f583bd209e0f580a2081df93ec2",
+    "tests/test_hygon_to_dtype.py": "f4cbd4346bcdc3608648561b198c0c83568fbbf70aef5b9380114841192cbbc8"
+  },
+  "to_copy_config": "    (\n        \"_to_copy\",\n        to_copy,\n        lambda: _parse_version(torch.__version__) >= _parse_version(\"2.4\"),\n        # The pinned Torch-FL bridge implements _to_copy directly on PrivateUse1.\n        # Register there as well so Tensor.to(dtype) reaches the selected kernel.\n        (\n            (\"PrivateUse1\",)\n            if vendor_name == \"hygon\"\n            and torch._C._get_privateuse1_backend_name() == \"flagos\"\n            else ()\n        ),\n    ),",
+  "backend_import_and_export_verified": true,
+  "format_only_root_change_ast_verified": true
+}

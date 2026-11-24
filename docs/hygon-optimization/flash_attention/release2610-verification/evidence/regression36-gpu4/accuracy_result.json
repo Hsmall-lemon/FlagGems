@@ -1,0 +1,421 @@
+{
+  "tests/test_flash_attention_hygon_state.py::test_state_flash_attention_interleaved_qkv[None-random]": {
+    "params": {
+      "scale": null,
+      "pattern": "random"
+    },
+    "result": "passed",
+    "opname": [
+      "scaled_dot_product_flash_attention"
+    ],
+    "candidate_calls": {},
+    "reason": null
+  },
+  "tests/test_flash_attention_hygon_state.py::test_state_flash_attention_interleaved_qkv[0.08838834764831845-random]": {
+    "params": {
+      "scale": 0.08838834764831845,
+      "pattern": "random"
+    },
+    "result": "passed",
+    "opname": [
+      "scaled_dot_product_flash_attention"
+    ],
+    "candidate_calls": {},
+    "reason": null
+  },
+  "tests/test_flash_attention_hygon_state.py::test_state_flash_attention_interleaved_qkv[0.08838834764831843-random]": {
+    "params": {
+      "scale": 0.08838834764831843,
+      "pattern": "random"
+    },
+    "result": "passed",
+    "opname": [
+      "scaled_dot_product_flash_attention"
+    ],
+    "candidate_calls": {},
+    "reason": null
+  },
+  "tests/test_flash_attention_hygon_state.py::test_state_flash_attention_interleaved_qkv[0.125-random]": {
+    "params": {
+      "scale": 0.125,
+      "pattern": "random"
+    },
+    "result": "passed",
+    "opname": [
+      "scaled_dot_product_flash_attention"
+    ],
+    "candidate_calls": {},
+    "reason": null
+  },
+  "tests/test_flash_attention_hygon_state.py::test_state_flash_attention_interleaved_qkv[-0.08838834764831845-random]": {
+    "params": {
+      "scale": -0.08838834764831845,
+      "pattern": "random"
+    },
+    "result": "passed",
+    "opname": [
+      "scaled_dot_product_flash_attention"
+    ],
+    "candidate_calls": {},
+    "reason": null
+  },
+  "tests/test_flash_attention_hygon_state.py::test_state_flash_attention_interleaved_qkv[None-mixed_large]": {
+    "params": {
+      "scale": null,
+      "pattern": "mixed_large"
+    },
+    "result": "passed",
+    "opname": [
+      "scaled_dot_product_flash_attention"
+    ],
+    "candidate_calls": {},
+    "reason": null
+  },
+  "tests/test_flash_attention_hygon_state.py::test_state_flash_attention_interleaved_qkv[None-zero_qk]": {
+    "params": {
+      "scale": null,
+      "pattern": "zero_qk"
+    },
+    "result": "passed",
+    "opname": [
+      "scaled_dot_product_flash_attention"
+    ],
+    "candidate_calls": {},
+    "reason": null
+  },
+  "tests/test_flash_attention_hygon_state.py::test_state_flash_attention_interleaved_qkv[0.08838834764831843-zero_q_large_k]": {
+    "params": {
+      "scale": 0.08838834764831843,
+      "pattern": "zero_q_large_k"
+    },
+    "result": "passed",
+    "opname": [
+      "scaled_dot_product_flash_attention"
+    ],
+    "candidate_calls": {},
+    "reason": null
+  },
+  "tests/test_flash_attention_hygon_state.py::test_state_flash_attention_interleaved_qkv[0.08838834764831843-large_q_zero_k]": {
+    "params": {
+      "scale": 0.08838834764831843,
+      "pattern": "large_q_zero_k"
+    },
+    "result": "passed",
+    "opname": [
+      "scaled_dot_product_flash_attention"
+    ],
+    "candidate_calls": {},
+    "reason": null
+  },
+  "tests/test_flash_attention_hygon_state.py::test_state_flash_attention_interleaved_qkv[0.08838834764831843-large_v]": {
+    "params": {
+      "scale": 0.08838834764831843,
+      "pattern": "large_v"
+    },
+    "result": "passed",
+    "opname": [
+      "scaled_dot_product_flash_attention"
+    ],
+    "candidate_calls": {},
+    "reason": null
+  },
+  "tests/test_flash_attention_hygon_state.py::test_state_flash_attention_expanded_independent_backings[3-5058009176373978791-normal]": {
+    "params": {
+      "n": 3,
+      "seed": 5058009176373978791,
+      "pattern": "normal"
+    },
+    "result": "passed",
+    "opname": [
+      "scaled_dot_product_flash_attention"
+    ],
+    "candidate_calls": {},
+    "reason": null
+  },
+  "tests/test_flash_attention_hygon_state.py::test_state_flash_attention_expanded_independent_backings[3-5058009176373978791-large_qk]": {
+    "params": {
+      "n": 3,
+      "seed": 5058009176373978791,
+      "pattern": "large_qk"
+    },
+    "result": "passed",
+    "opname": [
+      "scaled_dot_product_flash_attention"
+    ],
+    "candidate_calls": {},
+    "reason": null
+  },
+  "tests/test_flash_attention_hygon_state.py::test_state_flash_attention_expanded_independent_backings[3-5058009176373978791-zero_q_large_k]": {
+    "params": {
+      "n": 3,
+      "seed": 5058009176373978791,
+      "pattern": "zero_q_large_k"
+    },
+    "result": "passed",
+    "opname": [
+      "scaled_dot_product_flash_attention"
+    ],
+    "candidate_calls": {},
+    "reason": null
+  },
+  "tests/test_flash_attention_hygon_state.py::test_state_flash_attention_expanded_independent_backings[3-5058009176373978791-large_q_zero_k]": {
+    "params": {
+      "n": 3,
+      "seed": 5058009176373978791,
+      "pattern": "large_q_zero_k"
+    },
+    "result": "passed",
+    "opname": [
+      "scaled_dot_product_flash_attention"
+    ],
+    "candidate_calls": {},
+    "reason": null
+  },
+  "tests/test_flash_attention_hygon_state.py::test_state_flash_attention_expanded_independent_backings[3-5058009176373978791-large_v]": {
+    "params": {
+      "n": 3,
+      "seed": 5058009176373978791,
+      "pattern": "large_v"
+    },
+    "result": "passed",
+    "opname": [
+      "scaled_dot_product_flash_attention"
+    ],
+    "candidate_calls": {},
+    "reason": null
+  },
+  "tests/test_flash_attention_hygon_state.py::test_state_flash_attention_expanded_independent_backings[3-5058009176373978791-large_scores_large_v]": {
+    "params": {
+      "n": 3,
+      "seed": 5058009176373978791,
+      "pattern": "large_scores_large_v"
+    },
+    "result": "passed",
+    "opname": [
+      "scaled_dot_product_flash_attention"
+    ],
+    "candidate_calls": {},
+    "reason": null
+  },
+  "tests/test_flash_attention_hygon_state.py::test_state_flash_attention_expanded_independent_backings[23-6792970978253416049-normal]": {
+    "params": {
+      "n": 23,
+      "seed": 6792970978253416049,
+      "pattern": "normal"
+    },
+    "result": "passed",
+    "opname": [
+      "scaled_dot_product_flash_attention"
+    ],
+    "candidate_calls": {},
+    "reason": null
+  },
+  "tests/test_flash_attention_hygon_state.py::test_state_flash_attention_expanded_independent_backings[23-6792970978253416049-large_qk]": {
+    "params": {
+      "n": 23,
+      "seed": 6792970978253416049,
+      "pattern": "large_qk"
+    },
+    "result": "passed",
+    "opname": [
+      "scaled_dot_product_flash_attention"
+    ],
+    "candidate_calls": {},
+    "reason": null
+  },
+  "tests/test_flash_attention_hygon_state.py::test_state_flash_attention_expanded_independent_backings[23-6792970978253416049-zero_q_large_k]": {
+    "params": {
+      "n": 23,
+      "seed": 6792970978253416049,
+      "pattern": "zero_q_large_k"
+    },
+    "result": "passed",
+    "opname": [
+      "scaled_dot_product_flash_attention"
+    ],
+    "candidate_calls": {},
+    "reason": null
+  },
+  "tests/test_flash_attention_hygon_state.py::test_state_flash_attention_expanded_independent_backings[23-6792970978253416049-large_q_zero_k]": {
+    "params": {
+      "n": 23,
+      "seed": 6792970978253416049,
+      "pattern": "large_q_zero_k"
+    },
+    "result": "passed",
+    "opname": [
+      "scaled_dot_product_flash_attention"
+    ],
+    "candidate_calls": {},
+    "reason": null
+  },
+  "tests/test_flash_attention_hygon_state.py::test_state_flash_attention_expanded_independent_backings[23-6792970978253416049-large_v]": {
+    "params": {
+      "n": 23,
+      "seed": 6792970978253416049,
+      "pattern": "large_v"
+    },
+    "result": "passed",
+    "opname": [
+      "scaled_dot_product_flash_attention"
+    ],
+    "candidate_calls": {},
+    "reason": null
+  },
+  "tests/test_flash_attention_hygon_state.py::test_state_flash_attention_expanded_independent_backings[23-6792970978253416049-large_scores_large_v]": {
+    "params": {
+      "n": 23,
+      "seed": 6792970978253416049,
+      "pattern": "large_scores_large_v"
+    },
+    "result": "passed",
+    "opname": [
+      "scaled_dot_product_flash_attention"
+    ],
+    "candidate_calls": {},
+    "reason": null
+  },
+  "tests/test_flash_attention_hygon_state.py::test_state_flash_attention_expanded_independent_backings[362-8147618770989597313-normal]": {
+    "params": {
+      "n": 362,
+      "seed": 8147618770989597313,
+      "pattern": "normal"
+    },
+    "result": "passed",
+    "opname": [
+      "scaled_dot_product_flash_attention"
+    ],
+    "candidate_calls": {},
+    "reason": null
+  },
+  "tests/test_flash_attention_hygon_state.py::test_state_flash_attention_expanded_independent_backings[362-8147618770989597313-large_qk]": {
+    "params": {
+      "n": 362,
+      "seed": 8147618770989597313,
+      "pattern": "large_qk"
+    },
+    "result": "passed",
+    "opname": [
+      "scaled_dot_product_flash_attention"
+    ],
+    "candidate_calls": {},
+    "reason": null
+  },
+  "tests/test_flash_attention_hygon_state.py::test_state_flash_attention_expanded_independent_backings[362-8147618770989597313-zero_q_large_k]": {
+    "params": {
+      "n": 362,
+      "seed": 8147618770989597313,
+      "pattern": "zero_q_large_k"
+    },
+    "result": "passed",
+    "opname": [
+      "scaled_dot_product_flash_attention"
+    ],
+    "candidate_calls": {},
+    "reason": null
+  },
+  "tests/test_flash_attention_hygon_state.py::test_state_flash_attention_expanded_independent_backings[362-8147618770989597313-large_q_zero_k]": {
+    "params": {
+      "n": 362,
+      "seed": 8147618770989597313,
+      "pattern": "large_q_zero_k"
+    },
+    "result": "passed",
+    "opname": [
+      "scaled_dot_product_flash_attention"
+    ],
+    "candidate_calls": {},
+    "reason": null
+  },
+  "tests/test_flash_attention_hygon_state.py::test_state_flash_attention_expanded_independent_backings[362-8147618770989597313-large_v]": {
+    "params": {
+      "n": 362,
+      "seed": 8147618770989597313,
+      "pattern": "large_v"
+    },
+    "result": "passed",
+    "opname": [
+      "scaled_dot_product_flash_attention"
+    ],
+    "candidate_calls": {},
+    "reason": null
+  },
+  "tests/test_flash_attention_hygon_state.py::test_state_flash_attention_expanded_independent_backings[362-8147618770989597313-large_scores_large_v]": {
+    "params": {
+      "n": 362,
+      "seed": 8147618770989597313,
+      "pattern": "large_scores_large_v"
+    },
+    "result": "passed",
+    "opname": [
+      "scaled_dot_product_flash_attention"
+    ],
+    "candidate_calls": {},
+    "reason": null
+  },
+  "tests/test_flash_attention_hygon_state.py::test_state_flash_attention_expanded_independent_backings[362-8147618770989597313-signed_v8]": {
+    "params": {
+      "n": 362,
+      "seed": 8147618770989597313,
+      "pattern": "signed_v8"
+    },
+    "result": "passed",
+    "opname": [
+      "scaled_dot_product_flash_attention"
+    ],
+    "candidate_calls": {},
+    "reason": null
+  },
+  "tests/test_flash_attention_hygon_state.py::test_state_flash_attention_expanded_independent_backings[362-8147618770989597313-tiny_v]": {
+    "params": {
+      "n": 362,
+      "seed": 8147618770989597313,
+      "pattern": "tiny_v"
+    },
+    "result": "passed",
+    "opname": [
+      "scaled_dot_product_flash_attention"
+    ],
+    "candidate_calls": {},
+    "reason": null
+  },
+  "tests/test_flash_attention_hygon_state.py::test_state_flash_attention_expanded_independent_backings[362-8147618770989597313-large_finite_v]": {
+    "params": {
+      "n": 362,
+      "seed": 8147618770989597313,
+      "pattern": "large_finite_v"
+    },
+    "result": "passed",
+    "opname": [
+      "scaled_dot_product_flash_attention"
+    ],
+    "candidate_calls": {},
+    "reason": null
+  },
+  "tests/test_flash_attention_hygon_state.py::test_state_flash_attention_expanded_independent_backings[362-8147618770989597313-negative_scores]": {
+    "params": {
+      "n": 362,
+      "seed": 8147618770989597313,
+      "pattern": "negative_scores"
+    },
+    "result": "passed",
+    "opname": [
+      "scaled_dot_product_flash_attention"
+    ],
+    "candidate_calls": {},
+    "reason": null
+  },
+  "tests/test_flash_attention_hygon_state.py::test_state_flash_attention_expanded_independent_backings[362-8147618770989597313-changing_scores]": {
+    "params": {
+      "n": 362,
+      "seed": 8147618770989597313,
+      "pattern": "changing_scores"
+    },
+    "result": "passed",
+    "opname": [
+      "scaled_dot_product_flash_attention"
+    ],
+    "candidate_calls": {},
+    "reason": null
+  }
+}

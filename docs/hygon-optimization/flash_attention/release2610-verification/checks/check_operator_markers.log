@@ -1,0 +1,4 @@
+Loaded 251 test aliases
+Indexed 1845 pytest markers across test files
+Checking test coverage for 1 operator(s)...
+✅ All operators have test coverage.

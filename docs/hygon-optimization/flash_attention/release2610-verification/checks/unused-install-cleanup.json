@@ -1,0 +1,22 @@
+{
+  "removed": [
+    {
+      "path": "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk_llvm.run",
+      "removed_bytes": 1139392704
+    },
+    {
+      "path": "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/toolchains/dtk_llvm",
+      "removed_bytes": 4037088145
+    },
+    {
+      "path": "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/fg-compiler33",
+      "removed_bytes": 361427672
+    },
+    {
+      "path": "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/triton-3.3.0+das.opt1.dtk2604.torch290-cp312-cp312-manylinux_2_28_x86_64.whl",
+      "removed_bytes": 107429654
+    }
+  ],
+  "total_removed_bytes": 5645338175,
+  "user_free_bytes_after": 60373860352
+}

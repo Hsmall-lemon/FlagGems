@@ -1,0 +1,1061 @@
+{
+  "date": "2026-11-09",
+  "node": "a01r3n13",
+  "visible_gpu": 0,
+  "pr_is_draft": true,
+  "accepted": false,
+  "reviewer_failure_reproduced": false,
+  "reviewer_failure_resolved": false,
+  "implementation": "Replace all three selected peel configurations with explicit-layout pipelined swizzle, prefetch=8, warps=2, wm=1.",
+  "accuracy": {
+    "case_seed_records": 240,
+    "passed_records": 240,
+    "cases": 120,
+    "seeds": [
+      100003,
+      880301
+    ],
+    "providers": [
+      "das",
+      "new_export"
+    ],
+    "fp64_rtol": 1e-10,
+    "fp64_atol": 1e-10,
+    "fp32_rtol": 0.0001,
+    "fp32_atol": 0.0002
+  },
+  "standalone_focused_tests": 25,
+  "standalone_public_checks": 18,
+  "target_count": 94,
+  "passes_this_protocol": 75,
+  "performance_failures": [
+    {
+      "row": 20,
+      "das_us": 14.44,
+      "new_us": 16.544,
+      "das_over_new": 0.8728239845261121,
+      "das_aa_drift": 0.03446327683615813,
+      "new_aa_drift": 0.008259495688124341,
+      "status": "below_90_percent"
+    },
+    {
+      "row": 32,
+      "das_us": 14.456,
+      "new_us": 20.232,
+      "das_over_new": 0.7145116646896006,
+      "das_aa_drift": 0.0022172949002217113,
+      "new_aa_drift": 0.00039556962025311115,
+      "status": "below_90_percent"
+    }
+  ],
+  "stability_failures": [
+    {
+      "row": 8,
+      "das_us": 7.504,
+      "new_us": 4.744,
+      "das_over_new": 1.581787521079258,
+      "das_aa_drift": 0.002138873526609242,
+      "new_aa_drift": 0.1500843170320405,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "row": 9,
+      "das_us": 4.736,
+      "new_us": 4.76,
+      "das_over_new": 0.9949579831932773,
+      "das_aa_drift": 0.005084745762711895,
+      "new_aa_drift": 0.14983164983164987,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "row": 24,
+      "das_us": 11.192,
+      "new_us": 10.08,
+      "das_over_new": 1.1103174603174604,
+      "das_aa_drift": 0.0021519423404721127,
+      "new_aa_drift": 0.21832669322709175,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "row": 43,
+      "das_us": 12.064,
+      "new_us": 11.0,
+      "das_over_new": 1.0967272727272728,
+      "das_aa_drift": 0.07589880159786966,
+      "new_aa_drift": 0.005843681519357213,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "row": 78,
+      "das_us": 29.75995,
+      "new_us": 29.16,
+      "das_over_new": 1.0205744170096023,
+      "das_aa_drift": 2.6149789248203428,
+      "new_aa_drift": 0.0010979961570134478,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "row": 81,
+      "das_us": 4.744,
+      "new_us": 4.752,
+      "das_over_new": 0.9983164983164983,
+      "das_aa_drift": 0.0050761421319796,
+      "new_aa_drift": 0.1520270270270272,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "row": 82,
+      "das_us": 4.744,
+      "new_us": 4.76,
+      "das_over_new": 0.9966386554621849,
+      "das_aa_drift": 0.001686340640809414,
+      "new_aa_drift": 0.14814814814814836,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "row": 83,
+      "das_us": 5.28,
+      "new_us": 4.752,
+      "das_over_new": 1.1111111111111112,
+      "das_aa_drift": 0.12898330804248848,
+      "new_aa_drift": 0.1522842639593911,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "row": 86,
+      "das_us": 4.784,
+      "new_us": 4.728,
+      "das_over_new": 1.011844331641286,
+      "das_aa_drift": 0.0016750418760469454,
+      "new_aa_drift": 0.14915254237288145,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "row": 101,
+      "das_us": 4.728,
+      "new_us": 4.752,
+      "das_over_new": 0.9949494949494949,
+      "das_aa_drift": 0.00339558573853993,
+      "new_aa_drift": 0.15280135823429553,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "row": 103,
+      "das_us": 4.72,
+      "new_us": 4.76,
+      "das_over_new": 0.9915966386554622,
+      "das_aa_drift": 0.00339558573853993,
+      "new_aa_drift": 0.14671163575042168,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "row": 104,
+      "das_us": 4.728,
+      "new_us": 4.76,
+      "das_over_new": 0.9932773109243698,
+      "das_aa_drift": 0.0016949152542373724,
+      "new_aa_drift": 0.15033783783783794,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "row": 105,
+      "das_us": 4.736,
+      "new_us": 4.776,
+      "das_over_new": 0.9916247906197655,
+      "das_aa_drift": 0.0033783783783782884,
+      "new_aa_drift": 0.14814814814814836,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "row": 107,
+      "das_us": 4.728,
+      "new_us": 4.744,
+      "das_over_new": 0.9966273187183811,
+      "das_aa_drift": 0.1522842639593911,
+      "new_aa_drift": 0.15397631133671763,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "row": 108,
+      "das_us": 4.72,
+      "new_us": 4.744,
+      "das_over_new": 0.9949409780775716,
+      "das_aa_drift": 0.15476190476190488,
+      "new_aa_drift": 0.0016891891891892552,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "row": 111,
+      "das_us": 4.728,
+      "new_us": 4.728,
+      "das_over_new": 1.0,
+      "das_aa_drift": 0.15476190476190488,
+      "new_aa_drift": 0.0033840947546530664,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "row": 114,
+      "das_us": 4.80795,
+      "new_us": 4.744,
+      "das_over_new": 1.0134801854974704,
+      "das_aa_drift": 0.058430717863105164,
+      "new_aa_drift": 0.003372681281618828,
+      "status": "unstable_diagnostic"
+    }
+  ],
+  "stability_policy": "max(three independent block medians)/min - 1 <= 5%; newly declared guard, not the unavailable reviewer implementation.",
+  "limitations": [
+    "Generated inputs and current tolerances do not reproduce the reviewer input/environment.",
+    "The reviewer FP32 1-element shared failure remains unresolved.",
+    "This scope run applies both PR source patches; independent branch tests and public-route checks are provided separately.",
+    "No old/new speedup is accepted from an unstable run."
+  ],
+  "rows": [
+    {
+      "row": 2,
+      "das_us": 79.952,
+      "new_us": 73.36,
+      "das_over_new": 1.0898582333696838,
+      "das_aa_drift": 0.004302581548929485,
+      "new_aa_drift": 0.0009822110662447425,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 4,
+      "das_us": 13.864,
+      "new_us": 14.432,
+      "das_over_new": 0.9606430155210643,
+      "das_aa_drift": 0.004049652576722629,
+      "new_aa_drift": 0.0038932146829810943,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 5,
+      "das_us": 133.0879,
+      "new_us": 98.73595,
+      "das_over_new": 1.3479173492532355,
+      "das_aa_drift": 0.002827615817204032,
+      "new_aa_drift": 0.0019463151540402013,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 6,
+      "das_us": 6.392,
+      "new_us": 6.592,
+      "das_over_new": 0.9696601941747574,
+      "das_aa_drift": 0.010101010101010166,
+      "new_aa_drift": 0.002430133657351119,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 7,
+      "das_us": 6.264,
+      "new_us": 4.776,
+      "das_over_new": 1.3115577889447236,
+      "das_aa_drift": 0.0,
+      "new_aa_drift": 0.001677852348993314,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 8,
+      "das_us": 7.504,
+      "new_us": 4.744,
+      "das_over_new": 1.581787521079258,
+      "das_aa_drift": 0.002138873526609242,
+      "new_aa_drift": 0.1500843170320405,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "row": 9,
+      "das_us": 4.736,
+      "new_us": 4.76,
+      "das_over_new": 0.9949579831932773,
+      "das_aa_drift": 0.005084745762711895,
+      "new_aa_drift": 0.14983164983164987,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "row": 10,
+      "das_us": 10.56,
+      "new_us": 9.14395,
+      "das_over_new": 1.154861957906594,
+      "das_aa_drift": 0.007581501137225111,
+      "new_aa_drift": 0.0017528483786153348,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 11,
+      "das_us": 5.89595,
+      "new_us": 5.272,
+      "das_over_new": 1.1183516691957511,
+      "das_aa_drift": 0.005457025920873049,
+      "new_aa_drift": 0.0015269492313090272,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 12,
+      "das_us": 6.632,
+      "new_us": 4.728,
+      "das_over_new": 1.4027072758037225,
+      "das_aa_drift": 0.0,
+      "new_aa_drift": 0.00679117147707986,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 15,
+      "das_us": 19.256,
+      "new_us": 20.88,
+      "das_over_new": 0.9222222222222223,
+      "das_aa_drift": 0.013350020859407508,
+      "new_aa_drift": 0.0015319332566168242,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 16,
+      "das_us": 8.248,
+      "new_us": 7.784,
+      "das_over_new": 1.0596094552929085,
+      "das_aa_drift": 0.0009708737864075889,
+      "new_aa_drift": 0.0020554984583760483,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 18,
+      "das_us": 4.72,
+      "new_us": 4.696,
+      "das_over_new": 1.0051107325383306,
+      "das_aa_drift": 0.00339558573853993,
+      "new_aa_drift": 0.01192504258943794,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 19,
+      "das_us": 31.16,
+      "new_us": 33.176,
+      "das_over_new": 0.939233180612491,
+      "das_aa_drift": 0.006976744186046435,
+      "new_aa_drift": 0.03292181069958855,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 20,
+      "das_us": 14.44,
+      "new_us": 16.544,
+      "das_over_new": 0.8728239845261121,
+      "das_aa_drift": 0.03446327683615813,
+      "new_aa_drift": 0.008259495688124341,
+      "status": "below_90_percent"
+    },
+    {
+      "row": 21,
+      "das_us": 5.992,
+      "new_us": 5.88,
+      "das_over_new": 1.019047619047619,
+      "das_aa_drift": 0.002673796791443861,
+      "new_aa_drift": 0.0013623978201635634,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 22,
+      "das_us": 4.72,
+      "new_us": 4.752,
+      "das_over_new": 0.9932659932659933,
+      "das_aa_drift": 0.001697792869269854,
+      "new_aa_drift": 0.0050675675675675436,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 24,
+      "das_us": 11.192,
+      "new_us": 10.08,
+      "das_over_new": 1.1103174603174604,
+      "das_aa_drift": 0.0021519423404721127,
+      "new_aa_drift": 0.21832669322709175,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "row": 25,
+      "das_us": 209.1519,
+      "new_us": 213.7599,
+      "das_over_new": 0.9784431036878293,
+      "das_aa_drift": 0.0008038281358029309,
+      "new_aa_drift": 0.0005616087094277855,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 26,
+      "das_us": 95.72795,
+      "new_us": 71.584,
+      "das_over_new": 1.3372813757264193,
+      "das_aa_drift": 0.0021760975561273543,
+      "new_aa_drift": 0.0011176930814800201,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 27,
+      "das_us": 249.6319,
+      "new_us": 273.8558,
+      "das_over_new": 0.9115450540028731,
+      "das_aa_drift": 3.20482133322475e-05,
+      "new_aa_drift": 0.007340473113232493,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 28,
+      "das_us": 1291.9913,
+      "new_us": 1378.97525,
+      "das_over_new": 0.9369213116769136,
+      "das_aa_drift": 0.0003776891923301662,
+      "new_aa_drift": 0.00041198611215120806,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 29,
+      "das_us": 46.152,
+      "new_us": 45.376,
+      "das_over_new": 1.0171015514809592,
+      "das_aa_drift": 0.0008673026886383273,
+      "new_aa_drift": 0.025455858458205416,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 30,
+      "das_us": 52.312,
+      "new_us": 43.496,
+      "das_over_new": 1.2026853043958063,
+      "das_aa_drift": 0.0016829865361076557,
+      "new_aa_drift": 0.007769145394006749,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 31,
+      "das_us": 6.936,
+      "new_us": 6.48,
+      "das_over_new": 1.0703703703703702,
+      "das_aa_drift": 0.02768166089965396,
+      "new_aa_drift": 0.0024752475247524774,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 32,
+      "das_us": 14.456,
+      "new_us": 20.232,
+      "das_over_new": 0.7145116646896006,
+      "das_aa_drift": 0.0022172949002217113,
+      "new_aa_drift": 0.00039556962025311115,
+      "status": "below_90_percent"
+    },
+    {
+      "row": 33,
+      "das_us": 7.832,
+      "new_us": 8.328,
+      "das_over_new": 0.9404418828049953,
+      "das_aa_drift": 0.008196721311475308,
+      "new_aa_drift": 0.0019230769230769162,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 35,
+      "das_us": 4.96,
+      "new_us": 4.776,
+      "das_over_new": 1.0385259631490789,
+      "das_aa_drift": 0.00646203554119551,
+      "new_aa_drift": 0.003355704697986628,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 36,
+      "das_us": 4.856,
+      "new_us": 4.776,
+      "das_over_new": 1.016750418760469,
+      "das_aa_drift": 0.021523178807947074,
+      "new_aa_drift": 0.001677852348993314,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 37,
+      "das_us": 4.736,
+      "new_us": 4.728,
+      "das_over_new": 1.0016920473773265,
+      "das_aa_drift": 0.005095392959671097,
+      "new_aa_drift": 0.00679117147707986,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 38,
+      "das_us": 4.728,
+      "new_us": 4.744,
+      "das_over_new": 0.9966273187183811,
+      "das_aa_drift": 0.0016949152542373724,
+      "new_aa_drift": 0.003372681281618828,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 39,
+      "das_us": 5.2,
+      "new_us": 4.912,
+      "das_over_new": 1.0586319218241043,
+      "das_aa_drift": 0.0015384615384614886,
+      "new_aa_drift": 0.0016313213703098572,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 40,
+      "das_us": 4.712,
+      "new_us": 4.752,
+      "das_over_new": 0.9915824915824916,
+      "das_aa_drift": 0.001697792869269854,
+      "new_aa_drift": 0.001686340640809414,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 41,
+      "das_us": 6.984,
+      "new_us": 4.96,
+      "das_over_new": 1.4080645161290322,
+      "das_aa_drift": 0.024221627895241404,
+      "new_aa_drift": 0.003225806451612856,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 42,
+      "das_us": 8.312,
+      "new_us": 7.232,
+      "das_over_new": 1.1493362831858407,
+      "das_aa_drift": 0.042389210019267765,
+      "new_aa_drift": 0.010011123470522909,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 43,
+      "das_us": 12.064,
+      "new_us": 11.0,
+      "das_over_new": 1.0967272727272728,
+      "das_aa_drift": 0.07589880159786966,
+      "new_aa_drift": 0.005843681519357213,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "row": 44,
+      "das_us": 4.704,
+      "new_us": 4.744,
+      "das_over_new": 0.9915682967959528,
+      "das_aa_drift": 0.006814310051107331,
+      "new_aa_drift": 0.001686340640809414,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 47,
+      "das_us": 5.416,
+      "new_us": 4.784,
+      "das_over_new": 1.1321070234113713,
+      "das_aa_drift": 0.008862629246676468,
+      "new_aa_drift": 0.0016722408026756952,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 51,
+      "das_us": 149.95995,
+      "new_us": 144.40795,
+      "das_over_new": 1.038446636767574,
+      "das_aa_drift": 0.002082110566077322,
+      "new_aa_drift": 0.000830678957991493,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 52,
+      "das_us": 228.7759,
+      "new_us": 234.0159,
+      "das_over_new": 0.9776083590901303,
+      "das_aa_drift": 0.0012254049197382155,
+      "new_aa_drift": 0.0004787800001624376,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 59,
+      "das_us": 14.376,
+      "new_us": 14.36795,
+      "das_over_new": 1.000560274778239,
+      "das_aa_drift": 0.023385300668151476,
+      "new_aa_drift": 0.003351955307262511,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 60,
+      "das_us": 9.672,
+      "new_us": 9.264,
+      "das_over_new": 1.0440414507772022,
+      "das_aa_drift": 0.0,
+      "new_aa_drift": 0.0174064403829417,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 61,
+      "das_us": 11.176,
+      "new_us": 11.688,
+      "das_over_new": 0.9561943874058864,
+      "das_aa_drift": 0.005731056420259506,
+      "new_aa_drift": 0.0061729188353274456,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 62,
+      "das_us": 6.328,
+      "new_us": 6.288,
+      "das_over_new": 1.0063613231552162,
+      "das_aa_drift": 0.0012642225031604948,
+      "new_aa_drift": 0.002547770700636942,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 63,
+      "das_us": 10.92,
+      "new_us": 10.896,
+      "das_over_new": 1.002202643171806,
+      "das_aa_drift": 0.03592375366568912,
+      "new_aa_drift": 0.003679175864606421,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 64,
+      "das_us": 18.296,
+      "new_us": 18.51995,
+      "das_over_new": 0.9879076347398345,
+      "das_aa_drift": 0.0008752735229757835,
+      "new_aa_drift": 0.0012970168612189692,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 65,
+      "das_us": 4.72,
+      "new_us": 4.76,
+      "das_over_new": 0.9915966386554622,
+      "das_aa_drift": 0.005102040816326481,
+      "new_aa_drift": 0.003361344537815114,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 66,
+      "das_us": 4.768,
+      "new_us": 4.76,
+      "das_over_new": 1.0016806722689076,
+      "das_aa_drift": 0.005050505050504972,
+      "new_aa_drift": 0.001680672268907557,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 67,
+      "das_us": 5.096,
+      "new_us": 4.752,
+      "das_over_new": 1.0723905723905724,
+      "das_aa_drift": 0.0015698587127157548,
+      "new_aa_drift": 0.005050505050504972,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 68,
+      "das_us": 6.832,
+      "new_us": 6.632,
+      "das_over_new": 1.0301568154402896,
+      "das_aa_drift": 0.0011709601873535203,
+      "new_aa_drift": 0.0012062726176116367,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 69,
+      "das_us": 6.088,
+      "new_us": 4.744,
+      "das_over_new": 1.2833052276559866,
+      "das_aa_drift": 0.0,
+      "new_aa_drift": 0.0050675675675675436,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 70,
+      "das_us": 6.664,
+      "new_us": 6.592,
+      "das_over_new": 1.0109223300970873,
+      "das_aa_drift": 0.0024038461538462563,
+      "new_aa_drift": 0.002430133657351119,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 72,
+      "das_us": 4.76,
+      "new_us": 4.736,
+      "das_over_new": 1.0050675675675675,
+      "das_aa_drift": 0.003361344537815114,
+      "new_aa_drift": 0.0050675675675675436,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 73,
+      "das_us": 9.256,
+      "new_us": 9.496,
+      "das_over_new": 0.974726200505476,
+      "das_aa_drift": 0.0017301038062282892,
+      "new_aa_drift": 0.004212299915753892,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 74,
+      "das_us": 12.616,
+      "new_us": 9.504,
+      "das_over_new": 1.3274410774410774,
+      "das_aa_drift": 0.0038031408629441987,
+      "new_aa_drift": 0.002527379949452291,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 75,
+      "das_us": 12.8,
+      "new_us": 9.512,
+      "das_over_new": 1.3456686291000841,
+      "das_aa_drift": 0.005632040050062459,
+      "new_aa_drift": 0.0016835016835017313,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 76,
+      "das_us": 12.576,
+      "new_us": 4.744,
+      "das_over_new": 2.6509274873524453,
+      "das_aa_drift": 0.0012722646310432406,
+      "new_aa_drift": 0.0050675675675675436,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 77,
+      "das_us": 12.464,
+      "new_us": 9.568,
+      "das_over_new": 1.302675585284281,
+      "das_aa_drift": 0.0019255455712450242,
+      "new_aa_drift": 0.005042016806722671,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 78,
+      "das_us": 29.75995,
+      "new_us": 29.16,
+      "das_over_new": 1.0205744170096023,
+      "das_aa_drift": 2.6149789248203428,
+      "new_aa_drift": 0.0010979961570134478,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "row": 79,
+      "das_us": 12.592,
+      "new_us": 4.736,
+      "das_over_new": 2.658783783783784,
+      "das_aa_drift": 0.01907191303207667,
+      "new_aa_drift": 0.0050761421319796,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 80,
+      "das_us": 4.784,
+      "new_us": 4.728,
+      "das_over_new": 1.011844331641286,
+      "das_aa_drift": 0.006734006734006703,
+      "new_aa_drift": 0.006779661016949268,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 81,
+      "das_us": 4.744,
+      "new_us": 4.752,
+      "das_over_new": 0.9983164983164983,
+      "das_aa_drift": 0.0050761421319796,
+      "new_aa_drift": 0.1520270270270272,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "row": 82,
+      "das_us": 4.744,
+      "new_us": 4.76,
+      "das_over_new": 0.9966386554621849,
+      "das_aa_drift": 0.001686340640809414,
+      "new_aa_drift": 0.14814814814814836,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "row": 83,
+      "das_us": 5.28,
+      "new_us": 4.752,
+      "das_over_new": 1.1111111111111112,
+      "das_aa_drift": 0.12898330804248848,
+      "new_aa_drift": 0.1522842639593911,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "row": 84,
+      "das_us": 4.8,
+      "new_us": 4.736,
+      "das_over_new": 1.0135135135135136,
+      "das_aa_drift": 0.0016694490818029983,
+      "new_aa_drift": 0.0016920473773265332,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 85,
+      "das_us": 4.784,
+      "new_us": 4.784,
+      "das_over_new": 1.0,
+      "das_aa_drift": 0.01180438448566612,
+      "new_aa_drift": 0.0016750418760469454,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 86,
+      "das_us": 4.784,
+      "new_us": 4.728,
+      "das_over_new": 1.011844331641286,
+      "das_aa_drift": 0.0016750418760469454,
+      "new_aa_drift": 0.14915254237288145,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "row": 87,
+      "das_us": 4.872,
+      "new_us": 4.784,
+      "das_over_new": 1.0183946488294315,
+      "das_aa_drift": 0.006568144499178974,
+      "new_aa_drift": 0.003350083752093891,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 88,
+      "das_us": 4.712,
+      "new_us": 4.744,
+      "das_over_new": 0.9932546374367622,
+      "das_aa_drift": 0.008517887563884274,
+      "new_aa_drift": 0.0016891891891892552,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 89,
+      "das_us": 4.72,
+      "new_us": 4.736,
+      "das_over_new": 0.9966216216216216,
+      "das_aa_drift": 0.005110732538330609,
+      "new_aa_drift": 0.00847090176503551,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 90,
+      "das_us": 4.712,
+      "new_us": 4.736,
+      "das_over_new": 0.9949324324324325,
+      "das_aa_drift": 0.005093378607809784,
+      "new_aa_drift": 0.003389830508474523,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 91,
+      "das_us": 4.728,
+      "new_us": 4.728,
+      "das_over_new": 1.0,
+      "das_aa_drift": 0.0016949152542373724,
+      "new_aa_drift": 0.003389830508474523,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 92,
+      "das_us": 4.704,
+      "new_us": 4.712,
+      "das_over_new": 0.99830220713073,
+      "das_aa_drift": 0.005119453924914641,
+      "new_aa_drift": 0.001700680272108901,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 93,
+      "das_us": 4.696,
+      "new_us": 4.728,
+      "das_over_new": 0.9932318104906938,
+      "das_aa_drift": 0.0034071550255536653,
+      "new_aa_drift": 0.006779661016949268,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 94,
+      "das_us": 4.712,
+      "new_us": 4.736,
+      "das_over_new": 0.9949324324324325,
+      "das_aa_drift": 0.005102040816326481,
+      "new_aa_drift": 0.003389830508474523,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 96,
+      "das_us": 61.54395,
+      "new_us": 54.328,
+      "das_over_new": 1.1328219334413194,
+      "das_aa_drift": 0.002730111422672321,
+      "new_aa_drift": 0.0025068198212889747,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 99,
+      "das_us": 35.064,
+      "new_us": 33.60795,
+      "das_over_new": 1.0433245705257237,
+      "das_aa_drift": 0.00022963291538236064,
+      "new_aa_drift": 0.0026224127686633736,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 101,
+      "das_us": 4.728,
+      "new_us": 4.752,
+      "das_over_new": 0.9949494949494949,
+      "das_aa_drift": 0.00339558573853993,
+      "new_aa_drift": 0.15280135823429553,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "row": 102,
+      "das_us": 4.744,
+      "new_us": 4.76,
+      "das_over_new": 0.9966386554621849,
+      "das_aa_drift": 0.0033783783783782884,
+      "new_aa_drift": 0.010118043844856706,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 103,
+      "das_us": 4.72,
+      "new_us": 4.76,
+      "das_over_new": 0.9915966386554622,
+      "das_aa_drift": 0.00339558573853993,
+      "new_aa_drift": 0.14671163575042168,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "row": 104,
+      "das_us": 4.728,
+      "new_us": 4.76,
+      "das_over_new": 0.9932773109243698,
+      "das_aa_drift": 0.0016949152542373724,
+      "new_aa_drift": 0.15033783783783794,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "row": 105,
+      "das_us": 4.736,
+      "new_us": 4.776,
+      "das_over_new": 0.9916247906197655,
+      "das_aa_drift": 0.0033783783783782884,
+      "new_aa_drift": 0.14814814814814836,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "row": 106,
+      "das_us": 4.744,
+      "new_us": 4.744,
+      "das_over_new": 1.0,
+      "das_aa_drift": 0.005059021922428242,
+      "new_aa_drift": 0.0050675675675675436,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 107,
+      "das_us": 4.728,
+      "new_us": 4.744,
+      "das_over_new": 0.9966273187183811,
+      "das_aa_drift": 0.1522842639593911,
+      "new_aa_drift": 0.15397631133671763,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "row": 108,
+      "das_us": 4.72,
+      "new_us": 4.744,
+      "das_over_new": 0.9949409780775716,
+      "das_aa_drift": 0.15476190476190488,
+      "new_aa_drift": 0.0016891891891892552,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "row": 109,
+      "das_us": 4.736,
+      "new_us": 4.736,
+      "das_over_new": 1.0,
+      "das_aa_drift": 0.005084745762711895,
+      "new_aa_drift": 0.0033840947546530664,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 110,
+      "das_us": 4.728,
+      "new_us": 4.728,
+      "das_over_new": 1.0,
+      "das_aa_drift": 0.005084745762711895,
+      "new_aa_drift": 0.0033840947546530664,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 111,
+      "das_us": 4.728,
+      "new_us": 4.728,
+      "das_over_new": 1.0,
+      "das_aa_drift": 0.15476190476190488,
+      "new_aa_drift": 0.0033840947546530664,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "row": 114,
+      "das_us": 4.80795,
+      "new_us": 4.744,
+      "das_over_new": 1.0134801854974704,
+      "das_aa_drift": 0.058430717863105164,
+      "new_aa_drift": 0.003372681281618828,
+      "status": "unstable_diagnostic"
+    },
+    {
+      "row": 115,
+      "das_us": 4.784,
+      "new_us": 4.72,
+      "das_over_new": 1.0135593220338983,
+      "das_aa_drift": 0.026981450252951067,
+      "new_aa_drift": 0.005084745762711895,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 116,
+      "das_us": 4.808,
+      "new_us": 4.728,
+      "das_over_new": 1.0169204737732658,
+      "das_aa_drift": 0.0016638935108153063,
+      "new_aa_drift": 0.00679117147707986,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 118,
+      "das_us": 4.8,
+      "new_us": 4.728,
+      "das_over_new": 1.015228426395939,
+      "das_aa_drift": 0.011666666666666714,
+      "new_aa_drift": 0.003389830508474523,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 119,
+      "das_us": 5.352,
+      "new_us": 4.712,
+      "das_over_new": 1.135823429541596,
+      "das_aa_drift": 0.004491017964071808,
+      "new_aa_drift": 0.0034071550255536653,
+      "status": "passes_this_protocol"
+    },
+    {
+      "row": 121,
+      "das_us": 7.128,
+      "new_us": 7.216,
+      "das_over_new": 0.9878048780487805,
+      "das_aa_drift": 0.001122334455667895,
+      "new_aa_drift": 0.0011086474501109667,
+      "status": "passes_this_protocol"
+    }
+  ]
+}

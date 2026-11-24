@@ -1,0 +1,3388 @@
+{
+  "device": {
+    "node": "a01r4n15",
+    "physical_card": "4"
+  },
+  "source_sha256": {
+    "src/flag_gems/runtime/backend/_hygon/attention_state_hip.py": "185460a1f7a25f27ba55202cf42f35fef5a10fda845b527c3058b5b9b88f12d4",
+    "src/flag_gems/runtime/backend/_hygon/attention_state_hip.cpp": "9d737b24687977ab0a1e027f6485009d308f4392aac7c736b188611f0f990f88",
+    "src/flag_gems/runtime/backend/_hygon/ops/attention_state.py": "156b334c1a07150624f6eff2f8b059f7fef2f209b1d02e63235c7ac032040213",
+    "src/flag_gems/runtime/backend/_hygon/ops/_scaled_dot_product_flash_attention.py": "6eabe38ca1abcf6ff68c30b40250895b45f0fb402c6acad82bb50982b4ac3a0e",
+    "tests/test_flash_attention_hygon_state.py": "1115a5ca4796e0fe980a517dacbf6e4f73efca7d02d279444a7c408120e3ccc4"
+  },
+  "cases": {
+    "model_state": [
+      {
+        "pattern": "normal",
+        "identity": {
+          "seed": 20261105,
+          "fp32_generation": false,
+          "backing_sha256": "fb2613a6e2e6c046c357751525a7e64cf22c5b2f687d15d492b0028dbbe4d7d2",
+          "backing_elements": [
+            100712448
+          ],
+          "backing_bytes": 201424896,
+          "storage_policy": "shared_qkv_backing_from_user_review"
+        },
+        "checks": [
+          {
+            "output": {
+              "shape": [
+                8,
+                16,
+                2049,
+                128
+              ],
+              "elements": 33570816,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0015213191509246826
+            },
+            "lse": {
+              "shape": [
+                8,
+                16,
+                2049
+              ],
+              "elements": 262272,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 1.9073486328125e-06
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                8,
+                16,
+                2049,
+                128
+              ],
+              "elements": 33570816,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0015213191509246826
+            },
+            "lse": {
+              "shape": [
+                8,
+                16,
+                2049
+              ],
+              "elements": 262272,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 1.9073486328125e-06
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                8,
+                16,
+                2049,
+                128
+              ],
+              "elements": 33570816,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0015213191509246826
+            },
+            "lse": {
+              "shape": [
+                8,
+                16,
+                2049
+              ],
+              "elements": 262272,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 1.9073486328125e-06
+            }
+          }
+        ],
+        "bitwise_stable": true
+      },
+      {
+        "pattern": "normal",
+        "identity": {
+          "seed": 0,
+          "fp32_generation": false,
+          "backing_sha256": "8c0c98c1a283be94155266608c8c36499525cd390e569eab7e687aca433289a9",
+          "backing_elements": [
+            100712448
+          ],
+          "backing_bytes": 201424896,
+          "storage_policy": "shared_qkv_backing_from_user_review"
+        },
+        "checks": [
+          {
+            "output": {
+              "shape": [
+                8,
+                16,
+                2049,
+                128
+              ],
+              "elements": 33570816,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0013049840927124023
+            },
+            "lse": {
+              "shape": [
+                8,
+                16,
+                2049
+              ],
+              "elements": 262272,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 1.9073486328125e-06
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                8,
+                16,
+                2049,
+                128
+              ],
+              "elements": 33570816,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0013049840927124023
+            },
+            "lse": {
+              "shape": [
+                8,
+                16,
+                2049
+              ],
+              "elements": 262272,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 1.9073486328125e-06
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                8,
+                16,
+                2049,
+                128
+              ],
+              "elements": 33570816,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0013049840927124023
+            },
+            "lse": {
+              "shape": [
+                8,
+                16,
+                2049
+              ],
+              "elements": 262272,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 1.9073486328125e-06
+            }
+          }
+        ],
+        "bitwise_stable": true
+      },
+      {
+        "pattern": "normal",
+        "identity": {
+          "seed": 65537,
+          "fp32_generation": false,
+          "backing_sha256": "b0a7e55e0af25e4055cc204a7db5727811646d6d7bcc72c51670a6c21296c95f",
+          "backing_elements": [
+            100712448
+          ],
+          "backing_bytes": 201424896,
+          "storage_policy": "shared_qkv_backing_from_user_review"
+        },
+        "checks": [
+          {
+            "output": {
+              "shape": [
+                8,
+                16,
+                2049,
+                128
+              ],
+              "elements": 33570816,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0009730756282806396
+            },
+            "lse": {
+              "shape": [
+                8,
+                16,
+                2049
+              ],
+              "elements": 262272,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 1.9073486328125e-06
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                8,
+                16,
+                2049,
+                128
+              ],
+              "elements": 33570816,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0009730756282806396
+            },
+            "lse": {
+              "shape": [
+                8,
+                16,
+                2049
+              ],
+              "elements": 262272,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 1.9073486328125e-06
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                8,
+                16,
+                2049,
+                128
+              ],
+              "elements": 33570816,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0009730756282806396
+            },
+            "lse": {
+              "shape": [
+                8,
+                16,
+                2049
+              ],
+              "elements": 262272,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 1.9073486328125e-06
+            }
+          }
+        ],
+        "bitwise_stable": true
+      },
+      {
+        "pattern": "normal",
+        "identity": {
+          "seed": 20261105,
+          "fp32_generation": true,
+          "backing_sha256": "fb2613a6e2e6c046c357751525a7e64cf22c5b2f687d15d492b0028dbbe4d7d2",
+          "backing_elements": [
+            100712448
+          ],
+          "backing_bytes": 201424896,
+          "storage_policy": "shared_qkv_backing_from_user_review"
+        },
+        "checks": [
+          {
+            "output": {
+              "shape": [
+                8,
+                16,
+                2049,
+                128
+              ],
+              "elements": 33570816,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0015213191509246826
+            },
+            "lse": {
+              "shape": [
+                8,
+                16,
+                2049
+              ],
+              "elements": 262272,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 1.9073486328125e-06
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                8,
+                16,
+                2049,
+                128
+              ],
+              "elements": 33570816,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0015213191509246826
+            },
+            "lse": {
+              "shape": [
+                8,
+                16,
+                2049
+              ],
+              "elements": 262272,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 1.9073486328125e-06
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                8,
+                16,
+                2049,
+                128
+              ],
+              "elements": 33570816,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0015213191509246826
+            },
+            "lse": {
+              "shape": [
+                8,
+                16,
+                2049
+              ],
+              "elements": 262272,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 1.9073486328125e-06
+            }
+          }
+        ],
+        "bitwise_stable": true
+      },
+      {
+        "pattern": "normal",
+        "identity": {
+          "seed": 0,
+          "fp32_generation": true,
+          "backing_sha256": "8c0c98c1a283be94155266608c8c36499525cd390e569eab7e687aca433289a9",
+          "backing_elements": [
+            100712448
+          ],
+          "backing_bytes": 201424896,
+          "storage_policy": "shared_qkv_backing_from_user_review"
+        },
+        "checks": [
+          {
+            "output": {
+              "shape": [
+                8,
+                16,
+                2049,
+                128
+              ],
+              "elements": 33570816,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0013049840927124023
+            },
+            "lse": {
+              "shape": [
+                8,
+                16,
+                2049
+              ],
+              "elements": 262272,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 1.9073486328125e-06
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                8,
+                16,
+                2049,
+                128
+              ],
+              "elements": 33570816,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0013049840927124023
+            },
+            "lse": {
+              "shape": [
+                8,
+                16,
+                2049
+              ],
+              "elements": 262272,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 1.9073486328125e-06
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                8,
+                16,
+                2049,
+                128
+              ],
+              "elements": 33570816,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0013049840927124023
+            },
+            "lse": {
+              "shape": [
+                8,
+                16,
+                2049
+              ],
+              "elements": 262272,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 1.9073486328125e-06
+            }
+          }
+        ],
+        "bitwise_stable": true
+      },
+      {
+        "pattern": "normal",
+        "identity": {
+          "seed": 65537,
+          "fp32_generation": true,
+          "backing_sha256": "b0a7e55e0af25e4055cc204a7db5727811646d6d7bcc72c51670a6c21296c95f",
+          "backing_elements": [
+            100712448
+          ],
+          "backing_bytes": 201424896,
+          "storage_policy": "shared_qkv_backing_from_user_review"
+        },
+        "checks": [
+          {
+            "output": {
+              "shape": [
+                8,
+                16,
+                2049,
+                128
+              ],
+              "elements": 33570816,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0009730756282806396
+            },
+            "lse": {
+              "shape": [
+                8,
+                16,
+                2049
+              ],
+              "elements": 262272,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 1.9073486328125e-06
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                8,
+                16,
+                2049,
+                128
+              ],
+              "elements": 33570816,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0009730756282806396
+            },
+            "lse": {
+              "shape": [
+                8,
+                16,
+                2049
+              ],
+              "elements": 262272,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 1.9073486328125e-06
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                8,
+                16,
+                2049,
+                128
+              ],
+              "elements": 33570816,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0009730756282806396
+            },
+            "lse": {
+              "shape": [
+                8,
+                16,
+                2049
+              ],
+              "elements": 262272,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 1.9073486328125e-06
+            }
+          }
+        ],
+        "bitwise_stable": true
+      }
+    ],
+    "expanded_small": [
+      {
+        "pattern": "normal",
+        "identity": {
+          "seed": 5058009176373978791,
+          "fp32_generation": false,
+          "backing_sha256": "9bcefe9b92edab6418f6d25a0cee3a28e5dcb6135e8eba309fdea60216a9efe0",
+          "backing_elements": [
+            32768,
+            34816,
+            36864
+          ],
+          "backing_bytes": 208896,
+          "storage_policy": "independent_minimum_backings_from_expansion_spec"
+        },
+        "checks": [
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                3,
+                128
+              ],
+              "elements": 12288,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.007703304290771484
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                3
+              ],
+              "elements": 96,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 2.384185791015625e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                3,
+                128
+              ],
+              "elements": 12288,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.007703304290771484
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                3
+              ],
+              "elements": 96,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 2.384185791015625e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                3,
+                128
+              ],
+              "elements": 12288,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.007703304290771484
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                3
+              ],
+              "elements": 96,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 2.384185791015625e-07
+            }
+          }
+        ],
+        "bitwise_stable": true
+      },
+      {
+        "pattern": "normal",
+        "identity": {
+          "seed": 0,
+          "fp32_generation": false,
+          "backing_sha256": "dc45075f179d42554719d1c6a7bd20e0a92a164e595e2dcf66fa85fb57555514",
+          "backing_elements": [
+            32768,
+            34816,
+            36864
+          ],
+          "backing_bytes": 208896,
+          "storage_policy": "independent_minimum_backings_from_expansion_spec"
+        },
+        "checks": [
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                3,
+                128
+              ],
+              "elements": 12288,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.00771021842956543
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                3
+              ],
+              "elements": 96,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 2.384185791015625e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                3,
+                128
+              ],
+              "elements": 12288,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.00771021842956543
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                3
+              ],
+              "elements": 96,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 2.384185791015625e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                3,
+                128
+              ],
+              "elements": 12288,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.00771021842956543
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                3
+              ],
+              "elements": 96,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 2.384185791015625e-07
+            }
+          }
+        ],
+        "bitwise_stable": true
+      },
+      {
+        "pattern": "normal",
+        "identity": {
+          "seed": 65537,
+          "fp32_generation": false,
+          "backing_sha256": "e6c9ec206dc15befd16d8e41f9acf0a73364084e5c72a9460a2e89a87f5e3c2a",
+          "backing_elements": [
+            32768,
+            34816,
+            36864
+          ],
+          "backing_bytes": 208896,
+          "storage_policy": "independent_minimum_backings_from_expansion_spec"
+        },
+        "checks": [
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                3,
+                128
+              ],
+              "elements": 12288,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.007799863815307617
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                3
+              ],
+              "elements": 96,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 4.76837158203125e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                3,
+                128
+              ],
+              "elements": 12288,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.007799863815307617
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                3
+              ],
+              "elements": 96,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 4.76837158203125e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                3,
+                128
+              ],
+              "elements": 12288,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.007799863815307617
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                3
+              ],
+              "elements": 96,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 4.76837158203125e-07
+            }
+          }
+        ],
+        "bitwise_stable": true
+      },
+      {
+        "pattern": "normal",
+        "identity": {
+          "seed": 5058009176373978791,
+          "fp32_generation": true,
+          "backing_sha256": "9bcefe9b92edab6418f6d25a0cee3a28e5dcb6135e8eba309fdea60216a9efe0",
+          "backing_elements": [
+            32768,
+            34816,
+            36864
+          ],
+          "backing_bytes": 208896,
+          "storage_policy": "independent_minimum_backings_from_expansion_spec"
+        },
+        "checks": [
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                3,
+                128
+              ],
+              "elements": 12288,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.007703304290771484
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                3
+              ],
+              "elements": 96,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 2.384185791015625e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                3,
+                128
+              ],
+              "elements": 12288,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.007703304290771484
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                3
+              ],
+              "elements": 96,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 2.384185791015625e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                3,
+                128
+              ],
+              "elements": 12288,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.007703304290771484
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                3
+              ],
+              "elements": 96,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 2.384185791015625e-07
+            }
+          }
+        ],
+        "bitwise_stable": true
+      },
+      {
+        "pattern": "normal",
+        "identity": {
+          "seed": 0,
+          "fp32_generation": true,
+          "backing_sha256": "dc45075f179d42554719d1c6a7bd20e0a92a164e595e2dcf66fa85fb57555514",
+          "backing_elements": [
+            32768,
+            34816,
+            36864
+          ],
+          "backing_bytes": 208896,
+          "storage_policy": "independent_minimum_backings_from_expansion_spec"
+        },
+        "checks": [
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                3,
+                128
+              ],
+              "elements": 12288,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.00771021842956543
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                3
+              ],
+              "elements": 96,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 2.384185791015625e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                3,
+                128
+              ],
+              "elements": 12288,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.00771021842956543
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                3
+              ],
+              "elements": 96,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 2.384185791015625e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                3,
+                128
+              ],
+              "elements": 12288,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.00771021842956543
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                3
+              ],
+              "elements": 96,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 2.384185791015625e-07
+            }
+          }
+        ],
+        "bitwise_stable": true
+      },
+      {
+        "pattern": "normal",
+        "identity": {
+          "seed": 65537,
+          "fp32_generation": true,
+          "backing_sha256": "e6c9ec206dc15befd16d8e41f9acf0a73364084e5c72a9460a2e89a87f5e3c2a",
+          "backing_elements": [
+            32768,
+            34816,
+            36864
+          ],
+          "backing_bytes": 208896,
+          "storage_policy": "independent_minimum_backings_from_expansion_spec"
+        },
+        "checks": [
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                3,
+                128
+              ],
+              "elements": 12288,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.007799863815307617
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                3
+              ],
+              "elements": 96,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 4.76837158203125e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                3,
+                128
+              ],
+              "elements": 12288,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.007799863815307617
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                3
+              ],
+              "elements": 96,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 4.76837158203125e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                3,
+                128
+              ],
+              "elements": 12288,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.007799863815307617
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                3
+              ],
+              "elements": 96,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 4.76837158203125e-07
+            }
+          }
+        ],
+        "bitwise_stable": true
+      }
+    ],
+    "expanded_medium": [
+      {
+        "pattern": "normal",
+        "identity": {
+          "seed": 6792970978253416049,
+          "fp32_generation": false,
+          "backing_sha256": "2f627358103abf82341d7311297454a5fea98ac1a433b8ef7dceecbf1adf5e67",
+          "backing_elements": [
+            278528,
+            280576,
+            282624
+          ],
+          "backing_bytes": 1683456,
+          "storage_policy": "independent_minimum_backings_from_expansion_spec"
+        },
+        "checks": [
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                23,
+                128
+              ],
+              "elements": 94208,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0038869380950927734
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                23
+              ],
+              "elements": 736,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 7.152557373046875e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                23,
+                128
+              ],
+              "elements": 94208,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0038869380950927734
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                23
+              ],
+              "elements": 736,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 7.152557373046875e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                23,
+                128
+              ],
+              "elements": 94208,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0038869380950927734
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                23
+              ],
+              "elements": 736,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 7.152557373046875e-07
+            }
+          }
+        ],
+        "bitwise_stable": true
+      },
+      {
+        "pattern": "normal",
+        "identity": {
+          "seed": 0,
+          "fp32_generation": false,
+          "backing_sha256": "3f9cabe57f37c1d14a4b4ce7c9328a9918dabc5b09437ae61c9a5aff34074512",
+          "backing_elements": [
+            278528,
+            280576,
+            282624
+          ],
+          "backing_bytes": 1683456,
+          "storage_policy": "independent_minimum_backings_from_expansion_spec"
+        },
+        "checks": [
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                23,
+                128
+              ],
+              "elements": 94208,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.003903031349182129
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                23
+              ],
+              "elements": 736,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 4.76837158203125e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                23,
+                128
+              ],
+              "elements": 94208,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.003903031349182129
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                23
+              ],
+              "elements": 736,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 4.76837158203125e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                23,
+                128
+              ],
+              "elements": 94208,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.003903031349182129
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                23
+              ],
+              "elements": 736,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 4.76837158203125e-07
+            }
+          }
+        ],
+        "bitwise_stable": true
+      },
+      {
+        "pattern": "normal",
+        "identity": {
+          "seed": 65537,
+          "fp32_generation": false,
+          "backing_sha256": "8328c1687375e8b9b554f82e6cdaeb7db711c8bd2f62429c444d6668ba7b3a79",
+          "backing_elements": [
+            278528,
+            280576,
+            282624
+          ],
+          "backing_bytes": 1683456,
+          "storage_policy": "independent_minimum_backings_from_expansion_spec"
+        },
+        "checks": [
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                23,
+                128
+              ],
+              "elements": 94208,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.005384922027587891
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                23
+              ],
+              "elements": 736,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 4.76837158203125e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                23,
+                128
+              ],
+              "elements": 94208,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.005384922027587891
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                23
+              ],
+              "elements": 736,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 4.76837158203125e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                23,
+                128
+              ],
+              "elements": 94208,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.005384922027587891
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                23
+              ],
+              "elements": 736,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 4.76837158203125e-07
+            }
+          }
+        ],
+        "bitwise_stable": true
+      },
+      {
+        "pattern": "normal",
+        "identity": {
+          "seed": 6792970978253416049,
+          "fp32_generation": true,
+          "backing_sha256": "2f627358103abf82341d7311297454a5fea98ac1a433b8ef7dceecbf1adf5e67",
+          "backing_elements": [
+            278528,
+            280576,
+            282624
+          ],
+          "backing_bytes": 1683456,
+          "storage_policy": "independent_minimum_backings_from_expansion_spec"
+        },
+        "checks": [
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                23,
+                128
+              ],
+              "elements": 94208,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0038869380950927734
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                23
+              ],
+              "elements": 736,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 7.152557373046875e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                23,
+                128
+              ],
+              "elements": 94208,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0038869380950927734
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                23
+              ],
+              "elements": 736,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 7.152557373046875e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                23,
+                128
+              ],
+              "elements": 94208,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0038869380950927734
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                23
+              ],
+              "elements": 736,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 7.152557373046875e-07
+            }
+          }
+        ],
+        "bitwise_stable": true
+      },
+      {
+        "pattern": "normal",
+        "identity": {
+          "seed": 0,
+          "fp32_generation": true,
+          "backing_sha256": "3f9cabe57f37c1d14a4b4ce7c9328a9918dabc5b09437ae61c9a5aff34074512",
+          "backing_elements": [
+            278528,
+            280576,
+            282624
+          ],
+          "backing_bytes": 1683456,
+          "storage_policy": "independent_minimum_backings_from_expansion_spec"
+        },
+        "checks": [
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                23,
+                128
+              ],
+              "elements": 94208,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.003903031349182129
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                23
+              ],
+              "elements": 736,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 4.76837158203125e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                23,
+                128
+              ],
+              "elements": 94208,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.003903031349182129
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                23
+              ],
+              "elements": 736,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 4.76837158203125e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                23,
+                128
+              ],
+              "elements": 94208,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.003903031349182129
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                23
+              ],
+              "elements": 736,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 4.76837158203125e-07
+            }
+          }
+        ],
+        "bitwise_stable": true
+      },
+      {
+        "pattern": "normal",
+        "identity": {
+          "seed": 65537,
+          "fp32_generation": true,
+          "backing_sha256": "8328c1687375e8b9b554f82e6cdaeb7db711c8bd2f62429c444d6668ba7b3a79",
+          "backing_elements": [
+            278528,
+            280576,
+            282624
+          ],
+          "backing_bytes": 1683456,
+          "storage_policy": "independent_minimum_backings_from_expansion_spec"
+        },
+        "checks": [
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                23,
+                128
+              ],
+              "elements": 94208,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.005384922027587891
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                23
+              ],
+              "elements": 736,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 4.76837158203125e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                23,
+                128
+              ],
+              "elements": 94208,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.005384922027587891
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                23
+              ],
+              "elements": 736,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 4.76837158203125e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                23,
+                128
+              ],
+              "elements": 94208,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.005384922027587891
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                23
+              ],
+              "elements": 736,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 4.76837158203125e-07
+            }
+          }
+        ],
+        "bitwise_stable": true
+      }
+    ],
+    "expanded_large": [
+      {
+        "pattern": "normal",
+        "identity": {
+          "seed": 8147618770989597313,
+          "fp32_generation": false,
+          "backing_sha256": "d6a77443eae886131a65f682dcc2e2e9732792cdb697b8dfc5d1c7abd63e8c15",
+          "backing_elements": [
+            4444160,
+            4446208,
+            4448256
+          ],
+          "backing_bytes": 26677248,
+          "storage_policy": "independent_minimum_backings_from_expansion_spec"
+        },
+        "checks": [
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0019113421440124512
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 9.5367431640625e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0019113421440124512
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 9.5367431640625e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0019113421440124512
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 9.5367431640625e-07
+            }
+          }
+        ],
+        "bitwise_stable": true
+      },
+      {
+        "pattern": "normal",
+        "identity": {
+          "seed": 0,
+          "fp32_generation": false,
+          "backing_sha256": "308214aae0a283f96060ca646d520af443f4cf8bf775c336c12191ea8d94f450",
+          "backing_elements": [
+            4444160,
+            4446208,
+            4448256
+          ],
+          "backing_bytes": 26677248,
+          "storage_policy": "independent_minimum_backings_from_expansion_spec"
+        },
+        "checks": [
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0019622445106506348
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 9.5367431640625e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0019622445106506348
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 9.5367431640625e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0019622445106506348
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 9.5367431640625e-07
+            }
+          }
+        ],
+        "bitwise_stable": true
+      },
+      {
+        "pattern": "normal",
+        "identity": {
+          "seed": 65537,
+          "fp32_generation": false,
+          "backing_sha256": "449f1e5e57e2904f81b842f22fd32406823950d4d1e07a701f9555b2ebf3840a",
+          "backing_elements": [
+            4444160,
+            4446208,
+            4448256
+          ],
+          "backing_bytes": 26677248,
+          "storage_policy": "independent_minimum_backings_from_expansion_spec"
+        },
+        "checks": [
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.002015829086303711
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 9.5367431640625e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.002015829086303711
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 9.5367431640625e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.002015829086303711
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 9.5367431640625e-07
+            }
+          }
+        ],
+        "bitwise_stable": true
+      },
+      {
+        "pattern": "normal",
+        "identity": {
+          "seed": 8147618770989597313,
+          "fp32_generation": true,
+          "backing_sha256": "d6a77443eae886131a65f682dcc2e2e9732792cdb697b8dfc5d1c7abd63e8c15",
+          "backing_elements": [
+            4444160,
+            4446208,
+            4448256
+          ],
+          "backing_bytes": 26677248,
+          "storage_policy": "independent_minimum_backings_from_expansion_spec"
+        },
+        "checks": [
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0019113421440124512
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 9.5367431640625e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0019113421440124512
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 9.5367431640625e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0019113421440124512
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 9.5367431640625e-07
+            }
+          }
+        ],
+        "bitwise_stable": true
+      },
+      {
+        "pattern": "normal",
+        "identity": {
+          "seed": 0,
+          "fp32_generation": true,
+          "backing_sha256": "308214aae0a283f96060ca646d520af443f4cf8bf775c336c12191ea8d94f450",
+          "backing_elements": [
+            4444160,
+            4446208,
+            4448256
+          ],
+          "backing_bytes": 26677248,
+          "storage_policy": "independent_minimum_backings_from_expansion_spec"
+        },
+        "checks": [
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0019622445106506348
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 9.5367431640625e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0019622445106506348
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 9.5367431640625e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0019622445106506348
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 9.5367431640625e-07
+            }
+          }
+        ],
+        "bitwise_stable": true
+      },
+      {
+        "pattern": "normal",
+        "identity": {
+          "seed": 65537,
+          "fp32_generation": true,
+          "backing_sha256": "449f1e5e57e2904f81b842f22fd32406823950d4d1e07a701f9555b2ebf3840a",
+          "backing_elements": [
+            4444160,
+            4446208,
+            4448256
+          ],
+          "backing_bytes": 26677248,
+          "storage_policy": "independent_minimum_backings_from_expansion_spec"
+        },
+        "checks": [
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.002015829086303711
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 9.5367431640625e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.002015829086303711
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 9.5367431640625e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.002015829086303711
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 9.5367431640625e-07
+            }
+          }
+        ],
+        "bitwise_stable": true
+      },
+      {
+        "pattern": "large_qk",
+        "identity": {
+          "seed": 8147618770989597313,
+          "fp32_generation": false,
+          "backing_sha256": "4734ed3cf304d092456dc205c23f29e82d066091fd6c1e5058a75cf5df678c1b",
+          "backing_elements": [
+            4444160,
+            4446208,
+            4448256
+          ],
+          "backing_bytes": 26677248,
+          "storage_policy": "independent_minimum_backings_from_expansion_spec",
+          "base_backing_sha256": "d6a77443eae886131a65f682dcc2e2e9732792cdb697b8dfc5d1c7abd63e8c15"
+        },
+        "checks": [
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.014675617218017578
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 2.6702880859375e-05
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.014675617218017578
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 2.6702880859375e-05
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.014675617218017578
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 2.6702880859375e-05
+            }
+          }
+        ],
+        "bitwise_stable": true
+      },
+      {
+        "pattern": "zero_q_large_k",
+        "identity": {
+          "seed": 8147618770989597313,
+          "fp32_generation": false,
+          "backing_sha256": "375f09ff30baf9c1751d261a633d6cef12f8620faa6c0acd7004a44661e78e80",
+          "backing_elements": [
+            4444160,
+            4446208,
+            4448256
+          ],
+          "backing_bytes": 26677248,
+          "storage_policy": "independent_minimum_backings_from_expansion_spec",
+          "base_backing_sha256": "d6a77443eae886131a65f682dcc2e2e9732792cdb697b8dfc5d1c7abd63e8c15"
+        },
+        "checks": [
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0004860013723373413
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0004860013723373413
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0004860013723373413
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0
+            }
+          }
+        ],
+        "bitwise_stable": true
+      },
+      {
+        "pattern": "large_q_zero_k",
+        "identity": {
+          "seed": 8147618770989597313,
+          "fp32_generation": false,
+          "backing_sha256": "3bc8ab2e21df2801907a1ede81adbd8f6b0b65b84ea0466e3d0ff255e3bb8c24",
+          "backing_elements": [
+            4444160,
+            4446208,
+            4448256
+          ],
+          "backing_bytes": 26677248,
+          "storage_policy": "independent_minimum_backings_from_expansion_spec",
+          "base_backing_sha256": "d6a77443eae886131a65f682dcc2e2e9732792cdb697b8dfc5d1c7abd63e8c15"
+        },
+        "checks": [
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0004860013723373413
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0004860013723373413
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0004860013723373413
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0
+            }
+          }
+        ],
+        "bitwise_stable": true
+      },
+      {
+        "pattern": "large_v",
+        "identity": {
+          "seed": 8147618770989597313,
+          "fp32_generation": false,
+          "backing_sha256": "77a78353f22ed17a3f4e117e32a289bf14a719a5f508fb53d874348ebff40bfe",
+          "backing_elements": [
+            4444160,
+            4446208,
+            4448256
+          ],
+          "backing_bytes": 26677248,
+          "storage_policy": "independent_minimum_backings_from_expansion_spec",
+          "base_backing_sha256": "d6a77443eae886131a65f682dcc2e2e9732792cdb697b8dfc5d1c7abd63e8c15"
+        },
+        "checks": [
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.12491607666015625
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 9.5367431640625e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.12491607666015625
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 9.5367431640625e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.12491607666015625
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 9.5367431640625e-07
+            }
+          }
+        ],
+        "bitwise_stable": true
+      },
+      {
+        "pattern": "large_scores_large_v",
+        "identity": {
+          "seed": 8147618770989597313,
+          "fp32_generation": false,
+          "backing_sha256": "ec12748d1e80c38f76cb36fe4dec521a91a82b987861ea9f027e37a4243fb576",
+          "backing_elements": [
+            4444160,
+            4446208,
+            4448256
+          ],
+          "backing_bytes": 26677248,
+          "storage_policy": "independent_minimum_backings_from_expansion_spec",
+          "base_backing_sha256": "d6a77443eae886131a65f682dcc2e2e9732792cdb697b8dfc5d1c7abd63e8c15"
+        },
+        "checks": [
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 7.555786372591432e+22
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 7.555786372591432e+22
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 7.555786372591432e+22
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0
+            }
+          }
+        ],
+        "bitwise_stable": true
+      },
+      {
+        "pattern": "signed_v8",
+        "identity": {
+          "seed": 8147618770989597313,
+          "fp32_generation": false,
+          "backing_sha256": "b04533cc1233bbd372d47e848b53e091bffdaf13c105bc9f0875322e8b9bde6d",
+          "backing_elements": [
+            4444160,
+            4446208,
+            4448256
+          ],
+          "backing_bytes": 26677248,
+          "storage_policy": "independent_minimum_backings_from_expansion_spec",
+          "base_backing_sha256": "d6a77443eae886131a65f682dcc2e2e9732792cdb697b8dfc5d1c7abd63e8c15"
+        },
+        "checks": [
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.007811784744262695
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 9.5367431640625e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.007811784744262695
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 9.5367431640625e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.007811784744262695
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 9.5367431640625e-07
+            }
+          }
+        ],
+        "bitwise_stable": true
+      },
+      {
+        "pattern": "tiny_v",
+        "identity": {
+          "seed": 8147618770989597313,
+          "fp32_generation": false,
+          "backing_sha256": "b96665a2863291fb2b7dcdf6fdfd949400f496f55299bb6c782d054c3c873505",
+          "backing_elements": [
+            4444160,
+            4446208,
+            4448256
+          ],
+          "backing_bytes": 26677248,
+          "storage_policy": "independent_minimum_backings_from_expansion_spec",
+          "base_backing_sha256": "d6a77443eae886131a65f682dcc2e2e9732792cdb697b8dfc5d1c7abd63e8c15"
+        },
+        "checks": [
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 7.508290955162556e-21
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 9.5367431640625e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 7.508290955162556e-21
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 9.5367431640625e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 7.508290955162556e-21
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 9.5367431640625e-07
+            }
+          }
+        ],
+        "bitwise_stable": true
+      },
+      {
+        "pattern": "large_finite_v",
+        "identity": {
+          "seed": 8147618770989597313,
+          "fp32_generation": false,
+          "backing_sha256": "42ea19c64677247473740088203669646756b99487287b23dd00cff8f0f405d5",
+          "backing_elements": [
+            4444160,
+            4446208,
+            4448256
+          ],
+          "backing_bytes": 26677248,
+          "storage_policy": "independent_minimum_backings_from_expansion_spec",
+          "base_backing_sha256": "d6a77443eae886131a65f682dcc2e2e9732792cdb697b8dfc5d1c7abd63e8c15"
+        },
+        "checks": [
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 15.8681640625
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 9.5367431640625e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 15.8681640625
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 9.5367431640625e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 15.8681640625
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 9.5367431640625e-07
+            }
+          }
+        ],
+        "bitwise_stable": true
+      },
+      {
+        "pattern": "negative_scores",
+        "identity": {
+          "seed": 8147618770989597313,
+          "fp32_generation": false,
+          "backing_sha256": "3a4a5277b13b7fb63656e2842489f303119d1869d0f8ded6dac05dbeb34c4f4e",
+          "backing_elements": [
+            4444160,
+            4446208,
+            4448256
+          ],
+          "backing_bytes": 26677248,
+          "storage_policy": "independent_minimum_backings_from_expansion_spec",
+          "base_backing_sha256": "d6a77443eae886131a65f682dcc2e2e9732792cdb697b8dfc5d1c7abd63e8c15"
+        },
+        "checks": [
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0004860013723373413
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 1.9073486328125e-06
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0004860013723373413
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 1.9073486328125e-06
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.0004860013723373413
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 1.9073486328125e-06
+            }
+          }
+        ],
+        "bitwise_stable": true
+      },
+      {
+        "pattern": "changing_scores",
+        "identity": {
+          "seed": 8147618770989597313,
+          "fp32_generation": false,
+          "backing_sha256": "4dd4174060a1c9f540e19965b5f9d806277beef8a80b50b039bdf5a887d1e4d8",
+          "backing_elements": [
+            4444160,
+            4446208,
+            4448256
+          ],
+          "backing_bytes": 26677248,
+          "storage_policy": "independent_minimum_backings_from_expansion_spec",
+          "base_backing_sha256": "d6a77443eae886131a65f682dcc2e2e9732792cdb697b8dfc5d1c7abd63e8c15"
+        },
+        "checks": [
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.00048141181468963623
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 4.76837158203125e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.00048141181468963623
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 4.76837158203125e-07
+            }
+          },
+          {
+            "output": {
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "elements": 1482752,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 0.00048141181468963623
+            },
+            "lse": {
+              "shape": [
+                2,
+                16,
+                362
+              ],
+              "elements": 11584,
+              "failed": 0,
+              "failed_percent": 0.0,
+              "nonfinite": 0,
+              "max_abs_finite": 4.76837158203125e-07
+            }
+          }
+        ],
+        "bitwise_stable": true
+      }
+    ]
+  },
+  "original_model_acceptance_verified": false
+}

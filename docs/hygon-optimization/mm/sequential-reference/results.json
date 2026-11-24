@@ -1,0 +1,4347 @@
+{
+  "summary": {
+    "cases": 94,
+    "fp32": 68,
+    "fp64": 26,
+    "accuracy_pass": 94,
+    "sheet_pass": 94,
+    "paired_pass": 88,
+    "minimum_sheet_performance": 0.9593243531549558,
+    "minimum_paired_performance": 0.7509855453350854,
+    "geomean_sheet_performance": 1.8017992659484379,
+    "geomean_paired_performance": 1.3700429103779386
+  },
+  "measurement": {
+    "node": "a01r3n18",
+    "architecture": "gfx936",
+    "metric": "median of 5 HIPTX ranges, 10 mm calls per range; sum HIPOPS DurationNs per call",
+    "host_overhead_included": false,
+    "fp32_profile": "paired-fp32-r1",
+    "fp64_profile": "paired-fp64-r2"
+  },
+  "cases": [
+    {
+      "row": 2,
+      "dtype": "torch.float32",
+      "m": 60025,
+      "n": 128,
+      "k": 128,
+      "a_stride": [
+        128,
+        1
+      ],
+      "b_stride": [
+        1,
+        128
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 84,
+      "paired_das_us": 75.856,
+      "optimized_us": 70.79990000000001,
+      "sheet_performance": 1.1864423537321378,
+      "paired_performance": 1.0714139426750602,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 3.0157294602872753e-05,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "tile",
+        "bm": 64,
+        "bn": 32,
+        "bk": 32,
+        "warps": 4,
+        "stages": 1,
+        "split": 1,
+        "group": 8
+      },
+      "kernels": [
+        "tiled"
+      ],
+      "native_rois_us": [
+        70.79990000000001,
+        70.9759,
+        70.736,
+        71.1519,
+        70.736
+      ]
+    },
+    {
+      "row": 4,
+      "dtype": "torch.float64",
+      "m": 1344,
+      "n": 128,
+      "k": 256,
+      "a_stride": [
+        256,
+        1
+      ],
+      "b_stride": [
+        128,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 131072,
+      "sheet_das_us": 19.36,
+      "paired_das_us": 15.184000000000001,
+      "optimized_us": 17.920099999999998,
+      "sheet_performance": 1.0803511141120865,
+      "paired_performance": 0.8473167002416283,
+      "sheet_pass": true,
+      "paired_pass": false,
+      "accuracy_ok": true,
+      "max_abs_error": 7.815970093361102e-14,
+      "physical_card": "1",
+      "profile": "paired-fp64-r2",
+      "config": {
+        "kind": "peel",
+        "group": 1,
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 16,
+        "split": 1,
+        "trans": false
+      },
+      "kernels": [
+        "mmac_tiled"
+      ],
+      "native_rois_us": [
+        18.0,
+        17.920099999999998,
+        17.791999999999998,
+        17.9361,
+        17.824
+      ]
+    },
+    {
+      "row": 5,
+      "dtype": "torch.float64",
+      "m": 192,
+      "n": 128,
+      "k": 11392,
+      "a_stride": [
+        11392,
+        1
+      ],
+      "b_stride": [
+        128,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 135.68,
+      "paired_das_us": 132.8001,
+      "optimized_us": 97.488,
+      "sheet_performance": 1.3917610372558675,
+      "paired_performance": 1.3622199655342195,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 3.979039320256561e-13,
+      "physical_card": "1",
+      "profile": "paired-fp64-r2",
+      "config": {
+        "kind": "mmac",
+        "tm": 4,
+        "tn": 4,
+        "wm": 2,
+        "warps": 4,
+        "unroll": 4,
+        "split": 32,
+        "trans": false,
+        "impl": "operands"
+      },
+      "kernels": [
+        "mmac_tiled",
+        "split_reduce"
+      ],
+      "native_rois_us": [
+        97.50399999999999,
+        97.4722,
+        97.4241,
+        97.52000000000001,
+        97.488
+      ]
+    },
+    {
+      "row": 6,
+      "dtype": "torch.float64",
+      "m": 192,
+      "n": 128,
+      "k": 128,
+      "a_stride": [
+        128,
+        1
+      ],
+      "b_stride": [
+        128,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 10.08,
+      "paired_das_us": 8.72,
+      "optimized_us": 6.992,
+      "sheet_performance": 1.4416475972540046,
+      "paired_performance": 1.2471395881006866,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 2.1316282072803006e-14,
+      "physical_card": "1",
+      "profile": "paired-fp64-r2",
+      "config": {
+        "kind": "prefetch",
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 1,
+        "prefetch": 8,
+        "split": 1,
+        "trans": false
+      },
+      "kernels": [
+        "mmac_tiled"
+      ],
+      "native_rois_us": [
+        7.023999999999999,
+        6.944,
+        6.928,
+        6.992,
+        6.992
+      ]
+    },
+    {
+      "row": 7,
+      "dtype": "torch.float64",
+      "m": 192,
+      "n": 16,
+      "k": 128,
+      "a_stride": [
+        128,
+        1
+      ],
+      "b_stride": [
+        16,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 9.92,
+      "paired_das_us": 8.112,
+      "optimized_us": 4.368,
+      "sheet_performance": 2.271062271062271,
+      "paired_performance": 1.857142857142857,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 2.4868995751603507e-14,
+      "physical_card": "1",
+      "profile": "paired-fp64-r2",
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 1
+      },
+      "kernels": [
+        "reduction"
+      ],
+      "native_rois_us": [
+        4.336,
+        4.368,
+        4.368,
+        4.368,
+        4.336
+      ]
+    },
+    {
+      "row": 8,
+      "dtype": "torch.float64",
+      "m": 192,
+      "n": 1,
+      "k": 128,
+      "a_stride": [
+        512,
+        1
+      ],
+      "b_stride": [
+        1,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 11.04,
+      "paired_das_us": 8.464,
+      "optimized_us": 2.384,
+      "sheet_performance": 4.630872483221476,
+      "paired_performance": 3.550335570469799,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 1.2434497875801753e-14,
+      "physical_card": "1",
+      "profile": "paired-fp64-r2",
+      "config": {
+        "kind": "reduce",
+        "bo": 1,
+        "warps": 1
+      },
+      "kernels": [
+        "reduction"
+      ],
+      "native_rois_us": [
+        2.4,
+        2.416,
+        2.368,
+        2.384,
+        2.384
+      ]
+    },
+    {
+      "row": 9,
+      "dtype": "torch.float64",
+      "m": 192,
+      "n": 1,
+      "k": 16,
+      "a_stride": [
+        16,
+        1
+      ],
+      "b_stride": [
+        1,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 6.24,
+      "paired_das_us": 3.936,
+      "optimized_us": 2.288,
+      "sheet_performance": 2.7272727272727275,
+      "paired_performance": 1.7202797202797204,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 1.7763568394002505e-15,
+      "physical_card": "1",
+      "profile": "paired-fp64-r2",
+      "config": {
+        "kind": "reduce",
+        "bo": 1,
+        "warps": 1
+      },
+      "kernels": [
+        "reduction"
+      ],
+      "native_rois_us": [
+        2.304,
+        2.272,
+        2.3201,
+        2.288,
+        2.272
+      ]
+    },
+    {
+      "row": 10,
+      "dtype": "torch.float64",
+      "m": 192,
+      "n": 128,
+      "k": 256,
+      "a_stride": [
+        5120,
+        1
+      ],
+      "b_stride": [
+        128,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 12.64,
+      "paired_das_us": 10.544,
+      "optimized_us": 10.048,
+      "sheet_performance": 1.2579617834394905,
+      "paired_performance": 1.0493630573248407,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 4.263256414560601e-14,
+      "physical_card": "1",
+      "profile": "paired-fp64-r2",
+      "config": {
+        "kind": "mmac",
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 1,
+        "unroll": 1,
+        "split": 4,
+        "trans": false,
+        "impl": "operands"
+      },
+      "kernels": [
+        "mmac_tiled",
+        "split_reduce"
+      ],
+      "native_rois_us": [
+        10.128,
+        9.968,
+        10.048,
+        10.048,
+        10.112
+      ]
+    },
+    {
+      "row": 11,
+      "dtype": "torch.float64",
+      "m": 192,
+      "n": 128,
+      "k": 89,
+      "a_stride": [
+        89,
+        1
+      ],
+      "b_stride": [
+        128,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 9.12,
+      "paired_das_us": 7.632,
+      "optimized_us": 6.544,
+      "sheet_performance": 1.393643031784841,
+      "paired_performance": 1.1662591687041566,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 2.4868995751603507e-14,
+      "physical_card": "1",
+      "profile": "paired-fp64-r2",
+      "config": {
+        "kind": "mmac",
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 1,
+        "unroll": 1,
+        "split": 4,
+        "trans": false,
+        "impl": "operands"
+      },
+      "kernels": [
+        "mmac_tiled",
+        "split_reduce"
+      ],
+      "native_rois_us": [
+        6.608,
+        6.5120000000000005,
+        6.56,
+        6.544,
+        6.5120000000000005
+      ]
+    },
+    {
+      "row": 12,
+      "dtype": "torch.float64",
+      "m": 192,
+      "n": 1,
+      "k": 89,
+      "a_stride": [
+        89,
+        1
+      ],
+      "b_stride": [
+        1,
+        89
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 9.92,
+      "paired_das_us": 7.4719999999999995,
+      "optimized_us": 2.432,
+      "sheet_performance": 4.078947368421053,
+      "paired_performance": 3.0723684210526314,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 1.0658141036401503e-14,
+      "physical_card": "1",
+      "profile": "paired-fp64-r2",
+      "config": {
+        "kind": "reduce",
+        "bo": 1,
+        "warps": 1
+      },
+      "kernels": [
+        "reduction"
+      ],
+      "native_rois_us": [
+        2.416,
+        2.448,
+        2.416,
+        2.448,
+        2.432
+      ]
+    },
+    {
+      "row": 15,
+      "dtype": "torch.float64",
+      "m": 192,
+      "n": 6528,
+      "k": 89,
+      "a_stride": [
+        89,
+        1
+      ],
+      "b_stride": [
+        6528,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 25.76,
+      "paired_das_us": 18.288,
+      "optimized_us": 24.352,
+      "sheet_performance": 1.0578186596583443,
+      "paired_performance": 0.7509855453350854,
+      "sheet_pass": true,
+      "paired_pass": false,
+      "accuracy_ok": true,
+      "max_abs_error": 2.1316282072803006e-14,
+      "physical_card": "1",
+      "profile": "paired-fp64-r2",
+      "config": {
+        "kind": "coalesced",
+        "group": 1,
+        "tm": 2,
+        "tn": 4,
+        "wm": 2,
+        "warps": 4,
+        "prefetch": 1,
+        "split": 1,
+        "trans": false
+      },
+      "kernels": [
+        "mmac_tiled"
+      ],
+      "native_rois_us": [
+        25.119999999999997,
+        24.416,
+        24.256,
+        24.352,
+        24.288
+      ]
+    },
+    {
+      "row": 16,
+      "dtype": "torch.float64",
+      "m": 192,
+      "n": 768,
+      "k": 89,
+      "a_stride": [
+        89,
+        1
+      ],
+      "b_stride": [
+        768,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 10.88,
+      "paired_das_us": 8.304,
+      "optimized_us": 9.536,
+      "sheet_performance": 1.1409395973154364,
+      "paired_performance": 0.8708053691275168,
+      "sheet_pass": true,
+      "paired_pass": false,
+      "accuracy_ok": true,
+      "max_abs_error": 2.1316282072803006e-14,
+      "physical_card": "1",
+      "profile": "paired-fp64-r2",
+      "config": {
+        "kind": "coalesced",
+        "group": 8,
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 1,
+        "prefetch": 2,
+        "split": 1,
+        "trans": false
+      },
+      "kernels": [
+        "mmac_tiled"
+      ],
+      "native_rois_us": [
+        9.888,
+        9.536100000000001,
+        9.456,
+        9.536,
+        9.456
+      ]
+    },
+    {
+      "row": 18,
+      "dtype": "torch.float64",
+      "m": 2208,
+      "n": 15,
+      "k": 3,
+      "a_stride": [
+        3,
+        1
+      ],
+      "b_stride": [
+        15,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 5.28,
+      "paired_das_us": 3.904,
+      "optimized_us": 2.768,
+      "sheet_performance": 1.9075144508670523,
+      "paired_performance": 1.4104046242774568,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 1.7763568394002505e-15,
+      "physical_card": "1",
+      "profile": "paired-fp64-r2",
+      "config": {
+        "kind": "small",
+        "block": 512,
+        "warps": 4
+      },
+      "kernels": [
+        "small_k"
+      ],
+      "native_rois_us": [
+        2.816,
+        2.7359999999999998,
+        2.768,
+        2.7359999999999998,
+        2.784
+      ]
+    },
+    {
+      "row": 19,
+      "dtype": "torch.float64",
+      "m": 2208,
+      "n": 1280,
+      "k": 64,
+      "a_stride": [
+        64,
+        1
+      ],
+      "b_stride": [
+        1280,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 37.6,
+      "paired_das_us": 29.504,
+      "optimized_us": 38.8,
+      "sheet_performance": 0.9690721649484537,
+      "paired_performance": 0.7604123711340207,
+      "sheet_pass": true,
+      "paired_pass": false,
+      "accuracy_ok": true,
+      "max_abs_error": 1.7763568394002505e-14,
+      "physical_card": "1",
+      "profile": "paired-fp64-r2",
+      "config": {
+        "kind": "peel",
+        "group": 1,
+        "tm": 2,
+        "tn": 2,
+        "wm": 2,
+        "warps": 4,
+        "prefetch": 4,
+        "split": 1,
+        "trans": false
+      },
+      "kernels": [
+        "mmac_tiled"
+      ],
+      "native_rois_us": [
+        39.392,
+        38.816,
+        38.8,
+        37.7761,
+        37.648
+      ]
+    },
+    {
+      "row": 20,
+      "dtype": "torch.float64",
+      "m": 2208,
+      "n": 512,
+      "k": 64,
+      "a_stride": [
+        64,
+        1
+      ],
+      "b_stride": [
+        512,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 20.32,
+      "paired_das_us": 14.687999999999999,
+      "optimized_us": 16.272,
+      "sheet_performance": 1.248770894788594,
+      "paired_performance": 0.9026548672566371,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 1.7763568394002505e-14,
+      "physical_card": "1",
+      "profile": "paired-fp64-r2",
+      "config": {
+        "kind": "reshape",
+        "group": 1,
+        "tm": 2,
+        "tn": 2,
+        "wm": 2,
+        "warps": 2,
+        "prefetch": 4,
+        "split": 1,
+        "trans": false
+      },
+      "kernels": [
+        "mmac_tiled"
+      ],
+      "native_rois_us": [
+        17.328,
+        16.224,
+        16.272,
+        16.3841,
+        16.256
+      ]
+    },
+    {
+      "row": 21,
+      "dtype": "torch.float64",
+      "m": 2208,
+      "n": 64,
+      "k": 64,
+      "a_stride": [
+        64,
+        1
+      ],
+      "b_stride": [
+        64,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 8.96,
+      "paired_das_us": 6.208,
+      "optimized_us": 6.720000000000001,
+      "sheet_performance": 1.3333333333333333,
+      "paired_performance": 0.9238095238095237,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 1.4210854715202004e-14,
+      "physical_card": "1",
+      "profile": "paired-fp64-r2",
+      "config": {
+        "kind": "peel",
+        "group": 1,
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 16,
+        "split": 1,
+        "trans": false
+      },
+      "kernels": [
+        "mmac_tiled"
+      ],
+      "native_rois_us": [
+        6.768000000000001,
+        6.656000000000001,
+        6.704000000000001,
+        6.752,
+        6.720000000000001
+      ]
+    },
+    {
+      "row": 22,
+      "dtype": "torch.float64",
+      "m": 2208,
+      "n": 15,
+      "k": 7,
+      "a_stride": [
+        7,
+        1
+      ],
+      "b_stride": [
+        1,
+        7
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 5.12,
+      "paired_das_us": 3.904,
+      "optimized_us": 3.5200000000000005,
+      "sheet_performance": 1.4545454545454544,
+      "paired_performance": 1.109090909090909,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 3.552713678800501e-15,
+      "physical_card": "1",
+      "profile": "paired-fp64-r2",
+      "config": {
+        "kind": "simt",
+        "bm": 64,
+        "bn": 8,
+        "warps": 4,
+        "split": 1,
+        "unroll": 4
+      },
+      "kernels": [
+        "simt"
+      ],
+      "native_rois_us": [
+        3.6159999999999997,
+        3.504,
+        3.5200000000000005,
+        3.5200000000000005,
+        3.5200000000000005
+      ]
+    },
+    {
+      "row": 24,
+      "dtype": "torch.float64",
+      "m": 24576,
+      "n": 48,
+      "k": 1,
+      "a_stride": [
+        1,
+        128
+      ],
+      "b_stride": [
+        48,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 16.64,
+      "paired_das_us": 11.4401,
+      "optimized_us": 7.5361,
+      "sheet_performance": 2.208038640676212,
+      "paired_performance": 1.5180398349278803,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 0.0,
+      "physical_card": "1",
+      "profile": "paired-fp64-r2",
+      "config": {
+        "kind": "small",
+        "block": 1024,
+        "warps": 4
+      },
+      "kernels": [
+        "small_k"
+      ],
+      "native_rois_us": [
+        7.792,
+        7.552,
+        7.5200000000000005,
+        7.5200000000000005,
+        7.5361
+      ]
+    },
+    {
+      "row": 25,
+      "dtype": "torch.float64",
+      "m": 24576,
+      "n": 256,
+      "k": 368,
+      "a_stride": [
+        368,
+        1
+      ],
+      "b_stride": [
+        256,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 234.72,
+      "paired_das_us": 206.43220000000002,
+      "optimized_us": 244.67220000000003,
+      "sheet_performance": 0.9593243531549558,
+      "paired_performance": 0.8437092567116329,
+      "sheet_pass": true,
+      "paired_pass": false,
+      "accuracy_ok": true,
+      "max_abs_error": 1.6342482922482304e-13,
+      "physical_card": "1",
+      "profile": "paired-fp64-r2",
+      "config": {
+        "kind": "coopfast",
+        "group": 1,
+        "tm": 2,
+        "tn": 4,
+        "wm": 2,
+        "warps": 4,
+        "prefetch": 2,
+        "split": 1,
+        "trans": false
+      },
+      "kernels": [
+        "mmac_tiled"
+      ],
+      "native_rois_us": [
+        244.9282,
+        244.6241,
+        244.5761,
+        244.67220000000003,
+        244.76819999999998
+      ]
+    },
+    {
+      "row": 26,
+      "dtype": "torch.float64",
+      "m": 24576,
+      "n": 256,
+      "k": 4,
+      "a_stride": [
+        4,
+        1
+      ],
+      "b_stride": [
+        1,
+        4
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 111.84,
+      "paired_das_us": 90.3041,
+      "optimized_us": 67.056,
+      "sheet_performance": 1.6678596993557624,
+      "paired_performance": 1.3466967907420664,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 3.552713678800501e-15,
+      "physical_card": "1",
+      "profile": "paired-fp64-r2",
+      "config": {
+        "kind": "simt",
+        "bm": 256,
+        "bn": 8,
+        "warps": 4,
+        "split": 1,
+        "unroll": 1
+      },
+      "kernels": [
+        "simt"
+      ],
+      "native_rois_us": [
+        69.44,
+        67.056,
+        66.928,
+        67.104,
+        67.056
+      ]
+    },
+    {
+      "row": 27,
+      "dtype": "torch.float64",
+      "m": 24576,
+      "n": 768,
+      "k": 6,
+      "a_stride": [
+        6,
+        1
+      ],
+      "b_stride": [
+        1,
+        6
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 283.04,
+      "paired_das_us": 248.6402,
+      "optimized_us": 268.5442,
+      "sheet_performance": 1.0539791959759326,
+      "paired_performance": 0.9258818473830379,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 5.329070518200751e-15,
+      "physical_card": "1",
+      "profile": "paired-fp64-r2",
+      "config": {
+        "kind": "simt",
+        "bm": 256,
+        "bn": 8,
+        "warps": 4,
+        "split": 1,
+        "unroll": 1
+      },
+      "kernels": [
+        "simt"
+      ],
+      "native_rois_us": [
+        270.01619999999997,
+        267.9201,
+        269.2482,
+        268.5442,
+        267.3442
+      ]
+    },
+    {
+      "row": 28,
+      "dtype": "torch.float64",
+      "m": 24576,
+      "n": 768,
+      "k": 816,
+      "a_stride": [
+        816,
+        1
+      ],
+      "b_stride": [
+        768,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 1421.12,
+      "paired_das_us": 1295.3286,
+      "optimized_us": 1375.3128000000002,
+      "sheet_performance": 1.0333067502898248,
+      "paired_performance": 0.9418429029381533,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 3.694822225952521e-13,
+      "physical_card": "1",
+      "profile": "paired-fp64-r2",
+      "config": {
+        "kind": "pipeline",
+        "group": 1,
+        "tm": 4,
+        "tn": 4,
+        "wm": 2,
+        "warps": 4,
+        "prefetch": 2,
+        "split": 1,
+        "trans": false
+      },
+      "kernels": [
+        "mmac_tiled"
+      ],
+      "native_rois_us": [
+        1378.1767,
+        1374.6248,
+        1375.3128000000002,
+        1374.8168,
+        1375.9848
+      ]
+    },
+    {
+      "row": 29,
+      "dtype": "torch.float64",
+      "m": 282624,
+      "n": 3,
+      "k": 15,
+      "a_stride": [
+        15,
+        1
+      ],
+      "b_stride": [
+        3,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 53.28,
+      "paired_das_us": 45.312,
+      "optimized_us": 40.144,
+      "sheet_performance": 1.3272220007971305,
+      "paired_performance": 1.1287365484256675,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 5.329070518200751e-15,
+      "physical_card": "1",
+      "profile": "paired-fp64-r2",
+      "config": {
+        "kind": "mmac",
+        "impl": "operands",
+        "tm": 1,
+        "tn": 1,
+        "wm": 4,
+        "warps": 4,
+        "unroll": 1,
+        "split": 1,
+        "trans": false
+      },
+      "kernels": [
+        "mmac_tiled"
+      ],
+      "native_rois_us": [
+        40.144,
+        43.92,
+        39.519999999999996,
+        39.424,
+        43.824
+      ]
+    },
+    {
+      "row": 30,
+      "dtype": "torch.float64",
+      "m": 282624,
+      "n": 7,
+      "k": 15,
+      "a_stride": [
+        15,
+        1
+      ],
+      "b_stride": [
+        7,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 57.76,
+      "paired_das_us": 48.864,
+      "optimized_us": 41.839999999999996,
+      "sheet_performance": 1.3804971319311665,
+      "paired_performance": 1.1678776290630974,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 5.329070518200751e-15,
+      "physical_card": "1",
+      "profile": "paired-fp64-r2",
+      "config": {
+        "kind": "coalesced",
+        "group": 8,
+        "tm": 2,
+        "tn": 1,
+        "wm": 4,
+        "warps": 4,
+        "prefetch": 4,
+        "split": 1,
+        "trans": false
+      },
+      "kernels": [
+        "mmac_tiled"
+      ],
+      "native_rois_us": [
+        42.096,
+        41.68,
+        41.839999999999996,
+        41.904,
+        41.824
+      ]
+    },
+    {
+      "row": 31,
+      "dtype": "torch.float64",
+      "m": 576,
+      "n": 128,
+      "k": 128,
+      "a_stride": [
+        128,
+        1
+      ],
+      "b_stride": [
+        128,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 16384,
+      "sheet_das_us": 8.96,
+      "paired_das_us": 7.231999999999999,
+      "optimized_us": 8.016,
+      "sheet_performance": 1.1177644710578842,
+      "paired_performance": 0.902195608782435,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 2.1316282072803006e-14,
+      "physical_card": "1",
+      "profile": "paired-fp64-r2",
+      "config": {
+        "kind": "peel",
+        "group": 1,
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 16,
+        "split": 1,
+        "trans": false
+      },
+      "kernels": [
+        "mmac_tiled"
+      ],
+      "native_rois_us": [
+        8.096,
+        7.984,
+        7.984,
+        8.016,
+        8.016
+      ]
+    },
+    {
+      "row": 32,
+      "dtype": "torch.float64",
+      "m": 576,
+      "n": 128,
+      "k": 384,
+      "a_stride": [
+        384,
+        1
+      ],
+      "b_stride": [
+        128,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 32768,
+      "sheet_das_us": 23.52,
+      "paired_das_us": 21.44,
+      "optimized_us": 18.16,
+      "sheet_performance": 1.2951541850220265,
+      "paired_performance": 1.1806167400881058,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 4.973799150320701e-14,
+      "physical_card": "1",
+      "profile": "paired-fp64-r2",
+      "config": {
+        "kind": "mmac",
+        "tm": 2,
+        "tn": 2,
+        "wm": 2,
+        "warps": 4,
+        "unroll": 4,
+        "split": 4,
+        "trans": false,
+        "impl": "operands"
+      },
+      "kernels": [
+        "mmac_tiled",
+        "split_reduce"
+      ],
+      "native_rois_us": [
+        18.208000000000002,
+        18.144,
+        18.0641,
+        18.16,
+        18.208000000000002
+      ]
+    },
+    {
+      "row": 33,
+      "dtype": "torch.float64",
+      "m": 960,
+      "n": 128,
+      "k": 128,
+      "a_stride": [
+        128,
+        1
+      ],
+      "b_stride": [
+        128,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 32768,
+      "sheet_das_us": 11.36,
+      "paired_das_us": 9.0081,
+      "optimized_us": 9.168000000000001,
+      "sheet_performance": 1.239092495636998,
+      "paired_performance": 0.9825589005235602,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 2.1316282072803006e-14,
+      "physical_card": "1",
+      "profile": "paired-fp64-r2",
+      "config": {
+        "kind": "coopfast",
+        "group": 1,
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 16,
+        "split": 1,
+        "trans": false
+      },
+      "kernels": [
+        "mmac_tiled"
+      ],
+      "native_rois_us": [
+        9.184000000000001,
+        9.168000000000001,
+        9.136,
+        9.184000000000001,
+        9.168000000000001
+      ]
+    },
+    {
+      "row": 35,
+      "dtype": "torch.float32",
+      "m": 100,
+      "n": 128,
+      "k": 128,
+      "a_stride": [
+        128,
+        1
+      ],
+      "b_stride": [
+        128,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 7.52,
+      "paired_das_us": 6.0,
+      "optimized_us": 4.368,
+      "sheet_performance": 1.7216117216117215,
+      "paired_performance": 1.3736263736263736,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 2.2405353803378603e-05,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "tile",
+        "bm": 16,
+        "bn": 64,
+        "bk": 64,
+        "warps": 4,
+        "stages": 2,
+        "split": 1,
+        "group": 8
+      },
+      "kernels": [
+        "tiled"
+      ],
+      "native_rois_us": [
+        4.4799999999999995,
+        4.336,
+        4.352,
+        4.4,
+        4.368
+      ]
+    },
+    {
+      "row": 36,
+      "dtype": "torch.float32",
+      "m": 100,
+      "n": 64,
+      "k": 128,
+      "a_stride": [
+        128,
+        1
+      ],
+      "b_stride": [
+        64,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 6.88,
+      "paired_das_us": 5.872,
+      "optimized_us": 4.4159999999999995,
+      "sheet_performance": 1.5579710144927539,
+      "paired_performance": 1.3297101449275364,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 1.5033983395085215e-05,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "tile",
+        "bm": 16,
+        "bn": 64,
+        "bk": 64,
+        "warps": 4,
+        "stages": 2,
+        "split": 1,
+        "group": 8
+      },
+      "kernels": [
+        "tiled"
+      ],
+      "native_rois_us": [
+        4.928,
+        4.352,
+        4.432,
+        4.4159999999999995,
+        4.368
+      ]
+    },
+    {
+      "row": 37,
+      "dtype": "torch.float32",
+      "m": 100,
+      "n": 32,
+      "k": 32,
+      "a_stride": [
+        128,
+        1
+      ],
+      "b_stride": [
+        32,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 1024,
+      "sheet_das_us": 4.8,
+      "paired_das_us": 3.696,
+      "optimized_us": 3.056,
+      "sheet_performance": 1.5706806282722512,
+      "paired_performance": 1.2094240837696335,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 3.958692875727365e-06,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "small",
+        "block": 256,
+        "warps": 4
+      },
+      "kernels": [
+        "small_k"
+      ],
+      "native_rois_us": [
+        3.3280000000000003,
+        3.024,
+        3.072,
+        3.056,
+        3.008
+      ]
+    },
+    {
+      "row": 38,
+      "dtype": "torch.float32",
+      "m": 100,
+      "n": 64,
+      "k": 32,
+      "a_stride": [
+        128,
+        1
+      ],
+      "b_stride": [
+        64,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 2048,
+      "sheet_das_us": 4.96,
+      "paired_das_us": 3.504,
+      "optimized_us": 2.896,
+      "sheet_performance": 1.712707182320442,
+      "paired_performance": 1.2099447513812156,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 4.545265184674463e-06,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "tile",
+        "bm": 32,
+        "bn": 32,
+        "bk": 32,
+        "warps": 4,
+        "stages": 1,
+        "split": 1,
+        "group": 8
+      },
+      "kernels": [
+        "tiled"
+      ],
+      "native_rois_us": [
+        3.056,
+        2.864,
+        2.896,
+        2.912,
+        2.816
+      ]
+    },
+    {
+      "row": 39,
+      "dtype": "torch.float32",
+      "m": 118,
+      "n": 128,
+      "k": 118,
+      "a_stride": [
+        118,
+        1
+      ],
+      "b_stride": [
+        128,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 6.4,
+      "paired_das_us": 5.296,
+      "optimized_us": 4.816,
+      "sheet_performance": 1.3289036544850499,
+      "paired_performance": 1.0996677740863787,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 1.7327630004615457e-05,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "tile",
+        "bm": 16,
+        "bn": 64,
+        "bk": 64,
+        "warps": 4,
+        "stages": 1,
+        "split": 1,
+        "group": 8
+      },
+      "kernels": [
+        "tiled"
+      ],
+      "native_rois_us": [
+        4.88,
+        4.816,
+        4.8,
+        4.816,
+        4.8
+      ]
+    },
+    {
+      "row": 40,
+      "dtype": "torch.float32",
+      "m": 27,
+      "n": 3,
+      "k": 3,
+      "a_stride": [
+        3,
+        1
+      ],
+      "b_stride": [
+        3,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 6.08,
+      "paired_das_us": 3.024,
+      "optimized_us": 2.2079999999999997,
+      "sheet_performance": 2.7536231884057973,
+      "paired_performance": 1.3695652173913044,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 2.2937085253360578e-07,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 1
+      },
+      "kernels": [
+        "reduction"
+      ],
+      "native_rois_us": [
+        2.2079999999999997,
+        2.192,
+        2.2079999999999997,
+        2.16,
+        2.2239999999999998
+      ]
+    },
+    {
+      "row": 41,
+      "dtype": "torch.float32",
+      "m": 28852,
+      "n": 32,
+      "k": 1,
+      "a_stride": [
+        1,
+        1
+      ],
+      "b_stride": [
+        32,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 12.32,
+      "paired_das_us": 7.023999999999999,
+      "optimized_us": 4.064,
+      "sheet_performance": 3.031496062992126,
+      "paired_performance": 1.7283464566929132,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 4.7065191211004276e-07,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "small",
+        "block": 1024,
+        "warps": 4
+      },
+      "kernels": [
+        "small_k"
+      ],
+      "native_rois_us": [
+        4.336,
+        4.064,
+        4.112,
+        4.064,
+        4.016
+      ]
+    },
+    {
+      "row": 42,
+      "dtype": "torch.float32",
+      "m": 28852,
+      "n": 32,
+      "k": 32,
+      "a_stride": [
+        32,
+        1
+      ],
+      "b_stride": [
+        32,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 12.48,
+      "paired_das_us": 8.416,
+      "optimized_us": 6.959999999999999,
+      "sheet_performance": 1.7931034482758623,
+      "paired_performance": 1.2091954022988507,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 8.790745017250856e-06,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "tile",
+        "bm": 64,
+        "bn": 32,
+        "bk": 32,
+        "warps": 4,
+        "stages": 1,
+        "split": 1,
+        "group": 8
+      },
+      "kernels": [
+        "tiled"
+      ],
+      "native_rois_us": [
+        6.976000000000001,
+        7.008,
+        6.944,
+        6.912000000000001,
+        6.959999999999999
+      ]
+    },
+    {
+      "row": 43,
+      "dtype": "torch.float32",
+      "m": 28852,
+      "n": 64,
+      "k": 32,
+      "a_stride": [
+        32,
+        1
+      ],
+      "b_stride": [
+        64,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 16.48,
+      "paired_das_us": 11.648,
+      "optimized_us": 9.792,
+      "sheet_performance": 1.6830065359477124,
+      "paired_performance": 1.1895424836601307,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 8.353755966084009e-06,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "tile",
+        "bm": 64,
+        "bn": 32,
+        "bk": 32,
+        "warps": 4,
+        "stages": 1,
+        "split": 1,
+        "group": 8
+      },
+      "kernels": [
+        "tiled"
+      ],
+      "native_rois_us": [
+        9.952,
+        9.76,
+        9.76,
+        9.8719,
+        9.792
+      ]
+    },
+    {
+      "row": 44,
+      "dtype": "torch.float32",
+      "m": 3122,
+      "n": 32,
+      "k": 32,
+      "a_stride": [
+        64,
+        1
+      ],
+      "b_stride": [
+        32,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 2048,
+      "sheet_das_us": 5.28,
+      "paired_das_us": 3.696,
+      "optimized_us": 3.4240000000000004,
+      "sheet_performance": 1.542056074766355,
+      "paired_performance": 1.0794392523364484,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 7.970901641840555e-06,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "tile",
+        "bm": 32,
+        "bn": 32,
+        "bk": 32,
+        "warps": 4,
+        "stages": 1,
+        "split": 1,
+        "group": 8
+      },
+      "kernels": [
+        "tiled"
+      ],
+      "native_rois_us": [
+        3.472,
+        3.408,
+        3.3280000000000003,
+        3.472,
+        3.4240000000000004
+      ]
+    },
+    {
+      "row": 47,
+      "dtype": "torch.float32",
+      "m": 3122,
+      "n": 64,
+      "k": 64,
+      "a_stride": [
+        64,
+        1
+      ],
+      "b_stride": [
+        64,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 16384,
+      "sheet_das_us": 8.32,
+      "paired_das_us": 5.4719999999999995,
+      "optimized_us": 4.704,
+      "sheet_performance": 1.7687074829931975,
+      "paired_performance": 1.163265306122449,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 1.095222470937074e-05,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "tile",
+        "bm": 32,
+        "bn": 32,
+        "bk": 32,
+        "warps": 4,
+        "stages": 1,
+        "split": 1,
+        "group": 8
+      },
+      "kernels": [
+        "tiled"
+      ],
+      "native_rois_us": [
+        4.928,
+        4.688000000000001,
+        4.672,
+        4.704,
+        4.720000000000001
+      ]
+    },
+    {
+      "row": 51,
+      "dtype": "torch.float32",
+      "m": 126636,
+      "n": 128,
+      "k": 128,
+      "a_stride": [
+        128,
+        1
+      ],
+      "b_stride": [
+        1,
+        128
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 157.51999999999998,
+      "paired_das_us": 147.5359,
+      "optimized_us": 143.3759,
+      "sheet_performance": 1.0986504705463052,
+      "paired_performance": 1.0290146391408876,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 3.590452357116192e-05,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "tile",
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "warps": 4,
+        "stages": 1,
+        "split": 1,
+        "group": 8
+      },
+      "kernels": [
+        "tiled"
+      ],
+      "native_rois_us": [
+        143.3759,
+        143.40789999999998,
+        143.5199,
+        143.34390000000002,
+        143.2799
+      ]
+    },
+    {
+      "row": 52,
+      "dtype": "torch.float32",
+      "m": 126636,
+      "n": 256,
+      "k": 128,
+      "a_stride": [
+        128,
+        1
+      ],
+      "b_stride": [
+        1,
+        128
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 227.84,
+      "paired_das_us": 226.46390000000002,
+      "optimized_us": 232.60790000000003,
+      "sheet_performance": 0.9795024158680766,
+      "paired_performance": 0.9735864517069283,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 3.9137760921903464e-05,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "fasttile",
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "warps": 4,
+        "stages": 1,
+        "group": 8,
+        "single_buffer": false
+      },
+      "kernels": [
+        "tiled_fast"
+      ],
+      "native_rois_us": [
+        232.01590000000002,
+        232.7359,
+        232.5759,
+        232.60790000000003,
+        232.68789999999998
+      ]
+    },
+    {
+      "row": 59,
+      "dtype": "torch.float32",
+      "m": 4819,
+      "n": 128,
+      "k": 256,
+      "a_stride": [
+        256,
+        1
+      ],
+      "b_stride": [
+        1,
+        256
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 14.64,
+      "paired_das_us": 14.319999999999999,
+      "optimized_us": 13.872,
+      "sheet_performance": 1.055363321799308,
+      "paired_performance": 1.0322952710495963,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 4.687529457214623e-05,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "fasttile",
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "warps": 4,
+        "stages": 2,
+        "group": 8,
+        "single_buffer": false
+      },
+      "kernels": [
+        "tiled_fast"
+      ],
+      "native_rois_us": [
+        13.984,
+        13.872,
+        13.824000000000002,
+        14.016,
+        13.856
+      ]
+    },
+    {
+      "row": 60,
+      "dtype": "torch.float32",
+      "m": 1024,
+      "n": 256,
+      "k": 157,
+      "a_stride": [
+        157,
+        1
+      ],
+      "b_stride": [
+        1,
+        157
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 13.6,
+      "paired_das_us": 9.568000000000001,
+      "optimized_us": 9.072,
+      "sheet_performance": 1.4991181657848325,
+      "paired_performance": 1.0546737213403883,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 3.380282547738034e-05,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "fasttile",
+        "bm": 32,
+        "bn": 64,
+        "bk": 32,
+        "warps": 4,
+        "stages": 2,
+        "group": 8,
+        "single_buffer": false
+      },
+      "kernels": [
+        "tiled_fast"
+      ],
+      "native_rois_us": [
+        9.2,
+        9.008,
+        9.072,
+        9.136,
+        9.072
+      ]
+    },
+    {
+      "row": 61,
+      "dtype": "torch.float32",
+      "m": 1024,
+      "n": 256,
+      "k": 217,
+      "a_stride": [
+        217,
+        1
+      ],
+      "b_stride": [
+        1,
+        217
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 13.92,
+      "paired_das_us": 11.024,
+      "optimized_us": 12.72,
+      "sheet_performance": 1.0943396226415094,
+      "paired_performance": 0.8666666666666666,
+      "sheet_pass": true,
+      "paired_pass": false,
+      "accuracy_ok": true,
+      "max_abs_error": 4.38663934971828e-05,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "fast3",
+        "bm": 32,
+        "bn": 64,
+        "bk": 32,
+        "warps": 4,
+        "unroll": 2,
+        "tail": false,
+        "stages": 2
+      },
+      "kernels": [
+        "tiled_unrolled"
+      ],
+      "native_rois_us": [
+        12.751999999999999,
+        12.751999999999999,
+        12.704,
+        12.72,
+        12.719899999999999
+      ]
+    },
+    {
+      "row": 62,
+      "dtype": "torch.float32",
+      "m": 1024,
+      "n": 12,
+      "k": 256,
+      "a_stride": [
+        256,
+        1
+      ],
+      "b_stride": [
+        1,
+        256
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 9.12,
+      "paired_das_us": 7.376,
+      "optimized_us": 6.176,
+      "sheet_performance": 1.4766839378238341,
+      "paired_performance": 1.194300518134715,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 6.035960616657121e-06,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "reduce",
+        "bo": 16,
+        "warps": 4
+      },
+      "kernels": [
+        "reduction"
+      ],
+      "native_rois_us": [
+        6.176,
+        6.16,
+        6.128,
+        6.208,
+        6.192
+      ]
+    },
+    {
+      "row": 63,
+      "dtype": "torch.float32",
+      "m": 1024,
+      "n": 256,
+      "k": 256,
+      "a_stride": [
+        256,
+        1
+      ],
+      "b_stride": [
+        1,
+        256
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 13.44,
+      "paired_das_us": 10.704,
+      "optimized_us": 10.288,
+      "sheet_performance": 1.3063763608087091,
+      "paired_performance": 1.0404354587869362,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 4.4465471368937415e-05,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "tile",
+        "bm": 32,
+        "bn": 32,
+        "bk": 32,
+        "warps": 4,
+        "stages": 1,
+        "split": 1,
+        "group": 8
+      },
+      "kernels": [
+        "tiled"
+      ],
+      "native_rois_us": [
+        10.704,
+        10.256,
+        10.256,
+        10.431999999999999,
+        10.288
+      ]
+    },
+    {
+      "row": 64,
+      "dtype": "torch.float32",
+      "m": 1024,
+      "n": 256,
+      "k": 512,
+      "a_stride": [
+        512,
+        1
+      ],
+      "b_stride": [
+        1,
+        512
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 20,
+      "paired_das_us": 18.048,
+      "optimized_us": 18.032,
+      "sheet_performance": 1.109139307897072,
+      "paired_performance": 1.0008873114463175,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 0.00011088263514125174,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "tile",
+        "bm": 32,
+        "bn": 32,
+        "bk": 32,
+        "warps": 4,
+        "stages": 1,
+        "split": 1,
+        "group": 8
+      },
+      "kernels": [
+        "tiled"
+      ],
+      "native_rois_us": [
+        18.240000000000002,
+        17.9039,
+        17.9999,
+        18.032,
+        18.096
+      ]
+    },
+    {
+      "row": 65,
+      "dtype": "torch.float32",
+      "m": 32,
+      "n": 768,
+      "k": 11,
+      "a_stride": [
+        11,
+        1
+      ],
+      "b_stride": [
+        1,
+        11
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 4.96,
+      "paired_das_us": 3.696,
+      "optimized_us": 2.912,
+      "sheet_performance": 1.7032967032967032,
+      "paired_performance": 1.2692307692307694,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 1.979547564090467e-06,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "tile",
+        "bm": 16,
+        "bn": 64,
+        "bk": 16,
+        "warps": 4,
+        "stages": 3,
+        "split": 1,
+        "group": 8,
+        "single_buffer": false
+      },
+      "kernels": [
+        "tiled"
+      ],
+      "native_rois_us": [
+        2.928,
+        2.88,
+        2.896,
+        2.912,
+        2.928
+      ]
+    },
+    {
+      "row": 66,
+      "dtype": "torch.float32",
+      "m": 32,
+      "n": 512,
+      "k": 128,
+      "a_stride": [
+        128,
+        1
+      ],
+      "b_stride": [
+        1,
+        128
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 5.6,
+      "paired_das_us": 4.4799999999999995,
+      "optimized_us": 4.384,
+      "sheet_performance": 1.2773722627737225,
+      "paired_performance": 1.021897810218978,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 1.7407722914697388e-05,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "tile",
+        "bm": 16,
+        "bn": 32,
+        "bk": 64,
+        "warps": 4,
+        "stages": 2,
+        "split": 1,
+        "group": 8
+      },
+      "kernels": [
+        "tiled"
+      ],
+      "native_rois_us": [
+        4.352,
+        4.384,
+        4.368,
+        4.384,
+        4.4
+      ]
+    },
+    {
+      "row": 67,
+      "dtype": "torch.float32",
+      "m": 32,
+      "n": 768,
+      "k": 128,
+      "a_stride": [
+        128,
+        1
+      ],
+      "b_stride": [
+        1,
+        128
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 6.08,
+      "paired_das_us": 4.976,
+      "optimized_us": 4.4,
+      "sheet_performance": 1.3818181818181816,
+      "paired_performance": 1.1309090909090909,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 2.220595743551712e-05,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "tile",
+        "bm": 16,
+        "bn": 32,
+        "bk": 64,
+        "warps": 4,
+        "stages": 2,
+        "split": 1,
+        "group": 8
+      },
+      "kernels": [
+        "tiled"
+      ],
+      "native_rois_us": [
+        4.4,
+        4.432,
+        4.399900000000001,
+        4.432,
+        4.368
+      ]
+    },
+    {
+      "row": 68,
+      "dtype": "torch.float32",
+      "m": 32,
+      "n": 1024,
+      "k": 256,
+      "a_stride": [
+        256,
+        1
+      ],
+      "b_stride": [
+        1,
+        256
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 9.92,
+      "paired_das_us": 8.431999999999999,
+      "optimized_us": 6.976000000000001,
+      "sheet_performance": 1.4220183486238531,
+      "paired_performance": 1.208715596330275,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 4.3487414728815565e-05,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "tile",
+        "bm": 16,
+        "bn": 32,
+        "bk": 64,
+        "warps": 4,
+        "stages": 2,
+        "split": 1,
+        "group": 8
+      },
+      "kernels": [
+        "tiled"
+      ],
+      "native_rois_us": [
+        7.104000000000001,
+        6.959999999999999,
+        6.959999999999999,
+        7.040000000000001,
+        6.976000000000001
+      ]
+    },
+    {
+      "row": 69,
+      "dtype": "torch.float32",
+      "m": 32,
+      "n": 128,
+      "k": 256,
+      "a_stride": [
+        256,
+        1
+      ],
+      "b_stride": [
+        1,
+        256
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 7.36,
+      "paired_das_us": 6.096,
+      "optimized_us": 3.4240000000000004,
+      "sheet_performance": 2.149532710280374,
+      "paired_performance": 1.7803738317757007,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 6.288836360113237e-06,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "reduce",
+        "bo": 16,
+        "warps": 4
+      },
+      "kernels": [
+        "reduction"
+      ],
+      "native_rois_us": [
+        3.4240000000000004,
+        3.408,
+        3.376,
+        3.44,
+        3.4240000000000004
+      ]
+    },
+    {
+      "row": 70,
+      "dtype": "torch.float32",
+      "m": 32,
+      "n": 768,
+      "k": 256,
+      "a_stride": [
+        256,
+        1
+      ],
+      "b_stride": [
+        1,
+        256
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 9.6,
+      "paired_das_us": 8.4,
+      "optimized_us": 6.864,
+      "sheet_performance": 1.3986013986013985,
+      "paired_performance": 1.2237762237762237,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 4.745740701395107e-05,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "tile",
+        "bm": 16,
+        "bn": 32,
+        "bk": 64,
+        "warps": 4,
+        "stages": 2,
+        "split": 1,
+        "group": 8
+      },
+      "kernels": [
+        "tiled"
+      ],
+      "native_rois_us": [
+        6.831999999999999,
+        6.895999999999999,
+        6.88,
+        6.864,
+        6.864
+      ]
+    },
+    {
+      "row": 72,
+      "dtype": "torch.float32",
+      "m": 32,
+      "n": 768,
+      "k": 45,
+      "a_stride": [
+        45,
+        1
+      ],
+      "b_stride": [
+        1,
+        45
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 5.92,
+      "paired_das_us": 4.64,
+      "optimized_us": 3.7600000000000002,
+      "sheet_performance": 1.5744680851063828,
+      "paired_performance": 1.2340425531914891,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 7.6155631667518264e-06,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "tile",
+        "bm": 16,
+        "bn": 32,
+        "bk": 64,
+        "warps": 4,
+        "stages": 1,
+        "split": 1,
+        "group": 8
+      },
+      "kernels": [
+        "tiled"
+      ],
+      "native_rois_us": [
+        3.7600000000000002,
+        3.7439999999999998,
+        3.728,
+        3.7600000000000002,
+        3.7600000000000002
+      ]
+    },
+    {
+      "row": 73,
+      "dtype": "torch.float32",
+      "m": 32,
+      "n": 256,
+      "k": 512,
+      "a_stride": [
+        512,
+        1
+      ],
+      "b_stride": [
+        1,
+        512
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 10.72,
+      "paired_das_us": 9.312000000000001,
+      "optimized_us": 5.5520000000000005,
+      "sheet_performance": 1.930835734870317,
+      "paired_performance": 1.6772334293948128,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 1.4259672347805008e-05,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "tile",
+        "bm": 32,
+        "bn": 32,
+        "bk": 32,
+        "warps": 4,
+        "stages": 1,
+        "split": 16,
+        "group": 8
+      },
+      "kernels": [
+        "split_reduce",
+        "tiled"
+      ],
+      "native_rois_us": [
+        5.5840000000000005,
+        5.536,
+        5.5520000000000005,
+        5.616,
+        5.536
+      ]
+    },
+    {
+      "row": 74,
+      "dtype": "torch.float32",
+      "m": 32,
+      "n": 111,
+      "k": 768,
+      "a_stride": [
+        768,
+        1
+      ],
+      "b_stride": [
+        1,
+        768
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 15.36,
+      "paired_das_us": 12.896,
+      "optimized_us": 5.808,
+      "sheet_performance": 2.644628099173554,
+      "paired_performance": 2.2203856749311295,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 2.1625023947535738e-05,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "tile",
+        "bm": 16,
+        "bn": 64,
+        "bk": 64,
+        "warps": 4,
+        "stages": 1,
+        "split": 16,
+        "group": 8
+      },
+      "kernels": [
+        "split_reduce",
+        "tiled"
+      ],
+      "native_rois_us": [
+        6.0,
+        5.856,
+        5.808,
+        5.6639,
+        5.616
+      ]
+    },
+    {
+      "row": 75,
+      "dtype": "torch.float32",
+      "m": 32,
+      "n": 20,
+      "k": 768,
+      "a_stride": [
+        768,
+        1
+      ],
+      "b_stride": [
+        1,
+        768
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 16.64,
+      "paired_das_us": 12.784,
+      "optimized_us": 5.4399999999999995,
+      "sheet_performance": 3.058823529411765,
+      "paired_performance": 2.3500000000000005,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 1.7362604438631024e-05,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "tile",
+        "bm": 16,
+        "bn": 64,
+        "bk": 64,
+        "warps": 4,
+        "stages": 1,
+        "split": 16,
+        "group": 8
+      },
+      "kernels": [
+        "split_reduce",
+        "tiled"
+      ],
+      "native_rois_us": [
+        6.032,
+        5.5200000000000005,
+        5.343999999999999,
+        5.343999999999999,
+        5.4399999999999995
+      ]
+    },
+    {
+      "row": 76,
+      "dtype": "torch.float32",
+      "m": 32,
+      "n": 3,
+      "k": 768,
+      "a_stride": [
+        768,
+        1
+      ],
+      "b_stride": [
+        1,
+        768
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 16.16,
+      "paired_das_us": 14.2239,
+      "optimized_us": 2.48,
+      "sheet_performance": 6.516129032258065,
+      "paired_performance": 5.735443548387097,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 1.0319901420530186e-05,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "reduce",
+        "bo": 1,
+        "warps": 1
+      },
+      "kernels": [
+        "reduction"
+      ],
+      "native_rois_us": [
+        2.48,
+        2.464,
+        2.48,
+        2.432,
+        2.512
+      ]
+    },
+    {
+      "row": 77,
+      "dtype": "torch.float32",
+      "m": 32,
+      "n": 512,
+      "k": 768,
+      "a_stride": [
+        768,
+        1
+      ],
+      "b_stride": [
+        1,
+        768
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 14.56,
+      "paired_das_us": 12.847999999999999,
+      "optimized_us": 6.8,
+      "sheet_performance": 2.1411764705882352,
+      "paired_performance": 1.8894117647058823,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 1.9923674230426514e-05,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "tile",
+        "bm": 32,
+        "bn": 32,
+        "bk": 32,
+        "warps": 4,
+        "stages": 2,
+        "split": 16,
+        "group": 8
+      },
+      "kernels": [
+        "split_reduce",
+        "tiled"
+      ],
+      "native_rois_us": [
+        6.863899999999999,
+        6.784000000000001,
+        6.8,
+        6.88,
+        6.8
+      ]
+    },
+    {
+      "row": 78,
+      "dtype": "torch.float32",
+      "m": 32,
+      "n": 6144,
+      "k": 768,
+      "a_stride": [
+        768,
+        1
+      ],
+      "b_stride": [
+        1,
+        768
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 31.36,
+      "paired_das_us": 84.2559,
+      "optimized_us": 23.728,
+      "sheet_performance": 1.3216453135536075,
+      "paired_performance": 3.550906102494942,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 5.53273608403515e-05,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "tile",
+        "bm": 32,
+        "bn": 64,
+        "bk": 32,
+        "warps": 4,
+        "stages": 1,
+        "split": 4,
+        "group": 8
+      },
+      "kernels": [
+        "split_reduce",
+        "tiled"
+      ],
+      "native_rois_us": [
+        23.727899999999998,
+        23.759999999999998,
+        23.8079,
+        23.728,
+        23.728
+      ]
+    },
+    {
+      "row": 79,
+      "dtype": "torch.float32",
+      "m": 32,
+      "n": 8,
+      "k": 768,
+      "a_stride": [
+        768,
+        1
+      ],
+      "b_stride": [
+        1,
+        768
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 17.12,
+      "paired_das_us": 14.208000000000002,
+      "optimized_us": 2.6879999999999997,
+      "sheet_performance": 6.36904761904762,
+      "paired_performance": 5.285714285714287,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 9.779574369872535e-06,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "reduce",
+        "bo": 1,
+        "warps": 1
+      },
+      "kernels": [
+        "reduction"
+      ],
+      "native_rois_us": [
+        2.6879999999999997,
+        2.6719999999999997,
+        2.7039999999999997,
+        2.6879999999999997,
+        2.6719999999999997
+      ]
+    },
+    {
+      "row": 80,
+      "dtype": "torch.float32",
+      "m": 2,
+      "n": 128,
+      "k": 128,
+      "a_stride": [
+        128,
+        1
+      ],
+      "b_stride": [
+        128,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 7.36,
+      "paired_das_us": 4.4799999999999995,
+      "optimized_us": 2.928,
+      "sheet_performance": 2.5136612021857925,
+      "paired_performance": 1.530054644808743,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 5.1246256944637025e-06,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 1
+      },
+      "kernels": [
+        "reduction"
+      ],
+      "native_rois_us": [
+        2.896,
+        2.944,
+        2.944,
+        2.928,
+        2.928
+      ]
+    },
+    {
+      "row": 81,
+      "dtype": "torch.float32",
+      "m": 2,
+      "n": 128,
+      "k": 16,
+      "a_stride": [
+        16,
+        1
+      ],
+      "b_stride": [
+        128,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 7.04,
+      "paired_das_us": 4.688000000000001,
+      "optimized_us": 2.352,
+      "sheet_performance": 2.993197278911565,
+      "paired_performance": 1.993197278911565,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 7.620501421001791e-07,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 1
+      },
+      "kernels": [
+        "reduction"
+      ],
+      "native_rois_us": [
+        2.368,
+        2.368,
+        2.3199,
+        2.352,
+        2.336
+      ]
+    },
+    {
+      "row": 82,
+      "dtype": "torch.float32",
+      "m": 2,
+      "n": 128,
+      "k": 1,
+      "a_stride": [
+        1,
+        1
+      ],
+      "b_stride": [
+        128,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 7.04,
+      "paired_das_us": 3.2479999999999998,
+      "optimized_us": 2.128,
+      "sheet_performance": 3.308270676691729,
+      "paired_performance": 1.526315789473684,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 2.2469171767625085e-07,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 1
+      },
+      "kernels": [
+        "reduction"
+      ],
+      "native_rois_us": [
+        2.064,
+        2.144,
+        2.128,
+        2.128,
+        2.112
+      ]
+    },
+    {
+      "row": 83,
+      "dtype": "torch.float32",
+      "m": 2,
+      "n": 128,
+      "k": 95,
+      "a_stride": [
+        95,
+        1
+      ],
+      "b_stride": [
+        1,
+        95
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 8.96,
+      "paired_das_us": 5.328,
+      "optimized_us": 2.336,
+      "sheet_performance": 3.835616438356165,
+      "paired_performance": 2.2808219178082196,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 2.5997330972415966e-06,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "reduce",
+        "bo": 1,
+        "warps": 1
+      },
+      "kernels": [
+        "reduction"
+      ],
+      "native_rois_us": [
+        2.336,
+        2.336,
+        2.384,
+        2.384,
+        2.32
+      ]
+    },
+    {
+      "row": 84,
+      "dtype": "torch.float32",
+      "m": 4,
+      "n": 56,
+      "k": 128,
+      "a_stride": [
+        1,
+        4
+      ],
+      "b_stride": [
+        1,
+        128
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 7.36,
+      "paired_das_us": 5.136,
+      "optimized_us": 2.7039999999999997,
+      "sheet_performance": 2.721893491124261,
+      "paired_performance": 1.8994082840236688,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 2.593554402352538e-06,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "reduce",
+        "bo": 1,
+        "warps": 1
+      },
+      "kernels": [
+        "reduction"
+      ],
+      "native_rois_us": [
+        2.6879999999999997,
+        2.6879999999999997,
+        2.7039999999999997,
+        2.7359999999999998,
+        2.7039999999999997
+      ]
+    },
+    {
+      "row": 85,
+      "dtype": "torch.float32",
+      "m": 56,
+      "n": 128,
+      "k": 128,
+      "a_stride": [
+        128,
+        1
+      ],
+      "b_stride": [
+        128,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 5.44,
+      "paired_das_us": 4.4799999999999995,
+      "optimized_us": 4.336,
+      "sheet_performance": 1.2546125461254614,
+      "paired_performance": 1.0332103321033208,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 1.7502310619477157e-05,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "tile",
+        "bm": 16,
+        "bn": 64,
+        "bk": 64,
+        "warps": 4,
+        "stages": 2,
+        "split": 1,
+        "group": 8
+      },
+      "kernels": [
+        "tiled"
+      ],
+      "native_rois_us": [
+        4.784000000000001,
+        4.336,
+        4.336,
+        4.384,
+        4.32
+      ]
+    },
+    {
+      "row": 86,
+      "dtype": "torch.float32",
+      "m": 56,
+      "n": 16,
+      "k": 128,
+      "a_stride": [
+        128,
+        1
+      ],
+      "b_stride": [
+        16,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 6.88,
+      "paired_das_us": 4.5280000000000005,
+      "optimized_us": 3.28,
+      "sheet_performance": 2.097560975609756,
+      "paired_performance": 1.380487804878049,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 3.4547200442602843e-06,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 1
+      },
+      "kernels": [
+        "reduction"
+      ],
+      "native_rois_us": [
+        3.28,
+        3.232,
+        3.28,
+        3.28,
+        3.2960000000000003
+      ]
+    },
+    {
+      "row": 87,
+      "dtype": "torch.float32",
+      "m": 56,
+      "n": 384,
+      "k": 128,
+      "a_stride": [
+        128,
+        1
+      ],
+      "b_stride": [
+        384,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 7.04,
+      "paired_das_us": 5.84,
+      "optimized_us": 4.384,
+      "sheet_performance": 1.605839416058394,
+      "paired_performance": 1.3321167883211678,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 1.877361691882129e-05,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "tile",
+        "bm": 16,
+        "bn": 64,
+        "bk": 64,
+        "warps": 4,
+        "stages": 2,
+        "split": 1,
+        "group": 8
+      },
+      "kernels": [
+        "tiled"
+      ],
+      "native_rois_us": [
+        4.384,
+        4.368,
+        4.4,
+        4.4,
+        4.384
+      ]
+    },
+    {
+      "row": 88,
+      "dtype": "torch.float32",
+      "m": 56,
+      "n": 128,
+      "k": 16,
+      "a_stride": [
+        16,
+        1
+      ],
+      "b_stride": [
+        1,
+        16
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 4.16,
+      "paired_das_us": 3.184,
+      "optimized_us": 2.6399,
+      "sheet_performance": 1.575817265805523,
+      "paired_performance": 1.2061062919049965,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 1.7878224571887813e-06,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "reduce",
+        "bo": 32,
+        "warps": 4
+      },
+      "kernels": [
+        "reduction"
+      ],
+      "native_rois_us": [
+        2.6399999999999997,
+        2.6079999999999997,
+        2.6399,
+        2.6399999999999997,
+        2.56
+      ]
+    },
+    {
+      "row": 89,
+      "dtype": "torch.float32",
+      "m": 56,
+      "n": 128,
+      "k": 4,
+      "a_stride": [
+        1,
+        56
+      ],
+      "b_stride": [
+        1,
+        4
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 5.76,
+      "paired_das_us": 3.504,
+      "optimized_us": 2.6399999999999997,
+      "sheet_performance": 2.181818181818182,
+      "paired_performance": 1.3272727272727274,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 1.0848667741925055e-06,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "small",
+        "block": 128,
+        "warps": 1
+      },
+      "kernels": [
+        "small_k"
+      ],
+      "native_rois_us": [
+        2.6399999999999997,
+        2.6239999999999997,
+        2.6559999999999997,
+        2.7039999999999997,
+        2.592
+      ]
+    },
+    {
+      "row": 90,
+      "dtype": "torch.float32",
+      "m": 1200,
+      "n": 3,
+      "k": 3,
+      "a_stride": [
+        3,
+        1
+      ],
+      "b_stride": [
+        3,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 4.48,
+      "paired_das_us": 3.536,
+      "optimized_us": 2.176,
+      "sheet_performance": 2.058823529411765,
+      "paired_performance": 1.625,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 3.1221709662077046e-07,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "small",
+        "block": 256,
+        "warps": 4
+      },
+      "kernels": [
+        "small_k"
+      ],
+      "native_rois_us": [
+        2.2239999999999998,
+        2.1599,
+        2.176,
+        2.176,
+        2.16
+      ]
+    },
+    {
+      "row": 91,
+      "dtype": "torch.float32",
+      "m": 2000,
+      "n": 5,
+      "k": 5,
+      "a_stride": [
+        5,
+        1
+      ],
+      "b_stride": [
+        5,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 4.48,
+      "paired_das_us": 3.504,
+      "optimized_us": 2.448,
+      "sheet_performance": 1.8300653594771243,
+      "paired_performance": 1.4313725490196079,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 1.080452239676788e-06,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "small",
+        "block": 128,
+        "warps": 1
+      },
+      "kernels": [
+        "small_k"
+      ],
+      "native_rois_us": [
+        2.496,
+        2.432,
+        2.448,
+        2.48,
+        2.448
+      ]
+    },
+    {
+      "row": 92,
+      "dtype": "torch.float32",
+      "m": 2800,
+      "n": 7,
+      "k": 7,
+      "a_stride": [
+        7,
+        1
+      ],
+      "b_stride": [
+        7,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 4.96,
+      "paired_das_us": 3.9200000000000004,
+      "optimized_us": 2.832,
+      "sheet_performance": 1.7514124293785311,
+      "paired_performance": 1.3841807909604522,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 1.0039920006477132e-06,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "small",
+        "block": 256,
+        "warps": 4
+      },
+      "kernels": [
+        "small_k"
+      ],
+      "native_rois_us": [
+        2.832,
+        2.784,
+        2.784,
+        2.832,
+        2.88
+      ]
+    },
+    {
+      "row": 93,
+      "dtype": "torch.float32",
+      "m": 3600,
+      "n": 9,
+      "k": 9,
+      "a_stride": [
+        9,
+        1
+      ],
+      "b_stride": [
+        9,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 5.12,
+      "paired_das_us": 3.936,
+      "optimized_us": 3.728,
+      "sheet_performance": 1.3733905579399142,
+      "paired_performance": 1.055793991416309,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 1.9466274245871773e-06,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "small",
+        "block": 256,
+        "warps": 4
+      },
+      "kernels": [
+        "small_k"
+      ],
+      "native_rois_us": [
+        3.728,
+        3.728,
+        3.6799999999999997,
+        3.728,
+        3.7119999999999997
+      ]
+    },
+    {
+      "row": 94,
+      "dtype": "torch.float32",
+      "m": 400,
+      "n": 1,
+      "k": 1,
+      "a_stride": [
+        1,
+        1
+      ],
+      "b_stride": [
+        1,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 3.68,
+      "paired_das_us": 2.8,
+      "optimized_us": 2.144,
+      "sheet_performance": 1.7164179104477613,
+      "paired_performance": 1.3059701492537312,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 9.760901775734965e-08,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 1
+      },
+      "kernels": [
+        "reduction"
+      ],
+      "native_rois_us": [
+        2.112,
+        2.112,
+        2.144,
+        2.176,
+        2.176
+      ]
+    },
+    {
+      "row": 96,
+      "dtype": "torch.float32",
+      "m": 800,
+      "n": 1024,
+      "k": 1024,
+      "a_stride": [
+        1024,
+        1
+      ],
+      "b_stride": [
+        1,
+        1024
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 70.88,
+      "paired_das_us": 61.120000000000005,
+      "optimized_us": 58.944,
+      "sheet_performance": 1.2024972855591747,
+      "paired_performance": 1.0369163952225842,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 0.00020655124286861337,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "swap32",
+        "bm": 64,
+        "bn": 32,
+        "bk": 32,
+        "warps": 4,
+        "unroll": 1,
+        "tail": false,
+        "stages": 2,
+        "swap": true
+      },
+      "kernels": [
+        "tiled_unrolled"
+      ],
+      "native_rois_us": [
+        59.4399,
+        58.70399999999999,
+        59.215999999999994,
+        58.928,
+        58.944
+      ]
+    },
+    {
+      "row": 99,
+      "dtype": "torch.float32",
+      "m": 800,
+      "n": 768,
+      "k": 768,
+      "a_stride": [
+        768,
+        1
+      ],
+      "b_stride": [
+        1,
+        768
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 40.96,
+      "paired_das_us": 34.816,
+      "optimized_us": 33.2799,
+      "sheet_performance": 1.2307729290051954,
+      "paired_performance": 1.0461569896544163,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 0.0001710061972346466,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "fasttile",
+        "bm": 64,
+        "bn": 64,
+        "bk": 64,
+        "warps": 4,
+        "stages": 1,
+        "group": 8,
+        "single_buffer": false
+      },
+      "kernels": [
+        "tiled_fast"
+      ],
+      "native_rois_us": [
+        33.2,
+        33.2639,
+        33.2799,
+        33.2959,
+        33.2959
+      ]
+    },
+    {
+      "row": 101,
+      "dtype": "torch.float32",
+      "m": 115,
+      "n": 3,
+      "k": 15,
+      "a_stride": [
+        15,
+        1
+      ],
+      "b_stride": [
+        3,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 5.76,
+      "paired_das_us": 3.6479999999999997,
+      "optimized_us": 2.368,
+      "sheet_performance": 2.4324324324324325,
+      "paired_performance": 1.5405405405405406,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 1.1439787162004222e-06,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "reduce",
+        "bo": 1,
+        "warps": 1
+      },
+      "kernels": [
+        "reduction"
+      ],
+      "native_rois_us": [
+        2.32,
+        2.368,
+        2.384,
+        2.336,
+        2.4
+      ]
+    },
+    {
+      "row": 102,
+      "dtype": "torch.float32",
+      "m": 115,
+      "n": 5,
+      "k": 15,
+      "a_stride": [
+        15,
+        1
+      ],
+      "b_stride": [
+        5,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 5.92,
+      "paired_das_us": 3.5200000000000005,
+      "optimized_us": 2.464,
+      "sheet_performance": 2.4025974025974026,
+      "paired_performance": 1.4285714285714288,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 1.065363104402195e-06,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 1
+      },
+      "kernels": [
+        "reduction"
+      ],
+      "native_rois_us": [
+        2.448,
+        2.528,
+        2.464,
+        2.464,
+        2.496
+      ]
+    },
+    {
+      "row": 103,
+      "dtype": "torch.float32",
+      "m": 115,
+      "n": 7,
+      "k": 15,
+      "a_stride": [
+        15,
+        1
+      ],
+      "b_stride": [
+        7,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 5.92,
+      "paired_das_us": 3.5200000000000005,
+      "optimized_us": 2.512,
+      "sheet_performance": 2.356687898089172,
+      "paired_performance": 1.4012738853503186,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 9.414501498383743e-07,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 1
+      },
+      "kernels": [
+        "reduction"
+      ],
+      "native_rois_us": [
+        2.944,
+        2.512,
+        2.544,
+        2.48,
+        2.48
+      ]
+    },
+    {
+      "row": 104,
+      "dtype": "torch.float32",
+      "m": 115,
+      "n": 1,
+      "k": 25,
+      "a_stride": [
+        25,
+        1
+      ],
+      "b_stride": [
+        1,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 7.52,
+      "paired_das_us": 4.224,
+      "optimized_us": 2.256,
+      "sheet_performance": 3.3333333333333335,
+      "paired_performance": 1.8723404255319152,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 8.424482409452594e-07,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "reduce",
+        "bo": 1,
+        "warps": 1
+      },
+      "kernels": [
+        "reduction"
+      ],
+      "native_rois_us": [
+        2.256,
+        2.288,
+        2.256,
+        2.256,
+        2.256
+      ]
+    },
+    {
+      "row": 105,
+      "dtype": "torch.float32",
+      "m": 115,
+      "n": 3,
+      "k": 25,
+      "a_stride": [
+        25,
+        1
+      ],
+      "b_stride": [
+        3,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 6.72,
+      "paired_das_us": 3.968,
+      "optimized_us": 2.4478999999999997,
+      "sheet_performance": 2.745210180154418,
+      "paired_performance": 1.6209812492340374,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 1.4295622996485235e-06,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 1
+      },
+      "kernels": [
+        "reduction"
+      ],
+      "native_rois_us": [
+        2.416,
+        2.48,
+        2.4,
+        2.4478999999999997,
+        2.496
+      ]
+    },
+    {
+      "row": 106,
+      "dtype": "torch.float32",
+      "m": 115,
+      "n": 5,
+      "k": 25,
+      "a_stride": [
+        25,
+        1
+      ],
+      "b_stride": [
+        5,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 6.88,
+      "paired_das_us": 3.872,
+      "optimized_us": 2.48,
+      "sheet_performance": 2.7741935483870965,
+      "paired_performance": 1.5612903225806452,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 1.4619398047699406e-06,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 1
+      },
+      "kernels": [
+        "reduction"
+      ],
+      "native_rois_us": [
+        2.464,
+        2.48,
+        2.48,
+        2.496,
+        2.448
+      ]
+    },
+    {
+      "row": 107,
+      "dtype": "torch.float32",
+      "m": 115,
+      "n": 7,
+      "k": 25,
+      "a_stride": [
+        25,
+        1
+      ],
+      "b_stride": [
+        7,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 5.12,
+      "paired_das_us": 4.0,
+      "optimized_us": 2.544,
+      "sheet_performance": 2.0125786163522013,
+      "paired_performance": 1.572327044025157,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 1.6818944672536418e-06,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 1
+      },
+      "kernels": [
+        "reduction"
+      ],
+      "native_rois_us": [
+        2.544,
+        2.56,
+        2.4959,
+        2.544,
+        2.512
+      ]
+    },
+    {
+      "row": 108,
+      "dtype": "torch.float32",
+      "m": 115,
+      "n": 9,
+      "k": 25,
+      "a_stride": [
+        25,
+        1
+      ],
+      "b_stride": [
+        9,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 6.72,
+      "paired_das_us": 3.9840000000000004,
+      "optimized_us": 2.56,
+      "sheet_performance": 2.625,
+      "paired_performance": 1.5562500000000001,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 1.4336645222101652e-06,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 1
+      },
+      "kernels": [
+        "reduction"
+      ],
+      "native_rois_us": [
+        2.6079999999999997,
+        2.544,
+        2.5279,
+        2.56,
+        2.56
+      ]
+    },
+    {
+      "row": 109,
+      "dtype": "torch.float32",
+      "m": 115,
+      "n": 5,
+      "k": 5,
+      "a_stride": [
+        5,
+        1
+      ],
+      "b_stride": [
+        5,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 6.56,
+      "paired_das_us": 3.408,
+      "optimized_us": 2.272,
+      "sheet_performance": 2.887323943661972,
+      "paired_performance": 1.5,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 5.096517829983327e-07,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 1
+      },
+      "kernels": [
+        "reduction"
+      ],
+      "native_rois_us": [
+        2.272,
+        2.256,
+        2.32,
+        2.272,
+        2.272
+      ]
+    },
+    {
+      "row": 110,
+      "dtype": "torch.float32",
+      "m": 33,
+      "n": 9,
+      "k": 3,
+      "a_stride": [
+        3,
+        1
+      ],
+      "b_stride": [
+        9,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 7.52,
+      "paired_das_us": 4.144,
+      "optimized_us": 2.2079999999999997,
+      "sheet_performance": 3.4057971014492754,
+      "paired_performance": 1.876811594202899,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 5.399398972372182e-07,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 1
+      },
+      "kernels": [
+        "reduction"
+      ],
+      "native_rois_us": [
+        2.256,
+        2.144,
+        2.192,
+        2.2079999999999997,
+        2.256
+      ]
+    },
+    {
+      "row": 111,
+      "dtype": "torch.float32",
+      "m": 33,
+      "n": 9,
+      "k": 5,
+      "a_stride": [
+        5,
+        1
+      ],
+      "b_stride": [
+        9,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 6.4,
+      "paired_das_us": 3.7920000000000003,
+      "optimized_us": 2.304,
+      "sheet_performance": 2.777777777777778,
+      "paired_performance": 1.6458333333333335,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 5.088097090322208e-07,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 1
+      },
+      "kernels": [
+        "reduction"
+      ],
+      "native_rois_us": [
+        2.272,
+        2.304,
+        2.304,
+        2.304,
+        2.288
+      ]
+    },
+    {
+      "row": 114,
+      "dtype": "torch.float32",
+      "m": 6,
+      "n": 1,
+      "k": 48,
+      "a_stride": [
+        48,
+        1
+      ],
+      "b_stride": [
+        1,
+        48
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 7.04,
+      "paired_das_us": 6.208,
+      "optimized_us": 2.144,
+      "sheet_performance": 3.2835820895522385,
+      "paired_performance": 2.8955223880597014,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 1.2719104596214947e-06,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "reduce",
+        "bo": 1,
+        "warps": 1
+      },
+      "kernels": [
+        "reduction"
+      ],
+      "native_rois_us": [
+        2.304,
+        2.096,
+        2.16,
+        2.144,
+        2.096
+      ]
+    },
+    {
+      "row": 115,
+      "dtype": "torch.float32",
+      "m": 6,
+      "n": 48,
+      "k": 96,
+      "a_stride": [
+        96,
+        1
+      ],
+      "b_stride": [
+        1,
+        96
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 7.52,
+      "paired_das_us": 4.768,
+      "optimized_us": 2.496,
+      "sheet_performance": 3.0128205128205128,
+      "paired_performance": 1.9102564102564101,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 2.844950998337481e-06,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "reduce",
+        "bo": 4,
+        "warps": 1
+      },
+      "kernels": [
+        "reduction"
+      ],
+      "native_rois_us": [
+        2.512,
+        2.512,
+        2.48,
+        2.496,
+        2.432
+      ]
+    },
+    {
+      "row": 116,
+      "dtype": "torch.float32",
+      "m": 6432,
+      "n": 9,
+      "k": 3,
+      "a_stride": [
+        3,
+        1
+      ],
+      "b_stride": [
+        9,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 6.08,
+      "paired_das_us": 4.0,
+      "optimized_us": 2.6879999999999997,
+      "sheet_performance": 2.2619047619047623,
+      "paired_performance": 1.4880952380952384,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 6.848809981363502e-07,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "small",
+        "block": 256,
+        "warps": 4
+      },
+      "kernels": [
+        "small_k"
+      ],
+      "native_rois_us": [
+        2.6879999999999997,
+        2.6879999999999997,
+        2.6399,
+        2.6879999999999997,
+        2.6879999999999997
+      ]
+    },
+    {
+      "row": 118,
+      "dtype": "torch.float32",
+      "m": 8844,
+      "n": 9,
+      "k": 3,
+      "a_stride": [
+        3,
+        1
+      ],
+      "b_stride": [
+        9,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 5.44,
+      "paired_das_us": 3.936,
+      "optimized_us": 2.848,
+      "sheet_performance": 1.910112359550562,
+      "paired_performance": 1.3820224719101124,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 6.768566205295201e-07,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "small",
+        "block": 256,
+        "warps": 4
+      },
+      "kernels": [
+        "small_k"
+      ],
+      "native_rois_us": [
+        2.88,
+        2.864,
+        2.816,
+        2.848,
+        2.784
+      ]
+    },
+    {
+      "row": 119,
+      "dtype": "torch.float32",
+      "m": 8844,
+      "n": 9,
+      "k": 5,
+      "a_stride": [
+        5,
+        1
+      ],
+      "b_stride": [
+        9,
+        1
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 5.76,
+      "paired_das_us": 4.192,
+      "optimized_us": 3.8240000000000003,
+      "sheet_performance": 1.506276150627615,
+      "paired_performance": 1.0962343096234308,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 1.1545723967998356e-06,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "small",
+        "block": 256,
+        "warps": 4
+      },
+      "kernels": [
+        "small_k"
+      ],
+      "native_rois_us": [
+        3.9520000000000004,
+        3.808,
+        3.84,
+        3.808,
+        3.8240000000000003
+      ]
+    },
+    {
+      "row": 121,
+      "dtype": "torch.float32",
+      "m": 303,
+      "n": 33,
+      "k": 320,
+      "a_stride": [
+        320,
+        1
+      ],
+      "b_stride": [
+        1,
+        320
+      ],
+      "a_storage_offset": 0,
+      "b_storage_offset": 0,
+      "sheet_das_us": 7.68,
+      "paired_das_us": 7.376,
+      "optimized_us": 7.008,
+      "sheet_performance": 1.095890410958904,
+      "paired_performance": 1.0525114155251143,
+      "sheet_pass": true,
+      "paired_pass": true,
+      "accuracy_ok": true,
+      "max_abs_error": 3.729148212983091e-05,
+      "physical_card": "0",
+      "profile": "paired-fp32-r1",
+      "config": {
+        "kind": "tile",
+        "bm": 32,
+        "bn": 32,
+        "bk": 128,
+        "warps": 4,
+        "stages": 2,
+        "split": 1,
+        "group": 8
+      },
+      "kernels": [
+        "tiled"
+      ],
+      "native_rois_us": [
+        7.023999999999999,
+        7.008,
+        6.976000000000001,
+        6.992,
+        7.072
+      ]
+    }
+  ]
+}

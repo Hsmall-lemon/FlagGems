@@ -1,0 +1,23 @@
+{
+  "candidate_acceptance_passed": true,
+  "scope": "Reconstructed workbook metadata and added regression controls",
+  "workbook_rows": 197,
+  "model_rows": 98,
+  "scale_rows": 99,
+  "historical_records_preserved": 179,
+  "pytest_passed": 410,
+  "distinct_fresh_stress_passed": 48,
+  "fresh_rois_audited": 225,
+  "minimum_workbook_das_over_new": 0.9018744429892263,
+  "selected_captures": [
+    "accept-fp64-r2",
+    "accept-fp32-r2",
+    "accept-bf16-r1"
+  ],
+  "original_reviewer_operands_replayed": false,
+  "original_report_root_cause_resolved": false,
+  "whole_model_acceptance_claimed": false,
+  "pr_draft": true,
+  "merge_performed": false,
+  "base": "luojung/FlagGems:hygon-optimization"
+}

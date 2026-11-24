@@ -1,0 +1,32 @@
+{
+  "gpu_validation": "Historical six GPU tests and full output/LSE receipts; no GPU rerun during PR preparation",
+  "static_checks": {
+    "check_aten_operators": "passed",
+    "check_init_exports": "passed",
+    "check_operators_yaml": "passed",
+    "check_operator_markers": "passed"
+  },
+  "pre_commit_changed_files": "passed",
+  "pre_commit_all_files": "Attempted; initial formatting fixes applied to changed files. Existing unrelated experimental/__init__.py import grouping is outside this PR. Focused hooks pass.",
+  "measured_source_equivalence": "All five files have equivalent Python AST after import sorting, or identical C++ tokens; see source-equivalence.json",
+  "wheel_build": "passed; required HIP .cpp, loader, Triton implementation and test verified inside wheel",
+  "packaging_check_scope": "Local pure-Python wheel content check; does not claim Windows GPU support",
+  "das_acceptance": "not verified; native LSE fails the common frozen accuracy gate",
+  "external_review": {
+    "source": "User-supplied external review summary; raw review receipt not yet provided",
+    "operator": "aten::_scaled_dot_product_flash_attention",
+    "old_flaggems_device_us": 4664.8,
+    "new_flaggems_device_us": 1722.0,
+    "old_over_new_flaggems": 2.7089430894308943,
+    "new_and_old_output_lse_correctness_and_stability": "passed according to external review",
+    "native_lse_failed_percent": 23.6,
+    "native_baseline_eligible": false,
+    "accepted_das_ratio": null,
+    "meets_das_90": null,
+    "acceptance_status": "not_determined_invalid_native_LSE_baseline",
+    "author_independently_reproduced_external_review": false
+  },
+  "correction_regression": "8 CPU tests pass; synthetic failure tests are not new GPU measurements",
+  "gpu_rerun": "Not run: no active allocation for wzx226226 on the authorized a01r3n18 node",
+  "external_frozen_gate_script": "Requested; not yet available. Shared gate preserves original PR tolerances without relaxing native."
+}

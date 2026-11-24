@@ -1,0 +1,631 @@
+{
+  "schema": 5,
+  "run_id": "c9d90ba4372541d7beb3eb65169e2516",
+  "device": {
+    "node": "a01r4n15",
+    "physical_card": "3"
+  },
+  "workbook_sha256": "d2596052c66d7145af47b35fda45198d1f213b69825aeb91d10112dfd8871597",
+  "source_sha256": {
+    "src/flag_gems/runtime/backend/_hygon/attention_state_hip.py": "185460a1f7a25f27ba55202cf42f35fef5a10fda845b527c3058b5b9b88f12d4",
+    "src/flag_gems/runtime/backend/_hygon/attention_state_hip.cpp": "9d737b24687977ab0a1e027f6485009d308f4392aac7c736b188611f0f990f88",
+    "src/flag_gems/runtime/backend/_hygon/ops/attention_state.py": "df304186cee67c9773c5c9796a8d95ce847d3b238b2b9375831bc35a1e131348",
+    "src/flag_gems/runtime/backend/_hygon/ops/_scaled_dot_product_flash_attention.py": "6eabe38ca1abcf6ff68c30b40250895b45f0fb402c6acad82bb50982b4ac3a0e",
+    "tests/test_flash_attention_hygon_state.py": "1115a5ca4796e0fe980a517dacbf6e4f73efca7d02d279444a7c408120e3ccc4"
+  },
+  "native": {
+    "version": "2.8.4+dtk2604.torch2100.2609292239.g74de14",
+    "module": "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/11992/package/flash_attn_2_cuda.cpython-310-x86_64-linux-gnu.so",
+    "loaded_libraries_sha256": {
+      "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/11992/package/flash_attn/lib/libflash_attention.so": "42b820080757241f048e7ed6673a91703e5563353364ea279fa03cd0ca1a422e",
+      "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/11992/package/flash_attn_2_cuda.cpython-310-x86_64-linux-gnu.so": "4dbb514cd0d6b30b720bbc739b13f3655ec5b345765b303e463184a1cd243f25"
+    }
+  },
+  "method": "hipprof HIPOPS duration sum per call, including every helper kernel; 5 rounds x 1000 calls after 100 warmups per arm/round; faster qualified native denominator",
+  "scope": "Four deterministic worksheet metadata reconstructions, not original model payload replay",
+  "external_frozen_gate_verified": false,
+  "original_model_acceptance_verified": false,
+  "all_reconstructed_cases_meet_90": true,
+  "cases": {
+    "model_state": {
+      "sheet": "\u5927\u4e8e5%\u7684\u6a21\u578b\u5de5\u51b5",
+      "row": 645,
+      "timing_us": {
+        "wheel": 1611.2755231999997,
+        "aten": 1611.3051428000003,
+        "repo": 1741.7690204000003
+      },
+      "per_round_native_over_repo": [
+        0.9249233468352186,
+        0.9251036747124236,
+        0.9253482692784922,
+        0.9249701755891448,
+        0.924973081033633
+      ],
+      "mean_native_over_repo": 0.9250637094897824,
+      "ratio_of_means": 0.9250799068810901,
+      "meets_90": true,
+      "arms": {
+        "wheel": [
+          {
+            "round": 0,
+            "calls": 1000,
+            "us": 1611.2621990000005,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          },
+          {
+            "round": 1,
+            "calls": 1000,
+            "us": 1611.2265539999985,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          },
+          {
+            "round": 2,
+            "calls": 1000,
+            "us": 1611.2710269999998,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          },
+          {
+            "round": 3,
+            "calls": 1000,
+            "us": 1611.2065949999999,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          },
+          {
+            "round": 4,
+            "calls": 1000,
+            "us": 1611.4112410000005,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          }
+        ],
+        "aten": [
+          {
+            "round": 0,
+            "calls": 1000,
+            "us": 1611.206358,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          },
+          {
+            "round": 1,
+            "calls": 1000,
+            "us": 1611.3429699999997,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          },
+          {
+            "round": 2,
+            "calls": 1000,
+            "us": 1611.3329569999987,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          },
+          {
+            "round": 3,
+            "calls": 1000,
+            "us": 1611.3176230000024,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          },
+          {
+            "round": 4,
+            "calls": 1000,
+            "us": 1611.3258060000014,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          }
+        ],
+        "repo": [
+          {
+            "round": 0,
+            "calls": 1000,
+            "us": 1741.989067,
+            "kernels": {
+              "_state_key_norms": 1000,
+              "void flash_vpackedlds<4, 3, 16, 1, 8, 2>(unsigned short const*, unsigned short const*, unsigned short const*, float const*, unsigned char*, unsigned short*, float*)": 1000,
+              "_state_stable": 1000
+            }
+          },
+          {
+            "round": 1,
+            "calls": 1000,
+            "us": 1741.6713369999984,
+            "kernels": {
+              "_state_key_norms": 1000,
+              "void flash_vpackedlds<4, 3, 16, 1, 8, 2>(unsigned short const*, unsigned short const*, unsigned short const*, float const*, unsigned char*, unsigned short*, float*)": 1000,
+              "_state_stable": 1000
+            }
+          },
+          {
+            "round": 2,
+            "calls": 1000,
+            "us": 1741.2590269999982,
+            "kernels": {
+              "_state_key_norms": 1000,
+              "void flash_vpackedlds<4, 3, 16, 1, 8, 2>(unsigned short const*, unsigned short const*, unsigned short const*, float const*, unsigned char*, unsigned short*, float*)": 1000,
+              "_state_stable": 1000
+            }
+          },
+          {
+            "round": 3,
+            "calls": 1000,
+            "us": 1741.9011309999999,
+            "kernels": {
+              "_state_key_norms": 1000,
+              "void flash_vpackedlds<4, 3, 16, 1, 8, 2>(unsigned short const*, unsigned short const*, unsigned short const*, float const*, unsigned char*, unsigned short*, float*)": 1000,
+              "_state_stable": 1000
+            }
+          },
+          {
+            "round": 4,
+            "calls": 1000,
+            "us": 1742.0245400000047,
+            "kernels": {
+              "_state_key_norms": 1000,
+              "void flash_vpackedlds<4, 3, 16, 1, 8, 2>(unsigned short const*, unsigned short const*, unsigned short const*, float const*, unsigned char*, unsigned short*, float*)": 1000,
+              "_state_stable": 1000
+            }
+          }
+        ]
+      }
+    },
+    "expanded_small": {
+      "sheet": "\u89c4\u6a21\u6269\u5c55\u5de5\u51b5",
+      "row": 2,
+      "timing_us": {
+        "wheel": 7.2300493999998885,
+        "aten": 7.22716919999989,
+        "repo": 4.800576199999971
+      },
+      "per_round_native_over_repo": [
+        1.5680029932326758,
+        1.4401326668742143,
+        1.4991873610696285,
+        1.4549004171767168,
+        1.5747803653604642
+      ],
+      "mean_native_over_repo": 1.50740076074274,
+      "ratio_of_means": 1.5054795297281052,
+      "meets_90": true,
+      "arms": {
+        "wheel": [
+          {
+            "round": 0,
+            "calls": 1000,
+            "us": 7.229120999999894,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          },
+          {
+            "round": 1,
+            "calls": 1000,
+            "us": 7.226560999999892,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          },
+          {
+            "round": 2,
+            "calls": 1000,
+            "us": 7.2320009999998875,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          },
+          {
+            "round": 3,
+            "calls": 1000,
+            "us": 7.229921999999886,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          },
+          {
+            "round": 4,
+            "calls": 1000,
+            "us": 7.232641999999884,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          }
+        ],
+        "aten": [
+          {
+            "round": 0,
+            "calls": 1000,
+            "us": 7.232000999999888,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          },
+          {
+            "round": 1,
+            "calls": 1000,
+            "us": 7.220480999999889,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          },
+          {
+            "round": 2,
+            "calls": 1000,
+            "us": 7.229920999999891,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          },
+          {
+            "round": 3,
+            "calls": 1000,
+            "us": 7.226082999999892,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          },
+          {
+            "round": 4,
+            "calls": 1000,
+            "us": 7.227359999999892,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          }
+        ],
+        "repo": [
+          {
+            "round": 0,
+            "calls": 1000,
+            "us": 4.610399999999978,
+            "kernels": {
+              "_state_stable": 1000
+            }
+          },
+          {
+            "round": 1,
+            "calls": 1000,
+            "us": 5.013760999999974,
+            "kernels": {
+              "_state_stable": 1000
+            }
+          },
+          {
+            "round": 2,
+            "calls": 1000,
+            "us": 4.822559999999962,
+            "kernels": {
+              "_state_stable": 1000
+            }
+          },
+          {
+            "round": 3,
+            "calls": 1000,
+            "us": 4.966719999999965,
+            "kernels": {
+              "_state_stable": 1000
+            }
+          },
+          {
+            "round": 4,
+            "calls": 1000,
+            "us": 4.589439999999977,
+            "kernels": {
+              "_state_stable": 1000
+            }
+          }
+        ]
+      }
+    },
+    "expanded_medium": {
+      "sheet": "\u89c4\u6a21\u6269\u5c55\u5de5\u51b5",
+      "row": 3,
+      "timing_us": {
+        "wheel": 8.25017719999989,
+        "aten": 8.246848199999892,
+        "repo": 5.744705199999968
+      },
+      "per_round_native_over_repo": [
+        1.5013246736181436,
+        1.402346978662311,
+        1.4174593728588996,
+        1.4320361794817362,
+        1.4284366119651712
+      ],
+      "mean_native_over_repo": 1.4363207633172523,
+      "ratio_of_means": 1.4355563798121334,
+      "meets_90": true,
+      "arms": {
+        "wheel": [
+          {
+            "round": 0,
+            "calls": 1000,
+            "us": 8.25808299999989,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          },
+          {
+            "round": 1,
+            "calls": 1000,
+            "us": 8.245761999999887,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          },
+          {
+            "round": 2,
+            "calls": 1000,
+            "us": 8.248480999999897,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          },
+          {
+            "round": 3,
+            "calls": 1000,
+            "us": 8.248639999999885,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          },
+          {
+            "round": 4,
+            "calls": 1000,
+            "us": 8.24991999999989,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          }
+        ],
+        "aten": [
+          {
+            "round": 0,
+            "calls": 1000,
+            "us": 8.249119999999893,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          },
+          {
+            "round": 1,
+            "calls": 1000,
+            "us": 8.24064099999989,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          },
+          {
+            "round": 2,
+            "calls": 1000,
+            "us": 8.24895999999989,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          },
+          {
+            "round": 3,
+            "calls": 1000,
+            "us": 8.246239999999894,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          },
+          {
+            "round": 4,
+            "calls": 1000,
+            "us": 8.249279999999892,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          }
+        ],
+        "repo": [
+          {
+            "round": 0,
+            "calls": 1000,
+            "us": 5.494560999999941,
+            "kernels": {
+              "_state_stable": 1000
+            }
+          },
+          {
+            "round": 1,
+            "calls": 1000,
+            "us": 5.876321,
+            "kernels": {
+              "_state_stable": 1000
+            }
+          },
+          {
+            "round": 2,
+            "calls": 1000,
+            "us": 5.819201000000011,
+            "kernels": {
+              "_state_stable": 1000
+            }
+          },
+          {
+            "round": 3,
+            "calls": 1000,
+            "us": 5.758401999999934,
+            "kernels": {
+              "_state_stable": 1000
+            }
+          },
+          {
+            "round": 4,
+            "calls": 1000,
+            "us": 5.775040999999956,
+            "kernels": {
+              "_state_stable": 1000
+            }
+          }
+        ]
+      }
+    },
+    "expanded_large": {
+      "sheet": "\u89c4\u6a21\u6269\u5c55\u5de5\u51b5",
+      "row": 4,
+      "timing_us": {
+        "wheel": 42.23920460000039,
+        "aten": 41.79021379999968,
+        "repo": 43.767205399999774
+      },
+      "per_round_native_over_repo": [
+        0.9547630891154523,
+        0.9547666602552832,
+        0.9550713609637282,
+        0.9548557190252364,
+        0.9546900862572837
+      ],
+      "mean_native_over_repo": 0.9548293831233967,
+      "ratio_of_means": 0.9548293846515477,
+      "meets_90": true,
+      "arms": {
+        "wheel": [
+          {
+            "round": 0,
+            "calls": 1000,
+            "us": 42.24928500000041,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          },
+          {
+            "round": 1,
+            "calls": 1000,
+            "us": 42.23648500000037,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          },
+          {
+            "round": 2,
+            "calls": 1000,
+            "us": 42.23360400000039,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          },
+          {
+            "round": 3,
+            "calls": 1000,
+            "us": 42.241765000000406,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          },
+          {
+            "round": 4,
+            "calls": 1000,
+            "us": 42.23488400000038,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          }
+        ],
+        "aten": [
+          {
+            "round": 0,
+            "calls": 1000,
+            "us": 41.792964999999676,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          },
+          {
+            "round": 1,
+            "calls": 1000,
+            "us": 41.78624699999967,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          },
+          {
+            "round": 2,
+            "calls": 1000,
+            "us": 41.80080499999964,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          },
+          {
+            "round": 3,
+            "calls": 1000,
+            "us": 41.79136599999971,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          },
+          {
+            "round": 4,
+            "calls": 1000,
+            "us": 41.77968599999967,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": 1000
+            }
+          }
+        ],
+        "repo": [
+          {
+            "round": 0,
+            "calls": 1000,
+            "us": 43.77312599999974,
+            "kernels": {
+              "void short_state_flash<4, 3, 16>(unsigned short const*, unsigned short const*, unsigned short const*, unsigned short*, float*, unsigned char*)": 1000
+            }
+          },
+          {
+            "round": 1,
+            "calls": 1000,
+            "us": 43.765925999999794,
+            "kernels": {
+              "void short_state_flash<4, 3, 16>(unsigned short const*, unsigned short const*, unsigned short const*, unsigned short*, float*, unsigned char*)": 1000
+            }
+          },
+          {
+            "round": 2,
+            "calls": 1000,
+            "us": 43.76720599999978,
+            "kernels": {
+              "void short_state_flash<4, 3, 16>(unsigned short const*, unsigned short const*, unsigned short const*, unsigned short*, float*, unsigned char*)": 1000
+            }
+          },
+          {
+            "round": 3,
+            "calls": 1000,
+            "us": 43.767204999999784,
+            "kernels": {
+              "void short_state_flash<4, 3, 16>(unsigned short const*, unsigned short const*, unsigned short const*, unsigned short*, float*, unsigned char*)": 1000
+            }
+          },
+          {
+            "round": 4,
+            "calls": 1000,
+            "us": 43.76256399999976,
+            "kernels": {
+              "void short_state_flash<4, 3, 16>(unsigned short const*, unsigned short const*, unsigned short const*, unsigned short*, float*, unsigned char*)": 1000
+            }
+          }
+        ]
+      }
+    }
+  },
+  "gate_sha256": "c08e045b8efaf57516bd270dc67b636ca7ac8356af26a14d78a2f7fcccea7d03",
+  "trace_sha256": "33639fc2c9a46471eb955f434ba569981edd44d90a68b51e4028109c69c610d4"
+}

@@ -1,0 +1,1836 @@
+{
+  "node": "a01r4n15",
+  "physical_card": "4",
+  "apptainer_container": "/work1/share/scnethpc2601/flagos-dev/20261103-hygon-optimization/images/flagos-dev-20261103.rootfs",
+  "torch_file": "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch/__init__.py",
+  "torch_hip": "7.2.26365",
+  "native_file": "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/flash_attn_2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "device": "_CudaDeviceProperties(name='BW', major=9, minor=3, gcnArchName='gfx936:sramecc+:xnack-', total_memory=65520MB, multi_processor_count=80, uuid=30303135-3736-3837-3339-366534306131, pci_bus_id=133, pci_device_id=0, pci_domain_id=0, L2_cache_size=8MB)",
+  "packages": {
+    "torch": "2.13.0+dtk2610.2610261432.gefb4e1",
+    "triton": "3.7.0+dtk2610.torch2130.2610212057.g024953",
+    "flash-attn": "2.8.4+dtk2610.torch2130.2610211904.g0f1a5a"
+  },
+  "scope": "Isolate exact Q/K/V aliasing and check dropout RNG excluding undefined mask padding.",
+  "tolerances": {
+    "output_atol": 0.002,
+    "output_rtol": 0.02,
+    "lse_atol": 2e-05,
+    "lse_rtol": 2e-05,
+    "gradient_atol": 0.01,
+    "gradient_rtol": 0.03
+  },
+  "tests": [
+    {
+      "id": "alias/bfloat16/True/wheel",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 128,
+          "nonfinite": 0,
+          "max_abs": 2.455599308013916,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 3.0747060775756836,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 121,
+          "nonfinite": 0,
+          "max_abs": 2.443880558013916,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 3.0639171600341797,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 100,
+          "nonfinite": 0,
+          "max_abs": 0.14536690711975098,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 2,
+          "nonfinite": 0,
+          "max_abs": 3.1006393432617188,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": false,
+      "repeats": 3,
+      "arm": "wheel",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        }
+      ],
+      "inputs_unchanged": true,
+      "pointers": [
+        140203188551680,
+        140203188551680,
+        140203188551680
+      ]
+    },
+    {
+      "id": "alias/bfloat16/True/public",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 128,
+          "nonfinite": 0,
+          "max_abs": 2.455599308013916,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 3.0747060775756836,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 128,
+          "nonfinite": 0,
+          "max_abs": 2.455599308013916,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 3.0747060775756836,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 121,
+          "nonfinite": 0,
+          "max_abs": 2.443880558013916,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 3.0639171600341797,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": false,
+      "repeats": 3,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        }
+      ],
+      "inputs_unchanged": true,
+      "pointers": [
+        140203188551680,
+        140203188551680,
+        140203188551680
+      ]
+    },
+    {
+      "id": "alias/bfloat16/True/aten",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 100,
+          "nonfinite": 0,
+          "max_abs": 0.14536690711975098,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 2,
+          "nonfinite": 0,
+          "max_abs": 3.1006393432617188,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 121,
+          "nonfinite": 0,
+          "max_abs": 2.443880558013916,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 3.0639171600341797,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 100,
+          "nonfinite": 0,
+          "max_abs": 0.14536690711975098,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 2,
+          "nonfinite": 0,
+          "max_abs": 3.1006393432617188,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": false,
+      "repeats": 3,
+      "arm": "aten",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        }
+      ],
+      "inputs_unchanged": true,
+      "pointers": [
+        140203188551680,
+        140203188551680,
+        140203188551680
+      ]
+    },
+    {
+      "id": "alias/bfloat16/False/wheel",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.006838083267211914,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.006838083267211914,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.006838083267211914,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 3,
+      "arm": "wheel",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        }
+      ],
+      "inputs_unchanged": true,
+      "pointers": [
+        140203188551680,
+        140203188552704,
+        140203188553728
+      ]
+    },
+    {
+      "id": "alias/bfloat16/False/public",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.006838083267211914,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.006838083267211914,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.006838083267211914,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 3,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        }
+      ],
+      "inputs_unchanged": true,
+      "pointers": [
+        140203188551680,
+        140203188552704,
+        140203188553728
+      ]
+    },
+    {
+      "id": "alias/bfloat16/False/aten",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.006838083267211914,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.006838083267211914,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.006838083267211914,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 3,
+      "arm": "aten",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        }
+      ],
+      "inputs_unchanged": true,
+      "pointers": [
+        140203188551680,
+        140203188552704,
+        140203188553728
+      ]
+    },
+    {
+      "id": "dropout/bfloat16/valid_mask_rng_restore",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            97,
+            4,
+            64
+          ],
+          "elements": 49664,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.003965258598327637,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            97
+          ],
+          "elements": 776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "rng_restore": {
+        "output_equal": true,
+        "lse_equal": true,
+        "valid_dropout_mask_equal": true
+      },
+      "mask_shape": [
+        2,
+        4,
+        256,
+        128
+      ],
+      "observed_keep_fraction": 0.8739770650863647
+    },
+    {
+      "id": "alias/float16/True/wheel",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 130,
+          "nonfinite": 0,
+          "max_abs": 2.4590651988983154,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 3.0773391723632812,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 103,
+          "nonfinite": 0,
+          "max_abs": 0.14253568649291992,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 2,
+          "nonfinite": 0,
+          "max_abs": 3.103057384490967,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 130,
+          "nonfinite": 0,
+          "max_abs": 2.4590651988983154,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 3.0773391723632812,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": false,
+      "repeats": 3,
+      "arm": "wheel",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        }
+      ],
+      "inputs_unchanged": true,
+      "pointers": [
+        140203188551680,
+        140203188551680,
+        140203188551680
+      ]
+    },
+    {
+      "id": "alias/float16/True/public",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 130,
+          "nonfinite": 0,
+          "max_abs": 2.4590651988983154,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 3.0773391723632812,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 103,
+          "nonfinite": 0,
+          "max_abs": 0.14253568649291992,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 2,
+          "nonfinite": 0,
+          "max_abs": 3.103057384490967,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 130,
+          "nonfinite": 0,
+          "max_abs": 2.4590651988983154,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 3.0773391723632812,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": false,
+      "repeats": 3,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        }
+      ],
+      "inputs_unchanged": true,
+      "pointers": [
+        140203188551680,
+        140203188551680,
+        140203188551680
+      ]
+    },
+    {
+      "id": "alias/float16/True/aten",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 103,
+          "nonfinite": 0,
+          "max_abs": 0.14253568649291992,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 2,
+          "nonfinite": 0,
+          "max_abs": 3.103057384490967,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 130,
+          "nonfinite": 0,
+          "max_abs": 2.4590651988983154,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 3.0773391723632812,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 130,
+          "nonfinite": 0,
+          "max_abs": 2.4590651988983154,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 3,
+          "nonfinite": 0,
+          "max_abs": 3.0773391723632812,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": false,
+      "repeats": 3,
+      "arm": "aten",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        }
+      ],
+      "inputs_unchanged": true,
+      "pointers": [
+        140203188551680,
+        140203188551680,
+        140203188551680
+      ]
+    },
+    {
+      "id": "alias/float16/False/wheel",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0009343624114990234,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0009343624114990234,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0009343624114990234,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 3,
+      "arm": "wheel",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        }
+      ],
+      "inputs_unchanged": true,
+      "pointers": [
+        140203188551680,
+        140203188552704,
+        140203188553728
+      ]
+    },
+    {
+      "id": "alias/float16/False/public",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0009343624114990234,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0009343624114990234,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0009343624114990234,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 3,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        }
+      ],
+      "inputs_unchanged": true,
+      "pointers": [
+        140203188551680,
+        140203188552704,
+        140203188553728
+      ]
+    },
+    {
+      "id": "alias/float16/False/aten",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0009343624114990234,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0009343624114990234,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "elements": 384,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0009343624114990234,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            1,
+            2,
+            3
+          ],
+          "elements": 6,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 3,
+      "arm": "aten",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            1,
+            3,
+            2,
+            64
+          ],
+          "stride": [
+            384,
+            128,
+            64,
+            1
+          ],
+          "offset": 0
+        }
+      ],
+      "inputs_unchanged": true,
+      "pointers": [
+        140203188551680,
+        140203188552704,
+        140203188553728
+      ]
+    },
+    {
+      "id": "dropout/float16/valid_mask_rng_restore",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            97,
+            4,
+            64
+          ],
+          "elements": 49664,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0009925365447998047,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            97
+          ],
+          "elements": 776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "rng_restore": {
+        "output_equal": true,
+        "lse_equal": true,
+        "valid_dropout_mask_equal": true
+      },
+      "mask_shape": [
+        2,
+        4,
+        256,
+        128
+      ],
+      "observed_keep_fraction": 0.8739770650863647
+    }
+  ],
+  "completed": true,
+  "passed": 8,
+  "failed": 6
+}

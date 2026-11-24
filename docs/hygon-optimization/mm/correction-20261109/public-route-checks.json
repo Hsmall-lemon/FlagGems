@@ -1,0 +1,1136 @@
+[
+  {
+    "shape": [
+      1344,
+      128,
+      256
+    ],
+    "seed": 1238,
+    "offset": 0,
+    "export_calls": 1,
+    "accuracy": {
+      "ok": true,
+      "bad_elements": 0,
+      "total": 172032,
+      "max_abs_error": 8.526512829121202e-14,
+      "max_allowed_ratio": 0.0002708077300117902,
+      "first_actual": [
+        -16.151293935047697,
+        -0.692773263422194,
+        4.564496770883398,
+        -26.52282390547259,
+        -17.073084639291586,
+        -16.866200902685897
+      ],
+      "first_reference": [
+        -16.151293935047704,
+        -0.6927732634221948,
+        4.564496770883391,
+        -26.522823905472585,
+        -17.07308463929158,
+        -16.866200902685886
+      ]
+    },
+    "kernel": "mm_mmac_swizzle.mmac_tiled",
+    "launch_witness": [
+      {
+        "grid": [
+          84,
+          4
+        ],
+        "params": {
+          "WARPS": 2,
+          "WM": 1,
+          "TM": 1,
+          "TN": 1,
+          "PREFETCH": 8,
+          "PIPE": true
+        }
+      }
+    ],
+    "config": {
+      "kind": "swizzle",
+      "group": 1,
+      "tm": 1,
+      "tn": 1,
+      "wm": 1,
+      "warps": 2,
+      "prefetch": 8,
+      "split": 1,
+      "trans": false,
+      "pipe": true,
+      "swap": false
+    }
+  },
+  {
+    "shape": [
+      1344,
+      128,
+      256
+    ],
+    "seed": 1238,
+    "offset": 131072,
+    "export_calls": 1,
+    "accuracy": {
+      "ok": true,
+      "bad_elements": 0,
+      "total": 172032,
+      "max_abs_error": 8.526512829121202e-14,
+      "max_allowed_ratio": 0.0002708077300117902,
+      "first_actual": [
+        -16.151293935047697,
+        -0.692773263422194,
+        4.564496770883398,
+        -26.52282390547259,
+        -17.073084639291586,
+        -16.866200902685897
+      ],
+      "first_reference": [
+        -16.151293935047704,
+        -0.6927732634221948,
+        4.564496770883391,
+        -26.522823905472585,
+        -17.07308463929158,
+        -16.866200902685886
+      ]
+    },
+    "kernel": "mm_mmac_swizzle.mmac_tiled",
+    "launch_witness": [
+      {
+        "grid": [
+          84,
+          4
+        ],
+        "params": {
+          "WARPS": 2,
+          "WM": 1,
+          "TM": 1,
+          "TN": 1,
+          "PREFETCH": 8,
+          "PIPE": true
+        }
+      }
+    ],
+    "config": {
+      "kind": "swizzle",
+      "group": 1,
+      "tm": 1,
+      "tn": 1,
+      "wm": 1,
+      "warps": 2,
+      "prefetch": 8,
+      "split": 1,
+      "trans": false,
+      "pipe": true,
+      "swap": false
+    }
+  },
+  {
+    "shape": [
+      1344,
+      128,
+      256
+    ],
+    "seed": 101241,
+    "offset": 0,
+    "export_calls": 1,
+    "accuracy": {
+      "ok": true,
+      "bad_elements": 0,
+      "total": 172032,
+      "max_abs_error": 9.237055564881302e-14,
+      "max_allowed_ratio": 0.00030282004713459454,
+      "first_actual": [
+        2.216325542327252,
+        -1.2997240416759828,
+        0.8083049060075485,
+        -7.677035142035943,
+        16.71816883615337,
+        15.314580774514864
+      ],
+      "first_reference": [
+        2.2163255423272514,
+        -1.2997240416759777,
+        0.8083049060075496,
+        -7.677035142035941,
+        16.718168836153364,
+        15.314580774514866
+      ]
+    },
+    "kernel": "mm_mmac_swizzle.mmac_tiled",
+    "launch_witness": [
+      {
+        "grid": [
+          84,
+          4
+        ],
+        "params": {
+          "WARPS": 2,
+          "WM": 1,
+          "TM": 1,
+          "TN": 1,
+          "PREFETCH": 8,
+          "PIPE": true
+        }
+      }
+    ],
+    "config": {
+      "kind": "swizzle",
+      "group": 1,
+      "tm": 1,
+      "tn": 1,
+      "wm": 1,
+      "warps": 2,
+      "prefetch": 8,
+      "split": 1,
+      "trans": false,
+      "pipe": true,
+      "swap": false
+    }
+  },
+  {
+    "shape": [
+      1344,
+      128,
+      256
+    ],
+    "seed": 101241,
+    "offset": 131072,
+    "export_calls": 1,
+    "accuracy": {
+      "ok": true,
+      "bad_elements": 0,
+      "total": 172032,
+      "max_abs_error": 9.237055564881302e-14,
+      "max_allowed_ratio": 0.00030282004713459454,
+      "first_actual": [
+        2.216325542327252,
+        -1.2997240416759828,
+        0.8083049060075485,
+        -7.677035142035943,
+        16.71816883615337,
+        15.314580774514864
+      ],
+      "first_reference": [
+        2.2163255423272514,
+        -1.2997240416759777,
+        0.8083049060075496,
+        -7.677035142035941,
+        16.718168836153364,
+        15.314580774514866
+      ]
+    },
+    "kernel": "mm_mmac_swizzle.mmac_tiled",
+    "launch_witness": [
+      {
+        "grid": [
+          84,
+          4
+        ],
+        "params": {
+          "WARPS": 2,
+          "WM": 1,
+          "TM": 1,
+          "TN": 1,
+          "PREFETCH": 8,
+          "PIPE": true
+        }
+      }
+    ],
+    "config": {
+      "kind": "swizzle",
+      "group": 1,
+      "tm": 1,
+      "tn": 1,
+      "wm": 1,
+      "warps": 2,
+      "prefetch": 8,
+      "split": 1,
+      "trans": false,
+      "pipe": true,
+      "swap": false
+    }
+  },
+  {
+    "shape": [
+      1344,
+      128,
+      256
+    ],
+    "seed": 907,
+    "offset": 0,
+    "export_calls": 1,
+    "accuracy": {
+      "ok": true,
+      "bad_elements": 0,
+      "total": 172032,
+      "max_abs_error": 9.947598300641403e-14,
+      "max_allowed_ratio": 0.00033787272124226016,
+      "first_actual": [
+        38.54148833213127,
+        21.19405948838921,
+        13.252375150462452,
+        -20.214415412968567,
+        36.94112118196278,
+        16.634538800163593
+      ],
+      "first_reference": [
+        38.54148833213127,
+        21.1940594883892,
+        13.25237515046246,
+        -20.21441541296852,
+        36.94112118196276,
+        16.634538800163583
+      ]
+    },
+    "kernel": "mm_mmac_swizzle.mmac_tiled",
+    "launch_witness": [
+      {
+        "grid": [
+          84,
+          4
+        ],
+        "params": {
+          "WARPS": 2,
+          "WM": 1,
+          "TM": 1,
+          "TN": 1,
+          "PREFETCH": 8,
+          "PIPE": true
+        }
+      }
+    ],
+    "config": {
+      "kind": "swizzle",
+      "group": 1,
+      "tm": 1,
+      "tn": 1,
+      "wm": 1,
+      "warps": 2,
+      "prefetch": 8,
+      "split": 1,
+      "trans": false,
+      "pipe": true,
+      "swap": false
+    }
+  },
+  {
+    "shape": [
+      1344,
+      128,
+      256
+    ],
+    "seed": 907,
+    "offset": 131072,
+    "export_calls": 1,
+    "accuracy": {
+      "ok": true,
+      "bad_elements": 0,
+      "total": 172032,
+      "max_abs_error": 9.947598300641403e-14,
+      "max_allowed_ratio": 0.00033787272124226016,
+      "first_actual": [
+        38.54148833213127,
+        21.19405948838921,
+        13.252375150462452,
+        -20.214415412968567,
+        36.94112118196278,
+        16.634538800163593
+      ],
+      "first_reference": [
+        38.54148833213127,
+        21.1940594883892,
+        13.25237515046246,
+        -20.21441541296852,
+        36.94112118196276,
+        16.634538800163583
+      ]
+    },
+    "kernel": "mm_mmac_swizzle.mmac_tiled",
+    "launch_witness": [
+      {
+        "grid": [
+          84,
+          4
+        ],
+        "params": {
+          "WARPS": 2,
+          "WM": 1,
+          "TM": 1,
+          "TN": 1,
+          "PREFETCH": 8,
+          "PIPE": true
+        }
+      }
+    ],
+    "config": {
+      "kind": "swizzle",
+      "group": 1,
+      "tm": 1,
+      "tn": 1,
+      "wm": 1,
+      "warps": 2,
+      "prefetch": 8,
+      "split": 1,
+      "trans": false,
+      "pipe": true,
+      "swap": false
+    }
+  },
+  {
+    "shape": [
+      2208,
+      64,
+      64
+    ],
+    "seed": 1238,
+    "offset": 0,
+    "export_calls": 1,
+    "accuracy": {
+      "ok": true,
+      "bad_elements": 0,
+      "total": 141312,
+      "max_abs_error": 1.4210854715202004e-14,
+      "max_allowed_ratio": 6.175561529510989e-05,
+      "first_actual": [
+        4.200093040753255,
+        5.172021801648588,
+        -4.234692403923145,
+        -4.769237645081155,
+        -5.210099728173851,
+        1.7783943790673016
+      ],
+      "first_reference": [
+        4.200093040753254,
+        5.172021801648588,
+        -4.2346924039231455,
+        -4.769237645081153,
+        -5.210099728173851,
+        1.7783943790673038
+      ]
+    },
+    "kernel": "mm_mmac_swizzle.mmac_tiled",
+    "launch_witness": [
+      {
+        "grid": [
+          138,
+          2
+        ],
+        "params": {
+          "WARPS": 2,
+          "WM": 1,
+          "TM": 1,
+          "TN": 1,
+          "PREFETCH": 8,
+          "PIPE": true
+        }
+      }
+    ],
+    "config": {
+      "kind": "swizzle",
+      "group": 1,
+      "tm": 1,
+      "tn": 1,
+      "wm": 1,
+      "warps": 2,
+      "prefetch": 8,
+      "split": 1,
+      "trans": false,
+      "pipe": true,
+      "swap": false
+    }
+  },
+  {
+    "shape": [
+      2208,
+      64,
+      64
+    ],
+    "seed": 1238,
+    "offset": 131072,
+    "export_calls": 1,
+    "accuracy": {
+      "ok": true,
+      "bad_elements": 0,
+      "total": 141312,
+      "max_abs_error": 1.4210854715202004e-14,
+      "max_allowed_ratio": 6.175561529510989e-05,
+      "first_actual": [
+        4.200093040753255,
+        5.172021801648588,
+        -4.234692403923145,
+        -4.769237645081155,
+        -5.210099728173851,
+        1.7783943790673016
+      ],
+      "first_reference": [
+        4.200093040753254,
+        5.172021801648588,
+        -4.2346924039231455,
+        -4.769237645081153,
+        -5.210099728173851,
+        1.7783943790673038
+      ]
+    },
+    "kernel": "mm_mmac_swizzle.mmac_tiled",
+    "launch_witness": [
+      {
+        "grid": [
+          138,
+          2
+        ],
+        "params": {
+          "WARPS": 2,
+          "WM": 1,
+          "TM": 1,
+          "TN": 1,
+          "PREFETCH": 8,
+          "PIPE": true
+        }
+      }
+    ],
+    "config": {
+      "kind": "swizzle",
+      "group": 1,
+      "tm": 1,
+      "tn": 1,
+      "wm": 1,
+      "warps": 2,
+      "prefetch": 8,
+      "split": 1,
+      "trans": false,
+      "pipe": true,
+      "swap": false
+    }
+  },
+  {
+    "shape": [
+      2208,
+      64,
+      64
+    ],
+    "seed": 101241,
+    "offset": 0,
+    "export_calls": 1,
+    "accuracy": {
+      "ok": true,
+      "bad_elements": 0,
+      "total": 141312,
+      "max_abs_error": 1.4210854715202004e-14,
+      "max_allowed_ratio": 4.9952326535665e-05,
+      "first_actual": [
+        -3.7017261474276184,
+        -3.116744172965157,
+        -8.615136303470662,
+        -0.9615404993881083,
+        -0.08593697126070034,
+        -3.249907730906985
+      ],
+      "first_reference": [
+        -3.7017261474276193,
+        -3.116744172965156,
+        -8.615136303470662,
+        -0.9615404993881091,
+        -0.08593697126069924,
+        -3.2499077309069846
+      ]
+    },
+    "kernel": "mm_mmac_swizzle.mmac_tiled",
+    "launch_witness": [
+      {
+        "grid": [
+          138,
+          2
+        ],
+        "params": {
+          "WARPS": 2,
+          "WM": 1,
+          "TM": 1,
+          "TN": 1,
+          "PREFETCH": 8,
+          "PIPE": true
+        }
+      }
+    ],
+    "config": {
+      "kind": "swizzle",
+      "group": 1,
+      "tm": 1,
+      "tn": 1,
+      "wm": 1,
+      "warps": 2,
+      "prefetch": 8,
+      "split": 1,
+      "trans": false,
+      "pipe": true,
+      "swap": false
+    }
+  },
+  {
+    "shape": [
+      2208,
+      64,
+      64
+    ],
+    "seed": 101241,
+    "offset": 131072,
+    "export_calls": 1,
+    "accuracy": {
+      "ok": true,
+      "bad_elements": 0,
+      "total": 141312,
+      "max_abs_error": 1.4210854715202004e-14,
+      "max_allowed_ratio": 4.9952326535665e-05,
+      "first_actual": [
+        -3.7017261474276184,
+        -3.116744172965157,
+        -8.615136303470662,
+        -0.9615404993881083,
+        -0.08593697126070034,
+        -3.249907730906985
+      ],
+      "first_reference": [
+        -3.7017261474276193,
+        -3.116744172965156,
+        -8.615136303470662,
+        -0.9615404993881091,
+        -0.08593697126069924,
+        -3.2499077309069846
+      ]
+    },
+    "kernel": "mm_mmac_swizzle.mmac_tiled",
+    "launch_witness": [
+      {
+        "grid": [
+          138,
+          2
+        ],
+        "params": {
+          "WARPS": 2,
+          "WM": 1,
+          "TM": 1,
+          "TN": 1,
+          "PREFETCH": 8,
+          "PIPE": true
+        }
+      }
+    ],
+    "config": {
+      "kind": "swizzle",
+      "group": 1,
+      "tm": 1,
+      "tn": 1,
+      "wm": 1,
+      "warps": 2,
+      "prefetch": 8,
+      "split": 1,
+      "trans": false,
+      "pipe": true,
+      "swap": false
+    }
+  },
+  {
+    "shape": [
+      2208,
+      64,
+      64
+    ],
+    "seed": 907,
+    "offset": 0,
+    "export_calls": 1,
+    "accuracy": {
+      "ok": true,
+      "bad_elements": 0,
+      "total": 141312,
+      "max_abs_error": 1.4210854715202004e-14,
+      "max_allowed_ratio": 4.713276605310627e-05,
+      "first_actual": [
+        -3.986848717283085,
+        -11.650444101245688,
+        -2.345518346654798,
+        -14.391711293937442,
+        -4.939635681700985,
+        0.28608277267467797
+      ],
+      "first_reference": [
+        -3.986848717283085,
+        -11.650444101245682,
+        -2.345518346654798,
+        -14.391711293937442,
+        -4.939635681700985,
+        0.28608277267467985
+      ]
+    },
+    "kernel": "mm_mmac_swizzle.mmac_tiled",
+    "launch_witness": [
+      {
+        "grid": [
+          138,
+          2
+        ],
+        "params": {
+          "WARPS": 2,
+          "WM": 1,
+          "TM": 1,
+          "TN": 1,
+          "PREFETCH": 8,
+          "PIPE": true
+        }
+      }
+    ],
+    "config": {
+      "kind": "swizzle",
+      "group": 1,
+      "tm": 1,
+      "tn": 1,
+      "wm": 1,
+      "warps": 2,
+      "prefetch": 8,
+      "split": 1,
+      "trans": false,
+      "pipe": true,
+      "swap": false
+    }
+  },
+  {
+    "shape": [
+      2208,
+      64,
+      64
+    ],
+    "seed": 907,
+    "offset": 131072,
+    "export_calls": 1,
+    "accuracy": {
+      "ok": true,
+      "bad_elements": 0,
+      "total": 141312,
+      "max_abs_error": 1.4210854715202004e-14,
+      "max_allowed_ratio": 4.713276605310627e-05,
+      "first_actual": [
+        -3.986848717283085,
+        -11.650444101245688,
+        -2.345518346654798,
+        -14.391711293937442,
+        -4.939635681700985,
+        0.28608277267467797
+      ],
+      "first_reference": [
+        -3.986848717283085,
+        -11.650444101245682,
+        -2.345518346654798,
+        -14.391711293937442,
+        -4.939635681700985,
+        0.28608277267467985
+      ]
+    },
+    "kernel": "mm_mmac_swizzle.mmac_tiled",
+    "launch_witness": [
+      {
+        "grid": [
+          138,
+          2
+        ],
+        "params": {
+          "WARPS": 2,
+          "WM": 1,
+          "TM": 1,
+          "TN": 1,
+          "PREFETCH": 8,
+          "PIPE": true
+        }
+      }
+    ],
+    "config": {
+      "kind": "swizzle",
+      "group": 1,
+      "tm": 1,
+      "tn": 1,
+      "wm": 1,
+      "warps": 2,
+      "prefetch": 8,
+      "split": 1,
+      "trans": false,
+      "pipe": true,
+      "swap": false
+    }
+  },
+  {
+    "shape": [
+      576,
+      128,
+      128
+    ],
+    "seed": 1238,
+    "offset": 0,
+    "export_calls": 1,
+    "accuracy": {
+      "ok": true,
+      "bad_elements": 0,
+      "total": 73728,
+      "max_abs_error": 2.1316282072803006e-14,
+      "max_allowed_ratio": 8.800582398491163e-05,
+      "first_actual": [
+        -8.220157816099404,
+        -1.9358590008739283,
+        -25.35456398665107,
+        16.743563910291584,
+        -13.520407065500397,
+        -3.231843505142398
+      ],
+      "first_reference": [
+        -8.220157816099404,
+        -1.935859000873931,
+        -25.35456398665107,
+        16.743563910291588,
+        -13.520407065500393,
+        -3.2318435051423973
+      ]
+    },
+    "kernel": "mm_mmac_swizzle.mmac_tiled",
+    "launch_witness": [
+      {
+        "grid": [
+          36,
+          4
+        ],
+        "params": {
+          "WARPS": 2,
+          "WM": 1,
+          "TM": 1,
+          "TN": 1,
+          "PREFETCH": 8,
+          "PIPE": true
+        }
+      }
+    ],
+    "config": {
+      "kind": "swizzle",
+      "group": 1,
+      "tm": 1,
+      "tn": 1,
+      "wm": 1,
+      "warps": 2,
+      "prefetch": 8,
+      "split": 1,
+      "trans": false,
+      "pipe": true,
+      "swap": false
+    }
+  },
+  {
+    "shape": [
+      576,
+      128,
+      128
+    ],
+    "seed": 1238,
+    "offset": 131072,
+    "export_calls": 1,
+    "accuracy": {
+      "ok": true,
+      "bad_elements": 0,
+      "total": 73728,
+      "max_abs_error": 2.1316282072803006e-14,
+      "max_allowed_ratio": 8.800582398491163e-05,
+      "first_actual": [
+        -8.220157816099404,
+        -1.9358590008739283,
+        -25.35456398665107,
+        16.743563910291584,
+        -13.520407065500397,
+        -3.231843505142398
+      ],
+      "first_reference": [
+        -8.220157816099404,
+        -1.935859000873931,
+        -25.35456398665107,
+        16.743563910291588,
+        -13.520407065500393,
+        -3.2318435051423973
+      ]
+    },
+    "kernel": "mm_mmac_swizzle.mmac_tiled",
+    "launch_witness": [
+      {
+        "grid": [
+          36,
+          4
+        ],
+        "params": {
+          "WARPS": 2,
+          "WM": 1,
+          "TM": 1,
+          "TN": 1,
+          "PREFETCH": 8,
+          "PIPE": true
+        }
+      }
+    ],
+    "config": {
+      "kind": "swizzle",
+      "group": 1,
+      "tm": 1,
+      "tn": 1,
+      "wm": 1,
+      "warps": 2,
+      "prefetch": 8,
+      "split": 1,
+      "trans": false,
+      "pipe": true,
+      "swap": false
+    }
+  },
+  {
+    "shape": [
+      576,
+      128,
+      128
+    ],
+    "seed": 101241,
+    "offset": 0,
+    "export_calls": 1,
+    "accuracy": {
+      "ok": true,
+      "bad_elements": 0,
+      "total": 73728,
+      "max_abs_error": 2.1316282072803006e-14,
+      "max_allowed_ratio": 0.00010700013649402755,
+      "first_actual": [
+        -2.555988258360289,
+        -11.165371017254712,
+        11.987621526888983,
+        18.969694552982762,
+        -2.1064181654902514,
+        6.812248964027446
+      ],
+      "first_reference": [
+        -2.5559882583602915,
+        -11.16537101725471,
+        11.98762152688898,
+        18.969694552982766,
+        -2.106418165490253,
+        6.812248964027445
+      ]
+    },
+    "kernel": "mm_mmac_swizzle.mmac_tiled",
+    "launch_witness": [
+      {
+        "grid": [
+          36,
+          4
+        ],
+        "params": {
+          "WARPS": 2,
+          "WM": 1,
+          "TM": 1,
+          "TN": 1,
+          "PREFETCH": 8,
+          "PIPE": true
+        }
+      }
+    ],
+    "config": {
+      "kind": "swizzle",
+      "group": 1,
+      "tm": 1,
+      "tn": 1,
+      "wm": 1,
+      "warps": 2,
+      "prefetch": 8,
+      "split": 1,
+      "trans": false,
+      "pipe": true,
+      "swap": false
+    }
+  },
+  {
+    "shape": [
+      576,
+      128,
+      128
+    ],
+    "seed": 101241,
+    "offset": 131072,
+    "export_calls": 1,
+    "accuracy": {
+      "ok": true,
+      "bad_elements": 0,
+      "total": 73728,
+      "max_abs_error": 2.1316282072803006e-14,
+      "max_allowed_ratio": 0.00010700013649402755,
+      "first_actual": [
+        -2.555988258360289,
+        -11.165371017254712,
+        11.987621526888983,
+        18.969694552982762,
+        -2.1064181654902514,
+        6.812248964027446
+      ],
+      "first_reference": [
+        -2.5559882583602915,
+        -11.16537101725471,
+        11.98762152688898,
+        18.969694552982766,
+        -2.106418165490253,
+        6.812248964027445
+      ]
+    },
+    "kernel": "mm_mmac_swizzle.mmac_tiled",
+    "launch_witness": [
+      {
+        "grid": [
+          36,
+          4
+        ],
+        "params": {
+          "WARPS": 2,
+          "WM": 1,
+          "TM": 1,
+          "TN": 1,
+          "PREFETCH": 8,
+          "PIPE": true
+        }
+      }
+    ],
+    "config": {
+      "kind": "swizzle",
+      "group": 1,
+      "tm": 1,
+      "tn": 1,
+      "wm": 1,
+      "warps": 2,
+      "prefetch": 8,
+      "split": 1,
+      "trans": false,
+      "pipe": true,
+      "swap": false
+    }
+  },
+  {
+    "shape": [
+      576,
+      128,
+      128
+    ],
+    "seed": 907,
+    "offset": 0,
+    "export_calls": 1,
+    "accuracy": {
+      "ok": true,
+      "bad_elements": 0,
+      "total": 73728,
+      "max_abs_error": 2.1316282072803006e-14,
+      "max_allowed_ratio": 7.206149489725587e-05,
+      "first_actual": [
+        -0.443390471274059,
+        22.02109944737952,
+        6.259389826167272,
+        -5.309779942284317,
+        -13.623679752249323,
+        7.937166688658632
+      ],
+      "first_reference": [
+        -0.44339047127405995,
+        22.021099447379516,
+        6.25938982616727,
+        -5.309779942284316,
+        -13.623679752249323,
+        7.937166688658635
+      ]
+    },
+    "kernel": "mm_mmac_swizzle.mmac_tiled",
+    "launch_witness": [
+      {
+        "grid": [
+          36,
+          4
+        ],
+        "params": {
+          "WARPS": 2,
+          "WM": 1,
+          "TM": 1,
+          "TN": 1,
+          "PREFETCH": 8,
+          "PIPE": true
+        }
+      }
+    ],
+    "config": {
+      "kind": "swizzle",
+      "group": 1,
+      "tm": 1,
+      "tn": 1,
+      "wm": 1,
+      "warps": 2,
+      "prefetch": 8,
+      "split": 1,
+      "trans": false,
+      "pipe": true,
+      "swap": false
+    }
+  },
+  {
+    "shape": [
+      576,
+      128,
+      128
+    ],
+    "seed": 907,
+    "offset": 131072,
+    "export_calls": 1,
+    "accuracy": {
+      "ok": true,
+      "bad_elements": 0,
+      "total": 73728,
+      "max_abs_error": 2.1316282072803006e-14,
+      "max_allowed_ratio": 7.206149489725587e-05,
+      "first_actual": [
+        -0.443390471274059,
+        22.02109944737952,
+        6.259389826167272,
+        -5.309779942284317,
+        -13.623679752249323,
+        7.937166688658632
+      ],
+      "first_reference": [
+        -0.44339047127405995,
+        22.021099447379516,
+        6.25938982616727,
+        -5.309779942284316,
+        -13.623679752249323,
+        7.937166688658635
+      ]
+    },
+    "kernel": "mm_mmac_swizzle.mmac_tiled",
+    "launch_witness": [
+      {
+        "grid": [
+          36,
+          4
+        ],
+        "params": {
+          "WARPS": 2,
+          "WM": 1,
+          "TM": 1,
+          "TN": 1,
+          "PREFETCH": 8,
+          "PIPE": true
+        }
+      }
+    ],
+    "config": {
+      "kind": "swizzle",
+      "group": 1,
+      "tm": 1,
+      "tn": 1,
+      "wm": 1,
+      "warps": 2,
+      "prefetch": 8,
+      "split": 1,
+      "trans": false,
+      "pipe": true,
+      "swap": false
+    }
+  }
+]

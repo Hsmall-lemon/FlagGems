@@ -1,0 +1,575 @@
+{
+  "old_count": 97,
+  "new_count": 119,
+  "original_97_unchanged": true,
+  "additions": [
+    {
+      "row": 13,
+      "config": {
+        "kind": "swizzle",
+        "tm": 1,
+        "tn": 2,
+        "wm": 4,
+        "warps": 4,
+        "prefetch": 4,
+        "swap": true,
+        "pipe": true,
+        "group": 1
+      },
+      "ratio": 0.9255763687840591,
+      "provider": "candidate6",
+      "card": 0,
+      "key": [
+        "torch.float64",
+        192,
+        2944,
+        89,
+        89,
+        1,
+        2944,
+        1
+      ]
+    },
+    {
+      "row": 17,
+      "config": {
+        "kind": "small",
+        "block": 512,
+        "warps": 1
+      },
+      "ratio": 0.9415329709494877,
+      "provider": "candidate2",
+      "card": 0,
+      "key": [
+        "torch.float64",
+        2208,
+        64,
+        10,
+        10,
+        1,
+        64,
+        1
+      ]
+    },
+    {
+      "row": 34,
+      "config": {
+        "kind": "swizzle",
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 8,
+        "swap": false,
+        "pipe": true,
+        "group": 1
+      },
+      "ratio": 1.2509320922021543,
+      "provider": "candidate0",
+      "card": 0,
+      "key": [
+        "torch.float64",
+        960,
+        128,
+        384,
+        384,
+        1,
+        128,
+        1
+      ]
+    },
+    {
+      "row": 46,
+      "config": {
+        "kind": "tile",
+        "bm": 32,
+        "bn": 64,
+        "bk": 32,
+        "warps": 4,
+        "stages": 2,
+        "group": 8
+      },
+      "ratio": 1.0963066437577889,
+      "provider": "candidate5",
+      "card": 0,
+      "key": [
+        "torch.float32",
+        3122,
+        128,
+        64,
+        64,
+        1,
+        128,
+        1
+      ]
+    },
+    {
+      "row": 49,
+      "config": {
+        "kind": "fast3",
+        "bm": 64,
+        "bn": 32,
+        "bk": 32,
+        "warps": 4,
+        "stages": 2,
+        "unroll": 2,
+        "tail": false,
+        "swap": true
+      },
+      "ratio": 1.2230333473225272,
+      "provider": "candidate12",
+      "card": 0,
+      "key": [
+        "torch.float32",
+        1220,
+        256,
+        128,
+        128,
+        1,
+        1,
+        128
+      ]
+    },
+    {
+      "row": 53,
+      "config": {
+        "kind": "fasttile",
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "warps": 4,
+        "stages": 1,
+        "group": 8,
+        "single_buffer": false
+      },
+      "ratio": 1.1589496673461566,
+      "provider": "candidate9",
+      "card": 0,
+      "key": [
+        "torch.float32",
+        126636,
+        128,
+        256,
+        256,
+        1,
+        1,
+        256
+      ]
+    },
+    {
+      "row": 55,
+      "config": {
+        "kind": "fasttile",
+        "bm": 32,
+        "bn": 64,
+        "bk": 32,
+        "warps": 4,
+        "stages": 2,
+        "group": 8,
+        "single_buffer": false
+      },
+      "ratio": 1.1359011651383137,
+      "provider": "candidate8",
+      "card": 0,
+      "key": [
+        "torch.float32",
+        2806,
+        256,
+        128,
+        128,
+        1,
+        1,
+        128
+      ]
+    },
+    {
+      "row": 57,
+      "config": {
+        "kind": "fasttile",
+        "bm": 32,
+        "bn": 64,
+        "bk": 32,
+        "warps": 4,
+        "stages": 2,
+        "group": 8,
+        "single_buffer": false
+      },
+      "ratio": 1.0553081586096078,
+      "provider": "candidate8",
+      "card": 0,
+      "key": [
+        "torch.float32",
+        4819,
+        128,
+        128,
+        128,
+        1,
+        1,
+        128
+      ]
+    },
+    {
+      "row": 71,
+      "config": {
+        "kind": "tile",
+        "bm": 32,
+        "bn": 32,
+        "bk": 32,
+        "warps": 4,
+        "stages": 1,
+        "group": 8,
+        "split": 16
+      },
+      "ratio": 1.1199583349854656,
+      "provider": "candidate16",
+      "card": 0,
+      "key": [
+        "torch.float32",
+        32,
+        768,
+        3072,
+        3072,
+        1,
+        1,
+        3072
+      ]
+    },
+    {
+      "row": 97,
+      "config": {
+        "kind": "fast3",
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "warps": 4,
+        "stages": 2,
+        "unroll": 2,
+        "tail": false,
+        "swap": false
+      },
+      "ratio": 1.1029084666476374,
+      "provider": "candidate13",
+      "card": 0,
+      "key": [
+        "torch.float32",
+        800,
+        768,
+        384,
+        384,
+        1,
+        1,
+        384
+      ]
+    },
+    {
+      "row": 3,
+      "config": {
+        "kind": "swizzle",
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 8,
+        "swap": false,
+        "pipe": true,
+        "group": 1
+      },
+      "ratio": 0.9585871859196433,
+      "provider": "candidate0",
+      "card": 1,
+      "key": [
+        "torch.float64",
+        1344,
+        128,
+        128,
+        128,
+        1,
+        128,
+        1
+      ]
+    },
+    {
+      "row": 14,
+      "config": {
+        "kind": "swizzle",
+        "tm": 1,
+        "tn": 1,
+        "wm": 1,
+        "warps": 2,
+        "prefetch": 8,
+        "swap": false,
+        "pipe": true,
+        "group": 1
+      },
+      "ratio": 1.010561175736314,
+      "provider": "candidate0",
+      "card": 1,
+      "key": [
+        "torch.float64",
+        192,
+        512,
+        89,
+        89,
+        1,
+        512,
+        1
+      ]
+    },
+    {
+      "row": 23,
+      "config": {
+        "kind": "small",
+        "block": 512,
+        "warps": 1
+      },
+      "ratio": 1.169672523653744,
+      "provider": "candidate2",
+      "card": 1,
+      "key": [
+        "torch.float64",
+        24576,
+        16,
+        1,
+        1,
+        128,
+        16,
+        1
+      ]
+    },
+    {
+      "row": 45,
+      "config": {
+        "kind": "tile",
+        "bm": 32,
+        "bn": 64,
+        "bk": 32,
+        "warps": 4,
+        "stages": 2,
+        "group": 8
+      },
+      "ratio": 1.0988964270545445,
+      "provider": "candidate5",
+      "card": 1,
+      "key": [
+        "torch.float32",
+        3122,
+        64,
+        32,
+        64,
+        1,
+        64,
+        1
+      ]
+    },
+    {
+      "row": 48,
+      "config": {
+        "kind": "fast3",
+        "bm": 64,
+        "bn": 32,
+        "bk": 32,
+        "warps": 4,
+        "stages": 2,
+        "unroll": 2,
+        "tail": false,
+        "swap": true
+      },
+      "ratio": 1.2125543092277025,
+      "provider": "candidate12",
+      "card": 1,
+      "key": [
+        "torch.float32",
+        1220,
+        128,
+        128,
+        128,
+        1,
+        1,
+        128
+      ]
+    },
+    {
+      "row": 50,
+      "config": {
+        "kind": "fast3",
+        "bm": 64,
+        "bn": 32,
+        "bk": 32,
+        "warps": 4,
+        "stages": 2,
+        "unroll": 2,
+        "tail": false,
+        "swap": true
+      },
+      "ratio": 1.2678084499459028,
+      "provider": "candidate12",
+      "card": 1,
+      "key": [
+        "torch.float32",
+        1220,
+        128,
+        256,
+        256,
+        1,
+        1,
+        256
+      ]
+    },
+    {
+      "row": 54,
+      "config": {
+        "kind": "fasttile",
+        "bm": 32,
+        "bn": 64,
+        "bk": 32,
+        "warps": 4,
+        "stages": 2,
+        "group": 8,
+        "single_buffer": false
+      },
+      "ratio": 1.2369973489358612,
+      "provider": "candidate8",
+      "card": 1,
+      "key": [
+        "torch.float32",
+        2806,
+        128,
+        128,
+        128,
+        1,
+        1,
+        128
+      ]
+    },
+    {
+      "row": 56,
+      "config": {
+        "kind": "tile",
+        "bm": 32,
+        "bn": 32,
+        "bk": 32,
+        "warps": 4,
+        "stages": 1,
+        "group": 8
+      },
+      "ratio": 1.0449934445276825,
+      "provider": "candidate3",
+      "card": 1,
+      "key": [
+        "torch.float32",
+        2806,
+        128,
+        256,
+        256,
+        1,
+        1,
+        256
+      ]
+    },
+    {
+      "row": 58,
+      "config": {
+        "kind": "fasttile",
+        "bm": 64,
+        "bn": 64,
+        "bk": 32,
+        "warps": 4,
+        "stages": 1,
+        "group": 8,
+        "single_buffer": false
+      },
+      "ratio": 0.9971163004777563,
+      "provider": "candidate9",
+      "card": 1,
+      "key": [
+        "torch.float32",
+        4819,
+        256,
+        128,
+        128,
+        1,
+        1,
+        128
+      ]
+    },
+    {
+      "row": 98,
+      "config": {
+        "kind": "fasttile",
+        "bm": 32,
+        "bn": 64,
+        "bk": 32,
+        "warps": 4,
+        "stages": 2,
+        "group": 8,
+        "single_buffer": false
+      },
+      "ratio": 1.1338626407399377,
+      "provider": "candidate8",
+      "card": 1,
+      "key": [
+        "torch.float32",
+        800,
+        1024,
+        512,
+        512,
+        1,
+        1,
+        512
+      ]
+    },
+    {
+      "row": 120,
+      "config": {
+        "kind": "fast3",
+        "bm": 64,
+        "bn": 32,
+        "bk": 32,
+        "warps": 4,
+        "stages": 2,
+        "unroll": 2,
+        "tail": false,
+        "swap": true
+      },
+      "ratio": 1.1044651179307896,
+      "provider": "candidate12",
+      "card": 1,
+      "key": [
+        "torch.float32",
+        303,
+        320,
+        320,
+        320,
+        1,
+        1,
+        320
+      ]
+    },
+    {
+      "row": 122,
+      "config": {
+        "kind": "fasttile",
+        "bm": 64,
+        "bn": 128,
+        "bk": 32,
+        "warps": 4,
+        "stages": 1,
+        "group": 8,
+        "single_buffer": false
+      },
+      "ratio": 1.1223371690969501,
+      "provider": "candidate8",
+      "card": 1,
+      "key": [
+        "torch.bfloat16",
+        16384,
+        2048,
+        10,
+        10,
+        1,
+        2048,
+        1
+      ]
+    }
+  ]
+}

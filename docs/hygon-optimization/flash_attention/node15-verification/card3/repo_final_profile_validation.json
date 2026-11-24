@@ -1,0 +1,212 @@
+{
+  "schema": 2,
+  "run_id": "f897e1b6aece41fdaf76a9c24c7513af",
+  "contract": {
+    "reference": "CPU FP32 SDPA output; CPU FP32 matmul/logsumexp LSE",
+    "output_atol": 0.002,
+    "output_rtol": 0.02,
+    "lse_atol": 2e-05,
+    "lse_rtol": 2e-05,
+    "output_shape": [
+      8,
+      16,
+      2049,
+      128
+    ],
+    "lse_shape": [
+      8,
+      16,
+      2049
+    ],
+    "output_elements": 33570816,
+    "lse_elements": 262272,
+    "seed": 20261105,
+    "stride": [
+      12589056,
+      128,
+      6144,
+      1
+    ],
+    "offsets": [
+      0,
+      2048,
+      4096
+    ],
+    "scale": 0.08838834764831843
+  },
+  "contract_sha256": "76b91f84692542b4c33e721bed2eb4b0fc88befe0a22f0ae6520be3bc6ef76c1",
+  "input_sha256": "44ebfeb326f5a257e890668d149dd0e28a715052ab3d7560d14726f39107fc04",
+  "device": {
+    "node": "a01r4n15",
+    "physical_card": "3",
+    "pid": 1607624
+  },
+  "native": {
+    "version": "2.8.4+dtk2604.torch2100.2609292239.g74de14",
+    "options": {
+      "FA_FWD_NO_MLS": null,
+      "FLASH_ATTENTION_FWD_PREFETCH": null
+    },
+    "module": "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/11992/package/flash_attn_2_cuda.cpython-310-x86_64-linux-gnu.so",
+    "module_sha256": "4dbb514cd0d6b30b720bbc739b13f3655ec5b345765b303e463184a1cd243f25",
+    "loaded_libraries_sha256": {
+      "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/11992/package/flash_attn/lib/libflash_attention.so": "42b820080757241f048e7ed6673a91703e5563353364ea279fa03cd0ca1a422e",
+      "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/11992/package/flash_attn_2_cuda.cpython-310-x86_64-linux-gnu.so": "4dbb514cd0d6b30b720bbc739b13f3655ec5b345765b303e463184a1cd243f25"
+    }
+  },
+  "source_sha256": {
+    "src/flag_gems/runtime/backend/_hygon/attention_state_hip.py": "0ffacefa9c015e0f9a6eabf3eb8a5c17ae97f9a2fbac704d9bed61d53db40ed1",
+    "src/flag_gems/runtime/backend/_hygon/attention_state_hip.cpp": "dd37b81750a12253f7d1e95b9d3de72d4ae18bfafa3659dfd0f4d43a7f6bb38c",
+    "src/flag_gems/runtime/backend/_hygon/ops/attention_state.py": "f99f2e42501ffd66de0015012b3fd74ee3d93f9c34a6d0928f405644c3d8f0e4",
+    "src/flag_gems/runtime/backend/_hygon/ops/_scaled_dot_product_flash_attention.py": "91820f5a5aca0d6fd43df7069f219274ec9723ad3dde26f92286f302bf74d44f",
+    "tests/test_flash_attention_hygon_state.py": "293e9e135c61b754e25714fc56a7f0cf4de01ef880cf942f702103eb20d57f70"
+  },
+  "binary": "/public/home/wzx226226/.cache/flag_gems/hygon_state_flash/ac3167d39ff328925c644c4f2eb9af27c988f7217732bfb3cd6408f45cc0fd72/kernel.so",
+  "binary_sha256": "285732ea0d26d9a921fa5d5d078c73f5476e22fbf6d7caafaf67ffac802aff01",
+  "timings": {
+    "wheel": {
+      "us": 1614.1600012779236,
+      "rois_us": [
+        1826.640009880066,
+        1613.1200194358826,
+        1614.1600012779236,
+        1613.3599877357483,
+        1614.4799590110779
+      ]
+    },
+    "aten": {
+      "us": 1615.5999898910522,
+      "rois_us": [
+        1614.7199869155884,
+        1615.5999898910522,
+        1614.6399974822998,
+        1615.6800389289856,
+        1616.479992866516
+      ]
+    },
+    "repo": {
+      "us": 1692.2399997711182,
+      "rois_us": [
+        1692.0000314712524,
+        1692.3199892044067,
+        1692.080020904541,
+        1692.2399997711182,
+        1692.3199892044067
+      ]
+    },
+    "wheel_repeat": {
+      "us": 1614.9600148200989,
+      "rois_us": [
+        1614.9600148200989,
+        1614.6399974822998,
+        1616.2399649620056,
+        1616.2399649620056,
+        1614.4799590110779
+      ]
+    },
+    "aten_repeat": {
+      "us": 1614.799976348877,
+      "rois_us": [
+        1614.7199869155884,
+        1614.8800253868103,
+        1616.320013999939,
+        1614.6399974822998,
+        1614.799976348877
+      ]
+    },
+    "repo_repeat": {
+      "us": 1691.760003566742,
+      "rois_us": [
+        1689.2800331115723,
+        1688.2399916648865,
+        1691.919982433319,
+        1691.760003566742,
+        1691.8400526046753
+      ]
+    }
+  },
+  "full_accuracy": {
+    "wheel": {
+      "output": {
+        "shape": [
+          8,
+          16,
+          2049,
+          128
+        ],
+        "elements": 33570816,
+        "failed": 0,
+        "failed_percent": 0.0,
+        "nonfinite": 0,
+        "max_abs_finite": 0.0010229945182800293
+      },
+      "lse": {
+        "shape": [
+          8,
+          16,
+          2049
+        ],
+        "elements": 262272,
+        "failed": 0,
+        "failed_percent": 0.0,
+        "nonfinite": 0,
+        "max_abs_finite": 1.9073486328125e-06
+      }
+    },
+    "aten": {
+      "output": {
+        "shape": [
+          8,
+          16,
+          2049,
+          128
+        ],
+        "elements": 33570816,
+        "failed": 0,
+        "failed_percent": 0.0,
+        "nonfinite": 0,
+        "max_abs_finite": 0.0010229945182800293
+      },
+      "lse": {
+        "shape": [
+          8,
+          16,
+          2049
+        ],
+        "elements": 262272,
+        "failed": 0,
+        "failed_percent": 0.0,
+        "nonfinite": 0,
+        "max_abs_finite": 1.9073486328125e-06
+      }
+    },
+    "repo": {
+      "output": {
+        "shape": [
+          8,
+          16,
+          2049,
+          128
+        ],
+        "elements": 33570816,
+        "failed": 0,
+        "failed_percent": 0.0,
+        "nonfinite": 0,
+        "max_abs_finite": 0.0015590786933898926
+      },
+      "lse": {
+        "shape": [
+          8,
+          16,
+          2049
+        ],
+        "elements": 262272,
+        "failed": 0,
+        "failed_percent": 0.0,
+        "nonfinite": 0,
+        "max_abs_finite": 1.9073486328125e-06
+      }
+    }
+  },
+  "acceptance_timing_started": true
+}

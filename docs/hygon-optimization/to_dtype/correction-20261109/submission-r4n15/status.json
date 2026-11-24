@@ -1,0 +1,1742 @@
+{
+  "operator": "to_dtype",
+  "submission_allowed": false,
+  "operator_submission_allowed": false,
+  "known_record_correctness_and_performance_passed": true,
+  "scope_reconciliation_complete": false,
+  "requested_table_scope_reconciliation": {
+    "required_tables": [
+      "大于5%的模型工况",
+      "规模扩展工况"
+    ],
+    "operators": [
+      "aten::mm",
+      "aten::to.dtype"
+    ],
+    "scope_reconciliation_complete": false,
+    "status": "awaiting_exact_table_path",
+    "known_original_workbook": "D:/a800训练/待优化设备耗时的算子.xlsx",
+    "known_original_workbook_sheets": [
+      "工况明细",
+      "历史计时",
+      "专项参考",
+      "模型与口径",
+      "原表历史（补充前）",
+      "Sheet1"
+    ],
+    "prior_202_record_scope_proves_new_tables_complete": false,
+    "worksheet_discovery": "workload-table-discovery-20261110.json",
+    "path_question_pending": true,
+    "no_additional_operator_ownership_inferred": true,
+    "submission_allowed": false
+  },
+  "overall_submission_blockers": [
+    {
+      "operator": "mm",
+      "case": 2,
+      "status": "original_review_failure_unmatched"
+    },
+    {
+      "operator": "mm",
+      "case": 4,
+      "status": "original_review_failure_unmatched"
+    }
+  ],
+  "cases_total": 23,
+  "scope_counts": {
+    "spreadsheet": 10,
+    "added": 13
+  },
+  "status_counts": {
+    "passes": 20,
+    "no_device_work": 3
+  },
+  "minimum_passing_das_over_new": 0.9882085359399074,
+  "metric": "Sum of all device kernel and device-copy durations per call; host and queue gate excluded",
+  "stability_policy": "Both providers require max/min of three A/A block medians <=1.05",
+  "final_focused_tests": [],
+  "combined_separate_runs": true,
+  "uniform_final_source_full_scope_run_claimed": false,
+  "same_flagos_boxing_baseline": false,
+  "original_reviewer_failures_resolved": false,
+  "raw_dataset_files": [
+    "correction-results/crossnode-dtype/to-paired-1024-r1-analyzed.json",
+    "correction-results/dtype-layout-copy/dtype-layout-copy-r1-analyzed.json",
+    "correction-results/expanded-dtype/dtype-expanded-r1-analyzed.json",
+    "correction-results/submission-tuning-native/submission-dtype-native-gpu0/submission-dtype-native-public-r1-analyzed.json"
+  ],
+  "raw_source_cleanup": "Redundant profiler JSON exports removed after preserving native SQLite data; native data are losslessly compressed and indexed in the external cleanup inventory. Compact ROI observations remain here.",
+  "rows": [
+    {
+      "operator": "to_dtype",
+      "scope": "spreadsheet",
+      "case": 1711,
+      "metadata": [
+        [
+          {
+            "tensor": true,
+            "shape": [
+              1,
+              145,
+              2560
+            ],
+            "stride": [
+              371200,
+              2560,
+              1
+            ],
+            "dtype": "torch.bfloat16",
+            "device": "cuda:0",
+            "layout": "torch.strided",
+            "storage_offset": 0,
+            "requires_grad": false,
+            "is_contiguous": true
+          },
+          "torch.float32"
+        ],
+        {}
+      ],
+      "status": "passes",
+      "das_over_new": 1.0014358655686815,
+      "das_us": 4.9039033203125,
+      "new_us": 4.8968720703125,
+      "das_aa_drift": 0.00735059564792806,
+      "new_aa_drift": 0.017277179572289914,
+      "das_correct": true,
+      "new_correct": true,
+      "calls_per_roi": 1024,
+      "new_kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "new_copies": [],
+      "source_evidence": "correction-results/submission-tuning-native/submission-dtype-native-gpu0/submission-dtype-native-public-r1",
+      "physical_card": 0,
+      "earlier_flagos_boxing_comparison": {
+        "status": "passes",
+        "das_over_new": 0.9993041504599779,
+        "das_us": 4.9393720703125,
+        "new_us": 4.9428115234375,
+        "das_aa_drift": 0.018444203157029104,
+        "new_aa_drift": 0.00484168397558471,
+        "das_correct": true,
+        "new_correct": true,
+        "calls_per_roi": 1024,
+        "new_kernels": [
+          "_to_copy_func_kernel_rank_1"
+        ],
+        "new_copies": []
+      },
+      "native_baseline_definition": {
+        "provider": "das_native_hip_public",
+        "api": "Tensor.to(dtype, memory_format=...)",
+        "input": "torch_fl._C._flagos_to_cuda_view; same physical storage, dtype, shape, stride, offset and device index asserted before every case",
+        "backend": "DTK native HIP/CUDA dispatch, without FlagOS boxing conversion",
+        "same_flagos_boxing_route": false,
+        "bridge_file": "/opt/flagos/python/lib/python3.10/site-packages/torch_fl/_C.cpython-310-x86_64-linux-gnu.so",
+        "bridge_sha256": "1ab30852f775299617570b3d3410391007f14a2a4f075416e88eff192367b57c",
+        "metric": "all device kernel/copy durations; host view construction and allocation excluded"
+      },
+      "same_flagos_boxing_route": false,
+      "measured_input_metadata": {
+        "shape": [
+          1,
+          145,
+          2560
+        ],
+        "stride": [
+          371200,
+          2560,
+          1
+        ],
+        "offset": 0,
+        "input_dtype": "torch.bfloat16",
+        "target_dtype": "torch.float32",
+        "memory_format": "None",
+        "input_storage_sha256": "48dec8ab1c017ca7b663f5ff638c6a7fb51609583b1ad35470d329c49f1b238e"
+      }
+    },
+    {
+      "operator": "to_dtype",
+      "scope": "spreadsheet",
+      "case": 1712,
+      "metadata": [
+        [
+          {
+            "tensor": true,
+            "shape": [
+              1,
+              4,
+              145,
+              256
+            ],
+            "stride": [
+              148480,
+              256,
+              1024,
+              1
+            ],
+            "dtype": "torch.bfloat16",
+            "device": "cuda:0",
+            "layout": "torch.strided",
+            "storage_offset": 0,
+            "requires_grad": false,
+            "is_contiguous": false
+          },
+          "torch.float32"
+        ],
+        {}
+      ],
+      "status": "passes",
+      "das_over_new": 0.9963713609664275,
+      "das_us": 4.7623408203125,
+      "new_us": 4.7796845703125,
+      "das_aa_drift": 0.024490888840616787,
+      "new_aa_drift": 0.01379744759627255,
+      "das_correct": true,
+      "new_correct": true,
+      "calls_per_roi": 1024,
+      "new_kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "new_copies": [],
+      "source_evidence": "correction-results/submission-tuning-native/submission-dtype-native-gpu0/submission-dtype-native-public-r1",
+      "physical_card": 0,
+      "earlier_flagos_boxing_comparison": {
+        "status": "baseline_incorrect",
+        "das_over_new": 2.4233881518477105,
+        "das_us": 11.67655859375,
+        "new_us": 4.8182783203125,
+        "das_aa_drift": 0.007304798559320647,
+        "new_aa_drift": 0.026175430119729892,
+        "das_correct": false,
+        "new_correct": true,
+        "calls_per_roi": 1024,
+        "new_kernels": [
+          "_to_copy_func_kernel_rank_1"
+        ],
+        "new_copies": []
+      },
+      "native_baseline_definition": {
+        "provider": "das_native_hip_public",
+        "api": "Tensor.to(dtype, memory_format=...)",
+        "input": "torch_fl._C._flagos_to_cuda_view; same physical storage, dtype, shape, stride, offset and device index asserted before every case",
+        "backend": "DTK native HIP/CUDA dispatch, without FlagOS boxing conversion",
+        "same_flagos_boxing_route": false,
+        "bridge_file": "/opt/flagos/python/lib/python3.10/site-packages/torch_fl/_C.cpython-310-x86_64-linux-gnu.so",
+        "bridge_sha256": "1ab30852f775299617570b3d3410391007f14a2a4f075416e88eff192367b57c",
+        "metric": "all device kernel/copy durations; host view construction and allocation excluded"
+      },
+      "same_flagos_boxing_route": false,
+      "measured_input_metadata": {
+        "shape": [
+          1,
+          4,
+          145,
+          256
+        ],
+        "stride": [
+          148480,
+          256,
+          1024,
+          1
+        ],
+        "offset": 0,
+        "input_dtype": "torch.bfloat16",
+        "target_dtype": "torch.float32",
+        "memory_format": "None",
+        "input_storage_sha256": "51e01299a5b807c08d09323937ca6c8dafdfc56f9fe395b9743686291c552211"
+      },
+      "explicit_native_different_api_reference": {
+        "status": "passes",
+        "das_over_new": 0.9974122436583491,
+        "das_us": 4.8171865234375,
+        "new_us": 4.8296845703125,
+        "das_aa_drift": 0.008701481419165491,
+        "new_aa_drift": 0.02187582567086821,
+        "das_correct": true,
+        "new_correct": true,
+        "calls_per_roi": 1024,
+        "new_kernels": [
+          "_to_copy_func_kernel_rank_1"
+        ],
+        "new_copies": []
+      },
+      "explicit_reference_counts_as_same_public_api_acceptance": false
+    },
+    {
+      "operator": "to_dtype",
+      "scope": "spreadsheet",
+      "case": 1713,
+      "metadata": [
+        [
+          {
+            "tensor": true,
+            "shape": [
+              1,
+              8,
+              145,
+              256
+            ],
+            "stride": [
+              296960,
+              256,
+              2048,
+              1
+            ],
+            "dtype": "torch.bfloat16",
+            "device": "cuda:0",
+            "layout": "torch.strided",
+            "storage_offset": 0,
+            "requires_grad": false,
+            "is_contiguous": false
+          },
+          "torch.float32"
+        ],
+        {}
+      ],
+      "status": "passes",
+      "das_over_new": 1.0102314393252971,
+      "das_us": 4.8289033203125,
+      "new_us": 4.7799970703125,
+      "das_aa_drift": 0.013667210391668405,
+      "new_aa_drift": 0.014543788381298217,
+      "das_correct": true,
+      "new_correct": true,
+      "calls_per_roi": 1024,
+      "new_kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "new_copies": [],
+      "source_evidence": "correction-results/submission-tuning-native/submission-dtype-native-gpu0/submission-dtype-native-public-r1",
+      "physical_card": 0,
+      "earlier_flagos_boxing_comparison": {
+        "status": "baseline_incorrect",
+        "das_over_new": 2.4979451895781675,
+        "das_us": 11.87343359375,
+        "new_us": 4.7532802734375,
+        "das_aa_drift": 0.010532416969171843,
+        "new_aa_drift": 0.004802474590160477,
+        "das_correct": false,
+        "new_correct": true,
+        "calls_per_roi": 1024,
+        "new_kernels": [
+          "_to_copy_func_kernel_rank_1"
+        ],
+        "new_copies": []
+      },
+      "native_baseline_definition": {
+        "provider": "das_native_hip_public",
+        "api": "Tensor.to(dtype, memory_format=...)",
+        "input": "torch_fl._C._flagos_to_cuda_view; same physical storage, dtype, shape, stride, offset and device index asserted before every case",
+        "backend": "DTK native HIP/CUDA dispatch, without FlagOS boxing conversion",
+        "same_flagos_boxing_route": false,
+        "bridge_file": "/opt/flagos/python/lib/python3.10/site-packages/torch_fl/_C.cpython-310-x86_64-linux-gnu.so",
+        "bridge_sha256": "1ab30852f775299617570b3d3410391007f14a2a4f075416e88eff192367b57c",
+        "metric": "all device kernel/copy durations; host view construction and allocation excluded"
+      },
+      "same_flagos_boxing_route": false,
+      "measured_input_metadata": {
+        "shape": [
+          1,
+          8,
+          145,
+          256
+        ],
+        "stride": [
+          296960,
+          256,
+          2048,
+          1
+        ],
+        "offset": 0,
+        "input_dtype": "torch.bfloat16",
+        "target_dtype": "torch.float32",
+        "memory_format": "None",
+        "input_storage_sha256": "c2594553f176dca8fbf844a280f67187bf69a0966c8d4e62c4f94251d72aeeeb"
+      },
+      "explicit_native_different_api_reference": {
+        "status": "passes",
+        "das_over_new": 0.9918233275395116,
+        "das_us": 4.8140595703125,
+        "new_us": 4.8537470703125,
+        "das_aa_drift": 0.010308196630108624,
+        "new_aa_drift": 0.0060186420155816656,
+        "das_correct": true,
+        "new_correct": true,
+        "calls_per_roi": 1024,
+        "new_kernels": [
+          "_to_copy_func_kernel_rank_1"
+        ],
+        "new_copies": []
+      },
+      "explicit_reference_counts_as_same_public_api_acceptance": false
+    },
+    {
+      "operator": "to_dtype",
+      "scope": "spreadsheet",
+      "case": 1714,
+      "metadata": [
+        [
+          {
+            "tensor": true,
+            "shape": [
+              2560
+            ],
+            "stride": [
+              1
+            ],
+            "dtype": "torch.bfloat16",
+            "device": "cuda:0",
+            "layout": "torch.strided",
+            "storage_offset": 0,
+            "requires_grad": false,
+            "is_contiguous": true
+          },
+          "torch.float32"
+        ],
+        {}
+      ],
+      "status": "passes",
+      "das_over_new": 0.9987872423632631,
+      "das_us": 4.7612470703125,
+      "new_us": 4.7670283203125,
+      "das_aa_drift": 0.02133457183258014,
+      "new_aa_drift": 0.0034747284190375094,
+      "das_correct": true,
+      "new_correct": true,
+      "calls_per_roi": 1024,
+      "new_kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "new_copies": [],
+      "source_evidence": "correction-results/submission-tuning-native/submission-dtype-native-gpu0/submission-dtype-native-public-r1",
+      "physical_card": 0,
+      "earlier_flagos_boxing_comparison": {
+        "status": "passes",
+        "das_over_new": 0.9998045537748912,
+        "das_us": 4.7957783203125,
+        "new_us": 4.7967158203125,
+        "das_aa_drift": 0.01897942594640223,
+        "new_aa_drift": 0.01279605526234695,
+        "das_correct": true,
+        "new_correct": true,
+        "calls_per_roi": 1024,
+        "new_kernels": [
+          "_to_copy_func_kernel_rank_1"
+        ],
+        "new_copies": []
+      },
+      "native_baseline_definition": {
+        "provider": "das_native_hip_public",
+        "api": "Tensor.to(dtype, memory_format=...)",
+        "input": "torch_fl._C._flagos_to_cuda_view; same physical storage, dtype, shape, stride, offset and device index asserted before every case",
+        "backend": "DTK native HIP/CUDA dispatch, without FlagOS boxing conversion",
+        "same_flagos_boxing_route": false,
+        "bridge_file": "/opt/flagos/python/lib/python3.10/site-packages/torch_fl/_C.cpython-310-x86_64-linux-gnu.so",
+        "bridge_sha256": "1ab30852f775299617570b3d3410391007f14a2a4f075416e88eff192367b57c",
+        "metric": "all device kernel/copy durations; host view construction and allocation excluded"
+      },
+      "same_flagos_boxing_route": false,
+      "measured_input_metadata": {
+        "shape": [
+          2560
+        ],
+        "stride": [
+          1
+        ],
+        "offset": 0,
+        "input_dtype": "torch.bfloat16",
+        "target_dtype": "torch.float32",
+        "memory_format": "None",
+        "input_storage_sha256": "b74ddb00e9e4ed72fb5eb2b6348eb1b5e7c637bf387a70e327c3ae0730d5fe87"
+      }
+    },
+    {
+      "operator": "to_dtype",
+      "scope": "spreadsheet",
+      "case": 1715,
+      "metadata": [
+        [
+          {
+            "tensor": true,
+            "shape": [
+              256
+            ],
+            "stride": [
+              1
+            ],
+            "dtype": "torch.bfloat16",
+            "device": "cuda:0",
+            "layout": "torch.strided",
+            "storage_offset": 0,
+            "requires_grad": false,
+            "is_contiguous": true
+          },
+          "torch.float32"
+        ],
+        {}
+      ],
+      "status": "passes",
+      "das_over_new": 1.0173317713442998,
+      "das_us": 4.8517158203125,
+      "new_us": 4.7690595703125,
+      "das_aa_drift": 0.011242168203224878,
+      "new_aa_drift": 0.0029573178933957056,
+      "das_correct": true,
+      "new_correct": true,
+      "calls_per_roi": 1024,
+      "new_kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "new_copies": [],
+      "source_evidence": "correction-results/submission-tuning-native/submission-dtype-native-gpu0/submission-dtype-native-public-r1",
+      "physical_card": 0,
+      "earlier_flagos_boxing_comparison": {
+        "status": "passes",
+        "das_over_new": 0.998207183936205,
+        "das_us": 4.7848427734375,
+        "new_us": 4.7934365234375,
+        "das_aa_drift": 0.014129766414225475,
+        "new_aa_drift": 0.01221069921598228,
+        "das_correct": true,
+        "new_correct": true,
+        "calls_per_roi": 1024,
+        "new_kernels": [
+          "_to_copy_func_kernel_rank_1"
+        ],
+        "new_copies": []
+      },
+      "native_baseline_definition": {
+        "provider": "das_native_hip_public",
+        "api": "Tensor.to(dtype, memory_format=...)",
+        "input": "torch_fl._C._flagos_to_cuda_view; same physical storage, dtype, shape, stride, offset and device index asserted before every case",
+        "backend": "DTK native HIP/CUDA dispatch, without FlagOS boxing conversion",
+        "same_flagos_boxing_route": false,
+        "bridge_file": "/opt/flagos/python/lib/python3.10/site-packages/torch_fl/_C.cpython-310-x86_64-linux-gnu.so",
+        "bridge_sha256": "1ab30852f775299617570b3d3410391007f14a2a4f075416e88eff192367b57c",
+        "metric": "all device kernel/copy durations; host view construction and allocation excluded"
+      },
+      "same_flagos_boxing_route": false,
+      "measured_input_metadata": {
+        "shape": [
+          256
+        ],
+        "stride": [
+          1
+        ],
+        "offset": 0,
+        "input_dtype": "torch.bfloat16",
+        "target_dtype": "torch.float32",
+        "memory_format": "None",
+        "input_storage_sha256": "c047b868fc933a89953b3a085cd48991c984fe631bea8975c880d8bc76b6ae78"
+      }
+    },
+    {
+      "operator": "to_dtype",
+      "scope": "spreadsheet",
+      "case": 1716,
+      "metadata": [
+        [
+          {
+            "tensor": true,
+            "shape": [],
+            "stride": [],
+            "dtype": "torch.bfloat16",
+            "device": "cuda:0",
+            "layout": "torch.strided",
+            "storage_offset": 0,
+            "requires_grad": false,
+            "is_contiguous": true
+          },
+          "torch.bfloat16"
+        ],
+        {}
+      ],
+      "status": "no_device_work",
+      "das_over_new": null,
+      "das_us": 0.0,
+      "new_us": 0.0,
+      "das_aa_drift": 0,
+      "new_aa_drift": 0,
+      "das_correct": true,
+      "new_correct": true,
+      "calls_per_roi": 1024,
+      "new_kernels": [],
+      "new_copies": [],
+      "source_evidence": "correction-results/submission-tuning-native/submission-dtype-native-gpu0/submission-dtype-native-public-r1",
+      "physical_card": 0,
+      "earlier_flagos_boxing_comparison": {
+        "status": "no_device_work",
+        "das_over_new": null,
+        "das_us": 0.0,
+        "new_us": 0.0,
+        "das_aa_drift": 0,
+        "new_aa_drift": 0,
+        "das_correct": true,
+        "new_correct": true,
+        "calls_per_roi": 1024,
+        "new_kernels": [],
+        "new_copies": []
+      },
+      "native_baseline_definition": {
+        "provider": "das_native_hip_public",
+        "api": "Tensor.to(dtype, memory_format=...)",
+        "input": "torch_fl._C._flagos_to_cuda_view; same physical storage, dtype, shape, stride, offset and device index asserted before every case",
+        "backend": "DTK native HIP/CUDA dispatch, without FlagOS boxing conversion",
+        "same_flagos_boxing_route": false,
+        "bridge_file": "/opt/flagos/python/lib/python3.10/site-packages/torch_fl/_C.cpython-310-x86_64-linux-gnu.so",
+        "bridge_sha256": "1ab30852f775299617570b3d3410391007f14a2a4f075416e88eff192367b57c",
+        "metric": "all device kernel/copy durations; host view construction and allocation excluded"
+      },
+      "same_flagos_boxing_route": false,
+      "measured_input_metadata": {
+        "shape": [],
+        "stride": [],
+        "offset": 0,
+        "input_dtype": "torch.bfloat16",
+        "target_dtype": "torch.bfloat16",
+        "memory_format": "None",
+        "input_storage_sha256": "8ced29ff103498adaa34ee75dab2fdf18d84cbc494b2377e6bf0a15f7a69efba"
+      }
+    },
+    {
+      "operator": "to_dtype",
+      "scope": "spreadsheet",
+      "case": 1717,
+      "metadata": [
+        [
+          {
+            "tensor": true,
+            "shape": [
+              1,
+              145
+            ],
+            "stride": [
+              145,
+              1
+            ],
+            "dtype": "torch.bool",
+            "device": "cuda:0",
+            "layout": "torch.strided",
+            "storage_offset": 0,
+            "requires_grad": false,
+            "is_contiguous": true
+          },
+          "torch.int32"
+        ],
+        {}
+      ],
+      "status": "passes",
+      "das_over_new": 1.012577800060064,
+      "das_us": 4.8303095703125,
+      "new_us": 4.7703095703125,
+      "das_aa_drift": 0.018397246830619718,
+      "new_aa_drift": 0.008815631031430904,
+      "das_correct": true,
+      "new_correct": true,
+      "calls_per_roi": 1024,
+      "new_kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "new_copies": [],
+      "source_evidence": "correction-results/submission-tuning-native/submission-dtype-native-gpu0/submission-dtype-native-public-r1",
+      "physical_card": 0,
+      "earlier_flagos_boxing_comparison": {
+        "status": "passes",
+        "das_over_new": 1.0033470906612716,
+        "das_us": 4.8243740234375,
+        "new_us": 4.8082802734375,
+        "das_aa_drift": 0.014734718906036948,
+        "new_aa_drift": 0.01063138261415375,
+        "das_correct": true,
+        "new_correct": true,
+        "calls_per_roi": 1024,
+        "new_kernels": [
+          "_to_copy_func_kernel_rank_1"
+        ],
+        "new_copies": []
+      },
+      "native_baseline_definition": {
+        "provider": "das_native_hip_public",
+        "api": "Tensor.to(dtype, memory_format=...)",
+        "input": "torch_fl._C._flagos_to_cuda_view; same physical storage, dtype, shape, stride, offset and device index asserted before every case",
+        "backend": "DTK native HIP/CUDA dispatch, without FlagOS boxing conversion",
+        "same_flagos_boxing_route": false,
+        "bridge_file": "/opt/flagos/python/lib/python3.10/site-packages/torch_fl/_C.cpython-310-x86_64-linux-gnu.so",
+        "bridge_sha256": "1ab30852f775299617570b3d3410391007f14a2a4f075416e88eff192367b57c",
+        "metric": "all device kernel/copy durations; host view construction and allocation excluded"
+      },
+      "same_flagos_boxing_route": false,
+      "measured_input_metadata": {
+        "shape": [
+          1,
+          145
+        ],
+        "stride": [
+          145,
+          1
+        ],
+        "offset": 0,
+        "input_dtype": "torch.bool",
+        "target_dtype": "torch.int32",
+        "memory_format": "None",
+        "input_storage_sha256": "7adae40d9c34499c1ea8add824abbce67895a9a1ef121219fc6adc952f6cb9b7"
+      }
+    },
+    {
+      "operator": "to_dtype",
+      "scope": "spreadsheet",
+      "case": 1718,
+      "metadata": [
+        [
+          {
+            "tensor": true,
+            "shape": [
+              1,
+              145,
+              256
+            ],
+            "stride": [
+              37120,
+              256,
+              1
+            ],
+            "dtype": "torch.float32",
+            "device": "cuda:0",
+            "layout": "torch.strided",
+            "storage_offset": 0,
+            "requires_grad": false,
+            "is_contiguous": true
+          },
+          "torch.bfloat16"
+        ],
+        {}
+      ],
+      "status": "passes",
+      "das_over_new": 1.010224609255838,
+      "das_us": 4.7701513671875,
+      "new_us": 4.7218720703125,
+      "das_aa_drift": 0.01854914521215667,
+      "new_aa_drift": 0.009007407235689602,
+      "das_correct": true,
+      "new_correct": true,
+      "calls_per_roi": 1024,
+      "new_kernels": [
+        "cast_dense"
+      ],
+      "new_copies": [],
+      "source_evidence": "correction-results/submission-tuning-native/submission-dtype-native-gpu0/submission-dtype-native-public-r1",
+      "physical_card": 0,
+      "earlier_flagos_boxing_comparison": {
+        "status": "passes",
+        "das_over_new": 1.0175070523053922,
+        "das_us": 4.8493740234375,
+        "new_us": 4.7659365234375,
+        "das_aa_drift": 0.0037184794607658667,
+        "new_aa_drift": 0.005872899705268164,
+        "das_correct": true,
+        "new_correct": true,
+        "calls_per_roi": 1024,
+        "new_kernels": [
+          "cast_dense"
+        ],
+        "new_copies": []
+      },
+      "native_baseline_definition": {
+        "provider": "das_native_hip_public",
+        "api": "Tensor.to(dtype, memory_format=...)",
+        "input": "torch_fl._C._flagos_to_cuda_view; same physical storage, dtype, shape, stride, offset and device index asserted before every case",
+        "backend": "DTK native HIP/CUDA dispatch, without FlagOS boxing conversion",
+        "same_flagos_boxing_route": false,
+        "bridge_file": "/opt/flagos/python/lib/python3.10/site-packages/torch_fl/_C.cpython-310-x86_64-linux-gnu.so",
+        "bridge_sha256": "1ab30852f775299617570b3d3410391007f14a2a4f075416e88eff192367b57c",
+        "metric": "all device kernel/copy durations; host view construction and allocation excluded"
+      },
+      "same_flagos_boxing_route": false,
+      "measured_input_metadata": {
+        "shape": [
+          1,
+          145,
+          256
+        ],
+        "stride": [
+          37120,
+          256,
+          1
+        ],
+        "offset": 0,
+        "input_dtype": "torch.float32",
+        "target_dtype": "torch.bfloat16",
+        "memory_format": "None",
+        "input_storage_sha256": "8714044bb6fd0725839442012a8fd98ebde1e8bc094530b5972de509e05bb671"
+      }
+    },
+    {
+      "operator": "to_dtype",
+      "scope": "spreadsheet",
+      "case": 1719,
+      "metadata": [
+        [
+          {
+            "tensor": true,
+            "shape": [
+              1,
+              8,
+              145,
+              145
+            ],
+            "stride": [
+              168200,
+              21025,
+              145,
+              1
+            ],
+            "dtype": "torch.float32",
+            "device": "cuda:0",
+            "layout": "torch.strided",
+            "storage_offset": 0,
+            "requires_grad": false,
+            "is_contiguous": true
+          },
+          "torch.bfloat16"
+        ],
+        {}
+      ],
+      "status": "passes",
+      "das_over_new": 1.006372560934882,
+      "das_us": 4.8114013671875,
+      "new_us": 4.7809345703125,
+      "das_aa_drift": 0.0018213096480432789,
+      "new_aa_drift": 0.006641900652209154,
+      "das_correct": true,
+      "new_correct": true,
+      "calls_per_roi": 1024,
+      "new_kernels": [
+        "cast_dense"
+      ],
+      "new_copies": [],
+      "source_evidence": "correction-results/submission-tuning-native/submission-dtype-native-gpu0/submission-dtype-native-public-r1",
+      "physical_card": 0,
+      "earlier_flagos_boxing_comparison": {
+        "status": "passes",
+        "das_over_new": 0.9925455777157102,
+        "das_us": 4.8060908203125,
+        "new_us": 4.8421865234375,
+        "das_aa_drift": 0.028011814039121674,
+        "new_aa_drift": 0.01698306017613782,
+        "das_correct": true,
+        "new_correct": true,
+        "calls_per_roi": 1024,
+        "new_kernels": [
+          "cast_dense"
+        ],
+        "new_copies": []
+      },
+      "native_baseline_definition": {
+        "provider": "das_native_hip_public",
+        "api": "Tensor.to(dtype, memory_format=...)",
+        "input": "torch_fl._C._flagos_to_cuda_view; same physical storage, dtype, shape, stride, offset and device index asserted before every case",
+        "backend": "DTK native HIP/CUDA dispatch, without FlagOS boxing conversion",
+        "same_flagos_boxing_route": false,
+        "bridge_file": "/opt/flagos/python/lib/python3.10/site-packages/torch_fl/_C.cpython-310-x86_64-linux-gnu.so",
+        "bridge_sha256": "1ab30852f775299617570b3d3410391007f14a2a4f075416e88eff192367b57c",
+        "metric": "all device kernel/copy durations; host view construction and allocation excluded"
+      },
+      "same_flagos_boxing_route": false,
+      "measured_input_metadata": {
+        "shape": [
+          1,
+          8,
+          145,
+          145
+        ],
+        "stride": [
+          168200,
+          21025,
+          145,
+          1
+        ],
+        "offset": 0,
+        "input_dtype": "torch.float32",
+        "target_dtype": "torch.bfloat16",
+        "memory_format": "None",
+        "input_storage_sha256": "b3193171b89f2cbee3dd4797ae3aa9c2815b433ef700c526e3f93924d193e813"
+      }
+    },
+    {
+      "operator": "to_dtype",
+      "scope": "spreadsheet",
+      "case": 1720,
+      "metadata": [
+        [
+          {
+            "tensor": true,
+            "shape": [
+              1,
+              145,
+              1
+            ],
+            "stride": [
+              145,
+              1,
+              1
+            ],
+            "dtype": "torch.int64",
+            "device": "cuda:0",
+            "layout": "torch.strided",
+            "storage_offset": 0,
+            "requires_grad": false,
+            "is_contiguous": true
+          },
+          "torch.float32"
+        ],
+        {}
+      ],
+      "status": "passes",
+      "das_over_new": 0.9987010026838501,
+      "das_us": 4.8051533203125,
+      "new_us": 4.8114033203125,
+      "das_aa_drift": 0.001561891633347745,
+      "new_aa_drift": 0.0030871237085619008,
+      "das_correct": true,
+      "new_correct": true,
+      "calls_per_roi": 1024,
+      "new_kernels": [
+        "_to_copy_func_kernel_rank_1"
+      ],
+      "new_copies": [],
+      "source_evidence": "correction-results/submission-tuning-native/submission-dtype-native-gpu0/submission-dtype-native-public-r1",
+      "physical_card": 0,
+      "earlier_flagos_boxing_comparison": {
+        "status": "passes",
+        "das_over_new": 0.9927730894871054,
+        "das_us": 4.8082783203125,
+        "new_us": 4.8432802734375,
+        "das_aa_drift": 0.00296436310271897,
+        "new_aa_drift": 0.013261575456520402,
+        "das_correct": true,
+        "new_correct": true,
+        "calls_per_roi": 1024,
+        "new_kernels": [
+          "_to_copy_func_kernel_rank_1"
+        ],
+        "new_copies": []
+      },
+      "native_baseline_definition": {
+        "provider": "das_native_hip_public",
+        "api": "Tensor.to(dtype, memory_format=...)",
+        "input": "torch_fl._C._flagos_to_cuda_view; same physical storage, dtype, shape, stride, offset and device index asserted before every case",
+        "backend": "DTK native HIP/CUDA dispatch, without FlagOS boxing conversion",
+        "same_flagos_boxing_route": false,
+        "bridge_file": "/opt/flagos/python/lib/python3.10/site-packages/torch_fl/_C.cpython-310-x86_64-linux-gnu.so",
+        "bridge_sha256": "1ab30852f775299617570b3d3410391007f14a2a4f075416e88eff192367b57c",
+        "metric": "all device kernel/copy durations; host view construction and allocation excluded"
+      },
+      "same_flagos_boxing_route": false,
+      "measured_input_metadata": {
+        "shape": [
+          1,
+          145,
+          1
+        ],
+        "stride": [
+          145,
+          1,
+          1
+        ],
+        "offset": 0,
+        "input_dtype": "torch.int64",
+        "target_dtype": "torch.float32",
+        "memory_format": "None",
+        "input_storage_sha256": "ece375459d4a7aeb35c506746e3a61c60332c0e779da329ba4be77b54ffe42b7"
+      }
+    },
+    {
+      "operator": "to_dtype",
+      "scope": "added",
+      "case": 920000,
+      "status": "passes",
+      "das_over_new": 0.992588976468172,
+      "das_us": 4.7714033203125,
+      "new_us": 4.8070283203125,
+      "das_aa_drift": 0.012680749572282046,
+      "new_aa_drift": 0.009933129630415038,
+      "das_correct": true,
+      "new_correct": true,
+      "calls_per_roi": 1024,
+      "new_kernels": [
+        "cast_dense"
+      ],
+      "new_copies": [],
+      "source_evidence": "correction-results/submission-tuning-native/submission-dtype-native-gpu0/submission-dtype-native-public-r1",
+      "physical_card": 0,
+      "earlier_flagos_boxing_comparison": {
+        "status": "passes",
+        "das_over_new": 1.010513948838782,
+        "das_us": 4.8356220703125,
+        "new_us": 4.7853095703125,
+        "das_aa_drift": 0.015046985442584093,
+        "new_aa_drift": 0.012538059921523903,
+        "das_correct": true,
+        "new_correct": true,
+        "calls_per_roi": 1024,
+        "new_kernels": [
+          "cast_dense"
+        ],
+        "new_copies": []
+      },
+      "native_baseline_definition": {
+        "provider": "das_native_hip_public",
+        "api": "Tensor.to(dtype, memory_format=...)",
+        "input": "torch_fl._C._flagos_to_cuda_view; same physical storage, dtype, shape, stride, offset and device index asserted before every case",
+        "backend": "DTK native HIP/CUDA dispatch, without FlagOS boxing conversion",
+        "same_flagos_boxing_route": false,
+        "bridge_file": "/opt/flagos/python/lib/python3.10/site-packages/torch_fl/_C.cpython-310-x86_64-linux-gnu.so",
+        "bridge_sha256": "1ab30852f775299617570b3d3410391007f14a2a4f075416e88eff192367b57c",
+        "metric": "all device kernel/copy durations; host view construction and allocation excluded"
+      },
+      "same_flagos_boxing_route": false,
+      "measured_input_metadata": {
+        "shape": [
+          5,
+          17
+        ],
+        "stride": [
+          17,
+          1
+        ],
+        "offset": 0,
+        "input_dtype": "torch.float32",
+        "target_dtype": "torch.bfloat16",
+        "memory_format": "torch.preserve_format",
+        "input_storage_sha256": "a08d5511431f31cbb74a2ff771ea2708dc2dc9fd634e17fd63d333089053c39e"
+      }
+    },
+    {
+      "operator": "to_dtype",
+      "scope": "added",
+      "case": 920001,
+      "status": "passes",
+      "das_over_new": 0.9882085359399074,
+      "das_us": 4.7534345703125,
+      "new_us": 4.8101533203125,
+      "das_aa_drift": 0.007072838101708001,
+      "new_aa_drift": 0.017626951147899694,
+      "das_correct": true,
+      "new_correct": true,
+      "calls_per_roi": 1024,
+      "new_kernels": [
+        "cast_dense"
+      ],
+      "new_copies": [],
+      "source_evidence": "correction-results/submission-tuning-native/submission-dtype-native-gpu0/submission-dtype-native-public-r1",
+      "physical_card": 0,
+      "earlier_flagos_boxing_comparison": {
+        "status": "baseline_incorrect",
+        "das_over_new": 1.9973767046040267,
+        "das_us": 9.517498046875,
+        "new_us": 4.7649990234375,
+        "das_aa_drift": 0.007849064783110205,
+        "new_aa_drift": 0.011466990081918649,
+        "das_correct": false,
+        "new_correct": true,
+        "calls_per_roi": 1024,
+        "new_kernels": [
+          "cast_dense"
+        ],
+        "new_copies": []
+      },
+      "native_baseline_definition": {
+        "provider": "das_native_hip_public",
+        "api": "Tensor.to(dtype, memory_format=...)",
+        "input": "torch_fl._C._flagos_to_cuda_view; same physical storage, dtype, shape, stride, offset and device index asserted before every case",
+        "backend": "DTK native HIP/CUDA dispatch, without FlagOS boxing conversion",
+        "same_flagos_boxing_route": false,
+        "bridge_file": "/opt/flagos/python/lib/python3.10/site-packages/torch_fl/_C.cpython-310-x86_64-linux-gnu.so",
+        "bridge_sha256": "1ab30852f775299617570b3d3410391007f14a2a4f075416e88eff192367b57c",
+        "metric": "all device kernel/copy durations; host view construction and allocation excluded"
+      },
+      "same_flagos_boxing_route": false,
+      "measured_input_metadata": {
+        "shape": [
+          17,
+          5
+        ],
+        "stride": [
+          1,
+          17
+        ],
+        "offset": 0,
+        "input_dtype": "torch.float32",
+        "target_dtype": "torch.bfloat16",
+        "memory_format": "torch.preserve_format",
+        "input_storage_sha256": "a08d5511431f31cbb74a2ff771ea2708dc2dc9fd634e17fd63d333089053c39e"
+      },
+      "explicit_native_different_api_reference": {
+        "status": "passes",
+        "das_over_new": 1.0016763092108465,
+        "das_us": 4.7617158203125,
+        "new_us": 4.7537470703125,
+        "das_aa_drift": 0.011490863634843418,
+        "new_aa_drift": 0.006413201139421343,
+        "das_correct": true,
+        "new_correct": true,
+        "calls_per_roi": 1024,
+        "new_kernels": [
+          "cast_dense"
+        ],
+        "new_copies": []
+      },
+      "explicit_reference_counts_as_same_public_api_acceptance": false
+    },
+    {
+      "operator": "to_dtype",
+      "scope": "added",
+      "case": 920002,
+      "status": "passes",
+      "das_over_new": 0.9972053406427759,
+      "das_us": 4.7948408203125,
+      "new_us": 4.8082783203125,
+      "das_aa_drift": 0.013608818547369728,
+      "new_aa_drift": 0.004133176983167397,
+      "das_correct": true,
+      "new_correct": true,
+      "calls_per_roi": 1024,
+      "new_kernels": [
+        "cast_dense"
+      ],
+      "new_copies": [],
+      "source_evidence": "correction-results/submission-tuning-native/submission-dtype-native-gpu0/submission-dtype-native-public-r1",
+      "physical_card": 0,
+      "earlier_flagos_boxing_comparison": {
+        "status": "passes",
+        "das_over_new": 1.0082424731151172,
+        "das_us": 4.8546865234375,
+        "new_us": 4.8149990234375,
+        "das_aa_drift": 0.016407383567735634,
+        "new_aa_drift": 0.0077799494995016705,
+        "das_correct": true,
+        "new_correct": true,
+        "calls_per_roi": 1024,
+        "new_kernels": [
+          "cast_dense"
+        ],
+        "new_copies": []
+      },
+      "native_baseline_definition": {
+        "provider": "das_native_hip_public",
+        "api": "Tensor.to(dtype, memory_format=...)",
+        "input": "torch_fl._C._flagos_to_cuda_view; same physical storage, dtype, shape, stride, offset and device index asserted before every case",
+        "backend": "DTK native HIP/CUDA dispatch, without FlagOS boxing conversion",
+        "same_flagos_boxing_route": false,
+        "bridge_file": "/opt/flagos/python/lib/python3.10/site-packages/torch_fl/_C.cpython-310-x86_64-linux-gnu.so",
+        "bridge_sha256": "1ab30852f775299617570b3d3410391007f14a2a4f075416e88eff192367b57c",
+        "metric": "all device kernel/copy durations; host view construction and allocation excluded"
+      },
+      "same_flagos_boxing_route": false,
+      "measured_input_metadata": {
+        "shape": [
+          5,
+          17
+        ],
+        "stride": [
+          17,
+          1
+        ],
+        "offset": 1,
+        "input_dtype": "torch.float32",
+        "target_dtype": "torch.bfloat16",
+        "memory_format": "torch.preserve_format",
+        "input_storage_sha256": "9b5684350e6f2aab26d39939f19499dfd87cc45cc9b54b14eea25b3b50b27f32"
+      }
+    },
+    {
+      "operator": "to_dtype",
+      "scope": "added",
+      "case": 920003,
+      "status": "passes",
+      "das_over_new": 1.000489732453039,
+      "das_us": 4.7881201171875,
+      "new_us": 4.7857763671875,
+      "das_aa_drift": 0.008276096127838084,
+      "new_aa_drift": 0.005629156074581143,
+      "das_correct": true,
+      "new_correct": true,
+      "calls_per_roi": 1024,
+      "new_kernels": [
+        "_to_copy_func_kernel_rank_2"
+      ],
+      "new_copies": [],
+      "source_evidence": "correction-results/submission-tuning-native/submission-dtype-native-gpu0/submission-dtype-native-public-r1",
+      "physical_card": 0,
+      "earlier_flagos_boxing_comparison": {
+        "status": "passes",
+        "das_over_new": 1.9692202336865,
+        "das_us": 9.53655859375,
+        "new_us": 4.8428095703125,
+        "das_aa_drift": 0.010957935811496844,
+        "new_aa_drift": 0.027005747950317627,
+        "das_correct": true,
+        "new_correct": true,
+        "calls_per_roi": 1024,
+        "new_kernels": [
+          "_to_copy_func_kernel_rank_2"
+        ],
+        "new_copies": []
+      },
+      "native_baseline_definition": {
+        "provider": "das_native_hip_public",
+        "api": "Tensor.to(dtype, memory_format=...)",
+        "input": "torch_fl._C._flagos_to_cuda_view; same physical storage, dtype, shape, stride, offset and device index asserted before every case",
+        "backend": "DTK native HIP/CUDA dispatch, without FlagOS boxing conversion",
+        "same_flagos_boxing_route": false,
+        "bridge_file": "/opt/flagos/python/lib/python3.10/site-packages/torch_fl/_C.cpython-310-x86_64-linux-gnu.so",
+        "bridge_sha256": "1ab30852f775299617570b3d3410391007f14a2a4f075416e88eff192367b57c",
+        "metric": "all device kernel/copy durations; host view construction and allocation excluded"
+      },
+      "same_flagos_boxing_route": false,
+      "measured_input_metadata": {
+        "shape": [
+          5,
+          17
+        ],
+        "stride": [
+          68,
+          2
+        ],
+        "offset": 0,
+        "input_dtype": "torch.float32",
+        "target_dtype": "torch.bfloat16",
+        "memory_format": "torch.preserve_format",
+        "input_storage_sha256": "9c605ea720855bf4bbc2659a1eeddcd81c024905ceef5e29a69b21012fd8b5cc"
+      }
+    },
+    {
+      "operator": "to_dtype",
+      "scope": "added",
+      "case": 920004,
+      "status": "no_device_work",
+      "das_over_new": null,
+      "das_us": 0.0,
+      "new_us": 0.0,
+      "das_aa_drift": 0,
+      "new_aa_drift": 0,
+      "das_correct": true,
+      "new_correct": true,
+      "calls_per_roi": 1024,
+      "new_kernels": [],
+      "new_copies": [],
+      "source_evidence": "correction-results/submission-tuning-native/submission-dtype-native-gpu0/submission-dtype-native-public-r1",
+      "physical_card": 0,
+      "earlier_flagos_boxing_comparison": {
+        "status": "no_device_work",
+        "das_over_new": null,
+        "das_us": 0.0,
+        "new_us": 0.0,
+        "das_aa_drift": 0,
+        "new_aa_drift": 0,
+        "das_correct": true,
+        "new_correct": true,
+        "calls_per_roi": 1024,
+        "new_kernels": [],
+        "new_copies": []
+      },
+      "native_baseline_definition": {
+        "provider": "das_native_hip_public",
+        "api": "Tensor.to(dtype, memory_format=...)",
+        "input": "torch_fl._C._flagos_to_cuda_view; same physical storage, dtype, shape, stride, offset and device index asserted before every case",
+        "backend": "DTK native HIP/CUDA dispatch, without FlagOS boxing conversion",
+        "same_flagos_boxing_route": false,
+        "bridge_file": "/opt/flagos/python/lib/python3.10/site-packages/torch_fl/_C.cpython-310-x86_64-linux-gnu.so",
+        "bridge_sha256": "1ab30852f775299617570b3d3410391007f14a2a4f075416e88eff192367b57c",
+        "metric": "all device kernel/copy durations; host view construction and allocation excluded"
+      },
+      "same_flagos_boxing_route": false,
+      "measured_input_metadata": {
+        "shape": [
+          0,
+          17
+        ],
+        "stride": [
+          17,
+          1
+        ],
+        "offset": 0,
+        "input_dtype": "torch.float32",
+        "target_dtype": "torch.bfloat16",
+        "memory_format": "torch.preserve_format",
+        "input_storage_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "operator": "to_dtype",
+      "scope": "added",
+      "case": 920005,
+      "status": "passes",
+      "das_over_new": 1.0032559365090346,
+      "das_us": 4.8151533203125,
+      "new_us": 4.7995263671875,
+      "das_aa_drift": 0.020003740291515637,
+      "new_aa_drift": 0.004476102980590424,
+      "das_correct": true,
+      "new_correct": true,
+      "calls_per_roi": 1024,
+      "new_kernels": [
+        "cast_dense"
+      ],
+      "new_copies": [],
+      "source_evidence": "correction-results/submission-tuning-native/submission-dtype-native-gpu0/submission-dtype-native-public-r1",
+      "physical_card": 0,
+      "earlier_flagos_boxing_comparison": {
+        "status": "passes",
+        "das_over_new": 1.0131493953743715,
+        "das_us": 4.8876533203125,
+        "new_us": 4.8242177734375,
+        "das_aa_drift": 0.00303950334379377,
+        "new_aa_drift": 0.010687328835749188,
+        "das_correct": true,
+        "new_correct": true,
+        "calls_per_roi": 1024,
+        "new_kernels": [
+          "cast_dense"
+        ],
+        "new_copies": []
+      },
+      "native_baseline_definition": {
+        "provider": "das_native_hip_public",
+        "api": "Tensor.to(dtype, memory_format=...)",
+        "input": "torch_fl._C._flagos_to_cuda_view; same physical storage, dtype, shape, stride, offset and device index asserted before every case",
+        "backend": "DTK native HIP/CUDA dispatch, without FlagOS boxing conversion",
+        "same_flagos_boxing_route": false,
+        "bridge_file": "/opt/flagos/python/lib/python3.10/site-packages/torch_fl/_C.cpython-310-x86_64-linux-gnu.so",
+        "bridge_sha256": "1ab30852f775299617570b3d3410391007f14a2a4f075416e88eff192367b57c",
+        "metric": "all device kernel/copy durations; host view construction and allocation excluded"
+      },
+      "same_flagos_boxing_route": false,
+      "measured_input_metadata": {
+        "shape": [],
+        "stride": [],
+        "offset": 0,
+        "input_dtype": "torch.float32",
+        "target_dtype": "torch.bfloat16",
+        "memory_format": "torch.preserve_format",
+        "input_storage_sha256": "ba8c3825059b8f9428ce8503f488d90e77f969b86a8fbd10fa2840f14a484d28"
+      }
+    },
+    {
+      "operator": "to_dtype",
+      "scope": "added",
+      "case": 920006,
+      "status": "passes",
+      "das_over_new": 0.9996727211213721,
+      "das_us": 4.7726533203125,
+      "new_us": 4.7742158203125,
+      "das_aa_drift": 0.013800572305799896,
+      "new_aa_drift": 0.007399650931289914,
+      "das_correct": true,
+      "new_correct": true,
+      "calls_per_roi": 1024,
+      "new_kernels": [
+        "cast_dense"
+      ],
+      "new_copies": [],
+      "source_evidence": "correction-results/submission-tuning-native/submission-dtype-native-gpu0/submission-dtype-native-public-r1",
+      "physical_card": 0,
+      "earlier_flagos_boxing_comparison": {
+        "status": "passes",
+        "das_over_new": 1.0067216562550674,
+        "das_us": 4.8442158203125,
+        "new_us": 4.8118720703125,
+        "das_aa_drift": 0.004204810968495565,
+        "new_aa_drift": 0.006037271585642268,
+        "das_correct": true,
+        "new_correct": true,
+        "calls_per_roi": 1024,
+        "new_kernels": [
+          "cast_dense"
+        ],
+        "new_copies": []
+      },
+      "native_baseline_definition": {
+        "provider": "das_native_hip_public",
+        "api": "Tensor.to(dtype, memory_format=...)",
+        "input": "torch_fl._C._flagos_to_cuda_view; same physical storage, dtype, shape, stride, offset and device index asserted before every case",
+        "backend": "DTK native HIP/CUDA dispatch, without FlagOS boxing conversion",
+        "same_flagos_boxing_route": false,
+        "bridge_file": "/opt/flagos/python/lib/python3.10/site-packages/torch_fl/_C.cpython-310-x86_64-linux-gnu.so",
+        "bridge_sha256": "1ab30852f775299617570b3d3410391007f14a2a4f075416e88eff192367b57c",
+        "metric": "all device kernel/copy durations; host view construction and allocation excluded"
+      },
+      "same_flagos_boxing_route": false,
+      "measured_input_metadata": {
+        "shape": [
+          5,
+          17
+        ],
+        "stride": [
+          17,
+          1
+        ],
+        "offset": 0,
+        "input_dtype": "torch.float32",
+        "target_dtype": "torch.bfloat16",
+        "memory_format": "torch.contiguous_format",
+        "input_storage_sha256": "a08d5511431f31cbb74a2ff771ea2708dc2dc9fd634e17fd63d333089053c39e"
+      }
+    },
+    {
+      "operator": "to_dtype",
+      "scope": "added",
+      "case": 920007,
+      "status": "passes",
+      "das_over_new": 0.9985939432880923,
+      "das_us": 4.7717158203125,
+      "new_us": 4.7784345703125,
+      "das_aa_drift": 0.00715693152306196,
+      "new_aa_drift": 0.015231950334610334,
+      "das_correct": true,
+      "new_correct": true,
+      "calls_per_roi": 1024,
+      "new_kernels": [
+        "_to_copy_func_kernel_rank_2"
+      ],
+      "new_copies": [],
+      "source_evidence": "correction-results/submission-tuning-native/submission-dtype-native-gpu0/submission-dtype-native-public-r1",
+      "physical_card": 0,
+      "earlier_flagos_boxing_comparison": {
+        "status": "passes",
+        "das_over_new": 2.000227509569952,
+        "das_us": 9.59890234375,
+        "new_us": 4.7989052734375,
+        "das_aa_drift": 0.005167497419307665,
+        "new_aa_drift": 0.009854484170105593,
+        "das_correct": true,
+        "new_correct": true,
+        "calls_per_roi": 1024,
+        "new_kernels": [
+          "_to_copy_func_kernel_rank_2"
+        ],
+        "new_copies": []
+      },
+      "native_baseline_definition": {
+        "provider": "das_native_hip_public",
+        "api": "Tensor.to(dtype, memory_format=...)",
+        "input": "torch_fl._C._flagos_to_cuda_view; same physical storage, dtype, shape, stride, offset and device index asserted before every case",
+        "backend": "DTK native HIP/CUDA dispatch, without FlagOS boxing conversion",
+        "same_flagos_boxing_route": false,
+        "bridge_file": "/opt/flagos/python/lib/python3.10/site-packages/torch_fl/_C.cpython-310-x86_64-linux-gnu.so",
+        "bridge_sha256": "1ab30852f775299617570b3d3410391007f14a2a4f075416e88eff192367b57c",
+        "metric": "all device kernel/copy durations; host view construction and allocation excluded"
+      },
+      "same_flagos_boxing_route": false,
+      "measured_input_metadata": {
+        "shape": [
+          17,
+          5
+        ],
+        "stride": [
+          1,
+          17
+        ],
+        "offset": 0,
+        "input_dtype": "torch.float32",
+        "target_dtype": "torch.bfloat16",
+        "memory_format": "torch.contiguous_format",
+        "input_storage_sha256": "a08d5511431f31cbb74a2ff771ea2708dc2dc9fd634e17fd63d333089053c39e"
+      }
+    },
+    {
+      "operator": "to_dtype",
+      "scope": "added",
+      "case": 920008,
+      "status": "passes",
+      "das_over_new": 1.001045957791926,
+      "das_us": 4.7853076171875,
+      "new_us": 4.7803076171875,
+      "das_aa_drift": 0.01351304865476144,
+      "new_aa_drift": 0.005566064321012032,
+      "das_correct": true,
+      "new_correct": true,
+      "calls_per_roi": 1024,
+      "new_kernels": [
+        "cast_dense"
+      ],
+      "new_copies": [],
+      "source_evidence": "correction-results/submission-tuning-native/submission-dtype-native-gpu0/submission-dtype-native-public-r1",
+      "physical_card": 0,
+      "earlier_flagos_boxing_comparison": {
+        "status": "passes",
+        "das_over_new": 1.0008134054091866,
+        "das_us": 4.8062470703125,
+        "new_us": 4.8023408203125,
+        "das_aa_drift": 0.020936417304735278,
+        "new_aa_drift": 0.007451685150134946,
+        "das_correct": true,
+        "new_correct": true,
+        "calls_per_roi": 1024,
+        "new_kernels": [
+          "cast_dense"
+        ],
+        "new_copies": []
+      },
+      "native_baseline_definition": {
+        "provider": "das_native_hip_public",
+        "api": "Tensor.to(dtype, memory_format=...)",
+        "input": "torch_fl._C._flagos_to_cuda_view; same physical storage, dtype, shape, stride, offset and device index asserted before every case",
+        "backend": "DTK native HIP/CUDA dispatch, without FlagOS boxing conversion",
+        "same_flagos_boxing_route": false,
+        "bridge_file": "/opt/flagos/python/lib/python3.10/site-packages/torch_fl/_C.cpython-310-x86_64-linux-gnu.so",
+        "bridge_sha256": "1ab30852f775299617570b3d3410391007f14a2a4f075416e88eff192367b57c",
+        "metric": "all device kernel/copy durations; host view construction and allocation excluded"
+      },
+      "same_flagos_boxing_route": false,
+      "measured_input_metadata": {
+        "shape": [
+          5,
+          17
+        ],
+        "stride": [
+          17,
+          1
+        ],
+        "offset": 1,
+        "input_dtype": "torch.float32",
+        "target_dtype": "torch.bfloat16",
+        "memory_format": "torch.contiguous_format",
+        "input_storage_sha256": "9b5684350e6f2aab26d39939f19499dfd87cc45cc9b54b14eea25b3b50b27f32"
+      }
+    },
+    {
+      "operator": "to_dtype",
+      "scope": "added",
+      "case": 920009,
+      "status": "passes",
+      "das_over_new": 1.007407826551262,
+      "das_us": 4.7812470703125,
+      "new_us": 4.7460888671875,
+      "das_aa_drift": 0.015706229564572682,
+      "new_aa_drift": 0.014644990479306674,
+      "das_correct": true,
+      "new_correct": true,
+      "calls_per_roi": 1024,
+      "new_kernels": [
+        "_to_copy_func_kernel_rank_2"
+      ],
+      "new_copies": [],
+      "source_evidence": "correction-results/submission-tuning-native/submission-dtype-native-gpu0/submission-dtype-native-public-r1",
+      "physical_card": 0,
+      "earlier_flagos_boxing_comparison": {
+        "status": "passes",
+        "das_over_new": 2.004919617938586,
+        "das_us": 9.61608984375,
+        "new_us": 4.7962470703125,
+        "das_aa_drift": 0.003930139727882587,
+        "new_aa_drift": 0.01719733760646225,
+        "das_correct": true,
+        "new_correct": true,
+        "calls_per_roi": 1024,
+        "new_kernels": [
+          "_to_copy_func_kernel_rank_2"
+        ],
+        "new_copies": []
+      },
+      "native_baseline_definition": {
+        "provider": "das_native_hip_public",
+        "api": "Tensor.to(dtype, memory_format=...)",
+        "input": "torch_fl._C._flagos_to_cuda_view; same physical storage, dtype, shape, stride, offset and device index asserted before every case",
+        "backend": "DTK native HIP/CUDA dispatch, without FlagOS boxing conversion",
+        "same_flagos_boxing_route": false,
+        "bridge_file": "/opt/flagos/python/lib/python3.10/site-packages/torch_fl/_C.cpython-310-x86_64-linux-gnu.so",
+        "bridge_sha256": "1ab30852f775299617570b3d3410391007f14a2a4f075416e88eff192367b57c",
+        "metric": "all device kernel/copy durations; host view construction and allocation excluded"
+      },
+      "same_flagos_boxing_route": false,
+      "measured_input_metadata": {
+        "shape": [
+          5,
+          17
+        ],
+        "stride": [
+          68,
+          2
+        ],
+        "offset": 0,
+        "input_dtype": "torch.float32",
+        "target_dtype": "torch.bfloat16",
+        "memory_format": "torch.contiguous_format",
+        "input_storage_sha256": "9c605ea720855bf4bbc2659a1eeddcd81c024905ceef5e29a69b21012fd8b5cc"
+      }
+    },
+    {
+      "operator": "to_dtype",
+      "scope": "added",
+      "case": 920010,
+      "status": "no_device_work",
+      "das_over_new": null,
+      "das_us": 0.0,
+      "new_us": 0.0,
+      "das_aa_drift": 0,
+      "new_aa_drift": 0,
+      "das_correct": true,
+      "new_correct": true,
+      "calls_per_roi": 1024,
+      "new_kernels": [],
+      "new_copies": [],
+      "source_evidence": "correction-results/submission-tuning-native/submission-dtype-native-gpu0/submission-dtype-native-public-r1",
+      "physical_card": 0,
+      "earlier_flagos_boxing_comparison": {
+        "status": "no_device_work",
+        "das_over_new": null,
+        "das_us": 0.0,
+        "new_us": 0.0,
+        "das_aa_drift": 0,
+        "new_aa_drift": 0,
+        "das_correct": true,
+        "new_correct": true,
+        "calls_per_roi": 1024,
+        "new_kernels": [],
+        "new_copies": []
+      },
+      "native_baseline_definition": {
+        "provider": "das_native_hip_public",
+        "api": "Tensor.to(dtype, memory_format=...)",
+        "input": "torch_fl._C._flagos_to_cuda_view; same physical storage, dtype, shape, stride, offset and device index asserted before every case",
+        "backend": "DTK native HIP/CUDA dispatch, without FlagOS boxing conversion",
+        "same_flagos_boxing_route": false,
+        "bridge_file": "/opt/flagos/python/lib/python3.10/site-packages/torch_fl/_C.cpython-310-x86_64-linux-gnu.so",
+        "bridge_sha256": "1ab30852f775299617570b3d3410391007f14a2a4f075416e88eff192367b57c",
+        "metric": "all device kernel/copy durations; host view construction and allocation excluded"
+      },
+      "same_flagos_boxing_route": false,
+      "measured_input_metadata": {
+        "shape": [
+          0,
+          17
+        ],
+        "stride": [
+          17,
+          1
+        ],
+        "offset": 0,
+        "input_dtype": "torch.float32",
+        "target_dtype": "torch.bfloat16",
+        "memory_format": "torch.contiguous_format",
+        "input_storage_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "operator": "to_dtype",
+      "scope": "added",
+      "case": 920011,
+      "status": "passes",
+      "das_over_new": 1.0039524430523976,
+      "das_us": 4.7626513671875,
+      "new_us": 4.7439013671875,
+      "das_aa_drift": 0.0041737915877146925,
+      "new_aa_drift": 0.004089579096973939,
+      "das_correct": true,
+      "new_correct": true,
+      "calls_per_roi": 1024,
+      "new_kernels": [
+        "cast_dense"
+      ],
+      "new_copies": [],
+      "source_evidence": "correction-results/submission-tuning-native/submission-dtype-native-gpu0/submission-dtype-native-public-r1",
+      "physical_card": 0,
+      "earlier_flagos_boxing_comparison": {
+        "status": "passes",
+        "das_over_new": 1.0179054861847066,
+        "das_us": 4.8765615234375,
+        "new_us": 4.7907802734375,
+        "das_aa_drift": 0.009900588959869783,
+        "new_aa_drift": 0.004763459372646883,
+        "das_correct": true,
+        "new_correct": true,
+        "calls_per_roi": 1024,
+        "new_kernels": [
+          "cast_dense"
+        ],
+        "new_copies": []
+      },
+      "native_baseline_definition": {
+        "provider": "das_native_hip_public",
+        "api": "Tensor.to(dtype, memory_format=...)",
+        "input": "torch_fl._C._flagos_to_cuda_view; same physical storage, dtype, shape, stride, offset and device index asserted before every case",
+        "backend": "DTK native HIP/CUDA dispatch, without FlagOS boxing conversion",
+        "same_flagos_boxing_route": false,
+        "bridge_file": "/opt/flagos/python/lib/python3.10/site-packages/torch_fl/_C.cpython-310-x86_64-linux-gnu.so",
+        "bridge_sha256": "1ab30852f775299617570b3d3410391007f14a2a4f075416e88eff192367b57c",
+        "metric": "all device kernel/copy durations; host view construction and allocation excluded"
+      },
+      "same_flagos_boxing_route": false,
+      "measured_input_metadata": {
+        "shape": [],
+        "stride": [],
+        "offset": 0,
+        "input_dtype": "torch.float32",
+        "target_dtype": "torch.bfloat16",
+        "memory_format": "torch.contiguous_format",
+        "input_storage_sha256": "ba8c3825059b8f9428ce8503f488d90e77f969b86a8fbd10fa2840f14a484d28"
+      }
+    },
+    {
+      "operator": "to_dtype",
+      "scope": "added",
+      "case": 920012,
+      "status": "passes",
+      "das_over_new": 0.9909997670742968,
+      "das_us": 4.7656220703125,
+      "new_us": 4.8089033203125,
+      "das_aa_drift": 0.011027661457644333,
+      "new_aa_drift": 0.0039007922874834122,
+      "das_correct": true,
+      "new_correct": true,
+      "calls_per_roi": 1024,
+      "new_kernels": [
+        "cast_dense"
+      ],
+      "new_copies": [],
+      "source_evidence": "correction-results/submission-tuning-native/submission-dtype-native-gpu0/submission-dtype-native-public-r1",
+      "physical_card": 0,
+      "earlier_flagos_boxing_comparison": {
+        "status": "passes",
+        "das_over_new": 0.9990927940101726,
+        "das_us": 4.8181240234375,
+        "new_us": 4.8224990234375,
+        "das_aa_drift": 0.0014936528884630373,
+        "new_aa_drift": 0.012903430250237768,
+        "das_correct": true,
+        "new_correct": true,
+        "calls_per_roi": 1024,
+        "new_kernels": [
+          "cast_dense"
+        ],
+        "new_copies": []
+      },
+      "native_baseline_definition": {
+        "provider": "das_native_hip_public",
+        "api": "Tensor.to(dtype, memory_format=...)",
+        "input": "torch_fl._C._flagos_to_cuda_view; same physical storage, dtype, shape, stride, offset and device index asserted before every case",
+        "backend": "DTK native HIP/CUDA dispatch, without FlagOS boxing conversion",
+        "same_flagos_boxing_route": false,
+        "bridge_file": "/opt/flagos/python/lib/python3.10/site-packages/torch_fl/_C.cpython-310-x86_64-linux-gnu.so",
+        "bridge_sha256": "1ab30852f775299617570b3d3410391007f14a2a4f075416e88eff192367b57c",
+        "metric": "all device kernel/copy durations; host view construction and allocation excluded"
+      },
+      "same_flagos_boxing_route": false,
+      "measured_input_metadata": {
+        "shape": [
+          17
+        ],
+        "stride": [
+          1
+        ],
+        "offset": 0,
+        "input_dtype": "torch.float32",
+        "target_dtype": "torch.bfloat16",
+        "memory_format": "torch.preserve_format",
+        "input_storage_sha256": "4196aeec339c35c1dda5861caaf4a7e260682a4bd42c07179e4a57ed49b0eda7"
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "gpu_regressions_per_card": 33,
+  "stability_fixtures_per_card": 34,
+  "stability_repeats_per_fixture": 3,
+  "model_boundaries_per_card": 3,
+  "static_operator_checks": 4,
+  "cpu_acceptance_gate_tests": 14,
+  "source_identity": "Raw SHA256 must match source bytes and Git blobs",
+  "precommit": "Focused hooks pass. Full invocation passed with a formatted unrelated baseline import; that file was restored and excluded.",
+  "cpp_format": "DEV clang-format 18 --dry-run --Werror passed; Windows hook is not relied upon.",
+  "original_model_acceptance_verified": false,
+  "external_frozen_gate_verified": false
+}

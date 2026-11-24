@@ -1,0 +1,66 @@
+"""Read native profiler durations directly for early selection; keep JSON audit separate."""
+import bisect
+from collections import defaultdict
+import json
+from pathlib import Path
+import re
+import sqlite3
+import statistics
+import sys
+
+p=Path(sys.argv[1]);profile=sys.argv[2];record_name=sys.argv[3]
+records=[json.loads(s) for s in (p/record_name).read_text().splitlines()]
+timed={(r['case'],r['provider'],r['aa'],r['roi']):r for r in records if 'aa' in r}
+c=sqlite3.connect(str(p/'profiles'/(profile+'.db')))
+names=[r[0] for r in c.execute("select name from sqlite_master where type='table'")]
+def table(prefix):
+    matches=[n for n in names if n.startswith(prefix)];assert len(matches)==1,matches
+    return matches[0]
+ops=table('HIPOPS_');copies=table('HIPCOPY_');tx=table('HIPTX_')
+strings={str(i):name for i,name in c.execute('select STR_ID,STR_NAME from STR_TABLE where CONFIG_KEY=? and TYPE=6',(ops[len('HIPOPS_'):],))}
+rois=c.execute('select message,begin_Index,end_Index from '+tx+' order by begin_Index').fetchall()
+assert all(rois[i-1][2]<rois[i][1] for i in range(1,len(rois)))
+starts=[r[1] for r in rois];stats=[dict(kernel_ns=0,copy_ns=0,kernels=0,copies=0,queues=set(),names=set()) for _ in rois]
+kernels=c.execute('select _Index,DurationNs,Name,queue_id,BeginNs,EndNs from '+ops+' order by _Index').fetchall()
+indices=[r[0] for r in kernels]
+for index,duration,name,queue,begin,end in kernels:
+    assert end-begin==duration
+    i=bisect.bisect_right(starts,index)-1
+    if i>=0 and index<=rois[i][2]:
+        s=stats[i];s['kernel_ns']+=duration;s['kernels']+=1;s['queues'].add(queue);s['names'].add(strings[str(name)])
+for index,duration,queue,begin,end in c.execute('select _Index,DurationNs,queue_id,BeginNs,EndNs from '+copies):
+    assert end-begin==duration
+    i=bisect.bisect_right(starts,index)-1
+    if i>=0 and index<=rois[i][2]:s=stats[i];s['copy_ns']+=duration;s['copies']+=1;s['queues'].add(queue)
+groups=defaultdict(list)
+for roi,s in zip(rois,stats):
+    match=re.fullmatch(r'correction:case=(\d+):provider=(\w+):aa=(\d+):roi=(\d+)',roi[0]);assert match,roi
+    key=(int(match[1]),match[2],int(match[3]),int(match[4]));record=timed[key];calls=record['calls']
+    gate=kernels[bisect.bisect_left(indices,roi[1])-1]
+    assert strings[str(gate[2])]=='queue_gate' and gate[1]>10000000
+    assert s['kernels']%calls==0
+    # Allocator initialization can issue a one-time copy within an ROI.
+    # Retain its entire duration and amortized count; never drop device work.
+    sample=dict(record,device_us=(s['kernel_ns']+s['copy_ns'])/(calls*1000),kernel_us=s['kernel_ns']/(calls*1000),copy_us=s['copy_ns']/(calls*1000),
+                kernels_per_call=s['kernels']//calls,copies_per_call=s['copies']/calls,queues=sorted(s['queues']),gate_queue=gate[3],kernels=sorted(s['names']))
+    sample['same_queue_as_gate']=not s['queues'] or s['queues']=={gate[3]}
+    groups[key[:2]].append(sample)
+assert sum(len(v) for v in groups.values())==len(timed)
+result=[]
+for (case,provider),rs in sorted(groups.items()):
+    assert len(rs)==15
+    medians=[statistics.median(r['device_us'] for r in rs if r['aa']==a) for a in range(3)]
+    drift=0 if max(medians)==0 else max(medians)/min(medians)-1
+    correct=all(r.get('accuracy',{}).get('ok',True) and all(r.get('correctness',{}).get(k,True) for k in ['value_ok','dtype_ok','stride_ok','device_ok','alias_ok']) for r in rs)
+    result.append(dict(case=case,provider=provider,device_us=statistics.median(medians),aa_medians_us=medians,aa_max_drift=drift,stable=drift<=.05,
+        correctness=correct,same_queue_as_gate=all(r['same_queue_as_gate'] for r in rs),config=rs[0].get('config'),samples=rs))
+out=dict(profile=profile,source='Native hipprof SQLite HIPOPS/HIPCOPY durations; separate JSON audit retained',results=result)
+(p/(profile+'-sqlite-summary.json')).write_text(json.dumps(out,indent=2)+'\n')
+for case in sorted({r['case'] for r in result}):
+    g={r['provider']:r for r in result if r['case']==case};das=g.get('das',g.get('das_native_hip_public'));assert das
+    eligible=[r for n,r in g.items() if n not in ['das','das_native_hip_public','current'] and r['stable'] and r['correctness'] and r['device_us']]
+    if not eligible:print('SQLITE_NO_CANDIDATE',case);continue
+    best=min(eligible,key=lambda r:r['device_us']);ratio=das['device_us']/best['device_us']
+    print('SQLITE_BEST',case,best['provider'],round(das['device_us'],6),round(best['device_us'],6),round(ratio*100,4),
+          'stable',das['stable'],best['stable'],'same_queue',das['same_queue_as_gate'],best['same_queue_as_gate'],'config',json.dumps(best['config']),flush=True)
+print('SUBMISSION_SQLITE_SUMMARY_COMPLETE',len(result),'groups',len(timed),'ROIs',flush=True)

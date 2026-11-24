@@ -14,3 +14,16 @@
 
 src/flag_gems/runtime/backend/_iluvatar/**/* diff=nodiff
 src/flag_gems/runtime/backend/_metax/**/* diff=nodiff
+
+# Keep Hygon source hashes stable across Windows/Linux checkouts.
+/src/flag_gems/runtime/backend/_hygon/experimental/** text eol=lf
+/docs/hygon-optimization/** text eol=lf
+/docs/hygon-optimization/**/*.gz -text
+/docs/hygon-optimization/**/device-observations.json.gz -text
+/docs/hygon-optimization/history/sources/** -text whitespace=-blank-at-eof,-blank-at-eol
+/tests/test_hygon_optimization* text eol=lf
+/src/flag_gems/runtime/backend/_hygon/attention_state_hip.cpp text eol=lf
+/src/flag_gems/runtime/backend/_hygon/attention_state_hip.py text eol=lf
+/src/flag_gems/runtime/backend/_hygon/ops/attention_state.py text eol=lf
+/src/flag_gems/runtime/backend/_hygon/ops/_scaled_dot_product_flash_attention.py text eol=lf
+/tests/test_flash_attention_hygon_state.py text eol=lf

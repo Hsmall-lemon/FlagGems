@@ -54,6 +54,7 @@ from ._thnn_fused_lstm_cell import _thnn_fused_lstm_cell
 from .adaptive_avg_pool2d_backward import adaptive_avg_pool2d_backward
 from .adaptive_max_pool2d_backward import adaptive_max_pool2d_backward
 from .adaptive_max_pool3d_backward import adaptive_max_pool3d_backward
+from .add import add
 from .addmm import addmm_dtype, addmm_dtype_out
 from .addmm_ import addmm_
 from .addmm_kernel90 import addmm, addmm_out
@@ -194,6 +195,7 @@ from .mvlgamma import mvlgamma
 from .nan_to_num import nan_to_num
 from .nanmedian import nanmedian, nanmedian_dim, nanmedian_dim_values, nanmedian_out
 from .nansum import nansum, nansum_out
+from .native_batch_norm import native_batch_norm
 from .neg import neg
 from .nll_loss_backward import heur_block_n, nll_loss_backward
 from .nonzero import nonzero
@@ -334,6 +336,7 @@ __all__ = [
     "adaptive_avg_pool2d_backward",
     "adaptive_max_pool2d_backward",
     "adaptive_max_pool3d_backward",
+    "add",
     "addmm",
     "addmm_",
     "addmm_dtype",
@@ -472,6 +475,7 @@ __all__ = [
     "nanmedian_out",
     "nansum",
     "nansum_out",
+    "native_batch_norm",
     "native_layer_norm",
     "neg",
     "nll_loss_backward",

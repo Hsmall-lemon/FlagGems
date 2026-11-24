@@ -1,0 +1,67 @@
+"""Follow-up checks for failures, preserving the first 65-test reports."""
+from pathlib import Path
+
+helper_path = Path(__file__).resolve().parent / 'functional.py'
+helper = helper_path.read_text().split('# Reuse precisely the bytes exported')[0]
+exec(compile(helper, str(helper_path), 'exec'))
+receipt['scope'] = 'Focused checks after the initial functional suite; original tolerances unchanged.'
+
+def save():
+    Path('focused.json').write_text(json.dumps(receipt, indent=2) + '\n')
+
+for dtype in (torch.bfloat16, torch.float16):
+    label = str(dtype).split('.')[-1]
+    torch.manual_seed(42)
+    original = torch.randn((1, 3, 2, 64), dtype=dtype)
+    for layout in ('bshd_contiguous', 'bhsd_contiguous_view'):
+        cpu = original if layout == 'bshd_contiguous' else original.transpose(1, 2).contiguous().transpose(1, 2)
+        for alias in (True, False):
+            q = cpu.cuda()
+            dev = [q, q, q] if alias else [q, q.clone(), q.clone()]
+            for arm in ('wheel', 'aten', 'public'):
+                record(f'tiny/{label}/{layout}/alias{alias}/{arm}',
+                       lambda cpu=cpu, dev=dev, arm=arm: forward([cpu, cpu, cpu], arm=arm, repeats=3, device_inputs=dev))
+    for scale in (0., -.08838834764831843, .25):
+        cpu = generated(dtype, 129, 129, 128)
+        for arm in ('wheel', 'aten', 'public'):
+            record(f'scale/{label}/{scale}/{arm}',
+                   lambda cpu=cpu, scale=scale, arm=arm: forward(cpu, scale=scale, arm=arm, repeats=3))
+
+    def dropout_fixed():
+        cpu = generated(dtype, 97, 97, 64)
+        dev = [x.cuda().requires_grad_(True) for x in cpu]
+        state = torch.cuda.get_rng_state()
+        first = flash_attn.flash_attn_func(*dev, dropout_p=.125, return_attn_probs=True, deterministic=True)
+        torch.cuda.set_rng_state(state)
+        second = flash_attn.flash_attn_func(*dev, dropout_p=.125, return_attn_probs=True, deterministic=True)
+        out, lse, mask = first
+        torch.cuda.synchronize()
+        assert mask.ndim == 4, ('return_attn_probs mask unavailable', tuple(mask.shape))
+        q, k, v = [x.transpose(1, 2).float() for x in cpu]
+        scores = q @ k.transpose(-1, -2) / 8
+        keep = ~torch.signbit(mask.detach().cpu()[:, :, :97, :97])
+        expected = ((scores.softmax(-1) * keep / .875) @ v).transpose(1, 2)
+        return {'checks': [stats(out, expected), stats(lse, scores.logsumexp(-1), 2e-5, 2e-5)],
+                'stable': torch.equal(first[0], second[0]) and torch.equal(first[1], second[1]) and torch.equal(first[2], second[2]),
+                'mask_shape': list(mask.shape), 'observed_keep_fraction': float(keep.float().mean())}
+    record(f'dropout/{label}/requires_grad', dropout_fixed)
+
+    def reference_crosscheck():
+        import numpy as np
+        x = original.transpose(1, 2).float().numpy().astype('float64')
+        s = x @ x.swapaxes(-1, -2) / 8
+        maximum = s.max(-1, keepdims=True)
+        e = np.exp(s - maximum)
+        expected = ((e / e.sum(-1, keepdims=True)) @ x).swapaxes(1, 2).copy()
+        expected_lse = (maximum[..., 0] + np.log(e.sum(-1))).copy()
+        out, lse = reference([original, original, original])
+        return {'checks': [stats(out, torch.from_numpy(expected), 2e-6, 2e-6),
+                           stats(lse, torch.from_numpy(expected_lse), 2e-6, 2e-6)],
+                'reference': 'independent NumPy FP64 on compute node'}
+    record(f'reference/{label}/numpy_float64', reference_crosscheck)
+
+receipt['completed'] = True
+receipt['passed'] = sum(t['status'] == 'passed' for t in receipt['tests'])
+receipt['failed'] = sum(t['status'] != 'passed' for t in receipt['tests'])
+save()
+print('RELEASE2610_FOCUSED_COMPLETE', receipt['passed'], receipt['failed'], flush=True)

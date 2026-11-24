@@ -1,0 +1,67 @@
+{
+  "file": "dtype-layout-copy-20261109.tar.gz",
+  "sha256": "cdc6964a3a576df911ea7583f0704ad7138a68f74decbbee5b78f86a8d015ab6",
+  "manifest": [
+    {
+      "file": "reproduce_mm.py",
+      "size": 6215,
+      "sha256": "7e21628f6b949a682de01487f247703c732b692fe843a920966251bf028d4c78"
+    },
+    {
+      "file": "mm_original.py",
+      "size": 7559,
+      "sha256": "d2594faf1b89fa0bdb2de549d4e2dde19ea87f63c0d92e587b326773d094a0cb"
+    },
+    {
+      "file": "profile_setup_long.py",
+      "size": 974,
+      "sha256": "dcc61c9ea622aec005956fcf7479f6e8515fbd3977dfef5a42aa9caa8c31f720"
+    },
+    {
+      "file": "analyze_correction_profile.py",
+      "size": 5974,
+      "sha256": "589ad5e2c363ccad4543dcb5c30a068fb87d897dab241f5b11d8effefd8fa226"
+    },
+    {
+      "file": "profile_dtype_layout_copy.py",
+      "size": 2904,
+      "sha256": "ff22bb0e0ea128e7779065fa5ea9584b384b9d16159d0bca43f61103442bde92"
+    },
+    {
+      "file": "run_dtype_layout_copy.py",
+      "size": 1667,
+      "sha256": "5d8679333ce4b00915adca13dae142e0ddabb19576cf56536a800dbb6b8cf158"
+    },
+    {
+      "file": "run-dtype-layout-copy.log",
+      "size": 137,
+      "sha256": "f2061a149836b13ee1031e9e1aab0011e44ea5c26fb434b09d8084f43f365ea3"
+    },
+    {
+      "file": "dtype-layout-copy-r1.log",
+      "size": 162904,
+      "sha256": "4b1b3c11b1ea1b14c30ce84acc1e12de886b93187fc51f83504809ab3f896dea"
+    },
+    {
+      "file": "dtype-layout-copy-r1-analysis.log",
+      "size": 1100,
+      "sha256": "5ebd7f1fd8f5d455de0adb8fcaf0cc76fd33c8b68178e541d58e6aa833e53849"
+    },
+    {
+      "file": "dtype-layout-copy-records.jsonl",
+      "size": 48975,
+      "sha256": "987e353066c0da87def987e7ce7337ecd06b35162744d177cc36abfb0e99a897"
+    },
+    {
+      "file": "dtype-layout-copy-r1-analyzed.json",
+      "size": 130963,
+      "sha256": "a05a5fab7f16776625a224e0cf149f344594d6185948e722b0798a3dfb23deb8"
+    },
+    {
+      "file": "profile_dtype_layout_copy-runtime-fingerprint.json",
+      "size": 77642,
+      "sha256": "dc2ffc998bff7707347c67756ef088852fd45d980193590cfd8fed00fba3dee9"
+    }
+  ],
+  "native_trace_location": "expanded-gpu1/profiles/dtype-layout-copy-r1*"
+}

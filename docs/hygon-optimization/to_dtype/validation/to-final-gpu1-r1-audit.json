@@ -1,0 +1,9 @@
+{
+  "profile": "to-final-gpu1-r1",
+  "rois": 100,
+  "minimum_gate_us": 5918.398,
+  "gate_excluded": true,
+  "duration_equals_end_minus_begin": true,
+  "calls_per_roi": 10,
+  "host_overhead_included": false
+}

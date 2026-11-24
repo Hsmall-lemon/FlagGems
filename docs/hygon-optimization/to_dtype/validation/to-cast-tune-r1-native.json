@@ -1,0 +1,2270 @@
+[
+  {
+    "row": 1711,
+    "provider": "0",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 128,
+      "warps": 1
+    },
+    "rounds": 3,
+    "us": 17.27999933063984,
+    "rois_us": [
+      17.27999933063984,
+      17.27999933063984,
+      17.27999933063984
+    ],
+    "native_us": 10.448,
+    "native_rois_us": [
+      10.448,
+      10.448,
+      10.448
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1711,
+    "provider": "1",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 256,
+      "warps": 1
+    },
+    "rounds": 3,
+    "us": 12.480000033974648,
+    "rois_us": [
+      12.480000033974648,
+      12.480000033974648,
+      12.480000033974648
+    ],
+    "native_us": 5.6,
+    "native_rois_us": [
+      5.6,
+      5.632,
+      5.6
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1711,
+    "provider": "2",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 512,
+      "warps": 1
+    },
+    "rounds": 3,
+    "us": 10.71999967098236,
+    "rois_us": [
+      10.71999967098236,
+      12.240000069141388,
+      10.71999967098236
+    ],
+    "native_us": 3.872,
+    "native_rois_us": [
+      3.872,
+      4.704,
+      3.84
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1711,
+    "provider": "3",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 1024,
+      "warps": 1
+    },
+    "rounds": 3,
+    "us": 10.879999957978725,
+    "rois_us": [
+      10.879999957978725,
+      10.960000101476908,
+      10.879999957978725
+    ],
+    "native_us": 4.016,
+    "native_rois_us": [
+      3.888,
+      4.016,
+      4.032
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1711,
+    "provider": "4",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 1024,
+      "warps": 2
+    },
+    "rounds": 3,
+    "us": 10.879999957978725,
+    "rois_us": [
+      10.879999957978725,
+      10.879999957978725,
+      10.879999957978725
+    ],
+    "native_us": 3.936,
+    "native_rois_us": [
+      3.904,
+      3.936,
+      3.984
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1711,
+    "provider": "5",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 2048,
+      "warps": 4
+    },
+    "rounds": 3,
+    "us": 10.71999967098236,
+    "rois_us": [
+      10.71999967098236,
+      10.71999967098236,
+      10.71999967098236
+    ],
+    "native_us": 3.888,
+    "native_rois_us": [
+      3.92,
+      3.888,
+      3.888
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1711,
+    "provider": "6",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 4096,
+      "warps": 4
+    },
+    "rounds": 3,
+    "us": 10.799999814480543,
+    "rois_us": [
+      10.71999967098236,
+      10.799999814480543,
+      10.799999814480543
+    ],
+    "native_us": 3.984,
+    "native_rois_us": [
+      3.984,
+      4.0,
+      3.984
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1711,
+    "provider": "7",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 4096,
+      "warps": 8
+    },
+    "rounds": 3,
+    "us": 10.799999814480543,
+    "rois_us": [
+      12.160000391304493,
+      10.799999814480543,
+      10.799999814480543
+    ],
+    "native_us": 3.984,
+    "native_rois_us": [
+      4.704,
+      3.984,
+      3.92
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1711,
+    "provider": "8",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 8192,
+      "warps": 8
+    },
+    "rounds": 3,
+    "us": 10.799999814480543,
+    "rois_us": [
+      10.799999814480543,
+      10.879999957978725,
+      10.799999814480543
+    ],
+    "native_us": 3.984,
+    "native_rois_us": [
+      3.968,
+      3.984,
+      3.984
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1712,
+    "provider": "0",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 128,
+      "warps": 1
+    },
+    "rounds": 3,
+    "us": 10.879999957978725,
+    "rois_us": [
+      10.879999957978725,
+      10.879999957978725,
+      10.879999957978725
+    ],
+    "native_us": 4.656,
+    "native_rois_us": [
+      4.656,
+      4.672,
+      4.656
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1712,
+    "provider": "1",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 256,
+      "warps": 1
+    },
+    "rounds": 3,
+    "us": 10.080000385642052,
+    "rois_us": [
+      10.00000024214387,
+      10.080000385642052,
+      11.359999887645245
+    ],
+    "native_us": 3.776,
+    "native_rois_us": [
+      3.776,
+      3.744,
+      4.544
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1712,
+    "provider": "2",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 512,
+      "warps": 1
+    },
+    "rounds": 3,
+    "us": 10.080000385642052,
+    "rois_us": [
+      10.080000385642052,
+      10.00000024214387,
+      10.080000385642052
+    ],
+    "native_us": 3.792,
+    "native_rois_us": [
+      3.84,
+      3.792,
+      3.792
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1712,
+    "provider": "3",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 1024,
+      "warps": 1
+    },
+    "rounds": 3,
+    "us": 10.080000385642052,
+    "rois_us": [
+      10.080000385642052,
+      10.080000385642052,
+      10.080000385642052
+    ],
+    "native_us": 3.84,
+    "native_rois_us": [
+      3.84,
+      3.824,
+      3.872
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1712,
+    "provider": "4",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 1024,
+      "warps": 2
+    },
+    "rounds": 3,
+    "us": 10.080000385642052,
+    "rois_us": [
+      10.080000385642052,
+      10.080000385642052,
+      10.080000385642052
+    ],
+    "native_us": 3.824,
+    "native_rois_us": [
+      3.792,
+      3.824,
+      3.84
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1712,
+    "provider": "5",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 2048,
+      "warps": 4
+    },
+    "rounds": 3,
+    "us": 10.080000385642052,
+    "rois_us": [
+      10.080000385642052,
+      10.080000385642052,
+      10.080000385642052
+    ],
+    "native_us": 3.856,
+    "native_rois_us": [
+      3.856,
+      3.856,
+      3.856
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1712,
+    "provider": "6",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 4096,
+      "warps": 4
+    },
+    "rounds": 3,
+    "us": 10.160000063478947,
+    "rois_us": [
+      10.160000063478947,
+      10.239999741315842,
+      10.080000385642052
+    ],
+    "native_us": 3.888,
+    "native_rois_us": [
+      3.888,
+      3.92,
+      3.888
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1712,
+    "provider": "7",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 4096,
+      "warps": 8
+    },
+    "rounds": 3,
+    "us": 10.080000385642052,
+    "rois_us": [
+      10.080000385642052,
+      10.080000385642052,
+      10.080000385642052
+    ],
+    "native_us": 3.872,
+    "native_rois_us": [
+      3.92,
+      3.856,
+      3.872
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1712,
+    "provider": "8",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 8192,
+      "warps": 8
+    },
+    "rounds": 3,
+    "us": 10.080000385642052,
+    "rois_us": [
+      10.080000385642052,
+      10.080000385642052,
+      10.080000385642052
+    ],
+    "native_us": 3.856,
+    "native_rois_us": [
+      3.872,
+      3.824,
+      3.856
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1713,
+    "provider": "0",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 128,
+      "warps": 1
+    },
+    "rounds": 3,
+    "us": 15.12000011280179,
+    "rois_us": [
+      15.200000256299973,
+      15.12000011280179,
+      15.12000011280179
+    ],
+    "native_us": 8.496,
+    "native_rois_us": [
+      8.544,
+      8.496,
+      8.496
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1713,
+    "provider": "1",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 256,
+      "warps": 1
+    },
+    "rounds": 3,
+    "us": 11.19999960064888,
+    "rois_us": [
+      11.19999960064888,
+      11.19999960064888,
+      12.000000104308128
+    ],
+    "native_us": 4.656,
+    "native_rois_us": [
+      4.656,
+      4.656,
+      4.672
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1713,
+    "provider": "2",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 512,
+      "warps": 1
+    },
+    "rounds": 3,
+    "us": 10.400000028312206,
+    "rois_us": [
+      10.56000031530857,
+      10.400000028312206,
+      10.400000028312206
+    ],
+    "native_us": 3.84,
+    "native_rois_us": [
+      3.872,
+      3.808,
+      3.84
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1713,
+    "provider": "3",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 1024,
+      "warps": 1
+    },
+    "rounds": 3,
+    "us": 10.56000031530857,
+    "rois_us": [
+      10.56000031530857,
+      10.56000031530857,
+      10.639999993145466
+    ],
+    "native_us": 3.808,
+    "native_rois_us": [
+      3.808,
+      3.872,
+      3.776
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1713,
+    "provider": "4",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 1024,
+      "warps": 2
+    },
+    "rounds": 3,
+    "us": 10.879999957978725,
+    "rois_us": [
+      10.879999957978725,
+      10.879999957978725,
+      10.879999957978725
+    ],
+    "native_us": 3.936,
+    "native_rois_us": [
+      3.936,
+      3.984,
+      3.936
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1713,
+    "provider": "5",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 2048,
+      "warps": 4
+    },
+    "rounds": 3,
+    "us": 10.71999967098236,
+    "rois_us": [
+      10.879999957978725,
+      10.71999967098236,
+      10.71999967098236
+    ],
+    "native_us": 3.856,
+    "native_rois_us": [
+      3.92,
+      3.856,
+      3.824
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1713,
+    "provider": "6",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 4096,
+      "warps": 4
+    },
+    "rounds": 3,
+    "us": 10.71999967098236,
+    "rois_us": [
+      10.71999967098236,
+      10.71999967098236,
+      10.71999967098236
+    ],
+    "native_us": 3.872,
+    "native_rois_us": [
+      3.824,
+      3.904,
+      3.872
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1713,
+    "provider": "7",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 4096,
+      "warps": 8
+    },
+    "rounds": 3,
+    "us": 10.639999993145466,
+    "rois_us": [
+      10.639999993145466,
+      10.639999993145466,
+      10.56000031530857
+    ],
+    "native_us": 3.808,
+    "native_rois_us": [
+      3.792,
+      3.856,
+      3.808
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1713,
+    "provider": "8",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 8192,
+      "warps": 8
+    },
+    "rounds": 3,
+    "us": 10.71999967098236,
+    "rois_us": [
+      10.71999967098236,
+      10.71999967098236,
+      12.319999746978283
+    ],
+    "native_us": 3.92,
+    "native_rois_us": [
+      3.92,
+      3.888,
+      4.688
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1714,
+    "provider": "0",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 128,
+      "warps": 1
+    },
+    "rounds": 3,
+    "us": 9.52000031247735,
+    "rois_us": [
+      9.52000031247735,
+      9.52000031247735,
+      9.52000031247735
+    ],
+    "native_us": 3.84,
+    "native_rois_us": [
+      3.84,
+      3.824,
+      3.84
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1714,
+    "provider": "1",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 256,
+      "warps": 1
+    },
+    "rounds": 3,
+    "us": 9.52000031247735,
+    "rois_us": [
+      9.52000031247735,
+      9.52000031247735,
+      9.52000031247735
+    ],
+    "native_us": 3.84,
+    "native_rois_us": [
+      3.808,
+      3.856,
+      3.84
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1714,
+    "provider": "2",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 512,
+      "warps": 1
+    },
+    "rounds": 3,
+    "us": 9.52000031247735,
+    "rois_us": [
+      9.52000031247735,
+      9.52000031247735,
+      9.600000455975533
+    ],
+    "native_us": 3.824,
+    "native_rois_us": [
+      3.84,
+      3.808,
+      3.824
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1714,
+    "provider": "3",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 1024,
+      "warps": 1
+    },
+    "rounds": 3,
+    "us": 9.600000455975533,
+    "rois_us": [
+      9.52000031247735,
+      9.600000455975533,
+      9.600000455975533
+    ],
+    "native_us": 3.824,
+    "native_rois_us": [
+      3.792,
+      3.824,
+      3.904
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1714,
+    "provider": "4",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 1024,
+      "warps": 2
+    },
+    "rounds": 3,
+    "us": 9.680000133812428,
+    "rois_us": [
+      9.680000133812428,
+      9.680000133812428,
+      9.76000027731061
+    ],
+    "native_us": 3.808,
+    "native_rois_us": [
+      3.808,
+      3.808,
+      3.792
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1714,
+    "provider": "5",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 2048,
+      "warps": 4
+    },
+    "rounds": 3,
+    "us": 9.680000133812428,
+    "rois_us": [
+      11.600000318139791,
+      9.680000133812428,
+      9.680000133812428
+    ],
+    "native_us": 3.808,
+    "native_rois_us": [
+      4.608,
+      3.792,
+      3.808
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1714,
+    "provider": "6",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 4096,
+      "warps": 4
+    },
+    "rounds": 3,
+    "us": 9.759999811649323,
+    "rois_us": [
+      9.600000455975533,
+      9.759999811649323,
+      9.759999811649323
+    ],
+    "native_us": 3.888,
+    "native_rois_us": [
+      3.776,
+      3.92,
+      3.888
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1714,
+    "provider": "7",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 4096,
+      "warps": 8
+    },
+    "rounds": 3,
+    "us": 9.440000168979168,
+    "rois_us": [
+      9.440000168979168,
+      9.279999881982803,
+      9.440000168979168
+    ],
+    "native_us": 3.792,
+    "native_rois_us": [
+      3.792,
+      3.776,
+      3.792
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1714,
+    "provider": "8",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 8192,
+      "warps": 8
+    },
+    "rounds": 3,
+    "us": 9.440000168979168,
+    "rois_us": [
+      9.360000025480986,
+      9.440000168979168,
+      9.440000168979168
+    ],
+    "native_us": 3.824,
+    "native_rois_us": [
+      3.824,
+      3.824,
+      3.808
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1715,
+    "provider": "0",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 128,
+      "warps": 1
+    },
+    "rounds": 3,
+    "us": 9.440000168979168,
+    "rois_us": [
+      9.440000168979168,
+      11.279999744147062,
+      9.440000168979168
+    ],
+    "native_us": 3.84,
+    "native_rois_us": [
+      3.824,
+      4.528,
+      3.84
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1715,
+    "provider": "1",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 256,
+      "warps": 1
+    },
+    "rounds": 3,
+    "us": 9.440000168979168,
+    "rois_us": [
+      9.440000168979168,
+      9.440000168979168,
+      9.440000168979168
+    ],
+    "native_us": 3.824,
+    "native_rois_us": [
+      3.824,
+      3.856,
+      3.824
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1715,
+    "provider": "2",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 512,
+      "warps": 1
+    },
+    "rounds": 3,
+    "us": 9.440000168979168,
+    "rois_us": [
+      9.440000168979168,
+      9.440000168979168,
+      11.039999779313803
+    ],
+    "native_us": 3.824,
+    "native_rois_us": [
+      3.824,
+      3.808,
+      4.544
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1715,
+    "provider": "3",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 1024,
+      "warps": 1
+    },
+    "rounds": 3,
+    "us": 9.440000168979168,
+    "rois_us": [
+      9.440000168979168,
+      9.440000168979168,
+      9.440000168979168
+    ],
+    "native_us": 3.824,
+    "native_rois_us": [
+      3.808,
+      3.84,
+      3.824
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1715,
+    "provider": "4",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 1024,
+      "warps": 2
+    },
+    "rounds": 3,
+    "us": 9.440000168979168,
+    "rois_us": [
+      9.440000168979168,
+      9.440000168979168,
+      9.440000168979168
+    ],
+    "native_us": 3.808,
+    "native_rois_us": [
+      3.776,
+      3.808,
+      3.808
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1715,
+    "provider": "5",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 2048,
+      "warps": 4
+    },
+    "rounds": 3,
+    "us": 9.440000168979168,
+    "rois_us": [
+      9.360000025480986,
+      9.440000168979168,
+      9.440000168979168
+    ],
+    "native_us": 3.824,
+    "native_rois_us": [
+      3.808,
+      3.824,
+      3.856
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1715,
+    "provider": "6",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 4096,
+      "warps": 4
+    },
+    "rounds": 3,
+    "us": 9.440000168979168,
+    "rois_us": [
+      9.440000168979168,
+      9.440000168979168,
+      9.440000168979168
+    ],
+    "native_us": 3.84,
+    "native_rois_us": [
+      3.856,
+      3.84,
+      3.776
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1715,
+    "provider": "7",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 4096,
+      "warps": 8
+    },
+    "rounds": 3,
+    "us": 9.440000168979168,
+    "rois_us": [
+      9.440000168979168,
+      9.440000168979168,
+      9.440000168979168
+    ],
+    "native_us": 3.808,
+    "native_rois_us": [
+      3.808,
+      3.808,
+      3.856
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1715,
+    "provider": "8",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 8192,
+      "warps": 8
+    },
+    "rounds": 3,
+    "us": 9.440000168979168,
+    "rois_us": [
+      9.440000168979168,
+      11.200000066310167,
+      9.360000025480986
+    ],
+    "native_us": 3.824,
+    "native_rois_us": [
+      3.824,
+      4.544,
+      3.824
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1717,
+    "provider": "0",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 128,
+      "warps": 1
+    },
+    "rounds": 3,
+    "us": 9.440000168979168,
+    "rois_us": [
+      9.360000025480986,
+      9.440000168979168,
+      9.440000168979168
+    ],
+    "native_us": 3.824,
+    "native_rois_us": [
+      3.808,
+      3.824,
+      3.824
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1717,
+    "provider": "1",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 256,
+      "warps": 1
+    },
+    "rounds": 3,
+    "us": 9.440000168979168,
+    "rois_us": [
+      9.360000025480986,
+      9.440000168979168,
+      9.440000168979168
+    ],
+    "native_us": 3.808,
+    "native_rois_us": [
+      3.776,
+      3.808,
+      3.84
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1717,
+    "provider": "2",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 512,
+      "warps": 1
+    },
+    "rounds": 3,
+    "us": 9.440000168979168,
+    "rois_us": [
+      9.440000168979168,
+      9.279999881982803,
+      11.039999779313803
+    ],
+    "native_us": 3.824,
+    "native_rois_us": [
+      3.824,
+      3.776,
+      4.544
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1717,
+    "provider": "3",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 1024,
+      "warps": 1
+    },
+    "rounds": 3,
+    "us": 9.839999955147505,
+    "rois_us": [
+      9.839999955147505,
+      11.19999960064888,
+      9.440000168979168
+    ],
+    "native_us": 4.208,
+    "native_rois_us": [
+      4.208,
+      4.88,
+      3.968
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1717,
+    "provider": "4",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 1024,
+      "warps": 2
+    },
+    "rounds": 3,
+    "us": 9.440000168979168,
+    "rois_us": [
+      9.440000168979168,
+      9.279999881982803,
+      9.440000168979168
+    ],
+    "native_us": 3.808,
+    "native_rois_us": [
+      3.808,
+      3.84,
+      3.792
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1717,
+    "provider": "5",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 2048,
+      "warps": 4
+    },
+    "rounds": 3,
+    "us": 9.440000168979168,
+    "rois_us": [
+      9.440000168979168,
+      9.440000168979168,
+      9.360000025480986
+    ],
+    "native_us": 3.824,
+    "native_rois_us": [
+      3.824,
+      3.856,
+      3.792
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1717,
+    "provider": "6",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 4096,
+      "warps": 4
+    },
+    "rounds": 3,
+    "us": 9.839999955147505,
+    "rois_us": [
+      9.839999955147505,
+      9.920000098645687,
+      9.440000168979168
+    ],
+    "native_us": 4.176,
+    "native_rois_us": [
+      4.176,
+      4.192,
+      3.984
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1717,
+    "provider": "7",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 4096,
+      "warps": 8
+    },
+    "rounds": 3,
+    "us": 9.440000168979168,
+    "rois_us": [
+      9.440000168979168,
+      9.279999881982803,
+      9.440000168979168
+    ],
+    "native_us": 3.824,
+    "native_rois_us": [
+      3.792,
+      3.824,
+      3.856
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1717,
+    "provider": "8",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 8192,
+      "warps": 8
+    },
+    "rounds": 3,
+    "us": 9.920000098645687,
+    "rois_us": [
+      10.00000024214387,
+      9.599999990314245,
+      9.920000098645687
+    ],
+    "native_us": 4.272,
+    "native_rois_us": [
+      4.288,
+      4.08,
+      4.272
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1718,
+    "provider": "0",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 128,
+      "warps": 1
+    },
+    "rounds": 3,
+    "us": 9.440000168979168,
+    "rois_us": [
+      9.440000168979168,
+      9.440000168979168,
+      9.440000168979168
+    ],
+    "native_us": 3.824,
+    "native_rois_us": [
+      3.84,
+      3.824,
+      3.76
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1718,
+    "provider": "1",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 256,
+      "warps": 1
+    },
+    "rounds": 3,
+    "us": 9.440000168979168,
+    "rois_us": [
+      9.440000168979168,
+      9.440000168979168,
+      9.440000168979168
+    ],
+    "native_us": 3.856,
+    "native_rois_us": [
+      3.792,
+      3.888,
+      3.856
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1718,
+    "provider": "2",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 512,
+      "warps": 1
+    },
+    "rounds": 3,
+    "us": 9.440000168979168,
+    "rois_us": [
+      9.440000168979168,
+      9.440000168979168,
+      9.440000168979168
+    ],
+    "native_us": 3.824,
+    "native_rois_us": [
+      3.808,
+      3.84,
+      3.824
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1718,
+    "provider": "3",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 1024,
+      "warps": 1
+    },
+    "rounds": 3,
+    "us": 9.440000168979168,
+    "rois_us": [
+      9.440000168979168,
+      9.440000168979168,
+      9.440000168979168
+    ],
+    "native_us": 3.824,
+    "native_rois_us": [
+      3.808,
+      3.824,
+      3.824
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1718,
+    "provider": "4",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 1024,
+      "warps": 2
+    },
+    "rounds": 3,
+    "us": 9.440000168979168,
+    "rois_us": [
+      9.440000168979168,
+      9.440000168979168,
+      9.440000168979168
+    ],
+    "native_us": 3.792,
+    "native_rois_us": [
+      3.792,
+      3.792,
+      3.84
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1718,
+    "provider": "5",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 2048,
+      "warps": 4
+    },
+    "rounds": 3,
+    "us": 9.440000168979168,
+    "rois_us": [
+      9.279999881982803,
+      9.440000168979168,
+      9.440000168979168
+    ],
+    "native_us": 3.824,
+    "native_rois_us": [
+      3.744,
+      3.824,
+      3.824
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1718,
+    "provider": "6",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 4096,
+      "warps": 4
+    },
+    "rounds": 3,
+    "us": 9.440000168979168,
+    "rois_us": [
+      9.440000168979168,
+      9.440000168979168,
+      9.440000168979168
+    ],
+    "native_us": 3.792,
+    "native_rois_us": [
+      3.792,
+      3.808,
+      3.76
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1718,
+    "provider": "7",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 4096,
+      "warps": 8
+    },
+    "rounds": 3,
+    "us": 9.440000168979168,
+    "rois_us": [
+      9.440000168979168,
+      9.440000168979168,
+      9.440000168979168
+    ],
+    "native_us": 3.808,
+    "native_rois_us": [
+      3.824,
+      3.808,
+      3.744
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1718,
+    "provider": "8",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 8192,
+      "warps": 8
+    },
+    "rounds": 3,
+    "us": 9.440000168979168,
+    "rois_us": [
+      9.440000168979168,
+      9.440000168979168,
+      9.440000168979168
+    ],
+    "native_us": 3.808,
+    "native_rois_us": [
+      3.824,
+      3.808,
+      3.776
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1719,
+    "provider": "0",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 128,
+      "warps": 1
+    },
+    "rounds": 3,
+    "us": 11.19999960064888,
+    "rois_us": [
+      11.19999960064888,
+      11.839999817311764,
+      11.19999960064888
+    ],
+    "native_us": 5.184,
+    "native_rois_us": [
+      5.2,
+      5.152,
+      5.184
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1719,
+    "provider": "1",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 256,
+      "warps": 1
+    },
+    "rounds": 3,
+    "us": 9.759999811649323,
+    "rois_us": [
+      9.759999811649323,
+      9.759999811649323,
+      9.759999811649323
+    ],
+    "native_us": 3.808,
+    "native_rois_us": [
+      3.808,
+      3.728,
+      3.84
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1719,
+    "provider": "2",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 512,
+      "warps": 1
+    },
+    "rounds": 3,
+    "us": 9.759999811649323,
+    "rois_us": [
+      9.759999811649323,
+      9.759999811649323,
+      9.759999811649323
+    ],
+    "native_us": 3.808,
+    "native_rois_us": [
+      3.808,
+      3.824,
+      3.776
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1719,
+    "provider": "3",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 1024,
+      "warps": 1
+    },
+    "rounds": 3,
+    "us": 9.759999811649323,
+    "rois_us": [
+      9.759999811649323,
+      9.759999811649323,
+      9.759999811649323
+    ],
+    "native_us": 3.792,
+    "native_rois_us": [
+      3.792,
+      3.76,
+      3.808
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1719,
+    "provider": "4",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 1024,
+      "warps": 2
+    },
+    "rounds": 3,
+    "us": 9.759999811649323,
+    "rois_us": [
+      11.359999887645245,
+      9.759999811649323,
+      9.759999811649323
+    ],
+    "native_us": 3.856,
+    "native_rois_us": [
+      4.544,
+      3.76,
+      3.856
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1719,
+    "provider": "5",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 2048,
+      "warps": 4
+    },
+    "rounds": 3,
+    "us": 9.759999811649323,
+    "rois_us": [
+      9.759999811649323,
+      9.759999811649323,
+      9.759999811649323
+    ],
+    "native_us": 3.808,
+    "native_rois_us": [
+      3.76,
+      3.808,
+      3.808
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1719,
+    "provider": "6",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 4096,
+      "warps": 4
+    },
+    "rounds": 3,
+    "us": 9.759999811649323,
+    "rois_us": [
+      11.279999744147062,
+      9.759999811649323,
+      9.759999811649323
+    ],
+    "native_us": 3.84,
+    "native_rois_us": [
+      4.528,
+      3.84,
+      3.792
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1719,
+    "provider": "7",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 4096,
+      "warps": 8
+    },
+    "rounds": 3,
+    "us": 9.759999811649323,
+    "rois_us": [
+      9.759999811649323,
+      9.759999811649323,
+      9.759999811649323
+    ],
+    "native_us": 3.808,
+    "native_rois_us": [
+      3.808,
+      3.792,
+      3.84
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1719,
+    "provider": "8",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 8192,
+      "warps": 8
+    },
+    "rounds": 3,
+    "us": 9.759999811649323,
+    "rois_us": [
+      9.759999811649323,
+      9.759999811649323,
+      9.759999811649323
+    ],
+    "native_us": 3.808,
+    "native_rois_us": [
+      3.776,
+      3.824,
+      3.808
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1720,
+    "provider": "0",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 128,
+      "warps": 1
+    },
+    "rounds": 3,
+    "us": 9.440000168979168,
+    "rois_us": [
+      9.440000168979168,
+      9.360000025480986,
+      9.440000168979168
+    ],
+    "native_us": 3.808,
+    "native_rois_us": [
+      3.824,
+      3.808,
+      3.808
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1720,
+    "provider": "1",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 256,
+      "warps": 1
+    },
+    "rounds": 3,
+    "us": 9.440000168979168,
+    "rois_us": [
+      9.440000168979168,
+      9.440000168979168,
+      9.440000168979168
+    ],
+    "native_us": 3.824,
+    "native_rois_us": [
+      3.824,
+      3.808,
+      3.824
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1720,
+    "provider": "2",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 512,
+      "warps": 1
+    },
+    "rounds": 3,
+    "us": 9.440000168979168,
+    "rois_us": [
+      9.279999881982803,
+      9.440000168979168,
+      9.440000168979168
+    ],
+    "native_us": 3.824,
+    "native_rois_us": [
+      3.824,
+      3.824,
+      3.76
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1720,
+    "provider": "3",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 1024,
+      "warps": 1
+    },
+    "rounds": 3,
+    "us": 9.759999811649323,
+    "rois_us": [
+      11.359999887645245,
+      9.759999811649323,
+      9.759999811649323
+    ],
+    "native_us": 4.176,
+    "native_rois_us": [
+      4.816,
+      4.176,
+      4.096
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1720,
+    "provider": "4",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 1024,
+      "warps": 2
+    },
+    "rounds": 3,
+    "us": 9.440000168979168,
+    "rois_us": [
+      9.440000168979168,
+      9.360000025480986,
+      9.440000168979168
+    ],
+    "native_us": 3.808,
+    "native_rois_us": [
+      3.808,
+      3.808,
+      3.856
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1720,
+    "provider": "5",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 2048,
+      "warps": 4
+    },
+    "rounds": 3,
+    "us": 9.440000168979168,
+    "rois_us": [
+      9.279999881982803,
+      11.119999922811985,
+      9.440000168979168
+    ],
+    "native_us": 3.808,
+    "native_rois_us": [
+      3.792,
+      4.592,
+      3.808
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1720,
+    "provider": "6",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 4096,
+      "warps": 4
+    },
+    "rounds": 3,
+    "us": 9.920000098645687,
+    "rois_us": [
+      9.920000098645687,
+      11.359999887645245,
+      9.440000168979168
+    ],
+    "native_us": 4.176,
+    "native_rois_us": [
+      4.176,
+      4.8,
+      4.064
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1720,
+    "provider": "7",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 4096,
+      "warps": 8
+    },
+    "rounds": 3,
+    "us": 9.440000168979168,
+    "rois_us": [
+      9.360000025480986,
+      9.440000168979168,
+      9.440000168979168
+    ],
+    "native_us": 3.808,
+    "native_rois_us": [
+      3.824,
+      3.792,
+      3.808
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  },
+  {
+    "row": 1720,
+    "provider": "8",
+    "physical_card": "1",
+    "noop": false,
+    "accuracy_ok": true,
+    "stride_ok": true,
+    "config": {
+      "block": 8192,
+      "warps": 8
+    },
+    "rounds": 3,
+    "us": 10.00000024214387,
+    "rois_us": [
+      10.00000024214387,
+      9.440000168979168,
+      10.00000024214387
+    ],
+    "native_us": 4.288,
+    "native_rois_us": [
+      4.4,
+      4.032,
+      4.288
+    ],
+    "kernels": [
+      "cast_dense"
+    ]
+  }
+]

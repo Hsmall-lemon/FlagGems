@@ -1,0 +1,15 @@
+{
+  "result": "passed",
+  "kernel_source_raw_hash_matches": true,
+  "test": {
+    "path": "tests/test_hygon_to_dtype.py",
+    "measured_raw_sha256": "f4cbd4346bcdc3608648561b198c0c83568fbbf70aef5b9380114841192cbbc8",
+    "committed_sha256_lf": "c7aba6df67a685f40ebcfe405b8752bd512452747b80785c54ebe61108fe7d76",
+    "measured_source_artifact": "validation/measured-test-source.py.txt",
+    "executable_ast_identical": true,
+    "comparison": "ast.dump(ast.parse(source), include_attributes=False)",
+    "note": "The final pre-commit Black version reflows the test source after the 33-test run. The preserved measured source matches its recorded SHA256 exactly; its complete AST, including every assertion, is identical to the committed test."
+  },
+  "entrypoint_fragment_matches": true,
+  "remote_full_export_hashes": "The remote root/export files retain other shared changes; only the documented entrypoint fragment and to_copy export are claimed to match."
+}

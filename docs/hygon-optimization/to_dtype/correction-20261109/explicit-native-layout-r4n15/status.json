@@ -1,0 +1,93 @@
+{
+  "node": "a01r4n15",
+  "physical_card": 1,
+  "rows": [
+    {
+      "case": 1712,
+      "shape": [
+        1,
+        4,
+        145,
+        256
+      ],
+      "stride": [
+        148480,
+        256,
+        1024,
+        1
+      ],
+      "native_copy_into_layout_us": 4.8171865234375,
+      "new_public_us": 4.8296845703125,
+      "native_copy_over_new": 0.9974122436583491,
+      "native_copy_aa_drift": 0.008701481419165491,
+      "new_aa_drift": 0.02187582567086821,
+      "native_copy_kernels": [
+        "void at::native::vectorized_elementwise_kernel<4, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul> >(int, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul>)"
+      ],
+      "native_copy_copies": [],
+      "device_conversion_target_met_against_explicit_native_reference": true,
+      "same_public_api_baseline": false,
+      "native_public_layout_valid": false
+    },
+    {
+      "case": 1713,
+      "shape": [
+        1,
+        8,
+        145,
+        256
+      ],
+      "stride": [
+        296960,
+        256,
+        2048,
+        1
+      ],
+      "native_copy_into_layout_us": 4.8140595703125,
+      "new_public_us": 4.8537470703125,
+      "native_copy_over_new": 0.9918233275395116,
+      "native_copy_aa_drift": 0.010308196630108624,
+      "new_aa_drift": 0.0060186420155816656,
+      "native_copy_kernels": [
+        "void at::native::vectorized_elementwise_kernel<4, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul> >(int, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul>)"
+      ],
+      "native_copy_copies": [],
+      "device_conversion_target_met_against_explicit_native_reference": true,
+      "same_public_api_baseline": false,
+      "native_public_layout_valid": false
+    },
+    {
+      "case": 920001,
+      "shape": [
+        17,
+        5
+      ],
+      "stride": [
+        1,
+        17
+      ],
+      "native_copy_into_layout_us": 4.7617158203125,
+      "new_public_us": 4.7537470703125,
+      "native_copy_over_new": 1.0016763092108465,
+      "native_copy_aa_drift": 0.011490863634843418,
+      "new_aa_drift": 0.006413201139421343,
+      "native_copy_kernels": [
+        "void at::native::vectorized_elementwise_kernel<4, at::native::bfloat16_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(float)#1}, std::array<char*, 2ul> >(int, at::native::bfloat16_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(float)#1}, std::array<char*, 2ul>)"
+      ],
+      "native_copy_copies": [],
+      "device_conversion_target_met_against_explicit_native_reference": true,
+      "same_public_api_baseline": false,
+      "native_public_layout_valid": false
+    }
+  ],
+  "same_public_api_baseline": false,
+  "all_three_explicit_native_conversion_comparisons_pass": true,
+  "native_public_layout_acceptance_still_incomplete": true,
+  "definition": "Allocate an output of the CPU-required shape/dtype/stride on every call, then run boxing aten.copy_.default(output,input). Timed device work is exactly one native conversion kernel, no extra D2D copy.",
+  "protocol": "1024 calls/ROI; three A/A blocks of five ROIs; 100M single-CU gate; <=5% guard; all device durations summed; host/allocation/gate excluded.",
+  "limitations": [
+    "This is a different ATen entry point from public Tensor.to(dtype), so it is a valid device conversion reference, not proof that the public DAS baseline is correct.",
+    "It replaces neither the recorded incorrect native public layouts nor the older _to_copy.out reference with its extra D2D copy.",
+    "The original spreadsheet stores metadata only; these inputs use generated seed 713."
+  ]
+}

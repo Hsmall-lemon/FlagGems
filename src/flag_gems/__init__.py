@@ -918,6 +918,7 @@ _FULL_CONFIG = (
         "_to_copy",
         to_copy,
         lambda: _parse_version(torch.__version__) >= _parse_version("2.4"),
+        # The Torch-FL bridge implements _to_copy directly on PrivateUse1.
         (
             ("PrivateUse1",)
             if vendor_name == "hygon"

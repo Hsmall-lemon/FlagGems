@@ -1,0 +1,35 @@
+{
+  "node": "a01r4n15",
+  "python": "3.10.20 (main, Jun 11 2026, 15:17:37) [GCC 14.3.0]",
+  "torch": "2.10.0+cpu",
+  "torch_hip": "6.3.26113",
+  "torch_cuda": null,
+  "triton": "3.6.0",
+  "torch_fl": null,
+  "device": "GPUTarget(backend='hip', arch='gfx936', warp_size=64)",
+  "device_name": "<torch_fl.flagos._DeviceProperties object at 0x14de3d6fd480>",
+  "visible": "1",
+  "mm_export": "_hygon.ops.mm",
+  "visible_device_count": 1,
+  "physical_pci_bus_id": "0000:36:00.0",
+  "concurrent_other_card_validation": true,
+  "source_sha256": {
+    "src/flag_gems/runtime/backend/_hygon/ops/mm.py": "db99fdf7caafc1ec2b9363b6f1f46185b8678c0e4ba8ab14b29572d9f4b09667",
+    "src/flag_gems/runtime/backend/_hygon/ops/mm_w8a8_int8.py": "309d2556e79186b24e6874839162039415f03d89246340e3e90819cbee6d1e46"
+  },
+  "checkout": "/public/home/wzx226226/算子优化/correction-20261109/expanded-gpu1/repo-to-dtype-standalone",
+  "to_copy_export": "_hygon.ops.to",
+  "support_source_sha256": {
+    "src/flag_gems/__init__.py": "21bad4a2c5d064d1848049c14b1875b170c227402296fc83f8f197a1cf9afe83",
+    "src/flag_gems/runtime/backend/_hygon/ops/__init__.py": "7b2fb25a507dd5e6b90fcf226f7f1651c66eafc0fe06f00fa6fe78a2ce8b2d27",
+    "src/flag_gems/runtime/backend/_hygon/ops/to.py": "f30ca6802fd820638a420574e78e74a1b208aedafb6ca1237835628202a980ef",
+    "src/flag_gems/ops/to.py": "5b49026770a02ea3fe9f3c262b81f4ceb2108e7513b2ea38175263cc8acc7489",
+    "tests/test_hygon_to_dtype.py": "4f82f2c816f5eaecb60d7cfb8c466d6b6401a03769e7d810a58b4a26ed9619f8"
+  },
+  "old_source_sha256": "d2594faf1b89fa0bdb2de549d4e2dde19ea87f63c0d92e587b326773d094a0cb",
+  "compiler_library": {
+    "path": "/opt/flagos/python/lib/python3.10/site-packages/triton/_C/libtriton.so",
+    "sha256": "d4176c9cbc4887d5f2d516795b0b1236420fa825df07ee94638d020c41572991"
+  },
+  "backend_config_sha256": "f3e42c3cca89b20ef2e6250683f3953822b83e25ead7017ae7eacabb65a106c1"
+}

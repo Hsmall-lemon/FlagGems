@@ -1,0 +1,6303 @@
+{
+  "node": "a01r4n15",
+  "physical_card": "3",
+  "apptainer_container": "/work1/share/scnethpc2601/flagos-dev/20261103-hygon-optimization/images/flagos-dev-20261103.rootfs",
+  "torch_file": "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch/__init__.py",
+  "torch_hip": "7.2.26365",
+  "native_file": "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/flash_attn_2_cuda.cpython-312-x86_64-linux-gnu.so",
+  "device": "_CudaDeviceProperties(name='BW', major=9, minor=3, gcnArchName='gfx936:sramecc+:xnack-', total_memory=65520MB, multi_processor_count=80, uuid=30303135-3736-3837-3534-646131306331, pci_bus_id=119, pci_device_id=0, pci_domain_id=0, L2_cache_size=8MB)",
+  "packages": {
+    "torch": "2.13.0+dtk2610.2610261432.gefb4e1",
+    "triton": "3.7.0+dtk2610.torch2130.2610212057.g024953",
+    "flash-attn": "2.8.4+dtk2610.torch2130.2610211904.g0f1a5a"
+  },
+  "scope": "Native feature checks and byte-identical workbook metadata reconstructions; no original model payload.",
+  "tolerances": {
+    "output_atol": 0.002,
+    "output_rtol": 0.02,
+    "lse_atol": 2e-05,
+    "lse_rtol": 2e-05,
+    "gradient_atol": 0.01,
+    "gradient_rtol": 0.03
+  },
+  "tests": [
+    {
+      "id": "workbook/model_state/wheel",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            8,
+            2049,
+            16,
+            128
+          ],
+          "elements": 33570816,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0010229051113128662,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            8,
+            16,
+            2049
+          ],
+          "elements": 262272,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 1.9073486328125e-06,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            8,
+            2049,
+            16,
+            128
+          ],
+          "elements": 33570816,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0010229051113128662,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            8,
+            16,
+            2049
+          ],
+          "elements": 262272,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 1.9073486328125e-06,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            8,
+            2049,
+            16,
+            128
+          ],
+          "elements": 33570816,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0010229051113128662,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            8,
+            16,
+            2049
+          ],
+          "elements": 262272,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 1.9073486328125e-06,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 3,
+      "arm": "wheel",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            8,
+            2049,
+            16,
+            128
+          ],
+          "stride": [
+            12589056,
+            6144,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            8,
+            2049,
+            16,
+            128
+          ],
+          "stride": [
+            12589056,
+            6144,
+            128,
+            1
+          ],
+          "offset": 2048
+        },
+        {
+          "shape": [
+            8,
+            2049,
+            16,
+            128
+          ],
+          "stride": [
+            12589056,
+            6144,
+            128,
+            1
+          ],
+          "offset": 4096
+        }
+      ]
+    },
+    {
+      "id": "workbook/model_state/aten",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            8,
+            2049,
+            16,
+            128
+          ],
+          "elements": 33570816,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0010229051113128662,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            8,
+            16,
+            2049
+          ],
+          "elements": 262272,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 1.9073486328125e-06,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            8,
+            2049,
+            16,
+            128
+          ],
+          "elements": 33570816,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0010229051113128662,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            8,
+            16,
+            2049
+          ],
+          "elements": 262272,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 1.9073486328125e-06,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            8,
+            2049,
+            16,
+            128
+          ],
+          "elements": 33570816,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0010229051113128662,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            8,
+            16,
+            2049
+          ],
+          "elements": 262272,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 1.9073486328125e-06,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 3,
+      "arm": "aten",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            8,
+            2049,
+            16,
+            128
+          ],
+          "stride": [
+            12589056,
+            6144,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            8,
+            2049,
+            16,
+            128
+          ],
+          "stride": [
+            12589056,
+            6144,
+            128,
+            1
+          ],
+          "offset": 2048
+        },
+        {
+          "shape": [
+            8,
+            2049,
+            16,
+            128
+          ],
+          "stride": [
+            12589056,
+            6144,
+            128,
+            1
+          ],
+          "offset": 4096
+        }
+      ]
+    },
+    {
+      "id": "workbook/model_state/public",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            8,
+            2049,
+            16,
+            128
+          ],
+          "elements": 33570816,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0010229051113128662,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            8,
+            16,
+            2049
+          ],
+          "elements": 262272,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 1.9073486328125e-06,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            8,
+            2049,
+            16,
+            128
+          ],
+          "elements": 33570816,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0010229051113128662,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            8,
+            16,
+            2049
+          ],
+          "elements": 262272,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 1.9073486328125e-06,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            8,
+            2049,
+            16,
+            128
+          ],
+          "elements": 33570816,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0010229051113128662,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            8,
+            16,
+            2049
+          ],
+          "elements": 262272,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 1.9073486328125e-06,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 3,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            8,
+            2049,
+            16,
+            128
+          ],
+          "stride": [
+            12589056,
+            6144,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            8,
+            2049,
+            16,
+            128
+          ],
+          "stride": [
+            12589056,
+            6144,
+            128,
+            1
+          ],
+          "offset": 2048
+        },
+        {
+          "shape": [
+            8,
+            2049,
+            16,
+            128
+          ],
+          "stride": [
+            12589056,
+            6144,
+            128,
+            1
+          ],
+          "offset": 4096
+        }
+      ]
+    },
+    {
+      "id": "workbook/expanded_small/wheel",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            3,
+            16,
+            128
+          ],
+          "elements": 12288,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.008086681365966797,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            16,
+            3
+          ],
+          "elements": 96,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            3,
+            16,
+            128
+          ],
+          "elements": 12288,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.008086681365966797,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            16,
+            3
+          ],
+          "elements": 96,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            3,
+            16,
+            128
+          ],
+          "elements": 12288,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.008086681365966797,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            16,
+            3
+          ],
+          "elements": 96,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 3,
+      "arm": "wheel",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            3,
+            16,
+            128
+          ],
+          "stride": [
+            18432,
+            6144,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            3,
+            16,
+            128
+          ],
+          "stride": [
+            18432,
+            6144,
+            128,
+            1
+          ],
+          "offset": 2048
+        },
+        {
+          "shape": [
+            2,
+            3,
+            16,
+            128
+          ],
+          "stride": [
+            18432,
+            6144,
+            128,
+            1
+          ],
+          "offset": 4096
+        }
+      ]
+    },
+    {
+      "id": "workbook/expanded_small/aten",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            3,
+            16,
+            128
+          ],
+          "elements": 12288,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.008086681365966797,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            16,
+            3
+          ],
+          "elements": 96,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            3,
+            16,
+            128
+          ],
+          "elements": 12288,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.008086681365966797,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            16,
+            3
+          ],
+          "elements": 96,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            3,
+            16,
+            128
+          ],
+          "elements": 12288,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.008086681365966797,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            16,
+            3
+          ],
+          "elements": 96,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 3,
+      "arm": "aten",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            3,
+            16,
+            128
+          ],
+          "stride": [
+            18432,
+            6144,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            3,
+            16,
+            128
+          ],
+          "stride": [
+            18432,
+            6144,
+            128,
+            1
+          ],
+          "offset": 2048
+        },
+        {
+          "shape": [
+            2,
+            3,
+            16,
+            128
+          ],
+          "stride": [
+            18432,
+            6144,
+            128,
+            1
+          ],
+          "offset": 4096
+        }
+      ]
+    },
+    {
+      "id": "workbook/expanded_small/public",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            3,
+            16,
+            128
+          ],
+          "elements": 12288,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.008086681365966797,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            16,
+            3
+          ],
+          "elements": 96,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            3,
+            16,
+            128
+          ],
+          "elements": 12288,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.008086681365966797,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            16,
+            3
+          ],
+          "elements": 96,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            3,
+            16,
+            128
+          ],
+          "elements": 12288,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.008086681365966797,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            16,
+            3
+          ],
+          "elements": 96,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 3,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            3,
+            16,
+            128
+          ],
+          "stride": [
+            18432,
+            6144,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            3,
+            16,
+            128
+          ],
+          "stride": [
+            18432,
+            6144,
+            128,
+            1
+          ],
+          "offset": 2048
+        },
+        {
+          "shape": [
+            2,
+            3,
+            16,
+            128
+          ],
+          "stride": [
+            18432,
+            6144,
+            128,
+            1
+          ],
+          "offset": 4096
+        }
+      ]
+    },
+    {
+      "id": "workbook/expanded_medium/wheel",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            23,
+            16,
+            128
+          ],
+          "elements": 94208,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.004246234893798828,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            16,
+            23
+          ],
+          "elements": 736,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            23,
+            16,
+            128
+          ],
+          "elements": 94208,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.004246234893798828,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            16,
+            23
+          ],
+          "elements": 736,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            23,
+            16,
+            128
+          ],
+          "elements": 94208,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.004246234893798828,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            16,
+            23
+          ],
+          "elements": 736,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 3,
+      "arm": "wheel",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            23,
+            16,
+            128
+          ],
+          "stride": [
+            141312,
+            6144,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            23,
+            16,
+            128
+          ],
+          "stride": [
+            141312,
+            6144,
+            128,
+            1
+          ],
+          "offset": 2048
+        },
+        {
+          "shape": [
+            2,
+            23,
+            16,
+            128
+          ],
+          "stride": [
+            141312,
+            6144,
+            128,
+            1
+          ],
+          "offset": 4096
+        }
+      ]
+    },
+    {
+      "id": "workbook/expanded_medium/aten",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            23,
+            16,
+            128
+          ],
+          "elements": 94208,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.004246234893798828,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            16,
+            23
+          ],
+          "elements": 736,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            23,
+            16,
+            128
+          ],
+          "elements": 94208,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.004246234893798828,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            16,
+            23
+          ],
+          "elements": 736,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            23,
+            16,
+            128
+          ],
+          "elements": 94208,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.004246234893798828,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            16,
+            23
+          ],
+          "elements": 736,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 3,
+      "arm": "aten",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            23,
+            16,
+            128
+          ],
+          "stride": [
+            141312,
+            6144,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            23,
+            16,
+            128
+          ],
+          "stride": [
+            141312,
+            6144,
+            128,
+            1
+          ],
+          "offset": 2048
+        },
+        {
+          "shape": [
+            2,
+            23,
+            16,
+            128
+          ],
+          "stride": [
+            141312,
+            6144,
+            128,
+            1
+          ],
+          "offset": 4096
+        }
+      ]
+    },
+    {
+      "id": "workbook/expanded_medium/public",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            23,
+            16,
+            128
+          ],
+          "elements": 94208,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.004246234893798828,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            16,
+            23
+          ],
+          "elements": 736,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            23,
+            16,
+            128
+          ],
+          "elements": 94208,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.004246234893798828,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            16,
+            23
+          ],
+          "elements": 736,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            23,
+            16,
+            128
+          ],
+          "elements": 94208,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.004246234893798828,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            16,
+            23
+          ],
+          "elements": 736,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 3,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            23,
+            16,
+            128
+          ],
+          "stride": [
+            141312,
+            6144,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            23,
+            16,
+            128
+          ],
+          "stride": [
+            141312,
+            6144,
+            128,
+            1
+          ],
+          "offset": 2048
+        },
+        {
+          "shape": [
+            2,
+            23,
+            16,
+            128
+          ],
+          "stride": [
+            141312,
+            6144,
+            128,
+            1
+          ],
+          "offset": 4096
+        }
+      ]
+    },
+    {
+      "id": "workbook/expanded_large/wheel",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            362,
+            16,
+            128
+          ],
+          "elements": 1482752,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.002032160758972168,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            16,
+            362
+          ],
+          "elements": 11584,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            362,
+            16,
+            128
+          ],
+          "elements": 1482752,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.002032160758972168,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            16,
+            362
+          ],
+          "elements": 11584,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            362,
+            16,
+            128
+          ],
+          "elements": 1482752,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.002032160758972168,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            16,
+            362
+          ],
+          "elements": 11584,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 3,
+      "arm": "wheel",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            362,
+            16,
+            128
+          ],
+          "stride": [
+            2224128,
+            6144,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            362,
+            16,
+            128
+          ],
+          "stride": [
+            2224128,
+            6144,
+            128,
+            1
+          ],
+          "offset": 2048
+        },
+        {
+          "shape": [
+            2,
+            362,
+            16,
+            128
+          ],
+          "stride": [
+            2224128,
+            6144,
+            128,
+            1
+          ],
+          "offset": 4096
+        }
+      ]
+    },
+    {
+      "id": "workbook/expanded_large/aten",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            362,
+            16,
+            128
+          ],
+          "elements": 1482752,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.002032160758972168,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            16,
+            362
+          ],
+          "elements": 11584,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            362,
+            16,
+            128
+          ],
+          "elements": 1482752,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.002032160758972168,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            16,
+            362
+          ],
+          "elements": 11584,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            362,
+            16,
+            128
+          ],
+          "elements": 1482752,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.002032160758972168,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            16,
+            362
+          ],
+          "elements": 11584,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 3,
+      "arm": "aten",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            362,
+            16,
+            128
+          ],
+          "stride": [
+            2224128,
+            6144,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            362,
+            16,
+            128
+          ],
+          "stride": [
+            2224128,
+            6144,
+            128,
+            1
+          ],
+          "offset": 2048
+        },
+        {
+          "shape": [
+            2,
+            362,
+            16,
+            128
+          ],
+          "stride": [
+            2224128,
+            6144,
+            128,
+            1
+          ],
+          "offset": 4096
+        }
+      ]
+    },
+    {
+      "id": "workbook/expanded_large/public",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            362,
+            16,
+            128
+          ],
+          "elements": 1482752,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.002032160758972168,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            16,
+            362
+          ],
+          "elements": 11584,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            362,
+            16,
+            128
+          ],
+          "elements": 1482752,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.002032160758972168,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            16,
+            362
+          ],
+          "elements": 11584,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            362,
+            16,
+            128
+          ],
+          "elements": 1482752,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.002032160758972168,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            16,
+            362
+          ],
+          "elements": 11584,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 3,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            362,
+            16,
+            128
+          ],
+          "stride": [
+            2224128,
+            6144,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            362,
+            16,
+            128
+          ],
+          "stride": [
+            2224128,
+            6144,
+            128,
+            1
+          ],
+          "offset": 2048
+        },
+        {
+          "shape": [
+            2,
+            362,
+            16,
+            128
+          ],
+          "stride": [
+            2224128,
+            6144,
+            128,
+            1
+          ],
+          "offset": 4096
+        }
+      ]
+    },
+    {
+      "id": "bfloat16/dense/3/3/32",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            3,
+            4,
+            32
+          ],
+          "elements": 768,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.005229353904724121,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            3
+          ],
+          "elements": 24,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 2.384185791015625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            3,
+            4,
+            32
+          ],
+          "elements": 768,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.005229353904724121,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            3
+          ],
+          "elements": 24,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 2.384185791015625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 2,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            3,
+            4,
+            32
+          ],
+          "stride": [
+            384,
+            128,
+            32,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            3,
+            4,
+            32
+          ],
+          "stride": [
+            384,
+            128,
+            32,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            3,
+            4,
+            32
+          ],
+          "stride": [
+            384,
+            128,
+            32,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "bfloat16/dense/23/23/64",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            23,
+            4,
+            64
+          ],
+          "elements": 11776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.004377603530883789,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            23
+          ],
+          "elements": 184,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            23,
+            4,
+            64
+          ],
+          "elements": 11776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.004377603530883789,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            23
+          ],
+          "elements": 184,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 2,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            23,
+            4,
+            64
+          ],
+          "stride": [
+            5888,
+            256,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            23,
+            4,
+            64
+          ],
+          "stride": [
+            5888,
+            256,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            23,
+            4,
+            64
+          ],
+          "stride": [
+            5888,
+            256,
+            64,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "bfloat16/dense/127/127/128",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            127,
+            4,
+            128
+          ],
+          "elements": 130048,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0024788975715637207,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            127
+          ],
+          "elements": 1016,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            127,
+            4,
+            128
+          ],
+          "elements": 130048,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0024788975715637207,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            127
+          ],
+          "elements": 1016,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 2,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            127,
+            4,
+            128
+          ],
+          "stride": [
+            65024,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            127,
+            4,
+            128
+          ],
+          "stride": [
+            65024,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            127,
+            4,
+            128
+          ],
+          "stride": [
+            65024,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "bfloat16/dense/128/128/128",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            128,
+            4,
+            128
+          ],
+          "elements": 131072,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.003177642822265625,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            128
+          ],
+          "elements": 1024,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            128,
+            4,
+            128
+          ],
+          "elements": 131072,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.003177642822265625,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            128
+          ],
+          "elements": 1024,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 2,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            128,
+            4,
+            128
+          ],
+          "stride": [
+            65536,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            128,
+            4,
+            128
+          ],
+          "stride": [
+            65536,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            128,
+            4,
+            128
+          ],
+          "stride": [
+            65536,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "bfloat16/dense/129/129/128",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0034432411193847656,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0034432411193847656,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 2,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "bfloat16/dense/137/137/256",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            137,
+            4,
+            256
+          ],
+          "elements": 280576,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0024110078811645508,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            137
+          ],
+          "elements": 1096,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            137,
+            4,
+            256
+          ],
+          "elements": 280576,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0024110078811645508,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            137
+          ],
+          "elements": 1096,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 2,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            137,
+            4,
+            256
+          ],
+          "stride": [
+            140288,
+            1024,
+            256,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            137,
+            4,
+            256
+          ],
+          "stride": [
+            140288,
+            1024,
+            256,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            137,
+            4,
+            256
+          ],
+          "stride": [
+            140288,
+            1024,
+            256,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "bfloat16/dense/23/137/64",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            23,
+            4,
+            64
+          ],
+          "elements": 11776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.00208967924118042,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            23
+          ],
+          "elements": 184,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            23,
+            4,
+            64
+          ],
+          "elements": 11776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.00208967924118042,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            23
+          ],
+          "elements": 184,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 2,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            23,
+            4,
+            64
+          ],
+          "stride": [
+            5888,
+            256,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            137,
+            4,
+            64
+          ],
+          "stride": [
+            35072,
+            256,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            137,
+            4,
+            64
+          ],
+          "stride": [
+            35072,
+            256,
+            64,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "bfloat16/dense/257/257/64",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            257,
+            4,
+            64
+          ],
+          "elements": 131584,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0017222762107849121,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            257
+          ],
+          "elements": 2056,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            257,
+            4,
+            64
+          ],
+          "elements": 131584,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0017222762107849121,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            257
+          ],
+          "elements": 2056,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 2,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            257,
+            4,
+            64
+          ],
+          "stride": [
+            65792,
+            256,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            257,
+            4,
+            64
+          ],
+          "stride": [
+            65792,
+            256,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            257,
+            4,
+            64
+          ],
+          "stride": [
+            65792,
+            256,
+            64,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "bfloat16/mask/True/(-1, -1)",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            97,
+            4,
+            64
+          ],
+          "elements": 49664,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0034155845642089844,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            97
+          ],
+          "elements": 776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            97,
+            4,
+            64
+          ],
+          "elements": 49664,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0034155845642089844,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            97
+          ],
+          "elements": 776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 2,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            97,
+            4,
+            64
+          ],
+          "stride": [
+            24832,
+            256,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            137,
+            4,
+            64
+          ],
+          "stride": [
+            35072,
+            256,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            137,
+            4,
+            64
+          ],
+          "stride": [
+            35072,
+            256,
+            64,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "bfloat16/mask/False/(17, 9)",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            97,
+            4,
+            64
+          ],
+          "elements": 49664,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0039446353912353516,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            97
+          ],
+          "elements": 776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            97,
+            4,
+            64
+          ],
+          "elements": 49664,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0039446353912353516,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            97
+          ],
+          "elements": 776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 2,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            97,
+            4,
+            64
+          ],
+          "stride": [
+            24832,
+            256,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            137,
+            4,
+            64
+          ],
+          "stride": [
+            35072,
+            256,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            137,
+            4,
+            64
+          ],
+          "stride": [
+            35072,
+            256,
+            64,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "bfloat16/mask/True/(31, 0)",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            97,
+            4,
+            64
+          ],
+          "elements": 49664,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.003781616687774658,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            97
+          ],
+          "elements": 776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            97,
+            4,
+            64
+          ],
+          "elements": 49664,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.003781616687774658,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            97
+          ],
+          "elements": 776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 2,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            97,
+            4,
+            64
+          ],
+          "stride": [
+            24832,
+            256,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            137,
+            4,
+            64
+          ],
+          "stride": [
+            35072,
+            256,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            137,
+            4,
+            64
+          ],
+          "stride": [
+            35072,
+            256,
+            64,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "bfloat16/gqa/False",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            23,
+            8,
+            128
+          ],
+          "elements": 47104,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0024779438972473145,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            8,
+            23
+          ],
+          "elements": 368,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            23,
+            8,
+            128
+          ],
+          "elements": 47104,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0024779438972473145,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            8,
+            23
+          ],
+          "elements": 368,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 2,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            23,
+            8,
+            128
+          ],
+          "stride": [
+            23552,
+            1024,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            137,
+            2,
+            128
+          ],
+          "stride": [
+            35072,
+            256,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            137,
+            2,
+            128
+          ],
+          "stride": [
+            35072,
+            256,
+            128,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "bfloat16/gqa/True",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            23,
+            8,
+            128
+          ],
+          "elements": 47104,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0024779438972473145,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            8,
+            23
+          ],
+          "elements": 368,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            23,
+            8,
+            128
+          ],
+          "elements": 47104,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0024779438972473145,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            8,
+            23
+          ],
+          "elements": 368,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 2,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            23,
+            8,
+            128
+          ],
+          "stride": [
+            23552,
+            1024,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            137,
+            2,
+            128
+          ],
+          "stride": [
+            35072,
+            256,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            137,
+            2,
+            128
+          ],
+          "stride": [
+            35072,
+            256,
+            128,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "bfloat16/scale/0.0",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": false,
+      "repeats": 2,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "bfloat16/scale/-0.08838834764831843",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": false,
+      "repeats": 2,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "bfloat16/scale/0.25",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 1,
+          "nonfinite": 0,
+          "max_abs": 0.008176803588867188,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 2.86102294921875e-06,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 1,
+          "nonfinite": 0,
+          "max_abs": 0.008176803588867188,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 2.86102294921875e-06,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 2,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "bfloat16/packed/qkv",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            97,
+            4,
+            64
+          ],
+          "elements": 49664,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.007362842559814453,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            97
+          ],
+          "elements": 776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ]
+    },
+    {
+      "id": "bfloat16/packed/kv",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            97,
+            4,
+            64
+          ],
+          "elements": 49664,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.007362842559814453,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            97
+          ],
+          "elements": 776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ]
+    },
+    {
+      "id": "bfloat16/varlen/False",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            123,
+            4,
+            64
+          ],
+          "elements": 31488,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.006018161773681641,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            4,
+            123
+          ],
+          "elements": 492,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ]
+    },
+    {
+      "id": "bfloat16/varlen/True",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            123,
+            4,
+            64
+          ],
+          "elements": 31488,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.006018161773681641,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            4,
+            123
+          ],
+          "elements": 492,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ]
+    },
+    {
+      "id": "bfloat16/backward/False/False",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            23,
+            4,
+            64
+          ],
+          "elements": 11776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0034148693084716797,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            23,
+            4,
+            64
+          ],
+          "elements": 11776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.004699587821960449,
+          "atol": 0.01,
+          "rtol": 0.03
+        },
+        {
+          "shape": [
+            2,
+            31,
+            4,
+            64
+          ],
+          "elements": 15872,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.005449891090393066,
+          "atol": 0.01,
+          "rtol": 0.03
+        },
+        {
+          "shape": [
+            2,
+            31,
+            4,
+            64
+          ],
+          "elements": 15872,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.005175232887268066,
+          "atol": 0.01,
+          "rtol": 0.03
+        }
+      ]
+    },
+    {
+      "id": "bfloat16/backward/True/False",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            23,
+            4,
+            64
+          ],
+          "elements": 11776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.004889249801635742,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            23,
+            4,
+            64
+          ],
+          "elements": 11776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.006730914115905762,
+          "atol": 0.01,
+          "rtol": 0.03
+        },
+        {
+          "shape": [
+            2,
+            31,
+            4,
+            64
+          ],
+          "elements": 15872,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.008223533630371094,
+          "atol": 0.01,
+          "rtol": 0.03
+        },
+        {
+          "shape": [
+            2,
+            31,
+            4,
+            64
+          ],
+          "elements": 15872,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.012392997741699219,
+          "atol": 0.01,
+          "rtol": 0.03
+        }
+      ]
+    },
+    {
+      "id": "bfloat16/backward/True/True",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            23,
+            4,
+            64
+          ],
+          "elements": 11776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.004348039627075195,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            23,
+            4,
+            64
+          ],
+          "elements": 11776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.006883561611175537,
+          "atol": 0.01,
+          "rtol": 0.03
+        },
+        {
+          "shape": [
+            2,
+            31,
+            2,
+            64
+          ],
+          "elements": 7936,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.008477926254272461,
+          "atol": 0.01,
+          "rtol": 0.03
+        },
+        {
+          "shape": [
+            2,
+            31,
+            2,
+            64
+          ],
+          "elements": 7936,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.008384943008422852,
+          "atol": 0.01,
+          "rtol": 0.03
+        }
+      ]
+    },
+    {
+      "id": "bfloat16/kvcache",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            1,
+            8,
+            64
+          ],
+          "elements": 1024,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.001553177833557129,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            8,
+            1
+          ],
+          "elements": 16,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ]
+    },
+    {
+      "id": "bfloat16/dropout",
+      "status": "failed",
+      "error": "IndexError('too many indices for tensor of dimension 1')",
+      "traceback": "Traceback (most recent call last):\n  File \"/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/functional.py\", line 77, in record\n    result = function()\n             ^^^^^^^^^^\n  File \"/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/functional.py\", line 232, in dropout\n    keep = ~torch.signbit(mask.detach().cpu()[:, :, :97, :97])\n                          ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^\nIndexError: too many indices for tensor of dimension 1\n"
+    },
+    {
+      "id": "float16/dense/3/3/32",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            3,
+            4,
+            32
+          ],
+          "elements": 768,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0013585090637207031,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            3
+          ],
+          "elements": 24,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 3.5762786865234375e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            3,
+            4,
+            32
+          ],
+          "elements": 768,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0013585090637207031,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            3
+          ],
+          "elements": 24,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 3.5762786865234375e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 2,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            3,
+            4,
+            32
+          ],
+          "stride": [
+            384,
+            128,
+            32,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            3,
+            4,
+            32
+          ],
+          "stride": [
+            384,
+            128,
+            32,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            3,
+            4,
+            32
+          ],
+          "stride": [
+            384,
+            128,
+            32,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "float16/dense/23/23/64",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            23,
+            4,
+            64
+          ],
+          "elements": 11776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0008999109268188477,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            23
+          ],
+          "elements": 184,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            23,
+            4,
+            64
+          ],
+          "elements": 11776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0008999109268188477,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            23
+          ],
+          "elements": 184,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 2,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            23,
+            4,
+            64
+          ],
+          "stride": [
+            5888,
+            256,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            23,
+            4,
+            64
+          ],
+          "stride": [
+            5888,
+            256,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            23,
+            4,
+            64
+          ],
+          "stride": [
+            5888,
+            256,
+            64,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "float16/dense/127/127/128",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            127,
+            4,
+            128
+          ],
+          "elements": 130048,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0007129907608032227,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            127
+          ],
+          "elements": 1016,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            127,
+            4,
+            128
+          ],
+          "elements": 130048,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0007129907608032227,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            127
+          ],
+          "elements": 1016,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 2,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            127,
+            4,
+            128
+          ],
+          "stride": [
+            65024,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            127,
+            4,
+            128
+          ],
+          "stride": [
+            65024,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            127,
+            4,
+            128
+          ],
+          "stride": [
+            65024,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "float16/dense/128/128/128",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            128,
+            4,
+            128
+          ],
+          "elements": 131072,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0005407929420471191,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            128
+          ],
+          "elements": 1024,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            128,
+            4,
+            128
+          ],
+          "elements": 131072,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0005407929420471191,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            128
+          ],
+          "elements": 1024,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 2,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            128,
+            4,
+            128
+          ],
+          "stride": [
+            65536,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            128,
+            4,
+            128
+          ],
+          "stride": [
+            65536,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            128,
+            4,
+            128
+          ],
+          "stride": [
+            65536,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "float16/dense/129/129/128",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0005292296409606934,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0005292296409606934,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 2,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "float16/dense/137/137/256",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            137,
+            4,
+            256
+          ],
+          "elements": 280576,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0004885196685791016,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            137
+          ],
+          "elements": 1096,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            137,
+            4,
+            256
+          ],
+          "elements": 280576,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0004885196685791016,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            137
+          ],
+          "elements": 1096,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 2,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            137,
+            4,
+            256
+          ],
+          "stride": [
+            140288,
+            1024,
+            256,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            137,
+            4,
+            256
+          ],
+          "stride": [
+            140288,
+            1024,
+            256,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            137,
+            4,
+            256
+          ],
+          "stride": [
+            140288,
+            1024,
+            256,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "float16/dense/23/137/64",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            23,
+            4,
+            64
+          ],
+          "elements": 11776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0004621148109436035,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            23
+          ],
+          "elements": 184,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            23,
+            4,
+            64
+          ],
+          "elements": 11776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0004621148109436035,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            23
+          ],
+          "elements": 184,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 2,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            23,
+            4,
+            64
+          ],
+          "stride": [
+            5888,
+            256,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            137,
+            4,
+            64
+          ],
+          "stride": [
+            35072,
+            256,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            137,
+            4,
+            64
+          ],
+          "stride": [
+            35072,
+            256,
+            64,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "float16/dense/257/257/64",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            257,
+            4,
+            64
+          ],
+          "elements": 131584,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0005026459693908691,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            257
+          ],
+          "elements": 2056,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            257,
+            4,
+            64
+          ],
+          "elements": 131584,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0005026459693908691,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            257
+          ],
+          "elements": 2056,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 2,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            257,
+            4,
+            64
+          ],
+          "stride": [
+            65792,
+            256,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            257,
+            4,
+            64
+          ],
+          "stride": [
+            65792,
+            256,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            257,
+            4,
+            64
+          ],
+          "stride": [
+            65792,
+            256,
+            64,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "float16/mask/True/(-1, -1)",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            97,
+            4,
+            64
+          ],
+          "elements": 49664,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0005747079849243164,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            97
+          ],
+          "elements": 776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            97,
+            4,
+            64
+          ],
+          "elements": 49664,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0005747079849243164,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            97
+          ],
+          "elements": 776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 2,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            97,
+            4,
+            64
+          ],
+          "stride": [
+            24832,
+            256,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            137,
+            4,
+            64
+          ],
+          "stride": [
+            35072,
+            256,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            137,
+            4,
+            64
+          ],
+          "stride": [
+            35072,
+            256,
+            64,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "float16/mask/False/(17, 9)",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            97,
+            4,
+            64
+          ],
+          "elements": 49664,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0011047124862670898,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            97
+          ],
+          "elements": 776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            97,
+            4,
+            64
+          ],
+          "elements": 49664,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0011047124862670898,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            97
+          ],
+          "elements": 776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 2,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            97,
+            4,
+            64
+          ],
+          "stride": [
+            24832,
+            256,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            137,
+            4,
+            64
+          ],
+          "stride": [
+            35072,
+            256,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            137,
+            4,
+            64
+          ],
+          "stride": [
+            35072,
+            256,
+            64,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "float16/mask/True/(31, 0)",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            97,
+            4,
+            64
+          ],
+          "elements": 49664,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0009409189224243164,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            97
+          ],
+          "elements": 776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            97,
+            4,
+            64
+          ],
+          "elements": 49664,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0009409189224243164,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            97
+          ],
+          "elements": 776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 2,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            97,
+            4,
+            64
+          ],
+          "stride": [
+            24832,
+            256,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            137,
+            4,
+            64
+          ],
+          "stride": [
+            35072,
+            256,
+            64,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            137,
+            4,
+            64
+          ],
+          "stride": [
+            35072,
+            256,
+            64,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "float16/gqa/False",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            23,
+            8,
+            128
+          ],
+          "elements": 47104,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.00033473968505859375,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            8,
+            23
+          ],
+          "elements": 368,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            23,
+            8,
+            128
+          ],
+          "elements": 47104,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.00033473968505859375,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            8,
+            23
+          ],
+          "elements": 368,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 2,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            23,
+            8,
+            128
+          ],
+          "stride": [
+            23552,
+            1024,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            137,
+            2,
+            128
+          ],
+          "stride": [
+            35072,
+            256,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            137,
+            2,
+            128
+          ],
+          "stride": [
+            35072,
+            256,
+            128,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "float16/gqa/True",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            23,
+            8,
+            128
+          ],
+          "elements": 47104,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0004290342330932617,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            8,
+            23
+          ],
+          "elements": 368,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            23,
+            8,
+            128
+          ],
+          "elements": 47104,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0004290342330932617,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            8,
+            23
+          ],
+          "elements": 368,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 2,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            23,
+            8,
+            128
+          ],
+          "stride": [
+            23552,
+            1024,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            137,
+            2,
+            128
+          ],
+          "stride": [
+            35072,
+            256,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            137,
+            2,
+            128
+          ],
+          "stride": [
+            35072,
+            256,
+            128,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "float16/scale/0.0",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": false,
+      "repeats": 2,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "float16/scale/-0.08838834764831843",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 132096,
+          "nonfinite": 132096,
+          "max_abs": 0.0,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 1032,
+          "nonfinite": 1032,
+          "max_abs": 0.0,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": false,
+      "repeats": 2,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "float16/scale/0.25",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.002351522445678711,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-06,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "elements": 132096,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.002351522445678711,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            129
+          ],
+          "elements": 1032,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-06,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 2,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            129,
+            4,
+            128
+          ],
+          "stride": [
+            66048,
+            512,
+            128,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "float16/packed/qkv",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            97,
+            4,
+            64
+          ],
+          "elements": 49664,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0010988712310791016,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            97
+          ],
+          "elements": 776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ]
+    },
+    {
+      "id": "float16/packed/kv",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            97,
+            4,
+            64
+          ],
+          "elements": 49664,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0010988712310791016,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            4,
+            97
+          ],
+          "elements": 776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ]
+    },
+    {
+      "id": "float16/varlen/False",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            123,
+            4,
+            64
+          ],
+          "elements": 31488,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0010443925857543945,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            4,
+            123
+          ],
+          "elements": 492,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ]
+    },
+    {
+      "id": "float16/varlen/True",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            123,
+            4,
+            64
+          ],
+          "elements": 31488,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0011324882507324219,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            4,
+            123
+          ],
+          "elements": 492,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 9.5367431640625e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ]
+    },
+    {
+      "id": "float16/backward/False/False",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            23,
+            4,
+            64
+          ],
+          "elements": 11776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0007385015487670898,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            23,
+            4,
+            64
+          ],
+          "elements": 11776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0009478330612182617,
+          "atol": 0.01,
+          "rtol": 0.03
+        },
+        {
+          "shape": [
+            2,
+            31,
+            4,
+            64
+          ],
+          "elements": 15872,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0009888410568237305,
+          "atol": 0.01,
+          "rtol": 0.03
+        },
+        {
+          "shape": [
+            2,
+            31,
+            4,
+            64
+          ],
+          "elements": 15872,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.001146078109741211,
+          "atol": 0.01,
+          "rtol": 0.03
+        }
+      ]
+    },
+    {
+      "id": "float16/backward/True/False",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            23,
+            4,
+            64
+          ],
+          "elements": 11776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0011324882507324219,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            23,
+            4,
+            64
+          ],
+          "elements": 11776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0010970830917358398,
+          "atol": 0.01,
+          "rtol": 0.03
+        },
+        {
+          "shape": [
+            2,
+            31,
+            4,
+            64
+          ],
+          "elements": 15872,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0012700557708740234,
+          "atol": 0.01,
+          "rtol": 0.03
+        },
+        {
+          "shape": [
+            2,
+            31,
+            4,
+            64
+          ],
+          "elements": 15872,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0022830963134765625,
+          "atol": 0.01,
+          "rtol": 0.03
+        }
+      ]
+    },
+    {
+      "id": "float16/backward/True/True",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            23,
+            4,
+            64
+          ],
+          "elements": 11776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0010402202606201172,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            23,
+            4,
+            64
+          ],
+          "elements": 11776,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0010907649993896484,
+          "atol": 0.01,
+          "rtol": 0.03
+        },
+        {
+          "shape": [
+            2,
+            31,
+            2,
+            64
+          ],
+          "elements": 7936,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0017459392547607422,
+          "atol": 0.01,
+          "rtol": 0.03
+        },
+        {
+          "shape": [
+            2,
+            31,
+            2,
+            64
+          ],
+          "elements": 7936,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.001662611961364746,
+          "atol": 0.01,
+          "rtol": 0.03
+        }
+      ]
+    },
+    {
+      "id": "float16/kvcache",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            2,
+            1,
+            8,
+            64
+          ],
+          "elements": 1024,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.0004101693630218506,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            2,
+            8,
+            1
+          ],
+          "elements": 16,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ]
+    },
+    {
+      "id": "float16/dropout",
+      "status": "failed",
+      "error": "IndexError('too many indices for tensor of dimension 1')",
+      "traceback": "Traceback (most recent call last):\n  File \"/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/functional.py\", line 77, in record\n    result = function()\n             ^^^^^^^^^^\n  File \"/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/functional.py\", line 232, in dropout\n    keep = ~torch.signbit(mask.detach().cpu()[:, :, :97, :97])\n                          ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^\nIndexError: too many indices for tensor of dimension 1\n"
+    },
+    {
+      "id": "boundary/model/zero_q_large_k",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            8,
+            2049,
+            16,
+            128
+          ],
+          "elements": 33570816,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.00023784488439559937,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            8,
+            16,
+            2049
+          ],
+          "elements": 262272,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            8,
+            2049,
+            16,
+            128
+          ],
+          "elements": 33570816,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.00023784488439559937,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            8,
+            16,
+            2049
+          ],
+          "elements": 262272,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 2,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            8,
+            2049,
+            16,
+            128
+          ],
+          "stride": [
+            4196352,
+            2048,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            8,
+            2049,
+            16,
+            128
+          ],
+          "stride": [
+            4196352,
+            2048,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            8,
+            2049,
+            16,
+            128
+          ],
+          "stride": [
+            4196352,
+            2048,
+            128,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "boundary/model/large_q_zero_k",
+      "status": "passed",
+      "checks": [
+        {
+          "shape": [
+            8,
+            2049,
+            16,
+            128
+          ],
+          "elements": 33570816,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.00023784488439559937,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            8,
+            16,
+            2049
+          ],
+          "elements": 262272,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            8,
+            2049,
+            16,
+            128
+          ],
+          "elements": 33570816,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 0.00023784488439559937,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            8,
+            16,
+            2049
+          ],
+          "elements": 262272,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 4.76837158203125e-07,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 2,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            8,
+            2049,
+            16,
+            128
+          ],
+          "stride": [
+            4196352,
+            2048,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            8,
+            2049,
+            16,
+            128
+          ],
+          "stride": [
+            4196352,
+            2048,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            8,
+            2049,
+            16,
+            128
+          ],
+          "stride": [
+            4196352,
+            2048,
+            128,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "id": "boundary/model/large_v",
+      "status": "failed",
+      "checks": [
+        {
+          "shape": [
+            8,
+            2049,
+            16,
+            128
+          ],
+          "elements": 33570816,
+          "failed": 994756,
+          "nonfinite": 0,
+          "max_abs": 0.12150955200195312,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            8,
+            16,
+            2049
+          ],
+          "elements": 262272,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 1.9073486328125e-06,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        },
+        {
+          "shape": [
+            8,
+            2049,
+            16,
+            128
+          ],
+          "elements": 33570816,
+          "failed": 994756,
+          "nonfinite": 0,
+          "max_abs": 0.12150955200195312,
+          "atol": 0.002,
+          "rtol": 0.02
+        },
+        {
+          "shape": [
+            8,
+            16,
+            2049
+          ],
+          "elements": 262272,
+          "failed": 0,
+          "nonfinite": 0,
+          "max_abs": 1.9073486328125e-06,
+          "atol": 2e-05,
+          "rtol": 2e-05
+        }
+      ],
+      "stable": true,
+      "repeats": 2,
+      "arm": "public",
+      "input_layouts_bshd": [
+        {
+          "shape": [
+            8,
+            2049,
+            16,
+            128
+          ],
+          "stride": [
+            4196352,
+            2048,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            8,
+            2049,
+            16,
+            128
+          ],
+          "stride": [
+            4196352,
+            2048,
+            128,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            8,
+            2049,
+            16,
+            128
+          ],
+          "stride": [
+            4196352,
+            2048,
+            128,
+            1
+          ],
+          "offset": 0
+        }
+      ]
+    }
+  ],
+  "completed": true,
+  "loaded_libraries": [
+    "/opt/hyhal/lib/libhsa-runtime64.so.1.11.0",
+    "/opt/hyhal/lib/librocm_smi64.so.2.8",
+    "/opt/hyhal/lib/librocprofiler-register.so.0.5.0",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/dcc/comgr/lib/libamd_comgr.so.2.6.0",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/dcc/gcvm/lib/libgcvm.so.17git",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/dcc/lib/libomp.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/hip/lib/hipkernel.bin.gfx936",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/hip/lib/libgalaxyhip.so.5.2.26365.2328-0599bcb4",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/hipprofiler/lib/libhipprof_tracer.so.1.0.26342.2294-f4c27174",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/hipprofiler/lib/libhipprof_utils.so.1.0.26342.2294-f4c27174",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/lib/libMIOpen-recommend.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/lib/libMIOpen.so.1.0",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/lib/libhipblas.so.3.2",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/lib/libhipblaslt.so.0.10",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/lib/libhipfft.so.0.1",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/lib/libhipnn.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/lib/libhiprand.so.1.1",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/lib/libhipsolver.so.0.1",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/lib/libhipsparse.so.4.2.0",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/lib/liborigami.so.1.0",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/lib/librccl.so.1.0.3b793e3",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/lib/librocblas.so.5.2",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/lib/librocfft.so.0.1",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/lib/librocrand.so.1.1",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/lib/librocsolver.so.0.1",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/lib/librocsparse.so.1.0",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/opencl/lib/libOpenCL.so.1.2",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/roctracer/lib/libroctracer64.so.1",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/roctracer/lib/libroctx64.so.1",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/inputs/model_state-backing0.bf16",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/python/bin/python3.12",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/flash_attn/lib/libflash_attention.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/flash_attn_2_cuda.cpython-312-x86_64-linux-gnu.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/numpy.libs/libgfortran-83c28eba-468e71e5.so.5.0.0",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/numpy.libs/libquadmath-2284e583-a9307bba.so.0.0.0",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/numpy.libs/libscipy_openblas64_-f48b354e.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/numpy/_core/_multiarray_umath.cpython-312-x86_64-linux-gnu.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/numpy/fft/_pocketfft_umath.cpython-312-x86_64-linux-gnu.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/numpy/linalg/_umath_linalg.cpython-312-x86_64-linux-gnu.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/numpy/random/_bounded_integers.cpython-312-x86_64-linux-gnu.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/numpy/random/_common.cpython-312-x86_64-linux-gnu.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/numpy/random/_generator.cpython-312-x86_64-linux-gnu.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/numpy/random/_mt19937.cpython-312-x86_64-linux-gnu.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/numpy/random/_pcg64.cpython-312-x86_64-linux-gnu.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/numpy/random/_philox.cpython-312-x86_64-linux-gnu.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/numpy/random/_sfc64.cpython-312-x86_64-linux-gnu.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/numpy/random/bit_generator.cpython-312-x86_64-linux-gnu.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/numpy/random/mtrand.cpython-312-x86_64-linux-gnu.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch.libs/libgflags-8aee0f6c.so.2.1.2",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch.libs/libglog-6ed04f2c.so.0.0.0",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch.libs/libgomp-855c301a.so.1.0.0",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch.libs/libmkl_core-dd2cdfcb.so.2",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch.libs/libmkl_gf_lp64-25409e28.so.2",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch.libs/libmkl_gnu_thread-11ed5977.so.2",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch/_C.cpython-312-x86_64-linux-gnu.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch/lib/libc10.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch/lib/libc10_hip.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch/lib/libcaffe2_nvrtc.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch/lib/libmagma.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch/lib/libmkl_core.so.2",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch/lib/libmkl_def.so.2",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch/lib/libmkl_gnu_thread.so.2",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch/lib/libmkl_intel_lp64.so.2",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch/lib/libmkl_vml_def.so.2",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch/lib/libshm.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch/lib/libtorch.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch/lib/libtorch_global_deps.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch/lib/libtorch_hip.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch/lib/libtorch_python.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/triton.libs/libzstd-99a0d1ea.so.1.4.4",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/triton/_C/libtriton.so",
+    "/public/software/mpi/openmpi-dtk_2604/5.0.3/lib/libmpi.so.40.40.3"
+  ],
+  "passed": 57,
+  "failed": 8
+}

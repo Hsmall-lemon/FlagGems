@@ -1,0 +1,190 @@
+/bin/bash: /opt/flagos/python/lib/libtinfo.so.6: no version information available (required by /bin/bash)
+WARNING: /opt/hyhal/lib/cmake/rocm_smi doesn't exist, please install the latest driver(version >= 6.3.15)
+The rocm_smi_lib will be used in default
+bash: /opt/flagos/python/lib/libtinfo.so.6: no version information available (required by bash)
+/public/home/lijzh1/2610/pytorch/aten/src/ATen/native/transformers/hip/cutlassfa_adapter.h:148: Warning: sdpa adopt the new interface of flash-attn (function operator())
+USDT:2026-11-10 20:22:09 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:11 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE model_state wheel 0 2162.1411200000002 1
+USDT:2026-11-10 20:22:12 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:14 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE model_state aten 0 2162.516752 1
+USDT:2026-11-10 20:22:14 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:16 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE model_state repo 0 1741.7486640000002 3
+USDT:2026-11-10 20:22:16 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:18 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE model_state repo 1 1742.273974 3
+USDT:2026-11-10 20:22:19 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:21 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE model_state aten 1 2162.460835 1
+USDT:2026-11-10 20:22:21 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:24 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE model_state wheel 1 2162.4459589999997 1
+USDT:2026-11-10 20:22:24 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:26 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE model_state wheel 2 2162.334366 1
+USDT:2026-11-10 20:22:27 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:29 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE model_state aten 2 2162.435552 1
+USDT:2026-11-10 20:22:29 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:31 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE model_state repo 2 1742.1120600000002 3
+USDT:2026-11-10 20:22:31 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:33 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE model_state repo 3 1741.979733 3
+USDT:2026-11-10 20:22:34 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:36 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE model_state aten 3 2162.2265469999998 1
+USDT:2026-11-10 20:22:36 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:39 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE model_state wheel 3 2162.56627 1
+USDT:2026-11-10 20:22:39 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:41 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE model_state wheel 4 2162.6957039999998 1
+USDT:2026-11-10 20:22:42 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:44 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE model_state aten 4 2162.7299500000004 1
+USDT:2026-11-10 20:22:45 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:46 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE model_state repo 4 1741.879887 3
+CASE_DEVICE_RESULT model_state {"wheel": 2162.4459589999997, "aten": 2162.460835, "repo": 1741.979733} RATIO 1.241372627955827
+USDT:2026-11-10 20:22:47 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:47 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_small wheel 0 8.623153999999998 1
+USDT:2026-11-10 20:22:47 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:47 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_small aten 0 8.632273999999999 1
+USDT:2026-11-10 20:22:47 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:48 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_small repo 0 5.353719 1
+USDT:2026-11-10 20:22:48 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:48 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_small repo 1 5.490514999999999 1
+USDT:2026-11-10 20:22:48 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:48 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_small aten 1 8.627313000000001 1
+USDT:2026-11-10 20:22:48 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:48 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_small wheel 1 8.626674999999999 1
+USDT:2026-11-10 20:22:49 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:49 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_small wheel 2 8.623471 1
+USDT:2026-11-10 20:22:49 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:49 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_small aten 2 8.629074999999998 1
+USDT:2026-11-10 20:22:49 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:49 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_small repo 2 6.023795999999999 1
+USDT:2026-11-10 20:22:49 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:50 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_small repo 3 5.2906759999999995 1
+USDT:2026-11-10 20:22:50 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:50 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_small aten 3 8.627633 1
+USDT:2026-11-10 20:22:50 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:50 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_small wheel 3 8.625233 1
+USDT:2026-11-10 20:22:50 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:50 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_small wheel 4 8.628592999999999 1
+USDT:2026-11-10 20:22:51 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:51 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_small aten 4 8.626029999999998 1
+USDT:2026-11-10 20:22:51 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:51 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_small repo 4 5.722836999999999 1
+CASE_DEVICE_RESULT expanded_small {"wheel": 8.625233, "aten": 8.627633, "repo": 5.490514999999999} RATIO 1.5709333277479436
+USDT:2026-11-10 20:22:51 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:51 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_medium wheel 0 9.580112000000002 1
+USDT:2026-11-10 20:22:52 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:52 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_medium aten 0 9.579474 1
+USDT:2026-11-10 20:22:52 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:52 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_medium repo 0 6.339635 1
+USDT:2026-11-10 20:22:52 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:52 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_medium repo 1 6.2804340000000005 1
+USDT:2026-11-10 20:22:52 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:53 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_medium aten 1 9.578514 1
+USDT:2026-11-10 20:22:53 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:53 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_medium wheel 1 9.569392 1
+USDT:2026-11-10 20:22:53 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:53 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_medium wheel 2 9.577558000000002 1
+USDT:2026-11-10 20:22:53 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:53 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_medium aten 2 9.569068 1
+USDT:2026-11-10 20:22:54 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:54 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_medium repo 2 6.164755 1
+USDT:2026-11-10 20:22:54 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:54 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_medium repo 3 5.9994749999999994 1
+USDT:2026-11-10 20:22:54 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:54 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_medium aten 3 9.584436 1
+USDT:2026-11-10 20:22:55 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:55 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_medium wheel 3 9.578835000000002 1
+USDT:2026-11-10 20:22:55 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:55 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_medium wheel 4 9.581075 1
+USDT:2026-11-10 20:22:55 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:55 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_medium aten 4 9.575154000000001 1
+USDT:2026-11-10 20:22:56 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:56 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_medium repo 4 6.549557 1
+CASE_DEVICE_RESULT expanded_medium {"wheel": 9.578835000000002, "aten": 9.578514, "repo": 6.2804340000000005} RATIO 1.5251356832983198
+USDT:2026-11-10 20:22:56 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:56 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_large wheel 0 43.614171 1
+USDT:2026-11-10 20:22:56 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:56 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_large aten 0 43.121053 1
+USDT:2026-11-10 20:22:57 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:57 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_large repo 0 43.774653 1
+USDT:2026-11-10 20:22:57 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:57 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_large repo 1 43.75561 1
+USDT:2026-11-10 20:22:57 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:57 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_large aten 1 43.108894 1
+USDT:2026-11-10 20:22:58 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:58 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_large wheel 1 43.615451 1
+USDT:2026-11-10 20:22:58 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:58 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_large wheel 2 43.612411 1
+USDT:2026-11-10 20:22:58 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:58 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_large aten 2 43.100093 1
+USDT:2026-11-10 20:22:58 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:59 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_large repo 2 43.75001 1
+USDT:2026-11-10 20:22:59 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:59 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_large repo 3 43.759291 1
+USDT:2026-11-10 20:22:59 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:59 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_large aten 3 43.101211000000006 1
+USDT:2026-11-10 20:22:59 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:22:59 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_large wheel 3 43.620091 1
+USDT:2026-11-10 20:22:59 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:23:00 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_large wheel 4 43.620891 1
+USDT:2026-11-10 20:23:00 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:23:00 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_large aten 4 43.119293 1
+USDT:2026-11-10 20:23:00 1718728:1718728 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:23:00 1718728:1718728 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_large repo 4 43.768415 1
+CASE_DEVICE_RESULT expanded_large {"wheel": 43.615451, "aten": 43.108894, "repo": 43.759291} RATIO 0.985136939261653
+RELEASE2610_DEVICE_BENCHMARK_COMPLETE True

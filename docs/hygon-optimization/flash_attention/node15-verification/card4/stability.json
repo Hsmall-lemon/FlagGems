@@ -1,0 +1,577 @@
+{
+  "card": "4",
+  "node": "a01r4n15",
+  "module": "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/11992/package/flash_attn_2_cuda.cpython-310-x86_64-linux-gnu.so",
+  "cases": [
+    {
+      "seed": 20261105,
+      "input_sha256": "44ebfeb326f5a257e890668d149dd0e28a715052ab3d7560d14726f39107fc04",
+      "arms": {
+        "native": [
+          {
+            "full_accuracy": {
+              "output": {
+                "shape": [
+                  8,
+                  16,
+                  2049,
+                  128
+                ],
+                "elements": 33570816,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.0010229945182800293
+              },
+              "lse": {
+                "shape": [
+                  8,
+                  16,
+                  2049
+                ],
+                "elements": 262272,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 1.9073486328125e-06
+              }
+            },
+            "bitwise_equal_to_first": true
+          },
+          {
+            "full_accuracy": {
+              "output": {
+                "shape": [
+                  8,
+                  16,
+                  2049,
+                  128
+                ],
+                "elements": 33570816,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.0010229945182800293
+              },
+              "lse": {
+                "shape": [
+                  8,
+                  16,
+                  2049
+                ],
+                "elements": 262272,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 1.9073486328125e-06
+              }
+            },
+            "bitwise_equal_to_first": true
+          },
+          {
+            "full_accuracy": {
+              "output": {
+                "shape": [
+                  8,
+                  16,
+                  2049,
+                  128
+                ],
+                "elements": 33570816,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.0010229945182800293
+              },
+              "lse": {
+                "shape": [
+                  8,
+                  16,
+                  2049
+                ],
+                "elements": 262272,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 1.9073486328125e-06
+              }
+            },
+            "bitwise_equal_to_first": true
+          }
+        ],
+        "repo": [
+          {
+            "full_accuracy": {
+              "output": {
+                "shape": [
+                  8,
+                  16,
+                  2049,
+                  128
+                ],
+                "elements": 33570816,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.0015590786933898926
+              },
+              "lse": {
+                "shape": [
+                  8,
+                  16,
+                  2049
+                ],
+                "elements": 262272,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 1.9073486328125e-06
+              }
+            },
+            "bitwise_equal_to_first": true
+          },
+          {
+            "full_accuracy": {
+              "output": {
+                "shape": [
+                  8,
+                  16,
+                  2049,
+                  128
+                ],
+                "elements": 33570816,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.0015590786933898926
+              },
+              "lse": {
+                "shape": [
+                  8,
+                  16,
+                  2049
+                ],
+                "elements": 262272,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 1.9073486328125e-06
+              }
+            },
+            "bitwise_equal_to_first": true
+          },
+          {
+            "full_accuracy": {
+              "output": {
+                "shape": [
+                  8,
+                  16,
+                  2049,
+                  128
+                ],
+                "elements": 33570816,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.0015590786933898926
+              },
+              "lse": {
+                "shape": [
+                  8,
+                  16,
+                  2049
+                ],
+                "elements": 262272,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 1.9073486328125e-06
+              }
+            },
+            "bitwise_equal_to_first": true
+          }
+        ]
+      }
+    },
+    {
+      "seed": 0,
+      "input_sha256": "32a6ff872e5d1c09763d80b0c1977e31734e68f8feaaa14b7262f9c7ebac9773",
+      "arms": {
+        "native": [
+          {
+            "full_accuracy": {
+              "output": {
+                "shape": [
+                  8,
+                  16,
+                  2049,
+                  128
+                ],
+                "elements": 33570816,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.0009252727031707764
+              },
+              "lse": {
+                "shape": [
+                  8,
+                  16,
+                  2049
+                ],
+                "elements": 262272,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 1.9073486328125e-06
+              }
+            },
+            "bitwise_equal_to_first": true
+          },
+          {
+            "full_accuracy": {
+              "output": {
+                "shape": [
+                  8,
+                  16,
+                  2049,
+                  128
+                ],
+                "elements": 33570816,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.0009252727031707764
+              },
+              "lse": {
+                "shape": [
+                  8,
+                  16,
+                  2049
+                ],
+                "elements": 262272,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 1.9073486328125e-06
+              }
+            },
+            "bitwise_equal_to_first": true
+          },
+          {
+            "full_accuracy": {
+              "output": {
+                "shape": [
+                  8,
+                  16,
+                  2049,
+                  128
+                ],
+                "elements": 33570816,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.0009252727031707764
+              },
+              "lse": {
+                "shape": [
+                  8,
+                  16,
+                  2049
+                ],
+                "elements": 262272,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 1.9073486328125e-06
+              }
+            },
+            "bitwise_equal_to_first": true
+          }
+        ],
+        "repo": [
+          {
+            "full_accuracy": {
+              "output": {
+                "shape": [
+                  8,
+                  16,
+                  2049,
+                  128
+                ],
+                "elements": 33570816,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.001369774341583252
+              },
+              "lse": {
+                "shape": [
+                  8,
+                  16,
+                  2049
+                ],
+                "elements": 262272,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 1.9073486328125e-06
+              }
+            },
+            "bitwise_equal_to_first": true
+          },
+          {
+            "full_accuracy": {
+              "output": {
+                "shape": [
+                  8,
+                  16,
+                  2049,
+                  128
+                ],
+                "elements": 33570816,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.001369774341583252
+              },
+              "lse": {
+                "shape": [
+                  8,
+                  16,
+                  2049
+                ],
+                "elements": 262272,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 1.9073486328125e-06
+              }
+            },
+            "bitwise_equal_to_first": true
+          },
+          {
+            "full_accuracy": {
+              "output": {
+                "shape": [
+                  8,
+                  16,
+                  2049,
+                  128
+                ],
+                "elements": 33570816,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.001369774341583252
+              },
+              "lse": {
+                "shape": [
+                  8,
+                  16,
+                  2049
+                ],
+                "elements": 262272,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 1.9073486328125e-06
+              }
+            },
+            "bitwise_equal_to_first": true
+          }
+        ]
+      }
+    },
+    {
+      "seed": 42,
+      "input_sha256": "91fc8dcb2a44e34f5179ef5266f2b4938653a743ee2ad9559621c0110bd85bcf",
+      "arms": {
+        "native": [
+          {
+            "full_accuracy": {
+              "output": {
+                "shape": [
+                  8,
+                  16,
+                  2049,
+                  128
+                ],
+                "elements": 33570816,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.0009379088878631592
+              },
+              "lse": {
+                "shape": [
+                  8,
+                  16,
+                  2049
+                ],
+                "elements": 262272,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 1.9073486328125e-06
+              }
+            },
+            "bitwise_equal_to_first": true
+          },
+          {
+            "full_accuracy": {
+              "output": {
+                "shape": [
+                  8,
+                  16,
+                  2049,
+                  128
+                ],
+                "elements": 33570816,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.0009379088878631592
+              },
+              "lse": {
+                "shape": [
+                  8,
+                  16,
+                  2049
+                ],
+                "elements": 262272,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 1.9073486328125e-06
+              }
+            },
+            "bitwise_equal_to_first": true
+          },
+          {
+            "full_accuracy": {
+              "output": {
+                "shape": [
+                  8,
+                  16,
+                  2049,
+                  128
+                ],
+                "elements": 33570816,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.0009379088878631592
+              },
+              "lse": {
+                "shape": [
+                  8,
+                  16,
+                  2049
+                ],
+                "elements": 262272,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 1.9073486328125e-06
+              }
+            },
+            "bitwise_equal_to_first": true
+          }
+        ],
+        "repo": [
+          {
+            "full_accuracy": {
+              "output": {
+                "shape": [
+                  8,
+                  16,
+                  2049,
+                  128
+                ],
+                "elements": 33570816,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.0017904937267303467
+              },
+              "lse": {
+                "shape": [
+                  8,
+                  16,
+                  2049
+                ],
+                "elements": 262272,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 1.9073486328125e-06
+              }
+            },
+            "bitwise_equal_to_first": true
+          },
+          {
+            "full_accuracy": {
+              "output": {
+                "shape": [
+                  8,
+                  16,
+                  2049,
+                  128
+                ],
+                "elements": 33570816,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.0017904937267303467
+              },
+              "lse": {
+                "shape": [
+                  8,
+                  16,
+                  2049
+                ],
+                "elements": 262272,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 1.9073486328125e-06
+              }
+            },
+            "bitwise_equal_to_first": true
+          },
+          {
+            "full_accuracy": {
+              "output": {
+                "shape": [
+                  8,
+                  16,
+                  2049,
+                  128
+                ],
+                "elements": 33570816,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.0017904937267303467
+              },
+              "lse": {
+                "shape": [
+                  8,
+                  16,
+                  2049
+                ],
+                "elements": 262272,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 1.9073486328125e-06
+              }
+            },
+            "bitwise_equal_to_first": true
+          }
+        ]
+      }
+    }
+  ]
+}

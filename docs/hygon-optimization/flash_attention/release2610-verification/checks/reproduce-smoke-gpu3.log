@@ -1,0 +1,46 @@
+/bin/bash: /opt/flagos/python/lib/libtinfo.so.6: no version information available (required by /bin/bash)
+WARNING: /opt/hyhal/lib/cmake/rocm_smi doesn't exist, please install the latest driver(version >= 6.3.15)
+The rocm_smi_lib will be used in default
+bash: /opt/flagos/python/lib/libtinfo.so.6: no version information available (required by bash)
+/public/home/lijzh1/2610/pytorch/aten/src/ATen/native/transformers/hip/cutlassfa_adapter.h:148: Warning: sdpa adopt the new interface of flash-attn (function operator())
+USDT:2026-11-10 20:13:23 1686624:1686624 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:13:23 1686624:1686624 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE model_state wheel 0 2158.319 1
+USDT:2026-11-10 20:13:23 1686624:1686624 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:13:23 1686624:1686624 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE model_state aten 0 2161.9669999999996 1
+USDT:2026-11-10 20:13:23 1686624:1686624 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:13:23 1686624:1686624 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE model_state repo 0 1741.789 3
+CASE_DEVICE_RESULT model_state {"wheel": 2158.319, "aten": 2161.9669999999996, "repo": 1741.789} RATIO 1.2391391839080395
+USDT:2026-11-10 20:13:23 1686624:1686624 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:13:23 1686624:1686624 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_small wheel 0 8.591 1
+USDT:2026-11-10 20:13:23 1686624:1686624 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:13:23 1686624:1686624 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_small aten 0 10.927 1
+USDT:2026-11-10 20:13:23 1686624:1686624 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:13:23 1686624:1686624 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_small repo 0 4.959 1
+CASE_DEVICE_RESULT expanded_small {"wheel": 8.591, "aten": 10.927, "repo": 4.959} RATIO 1.7324057269610809
+USDT:2026-11-10 20:13:23 1686624:1686624 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:13:23 1686624:1686624 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_medium wheel 0 9.791 1
+USDT:2026-11-10 20:13:24 1686624:1686624 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:13:24 1686624:1686624 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_medium aten 0 9.615 1
+USDT:2026-11-10 20:13:24 1686624:1686624 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:13:24 1686624:1686624 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_medium repo 0 5.631 1
+CASE_DEVICE_RESULT expanded_medium {"wheel": 9.791, "aten": 9.615, "repo": 5.631} RATIO 1.7075119872136388
+USDT:2026-11-10 20:13:24 1686624:1686624 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:13:24 1686624:1686624 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_large wheel 0 43.327 1
+USDT:2026-11-10 20:13:24 1686624:1686624 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:13:24 1686624:1686624 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_large aten 0 42.879000000000005 1
+USDT:2026-11-10 20:13:24 1686624:1686624 SyncActivityProfilerHandler.cpp:52] profiler_start
+USDT:2026-11-10 20:13:24 1686624:1686624 SyncActivityProfilerHandler.cpp:59] profiler_stop
+DEVICE_SAMPLE expanded_large repo 0 43.631 1
+CASE_DEVICE_RESULT expanded_large {"wheel": 43.327, "aten": 42.879000000000005, "repo": 43.631} RATIO 0.9827645481423759
+RELEASE2610_DEVICE_BENCHMARK_COMPLETE True

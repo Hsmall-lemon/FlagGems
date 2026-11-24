@@ -1,34 +1,63 @@
 {
-  "operator": "aten::to.dtype / aten::_to_copy",
-  "official_master": "9a9aecb53103cc83dda27bc7458fc3bfd07f3188",
-  "tested_candidate": "2862d83d0d8cd7d599f2059131309e6db554744d",
-  "candidate_src_tree": "7d6ebe9c65b06ab3917fdc76142920f042d668f1",
-  "date": "2026-11-12",
-  "focused_hardware": {
-    "passed": 98,
-    "skipped": 0,
-    "job": 1102371
+  "acceptance_status": {
+    "date": "2026-11-09",
+    "pr_is_draft": true,
+    "accepted": false,
+    "status": "superseded_historical_measurements",
+    "current_status": "REPORT.md",
+    "reason": "User review found new correctness regression and/or unaccepted performance stability; prior blanket acceptance withdrawn.",
+    "preserved_fields": "All original observations remain historical; they are not current acceptance evidence."
   },
-  "performance": {
-    "cases": 59,
-    "old_correct": 48,
-    "new_correct": 59,
-    "das_correct": 56,
-    "qualified_old_new": 8,
-    "qualified_new_das": 11,
-    "target90": 10,
-    "hardware_job": 1102371,
-    "analysis_job": 1102372,
-    "old_new_range": [
-      0.9783113872023146,
-      2.8690558235699517
+  "summary": {
+    "spreadsheet_cases": 10,
+    "converted_cases": 9,
+    "no_kernel_identity_cases": 1,
+    "physical_cards": [
+      0,
+      1
     ],
-    "no_device_work": [
-      "to-row-1716",
-      "to-control-empty-preserve_format",
-      "to-control-empty-contiguous_format"
-    ],
-    "status": "complete_with_per_case_qualification",
-    "evidence": "performance-20261112/README.md"
+    "semantic_passes": 20,
+    "semantic_checks": 20,
+    "paired_boxing_passes": 18,
+    "same_operator_passes": 18,
+    "conversion_checks": 18,
+    "minimum_paired_boxing_performance": 1.2208835341365463,
+    "minimum_same_operator_performance": 0.9919354838709677,
+    "focused_pytest_passed": 33
+  },
+  "kernel_and_test_source_hashes_match": false,
+  "entrypoint_fragment_matches": true,
+  "remote_source_proof": {
+    "source_sha256": {
+      "src/flag_gems/__init__.py": "dd53c5c1dbb1c7a80174228aef2b9b580aec2b5fa0c4cbc4d991d98bb3c813dd",
+      "src/flag_gems/runtime/backend/_hygon/ops/__init__.py": "94fe1b4848843bb23cf9150ebe594fffba5b00f92946ff2d9ca15ba7b77c59e0",
+      "src/flag_gems/runtime/backend/_hygon/ops/to.py": "9be60225daf232b08cd618fa326286f98ff96f583bd209e0f580a2081df93ec2",
+      "tests/test_hygon_to_dtype.py": "f4cbd4346bcdc3608648561b198c0c83568fbbf70aef5b9380114841192cbbc8"
+    },
+    "to_copy_config": "    (\n        \"_to_copy\",\n        to_copy,\n        lambda: _parse_version(torch.__version__) >= _parse_version(\"2.4\"),\n        # The pinned Torch-FL bridge implements _to_copy directly on PrivateUse1.\n        # Register there as well so Tensor.to(dtype) reaches the selected kernel.\n        (\n            (\"PrivateUse1\",)\n            if vendor_name == \"hygon\"\n            and torch._C._get_privateuse1_backend_name() == \"flagos\"\n            else ()\n        ),\n    ),",
+    "backend_import_and_export_verified": true,
+    "format_only_root_change_ast_verified": true
+  },
+  "local_source_sha256": {
+    "src/flag_gems/__init__.py": "21bad4a2c5d064d1848049c14b1875b170c227402296fc83f8f197a1cf9afe83",
+    "src/flag_gems/runtime/backend/_hygon/ops/__init__.py": "7b2fb25a507dd5e6b90fcf226f7f1651c66eafc0fe06f00fa6fe78a2ce8b2d27",
+    "src/flag_gems/runtime/backend/_hygon/ops/to.py": "9be60225daf232b08cd618fa326286f98ff96f583bd209e0f580a2081df93ec2",
+    "tests/test_hygon_to_dtype.py": "4f82f2c816f5eaecb60d7cfb8c466d6b6401a03769e7d810a58b4a26ed9619f8"
+  },
+  "pre_commit_all_files": "passed",
+  "pre_commit_changed_and_new_files": "passed",
+  "static_checks": "passed",
+  "focused_pytest": "33 passed",
+  "special_values": "FP32/BF16 rounding ties, subnormals, signed zero, infinities and NaNs passed",
+  "shared_exports": "Only the to_copy import/export was inserted; pre-existing shared remote changes were retained.",
+  "kernel_source_hash_matches": true,
+  "test_source_executable_ast_matches": true,
+  "test_source_raw_hash_matches": false,
+  "source_representation_audit": "validation/source-representations.json",
+  "committed_source_sha256_lf": {
+    "src/flag_gems/__init__.py": "dd53c5c1dbb1c7a80174228aef2b9b580aec2b5fa0c4cbc4d991d98bb3c813dd",
+    "src/flag_gems/runtime/backend/_hygon/ops/__init__.py": "47d327a2e6b4579a383034614aec2a6b632914b840b8318c57aad5f04c7cd8d6",
+    "src/flag_gems/runtime/backend/_hygon/ops/to.py": "9be60225daf232b08cd618fa326286f98ff96f583bd209e0f580a2081df93ec2",
+    "tests/test_hygon_to_dtype.py": "c7aba6df67a685f40ebcfe405b8752bd512452747b80785c54ebe61108fe7d76"
   }
 }

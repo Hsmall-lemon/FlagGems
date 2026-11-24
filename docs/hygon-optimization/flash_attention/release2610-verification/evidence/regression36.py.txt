@@ -1,0 +1,43 @@
+"""Run repository accuracy regressions and full-workbook stability after timing."""
+import hashlib
+import importlib.metadata
+import json
+import os
+import runpy
+import socket
+import sys
+from pathlib import Path
+
+root = Path(__file__).resolve().parent
+repo = root.parents[1] / 'FlagGems'
+sys.path.insert(0, str(root / 'fg-compiler36'))
+sys.path.insert(0, str(repo / 'src'))
+sys.path.append(str(repo / 'docs/hygon-optimization/flash_attention/reproduce'))
+os.environ['GEMS_VENDOR'] = 'hygon'
+os.environ['AMDGCN_USE_BUFFER_OPS'] = '0'
+os.environ['ROCM_PATH'] = '/public/software/compiler/dtk-26.04'
+os.environ['HIP_PATH'] = '/public/software/compiler/dtk-26.04/hip'
+import torch
+import pytest
+import flag_gems
+
+torch.set_num_threads(16)
+torch.set_grad_enabled(False)
+assert flag_gems.vendor_name == 'hygon'
+assert socket.gethostname() == 'a01r4n15'
+assert os.environ['HIP_VISIBLE_DEVICES'] in ('3', '4') and torch.cuda.device_count() == 1
+assert os.environ.get('APPTAINER_CONTAINER')
+receipt = {'node': socket.gethostname(), 'physical_card': os.environ['HIP_VISIBLE_DEVICES'],
+           'packages': {x: importlib.metadata.version(x) for x in ('torch','triton','flash-attn')},
+           'vendor': flag_gems.vendor_name, 'device': str(torch.cuda.get_device_properties(0)),
+           'sources': {name: hashlib.sha256((repo/'src/flag_gems/runtime/backend/_hygon'/name).read_bytes()).hexdigest() for name in ('attention_state_hip.py','attention_state_hip.cpp','ops/attention_state.py','ops/_scaled_dot_product_flash_attention.py')}}
+Path('regression.json').write_text(json.dumps(receipt,indent=2))
+code = pytest.main(['-q', str(repo/'tests/test_flash_attention_hygon_state.py'), '--ref', 'cpu'])
+receipt['pytest_exit_code'] = code
+Path('regression.json').write_text(json.dumps(receipt,indent=2))
+assert code == 0
+runpy.run_path(str(root/'stability36.py'),run_name='__main__')
+receipt['full_workbook_stability_complete'] = True
+receipt['stability_sha256'] = hashlib.sha256(Path('workbook-stability.json').read_bytes()).hexdigest()
+Path('regression.json').write_text(json.dumps(receipt,indent=2))
+print('RELEASE2610_REPOSITORY_REGRESSION_COMPLETE',flush=True)

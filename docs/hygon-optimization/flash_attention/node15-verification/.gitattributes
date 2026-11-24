@@ -1,0 +1,2 @@
+# Parent Hygon documentation rules force text normalization; traces are binary.
+*.gz binary

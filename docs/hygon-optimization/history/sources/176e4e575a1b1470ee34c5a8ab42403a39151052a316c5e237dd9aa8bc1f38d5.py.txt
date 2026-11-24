@@ -1,0 +1,254 @@
+"""Restricted ESM-2 FP32 whole-call softmax candidate; NOT hardware validated.
+
+Import torch_fl before this module, install before the first target routed call.
+Only process-local FlagGems aliases are patched. No route/dispatcher/file edits.
+"""
+import functools
+import importlib
+import sys
+from collections import Counter
+
+from capture_guard import capture_state
+import torch
+import triton
+import triton.language as tl
+from flag_gems import runtime
+from flag_gems.runtime import torch_device_fn
+
+SCHEMA = "aten::_softmax"
+FULL_SCHEMA = "aten::_softmax(Tensor self, int dim, bool half_to_float) -> Tensor"
+# rank 3 is the actual flattened-head tensor in the 2026-10-16 ESM traces.
+# rank 4 is the coordinator-requested equivalent unflattened attention layout.
+SHAPES = {(60, 101, 101): (10201, 101, 1),
+          (3, 20, 101, 101): (204020, 10201, 101, 1)}
+_ACTIVE = None
+HITS = Counter({SCHEMA: 0})
+
+
+@triton.jit
+def _row_softmax(X, Y, N: tl.constexpr, BLOCK: tl.constexpr):
+    row = tl.program_id(0)
+    col = tl.arange(0, BLOCK)
+    valid = col < N
+    values = tl.load(X + row * N + col, valid, other=-float("inf"))
+    # Explicit NaN propagation: do not depend on a backend-specific max(NaN, x).
+    has_nan = tl.sum(tl.where(valid & (values != values), 1, 0), axis=0) > 0
+    maximum = tl.max(values, axis=0)
+    numerator = tl.exp(values - maximum)
+    # Padded lanes do not contribute, even when maximum is -inf. Real all--inf
+    # rows still contain NaN from (-inf)-(-inf), as PyTorch softmax requires.
+    numerator = tl.where(valid, numerator, 0.0)
+    denominator = tl.sum(numerator, axis=0)
+    result = tl.where(has_nan, float("nan"), numerator / denominator)
+    tl.store(Y + row * N + col, result, valid)
+
+
+def _bind(args, kwargs):
+    """Bind ONLY the original FG signature (self, dim, half_to_float=False)."""
+    names = ("self", "dim", "half_to_float")
+    if len(args) > len(names) or set(kwargs).difference(names):
+        return None, None, None, "signature"
+    bound = dict(zip(names, args))
+    if set(bound).intersection(kwargs):
+        return None, None, None, "duplicate_argument"
+    bound.update(kwargs)
+    if "self" not in bound or "dim" not in bound:
+        return None, None, None, "signature"
+    return bound["self"], bound["dim"], bound.get("half_to_float", False), None
+
+
+def _guard(x, dim, half_to_float):
+    if getattr(runtime.device, "vendor_name", None) != "hygon":
+        return "vendor"
+    if not getattr(torch.version, "hip", None):
+        return "hip_runtime"
+    if type(x) is not torch.Tensor:
+        return "tensor_subclass_or_non_tensor"
+    if x.device.type not in (torch._C._get_privateuse1_backend_name(), "cuda") or x.device.index is None:
+        return "device"
+    if x.dtype != torch.float32:
+        return "dtype"
+    if x.layout != torch.strided or x.is_quantized or x.is_nested:
+        return "layout"
+    if x.is_conj() or x.is_neg():
+        return "lazy_view_bits"
+    if any(name is not None for name in x.names):
+        return "named_tensor"
+    # Deliberately more conservative than grad-enabled-only checks: also rejects
+    # requires_grad tensors passed directly from a no_grad/backend context.
+    if x.requires_grad:
+        return "requires_grad"
+    if torch.autograd.forward_ad.unpack_dual(x).tangent is not None:
+        return "forward_autograd"
+    transforms_active = getattr(torch._C, "_are_functorch_transforms_active", None)
+    if transforms_active is not None and transforms_active():
+        return "functorch_transform"
+    if type(dim) is not int or type(half_to_float) is not bool:
+        return "argument_types"
+    if half_to_float is not False:
+        return "half_to_float"
+    shape = tuple(x.shape)
+    if any(type(d) is not int for d in shape) or shape not in SHAPES:
+        return "shape_or_symbolic"
+    if dim not in (-1, len(shape) - 1):
+        return "dimension"
+    strides = tuple(x.stride())
+    if any(type(s) is not int for s in strides) or strides != SHAPES[shape] or not x.is_contiguous():
+        return "stride_or_noncontiguous"
+    offset = x.storage_offset()
+    if type(offset) is not int or offset < 0 or offset + x.numel() > 2**31 - 1:
+        return "storage_offset_or_index_range"
+    if not callable(getattr(torch_device_fn, "is_current_stream_capturing", None)):
+        return "capture_query_unavailable"
+    return None
+
+
+class Installation:
+    """One lifetime of a patch; stale wrappers stay disabled after uninstall."""
+    def __init__(self, original):
+        self.original = original
+        self.enabled = True
+        self.counts = Counter()
+        self.patches = []
+        self.wrapper = self._make_wrapper()
+
+    def _fallback(self, reason, args, kwargs):
+        self.counts["fallback"] += 1
+        self.counts["fallback:" + reason] += 1
+        return self.original(*args, **kwargs)
+
+    def _make_wrapper(self):
+        @functools.wraps(self.original)
+        def softmax(*args, **kwargs):
+            self.counts["calls"] += 1
+            if not self.enabled:
+                return self._fallback("uninstalled", args, kwargs)
+            x, dim, half_to_float, reason = _bind(args, kwargs)
+            if reason is None:
+                reason = _guard(x, dim, half_to_float)
+            if reason is not None:
+                return self._fallback(reason, args, kwargs)
+            try:
+                # Standard device guard plus Triton standard launch: the current
+                # device stream is resolved for EVERY launch, never saved/cached.
+                with torch_device_fn.device(x.device.index):
+                    if capture_state() is not False:
+                        return self._fallback("graph_capture", args, kwargs)
+                    output = torch.empty_like(x, memory_format=torch.contiguous_format)
+                    _row_softmax[(6060,)](
+                        x, output, N=101, BLOCK=128, num_warps=4, num_stages=1,
+                        enable_fp_fusion=False,
+                    )
+                self.counts["launches"] += 1
+                self.counts["fast"] += 1
+                HITS[SCHEMA] += 1
+                return output
+            except Exception:
+                # Never mask a compile/launch failure with a second backend call.
+                self.counts["errors"] += 1
+                raise
+        softmax.__softmax_candidate_schema__ = SCHEMA
+        softmax.__softmax_original__ = self.original
+        return softmax
+
+    def get_stats(self, reset=False):
+        result = {SCHEMA: dict(self.counts), "HITS": {SCHEMA: self.counts.get("fast", 0)},
+                  "installed": self.enabled, "hardware_validation": "not_run_by_this_module"}
+        if reset:
+            self.counts.clear()
+            if _ACTIVE is self:
+                HITS[SCHEMA] = 0
+        return result
+
+    get_counters = get_stats
+
+    def require_hits(self):
+        if not self.counts.get("fast", 0):
+            raise RuntimeError("No softmax candidate hits; check guards, route and C++ first-call cache")
+        return self.get_stats()
+
+    def uninstall(self):
+        global _ACTIVE
+        self.enabled = False
+        conflicts = []
+        for module, attr, old, new in reversed(self.patches):
+            if getattr(module, attr, None) is new:
+                setattr(module, attr, old)
+            else:
+                conflicts.append(module.__name__ + "." + attr)
+        self.patches.clear()
+        if _ACTIVE is self:
+            _ACTIVE = None
+        return conflicts
+
+
+def install():
+    """Return Installation; patch exact registration/loaded FG aliases only.
+
+    Does NOT rebind already-installed torch.library implementations, invalidate
+    Torch-FL C++ callable caches, enable FlagGems routing, or change shared files.
+    Must run before the first routed _softmax call, in a fresh eager process.
+    """
+    global _ACTIVE
+    if _ACTIVE is not None:
+        raise RuntimeError("Already installed; use uninstall() or a fresh process")
+    gems = importlib.import_module("flag_gems")
+    ops = importlib.import_module("flag_gems.ops")
+    config = gems._FULL_CONFIG
+    if type(config) not in (tuple, list):
+        raise TypeError("Unknown _FULL_CONFIG container")
+    entries = [e for e in config if isinstance(e, (list, tuple)) and len(e) >= 2 and e[0] == "_softmax"]
+    if not entries or not callable(entries[0][1]):
+        raise RuntimeError("Missing callable exact _softmax registration")
+    original = entries[0][1]
+    if any(e[1] is not original for e in entries):
+        raise RuntimeError("Ambiguous exact _softmax registration")
+    if getattr(original, "__softmax_candidate_schema__", None):
+        raise RuntimeError("Another softmax candidate is already installed")
+    # Identity-wide alias replacement cannot safely share an implementation with
+    # a different schema; fail before editing anything in such an environment.
+    if any(isinstance(e, (list, tuple)) and len(e) >= 2 and e[1] is original and e[0] != "_softmax" for e in config):
+        raise RuntimeError("_softmax callable shared by another schema; manual integration required")
+    owner = importlib.import_module(original.__module__)
+    state = Installation(original)
+    modules = {id(m): m for m in (gems, ops, owner)}
+    for name, module in list(sys.modules.items()):
+        if module is not None and (name.startswith("flag_gems.") or name.startswith("_hygon.")):
+            modules[id(module)] = module
+    planned = []
+    for module in modules.values():
+        for attr, value in list(vars(module).items()):
+            if value is original:
+                planned.append((module, attr, original, state.wrapper))
+    updated = []
+    for entry in config:
+        if isinstance(entry, (list, tuple)) and len(entry) >= 2 and entry[0] == "_softmax":
+            entry = type(entry)((entry[0], state.wrapper, *entry[2:]))
+        updated.append(entry)
+    planned.append((gems, "_FULL_CONFIG", config, type(config)(updated)))
+    try:
+        for module, attr, old, new in planned:
+            setattr(module, attr, new)
+            state.patches.append((module, attr, old, new))
+    except Exception:
+        state.uninstall()
+        raise
+    HITS[SCHEMA] = 0
+    _ACTIVE = state
+    return state
+
+
+def get_stats(reset=False):
+    """Python/launch-submission witnesses only; NOT GPU completion/correctness."""
+    if _ACTIVE is None:
+        return {SCHEMA: {}, "HITS": dict(HITS), "installed": False,
+                "hardware_validation": "not_run_by_this_module"}
+    return _ACTIVE.get_stats(reset)
+
+
+def get_wrappers():
+    return {} if _ACTIVE is None else {SCHEMA: _ACTIVE.wrapper}
+
+
+def uninstall():
+    return [] if _ACTIVE is None else _ACTIVE.uninstall()

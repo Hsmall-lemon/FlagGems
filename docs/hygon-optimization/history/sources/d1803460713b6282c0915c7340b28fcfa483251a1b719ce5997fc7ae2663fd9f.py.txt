@@ -1,0 +1,344 @@
+"""Followup randperm candidate 1: uint32 small keys/local512; SERIALIZED EAGER ONLY, n <= 16384.
+
+Philox + packed local sorting/parallel merges + exact equal-key Fisher-Yates.
+No vendor random/sort delegation, persistent result cache, or uniformity claim
+for arbitrary finite-state PRNG seeds. See README.md for the qualification.
+"""
+import operator
+import sys
+import threading
+
+import torch
+import triton
+import triton.language as tl
+from flag_gems.runtime import torch_device_fn
+from flag_gems.utils import libentry
+
+IS_BASELINE = False
+MAX_N = 16384
+_BASELINE = None
+_EAGER_ONLY_ACK = False
+_CALL_LOCK = threading.Lock()
+_I64_MAX = (1 << 63) - 1
+
+
+@triton.jit
+def _packed_keys(offsets, seed, base, N: tl.constexpr,
+                 SHIFT: tl.constexpr, KEY_BITS: tl.constexpr):
+    # uint32 c0 selects the pinned Philox4x32-10, NOT Philox4x64.
+    # Padded lanes reuse a discarded position, never a future call's interval.
+    lane = tl.where(offsets < N, offsets, 0).to(tl.uint64)
+    position = base.to(tl.uint64) + lane
+    c0 = position.to(tl.uint32)
+    c1 = (position >> 32).to(tl.uint32)
+    z = tl.zeros(offsets.shape, tl.uint32)
+    r0, r1, _, _ = tl.philox(seed, c0, c1, z, z)
+    random48 = r0.to(tl.uint64) | ((r1.to(tl.uint64) & 65535) << 32)
+    random_key = random48 & ((1 << KEY_BITS) - 1)
+    packed = ((random_key << SHIFT) | offsets.to(tl.uint64)).to(tl.int64)
+    return tl.where(offsets < N, packed, 9223372036854775807)
+
+
+@triton.jit
+def _read_sorted(SORTED, values, positions, mask,
+                 LOCAL: tl.constexpr, BLOCK: tl.constexpr):
+    if LOCAL:
+        ix = tl.minimum(tl.maximum(positions, 0), BLOCK - 1).to(tl.int32)
+        v = tl.gather(values, ix, 0)
+        return tl.where(mask, v, tl.full((), 9223372036854775807, tl.int64).to(values.dtype))
+    else:
+        return tl.load(SORTED + positions, mask=mask, other=9223372036854775807)
+
+
+@triton.jit
+def _emit_corrected(SORTED, OUT, values, offsets, seed, base,
+                    N: tl.constexpr, SHIFT: tl.constexpr,
+                    SEARCH_STEPS: tl.constexpr,
+                    LOCAL: tl.constexpr, BLOCK: tl.constexpr):
+    valid = offsets < N
+    key = values >> SHIFT
+    prev = _read_sorted(SORTED, values, offsets - 1,
+                        valid & (offsets > 0), LOCAL, BLOCK) >> SHIFT
+    nxt = _read_sorted(SORTED, values, offsets + 1,
+                       valid & (offsets + 1 < N), LOCAL, BLOCK) >> SHIFT
+    owner = valid & ((offsets == 0) | (key != prev))
+    singleton = owner & ((offsets + 1 >= N) | (key != nxt))
+    id_mask: tl.constexpr = (1 << SHIFT) - 1
+    tl.store(OUT + offsets, values & id_mask, mask=singleton)
+    duplicate = owner & ~singleton
+    if tl.sum(duplicate.to(tl.int32), 0) > 0:
+        # Global upper_bound(random key), including runs/CTAs beyond this CTA.
+        lo = tl.where(duplicate, offsets + 1, 0)
+        hi = tl.where(duplicate, N, 0)
+        for search_iteration in range(SEARCH_STEPS):
+            searching = duplicate & (lo < hi)
+            mid = lo + (hi - lo) // 2
+            p = _read_sorted(SORTED, values, mid, searching, LOCAL, BLOCK)
+            right = (p >> SHIFT) <= key
+            lo = tl.where(searching & right, mid + 1, lo)
+            hi = tl.where(searching & ~right, mid, hi)
+        end = lo
+        cursor = offsets
+        copying = duplicate & (cursor < end)
+        # Only each group's owner initializes it. Interior lanes never store.
+        while tl.sum(copying.to(tl.int32), 0) > 0:
+            p = _read_sorted(SORTED, values, cursor, copying, LOCAL, BLOCK)
+            tl.store(OUT + cursor, p & id_mask, mask=copying)
+            cursor = tl.where(copying, cursor + 1, cursor)
+            copying = duplicate & (cursor < end)
+        tl.debug_barrier()
+        remaining = tl.where(duplicate, end - offsets - 1, 0)
+        ordinal = tl.zeros(offsets.shape, tl.uint64)
+        position = base.to(tl.uint64) + tl.where(duplicate, offsets, 0).to(tl.uint64)
+        c0 = position.to(tl.uint32)
+        c1 = (position >> 32).to(tl.uint32)
+        domain = tl.full(offsets.shape, 1, tl.uint32)
+        active = duplicate & (remaining > 0)
+        while tl.sum(active.to(tl.int32), 0) > 0:
+            bound = (remaining + 1).to(tl.uint64)
+            # Threshold can equal 2**32; it must NOT be computed in uint32.
+            threshold = (4294967296 // bound) * bound
+            pending = active
+            sample = tl.zeros(offsets.shape, tl.uint32)
+            while tl.sum(pending.to(tl.int32), 0) > 0:
+                # Kernels containing this helper are ALWAYS launched debug=True.
+                # Exhaustion is a device error, never counter wrap/biased fallback.
+                tl.device_assert(tl.sum((pending & (ordinal >= 4294967296)).to(tl.int32), 0) == 0,
+                                 "randperm correction Philox ordinal exhausted")
+                r, _, _, _ = tl.philox(seed, c0, c1, ordinal.to(tl.uint32), domain)
+                accepted = pending & (r.to(tl.uint64) < threshold)
+                sample = tl.where(accepted, r, sample)
+                ordinal += pending.to(tl.uint64)
+                pending = pending & ~accepted
+            j = (sample.to(tl.uint64) % bound).to(tl.int32)
+            pi = offsets + remaining
+            pj = offsets + j
+            vi = tl.load(OUT + pi, mask=active, other=0)
+            vj = tl.load(OUT + pj, mask=active, other=0)
+            tl.store(OUT + pi, vj, mask=active)
+            tl.store(OUT + pj, vi, mask=active)
+            remaining -= active.to(tl.int32)
+            active = duplicate & (remaining > 0)
+
+
+@libentry()
+@triton.jit(do_not_specialize=["seed", "base"])
+def _small(OUT, seed, base, N: tl.constexpr, SHIFT: tl.constexpr,
+           KEY_BITS: tl.constexpr, BLOCK: tl.constexpr,
+           SEARCH_STEPS: tl.constexpr):
+    offsets = tl.arange(0, BLOCK)
+    packed = _packed_keys(offsets, seed, base, N, SHIFT, KEY_BITS)
+    packed = tl.sort(packed, dim=0, descending=False)
+    _emit_corrected(OUT, OUT, packed, offsets, seed, base,
+                    N, SHIFT, SEARCH_STEPS, True, BLOCK)
+
+
+@libentry()
+@triton.jit(do_not_specialize=["seed", "base"])
+def _small32(OUT, seed, base, N: tl.constexpr, SHIFT: tl.constexpr,
+             KEY_BITS: tl.constexpr, BLOCK: tl.constexpr,
+             SEARCH_STEPS: tl.constexpr):
+    offsets = tl.arange(0, BLOCK)
+    packed = _packed_keys(offsets, seed, base, N, SHIFT, KEY_BITS).to(tl.uint32)
+    packed = tl.sort(packed, dim=0, descending=False)
+    # Keep neighbors/gathers uint32; exact same tie correction is mandatory.
+    _emit_corrected(OUT, OUT, packed, offsets, seed, base,
+                    N, SHIFT, SEARCH_STEPS, True, BLOCK)
+
+
+@libentry()
+@triton.jit(do_not_specialize=["seed", "base"])
+def _local_sort(SORTED, seed, base, N: tl.constexpr, SHIFT: tl.constexpr,
+                KEY_BITS: tl.constexpr, BLOCK: tl.constexpr):
+    offsets = tl.program_id(0) * BLOCK + tl.arange(0, BLOCK)
+    packed = _packed_keys(offsets, seed, base, N, SHIFT, KEY_BITS)
+    packed = tl.sort(packed, dim=0, descending=False)
+    tl.store(SORTED + offsets, packed, mask=offsets < N)
+
+
+@libentry()
+@triton.jit
+def _merge(SRC, DST, N: tl.constexpr, RUN: tl.constexpr,
+           SEARCH_STEPS: tl.constexpr, BLOCK: tl.constexpr):
+    offsets = tl.program_id(0) * BLOCK + tl.arange(0, BLOCK)
+    valid = offsets < N
+    value = tl.load(SRC + offsets, mask=valid, other=9223372036854775807)
+    start = offsets // (2 * RUN) * (2 * RUN)
+    left = (offsets - start) < RUN
+    own_start = tl.where(left, start, start + RUN)
+    other_start = tl.minimum(tl.where(left, start + RUN, start), N)
+    lo = other_start
+    hi = tl.minimum(other_start + RUN, N)
+    for search_iteration in range(SEARCH_STEPS):
+        searching = valid & (lo < hi)
+        mid = lo + (hi - lo) // 2
+        other = tl.load(SRC + mid, mask=searching, other=9223372036854775807)
+        right = other < value
+        lo = tl.where(searching & right, mid + 1, lo)
+        hi = tl.where(searching & ~right, mid, hi)
+    dest = start + (offsets - own_start) + (lo - other_start)
+    tl.store(DST + dest, value, mask=valid)
+
+
+@libentry()
+@triton.jit(do_not_specialize=["seed", "base"])
+def _finish(SORTED, OUT, seed, base, N: tl.constexpr, SHIFT: tl.constexpr,
+            SEARCH_STEPS: tl.constexpr, BLOCK: tl.constexpr):
+    offsets = tl.program_id(0) * BLOCK + tl.arange(0, BLOCK)
+    values = tl.load(SORTED + offsets, mask=offsets < N, other=9223372036854775807)
+    _emit_corrected(SORTED, OUT, values, offsets, seed, base,
+                    N, SHIFT, SEARCH_STEPS, False, BLOCK)
+
+
+@libentry()
+@triton.jit
+def _one(OUT):
+    tl.store(OUT, 0)
+
+
+@libentry()
+@triton.jit(do_not_specialize=["seed", "base"])
+def _two(OUT, seed, base):
+    p = base.to(tl.uint64)
+    z = tl.full((), 0, tl.uint32)
+    r, _, _, _ = tl.philox(seed, p.to(tl.uint32), (p >> 32).to(tl.uint32), z, z)
+    first = (r & 1).to(tl.int32)
+    tl.store(OUT, first)
+    tl.store(OUT + 1, 1 - first)
+
+
+def _reserve_once(n, generator, index):
+    """Equivalent to pinned helper, with pre-wrap checks; NOT an atomic API."""
+    gen = generator if generator is not None else torch_device_fn.default_generators[index]
+    gd = torch.device(gen.device)
+    if gd.type not in ("flagos", "cuda") or (gd.index is not None and gd.index != index):
+        raise ValueError("generator must belong to the requested device")
+    state = gen.get_state()
+    if state.device.type != "cpu" or state.numel() != 16 or state.dtype != torch.uint8:
+        raise RuntimeError("requires the pinned two-int64 Philox generator state")
+    words = state.view(torch.int64)
+    seed, base = int(words[0]), int(words[1])
+    increment = (n + 3) // 4 * 4
+    # Conservative signed offset domain matches the pinned int64 state helper.
+    if base < 0 or base > _I64_MAX - increment:
+        raise OverflowError("randperm Philox reservation exceeds signed offset domain")
+    words[1] = base + increment
+    gen.set_state(state)
+    return seed, base
+
+
+
+def _check_eager_only():
+    # Prefer the actual backend. A CPU-front-end CUDA stub is not evidence
+    # that the native HIP stream is or is not being captured.
+    probe = getattr(torch_device_fn, "is_current_stream_capturing", None)
+    observed = None
+    if callable(probe):
+        try:
+            observed = bool(probe())
+        except (AttributeError, NotImplementedError):
+            pass
+        except (RuntimeError, AssertionError) as error:
+            text = str(error).lower()
+            unsupported = ("not compiled", "not supported", "unsupported",
+                           "not implemented", "dummy", "unavailable", "missing")
+            if not any(word in text for word in unsupported):
+                raise
+    if observed is True:
+        raise RuntimeError("randperm candidate does not support graph capture")
+    if observed is None and not _EAGER_ONLY_ACK:
+        raise RuntimeError("capture state unavailable: install requires explicit serialized-eager contract")
+    # observed=None remains UNKNOWN, not False. install() acknowledges only
+    # the task's serialized-eager precondition; no graph support is claimed.
+
+
+def _run(n, *, generator=None, out=None, dtype=torch.int64,
+         layout=torch.strided, device=None, requires_grad=False,
+         pin_memory=False, key_bits=48):
+    n = operator.index(n)
+    key_bits = operator.index(key_bits)
+    if not 0 <= n <= MAX_N:
+        raise ValueError("candidate supports only 0 <= n <= 16384; no biased fallback")
+    if not 0 <= key_bits <= 48:
+        raise ValueError("key_bits must lie in [0,48]")
+    dtype = torch.int64 if dtype is None else dtype
+    if dtype not in (torch.int32, torch.int64):
+        raise TypeError("candidate supports only int32/int64 output")
+    if out is not None or layout != torch.strided or requires_grad or pin_memory:
+        raise NotImplementedError("out, nonstrided, requires_grad and pin_memory are unsupported")
+    dev = torch.device("flagos", torch_device_fn.current_device()) if device is None else torch.device(device)
+    if dev.type != "flagos":
+        raise ValueError("candidate accepts only the actual flagos device")
+    if dev.index is None:
+        dev = torch.device("flagos", torch_device_fn.current_device())
+    if not _CALL_LOCK.acquire(blocking=False):
+        raise RuntimeError("randperm candidate requires serialized eager callers")
+    try:
+        with torch_device_fn.device(dev):
+            _check_eager_only()
+            output = torch.empty((n,), dtype=dtype, device=dev)
+            if n == 0:
+                return output
+            if n == 1:
+                _one[(1,)](output, num_warps=1)
+                return output
+            seed, base = _reserve_once(n, generator, dev.index)
+            shift = max(1, (n - 1).bit_length())
+            if n == 2 and key_bits == 48:
+                _two[(1,)](output, seed, base, num_warps=1)
+            elif n <= 1024:
+                block = triton.next_power_of_2(n)
+                _small32[(1,)](output, seed, base, n, shift, min(key_bits,32-shift), block,
+                              n.bit_length(), num_warps=1 if n <= 32 else 4,
+                              debug=True)
+            else:
+                a = torch.empty((n,), dtype=torch.int64, device=dev)
+                b = torch.empty_like(a)
+                local_block = 512 if n <= 4096 else 1024
+                _local_sort[(triton.cdiv(n, local_block),)](
+                    a, seed, base, n, shift, key_bits, local_block, num_warps=4)
+                run = local_block
+                while run < n:
+                    _merge[(triton.cdiv(n, 256),)](
+                        a, b, n, run, run.bit_length(), 256, num_warps=4)
+                    a, b = b, a
+                    run *= 2
+                _finish[(triton.cdiv(n, 256),)](
+                    a, output, seed, base, n, shift, n.bit_length(), 256,
+                    num_warps=4, debug=True)
+            return output
+    finally:
+        _CALL_LOCK.release()
+
+
+def randperm(n, *, generator=None, out=None, dtype=torch.int64,
+             layout=torch.strided, device=None, requires_grad=False,
+             pin_memory=False):
+    return _run(n, generator=generator, out=out, dtype=dtype, layout=layout,
+                device=device, requires_grad=requires_grad, pin_memory=pin_memory)
+
+
+def randperm_debug(n, *, device=None, key_bits=2, generator=None,
+                   dtype=torch.int64):
+    """Same production kernels/counter mapping; smaller keys FORCE real ties."""
+    return _run(n, generator=generator, dtype=dtype, device=device, key_bits=key_bits)
+
+
+def install(torch, flag_gems):
+    """Patch only task-private aliases before the first actual ATen invocation."""
+    global _BASELINE, _EAGER_ONLY_ACK
+    _EAGER_ONLY_ACK = True  # This installation is explicitly SERIALIZED EAGER ONLY.
+    if flag_gems.randperm is randperm:
+        return
+    if _BASELINE is not None:
+        raise RuntimeError("install into a fresh isolated resident variant")
+    _BASELINE = flag_gems.randperm
+    names = {"flag_gems", "flag_gems.ops", "flag_gems.ops.randperm",
+             "flag_gems.runtime.backend._hygon.ops",
+             "flag_gems.runtime.backend._hygon.ops.randperm",
+             getattr(_BASELINE, "__module__", "")}
+    flag_gems.randperm = randperm
+    for name in names:
+        module = sys.modules.get(name)
+        if module is not None and hasattr(module, "randperm"):
+            module.randperm = randperm

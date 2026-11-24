@@ -1,0 +1,122 @@
+"""Measure device work and report every A/A block, including unstable results."""
+import argparse
+import bisect
+from collections import defaultdict
+import json
+from pathlib import Path
+import re
+import statistics
+
+ap=argparse.ArgumentParser()
+ap.add_argument('name')
+ap.add_argument('records')
+args=ap.parse_args()
+root=Path(__file__).resolve().parent
+records=[json.loads(x) for x in (root/args.records).read_text().splitlines()]
+timed_records={(r['case'],r['provider'],r['aa'],r['roi']):r for r in records if 'aa' in r}
+path=root/'profiles'/(args.name+'.json')
+parts=[path] if path.exists() else sorted(path.parent.glob(path.stem+'_*.json'))
+assert parts,'No profiler JSON data'
+def trace_events(path):
+    # HIP API events dominate long traces; decode incrementally to bound memory.
+    decoder=json.JSONDecoder()
+    with path.open(encoding='utf-8-sig') as source:
+        buffer=''
+        while True:
+            chunk=source.read(1024*1024)
+            assert chunk,'Missing traceEvents array'
+            buffer+=chunk
+            match=re.search(r'"traceEvents"\s*:\s*\[',buffer)
+            if match:
+                buffer=buffer[match.end():]
+                break
+        position=0
+        while True:
+            while position<len(buffer) and buffer[position] in ' \t\r\n,':position+=1
+            if position<len(buffer) and buffer[position]==']':return
+            try:
+                event,end=decoder.raw_decode(buffer,position)
+            except ValueError:
+                chunk=source.read(1024*1024)
+                assert chunk,'Incomplete traceEvents array'
+                buffer=buffer[position:]+chunk
+                position=0
+                continue
+            yield event
+            position=end
+            if position>=1024*1024:
+                buffer=buffer[position:]+source.read(1024*1024)
+                position=0
+
+events=[]
+for p in parts:
+    events.extend(e for e in trace_events(p) if e.get('cat') in ['HIPOPS','HIPTX','HIPCOPY'])
+kernels=sorted((x for x in events if x.get('cat')=='HIPOPS'),key=lambda x:int(x['args']['index']))
+indices=[int(k['args']['index']) for k in kernels]
+copies=sorted((x for x in events if x.get('cat')=='HIPCOPY'),key=lambda x:int(x['args']['index']))
+copy_indices=[int(k['args']['index']) for k in copies]
+samples={}
+components={}
+min_gate=float('inf')
+gaps=[]
+kernel_names=defaultdict(set)
+copy_names=defaultdict(set)
+for roi in events:
+    match=re.fullmatch(r'correction:case=(\d+):provider=(\w+):aa=(\d+):roi=(\d+)',roi.get('name',''))
+    if not match:continue
+    lo,hi=[int(roi['args'][x]) for x in ['BeginIndex','EndIndex']]
+    a,b=bisect.bisect_left(indices,lo),bisect.bisect_right(indices,hi)
+    gate=kernels[a-1]
+    assert gate['name']=='queue_gate' and int(gate['args']['DurationNs'])>10000000,(roi['name'],gate['name'])
+    min_gate=min(min_gate,int(gate['args']['DurationNs'])/1000)
+    own=kernels[a:b]
+    copy_a,copy_b=bisect.bisect_left(copy_indices,lo),bisect.bisect_right(copy_indices,hi)
+    own_copies=copies[copy_a:copy_b]
+    key=(int(match[1]),match[2],int(match[3]),int(match[4]))
+    assert key in timed_records,('Unrecorded or incomplete range',key)
+    calls=timed_records[key]['calls']
+    assert len(own)%calls==0
+    # Include every copy, including nonuniform allocator initialization.
+    assert all(x['name']!='queue_gate' for x in own)
+    for k in own+own_copies:
+        v=k['args']; assert abs(int(v['EndNs'])-int(v['BeginNs'])-int(v['DurationNs']))<=1
+    assert key not in samples
+    kernel_us=sum(int(x['args']['DurationNs']) for x in own)/(calls*1000)
+    copy_us=sum(int(x['args']['DurationNs']) for x in own_copies)/(calls*1000)
+    samples[key]=kernel_us+copy_us
+    components[key]=dict(kernel_us=kernel_us,copy_us=copy_us,kernels_per_call=len(own)//calls,copies_per_call=len(own_copies)/calls)
+    kernel_names[key[:2]].update(x['name'] for x in own)
+    copy_names[key[:2]].update(x['name'] for x in own_copies)
+    gaps.extend(max(0,int(own[i]['args']['BeginNs'])-int(own[i-1]['args']['EndNs']))/1000 for i in range(1,len(own)))
+groups=defaultdict(list)
+for r in records:
+    if 'aa' not in r:continue
+    key=(r['case'],r['provider'],r['aa'],r['roi'])
+    assert key in samples
+    if r.get('noop'):
+        assert samples[key]==0 and not kernel_names[key[:2]] and not copy_names[key[:2]], 'Identity must launch no device work'
+    r['device_us']=samples[key]
+    r.update(components[key])
+    groups[key[:2]].append(r)
+assert sum('aa' in r for r in records)==len(samples),'Incomplete or unexpected ranges'
+results=[]
+for (case,provider),rs in sorted(groups.items()):
+    assert len(rs)==15
+    medians=[]
+    for aa_round in range(3):
+        values=[r['device_us'] for r in rs if r['aa']==aa_round]
+        assert len(values)==5
+        medians.append(statistics.median(values))
+    drift=0 if max(medians)==0 else max(medians)/min(medians)-1
+    correctness=all(r.get('accuracy',{}).get('ok',True) and all(r.get('correctness',{}).get(k,True) for k in ['value_ok','dtype_ok','stride_ok','alias_ok']) for r in rs)
+    item=dict(case=case,provider=provider,device_us=statistics.median(medians),aa_medians_us=medians,
+              aa_max_drift=drift,stable=drift<=.05,correctness=correctness,
+              kernels=sorted(kernel_names[(case,provider)]),copies=sorted(copy_names[(case,provider)]),samples=rs)
+    results.append(item)
+    print(case,provider,item['device_us'],'AA',medians,'drift',round(drift*100,3),'correct',correctness)
+out=dict(profile=args.name,metric='(HIPOPS + HIPCOPY) DurationNs sum/call; host and gate excluded; kernel/copy components retained',
+         calls_per_roi=sorted({r['calls'] for r in timed_records.values()}),rois_per_aa_block=5,aa_blocks=3,stability_threshold=.05,
+         minimum_gate_us=min_gate,maximum_inter_kernel_gap_us=max(gaps) if gaps else 0,
+         results=results)
+(root/(args.name+'-analyzed.json')).write_text(json.dumps(out,indent=2)+'\n')
+print('PROFILE_AUDIT_COMPLETE',len(samples),'ranges',min_gate,'minimum gate us')

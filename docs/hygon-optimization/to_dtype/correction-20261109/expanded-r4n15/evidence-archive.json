@@ -1,0 +1,67 @@
+{
+  "file": "expanded-dtype-20261109.tar.gz",
+  "sha256": "56eabe64c7ec9c69405874153453cfb8c44f281ce4f9ed320c4375c5257bb1c8",
+  "native_trace_location": "expanded-gpu1/profiles/dtype-expanded-r1*",
+  "manifest": [
+    {
+      "file": "reproduce_mm.py",
+      "size": 6215,
+      "sha256": "7e21628f6b949a682de01487f247703c732b692fe843a920966251bf028d4c78"
+    },
+    {
+      "file": "mm_original.py",
+      "size": 7559,
+      "sha256": "d2594faf1b89fa0bdb2de549d4e2dde19ea87f63c0d92e587b326773d094a0cb"
+    },
+    {
+      "file": "profile_setup_long.py",
+      "size": 974,
+      "sha256": "dcc61c9ea622aec005956fcf7479f6e8515fbd3977dfef5a42aa9caa8c31f720"
+    },
+    {
+      "file": "analyze_correction_profile.py",
+      "size": 5974,
+      "sha256": "589ad5e2c363ccad4543dcb5c30a068fb87d897dab241f5b11d8effefd8fa226"
+    },
+    {
+      "file": "profile_dtype_expanded.py",
+      "size": 3494,
+      "sha256": "f53d0de65dc156871e30d3cf2d200f9baac21274933ca3d17498eac10b7baaa3"
+    },
+    {
+      "file": "run_expanded.py",
+      "size": 1644,
+      "sha256": "6c30d20074c926177dfc49f70424c1c68b5a35cd47aa1cfa75731b58fc8c6300"
+    },
+    {
+      "file": "run-expanded.log",
+      "size": 131,
+      "sha256": "478555e0dd1af821c96c5a6fc23e05dfb39feffa15fb617ba3218610ec023328"
+    },
+    {
+      "file": "dtype-expanded-r1.log",
+      "size": 262977,
+      "sha256": "0edeb7381f916ea38bc3db3dd9536f7eee5c571a62a0c7d693a185d51e75d3a7"
+    },
+    {
+      "file": "dtype-expanded-r1-analysis.log",
+      "size": 4069,
+      "sha256": "6fd0349eb24948e5eefe872fc09baf9e49cf9fcf464483283655b2214062b38f"
+    },
+    {
+      "file": "dtype-expanded-records.jsonl",
+      "size": 189885,
+      "sha256": "d0cf66ee78f11dfebf66361e3792867c0a13e94993724de096fcad952b70c314"
+    },
+    {
+      "file": "dtype-expanded-r1-analyzed.json",
+      "size": 487902,
+      "sha256": "9b3b8bbfb8f44cbad10a965944c9a84d7ad527d85b30d5654c6bc577ac2e9b4e"
+    },
+    {
+      "file": "profile_dtype_expanded-runtime-fingerprint.json",
+      "size": 77642,
+      "sha256": "d093a43f6e13bbcbcbb1fe395a5528f1a264fdbac983ef5e679d6fc03be508b2"
+    }
+  ]
+}

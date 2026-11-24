@@ -1,0 +1,11 @@
+Check Yaml...........................................(no files to check)Skipped
+Fix End of Files.........................................................Passed
+Trim Trailing Whitespace.................................................Passed
+Flake8...................................................................Passed
+clang-format.............................................................Passed
+isort....................................................................Passed
+black....................................................................Passed
+black-jupyter............................................................Passed
+auto-sort __all__ and operators.yaml.................(no files to check)Skipped
+check __init__.py exports............................(no files to check)Skipped
+check operators.yaml duplicates......................(no files to check)Skipped

@@ -1,0 +1,16 @@
+{
+  "src/flag_gems/runtime/backend/_hygon/ops/mm_config.py": {
+    "local_raw_sha256": "6b9c2a8054ccffe5363f9b426a3e6febc8b2209dca29a7935ee9a7966927db24",
+    "validated_lf_sha256": "911857e0e5bbc48f149fd1ae1e3bdf16833ad53494b2411c77b398cb037cdc50",
+    "standalone_measured_sha256": "6b9c2a8054ccffe5363f9b426a3e6febc8b2209dca29a7935ee9a7966927db24",
+    "measured_matches_local_raw": true,
+    "measured_matches_local_lf": false
+  },
+  "tests/test_hygon_mm.py": {
+    "local_raw_sha256": "f6cbadc1999ee17bc782bd816e7cb44d286ba2f3b8ea11b9beeccdfb6284f684",
+    "validated_lf_sha256": "16c8585f46c89d7585ecc3117b3169e6c0977dce7593b21b7b7ad6ff802a0091",
+    "standalone_measured_sha256": "f6cbadc1999ee17bc782bd816e7cb44d286ba2f3b8ea11b9beeccdfb6284f684",
+    "measured_matches_local_raw": true,
+    "measured_matches_local_lf": false
+  }
+}

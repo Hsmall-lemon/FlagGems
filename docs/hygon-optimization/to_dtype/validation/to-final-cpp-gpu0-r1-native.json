@@ -1,0 +1,464 @@
+[
+  {
+    "row": 1711,
+    "provider": "cpp",
+    "physical_card": "0",
+    "input_dtype": "torch.bfloat16",
+    "output_dtype": "torch.float32",
+    "shape": [
+      1,
+      145,
+      2560
+    ],
+    "input_stride": [
+      371200,
+      2560,
+      1
+    ],
+    "storage_offset": 0,
+    "noop": false,
+    "seed": 0,
+    "optimized_route_witness": true,
+    "accuracy_ok": true,
+    "output_stride": [
+      371200,
+      2560,
+      1
+    ],
+    "stride_ok": true,
+    "alias_ok": true,
+    "us": 11.119999922811985,
+    "rois_us": [
+      11.04000024497509,
+      11.119999922811985,
+      11.119999922811985,
+      11.19999960064888,
+      11.04000024497509
+    ],
+    "native_us": 4.096,
+    "native_rois_us": [
+      4.08,
+      4.096,
+      4.16,
+      4.096,
+      4.112
+    ],
+    "kernels": [
+      "void at::native::vectorized_elementwise_kernel<4, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul> >(int, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul>)"
+    ]
+  },
+  {
+    "row": 1712,
+    "provider": "cpp",
+    "physical_card": "0",
+    "input_dtype": "torch.bfloat16",
+    "output_dtype": "torch.float32",
+    "shape": [
+      1,
+      4,
+      145,
+      256
+    ],
+    "input_stride": [
+      148480,
+      256,
+      1024,
+      1
+    ],
+    "storage_offset": 0,
+    "noop": false,
+    "seed": 0,
+    "optimized_route_witness": true,
+    "accuracy_ok": true,
+    "output_stride": [
+      148480,
+      37120,
+      256,
+      1
+    ],
+    "stride_ok": false,
+    "alias_ok": true,
+    "us": 17.839999869465828,
+    "rois_us": [
+      67.28000193834305,
+      17.920000478625298,
+      17.839999869465828,
+      17.75999926030636,
+      17.75999926030636
+    ],
+    "native_us": 11.12,
+    "native_rois_us": [
+      10.592,
+      11.12,
+      11.136,
+      11.088,
+      11.12
+    ],
+    "kernels": [
+      "void at::native::elementwise_kernel_manual_unroll<128, 8, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#12}::operator()() const::{lambda(c10::BFloat16)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#12}::operator()() const::{lambda(c10::BFloat16)#1} const&)::{lambda(int, bool)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#12}::operator()() const::{lambda(c10::BFloat16)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#12}::operator()() const::{lambda(c10::BFloat16)#1} const&)::{lambda(int, bool)#1})",
+      "void at::native::vectorized_elementwise_kernel<4, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul> >(int, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul>)"
+    ]
+  },
+  {
+    "row": 1713,
+    "provider": "cpp",
+    "physical_card": "0",
+    "input_dtype": "torch.bfloat16",
+    "output_dtype": "torch.float32",
+    "shape": [
+      1,
+      8,
+      145,
+      256
+    ],
+    "input_stride": [
+      296960,
+      256,
+      2048,
+      1
+    ],
+    "storage_offset": 0,
+    "noop": false,
+    "seed": 0,
+    "optimized_route_witness": true,
+    "accuracy_ok": true,
+    "output_stride": [
+      296960,
+      37120,
+      256,
+      1
+    ],
+    "stride_ok": false,
+    "alias_ok": true,
+    "us": 18.239999189972878,
+    "rois_us": [
+      18.159999512135983,
+      18.239999189972878,
+      18.239999189972878,
+      21.75999991595745,
+      18.239999189972878
+    ],
+    "native_us": 11.344,
+    "native_rois_us": [
+      11.232,
+      11.36,
+      11.3438,
+      14.256,
+      11.344
+    ],
+    "kernels": [
+      "void at::native::elementwise_kernel_manual_unroll<128, 8, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#12}::operator()() const::{lambda(c10::BFloat16)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#12}::operator()() const::{lambda(c10::BFloat16)#1} const&)::{lambda(int, bool)#1}>(int, at::native::gpu_kernel_impl_nocast<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#12}::operator()() const::{lambda(c10::BFloat16)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#12}::operator()() const::{lambda(c10::BFloat16)#1} const&)::{lambda(int, bool)#1})",
+      "void at::native::vectorized_elementwise_kernel<4, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul> >(int, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul>)"
+    ]
+  },
+  {
+    "row": 1714,
+    "provider": "cpp",
+    "physical_card": "0",
+    "input_dtype": "torch.bfloat16",
+    "output_dtype": "torch.float32",
+    "shape": [
+      2560
+    ],
+    "input_stride": [
+      1
+    ],
+    "storage_offset": 0,
+    "noop": false,
+    "seed": 0,
+    "optimized_route_witness": true,
+    "accuracy_ok": true,
+    "output_stride": [
+      1
+    ],
+    "stride_ok": true,
+    "alias_ok": true,
+    "us": 10.00000024214387,
+    "rois_us": [
+      9.920000098645687,
+      10.00000024214387,
+      10.080000385642052,
+      9.920000098645687,
+      10.00000024214387
+    ],
+    "native_us": 4.096,
+    "native_rois_us": [
+      4.08,
+      4.144,
+      4.096,
+      4.064,
+      4.128
+    ],
+    "kernels": [
+      "void at::native::vectorized_elementwise_kernel<4, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul> >(int, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul>)"
+    ]
+  },
+  {
+    "row": 1715,
+    "provider": "cpp",
+    "physical_card": "0",
+    "input_dtype": "torch.bfloat16",
+    "output_dtype": "torch.float32",
+    "shape": [
+      256
+    ],
+    "input_stride": [
+      1
+    ],
+    "storage_offset": 0,
+    "noop": false,
+    "seed": 0,
+    "optimized_route_witness": true,
+    "accuracy_ok": true,
+    "output_stride": [
+      1
+    ],
+    "stride_ok": true,
+    "alias_ok": true,
+    "us": 10.080000385642052,
+    "rois_us": [
+      9.920000098645687,
+      10.080000385642052,
+      10.080000385642052,
+      9.920000098645687,
+      10.080000385642052
+    ],
+    "native_us": 4.096,
+    "native_rois_us": [
+      4.064,
+      4.192,
+      4.032,
+      4.096,
+      4.176
+    ],
+    "kernels": [
+      "void at::native::vectorized_elementwise_kernel<4, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul> >(int, at::native::bfloat16tofloat32_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(c10::BFloat16)#1}, std::array<char*, 2ul>)"
+    ]
+  },
+  {
+    "row": 1716,
+    "provider": "cpp",
+    "physical_card": "0",
+    "input_dtype": "torch.bfloat16",
+    "output_dtype": "torch.bfloat16",
+    "shape": [],
+    "input_stride": [],
+    "storage_offset": 0,
+    "noop": true,
+    "seed": 0,
+    "optimized_route_witness": true,
+    "accuracy_ok": true,
+    "output_stride": [],
+    "stride_ok": true,
+    "alias_ok": true,
+    "us": 5.919999908655882,
+    "rois_us": [
+      5.919999908655882,
+      5.919999908655882,
+      5.919999908655882,
+      6.000000052154064,
+      5.919999908655882
+    ],
+    "native_us": 0.0,
+    "native_rois_us": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "kernels": []
+  },
+  {
+    "row": 1717,
+    "provider": "cpp",
+    "physical_card": "0",
+    "input_dtype": "torch.bool",
+    "output_dtype": "torch.int32",
+    "shape": [
+      1,
+      145
+    ],
+    "input_stride": [
+      145,
+      1
+    ],
+    "storage_offset": 0,
+    "noop": false,
+    "seed": 0,
+    "optimized_route_witness": true,
+    "accuracy_ok": true,
+    "output_stride": [
+      145,
+      1
+    ],
+    "stride_ok": true,
+    "alias_ok": true,
+    "us": 13.359999749809504,
+    "rois_us": [
+      13.359999749809504,
+      14.959999825805426,
+      13.359999749809504,
+      11.839999817311764,
+      13.679999858140945
+    ],
+    "native_us": 6.704,
+    "native_rois_us": [
+      6.736,
+      7.52,
+      6.704,
+      5.984,
+      6.48
+    ],
+    "kernels": [
+      "void at::native::elementwise_kernel_manual_unroll<128, 4, at::native::gpu_kernel_impl<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#3}::operator()() const::{lambda(int)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#3}::operator()() const::{lambda(int)#1} const&)::{lambda(int, bool)#1}>(int, at::native::gpu_kernel_impl<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#3}::operator()() const::{lambda(int)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#3}::operator()() const::{lambda(int)#1} const&)::{lambda(int, bool)#1})"
+    ]
+  },
+  {
+    "row": 1718,
+    "provider": "cpp",
+    "physical_card": "0",
+    "input_dtype": "torch.float32",
+    "output_dtype": "torch.bfloat16",
+    "shape": [
+      1,
+      145,
+      256
+    ],
+    "input_stride": [
+      37120,
+      256,
+      1
+    ],
+    "storage_offset": 0,
+    "noop": false,
+    "seed": 0,
+    "optimized_route_witness": true,
+    "accuracy_ok": true,
+    "output_stride": [
+      37120,
+      256,
+      1
+    ],
+    "stride_ok": true,
+    "alias_ok": true,
+    "us": 10.080000385642052,
+    "rois_us": [
+      10.080000385642052,
+      10.080000385642052,
+      10.080000385642052,
+      10.080000385642052,
+      10.00000024214387
+    ],
+    "native_us": 4.08,
+    "native_rois_us": [
+      4.096,
+      4.08,
+      4.096,
+      4.064,
+      4.08
+    ],
+    "kernels": [
+      "void at::native::vectorized_elementwise_kernel<4, at::native::bfloat16_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(float)#1}, std::array<char*, 2ul> >(int, at::native::bfloat16_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(float)#1}, std::array<char*, 2ul>)"
+    ]
+  },
+  {
+    "row": 1719,
+    "provider": "cpp",
+    "physical_card": "0",
+    "input_dtype": "torch.float32",
+    "output_dtype": "torch.bfloat16",
+    "shape": [
+      1,
+      8,
+      145,
+      145
+    ],
+    "input_stride": [
+      168200,
+      21025,
+      145,
+      1
+    ],
+    "storage_offset": 0,
+    "noop": false,
+    "seed": 0,
+    "optimized_route_witness": true,
+    "accuracy_ok": true,
+    "output_stride": [
+      168200,
+      21025,
+      145,
+      1
+    ],
+    "stride_ok": true,
+    "alias_ok": true,
+    "us": 10.240000206977129,
+    "rois_us": [
+      10.240000206977129,
+      10.400000028312206,
+      10.480000171810389,
+      10.239999741315842,
+      10.240000206977129
+    ],
+    "native_us": 4.096,
+    "native_rois_us": [
+      4.048,
+      4.112,
+      4.128,
+      4.096,
+      4.032
+    ],
+    "kernels": [
+      "void at::native::vectorized_elementwise_kernel<4, at::native::bfloat16_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(float)#1}, std::array<char*, 2ul> >(int, at::native::bfloat16_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda(float)#1}, std::array<char*, 2ul>)"
+    ]
+  },
+  {
+    "row": 1720,
+    "provider": "cpp",
+    "physical_card": "0",
+    "input_dtype": "torch.int64",
+    "output_dtype": "torch.float32",
+    "shape": [
+      1,
+      145,
+      1
+    ],
+    "input_stride": [
+      145,
+      1,
+      1
+    ],
+    "storage_offset": 0,
+    "noop": false,
+    "seed": 0,
+    "optimized_route_witness": true,
+    "accuracy_ok": true,
+    "output_stride": [
+      145,
+      1,
+      1
+    ],
+    "stride_ok": true,
+    "alias_ok": true,
+    "us": 13.359999749809504,
+    "rois_us": [
+      13.520000036805868,
+      13.359999749809504,
+      13.280000071972609,
+      13.520000036805868,
+      13.199999928474426
+    ],
+    "native_us": 6.416,
+    "native_rois_us": [
+      7.504,
+      6.736,
+      6.352,
+      6.416,
+      6.352
+    ],
+    "kernels": [
+      "void at::native::elementwise_kernel_manual_unroll<128, 4, at::native::gpu_kernel_impl<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1} const&)::{lambda(int, bool)#1}>(int, at::native::gpu_kernel_impl<at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1}>(at::TensorIteratorBase&, at::native::direct_copy_kernel_cuda(at::TensorIteratorBase&)::{lambda()#3}::operator()() const::{lambda()#7}::operator()() const::{lambda(float)#1} const&)::{lambda(int, bool)#1})"
+    ]
+  }
+]

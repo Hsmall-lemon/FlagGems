@@ -1,0 +1,3 @@
+No aten allowlist found, skipping allowlist validation
+Checking aten names for 1 operator(s)...
+✅ All aten names are valid.

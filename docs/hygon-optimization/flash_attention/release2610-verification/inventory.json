@@ -1,0 +1,735 @@
+{
+  "schema": "release2610-verification-inventory-v1",
+  "scope": "Four deterministic workbook reconstructions; original model payload and external frozen gate excluded.",
+  "raw_trace_location": "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/benchmark36-finalsource-gpu{3,4}",
+  "trace_projection": "All GPU kernel events retained. Per-trace indexes pin both original compressed traces and committed kernel projections.",
+  "text_note": "Text receipts have LF line endings and a final newline. Captured script snapshots retain the measured source; production source hashes are pinned in device-acceptance.json.",
+  "source_sha256": {
+    "attention_state_hip.py": "185460a1f7a25f27ba55202cf42f35fef5a10fda845b527c3058b5b9b88f12d4",
+    "attention_state_hip.cpp": "9d737b24687977ab0a1e027f6485009d308f4392aac7c736b188611f0f990f88",
+    "ops/attention_state.py": "156b334c1a07150624f6eff2f8b059f7fef2f209b1d02e63235c7ac032040213",
+    "ops/_scaled_dot_product_flash_attention.py": "6eabe38ca1abcf6ff68c30b40250895b45f0fb402c6acad82bb50982b4ac3a0e"
+  },
+  "files": {
+    "checks/apptainer-source-format.log": {
+      "bytes": 609,
+      "sha256": "8e8e4b939f409493c832884bcef69819a2980526cbc18f073aa14df48f625bcb"
+    },
+    "checks/bundle-verification.log": {
+      "bytes": 8928,
+      "sha256": "afb58b04384565ceda243dc46462f9eccb159197680dfa9085f4c3280353cc45"
+    },
+    "checks/check_aten_operators.log": {
+      "bytes": 126,
+      "sha256": "01c37d2f9fcabf45e241180a59e345bbc0247991b2b6ccf5b3e754808b8a8bc5"
+    },
+    "checks/check_init_exports.log": {
+      "bytes": 4591,
+      "sha256": "80227a67440d4295bd77af197769cb64153385ae833cac1306b38d2177c15c2c"
+    },
+    "checks/check_operator_markers.log": {
+      "bytes": 152,
+      "sha256": "7a5a79a0c7534b0926555a387c63636f30aa80ec2f55af827b62025387d495e8"
+    },
+    "checks/check_operators_yaml.log": {
+      "bytes": 122,
+      "sha256": "c743ee6eaec45b752fb352e5c734a0c90bcca7fe515f1ec2109df0c20a1e3646"
+    },
+    "checks/precommit-all-files.log": {
+      "bytes": 1064,
+      "sha256": "47bfc6e41052993ee9194bab24a8c46f8fd6a4f1a1fd4ab2a5ca7b6ae7de3c65"
+    },
+    "checks/precommit-focused.log": {
+      "bytes": 880,
+      "sha256": "65a4b54a58e81458a2f386783c2e6fc6076480bedce73566084c42b6aa15f6b5"
+    },
+    "checks/raw-verification.log": {
+      "bytes": 8562,
+      "sha256": "9a721f3dfef4d3859bd7b6c7ae453469996437276639177bc6a34a60ccfb370b"
+    },
+    "checks/reproduce-smoke-gpu3.log": {
+      "bytes": 3776,
+      "sha256": "eb309072c1356b8f44a83694366da82fd0d64f6ad062e009932ef59200c80995"
+    },
+    "checks/reproduce-validation-gpu4.log": {
+      "bytes": 2447,
+      "sha256": "1b7e954a5ccf32b8c65dc715c29b424502b0a7b636618a97cb9d316b612d1376"
+    },
+    "checks/reproduce-validation-stability.json": {
+      "bytes": 88918,
+      "sha256": "db7b0eaa06b212257159077339b7a5369626bd80f47684b158de34659166f42f"
+    },
+    "checks/unused-install-cleanup.json": {
+      "bytes": 793,
+      "sha256": "68cfeace2133d619141091a96f35556a1d775cd0d7c06f255b474246a41f9797"
+    },
+    "device-acceptance.json": {
+      "bytes": 4312,
+      "sha256": "0b0da930a18b3cba41037a2999283da0f3a88dacd3752ad8965fb444d6b81edb"
+    },
+    "evidence/acceptance36-compatible-workflow.log": {
+      "bytes": 227,
+      "sha256": "e94ada0c1d46b106b15cb525f8f6c735e218f9ce11f68f2fd06d02c7ad8a326d"
+    },
+    "evidence/apptainer-run": {
+      "bytes": 3650,
+      "sha256": "ddd79b08db2e1bda689fd1641caa20cf2816259b42815e56aec030d828d3102e"
+    },
+    "evidence/benchmark36-final-gpu3/benchmark.json": {
+      "bytes": 98154,
+      "sha256": "f17ad2bb2f6f6d79e601761a55b7647903b4a81d6331444ccc62b531aa5f2979"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_large-aten-round0.kernels.json.gz": {
+      "bytes": 15306,
+      "sha256": "f0335edb4dc7b0233296ccd051c13498f2a85e5606415dcecbbb531fd3e26bcd"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_large-aten-round1.kernels.json.gz": {
+      "bytes": 15382,
+      "sha256": "c18c449e2eba7128ae248fc98ca7e6a5df9645b22e49fbce56dc0950a6362cc2"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_large-aten-round2.kernels.json.gz": {
+      "bytes": 15355,
+      "sha256": "6dc16e5f9edbdce842684e51cca1e3113b673f8cdc8a549144389de10d9b2fc5"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_large-aten-round3.kernels.json.gz": {
+      "bytes": 15427,
+      "sha256": "ba1adf05238224964ba9650a95710dfa3f6af2e1cf83e3c36fb19b1a470c11f6"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_large-aten-round4.kernels.json.gz": {
+      "bytes": 15365,
+      "sha256": "48caea8324ccb2384ce95e459577142f0d0bdc3986a30aa054d5bf4bee8940ca"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_large-repo-round0.kernels.json.gz": {
+      "bytes": 10439,
+      "sha256": "a359efe44c802d7727a94ae51c7ab85ea389e258ac4b94f3f5c29baccc41359b"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_large-repo-round1.kernels.json.gz": {
+      "bytes": 10422,
+      "sha256": "cf040ebc88c41745f91d574172e32fbdcb138acbcdf450dad9d9ac7a5634f6f4"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_large-repo-round2.kernels.json.gz": {
+      "bytes": 10346,
+      "sha256": "4c167b102faa6ced7d2c1c91cc5603a30978f5a3a5868a20aa929e198dd6635c"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_large-repo-round3.kernels.json.gz": {
+      "bytes": 10406,
+      "sha256": "27effc543b2b146444d7a7c9d96f03aea759cb3731313c3da90c3bb415893637"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_large-repo-round4.kernels.json.gz": {
+      "bytes": 10394,
+      "sha256": "91f29ccbcd4c1c5777d916e08013bf4ba28c2129aaa1cf6afa7cdb866c3d8842"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_large-wheel-round0.kernels.json.gz": {
+      "bytes": 11751,
+      "sha256": "f904891114d9ef23a74d08420f0e196075a6de696923e61cb28321b8d9658871"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_large-wheel-round1.kernels.json.gz": {
+      "bytes": 11763,
+      "sha256": "92c6c843ab45f9fb7f8318568ca7cb87987db25741d0de950d98b6bdd8f8f64b"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_large-wheel-round2.kernels.json.gz": {
+      "bytes": 11736,
+      "sha256": "c1af9ab03d5184ea0e4fef4e0b3d76557748f09e39c77f5eba49b5172cf7246e"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_large-wheel-round3.kernels.json.gz": {
+      "bytes": 11729,
+      "sha256": "b28b89b41026e990e5061c4109b8bbdce864176d32f0cea57fc92a7ce8d3514b"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_large-wheel-round4.kernels.json.gz": {
+      "bytes": 11778,
+      "sha256": "e04ac615d560f3a01abbe600a00f745a17f632ee08d869f7686fe3f08e2c7f82"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_medium-aten-round0.kernels.json.gz": {
+      "bytes": 14197,
+      "sha256": "d94535047bd7708db8c4d5c84f702dc63fd864ff2810e8b7aa9125bdd4f62eed"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_medium-aten-round1.kernels.json.gz": {
+      "bytes": 14287,
+      "sha256": "f71519db59d9e4f945132fc67adfec282614ca212d3c6defbbcaea82f5436b55"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_medium-aten-round2.kernels.json.gz": {
+      "bytes": 14306,
+      "sha256": "0c50c0d1f8d7202767b02b7a83420d909117ec24fd5e84c6cc680aedc44d156f"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_medium-aten-round3.kernels.json.gz": {
+      "bytes": 14265,
+      "sha256": "f905ea80ff60c62e16e770ce8550ead3f02ea42684ed6db643361c44f7f89c04"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_medium-aten-round4.kernels.json.gz": {
+      "bytes": 14363,
+      "sha256": "f3dc30777fa5500ebcbb382ca353763e7d9f0e77026fc1f7e9d922fd3a268449"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_medium-repo-round0.kernels.json.gz": {
+      "bytes": 9703,
+      "sha256": "2f24a8ee1e1b4fe778c8832f3a866aa2bcb11d31cf12cbe0d2be534c4849228d"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_medium-repo-round1.kernels.json.gz": {
+      "bytes": 9724,
+      "sha256": "7895b68f30c32612eaedc8636853b91173eda2c5982058acdaeafb5e9ff9e980"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_medium-repo-round2.kernels.json.gz": {
+      "bytes": 9603,
+      "sha256": "bc331ff9bf3e5d2cf66799fdba67be61fa70d68e37a59350d894f843b2bf7876"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_medium-repo-round3.kernels.json.gz": {
+      "bytes": 9728,
+      "sha256": "298055359593cd93660ad0333cb2c3ff60be8743d1d2d5d44242bcee881e6a23"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_medium-repo-round4.kernels.json.gz": {
+      "bytes": 9662,
+      "sha256": "2044a9ebc064de0d4bc716e1e2d342c00da940d5ead95d718ec16d07fc41b14e"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_medium-wheel-round0.kernels.json.gz": {
+      "bytes": 10650,
+      "sha256": "df77729372bb6bb65ab1467f52cda22997fe96ff62d24f92dcaf09c07d10cb9a"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_medium-wheel-round1.kernels.json.gz": {
+      "bytes": 10621,
+      "sha256": "77ad6c9f7d6211686d669e2628c77eeb2a09bbd2630195e554bc4dade720a1b9"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_medium-wheel-round2.kernels.json.gz": {
+      "bytes": 10610,
+      "sha256": "60da4e94475c9db221656523bf6a4922009f4c050319757d50c54a00cb97826d"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_medium-wheel-round3.kernels.json.gz": {
+      "bytes": 10655,
+      "sha256": "1e8c41879a17e15ec201ee58525b1b3aba89d3fc11af9d84afd6185623c43ebf"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_medium-wheel-round4.kernels.json.gz": {
+      "bytes": 10535,
+      "sha256": "4a969882c47a0475df59f70319b747a0d823e471644846f1352deb2781381f72"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_small-aten-round0.kernels.json.gz": {
+      "bytes": 14110,
+      "sha256": "501a4ae4d3de21680560d9eb92bb109218669a0e95e619d5d35a85a95f76b3f8"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_small-aten-round1.kernels.json.gz": {
+      "bytes": 14106,
+      "sha256": "813a29e6e5b4ddfc991cb20a6972d2a23b0267497e92b97deb374c7373a89005"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_small-aten-round2.kernels.json.gz": {
+      "bytes": 14142,
+      "sha256": "03e1c0460aed7acd63e7356db9b25250646ce7d0dc59635fd4c6de8faba75b1c"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_small-aten-round3.kernels.json.gz": {
+      "bytes": 14229,
+      "sha256": "74323d821edec4af1b5327715f4736b4348a4f5d0c259c1bd3238ea425832ccd"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_small-aten-round4.kernels.json.gz": {
+      "bytes": 14226,
+      "sha256": "462e0924b905cf1184968d46894404303ea86026038c44cb0a5d8f8e8c824c9d"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_small-repo-round0.kernels.json.gz": {
+      "bytes": 9573,
+      "sha256": "c585e4cd417139e0d6c9f43f80502e9add5a83cdadbd071326a8be47b812b8c7"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_small-repo-round1.kernels.json.gz": {
+      "bytes": 9601,
+      "sha256": "4825b872577111e0aaef972d81006ecbad130b813cc4a6eb9e8a24dc68cef679"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_small-repo-round2.kernels.json.gz": {
+      "bytes": 9728,
+      "sha256": "19d141b8270b8ec33b93519cbb0bf80a42b92357717f717c4878457329c99a62"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_small-repo-round3.kernels.json.gz": {
+      "bytes": 9742,
+      "sha256": "29e4ac0c4d5c7cfe31cbf4075fb1c9f6e6903e1581fa7efb872698ca0498c909"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_small-repo-round4.kernels.json.gz": {
+      "bytes": 9614,
+      "sha256": "28b6bc69926251ff16e250eeb7c73067aee9e829be0c1fa1109000f4f117b3c6"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_small-wheel-round0.kernels.json.gz": {
+      "bytes": 10553,
+      "sha256": "08da1898a3bbc91195c9a104e26e0ea0d0f0441281c7f9e648c3436c0252bc6e"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_small-wheel-round1.kernels.json.gz": {
+      "bytes": 10475,
+      "sha256": "0b85bc60b6c7020bd996529c05b7df9b9588caf6cf9bcf96e16e1d758a05b988"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_small-wheel-round2.kernels.json.gz": {
+      "bytes": 10557,
+      "sha256": "32cfc870ffcc1bb38601741be6a30948cba1f12a6daacf3e76c84448642025fa"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_small-wheel-round3.kernels.json.gz": {
+      "bytes": 10629,
+      "sha256": "7002b575e69d58ac2622088523d8bb813b759537d59564b89aeb8e6bb2f1cd51"
+    },
+    "evidence/benchmark36-final-gpu3/expanded_small-wheel-round4.kernels.json.gz": {
+      "bytes": 10591,
+      "sha256": "4a988f62119d18fa5d755a44753a8b3b79e064bcc5a883b97562b67f3d890109"
+    },
+    "evidence/benchmark36-final-gpu3/model_state-aten-round0.kernels.json.gz": {
+      "bytes": 18007,
+      "sha256": "87d6f937e451e41daa9ee3ba60f85c9e8eadbd27f30d43ecb2161cdd18498f5c"
+    },
+    "evidence/benchmark36-final-gpu3/model_state-aten-round1.kernels.json.gz": {
+      "bytes": 18174,
+      "sha256": "364c33c8eb0c2f0e54cc641bed2eec27ee0f4067f5cf89dc5fcb751235336429"
+    },
+    "evidence/benchmark36-final-gpu3/model_state-aten-round2.kernels.json.gz": {
+      "bytes": 18357,
+      "sha256": "2082d603e261b84683502eb802919d3b9546b0648c1a3eb5b18ef55529bfdbfa"
+    },
+    "evidence/benchmark36-final-gpu3/model_state-aten-round3.kernels.json.gz": {
+      "bytes": 18530,
+      "sha256": "e82afcf564ea0865295f80f130f8c8a564d25efc45e1545929ffc0a9f53dd776"
+    },
+    "evidence/benchmark36-final-gpu3/model_state-aten-round4.kernels.json.gz": {
+      "bytes": 18677,
+      "sha256": "9c1091db9d29bd2b198d6756871fe25073d44d006ad4b4796f99b20baa066820"
+    },
+    "evidence/benchmark36-final-gpu3/model_state-repo-round0.kernels.json.gz": {
+      "bytes": 36587,
+      "sha256": "55723abe71572853d8fba6801b0a06622d90f17649e85e47ebb327ba97cd2165"
+    },
+    "evidence/benchmark36-final-gpu3/model_state-repo-round1.kernels.json.gz": {
+      "bytes": 36553,
+      "sha256": "32bf1616f69270fedcdf7ae9eee44b285922da8cc104492920149db652ad32c3"
+    },
+    "evidence/benchmark36-final-gpu3/model_state-repo-round2.kernels.json.gz": {
+      "bytes": 37382,
+      "sha256": "a83de27cd258bd87b5e0b70430573c1d1c2cfe466ddf0ccfef19f6734cd1c28a"
+    },
+    "evidence/benchmark36-final-gpu3/model_state-repo-round3.kernels.json.gz": {
+      "bytes": 37226,
+      "sha256": "0cd4a908f4c7bfb4d71f4ede8541446d47296f58a7d2a95db953b9f577b266c4"
+    },
+    "evidence/benchmark36-final-gpu3/model_state-repo-round4.kernels.json.gz": {
+      "bytes": 37531,
+      "sha256": "9704011da1e4430571b5c4a247966906c64e4bc7cede23acd4f71edef94d76f4"
+    },
+    "evidence/benchmark36-final-gpu3/model_state-wheel-round0.kernels.json.gz": {
+      "bytes": 14789,
+      "sha256": "61ea93b5da61e5ff1a788f7c2f02b5f39e5702c6783c428e163576dd2ae31406"
+    },
+    "evidence/benchmark36-final-gpu3/model_state-wheel-round1.kernels.json.gz": {
+      "bytes": 14911,
+      "sha256": "27844ea3568fb569dffc1432d89e676396dce5af4e8b8e666b8e76a51f3a2ff0"
+    },
+    "evidence/benchmark36-final-gpu3/model_state-wheel-round2.kernels.json.gz": {
+      "bytes": 14478,
+      "sha256": "88db819c603621a7a6cfb46fce1e9eff8868c014d4f3863897f287c6533040b8"
+    },
+    "evidence/benchmark36-final-gpu3/model_state-wheel-round3.kernels.json.gz": {
+      "bytes": 15074,
+      "sha256": "84f937679fab241b87b7efc9fbdaad5bc2263a6bf8365a655bb07e0e35d85dd9"
+    },
+    "evidence/benchmark36-final-gpu3/model_state-wheel-round4.kernels.json.gz": {
+      "bytes": 15161,
+      "sha256": "24c7a53635f46feb5441695173637a12e3aa38b707977f550849f33dbc9d1f81"
+    },
+    "evidence/benchmark36-final-gpu3/run.log": {
+      "bytes": 14984,
+      "sha256": "b89f1ff49699b772cdb61a3e2f8b15b43536943063f305ee34ebb203934a54f2"
+    },
+    "evidence/benchmark36-final-gpu3/trace-index.json": {
+      "bytes": 20023,
+      "sha256": "dc0b529cbe3954537740b8c9b654b08434ff69924cf20b74feed0460b7eb6107"
+    },
+    "evidence/benchmark36-final-gpu4/benchmark.json": {
+      "bytes": 98332,
+      "sha256": "7cfa2866d269e277562ed0ffa1d20b231304cb0939e1224a976798b8bbc083df"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_large-aten-round0.kernels.json.gz": {
+      "bytes": 15726,
+      "sha256": "f0cc4fc722ee253eec79cf5d666f1ba10957ecd0c650a5ee170dfef632513054"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_large-aten-round1.kernels.json.gz": {
+      "bytes": 15769,
+      "sha256": "3543fd5653eb758ea724da3b2ebf452289ed14dff35662b29c3cb43c3acbda2f"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_large-aten-round2.kernels.json.gz": {
+      "bytes": 15814,
+      "sha256": "f307d3a5960c7101ed1896ebeea725fe8deb65072dfe54cab51f3eae363d26bb"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_large-aten-round3.kernels.json.gz": {
+      "bytes": 15739,
+      "sha256": "e8730f984c8c015359a15e1711168a3faeb551a4cd81f85c1fc72f902c526291"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_large-aten-round4.kernels.json.gz": {
+      "bytes": 15711,
+      "sha256": "c2edd23f0aacb6faa6891122e77040a81df84453dc8f62a97eeb00bce25e7820"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_large-repo-round0.kernels.json.gz": {
+      "bytes": 10764,
+      "sha256": "107171c2961d93ecfd35c729d51b7fd1301dc49b921eb60149934192e72ea9c2"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_large-repo-round1.kernels.json.gz": {
+      "bytes": 10661,
+      "sha256": "f7616501bbdc00305ca2aa279cbb4b2c38ed73dc1aec20526471c42dfb992b2b"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_large-repo-round2.kernels.json.gz": {
+      "bytes": 10726,
+      "sha256": "68594f0056008e47bd7d3daea49515fb8bc8848c629753d14147091afb4ebb68"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_large-repo-round3.kernels.json.gz": {
+      "bytes": 10715,
+      "sha256": "86bd1843109586dd59843a6305a15813e85835459ff958578145acdb51cfb9ab"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_large-repo-round4.kernels.json.gz": {
+      "bytes": 10702,
+      "sha256": "45fe721046d3309fc8a4a35fb2b387848151913aaafd2427f0b2c58a2393b36c"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_large-wheel-round0.kernels.json.gz": {
+      "bytes": 12085,
+      "sha256": "154b44dbedfd6f99b0a88fd644530d8f60b825f30400c6f35e5c5024b727e2e5"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_large-wheel-round1.kernels.json.gz": {
+      "bytes": 12082,
+      "sha256": "60fdf54959823bcdcc1bf0c297d999e8a7e127c784020057896d75fca9372c22"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_large-wheel-round2.kernels.json.gz": {
+      "bytes": 12130,
+      "sha256": "d0098dcaf229782d8805247f8fc7a54f2878bdc3dbe2d5b935f43fd4856e5663"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_large-wheel-round3.kernels.json.gz": {
+      "bytes": 12130,
+      "sha256": "71e1e497c07a5d9ebce783f5059d5eac7fe36bb34b1e706db6d4bcde86d91da5"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_large-wheel-round4.kernels.json.gz": {
+      "bytes": 12085,
+      "sha256": "e3dd47a5f18c4bc8c0f3e82a2c0c78f97e8e8a83dac530eb9784263118063a24"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_medium-aten-round0.kernels.json.gz": {
+      "bytes": 14629,
+      "sha256": "1414308a1764a083a9d2168e75b20cfc85d5abbb7b601978f3eb96c2390f1f78"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_medium-aten-round1.kernels.json.gz": {
+      "bytes": 14563,
+      "sha256": "ad7422d21d173dd062b48e0fc0159cfd81521b1fe4f9790ae9a9066dabe7dab0"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_medium-aten-round2.kernels.json.gz": {
+      "bytes": 14664,
+      "sha256": "482d40d5bf8cc6896bc45a45c9f79894d4f7347e78c768adda5439899d36646a"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_medium-aten-round3.kernels.json.gz": {
+      "bytes": 14584,
+      "sha256": "565935d9e18247e76aab3a48351dd61165e8cc1a973d424ee9cf345a536e4413"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_medium-aten-round4.kernels.json.gz": {
+      "bytes": 14571,
+      "sha256": "ce795e7d1cf07747a091df8202883c8eff7c0b2ec9e61c74fdf6e62683bf3e35"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_medium-repo-round0.kernels.json.gz": {
+      "bytes": 10374,
+      "sha256": "c584c2b327a74b9e39ae435181c5c4b8d63d30009f77de4d5cd67db9a44799b9"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_medium-repo-round1.kernels.json.gz": {
+      "bytes": 10380,
+      "sha256": "fd9527d45bb240cd09ba381a6673b3ccdf6a7d6888e2a1d0aece5e38a9804459"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_medium-repo-round2.kernels.json.gz": {
+      "bytes": 10331,
+      "sha256": "06ddf33b117dcd8d6f0b7dc36eabeb3597aeb9a52d5896d419712e9b64212ff1"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_medium-repo-round3.kernels.json.gz": {
+      "bytes": 10343,
+      "sha256": "4bcef27d3d34a7b80513d1434384f0f74e92066ff1206aee83d7270897022e11"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_medium-repo-round4.kernels.json.gz": {
+      "bytes": 10334,
+      "sha256": "e725f983f306b389baba2659cdd3b47354e1cb730247a3ed30e4559bac3865e9"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_medium-wheel-round0.kernels.json.gz": {
+      "bytes": 10838,
+      "sha256": "f91cd84a6a4159dfc735457b1928c73385e164a6b933895ce0380c8d904c895b"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_medium-wheel-round1.kernels.json.gz": {
+      "bytes": 10909,
+      "sha256": "99d6f7dc6183b44c054e5f03a845e9f84f2032e94053cf53bdd32aea246c0ae6"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_medium-wheel-round2.kernels.json.gz": {
+      "bytes": 10769,
+      "sha256": "5f0aa9c427b68a94d2cf12ef59699aac653cdff3e71055e0e04a0a52744c5c7a"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_medium-wheel-round3.kernels.json.gz": {
+      "bytes": 10828,
+      "sha256": "5ece64e51617d7d67c2599ef8bbaece38e4a8f6a38401b0a0877940ffb37c344"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_medium-wheel-round4.kernels.json.gz": {
+      "bytes": 10824,
+      "sha256": "9c7f27bc549972588b1d551b9356ef3fcecdd818b5627435af90bd507f2fe798"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_small-aten-round0.kernels.json.gz": {
+      "bytes": 14374,
+      "sha256": "2f842c12032e8541722989d00d91eaeca2f96f843cb43a9f5127ee4a4de2d40e"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_small-aten-round1.kernels.json.gz": {
+      "bytes": 14435,
+      "sha256": "46c97d3937c0765d85d7f1b5d6bdbe539f2662605ea375f9d5eefbaf90a5f0e9"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_small-aten-round2.kernels.json.gz": {
+      "bytes": 14339,
+      "sha256": "78c360e5aea2730f3104f2086aac54be2a24f6f6199f136c87b1e96d236433c3"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_small-aten-round3.kernels.json.gz": {
+      "bytes": 14484,
+      "sha256": "e865a34f16b2a8c0ffa7f9ed903438a710dc220c345b6c3d914aa92589db1fda"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_small-aten-round4.kernels.json.gz": {
+      "bytes": 14598,
+      "sha256": "b1387e644ae46693dbb385db11b811902c6a365ec69622f0c3c0269038ce7609"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_small-repo-round0.kernels.json.gz": {
+      "bytes": 10080,
+      "sha256": "88100fe294e9c291e376d206a947ae0fc0bb50141b76c82582c38612aacd993c"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_small-repo-round1.kernels.json.gz": {
+      "bytes": 10135,
+      "sha256": "672f9e99bf4ab28eee1366ca45922813c149b49616d3c37cb627bc9d5f50949a"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_small-repo-round2.kernels.json.gz": {
+      "bytes": 10381,
+      "sha256": "680a7754134b0ec0c4868177c3f18f1e6e30e23d38e696a9735a36127dd3a366"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_small-repo-round3.kernels.json.gz": {
+      "bytes": 10318,
+      "sha256": "4e67413eccddc392b86add78af91cfdf0acb5730f71272ea02f88c5454fe29c8"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_small-repo-round4.kernels.json.gz": {
+      "bytes": 10230,
+      "sha256": "ff9e0b3219c650056ef9bd39dd23bcb9687c1132584305f494c53a2bea1edda7"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_small-wheel-round0.kernels.json.gz": {
+      "bytes": 10799,
+      "sha256": "a92febd351a71f9bc42e096eebfb8f1628796fdbac543bd45173f61812f547b4"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_small-wheel-round1.kernels.json.gz": {
+      "bytes": 10739,
+      "sha256": "bded899f4bc7a6ba0837a40d15b6b0bdb891bdab5dba61e9634a62afafe48f75"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_small-wheel-round2.kernels.json.gz": {
+      "bytes": 10705,
+      "sha256": "86928ef3d6e98e90755225c087f6c4602928de0c68ab934b18f68e9ad6b08a18"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_small-wheel-round3.kernels.json.gz": {
+      "bytes": 10777,
+      "sha256": "df83f14f0be3299021b900afb9f74245aba679f2d8f4ffcdcfec15ef7e9c3fe5"
+    },
+    "evidence/benchmark36-final-gpu4/expanded_small-wheel-round4.kernels.json.gz": {
+      "bytes": 10756,
+      "sha256": "4c75e46d11a41fd6043383b10aa5bdc00dce1947245e2e83b9f1c612bac601e6"
+    },
+    "evidence/benchmark36-final-gpu4/model_state-aten-round0.kernels.json.gz": {
+      "bytes": 19043,
+      "sha256": "c5166573fc1a697fcbc4f93ea29b59eb16246a71298b9bc9309f029d04495e0c"
+    },
+    "evidence/benchmark36-final-gpu4/model_state-aten-round1.kernels.json.gz": {
+      "bytes": 19068,
+      "sha256": "115ec9bbf6286ccc03fb8a918e002c05937d8fbad8c441d0ea1cbfc6ad12291c"
+    },
+    "evidence/benchmark36-final-gpu4/model_state-aten-round2.kernels.json.gz": {
+      "bytes": 19055,
+      "sha256": "3f951c948fc555d86f32f77fef161cb983f8e93af9fbc70df110acaa946a1038"
+    },
+    "evidence/benchmark36-final-gpu4/model_state-aten-round3.kernels.json.gz": {
+      "bytes": 19021,
+      "sha256": "33749f4d357b0a506c7c2872b57bfbde0ba4c6bf291c3554fe042cd7dfc23c16"
+    },
+    "evidence/benchmark36-final-gpu4/model_state-aten-round4.kernels.json.gz": {
+      "bytes": 19064,
+      "sha256": "d4d85b5c7024ce449160db1a2061e700afadc3c47bde0a2b3b238ead0de421da"
+    },
+    "evidence/benchmark36-final-gpu4/model_state-repo-round0.kernels.json.gz": {
+      "bytes": 39260,
+      "sha256": "4e6972e8de4bed4c691176193037f9b6afd5c10221cf4f0629285b535676099f"
+    },
+    "evidence/benchmark36-final-gpu4/model_state-repo-round1.kernels.json.gz": {
+      "bytes": 38931,
+      "sha256": "84d8229add1f8ca95da3360c01796834f3d764dea8b7c2abd303b78b1ad3a7d3"
+    },
+    "evidence/benchmark36-final-gpu4/model_state-repo-round2.kernels.json.gz": {
+      "bytes": 39109,
+      "sha256": "052a493542903323cae59511ed7adc14b9859481933b7d7ff895aebc28f4527f"
+    },
+    "evidence/benchmark36-final-gpu4/model_state-repo-round3.kernels.json.gz": {
+      "bytes": 39121,
+      "sha256": "ae7804d5550f96f7360288ff314302638bae03267967afb025b3416510a9d20c"
+    },
+    "evidence/benchmark36-final-gpu4/model_state-repo-round4.kernels.json.gz": {
+      "bytes": 39083,
+      "sha256": "a2b811976be30b28e6e834bf7af65f012990aa35bbd0904cb08a5da9016f19c5"
+    },
+    "evidence/benchmark36-final-gpu4/model_state-wheel-round0.kernels.json.gz": {
+      "bytes": 15531,
+      "sha256": "58276d336ddad8f0020e19468899a7a6a6ff6e05e6466cce98c80edd5c71957d"
+    },
+    "evidence/benchmark36-final-gpu4/model_state-wheel-round1.kernels.json.gz": {
+      "bytes": 15581,
+      "sha256": "dd40bbbc7af23de169224e92021041359461320151523becd650f54195443cc9"
+    },
+    "evidence/benchmark36-final-gpu4/model_state-wheel-round2.kernels.json.gz": {
+      "bytes": 15507,
+      "sha256": "859e0de00288ab00a81b9290ceecd913ba7404f7a67e3d4f758097af225ae2ed"
+    },
+    "evidence/benchmark36-final-gpu4/model_state-wheel-round3.kernels.json.gz": {
+      "bytes": 15525,
+      "sha256": "e165f7cbca44c3e31967a96037997d04fce5f736b1cb2e42a6e315173c62bda8"
+    },
+    "evidence/benchmark36-final-gpu4/model_state-wheel-round4.kernels.json.gz": {
+      "bytes": 15498,
+      "sha256": "09bf7b3f0ea4d0eb3a10a0ff120ef67dbb26f6249ecd415a0c7e6ec595e5be46"
+    },
+    "evidence/benchmark36-final-gpu4/run.log": {
+      "bytes": 15126,
+      "sha256": "d58a34c4e0e32d60bb39ae893876f373b19ad60617244b40d9849090af54ce82"
+    },
+    "evidence/benchmark36-final-gpu4/trace-index.json": {
+      "bytes": 20023,
+      "sha256": "22b53d5ae5520e012a999d0d2ad2975d2448eed937cbf697599f91e9841e38d9"
+    },
+    "evidence/benchmark36.py.txt": {
+      "bytes": 10729,
+      "sha256": "eb6e015729fa43d4ec4388038d9c882513605435897377df6e18f604b6d93cbf"
+    },
+    "evidence/compiler36-manifest.json": {
+      "bytes": 348,
+      "sha256": "0443c3906227f453c4cdf2380e8afc4f649662032d8a570096bbfc9b817d51eb"
+    },
+    "evidence/dtk2610-runtime-manifest.json": {
+      "bytes": 501995,
+      "sha256": "5f558cce56b38c331651d99d2c24104b0a07064481ce7d955a88813444a81b7c"
+    },
+    "evidence/final-checks-gpu3/final-checks.json": {
+      "bytes": 35492,
+      "sha256": "d4d9feb68b713ff62f0f411aed6b3917b8071aff5301cae8389924a3ef3b09a5"
+    },
+    "evidence/final-checks-gpu4/final-checks.json": {
+      "bytes": 35491,
+      "sha256": "a512c056a33b5049b1d36f78a93246e1f3fae9418d263444d7262d96e71bfa8c"
+    },
+    "evidence/final_checks.py.txt": {
+      "bytes": 2937,
+      "sha256": "cbb9bc25d95b3d767b864e3947e3bc683219b1920f4d4ccc7380f3f08c9b1381"
+    },
+    "evidence/finalsource-workflow.log": {
+      "bytes": 158,
+      "sha256": "0d3a65e04d6f85faf68c66619ceda9fff39660f38f389aab1998a7c029f2ae2e"
+    },
+    "evidence/flash-attn-download.json": {
+      "bytes": 506,
+      "sha256": "28d56db58088eb41d44c99d9c073551a816744fd559fdaadfdb80af5ae582ae7"
+    },
+    "evidence/focused-gpu3/focused.json": {
+      "bytes": 112551,
+      "sha256": "c12459c530d23c1d9f76ff6cd00fbad7b04a132bf47ea5bb1f950be304acc6fc"
+    },
+    "evidence/focused-gpu4/focused.json": {
+      "bytes": 112548,
+      "sha256": "310698eeedd85fa59be542b86c71e21ef7656b8f333c150b1a2db0d3a98311c3"
+    },
+    "evidence/focused.py.txt": {
+      "bytes": 3749,
+      "sha256": "a0c984871423802bb5fe4c4c68ea7759271b9b91f72d72050e021caf37819f1a"
+    },
+    "evidence/functional-gpu3/functional.json": {
+      "bytes": 129801,
+      "sha256": "74cdd4f963359b9ab1f39f23c6bfd400e72304d5bc822451d218c07817a8c236"
+    },
+    "evidence/functional-gpu4/functional.json": {
+      "bytes": 129801,
+      "sha256": "a5d05575d2208dfeadb30ba3828942c870500409239192ade2098cc1629cc9f6"
+    },
+    "evidence/functional.py.txt": {
+      "bytes": 14117,
+      "sha256": "9d9e9d99e15379220c1218cb53f3766a9e52602ea51c2735a71fb09494f294c5"
+    },
+    "evidence/inputs/manifest.json": {
+      "bytes": 12496,
+      "sha256": "bd0ea335f8e40d27e74e2a59c4e0b25746a88cb33ac0aa59224831c81d5c5897"
+    },
+    "evidence/native-entry.sh": {
+      "bytes": 1223,
+      "sha256": "282ba54c4db0a120d3b759c790b2574fe985b0162dd0bb0e67a1efb4289d8306"
+    },
+    "evidence/pip-freeze.txt": {
+      "bytes": 1250,
+      "sha256": "692dc5964523d0761b7d1060c0ee87bff88d0dba49562b1f1354b5d83ccd5984"
+    },
+    "evidence/python312-download.json": {
+      "bytes": 387,
+      "sha256": "533ce46ebef5e645ef3f08e68332052dd75c8b107a0963508b8b06c53c843f67"
+    },
+    "evidence/regression36-gpu3/accuracy_result.json": {
+      "bytes": 12363,
+      "sha256": "f80c25fe8dddd60c53fe43b0b3c03303feac8e87e855a8a64c49dd97460df2a4"
+    },
+    "evidence/regression36-gpu3/regression.json": {
+      "bytes": 1119,
+      "sha256": "1e6e6b72eb2b8853abad2407cbf6c57dd5704783954b8279fe3f42acd093c533"
+    },
+    "evidence/regression36-gpu3/run.log": {
+      "bytes": 2490,
+      "sha256": "f0b1f1ddcd17443bb4f535f4b7d4366da74a80cbdc139516759e893c3d8a13d1"
+    },
+    "evidence/regression36-gpu3/workbook-stability.json": {
+      "bytes": 88918,
+      "sha256": "594e41b960273268dde5891ea809b1e04e215b2d965796aa6760421da7d977ca"
+    },
+    "evidence/regression36-gpu4/accuracy_result.json": {
+      "bytes": 12363,
+      "sha256": "f80c25fe8dddd60c53fe43b0b3c03303feac8e87e855a8a64c49dd97460df2a4"
+    },
+    "evidence/regression36-gpu4/regression.json": {
+      "bytes": 1119,
+      "sha256": "31b3bd96e9c7680ad96efb77ddd9adfa0f222a1e1a6e562b156432cca44fce21"
+    },
+    "evidence/regression36-gpu4/run.log": {
+      "bytes": 2490,
+      "sha256": "37f3a36217f014383f5278da66f00e8aa34133aeeac39473cc77cde10b534472"
+    },
+    "evidence/regression36-gpu4/workbook-stability.json": {
+      "bytes": 88918,
+      "sha256": "6397f5cb82d861889185e5d11f2962a8de27888bd47d73909c4190cd16aaa625"
+    },
+    "evidence/regression36-workflow.log": {
+      "bytes": 39,
+      "sha256": "83bf49858cbfd2e1b27144d7476f4d56dc5aa3e025660b2f0f17c2b1cad41c82"
+    },
+    "evidence/regression36.py.txt": {
+      "bytes": 2152,
+      "sha256": "9af690e22ebd1bb34ac8a3d06d128c58337efc0f827ec9e7993ccebeafc9af7b"
+    },
+    "evidence/runtime-probe.json": {
+      "bytes": 31875,
+      "sha256": "bff9f1ffd501e44d6f09475d4a12e37915ff05ec970231376d2f89876d943b82"
+    },
+    "evidence/setup.log": {
+      "bytes": 6618,
+      "sha256": "d40f275a354f45890546120824725d3d107b312ef67a1d6400d1c4e7dd69146b"
+    },
+    "evidence/stability36.py.txt": {
+      "bytes": 5597,
+      "sha256": "8fa4495eb8d8f216fd34dd014687f52447dfeb400c4623e6a5c072ac125fb7e0"
+    },
+    "evidence/torch-download.json": {
+      "bytes": 434,
+      "sha256": "fc22fc5124d868163eaa6c6a0cbfd9bfcc716c0b9c017280075f6062268e81af"
+    },
+    "evidence/triton-download.json": {
+      "bytes": 497,
+      "sha256": "de09bc5e15baae1a1416037dc475e0c48e120cd7f4fce85c3bfc119a183078b6"
+    },
+    "evidence/triton36-download.json": {
+      "bytes": 500,
+      "sha256": "491410327cb76812a241c9504c470b0a819554f007c5d1b53440005080d3d97e"
+    },
+    "evidence/workbook_inputs_native.py.txt": {
+      "bytes": 1979,
+      "sha256": "94e556d6368867ab566370c1ede89ac40fd7eca613b84627780ebf09ca38652a"
+    },
+    "native-functional-report.md": {
+      "bytes": 8475,
+      "sha256": "bd64109d4d9a6e916ccd5970c25db340ad544910c5cda5641c2b903797591f4a"
+    },
+    "native-functional-summary.json": {
+      "bytes": 192101,
+      "sha256": "f1f2d691850eb73551cf65330b098e0001bf1f86d828212af721e87e5a7c3268"
+    },
+    "prior-status-before-authorized-release.md": {
+      "bytes": 8258,
+      "sha256": "dfefb608b9da8c6f5cdae286e4b9135bf8fef5e01993ae3a77fdfb7430f80689"
+    }
+  }
+}

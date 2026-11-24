@@ -1,0 +1,112 @@
+{
+  "result": "passed",
+  "note": "source_sha256 and remote-source-sha256.txt retain the raw measured file hashes. Git stores LF-normalized text. Replacing CRLF with LF in each measured file yields exactly the committed Git blob; kernel code is unchanged.",
+  "source_count": 15,
+  "sources": [
+    {
+      "path": "src/flag_gems/runtime/backend/_hygon/ops/mm.py",
+      "measured_raw_sha256": "c4ff04798b4b8d73bf1602f3a27269102cfaeca94c96d16819bf99f8d43136ce",
+      "git_blob_sha256_lf": "baed6626e0416f2a1dca1d95478c618752a7d15f4a64b029593da6fceffb8137",
+      "measured_newlines": "CRLF",
+      "equal_after_crlf_to_lf": true
+    },
+    {
+      "path": "src/flag_gems/runtime/backend/_hygon/ops/mm_config.py",
+      "measured_raw_sha256": "bd2e9b4b296bb2abab599e20a8517470c9be86937b37c45af55d97c606a05725",
+      "git_blob_sha256_lf": "52931bd3f4e2957cb41386cb6913d3a53309b9231ecd131839e8a9cb042dbb82",
+      "measured_newlines": "CRLF",
+      "equal_after_crlf_to_lf": true
+    },
+    {
+      "path": "src/flag_gems/runtime/backend/_hygon/ops/mm_kernels.py",
+      "measured_raw_sha256": "d9930250ab93ea65dcd5a1558bbabb5e4a199d7485cb4f703a22920ecfb65e01",
+      "git_blob_sha256_lf": "419261edee1297ae0462d24cb7aac68ee5b923eed05976dc0cb0e882e03e273d",
+      "measured_newlines": "CRLF",
+      "equal_after_crlf_to_lf": true
+    },
+    {
+      "path": "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_coalesced.py",
+      "measured_raw_sha256": "ec1b3332b7422cb098bceed1e568872a3f0ba8ba6680216a01bab219dee42377",
+      "git_blob_sha256_lf": "f7f986c572dff81ec5610360cc2acd7ab98565bb318abcccd36d56544e59dc7e",
+      "measured_newlines": "CRLF",
+      "equal_after_crlf_to_lf": true
+    },
+    {
+      "path": "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_coopfast.py",
+      "measured_raw_sha256": "5c67d0eaf4d86bb2fecfe1be7df53bd983c11c82f6b040ce0744ec502215f0d1",
+      "git_blob_sha256_lf": "54676e5e22ffe03e1ada3bc9491dd0e684fd476053cbfb209e5902bf786714b6",
+      "measured_newlines": "CRLF",
+      "equal_after_crlf_to_lf": true
+    },
+    {
+      "path": "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_operands.py",
+      "measured_raw_sha256": "625c11755688890e17f1f95929fbd5602edc076602a888a5e1dbe3d4bc549c25",
+      "git_blob_sha256_lf": "8c89723524d11664aadb151bff65ebd547a1c9fa96a38566ad7e132134d83dc9",
+      "measured_newlines": "CRLF",
+      "equal_after_crlf_to_lf": true
+    },
+    {
+      "path": "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_peel.py",
+      "measured_raw_sha256": "ae7ec90f31f84f43c1772e29cf153d56ffff73c469c37acb4259a6c997067a18",
+      "git_blob_sha256_lf": "ff2843ce943b2228d2fd0f3d04f32b7774ab804e23d19bb806d17d8a571d5f4d",
+      "measured_newlines": "CRLF",
+      "equal_after_crlf_to_lf": true
+    },
+    {
+      "path": "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_pipeline.py",
+      "measured_raw_sha256": "1fd06ad6ba3d30956d53cd70212348d4e4dd794ce3c4f48d3ccf0d607fcddf80",
+      "git_blob_sha256_lf": "c2c21e33b52f1c6fa4c6761a51b920706d4933499e30789ca7fdf8c7ea830d8f",
+      "measured_newlines": "CRLF",
+      "equal_after_crlf_to_lf": true
+    },
+    {
+      "path": "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_prefetch.py",
+      "measured_raw_sha256": "6480f69c8513aba86bc0ae37b5ba85cd557e0583c93d2bc78dfabbf2ec8fe0bb",
+      "git_blob_sha256_lf": "46d995e82210b03603e0ab2942dc9b35425581a41062de2b748aa586a97e24b0",
+      "measured_newlines": "CRLF",
+      "equal_after_crlf_to_lf": true
+    },
+    {
+      "path": "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_rawpipe.py",
+      "measured_raw_sha256": "7d88f76f0af0bdc5635bd843555fe7c28f7711892e7b6a57033807cc63e09e08",
+      "git_blob_sha256_lf": "c7d88c8a9f69362e7097e93f227c5542f7838ead19a2f9f05bd37c815e1008bc",
+      "measured_newlines": "CRLF",
+      "equal_after_crlf_to_lf": true
+    },
+    {
+      "path": "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_reshape.py",
+      "measured_raw_sha256": "a7c5025e05e3a8a657250a5e8658fd330e2103774b9524592f6044b3473999d1",
+      "git_blob_sha256_lf": "2b520d6ad9371509c6c518b8586e0b1643aed1b97335d38fadd46406a365ffe9",
+      "measured_newlines": "CRLF",
+      "equal_after_crlf_to_lf": true
+    },
+    {
+      "path": "src/flag_gems/runtime/backend/_hygon/ops/mm_mmac_swizzle.py",
+      "measured_raw_sha256": "0c04c55dc98a24a8d57c2e9dd6586a16f62db853f5ff35d90156fe89f0aea741",
+      "git_blob_sha256_lf": "9b76006a18f9fedf93a328384f0a0888bd28a78feeca295a01c4e75537f38d67",
+      "measured_newlines": "CRLF",
+      "equal_after_crlf_to_lf": true
+    },
+    {
+      "path": "src/flag_gems/runtime/backend/_hygon/ops/mm_w8a8_int8.py",
+      "measured_raw_sha256": "309d2556e79186b24e6874839162039415f03d89246340e3e90819cbee6d1e46",
+      "git_blob_sha256_lf": "d4cc7ed5ff5f186d7974337894cfc5f723b60a9d8659ad2b52243226b15c13d6",
+      "measured_newlines": "CRLF",
+      "equal_after_crlf_to_lf": true
+    },
+    {
+      "path": "src/flag_gems/runtime/backend/_hygon/experimental/matrix.py",
+      "measured_raw_sha256": "7f855dc8c79eeff4bde0e901043e117b8a21f3aa3cf5fbc52b5b72b6d0f6503d",
+      "git_blob_sha256_lf": "7f855dc8c79eeff4bde0e901043e117b8a21f3aa3cf5fbc52b5b72b6d0f6503d",
+      "measured_newlines": "LF",
+      "equal_after_crlf_to_lf": true
+    },
+    {
+      "path": "tests/test_hygon_mm.py",
+      "measured_raw_sha256": "920033ce50b8316176ce1e12f622f66805e5fcc78f3dba57ce5dc97e93b319e3",
+      "git_blob_sha256_lf": "37088a140fa75d245a82f6a4c5193c8181ff0f4c2489bdf7c71e742813d54b0d",
+      "measured_newlines": "CRLF",
+      "equal_after_crlf_to_lf": true
+    }
+  ]
+}

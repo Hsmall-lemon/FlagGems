@@ -1,15 +1,74 @@
-# Hygon MM optimization and FP64 correctness protection
+> Acceptance withdrawn (2026-11-09). PR remains draft; see [current review status](REPORT.md). The following is historical documentation.
 
-Guarded native-stride MMAC, split-K, banked and FP32 paths preserve generic fallback. FP64 banked loaders consume repaired canonical lanes sequentially; optional compiler hints are enabled only after capability probing.
+# Hygon aten::mm device optimization
 
-Full official-master verification2026-11-12 covers98 main+109 expanded=207 cases. New correctness72/98 and161/207; no old-pass/new-fail, one baseline failure fixed. Every case, including inherited numerical failures, has complete timing.410 focused Hygon unit tests pass separately.
+Scope: the 94 `aten::mm` spreadsheet cases assigned to 万 with status
+`平均性能<90%`: 68 FP32 and 26 FP64 cases. Shape, dtype, strides and storage
+offset are recorded in `cases.json`; `all-mm-cases.json` also contains the
+27 mm cases outside the tuning scope for regression checks.
 
-Main98:66 qualified old/new comparisons improve1.5750–24.9932x.65 qualified new/DAS comparisons yield50 DAS90 passes and15 misses. In the performance-only diagnostic view,91 cases have stable device timing:74 ratios>=90%,17 below90%;7 unstable. Historical correctness failures are not counted as full acceptance passes.
+Target: DAS kernel time / optimized kernel time >= 0.90 for every target case.
+The final results distinguish the historical spreadsheet DAS time from a
+fresh DAS run. Timings exclude host submission and synchronization overhead.
 
-[Full per-case evidence](performance-20261112/README.md) contains all207 cases, every50-sample role array, main98 summary, target misses, errors/instability flags, source/schema/backing/shard hashes and actual kernel witnesses. Single-agent staged audit; no independent reviewer signoff claimed. Inputs reconstruct metadata, not original model payloads. The earlier two-case legacy-control receipt is preserved separately and is not official-master old/new evidence.
+Measurements use native DTK hipprof HIPOPS `DurationNs`. Each synchronized
+HIPTX range encloses 10 mm calls; all kernels belonging to one call are
+summed, including split-K reduction and input transpose. The reported time
+is the median across five ranges. Correlation indices associate kernels with
+ranges because host and device trace clocks can differ. `analyze_trace.py`
+can merge the multiple JSON trace parts produced by hipprof.
 
-## Supplementary synchronized API controls
+## Environment
 
-`api-controls.json` publishes all50 unprofiled samples for every old/new/DAS/new-repeat role across207 cases,with original control-file hashes and profiler-exclusion proofs. `api-case-summary.csv` places these API medians alongside the device ratios and qualification flags. The API boundary includes dispatch,allocation,launch and synchronization; it does not measure only the kernel and is not model throughput. These supplementary API points did not have a separately frozen acceptance gate; do not turn device AA qualification into an API gain claim.
+- Node: a01r3n18, gfx936; physical cards 0 and 1 only.
+- DEV: `/work1/share/scnethpc2601/flagos-dev/20261103-hygon-optimization`.
+- Use writable caches under `/public/home/wzx226226/.cache/flagos-dev/`.
+- Set HIP_VISIBLE_DEVICES and CUDA_VISIBLE_DEVICES to the same physical card.
+  Unset ROCR_VISIBLE_DEVICES to avoid filtering the device list twice.
+- Import torch_fl before torch and FlagGems, with the checkout's `src` first
+  on PYTHONPATH. DAS measurements route only mm to the official boxing
+  provider. Candidate measurements call the checkout's flag_gems.mm directly.
 
-Kernel gains can be smaller or absent at the complete API boundary. For main row0085(FP64[2208,64]x[64,64]),device time improves25.600->9.707975us(2.637x),while the API median is144.5755->154.0260us(old/new0.9386435;new-repeat153.8255us). For row0130(FP32[32,128]x[128,512]column-major),kernel11.892->4.172us(2.850x),API132.3855->140.4760us,new-repeat133.5405us. These are explicit API overhead/noise diagnostics,not confirmed API regression counts or a claim of end-to-end speedup. The fixed primary device acceptance counts remain unchanged.
+FP64 arithmetic retains FP64 operands and accumulators. The gfx936 MMAC
+assembly path is guarded by the device architecture. FP32 uses IEEE dot
+precision. Offline launch choices depend only on dtype, shape and strides;
+there is no runtime tuning or dispatch through the DAS implementation.
+
+Accuracy is checked against CPU FP64 matmul. The per-element bound is
+`abs(error) <= atol + rtol * abs(reference)`: FP64 rtol=atol=1e-10;
+FP32 rtol=1e-4, atol=2e-4. Additional regression tests check empty dimensions,
+zero K, nonzero offsets, two non-unit strides and FP64 mantissa bits that
+would be lost in an FP32 conversion.
+
+The public-entry measurements are in [REPORT.md](REPORT.md),
+[results.csv](results.csv), and [results.json](results.json). The report
+lists the accuracy and performance counts for both DAS baselines, and
+explicitly identifies any cases below the target. Final acceptance passes
+94/94 accuracy checks, 94/94 spreadsheet targets and 94/94 paired DAS
+targets. The minimum paired performance is 91.80%.
+
+The corrected queue gate executes dependent opaque assembly for about
+5.9 ms before each ROI. It is excluded from the mm kernel sums. Profiler
+audits verify that it survives compilation. Earlier results are preserved
+in `sequential-reference/` and `ineffective-gate-reference/`; the latter
+used an old wait loop that the compiler eliminated. Host launch gaps are
+excluded from the duration sums, although some gaps remain within ROIs.
+
+The development scripts and complete native profiler traces are retained at
+`/public/home/wzx226226/算子优化/`. To reproduce a profile from that directory:
+
+```bash
+bash run_profile.sh 0 verify-fp32 --queued --mode paired --dtype float32 --output verify-fp32.jsonl
+python3 mm_pair_summarize.py verify-fp32
+python3 mm_queue_audit.py verify-fp32
+bash run_profile.sh 1 verify-fp64 --queued --mode paired --dtype float64 --output verify-fp64.jsonl
+python3 mm_pair_summarize.py verify-fp64
+python3 mm_queue_audit.py verify-fp64
+```
+
+Use a new output name for every run, since measurement JSONL files are append-only.
+`validation.json` records the final checks; `validation/` contains the second-seed
+regression records and the final entry-point checks. The selected tuning source
+for each shape is recorded in `tuning-selection.json`. Selection uses only
+native device timings; the five-range public-entry results are the acceptance
+measurements, independent of the candidate minima.

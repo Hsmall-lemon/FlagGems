@@ -1,0 +1,2668 @@
+{
+  "schema": "release2610-device-kernels-v1",
+  "run_id": "2ab37a0af58447028d96d3455b95dd73",
+  "node": "a01r4n15",
+  "physical_card": "3",
+  "container": "/work1/share/scnethpc2601/flagos-dev/20261103-hygon-optimization/images/flagos-dev-20261103.rootfs",
+  "packages": {
+    "torch": "2.13.0+dtk2610.2610261432.gefb4e1",
+    "triton": "3.6.0+dtk2604.torch2100.2610090934.g328354",
+    "flash-attn": "2.8.4+dtk2610.torch2130.2610211904.g0f1a5a"
+  },
+  "repo_source_sha256": {
+    "attention_state_hip.py": "185460a1f7a25f27ba55202cf42f35fef5a10fda845b527c3058b5b9b88f12d4",
+    "attention_state_hip.cpp": "9d737b24687977ab0a1e027f6485009d308f4392aac7c736b188611f0f990f88",
+    "ops/attention_state.py": "156b334c1a07150624f6eff2f8b059f7fef2f209b1d02e63235c7ac032040213",
+    "ops/_scaled_dot_product_flash_attention.py": "6eabe38ca1abcf6ff68c30b40250895b45f0fb402c6acad82bb50982b4ac3a0e"
+  },
+  "native_extension_sha256": "f130f8a659a91b67a9776f8cd2a2746d645db6e20697ff4e16bd25dc12e91663",
+  "compiled_hip_library": "/public/home/wzx226226/.cache/flag_gems/hygon_state_flash/ed6e82858f9c851873e00b313e4f234b9011c94590caed05cbec4e98199200f9/kernel.so",
+  "compile_sdk": "/public/software/compiler/dtk-26.04",
+  "sampling": {
+    "arms": [
+      "wheel",
+      "aten",
+      "repo"
+    ],
+    "calls": 1000,
+    "rounds": 5,
+    "warmup": 100
+  },
+  "triton_module": "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/fg-compiler36/triton/__init__.py",
+  "compiler_environment": {
+    "AMDGCN_USE_BUFFER_OPS": "0"
+  },
+  "torch_module": "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch/__init__.py",
+  "torch_runtime": {
+    "hip": "7.2.26365",
+    "cuda": null
+  },
+  "device_properties": "_CudaDeviceProperties(name='BW', major=9, minor=3, gcnArchName='gfx936:sramecc+:xnack-', total_memory=65520MB, multi_processor_count=80, uuid=30303135-3736-3837-3534-646131306331, pci_bus_id=119, pci_device_id=0, pci_domain_id=0, L2_cache_size=8MB)",
+  "compiled_hip_sha256": "f15da7e4d052b275838ea5ea3dfa9f53fec8066b9c2cf8b161400a888e07eb6d",
+  "baseline_libraries_sha256": {
+    "flash_attn_2_cuda.cpython-312-x86_64-linux-gnu.so": "f130f8a659a91b67a9776f8cd2a2746d645db6e20697ff4e16bd25dc12e91663",
+    "flash_attn/lib/libflash_attention.so": "69060dc997524cdc803a5bd691d698ae6e97a125cea767d37b941f536787f00b"
+  },
+  "measurement": "sum of kernel durations in torch.profiler CUDA activity, divided by calls; host durations excluded",
+  "tolerances": {
+    "output_atol": 0.002,
+    "output_rtol": 0.02,
+    "lse_atol": 2e-05,
+    "lse_rtol": 2e-05
+  },
+  "input_scope": "Deterministic worksheet metadata reconstructions, not original model operands",
+  "workbook_sha256": "d2596052c66d7145af47b35fda45198d1f213b69825aeb91d10112dfd8871597",
+  "cases": {
+    "model_state": {
+      "case": {
+        "id": "model_state",
+        "sheet": "\u5927\u4e8e5%\u7684\u6a21\u578b\u5de5\u51b5",
+        "row": 645,
+        "specification": [
+          [
+            {
+              "tensor": true,
+              "shape": [
+                8,
+                16,
+                2049,
+                128
+              ],
+              "stride": [
+                12589056,
+                128,
+                6144,
+                1
+              ],
+              "dtype": "torch.bfloat16",
+              "device": "cuda:0",
+              "layout": "torch.strided",
+              "storage_offset": 0,
+              "requires_grad": false,
+              "is_contiguous": false
+            },
+            {
+              "tensor": true,
+              "shape": [
+                8,
+                16,
+                2049,
+                128
+              ],
+              "stride": [
+                12589056,
+                128,
+                6144,
+                1
+              ],
+              "dtype": "torch.bfloat16",
+              "device": "cuda:0",
+              "layout": "torch.strided",
+              "storage_offset": 2048,
+              "requires_grad": false,
+              "is_contiguous": false
+            },
+            {
+              "tensor": true,
+              "shape": [
+                8,
+                16,
+                2049,
+                128
+              ],
+              "stride": [
+                12589056,
+                128,
+                6144,
+                1
+              ],
+              "dtype": "torch.bfloat16",
+              "device": "cuda:0",
+              "layout": "torch.strided",
+              "storage_offset": 4096,
+              "requires_grad": false,
+              "is_contiguous": false
+            }
+          ],
+          {
+            "scale": 0.08838834764831843
+          }
+        ],
+        "seed": 20261105,
+        "generation": "CPU direct BF16 randn",
+        "storage": "shared_qkv_backing_from_user_review",
+        "input_scope": "metadata reconstruction; original model payload and external contract not replayed",
+        "original_model_acceptance_verified": false
+      },
+      "input_identity": {
+        "seed": 20261105,
+        "fp32_generation": false,
+        "backing_sha256": "44ebfeb326f5a257e890668d149dd0e28a715052ab3d7560d14726f39107fc04",
+        "backing_elements": [
+          100712448
+        ],
+        "backing_bytes": 201424896,
+        "storage_policy": "shared_qkv_backing_from_user_review"
+      },
+      "input_layouts": [
+        {
+          "shape": [
+            8,
+            16,
+            2049,
+            128
+          ],
+          "stride": [
+            12589056,
+            128,
+            6144,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            8,
+            16,
+            2049,
+            128
+          ],
+          "stride": [
+            12589056,
+            128,
+            6144,
+            1
+          ],
+          "offset": 2048
+        },
+        {
+          "shape": [
+            8,
+            16,
+            2049,
+            128
+          ],
+          "stride": [
+            12589056,
+            128,
+            6144,
+            1
+          ],
+          "offset": 4096
+        }
+      ],
+      "precision": {
+        "wheel": {
+          "checks": [
+            {
+              "output": {
+                "shape": [
+                  8,
+                  16,
+                  2049,
+                  128
+                ],
+                "elements": 33570816,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.0010229945182800293
+              },
+              "lse": {
+                "shape": [
+                  8,
+                  16,
+                  2049
+                ],
+                "elements": 262272,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 1.9073486328125e-06
+              }
+            },
+            {
+              "output": {
+                "shape": [
+                  8,
+                  16,
+                  2049,
+                  128
+                ],
+                "elements": 33570816,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.0010229945182800293
+              },
+              "lse": {
+                "shape": [
+                  8,
+                  16,
+                  2049
+                ],
+                "elements": 262272,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 1.9073486328125e-06
+              }
+            },
+            {
+              "output": {
+                "shape": [
+                  8,
+                  16,
+                  2049,
+                  128
+                ],
+                "elements": 33570816,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.0010229945182800293
+              },
+              "lse": {
+                "shape": [
+                  8,
+                  16,
+                  2049
+                ],
+                "elements": 262272,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 1.9073486328125e-06
+              }
+            }
+          ],
+          "stable": true
+        },
+        "aten": {
+          "checks": [
+            {
+              "output": {
+                "shape": [
+                  8,
+                  16,
+                  2049,
+                  128
+                ],
+                "elements": 33570816,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.0010229945182800293
+              },
+              "lse": {
+                "shape": [
+                  8,
+                  16,
+                  2049
+                ],
+                "elements": 262272,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 1.9073486328125e-06
+              }
+            },
+            {
+              "output": {
+                "shape": [
+                  8,
+                  16,
+                  2049,
+                  128
+                ],
+                "elements": 33570816,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.0010229945182800293
+              },
+              "lse": {
+                "shape": [
+                  8,
+                  16,
+                  2049
+                ],
+                "elements": 262272,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 1.9073486328125e-06
+              }
+            },
+            {
+              "output": {
+                "shape": [
+                  8,
+                  16,
+                  2049,
+                  128
+                ],
+                "elements": 33570816,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.0010229945182800293
+              },
+              "lse": {
+                "shape": [
+                  8,
+                  16,
+                  2049
+                ],
+                "elements": 262272,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 1.9073486328125e-06
+              }
+            }
+          ],
+          "stable": true
+        },
+        "repo": {
+          "checks": [
+            {
+              "output": {
+                "shape": [
+                  8,
+                  16,
+                  2049,
+                  128
+                ],
+                "elements": 33570816,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.0015590786933898926
+              },
+              "lse": {
+                "shape": [
+                  8,
+                  16,
+                  2049
+                ],
+                "elements": 262272,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 1.9073486328125e-06
+              }
+            },
+            {
+              "output": {
+                "shape": [
+                  8,
+                  16,
+                  2049,
+                  128
+                ],
+                "elements": 33570816,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.0015590786933898926
+              },
+              "lse": {
+                "shape": [
+                  8,
+                  16,
+                  2049
+                ],
+                "elements": 262272,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 1.9073486328125e-06
+              }
+            },
+            {
+              "output": {
+                "shape": [
+                  8,
+                  16,
+                  2049,
+                  128
+                ],
+                "elements": 33570816,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.0015590786933898926
+              },
+              "lse": {
+                "shape": [
+                  8,
+                  16,
+                  2049
+                ],
+                "elements": 262272,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 1.9073486328125e-06
+              }
+            }
+          ],
+          "stable": true
+        }
+      },
+      "samples": {
+        "wheel": [
+          {
+            "us_per_call": 2162.164964,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 2162164.9639999997
+              }
+            },
+            "trace": "model_state-wheel-round0.json.gz",
+            "trace_sha256": "6f97cd85ffe215f56467219c283c197cdbbb0bef43dbb8cfd733127d54251060"
+          },
+          {
+            "us_per_call": 2162.4844980000003,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 2162484.497999999
+              }
+            },
+            "trace": "model_state-wheel-round1.json.gz",
+            "trace_sha256": "6f9858d8f044433668b9938559c1ddd1738477c050de7891424003a96626fb3e"
+          },
+          {
+            "us_per_call": 2162.252296,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 2162252.296000002
+              }
+            },
+            "trace": "model_state-wheel-round2.json.gz",
+            "trace_sha256": "4eddce1e07359b2c6ff198c40109303cb59fe13ac29ccf178048a3213c797523"
+          },
+          {
+            "us_per_call": 2162.4191140000003,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 2162419.114000001
+              }
+            },
+            "trace": "model_state-wheel-round3.json.gz",
+            "trace_sha256": "cd4ab9845d058e3da8c1beeb7c0a1238a2cf829c58edea55e8d79025f0dc3d73"
+          },
+          {
+            "us_per_call": 2161.894955,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 2161894.954999999
+              }
+            },
+            "trace": "model_state-wheel-round4.json.gz",
+            "trace_sha256": "2d5b78da382d566111fcaf859784d1b06e2cefec44ef982587d1cf6582baf744"
+          }
+        ],
+        "aten": [
+          {
+            "us_per_call": 2162.32783,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 2162327.8300000057
+              }
+            },
+            "trace": "model_state-aten-round0.json.gz",
+            "trace_sha256": "b121c5939f2654829205177f48112dbb92b19bf78724ce03737c01fc6634f45f"
+          },
+          {
+            "us_per_call": 2162.266249,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 2162266.2490000036
+              }
+            },
+            "trace": "model_state-aten-round1.json.gz",
+            "trace_sha256": "cadc5f20b96c6bf830d3352ebff41add7258dbfae6b81e5ae1f9e4918d817aca"
+          },
+          {
+            "us_per_call": 2162.513796,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 2162513.7960000015
+              }
+            },
+            "trace": "model_state-aten-round2.json.gz",
+            "trace_sha256": "e411eea60e68c098cc4e919134aad3c89cf089add47c5b2650eb4d3726ca7272"
+          },
+          {
+            "us_per_call": 2162.323579,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 2162323.5790000004
+              }
+            },
+            "trace": "model_state-aten-round3.json.gz",
+            "trace_sha256": "f76bbebe78ab482ea7842aa3afb55e32fc83e5f7daefcda924bcdb74cb7b0fb2"
+          },
+          {
+            "us_per_call": 2162.544577,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 128, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 128, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 2162544.577000001
+              }
+            },
+            "trace": "model_state-aten-round4.json.gz",
+            "trace_sha256": "3f28dfe4be40034128ef139e25d4942c18df7bfbc68928b4bb921d6d9e2fd1e4"
+          }
+        ],
+        "repo": [
+          {
+            "us_per_call": 1741.376693,
+            "kernel_count": 3000,
+            "kernels_per_call": 3,
+            "kernels": {
+              "_state_key_norms": {
+                "calls": 1000,
+                "sum_us": 116657.88000000069
+              },
+              "void flash_vpackedlds<4, 3, 16, 1, 8, 2>(unsigned short const*, unsigned short const*, unsigned short const*, float const*, unsigned char*, unsigned short*, float*)": {
+                "calls": 1000,
+                "sum_us": 1607414.213000004
+              },
+              "_state_stable": {
+                "calls": 1000,
+                "sum_us": 17304.60000000007
+              }
+            },
+            "trace": "model_state-repo-round0.json.gz",
+            "trace_sha256": "1d11f0e6dba19ef8125c205f4c6ba536a496b75eedc4e3e84f7af03753c9fd23"
+          },
+          {
+            "us_per_call": 1741.9912720000002,
+            "kernel_count": 3000,
+            "kernels_per_call": 3,
+            "kernels": {
+              "_state_key_norms": {
+                "calls": 1000,
+                "sum_us": 116838.84200000046
+              },
+              "void flash_vpackedlds<4, 3, 16, 1, 8, 2>(unsigned short const*, unsigned short const*, unsigned short const*, float const*, unsigned char*, unsigned short*, float*)": {
+                "calls": 1000,
+                "sum_us": 1607615.3500000022
+              },
+              "_state_stable": {
+                "calls": 1000,
+                "sum_us": 17537.080000000038
+              }
+            },
+            "trace": "model_state-repo-round1.json.gz",
+            "trace_sha256": "a3ab1c6822082e7323c8cdfeeca5db75abf3f2d9120b7a17b62131f8f38115b5"
+          },
+          {
+            "us_per_call": 1741.918856,
+            "kernel_count": 3000,
+            "kernels_per_call": 3,
+            "kernels": {
+              "_state_key_norms": {
+                "calls": 1000,
+                "sum_us": 116803.16500000052
+              },
+              "void flash_vpackedlds<4, 3, 16, 1, 8, 2>(unsigned short const*, unsigned short const*, unsigned short const*, float const*, unsigned char*, unsigned short*, float*)": {
+                "calls": 1000,
+                "sum_us": 1607627.7300000016
+              },
+              "_state_stable": {
+                "calls": 1000,
+                "sum_us": 17487.96100000004
+              }
+            },
+            "trace": "model_state-repo-round2.json.gz",
+            "trace_sha256": "89552ceefd0ab3db6958474b2171a78a7103625a33a19d1f38e180f46721a46c"
+          },
+          {
+            "us_per_call": 1741.864748,
+            "kernel_count": 3000,
+            "kernels_per_call": 3,
+            "kernels": {
+              "_state_key_norms": {
+                "calls": 1000,
+                "sum_us": 116819.00700000067
+              },
+              "void flash_vpackedlds<4, 3, 16, 1, 8, 2>(unsigned short const*, unsigned short const*, unsigned short const*, float const*, unsigned char*, unsigned short*, float*)": {
+                "calls": 1000,
+                "sum_us": 1607576.5010000025
+              },
+              "_state_stable": {
+                "calls": 1000,
+                "sum_us": 17469.240000000053
+              }
+            },
+            "trace": "model_state-repo-round3.json.gz",
+            "trace_sha256": "4fc63024b293e15e2beb31c765dd887abc450f2925c876a0998f119b0758b118"
+          },
+          {
+            "us_per_call": 1741.740463,
+            "kernel_count": 3000,
+            "kernels_per_call": 3,
+            "kernels": {
+              "_state_key_norms": {
+                "calls": 1000,
+                "sum_us": 116743.65000000055
+              },
+              "void flash_vpackedlds<4, 3, 16, 1, 8, 2>(unsigned short const*, unsigned short const*, unsigned short const*, float const*, unsigned char*, unsigned short*, float*)": {
+                "calls": 1000,
+                "sum_us": 1607560.8520000027
+              },
+              "_state_stable": {
+                "calls": 1000,
+                "sum_us": 17435.961000000054
+              }
+            },
+            "trace": "model_state-repo-round4.json.gz",
+            "trace_sha256": "7ba4afc92e563546ceac99274682f95d64dac14980ebb996c6efad2995bacfca"
+          }
+        ]
+      },
+      "timing_started": true,
+      "median_us": {
+        "wheel": 2162.252296,
+        "aten": 2162.32783,
+        "repo": 1741.864748
+      },
+      "ratio_vs_wheel": 1.241343392753477,
+      "ratio_vs_aten": 1.2413867566254921,
+      "conservative_ratio": 1.241343392753477,
+      "round_ratios": [
+        1.2416411524809585,
+        1.2412612415201583,
+        1.2413048337769415,
+        1.2413843161375007,
+        1.241226807854208
+      ],
+      "mean_us": {
+        "wheel": 2162.2431654,
+        "aten": 2162.3952062,
+        "repo": 1741.7784064
+      },
+      "mean_ratio": 1.2413996852039515,
+      "meets_90_percent": true
+    },
+    "expanded_small": {
+      "case": {
+        "id": "expanded_small",
+        "sheet": "\u89c4\u6a21\u6269\u5c55\u5de5\u51b5",
+        "row": 2,
+        "specification": [
+          [
+            {
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "layout": "torch.strided",
+              "requires_grad": false,
+              "shape": [
+                2,
+                16,
+                3,
+                128
+              ],
+              "storage_offset": 0,
+              "stride": [
+                18432,
+                128,
+                6144,
+                1
+              ]
+            },
+            {
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "layout": "torch.strided",
+              "requires_grad": false,
+              "shape": [
+                2,
+                16,
+                3,
+                128
+              ],
+              "storage_offset": 2048,
+              "stride": [
+                18432,
+                128,
+                6144,
+                1
+              ]
+            },
+            {
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "layout": "torch.strided",
+              "requires_grad": false,
+              "shape": [
+                2,
+                16,
+                3,
+                128
+              ],
+              "storage_offset": 4096,
+              "stride": [
+                18432,
+                128,
+                6144,
+                1
+              ]
+            }
+          ],
+          {
+            "scale": 0.08838834764831843
+          }
+        ],
+        "seed": 5058009176373978791,
+        "generation": "CPU direct BF16 randn",
+        "storage": "independent_minimum_backings_from_expansion_spec",
+        "input_scope": "independent synthetic input; shape/stride/offset and seed from workbook",
+        "original_model_acceptance_verified": false
+      },
+      "input_identity": {
+        "seed": 5058009176373978791,
+        "fp32_generation": false,
+        "backing_sha256": "8a234cca0975021f970d0dd385a7395834c89924f8f4e3e39a9f1c7f4cd29398",
+        "backing_elements": [
+          32768,
+          34816,
+          36864
+        ],
+        "backing_bytes": 208896,
+        "storage_policy": "independent_minimum_backings_from_expansion_spec"
+      },
+      "input_layouts": [
+        {
+          "shape": [
+            2,
+            16,
+            3,
+            128
+          ],
+          "stride": [
+            18432,
+            128,
+            6144,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            16,
+            3,
+            128
+          ],
+          "stride": [
+            18432,
+            128,
+            6144,
+            1
+          ],
+          "offset": 2048
+        },
+        {
+          "shape": [
+            2,
+            16,
+            3,
+            128
+          ],
+          "stride": [
+            18432,
+            128,
+            6144,
+            1
+          ],
+          "offset": 4096
+        }
+      ],
+      "precision": {
+        "wheel": {
+          "checks": [
+            {
+              "output": {
+                "shape": [
+                  2,
+                  16,
+                  3,
+                  128
+                ],
+                "elements": 12288,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.008086681365966797
+              },
+              "lse": {
+                "shape": [
+                  2,
+                  16,
+                  3
+                ],
+                "elements": 96,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 4.76837158203125e-07
+              }
+            },
+            {
+              "output": {
+                "shape": [
+                  2,
+                  16,
+                  3,
+                  128
+                ],
+                "elements": 12288,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.008086681365966797
+              },
+              "lse": {
+                "shape": [
+                  2,
+                  16,
+                  3
+                ],
+                "elements": 96,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 4.76837158203125e-07
+              }
+            },
+            {
+              "output": {
+                "shape": [
+                  2,
+                  16,
+                  3,
+                  128
+                ],
+                "elements": 12288,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.008086681365966797
+              },
+              "lse": {
+                "shape": [
+                  2,
+                  16,
+                  3
+                ],
+                "elements": 96,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 4.76837158203125e-07
+              }
+            }
+          ],
+          "stable": true
+        },
+        "aten": {
+          "checks": [
+            {
+              "output": {
+                "shape": [
+                  2,
+                  16,
+                  3,
+                  128
+                ],
+                "elements": 12288,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.008086681365966797
+              },
+              "lse": {
+                "shape": [
+                  2,
+                  16,
+                  3
+                ],
+                "elements": 96,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 4.76837158203125e-07
+              }
+            },
+            {
+              "output": {
+                "shape": [
+                  2,
+                  16,
+                  3,
+                  128
+                ],
+                "elements": 12288,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.008086681365966797
+              },
+              "lse": {
+                "shape": [
+                  2,
+                  16,
+                  3
+                ],
+                "elements": 96,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 4.76837158203125e-07
+              }
+            },
+            {
+              "output": {
+                "shape": [
+                  2,
+                  16,
+                  3,
+                  128
+                ],
+                "elements": 12288,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.008086681365966797
+              },
+              "lse": {
+                "shape": [
+                  2,
+                  16,
+                  3
+                ],
+                "elements": 96,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 4.76837158203125e-07
+              }
+            }
+          ],
+          "stable": true
+        },
+        "repo": {
+          "checks": [
+            {
+              "output": {
+                "shape": [
+                  2,
+                  16,
+                  3,
+                  128
+                ],
+                "elements": 12288,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.007538318634033203
+              },
+              "lse": {
+                "shape": [
+                  2,
+                  16,
+                  3
+                ],
+                "elements": 96,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 4.76837158203125e-07
+              }
+            },
+            {
+              "output": {
+                "shape": [
+                  2,
+                  16,
+                  3,
+                  128
+                ],
+                "elements": 12288,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.007538318634033203
+              },
+              "lse": {
+                "shape": [
+                  2,
+                  16,
+                  3
+                ],
+                "elements": 96,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 4.76837158203125e-07
+              }
+            },
+            {
+              "output": {
+                "shape": [
+                  2,
+                  16,
+                  3,
+                  128
+                ],
+                "elements": 12288,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.007538318634033203
+              },
+              "lse": {
+                "shape": [
+                  2,
+                  16,
+                  3
+                ],
+                "elements": 96,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 4.76837158203125e-07
+              }
+            }
+          ],
+          "stable": true
+        }
+      },
+      "samples": {
+        "wheel": [
+          {
+            "us_per_call": 8.611801,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 8611.801000000043
+              }
+            },
+            "trace": "expanded_small-wheel-round0.json.gz",
+            "trace_sha256": "8220e96ce7d90d8bd5402e6ba889de10d515b0ca767bb3293c478bab3bc5f996"
+          },
+          {
+            "us_per_call": 8.60476,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 8604.760000000046
+              }
+            },
+            "trace": "expanded_small-wheel-round1.json.gz",
+            "trace_sha256": "20d48d66c06744ca6c0ba4dafdb82de71c2c1a511594c314d9a7f404313a5d21"
+          },
+          {
+            "us_per_call": 8.603959999999999,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 8603.960000000045
+              }
+            },
+            "trace": "expanded_small-wheel-round2.json.gz",
+            "trace_sha256": "9090f6097a4799a1f78f01479aee11d23d873f69ff31669f37ccfb20ea4f4431"
+          },
+          {
+            "us_per_call": 8.617401,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 8617.401000000047
+              }
+            },
+            "trace": "expanded_small-wheel-round3.json.gz",
+            "trace_sha256": "26da5b479331635e936d0e84a6754401bfabe3e6438a4ced45435e7492895d6f"
+          },
+          {
+            "us_per_call": 8.62076,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 8620.760000000038
+              }
+            },
+            "trace": "expanded_small-wheel-round4.json.gz",
+            "trace_sha256": "afbe53b64007493672fa447f3bfec66f948c4ed4ea86bc7d776793bdc8ff4ac7"
+          }
+        ],
+        "aten": [
+          {
+            "us_per_call": 8.60524,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 8605.24000000004
+              }
+            },
+            "trace": "expanded_small-aten-round0.json.gz",
+            "trace_sha256": "00744bf15d66f9b3c92729aeda4601828662d9becd2a0991543a8766edf6c445"
+          },
+          {
+            "us_per_call": 8.6054,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 8605.400000000052
+              }
+            },
+            "trace": "expanded_small-aten-round1.json.gz",
+            "trace_sha256": "f52364d67c1a5e89a1dc300d0931cbb99d7ec8fe7e0be9e6f31596bfb0eaf783"
+          },
+          {
+            "us_per_call": 8.603959999999999,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 8603.960000000043
+              }
+            },
+            "trace": "expanded_small-aten-round2.json.gz",
+            "trace_sha256": "ca8fdfce864b3ad1efbae180a79dd0f9dc711ff28e04b8e3df6e2408e6ae5ebd"
+          },
+          {
+            "us_per_call": 8.6038,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 8603.800000000043
+              }
+            },
+            "trace": "expanded_small-aten-round3.json.gz",
+            "trace_sha256": "43a65f5f8b430222b6cc91dafc2a54610d268198f488da9d1c8c048e419df54c"
+          },
+          {
+            "us_per_call": 8.605561,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 8605.561000000042
+              }
+            },
+            "trace": "expanded_small-aten-round4.json.gz",
+            "trace_sha256": "c426e1fe7ae5a05f3ef7fa8c52b75aa873735252fefbdea1c644a2799432992d"
+          }
+        ],
+        "repo": [
+          {
+            "us_per_call": 5.862361,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "_state_stable": {
+                "calls": 1000,
+                "sum_us": 5862.360999999955
+              }
+            },
+            "trace": "expanded_small-repo-round0.json.gz",
+            "trace_sha256": "5604786b43ecaa0436f192ea1c2ef2c9bca1cb71eb7e27b2a2ea1b5b53d66bba"
+          },
+          {
+            "us_per_call": 5.4330810000000005,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "_state_stable": {
+                "calls": 1000,
+                "sum_us": 5433.080999999956
+              }
+            },
+            "trace": "expanded_small-repo-round1.json.gz",
+            "trace_sha256": "14905f025f7f9dbb7d268689ffb65058c8dff842bd03f32f3e075f69741b4dd6"
+          },
+          {
+            "us_per_call": 5.41564,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "_state_stable": {
+                "calls": 1000,
+                "sum_us": 5415.639999999998
+              }
+            },
+            "trace": "expanded_small-repo-round2.json.gz",
+            "trace_sha256": "91cc8f04ba910e43dc3b7d3953548590d1d2107b84591cfc4e9d97f6e9fb77d3"
+          },
+          {
+            "us_per_call": 5.47724,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "_state_stable": {
+                "calls": 1000,
+                "sum_us": 5477.240000000013
+              }
+            },
+            "trace": "expanded_small-repo-round3.json.gz",
+            "trace_sha256": "d590331ba9915525bbe6c34edd7629b1b41579174a2b0ab9623914f29c8d0866"
+          },
+          {
+            "us_per_call": 5.21948,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "_state_stable": {
+                "calls": 1000,
+                "sum_us": 5219.480000000001
+              }
+            },
+            "trace": "expanded_small-repo-round4.json.gz",
+            "trace_sha256": "5abc5386ffc4f402605f600e18734721aca269ba4445bd841d927b67c48ff2e6"
+          }
+        ]
+      },
+      "timing_started": true,
+      "median_us": {
+        "wheel": 8.611801,
+        "aten": 8.60524,
+        "repo": 5.4330810000000005
+      },
+      "ratio_vs_wheel": 1.5850676623448092,
+      "ratio_vs_aten": 1.5838600602494237,
+      "conservative_ratio": 1.5838600602494237,
+      "round_ratios": [
+        1.4678795795755328,
+        1.5837717125881245,
+        1.5887245090146316,
+        1.5708276431195272,
+        1.6487391464283798
+      ],
+      "mean_us": {
+        "wheel": 8.6117364,
+        "aten": 8.6047922,
+        "repo": 5.4815604
+      },
+      "mean_ratio": 1.5697705711680199,
+      "meets_90_percent": true
+    },
+    "expanded_medium": {
+      "case": {
+        "id": "expanded_medium",
+        "sheet": "\u89c4\u6a21\u6269\u5c55\u5de5\u51b5",
+        "row": 3,
+        "specification": [
+          [
+            {
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "layout": "torch.strided",
+              "requires_grad": false,
+              "shape": [
+                2,
+                16,
+                23,
+                128
+              ],
+              "storage_offset": 0,
+              "stride": [
+                141312,
+                128,
+                6144,
+                1
+              ]
+            },
+            {
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "layout": "torch.strided",
+              "requires_grad": false,
+              "shape": [
+                2,
+                16,
+                23,
+                128
+              ],
+              "storage_offset": 2048,
+              "stride": [
+                141312,
+                128,
+                6144,
+                1
+              ]
+            },
+            {
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "layout": "torch.strided",
+              "requires_grad": false,
+              "shape": [
+                2,
+                16,
+                23,
+                128
+              ],
+              "storage_offset": 4096,
+              "stride": [
+                141312,
+                128,
+                6144,
+                1
+              ]
+            }
+          ],
+          {
+            "scale": 0.08838834764831843
+          }
+        ],
+        "seed": 6792970978253416049,
+        "generation": "CPU direct BF16 randn",
+        "storage": "independent_minimum_backings_from_expansion_spec",
+        "input_scope": "independent synthetic input; shape/stride/offset and seed from workbook",
+        "original_model_acceptance_verified": false
+      },
+      "input_identity": {
+        "seed": 6792970978253416049,
+        "fp32_generation": false,
+        "backing_sha256": "76139531dc6bf5c53593bfdc88d3dd5acc5ca13733b5ac6944e92b20064208b5",
+        "backing_elements": [
+          278528,
+          280576,
+          282624
+        ],
+        "backing_bytes": 1683456,
+        "storage_policy": "independent_minimum_backings_from_expansion_spec"
+      },
+      "input_layouts": [
+        {
+          "shape": [
+            2,
+            16,
+            23,
+            128
+          ],
+          "stride": [
+            141312,
+            128,
+            6144,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            16,
+            23,
+            128
+          ],
+          "stride": [
+            141312,
+            128,
+            6144,
+            1
+          ],
+          "offset": 2048
+        },
+        {
+          "shape": [
+            2,
+            16,
+            23,
+            128
+          ],
+          "stride": [
+            141312,
+            128,
+            6144,
+            1
+          ],
+          "offset": 4096
+        }
+      ],
+      "precision": {
+        "wheel": {
+          "checks": [
+            {
+              "output": {
+                "shape": [
+                  2,
+                  16,
+                  23,
+                  128
+                ],
+                "elements": 94208,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.004246354103088379
+              },
+              "lse": {
+                "shape": [
+                  2,
+                  16,
+                  23
+                ],
+                "elements": 736,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 4.76837158203125e-07
+              }
+            },
+            {
+              "output": {
+                "shape": [
+                  2,
+                  16,
+                  23,
+                  128
+                ],
+                "elements": 94208,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.004246354103088379
+              },
+              "lse": {
+                "shape": [
+                  2,
+                  16,
+                  23
+                ],
+                "elements": 736,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 4.76837158203125e-07
+              }
+            },
+            {
+              "output": {
+                "shape": [
+                  2,
+                  16,
+                  23,
+                  128
+                ],
+                "elements": 94208,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.004246354103088379
+              },
+              "lse": {
+                "shape": [
+                  2,
+                  16,
+                  23
+                ],
+                "elements": 736,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 4.76837158203125e-07
+              }
+            }
+          ],
+          "stable": true
+        },
+        "aten": {
+          "checks": [
+            {
+              "output": {
+                "shape": [
+                  2,
+                  16,
+                  23,
+                  128
+                ],
+                "elements": 94208,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.004246354103088379
+              },
+              "lse": {
+                "shape": [
+                  2,
+                  16,
+                  23
+                ],
+                "elements": 736,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 4.76837158203125e-07
+              }
+            },
+            {
+              "output": {
+                "shape": [
+                  2,
+                  16,
+                  23,
+                  128
+                ],
+                "elements": 94208,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.004246354103088379
+              },
+              "lse": {
+                "shape": [
+                  2,
+                  16,
+                  23
+                ],
+                "elements": 736,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 4.76837158203125e-07
+              }
+            },
+            {
+              "output": {
+                "shape": [
+                  2,
+                  16,
+                  23,
+                  128
+                ],
+                "elements": 94208,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.004246354103088379
+              },
+              "lse": {
+                "shape": [
+                  2,
+                  16,
+                  23
+                ],
+                "elements": 736,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 4.76837158203125e-07
+              }
+            }
+          ],
+          "stable": true
+        },
+        "repo": {
+          "checks": [
+            {
+              "output": {
+                "shape": [
+                  2,
+                  16,
+                  23,
+                  128
+                ],
+                "elements": 94208,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.003898143768310547
+              },
+              "lse": {
+                "shape": [
+                  2,
+                  16,
+                  23
+                ],
+                "elements": 736,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 7.152557373046875e-07
+              }
+            },
+            {
+              "output": {
+                "shape": [
+                  2,
+                  16,
+                  23,
+                  128
+                ],
+                "elements": 94208,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.003898143768310547
+              },
+              "lse": {
+                "shape": [
+                  2,
+                  16,
+                  23
+                ],
+                "elements": 736,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 7.152557373046875e-07
+              }
+            },
+            {
+              "output": {
+                "shape": [
+                  2,
+                  16,
+                  23,
+                  128
+                ],
+                "elements": 94208,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.003898143768310547
+              },
+              "lse": {
+                "shape": [
+                  2,
+                  16,
+                  23
+                ],
+                "elements": 736,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 7.152557373046875e-07
+              }
+            }
+          ],
+          "stable": true
+        }
+      },
+      "samples": {
+        "wheel": [
+          {
+            "us_per_call": 9.57052,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 9570.520000000119
+              }
+            },
+            "trace": "expanded_medium-wheel-round0.json.gz",
+            "trace_sha256": "0e09b8922740521def336a6db5ae600b011181323f76605a04d10cde775e8bd7"
+          },
+          {
+            "us_per_call": 9.56236,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 9562.360000000126
+              }
+            },
+            "trace": "expanded_medium-wheel-round1.json.gz",
+            "trace_sha256": "a58c6fd839874b3186ed19c263c0f489f9284ed9b3008fcee28d801428d8c1ff"
+          },
+          {
+            "us_per_call": 9.55612,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 9556.120000000126
+              }
+            },
+            "trace": "expanded_medium-wheel-round2.json.gz",
+            "trace_sha256": "435db815c7e9092bd471c84540f9a5754673a580559ff24aede058bfca69f31b"
+          },
+          {
+            "us_per_call": 9.564281000000001,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 9564.281000000123
+              }
+            },
+            "trace": "expanded_medium-wheel-round3.json.gz",
+            "trace_sha256": "9dbb3bc3a5e01a4f134f91a7699dccc7574d72010999034f32a74532bac5afef"
+          },
+          {
+            "us_per_call": 9.55356,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 9553.560000000125
+              }
+            },
+            "trace": "expanded_medium-wheel-round4.json.gz",
+            "trace_sha256": "d9564fc18c770b849da75f8f58d0d1e8f615318cf72c7fe6331af7d68ab3489e"
+          }
+        ],
+        "aten": [
+          {
+            "us_per_call": 9.557082000000001,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 9557.08200000012
+              }
+            },
+            "trace": "expanded_medium-aten-round0.json.gz",
+            "trace_sha256": "67a22efd407b84566f9f8eabd1483f62e54691f52dd11d784d3bc4cb7a38c744"
+          },
+          {
+            "us_per_call": 9.56124,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 9561.240000000123
+              }
+            },
+            "trace": "expanded_medium-aten-round1.json.gz",
+            "trace_sha256": "949f96dbf34ca6afa5b4ed5f2c0b6e355e3e852456069bf7f60bea1f18353646"
+          },
+          {
+            "us_per_call": 9.559,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 9559.00000000012
+              }
+            },
+            "trace": "expanded_medium-aten-round2.json.gz",
+            "trace_sha256": "ea1e53b33ef59977895c87c02e2feb38f7743cc1e7df43d12a9a773936e68656"
+          },
+          {
+            "us_per_call": 9.55932,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 9559.320000000122
+              }
+            },
+            "trace": "expanded_medium-aten-round3.json.gz",
+            "trace_sha256": "b3ee745d9bbca83f1e6382839305726a89b42ff236c268dbfdc9d19b7f19a560"
+          },
+          {
+            "us_per_call": 9.561241,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 9561.241000000118
+              }
+            },
+            "trace": "expanded_medium-aten-round4.json.gz",
+            "trace_sha256": "1880b721e0c6036f769c7d5630d0c99d0ac405761a0e10d50ce15130084a1705"
+          }
+        ],
+        "repo": [
+          {
+            "us_per_call": 6.225881,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "_state_stable": {
+                "calls": 1000,
+                "sum_us": 6225.881000000004
+              }
+            },
+            "trace": "expanded_medium-repo-round0.json.gz",
+            "trace_sha256": "cdbb198acd6e290ffcb9c6aff30f4395e7f8193ab78799a42df33e93e64a914d"
+          },
+          {
+            "us_per_call": 5.998201,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "_state_stable": {
+                "calls": 1000,
+                "sum_us": 5998.200999999956
+              }
+            },
+            "trace": "expanded_medium-repo-round1.json.gz",
+            "trace_sha256": "17db4b23cfab8ec1addc508e4b21eda54eeda7752c05d885db533303144414ed"
+          },
+          {
+            "us_per_call": 6.41836,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "_state_stable": {
+                "calls": 1000,
+                "sum_us": 6418.359999999953
+              }
+            },
+            "trace": "expanded_medium-repo-round2.json.gz",
+            "trace_sha256": "4fd41ef43f0242620001779d6761d160494c18710ea3b3e4c0e8253dcb8b274b"
+          },
+          {
+            "us_per_call": 6.3902,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "_state_stable": {
+                "calls": 1000,
+                "sum_us": 6390.200000000015
+              }
+            },
+            "trace": "expanded_medium-repo-round3.json.gz",
+            "trace_sha256": "cc241f2aa88bb73f0e956dde8164581dfe40f023f04ef319ba4bd378efba46e0"
+          },
+          {
+            "us_per_call": 6.6399610000000004,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "_state_stable": {
+                "calls": 1000,
+                "sum_us": 6639.961000000013
+              }
+            },
+            "trace": "expanded_medium-repo-round4.json.gz",
+            "trace_sha256": "56c8690d53ea3c1d879d2bfae6ddb7ef608da374d1f8084139ae286fd31ecb3b"
+          }
+        ]
+      },
+      "timing_started": true,
+      "median_us": {
+        "wheel": 9.56236,
+        "aten": 9.55932,
+        "repo": 6.3902
+      },
+      "ratio_vs_wheel": 1.496410128008513,
+      "ratio_vs_aten": 1.4959343995493097,
+      "conservative_ratio": 1.4959343995493097,
+      "round_ratios": [
+        1.5350569662349796,
+        1.5940179397122571,
+        1.4888725468811348,
+        1.4959343995493097,
+        1.4387976073955855
+      ],
+      "mean_us": {
+        "wheel": 9.5613682,
+        "aten": 9.5595766,
+        "repo": 6.3345206
+      },
+      "mean_ratio": 1.509123926442042,
+      "meets_90_percent": true
+    },
+    "expanded_large": {
+      "case": {
+        "id": "expanded_large",
+        "sheet": "\u89c4\u6a21\u6269\u5c55\u5de5\u51b5",
+        "row": 4,
+        "specification": [
+          [
+            {
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "layout": "torch.strided",
+              "requires_grad": false,
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "storage_offset": 0,
+              "stride": [
+                2224128,
+                128,
+                6144,
+                1
+              ]
+            },
+            {
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "layout": "torch.strided",
+              "requires_grad": false,
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "storage_offset": 2048,
+              "stride": [
+                2224128,
+                128,
+                6144,
+                1
+              ]
+            },
+            {
+              "device": "cuda:0",
+              "dtype": "torch.bfloat16",
+              "layout": "torch.strided",
+              "requires_grad": false,
+              "shape": [
+                2,
+                16,
+                362,
+                128
+              ],
+              "storage_offset": 4096,
+              "stride": [
+                2224128,
+                128,
+                6144,
+                1
+              ]
+            }
+          ],
+          {
+            "scale": 0.08838834764831843
+          }
+        ],
+        "seed": 8147618770989597313,
+        "generation": "CPU direct BF16 randn",
+        "storage": "independent_minimum_backings_from_expansion_spec",
+        "input_scope": "independent synthetic input; shape/stride/offset and seed from workbook",
+        "original_model_acceptance_verified": false
+      },
+      "input_identity": {
+        "seed": 8147618770989597313,
+        "fp32_generation": false,
+        "backing_sha256": "407dd00340ce0c38435ba91f1f4516284411104c40bcf7e59d0d960bb5f15316",
+        "backing_elements": [
+          4444160,
+          4446208,
+          4448256
+        ],
+        "backing_bytes": 26677248,
+        "storage_policy": "independent_minimum_backings_from_expansion_spec"
+      },
+      "input_layouts": [
+        {
+          "shape": [
+            2,
+            16,
+            362,
+            128
+          ],
+          "stride": [
+            2224128,
+            128,
+            6144,
+            1
+          ],
+          "offset": 0
+        },
+        {
+          "shape": [
+            2,
+            16,
+            362,
+            128
+          ],
+          "stride": [
+            2224128,
+            128,
+            6144,
+            1
+          ],
+          "offset": 2048
+        },
+        {
+          "shape": [
+            2,
+            16,
+            362,
+            128
+          ],
+          "stride": [
+            2224128,
+            128,
+            6144,
+            1
+          ],
+          "offset": 4096
+        }
+      ],
+      "precision": {
+        "wheel": {
+          "checks": [
+            {
+              "output": {
+                "shape": [
+                  2,
+                  16,
+                  362,
+                  128
+                ],
+                "elements": 1482752,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.002032339572906494
+              },
+              "lse": {
+                "shape": [
+                  2,
+                  16,
+                  362
+                ],
+                "elements": 11584,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 9.5367431640625e-07
+              }
+            },
+            {
+              "output": {
+                "shape": [
+                  2,
+                  16,
+                  362,
+                  128
+                ],
+                "elements": 1482752,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.002032339572906494
+              },
+              "lse": {
+                "shape": [
+                  2,
+                  16,
+                  362
+                ],
+                "elements": 11584,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 9.5367431640625e-07
+              }
+            },
+            {
+              "output": {
+                "shape": [
+                  2,
+                  16,
+                  362,
+                  128
+                ],
+                "elements": 1482752,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.002032339572906494
+              },
+              "lse": {
+                "shape": [
+                  2,
+                  16,
+                  362
+                ],
+                "elements": 11584,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 9.5367431640625e-07
+              }
+            }
+          ],
+          "stable": true
+        },
+        "aten": {
+          "checks": [
+            {
+              "output": {
+                "shape": [
+                  2,
+                  16,
+                  362,
+                  128
+                ],
+                "elements": 1482752,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.002032339572906494
+              },
+              "lse": {
+                "shape": [
+                  2,
+                  16,
+                  362
+                ],
+                "elements": 11584,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 9.5367431640625e-07
+              }
+            },
+            {
+              "output": {
+                "shape": [
+                  2,
+                  16,
+                  362,
+                  128
+                ],
+                "elements": 1482752,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.002032339572906494
+              },
+              "lse": {
+                "shape": [
+                  2,
+                  16,
+                  362
+                ],
+                "elements": 11584,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 9.5367431640625e-07
+              }
+            },
+            {
+              "output": {
+                "shape": [
+                  2,
+                  16,
+                  362,
+                  128
+                ],
+                "elements": 1482752,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.002032339572906494
+              },
+              "lse": {
+                "shape": [
+                  2,
+                  16,
+                  362
+                ],
+                "elements": 11584,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 9.5367431640625e-07
+              }
+            }
+          ],
+          "stable": true
+        },
+        "repo": {
+          "checks": [
+            {
+              "output": {
+                "shape": [
+                  2,
+                  16,
+                  362,
+                  128
+                ],
+                "elements": 1482752,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.002032339572906494
+              },
+              "lse": {
+                "shape": [
+                  2,
+                  16,
+                  362
+                ],
+                "elements": 11584,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 9.5367431640625e-07
+              }
+            },
+            {
+              "output": {
+                "shape": [
+                  2,
+                  16,
+                  362,
+                  128
+                ],
+                "elements": 1482752,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.002032339572906494
+              },
+              "lse": {
+                "shape": [
+                  2,
+                  16,
+                  362
+                ],
+                "elements": 11584,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 9.5367431640625e-07
+              }
+            },
+            {
+              "output": {
+                "shape": [
+                  2,
+                  16,
+                  362,
+                  128
+                ],
+                "elements": 1482752,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 0.002032339572906494
+              },
+              "lse": {
+                "shape": [
+                  2,
+                  16,
+                  362
+                ],
+                "elements": 11584,
+                "failed": 0,
+                "failed_percent": 0.0,
+                "nonfinite": 0,
+                "max_abs_finite": 9.5367431640625e-07
+              }
+            }
+          ],
+          "stable": true
+        }
+      },
+      "samples": {
+        "wheel": [
+          {
+            "us_per_call": 43.575482,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 43575.481999999814
+              }
+            },
+            "trace": "expanded_large-wheel-round0.json.gz",
+            "trace_sha256": "db3d923b4432c1df62737f744e8358d542da7c39054c1f54cc75c245b6d1a364"
+          },
+          {
+            "us_per_call": 43.582201999999995,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 43582.201999999816
+              }
+            },
+            "trace": "expanded_large-wheel-round1.json.gz",
+            "trace_sha256": "e96f0c6b6a2f383da466bbcf84262a9861f6ad74102b1728d49030a93d5bb0b3"
+          },
+          {
+            "us_per_call": 43.604442000000006,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 43604.44199999983
+              }
+            },
+            "trace": "expanded_large-wheel-round2.json.gz",
+            "trace_sha256": "86c9f21fabedc72463868c78f66c4b2904d2fd8aeb216a5d0ca455f4cdeea5e8"
+          },
+          {
+            "us_per_call": 43.597242,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 43597.24199999984
+              }
+            },
+            "trace": "expanded_large-wheel-round3.json.gz",
+            "trace_sha256": "59f8e4072956c2ce2bc1299eebb48c53f5ef6a68fb9b0433259096ed3f7119a2"
+          },
+          {
+            "us_per_call": 43.612601999999995,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 43612.60199999979
+              }
+            },
+            "trace": "expanded_large-wheel-round4.json.gz",
+            "trace_sha256": "78b6b17b5e4589f84f4ca0a6a4fee74afb4697bbd555fdaa6f2dd95060ec3d46"
+          }
+        ],
+        "aten": [
+          {
+            "us_per_call": 43.137884,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 43137.884
+              }
+            },
+            "trace": "expanded_large-aten-round0.json.gz",
+            "trace_sha256": "670bd660c46ce101434e734daba549b183eae2a8446eb9e135ab06ad83f55bf3"
+          },
+          {
+            "us_per_call": 43.109882,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 43109.88200000006
+              }
+            },
+            "trace": "expanded_large-aten-round1.json.gz",
+            "trace_sha256": "ef26e706c441c3996b778f88653bdad360ac4fb7e6b166211d641615c0cb460a"
+          },
+          {
+            "us_per_call": 43.085084,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 43085.08400000002
+              }
+            },
+            "trace": "expanded_large-aten-round2.json.gz",
+            "trace_sha256": "c5ce5a7c7766f53b6095b9c717056ee7923bd1fbde48410a5bcb961600d4e029"
+          },
+          {
+            "us_per_call": 43.119163,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 43119.16299999996
+              }
+            },
+            "trace": "expanded_large-aten-round3.json.gz",
+            "trace_sha256": "ff24bb2803a3c3114198e43b3121833415083e7ca230f7f7a04623505b56ff09"
+          },
+          {
+            "us_per_call": 43.127163,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void flash_fwd_kernel_16x64_prefetch<Flash_fwd_kernel_16x64_prefetch_traits<128, 64, 64, 4, cutlass::bfloat16_t, 3, false, false, 128, Flash_kernel_traits<128, 64, 64, 4, cutlass::bfloat16_t> >, false, false, false, false, false, true, false, false>(Flash_fwd_params)": {
+                "calls": 1000,
+                "sum_us": 43127.163
+              }
+            },
+            "trace": "expanded_large-aten-round4.json.gz",
+            "trace_sha256": "a7d24075a33c795c1f30c321823c90b81bf117c84ac7253244bd5e8436b07baa"
+          }
+        ],
+        "repo": [
+          {
+            "us_per_call": 43.791002999999996,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void short_state_flash<4, 3, 16>(unsigned short const*, unsigned short const*, unsigned short const*, unsigned short*, float*, unsigned char*)": {
+                "calls": 1000,
+                "sum_us": 43791.00299999971
+              }
+            },
+            "trace": "expanded_large-repo-round0.json.gz",
+            "trace_sha256": "9aa856fb73271aeb8e90f3f563ec506ef8c4377a11b13865ba2e7b09a8da3df6"
+          },
+          {
+            "us_per_call": 43.772923000000006,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void short_state_flash<4, 3, 16>(unsigned short const*, unsigned short const*, unsigned short const*, unsigned short*, float*, unsigned char*)": {
+                "calls": 1000,
+                "sum_us": 43772.92299999969
+              }
+            },
+            "trace": "expanded_large-repo-round1.json.gz",
+            "trace_sha256": "64657e3309093f5c5aa22acfe7549c7f17be0dd122a6df96d2193e90b163ba97"
+          },
+          {
+            "us_per_call": 43.796282,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void short_state_flash<4, 3, 16>(unsigned short const*, unsigned short const*, unsigned short const*, unsigned short*, float*, unsigned char*)": {
+                "calls": 1000,
+                "sum_us": 43796.28199999963
+              }
+            },
+            "trace": "expanded_large-repo-round2.json.gz",
+            "trace_sha256": "e0576df6ad4a9db341f7ce94207638a5e6eac63357e138a3381a06b7462b943c"
+          },
+          {
+            "us_per_call": 43.785563,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void short_state_flash<4, 3, 16>(unsigned short const*, unsigned short const*, unsigned short const*, unsigned short*, float*, unsigned char*)": {
+                "calls": 1000,
+                "sum_us": 43785.562999999725
+              }
+            },
+            "trace": "expanded_large-repo-round3.json.gz",
+            "trace_sha256": "6160a893015b30b9d23b785ba96a0850c24b3d3eb87bac4a0d84c6c129718e9e"
+          },
+          {
+            "us_per_call": 43.784123,
+            "kernel_count": 1000,
+            "kernels_per_call": 1,
+            "kernels": {
+              "void short_state_flash<4, 3, 16>(unsigned short const*, unsigned short const*, unsigned short const*, unsigned short*, float*, unsigned char*)": {
+                "calls": 1000,
+                "sum_us": 43784.12299999967
+              }
+            },
+            "trace": "expanded_large-repo-round4.json.gz",
+            "trace_sha256": "569abf774c44674bc0c784803833050fd2f289d1eaa3ad1cafa61c183f518098"
+          }
+        ]
+      },
+      "timing_started": true,
+      "median_us": {
+        "wheel": 43.597242,
+        "aten": 43.119163,
+        "repo": 43.785563
+      },
+      "ratio_vs_wheel": 0.9956990161346103,
+      "ratio_vs_aten": 0.9847803715576295,
+      "conservative_ratio": 0.9847803715576295,
+      "round_ratios": [
+        0.9850855437131687,
+        0.9848527136284683,
+        0.9837612242975329,
+        0.9847803715576295,
+        0.9849954742727176
+      ],
+      "mean_us": {
+        "wheel": 43.594394,
+        "aten": 43.1158352,
+        "repo": 43.7859788
+      },
+      "mean_ratio": 0.9846950183970764,
+      "meets_90_percent": true
+    }
+  },
+  "complete": true,
+  "meets_90_percent": true,
+  "loaded_libraries": [
+    "/opt/hyhal/lib/libhsa-runtime64.so.1.11.0",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/cache/gpu3/triton/O3QRERPD2ZKYUT55UNT2N746UQ2H7GUCGNT5RF3FLGQG77EO6ZRA/__triton_launcher.cpython-312-x86_64-linux-gnu.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/cache/gpu3/triton/OKEZGI3IBYPEBEKQLMLGGVOJKOD3GCMRVP2UBXPLE7U4YL3IDK3Q/__triton_launcher.cpython-312-x86_64-linux-gnu.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/cache/gpu3/triton/RHP6SV2QMNPS3N6T64HKUFK7ZGQ7D45FJDUN4OS5X3G5P2LQSR6Q/hip_utils.cpython-312-x86_64-linux-gnu.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/dcc/comgr/lib/libamd_comgr.so.2.6.0",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/dcc/gcvm/lib/libgcvm.so.17git",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/dcc/lib/libomp.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/hip/lib/libgalaxyhip.so.5.2.26365.2328-0599bcb4",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/hipprofiler/lib/libhipprof_tracer.so.1.0.26342.2294-f4c27174",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/hipprofiler/lib/libhipprof_utils.so.1.0.26342.2294-f4c27174",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/hipprofiler/lib/libhsa_tool.so.5.2.26342.2294-f4c27174",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/lib/libMIOpen-recommend.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/lib/libMIOpen.so.1.0",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/lib/libhipblas.so.3.2",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/lib/libhipblaslt.so.0.10",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/lib/libhipfft.so.0.1",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/lib/libhipnn.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/lib/libhiprand.so.1.1",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/lib/libhipsolver.so.0.1",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/lib/libhipsparse.so.4.2.0",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/lib/liborigami.so.1.0",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/lib/librccl.so.1.0.3b793e3",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/lib/librocblas.so.5.2",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/lib/librocfft.so.0.1",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/lib/librocrand.so.1.1",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/lib/librocsolver.so.0.1",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/lib/librocsparse.so.1.0",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/opencl/lib/libOpenCL.so.1.2",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/roctracer/lib/libroctracer64.so.1",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/dtk-26.10/roctracer/lib/libroctx64.so.1",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/fg-compiler36/triton.libs/libzstd-99a0d1ea.so.1.4.4",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/fg-compiler36/triton/_C/libtriton.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/python/bin/python3.12",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/flash_attn/lib/libflash_attention.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/flash_attn_2_cuda.cpython-312-x86_64-linux-gnu.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/greenlet/_greenlet.cpython-312-x86_64-linux-gnu.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/numpy.libs/libgfortran-83c28eba-468e71e5.so.5.0.0",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/numpy.libs/libquadmath-2284e583-a9307bba.so.0.0.0",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/numpy.libs/libscipy_openblas64_-f48b354e.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/numpy/_core/_multiarray_umath.cpython-312-x86_64-linux-gnu.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/numpy/fft/_pocketfft_umath.cpython-312-x86_64-linux-gnu.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/numpy/linalg/_umath_linalg.cpython-312-x86_64-linux-gnu.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/numpy/random/_bounded_integers.cpython-312-x86_64-linux-gnu.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/numpy/random/_common.cpython-312-x86_64-linux-gnu.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/numpy/random/_generator.cpython-312-x86_64-linux-gnu.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/numpy/random/_mt19937.cpython-312-x86_64-linux-gnu.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/numpy/random/_pcg64.cpython-312-x86_64-linux-gnu.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/numpy/random/_philox.cpython-312-x86_64-linux-gnu.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/numpy/random/_sfc64.cpython-312-x86_64-linux-gnu.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/numpy/random/bit_generator.cpython-312-x86_64-linux-gnu.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/numpy/random/mtrand.cpython-312-x86_64-linux-gnu.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/sqlalchemy/cyextension/collections.cpython-312-x86_64-linux-gnu.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/sqlalchemy/cyextension/immutabledict.cpython-312-x86_64-linux-gnu.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/sqlalchemy/cyextension/processors.cpython-312-x86_64-linux-gnu.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/sqlalchemy/cyextension/resultproxy.cpython-312-x86_64-linux-gnu.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/sqlalchemy/cyextension/util.cpython-312-x86_64-linux-gnu.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch.libs/libgflags-8aee0f6c.so.2.1.2",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch.libs/libglog-6ed04f2c.so.0.0.0",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch.libs/libgomp-855c301a.so.1.0.0",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch.libs/libmkl_core-dd2cdfcb.so.2",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch.libs/libmkl_gf_lp64-25409e28.so.2",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch.libs/libmkl_gnu_thread-11ed5977.so.2",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch/_C.cpython-312-x86_64-linux-gnu.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch/lib/libc10.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch/lib/libc10_hip.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch/lib/libcaffe2_nvrtc.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch/lib/libmagma.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch/lib/libmkl_core.so.2",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch/lib/libmkl_def.so.2",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch/lib/libmkl_gnu_thread.so.2",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch/lib/libmkl_intel_lp64.so.2",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch/lib/libmkl_vml_def.so.2",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch/lib/libshm.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch/lib/libtorch.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch/lib/libtorch_cpu.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch/lib/libtorch_global_deps.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch/lib/libtorch_hip.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/torch/lib/libtorch_python.so",
+    "/public/home/wzx226226/flash_attention_node15_20261109/native_candidates/13419/venv/lib/python3.12/site-packages/yaml/_yaml.cpython-312-x86_64-linux-gnu.so"
+  ]
+}

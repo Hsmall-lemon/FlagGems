@@ -1,0 +1,22 @@
+{
+  "submission_allowed": false,
+  "baseline_sha256": {
+    "to.py": "2f9ce4befec127a725d5b291b5125cdda31874a04e9547562f6dbae670bc22b1",
+    "to_kernels.py": "b81590f4e433263397e4e8174b86bfb163468628301d98dd24c1e00c2774ceee"
+  },
+  "current_sha256": {
+    "to.py": "4b5170d21aaa398bc1d2c4de857f7cc71365796630be04ac80b46b3eed6ed01e",
+    "to_kernels.py": "c79f9875521cace5d46078e6703c8dc777980b184c9873da4d67ff5524047ac4"
+  },
+  "old_to_ast_preserved_after_removing_quad_branch": true,
+  "old_kernel_ast_preserved": true,
+  "rows_examined": 59,
+  "affected_cases": [
+    940019,
+    940020
+  ],
+  "canonical_baseline_sha256": {
+    "to.py": "47f075c77865eb236aa83d7e128029ce546fd97718f232e15307d1e30e1f12a8",
+    "to_kernels.py": "b81590f4e433263397e4e8174b86bfb163468628301d98dd24c1e00c2774ceee"
+  }
+}

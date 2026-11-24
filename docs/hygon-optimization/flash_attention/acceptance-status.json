@@ -1,0 +1,26 @@
+{
+  "requested_native_version": "2.8.4+dtk2610.torch2130.2610211904.g0f1a5a",
+  "requested_baseline_user_authorized": true,
+  "sourcefind_channel": "release",
+  "sourcefind_package_id": 13419,
+  "workbook_reconstruction_acceptance_established": true,
+  "performance_vs_requested_baseline_verified": true,
+  "requested_acceptance_established": true,
+  "acceptance_scope": "Deterministic worksheet metadata reconstructions, not original model operands",
+  "default_image_native_version": "2.8.3+das185.dtk2604.torch2100.2608132155.g9febea",
+  "default_image_modified": false,
+  "minimum_individual_round_ratio": 0.9837612242975329,
+  "cards_tested_separately": [
+    3,
+    4
+  ],
+  "operator_precision_stability_passed_on_documented_reconstructions": true,
+  "original_model_acceptance_verified": false,
+  "external_frozen_gate_verified": false,
+  "native_general_functionality_all_tests_passed": false,
+  "prior_DAS185_comparison_remains_unqualified": true,
+  "unauthorized_11992_results_used_for_current_acceptance": false,
+  "pr_number": 5,
+  "previous_completion_claim": "withdrawn; new Release scope verified separately",
+  "final_formatted_source_retested": true
+}

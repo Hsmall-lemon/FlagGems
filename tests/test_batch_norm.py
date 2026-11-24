@@ -18,6 +18,9 @@ import pytest
 import torch
 
 import flag_gems
+from flag_gems.ops.native_batch_norm import (
+    native_batch_norm as generic_native_batch_norm,
+)
 
 from . import accuracy_utils as utils
 from . import conftest as cfg
@@ -96,6 +99,38 @@ def test_native_batch_norm(shape, dtype, affine, caplog):
     utils.gems_assert_close(result[2], ref_result[2], dtype, reduce_dim=reduce_dim)
     utils.gems_assert_close(running_mean, ref_running_mean, dtype)
     utils.gems_assert_close(running_var, ref_running_var, dtype)
+
+
+@pytest.mark.native_batch_norm
+@pytest.mark.skipif(
+    flag_gems.native_batch_norm is not generic_native_batch_norm,
+    reason="Generic implementation only; vendor overrides are unchanged",
+)
+@pytest.mark.parametrize("dtype", FLOAT_DTYPES)
+def test_native_batch_norm_inference_saved_stats(dtype):
+    channels = 128
+    cpu_inputs = (
+        torch.linspace(-2, 2, 3 * channels, dtype=dtype).reshape(3, channels),
+        torch.linspace(0.5, 1.5, channels, dtype=torch.float32),
+        torch.linspace(-0.25, 0.25, channels, dtype=torch.float32),
+        torch.linspace(-1, 1, channels, dtype=torch.float32),
+        torch.linspace(0.5, 2, channels, dtype=torch.float32),
+    )
+    ref_output, ref_mean, ref_invstd = torch.ops.aten.native_batch_norm.default(
+        *cpu_inputs, False, 0.1, 1e-5
+    )
+    inputs = tuple(t.to(flag_gems.device, copy=True) for t in cpu_inputs)
+    output, save_mean, save_invstd = flag_gems.native_batch_norm(
+        *inputs, False, 0.1, 1e-5
+    )
+
+    utils.gems_assert_close(output, ref_output, dtype)
+    for actual, expected in ((save_mean, ref_mean), (save_invstd, ref_invstd)):
+        assert actual.shape == expected.shape == (0,)
+        assert actual.dtype == expected.dtype
+        assert actual.device == inputs[0].device
+    for actual, original in zip(inputs[-2:], cpu_inputs[-2:]):
+        torch.testing.assert_close(actual.cpu(), original, rtol=0, atol=0)
 
 
 @pytest.mark.batch_norm
