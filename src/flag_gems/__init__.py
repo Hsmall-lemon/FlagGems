@@ -1953,7 +1953,17 @@ _FULL_CONFIG = (
     ("nansum", nansum),
     ("nansum.out", nansum_out),
     ("narrow_copy", narrow_copy),
-    ("native_batch_norm", native_batch_norm),
+    (
+        "native_batch_norm",
+        native_batch_norm,
+        None,
+        (
+            ("PrivateUse1",)
+            if vendor_name == "hygon"
+            and torch._C._get_privateuse1_backend_name() == "flagos"
+            else ()
+        ),
+    ),
     ("native_batch_norm_backward", batch_norm_backward),
     ("native_channel_shuffle", native_channel_shuffle),
     ("native_dropout", dropout),
