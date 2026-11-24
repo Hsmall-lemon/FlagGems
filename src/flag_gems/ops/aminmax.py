@@ -153,14 +153,14 @@ def aminmax(inp, dim=None, keepdim=False, *, out=None):
     logger.debug("GEMS AMINMAX")
 
     if dim is None:
-        # The whole-tensor kernels use flat offsets, so materialize strided views.
-        inp = contiguous(inp)
         M = inp.numel()
         if M == 0:
             raise RuntimeError(
                 "aminmax(): cannot compute aminmax over an empty dimension "
                 "as the operation has no identity."
             )
+        # The whole-tensor kernels use flat offsets, so materialize strided views.
+        inp = contiguous(inp)
         block_size = triton.next_power_of_2(math.ceil(math.sqrt(M)))
         mid_size = triton.cdiv(M, block_size)
         block_mid = triton.next_power_of_2(mid_size)

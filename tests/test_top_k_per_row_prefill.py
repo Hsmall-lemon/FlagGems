@@ -162,10 +162,6 @@ def test_top_k_per_row_prefill_full_vocab(num_rows, vocab_size, top_k):
 
 
 @pytest.mark.top_k_per_row_prefill
-@pytest.mark.skipif(
-    not getattr(import_module(top_k_per_row_prefill.__module__), "HAS_TLE", False),
-    reason="TLE top_k_per_row_prefill path is unavailable",
-)
 def test_top_k_per_row_prefill_large_vocab_partial_nonzero_range():
     torch.manual_seed(321)
     num_rows = 2
