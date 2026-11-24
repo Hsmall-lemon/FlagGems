@@ -4,6 +4,23 @@ import torch
 import flag_gems
 
 
+def _run_state_attention(inputs, scale):
+    op = torch.ops.aten._scaled_dot_product_flash_attention.default
+    if flag_gems.device == "flagos":
+        # This Torch-FL build skips codegen for the exact FlashAttention entry.
+        lib = torch.library.Library("aten", "IMPL", "PrivateUse1")
+        try:
+            lib.impl(
+                "_scaled_dot_product_flash_attention",
+                flag_gems._scaled_dot_product_flash_attention,
+            )
+            return op(*inputs, scale=scale)
+        finally:
+            lib._destroy()
+    with flag_gems.use_gems(include=["_scaled_dot_product_flash_attention"]):
+        return op(*inputs, scale=scale)
+
+
 @pytest.mark.scaled_dot_product_flash_attention
 @pytest.mark.skipif(flag_gems.vendor_name != "hygon", reason="Hygon STATE layout")
 @pytest.mark.parametrize(
@@ -49,22 +66,7 @@ def test_state_flash_attention_interleaved_qkv(scale, pattern):
     inputs = [
         device_storage.as_strided(shape, stride, offset) for offset in (0, 2048, 4096)
     ]
-    if flag_gems.device == "flagos":
-        # This Torch-FL build skips codegen for the exact flash ATen entry;
-        # explicitly bind its PrivateUse1 entry for this test's lifetime.
-        lib = torch.library.Library("aten", "IMPL", "PrivateUse1")
-        lib.impl(
-            "_scaled_dot_product_flash_attention",
-            flag_gems._scaled_dot_product_flash_attention,
-        )
-        result = torch.ops.aten._scaled_dot_product_flash_attention.default(
-            *inputs, scale=scale
-        )
-    else:
-        with flag_gems.use_gems(include=["_scaled_dot_product_flash_attention"]):
-            result = torch.ops.aten._scaled_dot_product_flash_attention.default(
-                *inputs, scale=scale
-            )
+    result = _run_state_attention(inputs, scale)
 
     # Every batch and head, interior tile boundaries and the final odd row.
     rows = torch.tensor([0, 63, 64, 127, 128, 1024, 2047, 2048])
@@ -161,20 +163,7 @@ def test_state_flash_attention_expanded_independent_backings(n, seed, pattern):
     stores = [x.to(flag_gems.device) for x in backings]
     dev = [x.as_strided(shape, stride, o) for x, o in zip(stores, offsets)]
     scale = 0.08838834764831843
-    if flag_gems.device == "flagos":
-        lib = torch.library.Library("aten", "IMPL", "PrivateUse1")
-        lib.impl(
-            "_scaled_dot_product_flash_attention",
-            flag_gems._scaled_dot_product_flash_attention,
-        )
-        result = torch.ops.aten._scaled_dot_product_flash_attention.default(
-            *dev, scale=scale
-        )
-    else:
-        with flag_gems.use_gems(include=["_scaled_dot_product_flash_attention"]):
-            result = torch.ops.aten._scaled_dot_product_flash_attention.default(
-                *dev, scale=scale
-            )
+    result = _run_state_attention(dev, scale)
     q, k, v = [x.float() for x in cpu]
     scores = q @ k.transpose(-1, -2) * scale
     expected = torch.softmax(scores, dim=-1) @ v

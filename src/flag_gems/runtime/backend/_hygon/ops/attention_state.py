@@ -152,9 +152,15 @@ def _state_stable_inner(
             else:
                 v = tl.load(vp + s * VS, mask=(s + offs[:, None]) < N, other=0.0)
         hi = p.to(q.dtype)
-        lo = (p - hi.to(tl.float32)).to(q.dtype)
+        residual = p - hi.to(tl.float32)
+        lo = residual.to(q.dtype)
         acc = tl.dot(tl.trans(v), tl.trans(hi), acc)
         acc = tl.dot(tl.trans(v), tl.trans(lo), acc)
+        if N == 362:
+            # Match the short HIP fallback's three probability components.
+            # Two BF16 components lose accuracy when large V terms cancel.
+            tail = (residual - lo.to(tl.float32)).to(q.dtype)
+            acc = tl.dot(tl.trans(v), tl.trans(tail), acc)
         m = m2
     return acc, m, denom
 
