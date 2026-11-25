@@ -12,6 +12,7 @@ from flag_gems.runtime import torch_device_fn
 
 from .addmm import addmm as _upstream_addmm
 from .addmm import addmm_out as _upstream_addmm_out
+from .addmm.precision import use_precise_vector
 
 
 @triton.jit
@@ -318,9 +319,8 @@ def _expanded_fp32(a, b):
 def _eligible(a, b, alpha=1, beta=1):
     m, k = a.shape
     n = b.shape[1]
-    # Extremely long FP32 vector reductions use the established accumulation
-    # order. The double-precision split reduction can differ from the native
-    # FP32 reference beyond the operator's existing tolerance in this regime.
+    # Bounded FP32 vectors are routed through the validated precise reduction
+    # by the public entrypoints. Retain this eligibility limit for other shapes.
     if a.dtype == torch.float32 and min(m, n) == 1 and k >= 2**20:
         return False
     # Large BF16 tiles depend on the HIP-specific scheduling path. HCU
@@ -708,6 +708,9 @@ def _launch(bias, a, b, out, alpha, beta):
 
 
 def addmm(bias, a, b, *, beta=1, alpha=1):
+    # R9's public wrapper must retain the validated high-precision vector path.
+    if bias.dtype == torch.float32 and use_precise_vector(a, b):
+        return _upstream_addmm(bias, a, b, beta=beta, alpha=alpha)
     if not _eligible(a, b, alpha, beta):
         fallback = (
             _generic_addmm
@@ -723,6 +726,8 @@ def addmm(bias, a, b, *, beta=1, alpha=1):
 
 
 def addmm_out(bias, a, b, *, beta=1, alpha=1, out=None):
+    if bias.dtype == torch.float32 and use_precise_vector(a, b):
+        return _upstream_addmm_out(bias, a, b, beta=beta, alpha=alpha, out=out)
     if not _eligible(a, b, alpha, beta):
         fallback = (
             _generic_addmm_out
