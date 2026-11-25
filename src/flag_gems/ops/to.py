@@ -18,6 +18,7 @@ from typing import Optional
 import torch
 import triton
 
+from flag_gems.ops.copy import _copy_to_bool_kernel
 from flag_gems.utils import pointwise_dynamic
 
 logger = logging.getLogger(__name__)
@@ -152,4 +153,9 @@ def to_copy(
     else:
         out = torch.empty_like(x, memory_format=target_memory_format, **empty_kwargs)
 
-    return _to_copy_func(x, out0=out)
+    if target_dtype == torch.bool and x.dtype != torch.bool:
+        return _copy_to_bool_kernel(x, out0=out)
+    # This operator explicitly converts dtype into a freshly allocated output.
+    # Use the instantiated copy overload, as copy_ does, so arithmetic's
+    # caller-provided-output cast guard does not reject an intended conversion.
+    return _to_copy_func.instantiate(x.ndim)(x, out0=out)

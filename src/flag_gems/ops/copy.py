@@ -46,7 +46,7 @@ def _copy_kernel(src):
     return src
 
 
-@pointwise_dynamic(is_tensor=[True], promotion_methods=[(0, "DEFAULT")])
+@pointwise_dynamic(is_tensor=[True], promotion_methods=[(0, "ALWAYS_BOOL")])
 @triton.jit
 def _copy_to_bool_kernel(src):
     return src != 0
